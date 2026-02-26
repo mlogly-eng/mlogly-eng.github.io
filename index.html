@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>VENT — Breathe through med school</title>
+    <title>VENT — Release the pressure</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0b2a4a 0%, #1b4a6b 100%);
+            background: linear-gradient(135deg, #1a2f3f 0%, #2a4a6e 100%);
             color: white;
             min-height: 100vh;
             display: flex;
@@ -18,72 +18,178 @@
         .container {
             max-width: 800px;
         }
-        .logo {
-            font-size: 8rem;
+        .logo-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        .lungs-icon {
+            font-size: 6rem;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+            animation: breathe 4s ease-in-out infinite;
+        }
+        @keyframes breathe {
+            0% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.1); opacity: 1; text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+            100% { transform: scale(1); opacity: 0.9; }
+        }
+        .pressure-wave {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            animation: pulse 4s ease-in-out infinite;
+            z-index: -1;
+        }
+        @keyframes pulse {
+            0% { width: 80px; height: 80px; opacity: 0.5; }
+            50% { width: 150px; height: 150px; opacity: 0; }
+            100% { width: 80px; height: 80px; opacity: 0.5; }
+        }
+        .vent-text {
+            font-size: 5rem;
             font-weight: 800;
-            letter-spacing: -4px;
-            margin-bottom: 0;
-            text-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            letter-spacing: -2px;
+            margin: -10px 0 0;
             background: linear-gradient(135deg, #fff 0%, #a8e6ff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            display: inline-block;
+            position: relative;
+            z-index: 2;
         }
-        .logo-sub {
-            font-size: 1.5rem;
-            letter-spacing: 8px;
+        .release-tag {
+            font-size: 1.2rem;
             text-transform: uppercase;
-            margin-top: -20px;
-            opacity: 0.8;
+            letter-spacing: 4px;
+            color: #ffd966;
+            margin-top: -10px;
+            font-weight: 300;
         }
         .tagline {
             font-size: 2rem;
             font-weight: 300;
             margin: 30px 0;
-            font-style: italic;
             border-top: 1px solid rgba(255,255,255,0.2);
             border-bottom: 1px solid rgba(255,255,255,0.2);
             padding: 20px;
+            line-height: 1.5;
         }
-        .pill {
+        .pressure-cards {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        .card {
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
             padding: 20px;
-            border-radius: 50px;
-            display: inline-block;
-            margin: 20px 0;
+            border-radius: 20px;
+            width: 200px;
             border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .email-section {
+            margin: 40px 0;
+        }
+        input {
+            padding: 15px 25px;
+            width: 300px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            margin-right: 10px;
+            background: rgba(255,255,255,0.9);
+        }
+        button {
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: none;
+            background: white;
+            color: #1a2f3f;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+        }
+        button:hover {
+            transform: scale(1.05);
+            background: #ffd966;
         }
         .footer {
-            margin-top: 50px;
+            margin-top: 60px;
             font-size: 0.9rem;
-            opacity: 0.6;
+            opacity: 0.7;
+        }
+        .pressure-note {
+            font-size: 1.1rem;
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 50px;
+            margin: 30px auto;
+            max-width: 500px;
+            border: 1px dashed rgba(255,255,255,0.3);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="logo">VENT</div>
-        <div class="logo-sub">MEDICAL</div>
+        <div class="logo-wrapper">
+            <div class="lungs-icon">🫁</div>
+            <div class="pressure-wave"></div>
+        </div>
+        <div class="vent-text">VENT</div>
+        <div class="release-tag">release the pressure</div>
         
-        <div class="tagline">Breathe through med school</div>
-        
-        <div class="pill">
-            ⏳ First module: Acid-Base in 60 seconds
+        <div class="tagline">
+            Not just to breathe.<br>
+            To let it out.
         </div>
         
-        <p style="margin: 30px 0; line-height: 1.8;">
-            For first-years drowning in information.<br>
-            For clinicals running on empty.
-        </p>
+        <div class="pressure-note">
+            ⚡ Medical school is 4 years of pressure building.<br>
+            VENT is where you release it.
+        </div>
         
-        <div style="margin: 40px 0;">
-            <input type="email" placeholder="your.email@example.com" style="padding: 15px; width: 300px; border-radius: 30px; border: none; margin-right: 10px;">
-            <button style="padding: 15px 30px; border-radius: 30px; border: none; background: white; color: #0b2a4a; font-weight: bold; cursor: pointer;">Notify Me</button>
+        <div class="pressure-cards">
+            <div class="card">
+                <div class="card-icon">📚</div>
+                <h3>Information Overload</h3>
+                <p>First year drowning? Vent the noise, keep the signal.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🫁</div>
+                <h3>Clinical Pressure</h3>
+                <p>Rounds stressing you? Vent between patients.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">💨</div>
+                <h3>Exam Anxiety</h3>
+                <p>Boards looming? Release the pressure.</p>
+            </div>
+        </div>
+        
+        <div class="email-section">
+            <h3>First module: Acid-Base in 60 seconds</h3>
+            <p>Be the first to breathe easier.</p>
+            <input type="email" placeholder="your.email@example.com">
+            <button>Release Me</button>
         </div>
         
         <div class="footer">
-            🫁 VENT — coming to vent.is-a.dev
+            🫁 VENT — coming to vent.is-a.dev · releasing pressure since 2026
         </div>
     </div>
 </body>
