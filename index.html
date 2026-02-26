@@ -12,57 +12,83 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #fcfcfc;
-            color: #1a1a1a;
-            line-height: 1.5;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            background: #faf9f7;  /* warm white */
+            color: #1e1e1e;
+            line-height: 1.4;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 40px;
         }
 
-        /* Navigation */
+        /* Navigation – clean, minimal, confident */
         .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 24px 0;
-            border-bottom: 1px solid #eee;
+            padding: 32px 0;
+            border-bottom: 1px solid #e8e6e1;
+            margin-bottom: 100px;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 20px;
-        }
-
-        .logo-icon {
+            gap: 4px;
             font-size: 28px;
-            filter: drop-shadow(0 0 8px rgba(0,100,200,0.3));
-        }
-
-        .logo-text {
             font-weight: 500;
             letter-spacing: -0.3px;
         }
 
-        .logo-tagline {
+        .logo-text {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .logo-v {
+            font-weight: 600;
+        }
+
+        .logo-lung {
+            font-size: 32px;
+            line-height: 1;
+            margin: 0 2px;
+            animation: gentleFloat 6s ease-in-out infinite;
+            display: inline-block;
+            transform-origin: center;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: scale(1) translateY(0); opacity: 0.9; }
+            50% { transform: scale(1.05) translateY(-2px); opacity: 1; }
+        }
+
+        .logo-ent {
+            font-weight: 500;
+            color: #4a4a4a;
+        }
+
+        .logo-tag {
             font-size: 14px;
-            color: #666;
             font-weight: 400;
-            margin-left: 4px;
-            font-style: italic;
+            color: #888;
+            margin-left: 16px;
+            letter-spacing: 0.2px;
+            border-left: 1px solid #ddd;
+            padding-left: 16px;
         }
 
         .nav-links {
             display: flex;
-            gap: 40px;
-            color: #444;
+            gap: 48px;
             font-size: 15px;
+            font-weight: 400;
+            color: #4a4a4a;
         }
 
         .nav-links a {
@@ -75,104 +101,93 @@
             color: #000;
         }
 
-        /* Hero */
+        /* Hero – powerful, minimal, emotional */
         .hero {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-columns: 1fr 1fr;
             gap: 60px;
-            padding: 80px 0 100px;
             align-items: center;
+            margin-bottom: 140px;
         }
 
         .hero-left {
-            max-width: 550px;
+            max-width: 500px;
         }
 
         .hero-eyebrow {
             font-size: 13px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #0066cc;
-            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+            color: #b85a3a;  /* warm terracotta accent */
+            margin-bottom: 24px;
             font-weight: 500;
         }
 
         .hero-left h1 {
-            font-size: 56px;
+            font-size: 72px;
             font-weight: 600;
-            letter-spacing: -2px;
-            line-height: 1.1;
-            margin-bottom: 24px;
+            letter-spacing: -3px;
+            line-height: 0.95;
+            margin-bottom: 32px;
+            color: #1e1e1e;
         }
 
-        .hero-left h1 span {
-            color: #0066cc;
+        .hero-left h1 .line1 {
+            display: block;
+        }
+
+        .hero-left h1 .line2 {
+            display: block;
+            color: #b85a3a;
             font-style: italic;
             font-weight: 500;
+            letter-spacing: -2px;
         }
 
         .hero-desc {
             font-size: 18px;
-            color: #444;
-            margin-bottom: 40px;
+            color: #5a5a5a;
+            margin-bottom: 48px;
             line-height: 1.6;
-            max-width: 450px;
+            max-width: 400px;
         }
 
-        .hero-quote {
-            font-size: 20px;
-            font-style: italic;
-            color: #1a1a1a;
-            border-left: 3px solid #0066cc;
-            padding-left: 24px;
-            margin-bottom: 40px;
-            background: #f8f8f8;
-            padding: 24px;
-            border-radius: 4px;
-        }
-
-        .hero-quote-author {
-            font-size: 14px;
-            color: #666;
-            margin-top: 8px;
-            font-style: normal;
-        }
-
-        .cta-group {
+        .cta-line {
             display: flex;
             gap: 16px;
             align-items: center;
+            border-bottom: 1px solid #e0dcd5;
+            padding-bottom: 16px;
+            width: fit-content;
         }
 
         .cta-email {
-            padding: 16px 20px;
-            border: 1px solid #ddd;
-            border-radius: 40px;
-            width: 280px;
+            padding: 8px 0;
             font-size: 16px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .cta-email:focus {
-            border-color: #0066cc;
-        }
-
-        .cta-button {
-            padding: 16px 32px;
-            background: #1a1a1a;
-            color: white;
             border: none;
-            border-radius: 40px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.2s;
+            background: transparent;
+            width: 260px;
+            outline: none;
+            font-family: inherit;
+            color: #1e1e1e;
         }
 
-        .cta-button:hover {
-            background: #0066cc;
-            transform: translateY(-2px);
+        .cta-email::placeholder {
+            color: #bbb;
+            font-weight: 300;
+        }
+
+        .cta-arrow {
+            font-size: 20px;
+            color: #b85a3a;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .cta-arrow:hover {
+            transform: translateX(5px);
         }
 
         .hero-right {
@@ -181,277 +196,210 @@
             align-items: center;
         }
 
-        .lung-container {
+        .lung-sculpture {
             position: relative;
-            width: 320px;
-            height: 360px;
+            width: 380px;
+            height: 440px;
         }
 
-        .lung-outline {
+        .lung-shape {
             position: absolute;
-            width: 130px;
-            height: 220px;
-            border: 2px solid rgba(0,102,204,0.2);
-            border-radius: 130px 130px 40px 40px;
-            top: 50px;
+            width: 160px;
+            height: 260px;
+            background: #f0ebe4;
+            border-radius: 160px 160px 60px 60px;
+            top: 60px;
+            transition: all 0.1s ease;
         }
 
-        .lung-outline.left {
+        .lung-shape.left {
             left: 20px;
-            transform: rotate(-5deg);
+            transform: rotate(-6deg);
+            background: linear-gradient(135deg, #f0ebe4, #e5dfd7);
         }
 
-        .lung-outline.right {
+        .lung-shape.right {
             right: 20px;
-            transform: rotate(5deg);
+            transform: rotate(6deg);
+            background: linear-gradient(135deg, #f0ebe4, #e5dfd7);
         }
 
-        .lung-glow {
+        .lung-highlight {
             position: absolute;
-            width: 130px;
-            height: 220px;
-            background: radial-gradient(circle at 30% 50%, rgba(0,102,204,0.2), transparent 70%);
-            border-radius: 130px 130px 40px 40px;
-            filter: blur(15px);
-            animation: breathe 6s ease-in-out infinite;
+            width: 160px;
+            height: 260px;
+            border-radius: 160px 160px 60px 60px;
+            top: 60px;
+            mix-blend-mode: overlay;
+            background: radial-gradient(circle at 30% 40%, rgba(184,90,58,0.15), transparent 70%);
+            pointer-events: none;
         }
 
-        .lung-glow.left {
+        .lung-highlight.left {
             left: 20px;
-            transform: rotate(-5deg);
+            transform: rotate(-6deg);
         }
 
-        .lung-glow.right {
+        .lung-highlight.right {
             right: 20px;
-            transform: rotate(5deg);
-            animation-delay: -3s;
+            transform: rotate(6deg);
         }
 
-        @keyframes breathe {
-            0%, 100% { opacity: 0.3; transform: rotate(-5deg) scale(1); }
-            50% { opacity: 0.8; transform: rotate(-5deg) scale(1.08); }
-        }
-
-        .particles {
+        .airway-form {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 80px;
+            border: 1px solid #e0dcd5;
+            border-radius: 30px 30px 0 0;
+            border-bottom: none;
+            background: #faf9f7;
+            z-index: 2;
         }
 
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(0,102,204,0.3);
-            border-radius: 50%;
-            animation: float 8s infinite;
+        /* Work section – what we offer, aesthetic, confident */
+        .work {
+            margin-bottom: 140px;
         }
 
-        @keyframes float {
-            0% { transform: translateY(0) translateX(0); opacity: 0; }
-            20% { opacity: 0.5; }
-            100% { transform: translateY(-100px) translateX(20px); opacity: 0; }
+        .section-header {
+            margin-bottom: 60px;
         }
 
-        /* Story Section */
-        .story {
+        .section-header h2 {
+            font-size: 44px;
+            font-weight: 500;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: #888;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .work-item {
+            border-top: 1px solid #e8e6e1;
+            padding-top: 30px;
+        }
+
+        .work-number {
+            font-size: 13px;
+            color: #b85a3a;
+            margin-bottom: 20px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .work-item h3 {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .work-item p {
+            color: #5a5a5a;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .work-item .icon {
+            font-size: 32px;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+
+        /* Philosophy section – warm, human, confident */
+        .philosophy {
+            margin-bottom: 140px;
+            background: #f5f3f0;
             padding: 100px 0;
-            background: #f8f8f8;
         }
 
-        .story-grid {
+        .philosophy-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
             align-items: center;
         }
 
-        .story-left h2 {
-            font-size: 42px;
-            font-weight: 600;
-            letter-spacing: -1.5px;
+        .philosophy-left h2 {
+            font-size: 48px;
+            font-weight: 500;
+            letter-spacing: -2px;
+            line-height: 1.1;
             margin-bottom: 32px;
-            line-height: 1.2;
         }
 
-        .story-left h2 span {
-            color: #0066cc;
+        .philosophy-left h2 span {
+            color: #b85a3a;
             font-style: italic;
         }
 
-        .story-left p {
-            font-size: 18px;
-            color: #444;
+        .philosophy-left p {
+            font-size: 17px;
+            color: #4a4a4a;
             line-height: 1.8;
             margin-bottom: 24px;
         }
 
-        .story-quote {
-            font-size: 22px;
+        .philosophy-quote {
+            font-size: 20px;
             font-style: italic;
-            color: #1a1a1a;
-            background: white;
-            padding: 32px;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            color: #1e1e1e;
+            border-left: 2px solid #b85a3a;
+            padding-left: 30px;
+            margin-top: 40px;
         }
 
-        .story-quote-author {
+        .philosophy-quote-author {
             font-size: 14px;
-            color: #666;
-            margin-top: 16px;
+            color: #888;
+            margin-top: 12px;
             font-style: normal;
         }
 
-        .story-right {
+        .philosophy-right {
             display: grid;
+            grid-template-columns: 1fr;
             gap: 30px;
         }
 
-        .story-card {
-            background: white;
-            padding: 32px;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-            transition: transform 0.3s;
+        .value-card {
+            border-bottom: 1px solid #ddd8d0;
+            padding-bottom: 30px;
         }
 
-        .story-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .story-card h3 {
-            font-size: 24px;
-            margin-bottom: 16px;
+        .value-card h3 {
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .story-card p {
-            color: #555;
+        .value-card p {
+            color: #5a5a5a;
             line-height: 1.7;
+            font-size: 15px;
         }
 
-        /* Features */
-        .features {
-            padding: 100px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-size: 42px;
-            font-weight: 600;
-            letter-spacing: -1.5px;
-            margin-bottom: 16px;
-        }
-
-        .section-header p {
-            font-size: 18px;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-        }
-
-        .feature-card {
-            padding: 40px 30px;
-            border-radius: 8px;
-            background: white;
-            border: 1px solid #eee;
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover {
-            border-color: #0066cc;
-            box-shadow: 0 20px 40px rgba(0,102,204,0.1);
-        }
-
-        .feature-icon {
-            font-size: 40px;
-            margin-bottom: 24px;
-        }
-
-        .feature-card h3 {
-            font-size: 24px;
-            margin-bottom: 16px;
-        }
-
-        .feature-card p {
-            color: #555;
-            line-height: 1.7;
-        }
-
-        /* Vent Sessions */
-        .vent-sessions {
-            padding: 100px 0;
-            background: #1a1a1a;
-            color: white;
-        }
-
-        .vent-sessions h2 {
-            font-size: 42px;
-            font-weight: 600;
-            letter-spacing: -1.5px;
-            margin-bottom: 16px;
-        }
-
-        .vent-sessions .section-header p {
-            color: #aaa;
-        }
-
-        .session-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .session-card {
-            background: #2a2a2a;
-            padding: 32px;
-            border-radius: 8px;
-            border-left: 3px solid #0066cc;
-        }
-
-        .session-card p {
-            font-size: 18px;
-            line-height: 1.7;
-            margin-bottom: 20px;
-            font-style: italic;
-            color: #ddd;
-        }
-
-        .session-author {
-            font-size: 14px;
-            color: #888;
-        }
-
-        .session-tag {
-            display: inline-block;
-            padding: 4px 12px;
-            background: #333;
-            border-radius: 20px;
-            font-size: 12px;
-            color: #aaa;
-            margin-top: 16px;
-        }
-
-        /* Footer */
+        /* Footer – warm, minimal */
         .footer {
-            padding: 60px 0 40px;
-            border-top: 1px solid #eee;
+            padding: 60px 0 80px;
+            border-top: 1px solid #e8e6e1;
         }
 
         .footer-grid {
@@ -461,17 +409,22 @@
             margin-bottom: 60px;
         }
 
+        .footer-col .logo {
+            margin-bottom: 24px;
+            font-size: 24px;
+        }
+
         .footer-col p {
             color: #666;
             line-height: 1.7;
-            margin-top: 20px;
-            font-style: italic;
+            font-size: 14px;
         }
 
         .footer-col h4 {
-            font-size: 16px;
+            font-size: 14px;
+            font-weight: 500;
             margin-bottom: 24px;
-            color: #1a1a1a;
+            color: #1e1e1e;
         }
 
         .footer-col a {
@@ -479,120 +432,167 @@
             color: #666;
             text-decoration: none;
             margin-bottom: 12px;
+            font-size: 14px;
             transition: color 0.2s;
         }
 
         .footer-col a:hover {
-            color: #0066cc;
+            color: #b85a3a;
         }
 
         .footer-bottom {
             display: flex;
             justify-content: space-between;
-            color: #888;
-            font-size: 14px;
+            color: #999;
+            font-size: 13px;
             padding-top: 40px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #e8e6e1;
         }
 
         @media (max-width: 900px) {
             .hero {
                 grid-template-columns: 1fr;
             }
-            .story-grid {
+            .work-grid {
                 grid-template-columns: 1fr;
             }
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
-            .session-grid {
+            .philosophy-grid {
                 grid-template-columns: 1fr;
             }
             .footer-grid {
                 grid-template-columns: 1fr;
             }
+            .hero-left h1 {
+                font-size: 48px;
+            }
+            .nav-links {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="nav">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="nav">
             <div class="logo">
-                <span class="logo-icon">🫁</span>
-                <span class="logo-text">VENT</span>
-                <span class="logo-tagline">where med students exhale</span>
+                <div class="logo-text">
+                    <span class="logo-v">V</span>
+                    <span class="logo-lung">🫁</span>
+                    <span class="logo-ent">ENT</span>
+                </div>
+                <span class="logo-tag">where med students exhale</span>
             </div>
             <div class="nav-links">
-                <a href="#">story</a>
-                <a href="#">exhale</a>
+                <a href="#">what we offer</a>
+                <a href="#">why vent</a>
                 <a href="#">sessions</a>
                 <a href="#">start</a>
             </div>
-        </div>
-    </div>
+        </nav>
 
-    <div class="hero">
-        <div class="container" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center;">
+        <!-- Hero -->
+        <div class="hero">
             <div class="hero-left">
-                <div class="hero-eyebrow">not another study site</div>
-                <h1>a place to <span>exhale.</span></h1>
-                <div class="hero-quote">
-                    "Third year. Call room. 3am. I needed to vent. So I built it."
-                    <div class="hero-quote-author">— founder, class of 2026</div>
-                </div>
+                <div class="hero-eyebrow">exhale.</div>
+                <h1>
+                    <span class="line1">medicine,</span>
+                    <span class="line2">distilled.</span>
+                </h1>
                 <p class="hero-desc">
                     60-second consults that cut through the noise. Built by students who've been where you are.
                 </p>
-                <div class="cta-group">
+                <div class="cta-line">
                     <input type="email" placeholder="your.email@med.edu" class="cta-email">
-                    <button class="cta-button">start exhaling</button>
+                    <button class="cta-arrow">→</button>
                 </div>
             </div>
             <div class="hero-right">
-                <div class="lung-container">
-                    <div class="lung-outline left"></div>
-                    <div class="lung-outline right"></div>
-                    <div class="lung-glow left"></div>
-                    <div class="lung-glow right"></div>
-                    <div class="particles">
-                        <div class="particle" style="top: 30%; left: 30%; animation-delay: 0s;"></div>
-                        <div class="particle" style="top: 50%; left: 60%; animation-delay: 2s;"></div>
-                        <div class="particle" style="top: 70%; left: 40%; animation-delay: 4s;"></div>
-                        <div class="particle" style="top: 40%; left: 70%; animation-delay: 1s;"></div>
-                        <div class="particle" style="top: 80%; left: 20%; animation-delay: 3s;"></div>
-                    </div>
+                <div class="lung-sculpture">
+                    <div class="lung-shape left"></div>
+                    <div class="lung-shape right"></div>
+                    <div class="lung-highlight left"></div>
+                    <div class="lung-highlight right"></div>
+                    <div class="airway-form"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- What We Offer -->
+        <div class="work">
+            <div class="section-header">
+                <h2>what we offer</h2>
+                <p>Built by students. For students. Always.</p>
+            </div>
+            <div class="work-grid">
+                <div class="work-item">
+                    <div class="work-number">01</div>
+                    <div class="icon">⏱️</div>
+                    <h3>60‑second consults</h3>
+                    <p>Every condition stripped to its clinical essence. What you actually need, nothing you don't.</p>
+                </div>
+                <div class="work-item">
+                    <div class="work-number">02</div>
+                    <div class="icon">🫁</div>
+                    <h3>the pimp</h3>
+                    <p>Short, aggressive questions like attendings ask. No fluff. Just what's next.</p>
+                </div>
+                <div class="work-item">
+                    <div class="work-number">03</div>
+                    <div class="icon">🗺️</div>
+                    <h3>pressure map</h3>
+                    <p>See where you're strong and where you're about to burst. A heatmap of your knowledge.</p>
+                </div>
+                <div class="work-item">
+                    <div class="work-number">04</div>
+                    <div class="icon">💬</div>
+                    <h3>vent sessions</h3>
+                    <p>Share your overwhelm. Get the one thing that helped someone else.</p>
+                </div>
+                <div class="work-item">
+                    <div class="work-number">05</div>
+                    <div class="icon">🔪</div>
+                    <h3>clinical cut</h3>
+                    <p>Diagrams that strip concepts to their surgical essence. Sharp. Quick. Memorable.</p>
+                </div>
+                <div class="work-item">
+                    <div class="work-number">06</div>
+                    <div class="icon">∞</div>
+                    <h3>free tier</h3>
+                    <p>Forever. Because surviving med school shouldn't cost more.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="story">
+    <!-- Philosophy / Story Section (full width) -->
+    <div class="philosophy">
         <div class="container">
-            <div class="story-grid">
-                <div class="story-left">
+            <div class="philosophy-grid">
+                <div class="philosophy-left">
                     <h2>it started in a<br><span>call room at 3am.</span></h2>
                     <p>
                         Third year. Overwhelmed. Drowning in information. No one tells you it's normal to feel like this.
                     </p>
                     <p>
-                        So I built the thing I needed. A place to release the pressure. A place where the only rule is: 
+                        So we built the thing we needed. A place to release the pressure. A place where the only rule is: 
                         <strong>we've all been there.</strong>
                     </p>
-                    <div class="story-quote">
+                    <div class="philosophy-quote">
                         "VENT isn't another study tool. It's a reminder you're not alone."
-                        <div class="story-quote-author">— class of 2026, 47k+ students</div>
+                        <div class="philosophy-quote-author">— founder, class of 2026</div>
                     </div>
                 </div>
-                <div class="story-right">
-                    <div class="story-card">
+                <div class="philosophy-right">
+                    <div class="value-card">
                         <h3>🫁 the exhale</h3>
                         <p>60-second consults that clear the fog. What you actually need, nothing you don't.</p>
                     </div>
-                    <div class="story-card">
+                    <div class="value-card">
                         <h3>💨 the release</h3>
                         <p>Share what's overwhelming you. Get back the one thing that helped someone else.</p>
                     </div>
-                    <div class="story-card">
+                    <div class="value-card">
                         <h3>🌬️ the rhythm</h3>
                         <p>Daily consistency, not cramming. Small breaths > gasping for air.</p>
                     </div>
@@ -601,112 +601,45 @@
         </div>
     </div>
 
-    <div class="features">
-        <div class="container">
-            <div class="section-header">
-                <h2>what you'll find here</h2>
-                <p>built by students. for students. always.</p>
-            </div>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">⏱️</div>
-                    <h3>60-second consults</h3>
-                    <p>Every condition, every presentation, stripped to its clinical essence. Perfect for rounds.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🫁</div>
-                    <h3>the pimp</h3>
-                    <p>Short, aggressive questions like attendings ask. No fluff. Just what's next.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🗺️</div>
-                    <h3>pressure map</h3>
-                    <p>See where you're strong and where you're about to burst. Knowledge heatmap.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💬</div>
-                    <h3>vent sessions</h3>
-                    <p>Share your overwhelm. Get the one thing that helped someone else.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔪</div>
-                    <h3>clinical cut</h3>
-                    <p>Diagrams that strip concepts to their surgical essence. Sharp. Quick. Memorable.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">∞</div>
-                    <h3>free tier</h3>
-                    <p>Forever. Because surviving med school shouldn't cost more.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="vent-sessions">
-        <div class="container">
-            <div class="section-header">
-                <h2>recent vent sessions</h2>
-                <p>real students. real overwhelm. real help.</p>
-            </div>
-            <div class="session-grid">
-                <div class="session-card">
-                    <p>"I've done 50 UWorld questions and I'm still getting 40% correct. What am I missing?"</p>
-                    <div class="session-author">— M2, midwest</div>
-                    <div class="session-tag">↪ 12 replies · "try doing 10, then reviewing each one out loud"</div>
-                </div>
-                <div class="session-card">
-                    <p>"My attending pimped me on acid-base and I froze. How do you think on your feet?"</p>
-                    <div class="session-author">— M3, east coast</div>
-                    <div class="session-tag">↪ 8 replies · "60-second consult saved me. here's the link"</div>
-                </div>
-                <div class="session-card">
-                    <p>"I haven't slept in 3 days. Tell me this gets better."</p>
-                    <div class="session-author">— intern, west coast</div>
-                    <div class="session-tag">↪ 24 replies · "it does. we're here. vent."</div>
-                </div>
-                <div class="session-card">
-                    <p>"Step studying. 4 weeks out. Freaking out. What's your one must-know topic?"</p>
-                    <div class="session-author">— M2, south</div>
-                    <div class="session-tag">↪ 31 replies · "acid-base. seriously. do it first."</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer">
-        <div class="container">
+    <div class="container">
+        <!-- Footer -->
+        <footer class="footer">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <div class="logo" style="margin-bottom: 20px;">
-                        <span class="logo-icon">🫁</span>
-                        <span class="logo-text">VENT</span>
+                    <div class="logo" style="margin-bottom: 24px;">
+                        <span class="logo-v">V</span>
+                        <span class="logo-lung">🫁</span>
+                        <span class="logo-ent">ENT</span>
                     </div>
-                    <p>started in a call room at 3am. now it's for all of us.</p>
+                    <p>started in a call room at 3am.<br>now it's for all of us.</p>
                 </div>
                 <div class="footer-col">
-                    <h4>exhale</h4>
-                    <a href="#">consults</a>
+                    <h4>offerings</h4>
+                    <a href="#">60‑second consults</a>
                     <a href="#">the pimp</a>
                     <a href="#">pressure map</a>
+                    <a href="#">vent sessions</a>
                 </div>
                 <div class="footer-col">
                     <h4>connect</h4>
                     <a href="#">sessions</a>
                     <a href="#">community</a>
                     <a href="#">instagram</a>
+                    <a href="#">twitter</a>
                 </div>
                 <div class="footer-col">
                     <h4>story</h4>
                     <a href="#">origin</a>
                     <a href="#">team</a>
                     <a href="#">contact</a>
+                    <a href="#">press</a>
                 </div>
             </div>
             <div class="footer-bottom">
                 <div>🫁 VENT — where med students exhale</div>
                 <div>© 2026</div>
             </div>
-        </div>
+        </footer>
     </div>
 </body>
 </html>
