@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VENT — medicine, distilled</title>
+    <title>VENT — where med students exhale</title>
     <style>
         * {
             margin: 0;
@@ -12,17 +12,16 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #ffffff;
-            color: #111111;
-            line-height: 1.4;
-            -webkit-font-smoothing: antialiased;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fcfcfc;
+            color: #1a1a1a;
+            line-height: 1.5;
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 24px;
         }
 
         /* Navigation */
@@ -30,54 +29,45 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 32px 0;
-            border-bottom: 1px solid #eaeaea;
-            margin-bottom: 80px;
+            padding: 24px 0;
+            border-bottom: 1px solid #eee;
         }
 
         .logo {
             display: flex;
-            align-items: baseline;
-            gap: 4px;
-            font-size: 24px;
-            font-weight: 500;
-            letter-spacing: -0.02em;
+            align-items: center;
+            gap: 8px;
+            font-size: 20px;
         }
 
         .logo-icon {
             font-size: 28px;
-            margin-right: 4px;
-            opacity: 0.9;
-            transition: opacity 0.2s;
+            filter: drop-shadow(0 0 8px rgba(0,100,200,0.3));
         }
 
-        .logo-main {
+        .logo-text {
             font-weight: 500;
+            letter-spacing: -0.3px;
         }
 
-        .logo-dot {
-            color: #888;
-            margin: 0 2px;
-        }
-
-        .logo-tag {
-            font-size: 16px;
+        .logo-tagline {
+            font-size: 14px;
+            color: #666;
             font-weight: 400;
-            color: #888;
-            margin-left: 8px;
+            margin-left: 4px;
+            font-style: italic;
         }
 
         .nav-links {
             display: flex;
-            gap: 48px;
-            font-size: 16px;
-            font-weight: 400;
+            gap: 40px;
             color: #444;
+            font-size: 15px;
         }
 
         .nav-links a {
-            color: inherit;
             text-decoration: none;
+            color: inherit;
             transition: color 0.2s;
         }
 
@@ -88,81 +78,101 @@
         /* Hero */
         .hero {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.2fr 0.8fr;
             gap: 60px;
+            padding: 80px 0 100px;
             align-items: center;
-            margin-bottom: 120px;
         }
 
         .hero-left {
-            max-width: 500px;
+            max-width: 550px;
         }
 
-        .eyebrow {
-            font-size: 14px;
+        .hero-eyebrow {
+            font-size: 13px;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: #888;
-            margin-bottom: 24px;
+            letter-spacing: 1px;
+            color: #0066cc;
+            margin-bottom: 20px;
             font-weight: 500;
         }
 
         .hero-left h1 {
-            font-size: 64px;
-            font-weight: 500;
-            letter-spacing: -0.03em;
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -2px;
             line-height: 1.1;
             margin-bottom: 24px;
-            color: #000;
         }
 
         .hero-left h1 span {
-            color: #888;
-            font-weight: 400;
+            color: #0066cc;
             font-style: italic;
+            font-weight: 500;
         }
 
         .hero-desc {
             font-size: 18px;
             color: #444;
-            margin-bottom: 48px;
-            line-height: 1.5;
-            max-width: 400px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            max-width: 450px;
         }
 
-        .cta-line {
+        .hero-quote {
+            font-size: 20px;
+            font-style: italic;
+            color: #1a1a1a;
+            border-left: 3px solid #0066cc;
+            padding-left: 24px;
+            margin-bottom: 40px;
+            background: #f8f8f8;
+            padding: 24px;
+            border-radius: 4px;
+        }
+
+        .hero-quote-author {
+            font-size: 14px;
+            color: #666;
+            margin-top: 8px;
+            font-style: normal;
+        }
+
+        .cta-group {
             display: flex;
             gap: 16px;
             align-items: center;
         }
 
         .cta-email {
-            padding: 16px 0;
+            padding: 16px 20px;
+            border: 1px solid #ddd;
+            border-radius: 40px;
+            width: 280px;
             font-size: 16px;
-            border: none;
-            border-bottom: 1px solid #ddd;
-            width: 260px;
             outline: none;
-            font-family: inherit;
-            background: transparent;
+            transition: border-color 0.2s;
         }
 
         .cta-email:focus {
-            border-bottom-color: #000;
+            border-color: #0066cc;
         }
 
-        .cta-arrow {
-            font-size: 24px;
-            color: #888;
-            transition: transform 0.2s, color 0.2s;
-            cursor: pointer;
-            background: none;
+        .cta-button {
+            padding: 16px 32px;
+            background: #1a1a1a;
+            color: white;
             border: none;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
         }
 
-        .cta-arrow:hover {
-            transform: translateX(4px);
-            color: #000;
+        .cta-button:hover {
+            background: #0066cc;
+            transform: translateY(-2px);
         }
 
         .hero-right {
@@ -171,195 +181,277 @@
             align-items: center;
         }
 
-        .lung-diagram {
+        .lung-container {
             position: relative;
-            width: 300px;
+            width: 320px;
             height: 360px;
         }
 
-        .lung-line {
+        .lung-outline {
             position: absolute;
-            width: 120px;
-            height: 200px;
-            border: 2px solid #111;
-            border-radius: 120px 120px 40px 40px;
-            opacity: 0.2;
+            width: 130px;
+            height: 220px;
+            border: 2px solid rgba(0,102,204,0.2);
+            border-radius: 130px 130px 40px 40px;
+            top: 50px;
         }
 
-        .lung-line.left {
+        .lung-outline.left {
             left: 20px;
             transform: rotate(-5deg);
         }
 
-        .lung-line.right {
+        .lung-outline.right {
             right: 20px;
             transform: rotate(5deg);
         }
 
-        .lung-fill {
+        .lung-glow {
             position: absolute;
-            width: 120px;
-            height: 200px;
-            background: #111;
-            border-radius: 120px 120px 40px 40px;
-            opacity: 0.03;
+            width: 130px;
+            height: 220px;
+            background: radial-gradient(circle at 30% 50%, rgba(0,102,204,0.2), transparent 70%);
+            border-radius: 130px 130px 40px 40px;
+            filter: blur(15px);
+            animation: breathe 6s ease-in-out infinite;
         }
 
-        .lung-fill.left {
+        .lung-glow.left {
             left: 20px;
             transform: rotate(-5deg);
         }
 
-        .lung-fill.right {
+        .lung-glow.right {
             right: 20px;
             transform: rotate(5deg);
+            animation-delay: -3s;
         }
 
-        .airway-line {
+        @keyframes breathe {
+            0%, 100% { opacity: 0.3; transform: rotate(-5deg) scale(1); }
+            50% { opacity: 0.8; transform: rotate(-5deg) scale(1.08); }
+        }
+
+        .particles {
             position: absolute;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 60px;
-            border: 2px solid #111;
-            border-radius: 20px 20px 0 0;
-            border-bottom: none;
-            opacity: 0.2;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
         }
 
-        .airway-fill {
+        .particle {
             position: absolute;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 60px;
-            background: #111;
-            border-radius: 20px 20px 0 0;
-            opacity: 0.03;
+            width: 4px;
+            height: 4px;
+            background: rgba(0,102,204,0.3);
+            border-radius: 50%;
+            animation: float 8s infinite;
         }
 
-        /* Work section */
-        .work {
-            margin-bottom: 120px;
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            20% { opacity: 0.5; }
+            100% { transform: translateY(-100px) translateX(20px); opacity: 0; }
         }
 
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 60px;
-            border-bottom: 1px solid #eaeaea;
-            padding-bottom: 24px;
-        }
-
-        .section-header h2 {
-            font-size: 32px;
-            font-weight: 500;
-            letter-spacing: -0.02em;
-        }
-
-        .section-header p {
-            color: #888;
-            font-size: 16px;
-        }
-
-        .work-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-        }
-
-        .work-item {
-            border-top: 1px solid #eaeaea;
-            padding-top: 24px;
-        }
-
-        .work-number {
-            font-size: 14px;
-            color: #888;
-            margin-bottom: 16px;
-        }
-
-        .work-item h3 {
-            font-size: 24px;
-            font-weight: 500;
-            margin-bottom: 16px;
-            letter-spacing: -0.02em;
-        }
-
-        .work-item p {
-            color: #444;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        /* Featured */
-        .featured {
-            margin-bottom: 120px;
-            background: #fafafa;
+        /* Story Section */
+        .story {
             padding: 100px 0;
+            background: #f8f8f8;
         }
 
-        .featured-grid {
+        .story-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
             align-items: center;
         }
 
-        .featured-left h3 {
-            font-size: 14px;
-            text-transform: uppercase;
-            color: #888;
-            letter-spacing: 0.05em;
+        .story-left h2 {
+            font-size: 42px;
+            font-weight: 600;
+            letter-spacing: -1.5px;
+            margin-bottom: 32px;
+            line-height: 1.2;
+        }
+
+        .story-left h2 span {
+            color: #0066cc;
+            font-style: italic;
+        }
+
+        .story-left p {
+            font-size: 18px;
+            color: #444;
+            line-height: 1.8;
             margin-bottom: 24px;
         }
 
-        .featured-left h2 {
-            font-size: 48px;
-            font-weight: 500;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-            margin-bottom: 32px;
+        .story-quote {
+            font-size: 22px;
+            font-style: italic;
+            color: #1a1a1a;
+            background: white;
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        .featured-left p {
-            font-size: 18px;
-            color: #444;
-            line-height: 1.6;
-            max-width: 400px;
+        .story-quote-author {
+            font-size: 14px;
+            color: #666;
+            margin-top: 16px;
+            font-style: normal;
         }
 
-        .featured-right {
+        .story-right {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .story-card {
+            background: white;
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            transition: transform 0.3s;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .story-card h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .story-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Features */
+        .features {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 600;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 40px;
         }
 
-        .stat-block {
-            border-top: 1px solid #ddd;
-            padding-top: 24px;
+        .feature-card {
+            padding: 40px 30px;
+            border-radius: 8px;
+            background: white;
+            border: 1px solid #eee;
+            transition: all 0.3s;
         }
 
-        .stat-block .number {
-            font-size: 48px;
-            font-weight: 400;
-            margin-bottom: 8px;
+        .feature-card:hover {
+            border-color: #0066cc;
+            box-shadow: 0 20px 40px rgba(0,102,204,0.1);
         }
 
-        .stat-block .label {
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Vent Sessions */
+        .vent-sessions {
+            padding: 100px 0;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .vent-sessions h2 {
+            font-size: 42px;
+            font-weight: 600;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+        }
+
+        .vent-sessions .section-header p {
+            color: #aaa;
+        }
+
+        .session-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .session-card {
+            background: #2a2a2a;
+            padding: 32px;
+            border-radius: 8px;
+            border-left: 3px solid #0066cc;
+        }
+
+        .session-card p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #ddd;
+        }
+
+        .session-author {
             font-size: 14px;
             color: #888;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+        }
+
+        .session-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #333;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 16px;
         }
 
         /* Footer */
         .footer {
-            padding: 60px 0 100px;
-            border-top: 1px solid #eaeaea;
+            padding: 60px 0 40px;
+            border-top: 1px solid #eee;
         }
 
         .footer-grid {
@@ -370,31 +462,28 @@
         }
 
         .footer-col p {
-            color: #444;
-            line-height: 1.6;
+            color: #666;
+            line-height: 1.7;
             margin-top: 20px;
+            font-style: italic;
         }
 
         .footer-col h4 {
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 16px;
             margin-bottom: 24px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: #888;
+            color: #1a1a1a;
         }
 
         .footer-col a {
             display: block;
-            color: #444;
+            color: #666;
             text-decoration: none;
-            margin-bottom: 16px;
-            font-size: 16px;
+            margin-bottom: 12px;
             transition: color 0.2s;
         }
 
         .footer-col a:hover {
-            color: #000;
+            color: #0066cc;
         }
 
         .footer-bottom {
@@ -402,187 +491,222 @@
             justify-content: space-between;
             color: #888;
             font-size: 14px;
-            border-top: 1px solid #eaeaea;
             padding-top: 40px;
+            border-top: 1px solid #eee;
         }
 
-        .footer-bottom-links {
-            display: flex;
-            gap: 40px;
-        }
-
-        .footer-bottom-links a {
-            color: #888;
-            text-decoration: none;
-        }
-
-        .footer-bottom-links a:hover {
-            color: #000;
-        }
-
-        /* Responsive */
         @media (max-width: 900px) {
             .hero {
                 grid-template-columns: 1fr;
             }
-            .work-grid {
+            .story-grid {
                 grid-template-columns: 1fr;
             }
-            .featured-grid {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .session-grid {
                 grid-template-columns: 1fr;
             }
             .footer-grid {
                 grid-template-columns: 1fr;
             }
-            .nav-links {
-                display: none;
-            }
-            .hero-left h1 {
-                font-size: 48px;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Navigation -->
-        <nav class="nav">
+    <div class="nav">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
             <div class="logo">
                 <span class="logo-icon">🫁</span>
-                <span class="logo-main">VENT</span>
-                <span class="logo-dot">.</span>
-                <span class="logo-tag">medicine, distilled</span>
+                <span class="logo-text">VENT</span>
+                <span class="logo-tagline">where med students exhale</span>
             </div>
             <div class="nav-links">
-                <a href="#">Work</a>
-                <a href="#">Approach</a>
-                <a href="#">Studio</a>
-                <a href="#">Contact</a>
+                <a href="#">story</a>
+                <a href="#">exhale</a>
+                <a href="#">sessions</a>
+                <a href="#">start</a>
             </div>
-        </nav>
+        </div>
+    </div>
 
-        <!-- Hero -->
-        <div class="hero">
+    <div class="hero">
+        <div class="container" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center;">
             <div class="hero-left">
-                <div class="eyebrow">60-second consults</div>
-                <h1>Medicine,<br><span>distilled.</span></h1>
+                <div class="hero-eyebrow">not another study site</div>
+                <h1>a place to <span>exhale.</span></h1>
+                <div class="hero-quote">
+                    "Third year. Call room. 3am. I needed to vent. So I built it."
+                    <div class="hero-quote-author">— founder, class of 2026</div>
+                </div>
                 <p class="hero-desc">
-                    We strip away the noise. Just what you need, when you need it. Built by med students, for med students.
+                    60-second consults that cut through the noise. Built by students who've been where you are.
                 </p>
-                <div class="cta-line">
-                    <input type="email" placeholder="Enter your email" class="cta-email">
-                    <button class="cta-arrow">→</button>
+                <div class="cta-group">
+                    <input type="email" placeholder="your.email@med.edu" class="cta-email">
+                    <button class="cta-button">start exhaling</button>
                 </div>
             </div>
             <div class="hero-right">
-                <div class="lung-diagram">
-                    <div class="lung-line left"></div>
-                    <div class="lung-line right"></div>
-                    <div class="lung-fill left"></div>
-                    <div class="lung-fill right"></div>
-                    <div class="airway-line"></div>
-                    <div class="airway-fill"></div>
+                <div class="lung-container">
+                    <div class="lung-outline left"></div>
+                    <div class="lung-outline right"></div>
+                    <div class="lung-glow left"></div>
+                    <div class="lung-glow right"></div>
+                    <div class="particles">
+                        <div class="particle" style="top: 30%; left: 30%; animation-delay: 0s;"></div>
+                        <div class="particle" style="top: 50%; left: 60%; animation-delay: 2s;"></div>
+                        <div class="particle" style="top: 70%; left: 40%; animation-delay: 4s;"></div>
+                        <div class="particle" style="top: 40%; left: 70%; animation-delay: 1s;"></div>
+                        <div class="particle" style="top: 80%; left: 20%; animation-delay: 3s;"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Work Section (full width) -->
-    <div class="work">
+    <div class="story">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-left">
+                    <h2>it started in a<br><span>call room at 3am.</span></h2>
+                    <p>
+                        Third year. Overwhelmed. Drowning in information. No one tells you it's normal to feel like this.
+                    </p>
+                    <p>
+                        So I built the thing I needed. A place to release the pressure. A place where the only rule is: 
+                        <strong>we've all been there.</strong>
+                    </p>
+                    <div class="story-quote">
+                        "VENT isn't another study tool. It's a reminder you're not alone."
+                        <div class="story-quote-author">— class of 2026, 47k+ students</div>
+                    </div>
+                </div>
+                <div class="story-right">
+                    <div class="story-card">
+                        <h3>🫁 the exhale</h3>
+                        <p>60-second consults that clear the fog. What you actually need, nothing you don't.</p>
+                    </div>
+                    <div class="story-card">
+                        <h3>💨 the release</h3>
+                        <p>Share what's overwhelming you. Get back the one thing that helped someone else.</p>
+                    </div>
+                    <div class="story-card">
+                        <h3>🌬️ the rhythm</h3>
+                        <p>Daily consistency, not cramming. Small breaths > gasping for air.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="features">
         <div class="container">
             <div class="section-header">
-                <h2>Selected work</h2>
-                <p>What we're building</p>
+                <h2>what you'll find here</h2>
+                <p>built by students. for students. always.</p>
             </div>
-            <div class="work-grid">
-                <div class="work-item">
-                    <div class="work-number">01</div>
-                    <h3>60-Second Consults</h3>
-                    <p>Every condition, every presentation, distilled to its clinical essence. Perfect for rounds.</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>60-second consults</h3>
+                    <p>Every condition, every presentation, stripped to its clinical essence. Perfect for rounds.</p>
                 </div>
-                <div class="work-item">
-                    <div class="work-number">02</div>
-                    <h3>Active Recall</h3>
-                    <p>Quizzes that adapt to your knowledge. Proven to boost retention by 50%.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🫁</div>
+                    <h3>the pimp</h3>
+                    <p>Short, aggressive questions like attendings ask. No fluff. Just what's next.</p>
                 </div>
-                <div class="work-item">
-                    <div class="work-number">03</div>
-                    <h3>Clinical Algorithms</h3>
-                    <p>Step-by-step decision trees for the moments you need them most.</p>
+                <div class="feature-card">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>pressure map</h3>
+                    <p>See where you're strong and where you're about to burst. Knowledge heatmap.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>vent sessions</h3>
+                    <p>Share your overwhelm. Get the one thing that helped someone else.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔪</div>
+                    <h3>clinical cut</h3>
+                    <p>Diagrams that strip concepts to their surgical essence. Sharp. Quick. Memorable.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">∞</div>
+                    <h3>free tier</h3>
+                    <p>Forever. Because surviving med school shouldn't cost more.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Featured Section -->
-    <div class="featured">
+    <div class="vent-sessions">
         <div class="container">
-            <div class="featured-grid">
-                <div class="featured-left">
-                    <h3>Launching soon</h3>
-                    <h2>First module:<br>Acid-Base</h2>
-                    <p>The most feared topic in medicine. Master it in 60 seconds a day.</p>
+            <div class="section-header">
+                <h2>recent vent sessions</h2>
+                <p>real students. real overwhelm. real help.</p>
+            </div>
+            <div class="session-grid">
+                <div class="session-card">
+                    <p>"I've done 50 UWorld questions and I'm still getting 40% correct. What am I missing?"</p>
+                    <div class="session-author">— M2, midwest</div>
+                    <div class="session-tag">↪ 12 replies · "try doing 10, then reviewing each one out loud"</div>
                 </div>
-                <div class="featured-right">
-                    <div class="stat-block">
-                        <div class="number">60s</div>
-                        <div class="label">per consult</div>
-                    </div>
-                    <div class="stat-block">
-                        <div class="number">0</div>
-                        <div class="label">fluff</div>
-                    </div>
-                    <div class="stat-block">
-                        <div class="number">∞</div>
-                        <div class="label">free tier</div>
-                    </div>
-                    <div class="stat-block">
-                        <div class="number">24h</div>
-                        <div class="label">response time</div>
-                    </div>
+                <div class="session-card">
+                    <p>"My attending pimped me on acid-base and I froze. How do you think on your feet?"</p>
+                    <div class="session-author">— M3, east coast</div>
+                    <div class="session-tag">↪ 8 replies · "60-second consult saved me. here's the link"</div>
+                </div>
+                <div class="session-card">
+                    <p>"I haven't slept in 3 days. Tell me this gets better."</p>
+                    <div class="session-author">— intern, west coast</div>
+                    <div class="session-tag">↪ 24 replies · "it does. we're here. vent."</div>
+                </div>
+                <div class="session-card">
+                    <p>"Step studying. 4 weeks out. Freaking out. What's your one must-know topic?"</p>
+                    <div class="session-author">— M2, south</div>
+                    <div class="session-tag">↪ 31 replies · "acid-base. seriously. do it first."</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <div class="container">
-        <footer class="footer">
+    <div class="footer">
+        <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="logo" style="margin-bottom: 20px;">
                         <span class="logo-icon">🫁</span>
-                        <span class="logo-main">VENT</span>
+                        <span class="logo-text">VENT</span>
                     </div>
-                    <p>Medicine, distilled.<br>Built by students, for students.</p>
+                    <p>started in a call room at 3am. now it's for all of us.</p>
                 </div>
                 <div class="footer-col">
-                    <h4>Studio</h4>
-                    <a href="#">Approach</a>
-                    <a href="#">Team</a>
-                    <a href="#">Careers</a>
+                    <h4>exhale</h4>
+                    <a href="#">consults</a>
+                    <a href="#">the pimp</a>
+                    <a href="#">pressure map</a>
                 </div>
                 <div class="footer-col">
-                    <h4>Work</h4>
-                    <a href="#">Consults</a>
-                    <a href="#">Quizzes</a>
-                    <a href="#">Algorithms</a>
+                    <h4>connect</h4>
+                    <a href="#">sessions</a>
+                    <a href="#">community</a>
+                    <a href="#">instagram</a>
                 </div>
                 <div class="footer-col">
-                    <h4>Connect</h4>
-                    <a href="#">Twitter</a>
-                    <a href="#">Instagram</a>
-                    <a href="#">Contact</a>
+                    <h4>story</h4>
+                    <a href="#">origin</a>
+                    <a href="#">team</a>
+                    <a href="#">contact</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <div>© 2026 VENT — medicine, distilled</div>
-                <div class="footer-bottom-links">
-                    <a href="#">Privacy</a>
-                    <a href="#">Terms</a>
-                </div>
+                <div>🫁 VENT — where med students exhale</div>
+                <div>© 2026</div>
             </div>
-        </footer>
+        </div>
     </div>
 </body>
 </html>
