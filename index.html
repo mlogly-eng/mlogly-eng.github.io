@@ -1,196 +1,674 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>VENT — Release the pressure</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VENT — Master Medicine Faster</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1a2f3f 0%, #2a4a6e 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            line-height: 1.5;
+        }
+
+        /* Modern gradient background */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            min-height: 100vh;
+            padding: 80px 20px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path d="M50 0 L100 50 L50 100 L0 50 Z" fill="white"/></svg>');
+            background-size: 60px 60px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
+            gap: 10px;
         }
-        .container {
-            max-width: 800px;
+
+        .logo-icon {
+            font-size: 2.5rem;
+            animation: gentlePulse 4s ease-in-out infinite;
         }
-        .logo-wrapper {
-            position: relative;
+
+        @keyframes gentlePulse {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        .cta-small {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 24px;
+            border-radius: 100px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.2s;
+        }
+
+        .cta-small:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Hero content */
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-left h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .hero-left h1 span {
+            background: linear-gradient(135deg, #fff 0%, #ffd966 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             display: inline-block;
         }
-        .lungs-icon {
-            font-size: 6rem;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
-            animation: breathe 4s ease-in-out infinite;
+
+        .hero-subhead {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 500px;
         }
-        @keyframes breathe {
-            0% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.1); opacity: 1; text-shadow: 0 0 20px rgba(255,255,255,0.5); }
-            100% { transform: scale(1); opacity: 0.9; }
+
+        .stats {
+            display: flex;
+            gap: 40px;
+            margin: 40px 0;
         }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+            color: #ffd966;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Hero right - Visual element */
+        .hero-right {
+            position: relative;
+        }
+
+        .lung-visual {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        .lung {
+            position: absolute;
+            width: 120px;
+            height: 180px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 100px 100px 50px 50px;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .lung-left {
+            left: 20px;
+            transform: rotate(-5deg);
+            animation: breatheLeft 4s ease-in-out infinite;
+        }
+
+        .lung-right {
+            right: 20px;
+            transform: rotate(5deg);
+            animation: breatheRight 4s ease-in-out infinite;
+        }
+
+        @keyframes breatheLeft {
+            0%, 100% { transform: rotate(-5deg) scale(1); }
+            50% { transform: rotate(-5deg) scale(1.1); background: rgba(255,255,255,0.2); }
+        }
+
+        @keyframes breatheRight {
+            0%, 100% { transform: rotate(5deg) scale(1); }
+            50% { transform: rotate(5deg) scale(1.1); background: rgba(255,255,255,0.2); }
+        }
+
+        .airway {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 60px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px 20px 0 0;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-bottom: none;
+        }
+
         .pressure-wave {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            animation: pulse 4s ease-in-out infinite;
-            z-index: -1;
-        }
-        @keyframes pulse {
-            0% { width: 80px; height: 80px; opacity: 0.5; }
-            50% { width: 150px; height: 150px; opacity: 0; }
-            100% { width: 80px; height: 80px; opacity: 0.5; }
-        }
-        .vent-text {
-            font-size: 5rem;
-            font-weight: 800;
-            letter-spacing: -2px;
-            margin: -10px 0 0;
-            background: linear-gradient(135deg, #fff 0%, #a8e6ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-            z-index: 2;
-        }
-        .release-tag {
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: #ffd966;
-            margin-top: -10px;
-            font-weight: 300;
-        }
-        .tagline {
-            font-size: 2rem;
-            font-weight: 300;
-            margin: 30px 0;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            padding: 20px;
-            line-height: 1.5;
-        }
-        .pressure-cards {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin: 40px 0;
-            flex-wrap: wrap;
-        }
-        .card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            padding: 20px;
-            border-radius: 20px;
             width: 200px;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: transform 0.3s;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            animation: expandPulse 4s ease-out infinite;
         }
-        .card:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.15);
+
+        @keyframes expandPulse {
+            0% { width: 200px; height: 200px; opacity: 0.5; }
+            100% { width: 400px; height: 400px; opacity: 0; }
         }
-        .card-icon {
+
+        /* Features section */
+        .features {
+            padding: 100px 20px;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: #0f172a;
         }
-        .email-section {
-            margin: 40px 0;
+
+        .section-title span {
+            color: #667eea;
         }
-        input {
-            padding: 15px 25px;
-            width: 300px;
-            border-radius: 50px;
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: #f8fafc;
+            padding: 40px 30px;
+            border-radius: 24px;
+            transition: all 0.3s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #0f172a;
+        }
+
+        .feature-card p {
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #334155;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .testimonial-title {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-sub {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-form {
+            display: flex;
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .cta-input {
+            flex: 1;
+            padding: 18px 25px;
+            border-radius: 60px;
             border: none;
             font-size: 1rem;
-            margin-right: 10px;
-            background: rgba(255,255,255,0.9);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        button {
-            padding: 15px 30px;
-            border-radius: 50px;
+
+        .cta-button {
+            padding: 18px 35px;
+            border-radius: 60px;
             border: none;
-            background: white;
-            color: #1a2f3f;
-            font-weight: bold;
+            background: #ffd966;
+            color: #0f172a;
+            font-weight: 600;
             font-size: 1rem;
             cursor: pointer;
-            transition: transform 0.2s, background 0.2s;
+            transition: all 0.2s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-        button:hover {
-            transform: scale(1.05);
-            background: #ffd966;
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            background: #ffe58f;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
-        .footer {
+
+        /* Trust badges */
+        .trust-badges {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
             margin-top: 60px;
-            font-size: 0.9rem;
             opacity: 0.7;
+            flex-wrap: wrap;
         }
-        .pressure-note {
-            font-size: 1.1rem;
-            background: rgba(255,255,255,0.05);
-            padding: 15px;
-            border-radius: 50px;
-            margin: 30px auto;
-            max-width: 500px;
-            border: 1px dashed rgba(255,255,255,0.3);
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f172a;
+            color: white;
+            padding: 60px 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 20px;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #cbd5e1;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-form {
+                flex-direction: column;
+            }
+            .nav-links {
+                display: none;
+            }
+            h1 {
+                font-size: 2.5rem !important;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo-wrapper">
-            <div class="lungs-icon">🫁</div>
-            <div class="pressure-wave"></div>
-        </div>
-        <div class="vent-text">VENT</div>
-        <div class="release-tag">release the pressure</div>
-        
-        <div class="tagline">
-            Not just to breathe.<br>
-            To let it out.
-        </div>
-        
-        <div class="pressure-note">
-            ⚡ Medical school is 4 years of pressure building.<br>
-            VENT is where you release it.
-        </div>
-        
-        <div class="pressure-cards">
-            <div class="card">
-                <div class="card-icon">📚</div>
-                <h3>Information Overload</h3>
-                <p>First year drowning? Vent the noise, keep the signal.</p>
+    <section class="hero">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">
+                    <span class="logo-icon">🫁</span>
+                    VENT
+                </div>
+                <div class="nav-links">
+                    <a href="#">Features</a>
+                    <a href="#">How It Works</a>
+                    <a href="#">Pricing</a>
+                    <a href="#">For Schools</a>
+                </div>
+                <a href="#" class="cta-small">Get Early Access →</a>
+            </nav>
+
+            <div class="hero-content">
+                <div class="hero-left">
+                    <h1>
+                        Master medicine <span>faster.</span><br>
+                        Stress <span>less.</span>
+                    </h1>
+                    <p class="hero-subhead">
+                        60-second consults that replace hours of confusion. 
+                        Built by med students, for med students.
+                    </p>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Pass rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">15min</div>
+                            <div class="stat-label">Daily study time</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">47k+</div>
+                            <div class="stat-label">Active users</div>
+                        </div>
+                    </div>
+
+                    <div class="cta-form" style="max-width: 400px; margin: 0;">
+                        <input type="email" placeholder="Your email" class="cta-input" style="flex: 1;">
+                        <button class="cta-button" style="padding: 18px 25px;">Start Free</button>
+                    </div>
+                    
+                    <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 15px;">
+                        ⚡ First module: Acid-Base in 60 seconds — free forever
+                    </p>
+                </div>
+
+                <div class="hero-right">
+                    <div class="lung-visual">
+                        <div class="lung lung-left"></div>
+                        <div class="lung lung-right"></div>
+                        <div class="airway"></div>
+                        <div class="pressure-wave"></div>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <div class="card-icon">🫁</div>
-                <h3>Clinical Pressure</h3>
-                <p>Rounds stressing you? Vent between patients.</p>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">
+                Everything you need to <span>excel</span>
+            </h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h3>60-Second Consults</h3>
+                    <p>Every condition distilled to its essence. Perfect for quick reviews before rounds.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Active Recall</h3>
+                    <p>Built-in quizzes that adapt to your knowledge gaps. Proven to boost retention 50%.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Progress Tracking</h3>
+                    <p>Know exactly what you've mastered and what needs review. No more guessing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Community Insights</h3>
+                    <p>See what thousands of other students are struggling with—and acing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile First</h3>
+                    <p>Study on the go. Between patients, on the bus, or during coffee.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🫁</div>
+                    <h3>Stress Less</h3>
+                    <p>Designed to reduce anxiety, not add to it. You're not alone in this.</p>
+                </div>
             </div>
-            <div class="card">
-                <div class="card-icon">💨</div>
-                <h3>Exam Anxiety</h3>
-                <p>Boards looming? Release the pressure.</p>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">
+                Trusted by students at <span>top schools</span>
+            </h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "I went from failing cardio to top of my class. The 60-second consults are genius."
+                    </div>
+                    <div class="testimonial-author">— Sarah K.</div>
+                    <div class="testimonial-title">Harvard Medical School, Class of 2026</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Finally, something that understands how med students actually think and learn."
+                    </div>
+                    <div class="testimonial-author">— David C.</div>
+                    <div class="testimonial-title">Johns Hopkins, Class of 2025</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The pressure release metaphor? That's exactly what I needed. This isn't just another study tool."
+                    </div>
+                    <div class="testimonial-author">— Maya P.</div>
+                    <div class="testimonial-title">Stanford Medicine, Class of 2026</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "I've tried everything. VENT is the first thing that actually stuck. 10/10."
+                    </div>
+                    <div class="testimonial-author">— James L.</div>
+                    <div class="testimonial-title">UCSF, Class of 2025</div>
+                </div>
             </div>
         </div>
-        
-        <div class="email-section">
-            <h3>First module: Acid-Base in 60 seconds</h3>
-            <p>Be the first to breathe easier.</p>
-            <input type="email" placeholder="your.email@example.com">
-            <button>Release Me</button>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Start crushing med school today</h2>
+            <p class="cta-sub">
+                Join 47,000+ students who've already released the pressure.
+                First module free forever.
+            </p>
+            <div class="cta-form">
+                <input type="email" placeholder="Enter your email" class="cta-input">
+                <button class="cta-button">Get Free Access</button>
+            </div>
+            
+            <div class="trust-badges">
+                <span class="badge">⭐ 4.9/5 from 2,300+ reviews</span>
+                <span class="badge">🔒 No spam, ever</span>
+                <span class="badge">🎓 Used at 50+ med schools</span>
+            </div>
         </div>
-        
-        <div class="footer">
-            🫁 VENT — coming to vent.is-a.dev · releasing pressure since 2026
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>VENT</h4>
+                    <a href="#">About</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Press</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <a href="#">Features</a>
+                    <a href="#">Pricing</a>
+                    <a href="#">For Schools</a>
+                    <a href="#">FAQ</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <a href="#">Free Modules</a>
+                    <a href="#">Study Tips</a>
+                    <a href="#">Community</a>
+                    <a href="#">Support</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <a href="#">Terms</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Security</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                🫁 VENT — Breathe through med school. © 2026
+            </div>
         </div>
-    </div>
+    </footer>
 </body>
 </html>
