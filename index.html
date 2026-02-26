@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VENT — where med students exhale</title>
+    <title>VENT — Clinical Reasoning, Accelerated</title>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <style>
         * {
@@ -13,48 +13,61 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #fcfaf7;
-            color: #1a1a1a;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #ffffff;
+            color: #1e293b;
             line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 32px;
         }
 
+        /* Navigation */
         .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 32px 0;
-            border-bottom: 1px solid #eae2d7;
-            margin-bottom: 60px;
+            padding: 24px 0;
+            border-bottom: 1px solid #e9edf2;
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 32px;
-            font-weight: 600;
-            letter-spacing: -1px;
         }
 
-        .logo-lung {
-            width: 50px;
-            height: 50px;
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #0f2b4b, #1b4a7a);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            color: #0f2b4b;
         }
 
         .logo-tag {
             font-size: 14px;
+            color: #5e6f88;
             font-weight: 400;
-            color: #888;
-            margin-left: 16px;
-            border-left: 1px solid #ddd;
-            padding-left: 16px;
+            margin-left: 8px;
+            padding-left: 8px;
+            border-left: 1px solid #d0d8e3;
         }
 
         .nav-links {
@@ -64,105 +77,202 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #444;
+            color: #415470;
             font-size: 15px;
+            font-weight: 500;
             transition: color 0.2s;
         }
 
         .nav-links a:hover {
-            color: #b85a3a;
+            color: #0f2b4b;
         }
 
+        .nav-cta {
+            background: #0f2b4b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: #1b4a7a;
+        }
+
+        /* Hero */
         .hero {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
+            padding: 60px 0 80px;
             align-items: center;
-            margin-bottom: 100px;
-            min-height: 600px;
+        }
+
+        .hero-left {
+            max-width: 550px;
+        }
+
+        .hero-eyebrow {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #3b82f6;
+            font-weight: 600;
+            margin-bottom: 16px;
         }
 
         .hero-left h1 {
-            font-size: 64px;
-            font-weight: 600;
-            letter-spacing: -2px;
-            line-height: 1;
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
             margin-bottom: 24px;
+            color: #0f2b4b;
         }
 
         .hero-left h1 span {
-            color: #b85a3a;
-            font-style: italic;
-            display: block;
-            font-weight: 500;
+            color: #3b82f6;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-desc {
             font-size: 18px;
-            color: #555;
-            margin-bottom: 40px;
-            max-width: 450px;
+            color: #5e6f88;
+            margin-bottom: 32px;
+            line-height: 1.6;
         }
 
-        .cta-group {
+        .hero-stats {
             display: flex;
-            gap: 12px;
-            border-bottom: 1px solid #eae2d7;
-            padding-bottom: 12px;
-            width: fit-content;
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
-        .cta-email {
-            padding: 8px 0;
-            border: none;
-            background: transparent;
-            width: 250px;
-            outline: none;
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0f2b4b;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #7e8b9f;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .cta-primary {
+            background: #0f2b4b;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
             font-size: 16px;
+            transition: background 0.2s, transform 0.2s;
+            display: inline-block;
         }
 
-        .cta-arrow {
-            background: none;
-            border: none;
-            font-size: 20px;
-            color: #b85a3a;
-            cursor: pointer;
+        .cta-primary:hover {
+            background: #1b4a7a;
+            transform: translateY(-2px);
+        }
+
+        .cta-secondary {
+            color: #0f2b4b;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .hero-right {
-            position: relative;
+            background: #f0f4fa;
+            border-radius: 40px;
+            padding: 40px;
             height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
         }
 
-        .animation-container {
+        .hero-animation {
             width: 100%;
             height: 100%;
-            min-height: 400px;
         }
 
+        /* Trusted By */
+        .trusted {
+            padding: 40px 0;
+            border-top: 1px solid #e9edf2;
+            border-bottom: 1px solid #e9edf2;
+            margin-bottom: 80px;
+        }
+
+        .trusted p {
+            text-align: center;
+            color: #7e8b9f;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+
+        .trusted-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .trusted-logo {
+            color: #a0aec0;
+            font-size: 18px;
+            font-weight: 600;
+            opacity: 0.7;
+        }
+
+        /* Features */
         .features {
             margin-bottom: 100px;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            max-width: 600px;
+            margin: 0 auto 60px;
         }
 
         .section-header h2 {
             font-size: 42px;
-            font-weight: 500;
+            font-weight: 700;
             letter-spacing: -1px;
+            color: #0f2b4b;
             margin-bottom: 16px;
         }
 
         .section-header p {
-            color: #777;
-            max-width: 500px;
-            margin: 0 auto;
+            font-size: 18px;
+            color: #5e6f88;
+            line-height: 1.6;
         }
 
         .feature-grid {
@@ -173,76 +283,205 @@
 
         .feature-card {
             background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-            border: 1px solid #f0eae2;
-            transition: transform 0.3s;
+            border: 1px solid #e9edf2;
+            border-radius: 32px;
+            padding: 32px;
+            transition: box-shadow 0.3s, transform 0.3s;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
         }
 
-        .feature-animation {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 24px;
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: #eef4ff;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: #3b82f6;
+            font-size: 36px;
         }
 
         .feature-card h3 {
             font-size: 24px;
-            font-weight: 500;
-            margin-bottom: 16px;
-            text-align: center;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #0f2b4b;
         }
 
         .feature-card p {
-            color: #666;
+            color: #5e6f88;
             line-height: 1.7;
-            text-align: center;
         }
 
-        .story {
-            background: #f5f1eb;
-            padding: 100px 0;
+        /* How It Works */
+        .how-it-works {
+            background: #f8fafc;
+            padding: 80px 0;
             margin-bottom: 100px;
         }
 
-        .story-grid {
+        .steps {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: #0f2b4b;
+            color: white;
+            border-radius: 24px;
+            display: flex;
             align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            margin: 0 auto 24px;
         }
 
-        .story-left h2 {
-            font-size: 48px;
-            font-weight: 500;
-            letter-spacing: -1.5px;
-            line-height: 1.2;
-            margin-bottom: 32px;
+        .step h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #0f2b4b;
         }
 
-        .story-left h2 span {
-            color: #b85a3a;
+        .step p {
+            color: #5e6f88;
+            line-height: 1.7;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            margin-bottom: 100px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: #f8fafc;
+            padding: 32px;
+            border-radius: 24px;
+            border: 1px solid #e9edf2;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            color: #1e293b;
+            line-height: 1.7;
+            margin-bottom: 24px;
             font-style: italic;
         }
 
-        .story-left p {
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            background: #d0d8e3;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            color: #0f2b4b;
+        }
+
+        .author-info p {
+            font-size: 14px;
+            color: #7e8b9f;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: #0f2b4b;
+            border-radius: 40px;
+            padding: 80px;
+            margin-bottom: 80px;
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
             font-size: 18px;
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 24px;
+            color: #b0c4de;
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .story-right {
-            height: 400px;
+        .cta-form {
+            display: flex;
+            gap: 12px;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
+        .cta-input {
+            flex: 1;
+            padding: 16px 24px;
+            border-radius: 40px;
+            border: none;
+            font-size: 16px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cta-input::placeholder {
+            color: #b0c4de;
+        }
+
+        .cta-button {
+            padding: 16px 32px;
+            border-radius: 40px;
+            border: none;
+            background: white;
+            color: #0f2b4b;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
         .footer {
             padding: 60px 0 40px;
-            border-top: 1px solid #eae2d7;
+            border-top: 1px solid #e9edf2;
         }
 
         .footer-grid {
@@ -253,31 +492,37 @@
         }
 
         .footer-col p {
-            color: #666;
+            color: #5e6f88;
             line-height: 1.7;
             margin-top: 20px;
         }
 
         .footer-col h4 {
-            font-size: 15px;
+            font-size: 16px;
+            font-weight: 600;
             margin-bottom: 24px;
-            color: #333;
+            color: #0f2b4b;
         }
 
         .footer-col a {
             display: block;
-            color: #666;
+            color: #5e6f88;
             text-decoration: none;
             margin-bottom: 12px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: #0f2b4b;
         }
 
         .footer-bottom {
             display: flex;
             justify-content: space-between;
-            color: #888;
-            font-size: 13px;
+            color: #7e8b9f;
+            font-size: 14px;
             padding-top: 40px;
-            border-top: 1px solid #eae2d7;
+            border-top: 1px solid #e9edf2;
         }
 
         @media (max-width: 900px) {
@@ -287,144 +532,223 @@
             .feature-grid {
                 grid-template-columns: 1fr;
             }
-            .story-grid {
+            .steps {
+                grid-template-columns: 1fr;
+            }
+            .testimonial-grid {
                 grid-template-columns: 1fr;
             }
             .footer-grid {
                 grid-template-columns: 1fr;
+            }
+            .cta-form {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Navigation -->
         <nav class="nav">
             <div class="logo">
-                <div class="logo-lung">
-                    <lottie-player src="animations/Breathing logo.json" style="width: 50px; height: 50px;" autoplay loop></lottie-player>
-                </div>
-                VENT
-                <span class="logo-tag">where med students exhale</span>
+                <div class="logo-icon">🫁</div>
+                <span class="logo-text">VENT</span>
+                <span class="logo-tag">clinical reasoning, accelerated</span>
             </div>
             <div class="nav-links">
-                <a href="#">what we offer</a>
-                <a href="#">story</a>
-                <a href="#">sessions</a>
-                <a href="#">start</a>
+                <a href="#">Features</a>
+                <a href="#">Method</a>
+                <a href="#">Pricing</a>
+                <a href="#">For Teams</a>
             </div>
+            <a href="#" class="nav-cta">Get Started</a>
         </nav>
 
+        <!-- Hero -->
         <div class="hero">
             <div class="hero-left">
-                <h1>
-                    medicine,<br>
-                    <span>distilled.</span>
-                </h1>
+                <div class="hero-eyebrow">For medical students & residents</div>
+                <h1>Clinical reasoning,<br><span>accelerated.</span></h1>
                 <p class="hero-desc">
-                    60-second consults that cut through the noise. Built by students who've been where you are.
+                    60-second consults that cut through the noise. Distilled clinical knowledge, built by physicians for the moments that matter.
                 </p>
-                <div class="cta-group">
-                    <input type="email" placeholder="your.email@med.edu" class="cta-email">
-                    <button class="cta-arrow">→</button>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">47k+</span>
+                        <span class="stat-label">active learners</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">15 min</span>
+                        <span class="stat-label">daily study</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">93%</span>
+                        <span class="stat-label">board pass rate</span>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <a href="#" class="cta-primary">Start learning →</a>
+                    <a href="#" class="cta-secondary">Watch demo</a>
                 </div>
             </div>
             <div class="hero-right">
-                <div class="animation-container">
+                <div class="hero-animation">
                     <lottie-player src="animations/Lungs.json" style="width: 100%; height: 100%;" autoplay loop></lottie-player>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="features">
+    <!-- Trusted By -->
+    <div class="trusted">
         <div class="container">
+            <p>Trusted by students and residents at</p>
+            <div class="trusted-logos">
+                <span class="trusted-logo">Harvard Med</span>
+                <span class="trusted-logo">Johns Hopkins</span>
+                <span class="trusted-logo">Stanford</span>
+                <span class="trusted-logo">UCSF</span>
+                <span class="trusted-logo">Mayo Clinic</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Features -->
+        <div class="features">
             <div class="section-header">
-                <h2>what we offer</h2>
-                <p>Built by students. For students. Always.</p>
+                <h2>Built for clinical workflow</h2>
+                <p>Designed by physicians who understand the pressure of medical training.</p>
             </div>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <div class="feature-animation">
-                        <lottie-player src="animations/Saline Lottie Animation.json" style="width: 120px; height: 120px;" autoplay loop></lottie-player>
-                    </div>
+                    <div class="feature-icon">⏱️</div>
                     <h3>60-second consults</h3>
-                    <p>Every condition stripped to its clinical essence. What you actually need, nothing you don't.</p>
+                    <p>Every condition distilled to its clinical essence. What you need, when you need it.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-animation">
-                        <lottie-player src="animations/Care Services.json" style="width: 120px; height: 120px;" autoplay loop></lottie-player>
-                    </div>
-                    <h3>the pimp</h3>
-                    <p>Short, aggressive questions like attendings ask. No fluff. Just what's next.</p>
+                    <div class="feature-icon">🫁</div>
+                    <h3>Clinical algorithms</h3>
+                    <p>Step-by-step decision trees for differential diagnosis and management.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-animation">
-                        <lottie-player src="animations/Lungs.json" style="width: 120px; height: 120px;" autoplay loop></lottie-player>
-                    </div>
-                    <h3>pressure map</h3>
-                    <p>See where you're strong and where you're about to burst. A heatmap of your knowledge.</p>
+                    <div class="feature-icon">📊</div>
+                    <h3>Knowledge mapping</h3>
+                    <p>Visualize connections between concepts and track your progress.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="story">
+    <!-- How It Works -->
+    <div class="how-it-works">
         <div class="container">
-            <div class="story-grid">
-                <div class="story-left">
-                    <h2>
-                        started in a<br>
-                        <span>call room at 3am.</span>
-                    </h2>
-                    <p>
-                        Third year. Overwhelmed. Drowning in information. No one tells you it's normal to feel like this.
-                    </p>
-                    <p>
-                        So we built the thing we needed. A place to release the pressure. A place where the only rule is: we've all been there.
-                    </p>
+            <div class="section-header">
+                <h2>How it works</h2>
+                <p>Three steps to clinical mastery.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Learn</h3>
+                    <p>60-second video consults that explain core concepts with clinical context.</p>
                 </div>
-                <div class="story-right">
-                    <lottie-player src="animations/Saline Lottie Animation.json" style="width: 100%; height: 100%;" autoplay loop></lottie-player>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Apply</h3>
+                    <p>Interactive cases that challenge your reasoning and decision-making.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Reinforce</h3>
+                    <p>Spaced repetition and quizzes that lock in knowledge long-term.</p>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="container">
+        <!-- Testimonials -->
+        <div class="testimonials">
+            <div class="section-header">
+                <h2>Trusted by future physicians</h2>
+                <p>Join thousands of medical students who've accelerated their learning.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "VENT changed how I study. The 60-second format forces me to focus on what actually matters for rounds."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div class="author-info">
+                            <h4>Dr. Sarah Chen</h4>
+                            <p>Internal Medicine Resident, MGH</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Finally, a resource that understands how clinical reasoning actually develops. Worth every minute."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div class="author-info">
+                            <h4>Michael Okonkwo</h4>
+                            <p>MS4, Johns Hopkins</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>Start learning today</h2>
+            <p>Join 47,000+ students already using VENT to accelerate their clinical reasoning.</p>
+            <div class="cta-form">
+                <input type="email" placeholder="Enter your email" class="cta-input">
+                <button class="cta-button">Get Started</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="container">
         <footer class="footer">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <div class="logo" style="margin-bottom: 20px; font-size: 24px;">
-                        <div style="display: inline-block; width: 30px; height: 30px; vertical-align: middle;">
-                            <lottie-player src="animations/Breathing logo.json" style="width: 30px; height: 30px;" autoplay loop></lottie-player>
-                        </div>
-                        VENT
+                    <div class="logo" style="margin-bottom: 20px;">
+                        <span class="logo-icon" style="display: inline-block; width: 32px; height: 32px; font-size: 16px;">🫁</span>
+                        <span class="logo-text" style="font-size: 18px;">VENT</span>
                     </div>
-                    <p>started in a call room at 3am.<br>now it's for all of us.</p>
+                    <p>Clinical reasoning, accelerated.<br>Built by physicians, for physicians.</p>
                 </div>
                 <div class="footer-col">
-                    <h4>offerings</h4>
-                    <a href="#">60-second consults</a>
-                    <a href="#">the pimp</a>
-                    <a href="#">pressure map</a>
-                    <a href="#">vent sessions</a>
+                    <h4>Product</h4>
+                    <a href="#">Features</a>
+                    <a href="#">Pricing</a>
+                    <a href="#">For Teams</a>
+                    <a href="#">Enterprise</a>
                 </div>
                 <div class="footer-col">
-                    <h4>connect</h4>
-                    <a href="#">sessions</a>
-                    <a href="#">community</a>
-                    <a href="#">instagram</a>
+                    <h4>Resources</h4>
+                    <a href="#">Blog</a>
+                    <a href="#">Clinical Library</a>
+                    <a href="#">Support</a>
+                    <a href="#">Contact</a>
                 </div>
                 <div class="footer-col">
-                    <h4>story</h4>
-                    <a href="#">origin</a>
-                    <a href="#">team</a>
-                    <a href="#">contact</a>
+                    <h4>Legal</h4>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Security</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <div>🫁 VENT — where med students exhale</div>
-                <div>© 2026</div>
+                <div>© 2026 VENT — Clinical reasoning, accelerated.</div>
+                <div>🫁</div>
             </div>
         </footer>
     </div>
