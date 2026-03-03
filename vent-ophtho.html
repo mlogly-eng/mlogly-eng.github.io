@@ -183,6 +183,18 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:24px 6
   .twocol{grid-template-columns:1fr;}.inset{float:none;width:100%;margin:0 0 20px 0;}
 }
 @media(max-width:600px){.notes-grid{grid-template-columns:1fr;}}
+
+/* ── REAL CLINICAL IMAGES ── */
+.real-img-wrap{margin:28px -48px;overflow:hidden;background:var(--ink);position:relative;}
+.real-img-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent);z-index:1;}
+.real-img{width:100%;max-height:420px;object-fit:cover;object-position:center;display:block;opacity:.92;}
+.real-img-cap{display:flex;justify-content:space-between;align-items:center;padding:10px 48px;background:var(--ink);border-top:1px solid rgba(255,255,255,.07);}
+.real-img-cap span{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(245,242,235,.4);letter-spacing:.5px;}
+.real-img-credit{color:rgba(245,242,235,.2) !important;}
+@media(max-width:960px){
+  .real-img-wrap{margin-left:-24px;margin-right:-24px;}
+  .real-img-cap{padding-left:24px;padding-right:24px;}
+}
 </style>
 </head>
 <body>
@@ -375,6 +387,10 @@ notes.lens = () => cover('Ophthalmology &middot; Anatomy','The Lens','A transpar
   <text x="8" y="90" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e">attach here</text>
 </svg>
 </div>
+<div class="real-img-wrap">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Fundus_photograph_of_normal_right_eye.jpg/1200px-Fundus_photograph_of_normal_right_eye.jpg" alt="Normal fundus — optic disc (bright oval), macula (darker area temporal to disc), retinal vessels" class="real-img" onerror="this.parentElement.style.display='none'">
+  <div class="real-img-cap"><span>Normal fundus — optic disc (bright oval), macula (darker area temporal to disc), retinal vessels</span><span class="real-img-credit">Wikimedia Commons / Public Domain</span></div>
+</div>
 
 <div class="sh"><span class="sh-n">ii</span><span class="sh-t">Accommodation</span><div class="sh-l"></div></div>
 <p class="nt en">Accommodation is the ability to change focus from distance to near. When the <strong>ciliary muscle contracts</strong>, the ciliary body moves forward and inward, <strong>relaxing tension on the zonules</strong>. The lens, which is naturally elastic, rounds up &mdash; increasing its refractive power. When the ciliary muscle relaxes, zonular tension increases, flattening the lens for distance vision.</p>
@@ -450,6 +466,10 @@ notes.cataract = () => cover('Ophthalmology &middot; Lens Pathology','Cataracts'
 </svg>
 </div>
 
+<div class="real-img-wrap">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Cataract_in_human_eye.png/1200px-Cataract_in_human_eye.png" alt="Mature cataract — dense nuclear opacity visible through the pupil" class="real-img" onerror="this.parentElement.style.display='none'">
+  <div class="real-img-cap"><span>Mature cataract — dense nuclear opacity visible through the pupil</span><span class="real-img-credit">Wikimedia Commons / Public Domain</span></div>
+</div>
 <div class="sh"><span class="sh-n">ii</span><span class="sh-t">Causes by type</span><div class="sh-l"></div></div>
 <div class="twocol">
   <div class="tcc shaded"><div class="tcc-lbl">PSC &mdash; always ask about steroids</div><div class="tcc-title">Posterior Subcapsular</div><p class="en"><strong>Corticosteroids</strong> (topical, inhaled, systemic &mdash; all routes), <strong>diabetes mellitus</strong>, radiation, young patients with atopy or uveitis. The opacity sits exactly at the posterior pole of the lens. <strong>Vision is worst in bright light</strong> because the pupil constricts and the visual axis passes directly through the opacity.</p><p class="ar"><strong>الكورتيكوستيرويدات</strong> (موضعية أو استنشاقية أو جهازية)، <strong>مرض السكري</strong>، الإشعاع، الشباب المصابون بالأكزيما أو التهاب العنبية. الرؤية أسوأ في الضوء الساطع.</p></div>
@@ -530,6 +550,10 @@ notes.cornea = () => cover('Ophthalmology &middot; Cornea','Corneal Infections',
 </svg>
 </div>
 
+<div class="real-img-wrap">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Dendritic_corneal_ulcer.jpg/1200px-Dendritic_corneal_ulcer.jpg" alt="HSV dendritic ulcer — branching pattern stained with fluorescein under cobalt blue light" class="real-img" onerror="this.parentElement.style.display='none'">
+  <div class="real-img-cap"><span>HSV dendritic ulcer — branching pattern stained with fluorescein under cobalt blue light</span><span class="real-img-credit">Wikimedia Commons / Public Domain</span></div>
+</div>
 <div class="sh"><span class="sh-n">ii</span><span class="sh-t">The dendritic ulcer &mdash; do not miss this</span><div class="sh-l"></div></div>
 <p class="nt en">HSV keratitis causes a <strong>dendritic (branching) ulcer</strong> on the corneal epithelium. This is pathognomonic and visible with fluorescein staining under cobalt blue light. The branching pattern reflects viral spread along epithelial cell junctions. Key features: <strong>terminal bulbs</strong> at the ends of each branch (distinguishing from healing epithelial defects), reduced corneal sensation (the virus damages corneal nerves), and a history of cold sores or previous episodes.</p>
 <p class="nt ar">يسبب التهاب القرنية بفيروس HSV <strong>قرحة متفرعة (شجيرية)</strong> في ظهارة القرنية. يمكن رؤيتها بالفلورسين تحت الضوء الأزرق. السمات الرئيسية: <strong>بصيلات طرفية</strong> في نهاية كل فرع، وانخفاض الإحساس القرني.</p>
@@ -604,6 +628,10 @@ notes.retina = () => cover('Ophthalmology &middot; Anatomy','The Retina','Ten la
 </svg>
 </div>
 
+<div class="real-img-wrap">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Fundus_photo_of_normal_left_eye.jpg/1200px-Fundus_photo_of_normal_left_eye.jpg" alt="Normal retina — optic disc (left), macula with foveal reflex (centre-right), retinal vessels branching from disc" class="real-img" onerror="this.parentElement.style.display='none'">
+  <div class="real-img-cap"><span>Normal retina — optic disc (left), macula with foveal reflex (centre-right), retinal vessels branching from disc</span><span class="real-img-credit">Wikimedia Commons / Public Domain</span></div>
+</div>
 <div class="sh"><span class="sh-n">ii</span><span class="sh-t">The macula &mdash; why it matters</span><div class="sh-l"></div></div>
 <p class="nt en">The macula is a 5mm area of the central retina specialised for <strong>high-acuity, colour vision</strong>. Its centre &mdash; the <strong>fovea</strong> &mdash; contains only cone photoreceptors, has no overlying neurons (they are displaced laterally), and has no blood vessels. This is why macular disease causes <strong>central scotoma and loss of reading vision</strong> rather than peripheral field loss. It is also why the fovea appears as a bright central reflex on fundoscopy &mdash; light reflects off the thinned internal limiting membrane.</p>
 <p class="nt ar">البقعة هي منطقة مركزية قطرها 5 ملم متخصصة في <strong>الرؤية عالية الدقة والألوان</strong>. مركزها &mdash; <strong>الحفرة المركزية</strong> &mdash; يحتوي فقط على المخاريط، وليس فيه أوعية دموية. لهذا تسبب أمراض البقعة <strong>غاما مركزياً وفقداناً في رؤية القراءة</strong>.</p>
@@ -757,6 +785,10 @@ notes.hr = () => cover('Ophthalmology &middot; Retinal Disease','Hypertensive Re
 </svg>
 </div>
 
+<div class="real-img-wrap">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Hypertensiveretinopathy.jpg/1200px-Hypertensiveretinopathy.jpg" alt="Hypertensive retinopathy — flame haemorrhages, AV nipping, and cotton wool spots" class="real-img" onerror="this.parentElement.style.display='none'">
+  <div class="real-img-cap"><span>Hypertensive retinopathy — flame haemorrhages, AV nipping, and cotton wool spots</span><span class="real-img-credit">Wikimedia Commons / Public Domain</span></div>
+</div>
 <div class="sh"><span class="sh-n">ii</span><span class="sh-t">Individual findings explained</span><div class="sh-l"></div></div>
 <div class="twocol">
   <div class="tcc shaded"><div class="tcc-lbl">AV nipping (nicking)</div><div class="tcc-title">Gunn's sign</div><p class="en">At arteriovenous crossings, the arteriole and venule share a common adventitial sheath. A thickened, sclerosed arteriole <strong>compresses the underlying venule</strong>, making it appear to narrow or disappear. This is pathognomonic of <strong>chronic hypertension with arteriolar sclerosis</strong>. Not seen in acute hypertension alone.</p><p class="ar">في مواضع تقاطع الشرايين والأوردة، يضغط الشريين الصلب <strong>على الوريد الصغير تحته</strong>. هذه علامة مميزة لـ<strong>ارتفاع ضغط الدم المزمن مع تصلب الشرايين الصغيرة</strong>.</p></div>
