@@ -3,754 +3,1204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VENT — Clinical Reasoning, Accelerated</title>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <title>VENT — Finally. Just what you need.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg: #0a0a0a;
+            --bg2: #111111;
+            --bg3: #161616;
+            --surface: #1a1a1a;
+            --border: #2a2a2a;
+            --border-light: #222222;
+            --accent: #a8ff3e;
+            --accent-dim: #7ec42d;
+            --accent-glow: rgba(168, 255, 62, 0.12);
+            --text: #f0f0f0;
+            --text-mid: #888888;
+            --text-dim: #444444;
+            --red: #ff4444;
+            --white: #ffffff;
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #ffffff;
-            color: #1e293b;
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* grain overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.35;
         }
 
         .container {
-            max-width: 1280px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 32px;
+            padding: 0 40px;
         }
 
-        /* Navigation */
-        .nav {
+        /* ─── NAV ─── */
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 24px 0;
-            border-bottom: 1px solid #e9edf2;
+            padding: 28px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10,10,10,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            max-width: 100%;
         }
 
         .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            letter-spacing: 4px;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-mid);
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+            font-family: 'DM Mono', monospace;
+        }
+
+        .nav-links a:hover { color: var(--text); }
+
+        .nav-cta {
+            background: var(--accent);
+            color: #0a0a0a;
+            padding: 10px 22px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: 'DM Mono', monospace;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: var(--white);
+            transform: translateY(-1px);
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 94vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 40px 60px;
+            position: relative;
+            overflow: hidden;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -300px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(168,255,62,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards 0.2s;
+        }
+
+        .hero-tag::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(80px, 13vw, 180px);
+            line-height: 0.9;
+            letter-spacing: 2px;
+            color: var(--white);
+            margin-bottom: 0;
+            opacity: 0;
+            animation: fadeUp 0.7s ease forwards 0.3s;
+        }
+
+        .hero h1 .accent-word {
+            color: var(--accent);
+            display: block;
+        }
+
+        .hero-sub {
+            margin-top: 48px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: end;
+            opacity: 0;
+            animation: fadeUp 0.7s ease forwards 0.5s;
+        }
+
+        .hero-desc {
+            font-size: 18px;
+            color: var(--text-mid);
+            line-height: 1.7;
+            font-weight: 300;
+            max-width: 460px;
+        }
+
+        .hero-desc strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 16px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #0a0a0a;
+            padding: 18px 40px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            font-family: 'DM Mono', monospace;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 16px 40px rgba(168,255,62,0.2);
+        }
+
+        .btn-ghost {
+            color: var(--text-mid);
+            text-decoration: none;
+            font-size: 13px;
+            font-family: 'DM Mono', monospace;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .logo-icon {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, #0f2b4b, #1b4a7a);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 18px;
-        }
+        .btn-ghost:hover { color: var(--text); }
 
-        .logo-text {
-            font-size: 20px;
-            font-weight: 600;
-            letter-spacing: -0.3px;
-            color: #0f2b4b;
-        }
-
-        .logo-tag {
-            font-size: 14px;
-            color: #5e6f88;
-            font-weight: 400;
-            margin-left: 8px;
-            padding-left: 8px;
-            border-left: 1px solid #d0d8e3;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #415470;
-            font-size: 15px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: #0f2b4b;
-        }
-
-        .nav-cta {
-            background: #0f2b4b;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: background 0.2s;
-        }
-
-        .nav-cta:hover {
-            background: #1b4a7a;
-        }
-
-        /* Hero */
-        .hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            padding: 60px 0 80px;
-            align-items: center;
-        }
-
-        .hero-left {
-            max-width: 550px;
-        }
-
-        .hero-eyebrow {
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #3b82f6;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        .hero-left h1 {
-            font-size: 56px;
-            font-weight: 700;
-            letter-spacing: -1.5px;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            color: #0f2b4b;
-        }
-
-        .hero-left h1 span {
-            color: #3b82f6;
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-desc {
-            font-size: 18px;
-            color: #5e6f88;
-            margin-bottom: 32px;
-            line-height: 1.6;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .stat-item {
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             flex-direction: column;
-        }
-
-        .stat-number {
-            font-size: 28px;
-            font-weight: 700;
-            color: #0f2b4b;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: #7e8b9f;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 16px;
             align-items: center;
+            gap: 8px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards 1.2s;
         }
 
-        .cta-primary {
-            background: #0f2b4b;
-            color: white;
-            padding: 14px 32px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: background 0.2s, transform 0.2s;
-            display: inline-block;
+        .scroll-line {
+            width: 1px;
+            height: 48px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
         }
 
-        .cta-primary:hover {
-            background: #1b4a7a;
-            transform: translateY(-2px);
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
         }
 
-        .cta-secondary {
-            color: #0f2b4b;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
+        .hero-number {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 300px;
+            color: var(--border);
+            letter-spacing: -10px;
+            pointer-events: none;
+            user-select: none;
+            line-height: 1;
         }
 
-        .hero-right {
-            background: #f0f4fa;
-            border-radius: 40px;
-            padding: 40px;
-            height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+        /* ─── TRUTH SECTION ─── */
+        .truth {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 80px 40px;
+            background: var(--bg2);
         }
 
-        .hero-animation {
-            width: 100%;
-            height: 100%;
+        .truth-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            align-items: start;
         }
 
-        /* Trusted By */
-        .trusted {
-            padding: 40px 0;
-            border-top: 1px solid #e9edf2;
-            border-bottom: 1px solid #e9edf2;
-            margin-bottom: 80px;
-        }
-
-        .trusted p {
-            text-align: center;
-            color: #7e8b9f;
-            font-size: 14px;
+        .truth-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--text-dim);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 24px;
+            padding-top: 8px;
         }
 
-        .trusted-logos {
+        .truth-statements {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
+            flex-direction: column;
+            gap: 0;
         }
 
-        .trusted-logo {
-            color: #a0aec0;
-            font-size: 18px;
-            font-weight: 600;
-            opacity: 0.7;
-        }
-
-        /* Features */
-        .features {
-            margin-bottom: 100px;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 60px;
-        }
-
-        .section-header h2 {
-            font-size: 42px;
-            font-weight: 700;
-            letter-spacing: -1px;
-            color: #0f2b4b;
-            margin-bottom: 16px;
-        }
-
-        .section-header p {
-            font-size: 18px;
-            color: #5e6f88;
-            line-height: 1.6;
-        }
-
-        .feature-grid {
+        .truth-item {
+            padding: 28px 0;
+            border-bottom: 1px solid var(--border);
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            grid-template-columns: 40px 1fr;
+            gap: 24px;
+            align-items: start;
         }
 
-        .feature-card {
-            background: white;
-            border: 1px solid #e9edf2;
-            border-radius: 32px;
-            padding: 32px;
-            transition: box-shadow 0.3s, transform 0.3s;
+        .truth-item:first-child { border-top: 1px solid var(--border); }
+
+        .truth-num {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--text-dim);
+            padding-top: 4px;
         }
 
-        .feature-card:hover {
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
-            transform: translateY(-4px);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: #eef4ff;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            color: #3b82f6;
-            font-size: 36px;
-        }
-
-        .feature-card h3 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #0f2b4b;
-        }
-
-        .feature-card p {
-            color: #5e6f88;
-            line-height: 1.7;
-        }
-
-        /* How It Works */
-        .how-it-works {
-            background: #f8fafc;
-            padding: 80px 0;
-            margin-bottom: 100px;
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .step {
-            text-align: center;
-        }
-
-        .step-number {
-            width: 48px;
-            height: 48px;
-            background: #0f2b4b;
-            color: white;
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
+        .truth-text {
             font-size: 20px;
-            margin: 0 auto 24px;
+            font-weight: 300;
+            line-height: 1.5;
+            color: var(--text);
         }
 
-        .step h3 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #0f2b4b;
+        .truth-text em {
+            color: var(--accent);
+            font-style: normal;
+            font-weight: 500;
         }
 
-        .step p {
-            color: #5e6f88;
-            line-height: 1.7;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            margin-bottom: 100px;
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .testimonial-card {
-            background: #f8fafc;
-            padding: 32px;
-            border-radius: 24px;
-            border: 1px solid #e9edf2;
-        }
-
-        .testimonial-text {
-            font-size: 16px;
-            color: #1e293b;
-            line-height: 1.7;
-            margin-bottom: 24px;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .author-avatar {
-            width: 48px;
-            height: 48px;
-            background: #d0d8e3;
-            border-radius: 24px;
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-        }
-
-        .author-info h4 {
-            font-weight: 600;
-            color: #0f2b4b;
-        }
-
-        .author-info p {
-            font-size: 14px;
-            color: #7e8b9f;
-        }
-
-        /* CTA */
-        .cta-section {
-            background: #0f2b4b;
-            border-radius: 40px;
-            padding: 80px;
-            margin-bottom: 80px;
-            color: white;
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            font-size: 42px;
-            font-weight: 700;
-            letter-spacing: -1px;
-            margin-bottom: 16px;
-        }
-
-        .cta-section p {
-            font-size: 18px;
-            color: #b0c4de;
-            margin-bottom: 40px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-form {
-            display: flex;
-            gap: 12px;
-            max-width: 500px;
+        /* ─── WHAT VENT IS ─── */
+        .what-section {
+            padding: 120px 40px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .cta-input {
+        .section-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            margin-bottom: 60px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .section-label::after {
+            content: '';
             flex: 1;
-            padding: 16px 24px;
-            border-radius: 40px;
-            border: none;
-            font-size: 16px;
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.2);
+            height: 1px;
+            background: var(--border);
         }
 
-        .cta-input::placeholder {
-            color: #b0c4de;
+        .what-headline {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(48px, 6vw, 80px);
+            line-height: 1;
+            letter-spacing: 2px;
+            color: var(--white);
+            margin-bottom: 80px;
+            max-width: 800px;
         }
 
-        .cta-button {
-            padding: 16px 32px;
-            border-radius: 40px;
-            border: none;
-            background: white;
-            color: #0f2b4b;
-            font-weight: 600;
+        .what-headline span {
+            color: var(--text-dim);
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+        }
+
+        .feature-item {
+            background: var(--bg);
+            padding: 48px 40px;
+            transition: background 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover { background: var(--bg3); }
+        .feature-item:hover::before { transform: scaleX(1); }
+
+        .feature-num {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+
+        .feature-title {
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .feature-desc {
+            font-size: 15px;
+            color: var(--text-mid);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* ─── BREATHE SECTION ─── */
+        .breathe {
+            border-top: 1px solid var(--border);
+            background: var(--bg2);
+            padding: 120px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .breathe-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(168,255,62,0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .breathe-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .breathe-word {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(100px, 18vw, 240px);
+            letter-spacing: 8px;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(168,255,62,0.3);
+            display: block;
+            line-height: 1;
+            margin-bottom: 48px;
+            animation: breatheAnim 5s ease-in-out infinite;
+        }
+
+        @keyframes breatheAnim {
+            0%, 100% { -webkit-text-stroke-color: rgba(168,255,62,0.2); letter-spacing: 6px; }
+            50% { -webkit-text-stroke-color: rgba(168,255,62,0.5); letter-spacing: 12px; }
+        }
+
+        .breathe-desc {
+            font-size: 22px;
+            color: var(--text-mid);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .breathe-desc strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* ─── TOPICS SECTION ─── */
+        .topics-section {
+            padding: 120px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 60px;
+        }
+
+        .topic-card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            padding: 28px 24px;
+            border-radius: 2px;
+            transition: all 0.3s;
+            cursor: default;
+        }
+
+        .topic-card:hover {
+            border-color: var(--accent);
+            background: var(--bg3);
+            transform: translateY(-4px);
+        }
+
+        .topic-icon {
+            font-size: 24px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .topic-name {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .topic-count {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+
+        /* ─── MANIFESTO ─── */
+        .manifesto {
+            border-top: 1px solid var(--border);
+            background: var(--bg);
+            padding: 120px 40px;
+        }
+
+        .manifesto-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 120px;
+            align-items: center;
+        }
+
+        .manifesto-left {
+            position: relative;
+        }
+
+        .manifesto-quote {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(40px, 5vw, 64px);
+            line-height: 1.05;
+            letter-spacing: 1px;
+            color: var(--white);
+            margin-bottom: 40px;
+        }
+
+        .manifesto-quote .hl {
+            color: var(--accent);
+        }
+
+        .manifesto-body {
             font-size: 16px;
+            color: var(--text-mid);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .manifesto-body p + p { margin-top: 20px; }
+
+        .manifesto-right {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+        }
+
+        .manifesto-stat {
+            background: var(--bg);
+            padding: 36px;
+            transition: background 0.2s;
+        }
+
+        .manifesto-stat:hover { background: var(--bg3); }
+
+        .stat-val {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 56px;
+            color: var(--accent);
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-desc {
+            font-size: 14px;
+            color: var(--text-mid);
+            font-weight: 300;
+        }
+
+        /* ─── TESTIMONIALS ─── */
+        .testimonials {
+            border-top: 1px solid var(--border);
+            padding: 120px 40px;
+            background: var(--bg2);
+        }
+
+        .testimonials-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-scroll {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .t-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            padding: 36px;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .t-card::before {
+            content: '"';
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 80px;
+            color: var(--accent);
+            opacity: 0.3;
+            position: absolute;
+            top: 16px;
+            left: 30px;
+            line-height: 1;
+        }
+
+        .t-text {
+            font-size: 16px;
+            color: var(--text);
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 28px;
+            padding-top: 40px;
+        }
+
+        .t-author {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            color: var(--text-dim);
+            letter-spacing: 0.5px;
+        }
+
+        .t-author span {
+            color: var(--accent);
+        }
+
+        /* ─── CTA ─── */
+        .cta-section {
+            padding: 120px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .cta-left h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(56px, 7vw, 100px);
+            letter-spacing: 2px;
+            line-height: 0.95;
+            color: var(--white);
+            margin-bottom: 24px;
+        }
+
+        .cta-left h2 span { color: var(--accent); }
+
+        .cta-left p {
+            font-size: 16px;
+            color: var(--text-mid);
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .cta-right {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .cta-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .cta-input {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 18px 24px;
+            font-size: 15px;
+            font-family: 'DM Sans', sans-serif;
+            border-radius: 2px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .cta-input:focus {
+            border-color: var(--accent);
+        }
+
+        .cta-input::placeholder { color: var(--text-dim); }
+
+        .cta-submit {
+            background: var(--accent);
+            color: #0a0a0a;
+            border: none;
+            padding: 18px 32px;
+            font-size: 15px;
+            font-weight: 500;
+            font-family: 'DM Mono', monospace;
+            letter-spacing: 0.5px;
+            border-radius: 2px;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.2s;
         }
 
-        .cta-button:hover {
+        .cta-submit:hover {
+            background: var(--white);
             transform: translateY(-2px);
         }
 
-        /* Footer */
-        .footer {
-            padding: 60px 0 40px;
-            border-top: 1px solid #e9edf2;
+        .cta-note {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--text-dim);
+            letter-spacing: 0.5px;
         }
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
+        /* ─── FOOTER ─── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 60px 40px;
+            background: var(--bg2);
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
             gap: 60px;
-            margin-bottom: 60px;
         }
 
-        .footer-col p {
-            color: #5e6f88;
-            line-height: 1.7;
-            margin-top: 20px;
+        .footer-brand {
+            flex: 1;
+        }
+
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 6px;
+            color: var(--white);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-tagline {
+            font-size: 14px;
+            color: var(--text-dim);
+            font-weight: 300;
+            line-height: 1.6;
+            max-width: 260px;
         }
 
         .footer-col h4 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 24px;
-            color: #0f2b4b;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
         .footer-col a {
             display: block;
-            color: #5e6f88;
+            color: var(--text-mid);
             text-decoration: none;
-            margin-bottom: 12px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 300;
             transition: color 0.2s;
         }
 
-        .footer-col a:hover {
-            color: #0f2b4b;
-        }
+        .footer-col a:hover { color: var(--text); }
 
         .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
-            color: #7e8b9f;
-            font-size: 14px;
-            padding-top: 40px;
-            border-top: 1px solid #e9edf2;
+            align-items: center;
         }
 
+        .footer-bottom p {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--text-dim);
+            letter-spacing: 0.5px;
+        }
+
+        .footer-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: var(--accent);
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── RESPONSIVE ─── */
         @media (max-width: 900px) {
-            .hero {
-                grid-template-columns: 1fr;
-            }
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
-            .steps {
-                grid-template-columns: 1fr;
-            }
-            .testimonial-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            .cta-form {
-                flex-direction: column;
-            }
+            nav { padding: 20px 24px; }
+            .nav-links { display: none; }
+            .hero { padding: 60px 24px 80px; }
+            .hero h1 { font-size: 80px; }
+            .hero-sub { grid-template-columns: 1fr; gap: 32px; }
+            .hero-actions { align-items: flex-start; }
+            .hero-number { display: none; }
+            .truth-inner { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+            .feature-list { grid-template-columns: 1fr; }
+            .topics-grid { grid-template-columns: repeat(2, 1fr); }
+            .manifesto-inner { grid-template-columns: 1fr; gap: 60px; padding: 80px 24px; }
+            .testimonial-scroll { grid-template-columns: 1fr; }
+            .cta-section { grid-template-columns: 1fr; gap: 48px; padding: 80px 24px; }
+            .footer-inner { flex-direction: column; gap: 40px; }
+            .what-section, .topics-section { padding: 80px 24px; }
+            .breathe { padding: 80px 24px; }
+            .testimonials { padding: 80px 24px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Navigation -->
-        <nav class="nav">
-            <div class="logo">
-                <div class="logo-icon">🫁</div>
-                <span class="logo-text">VENT</span>
-                <span class="logo-tag">clinical reasoning, accelerated</span>
-            </div>
-            <div class="nav-links">
-                <a href="#">Features</a>
-                <a href="#">Method</a>
-                <a href="#">Pricing</a>
-                <a href="#">For Teams</a>
-            </div>
-            <a href="#" class="nav-cta">Get Started</a>
-        </nav>
 
-        <!-- Hero -->
+    <!-- NAV -->
+    <nav>
+        <div class="logo">
+            <div class="logo-dot"></div>
+            VENT
+        </div>
+        <div class="nav-links">
+            <a href="#">How it works</a>
+            <a href="#">Topics</a>
+            <a href="#">For schools</a>
+        </div>
+        <a href="#waitlist" class="nav-cta">Join the waitlist</a>
+    </nav>
+
+    <!-- HERO -->
+    <section>
         <div class="hero">
-            <div class="hero-left">
-                <div class="hero-eyebrow">For medical students & residents</div>
-                <h1>Clinical reasoning,<br><span>accelerated.</span></h1>
+            <div class="hero-tag">For med students who can't breathe</div>
+            <h1>
+                Stop<br>
+                <span class="accent-word">drowning.</span>
+            </h1>
+            <div class="hero-sub">
                 <p class="hero-desc">
-                    60-second consults that cut through the noise. Distilled clinical knowledge, built by physicians for the moments that matter.
+                    Medical school gives you <strong>10,000 pages</strong> when you need 10 minutes. 
+                    Vent is where you finally catch your breath — only what matters, 
+                    exactly when you need it.
                 </p>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">47k+</span>
-                        <span class="stat-label">active learners</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">15 min</span>
-                        <span class="stat-label">daily study</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">93%</span>
-                        <span class="stat-label">board pass rate</span>
-                    </div>
-                </div>
-                <div class="hero-cta">
-                    <a href="#" class="cta-primary">Start learning →</a>
-                    <a href="#" class="cta-secondary">Watch demo</a>
+                <div class="hero-actions">
+                    <a href="#waitlist" class="btn-primary">Breathe again →</a>
+                    <a href="#how" class="btn-ghost">See how it works ↓</a>
                 </div>
             </div>
-            <div class="hero-right">
-                <div class="hero-animation">
-                    <lottie-player src="animations/Lungs.json" style="width: 100%; height: 100%;" autoplay loop></lottie-player>
+            <div class="hero-number">V</div>
+            <div class="hero-scroll">
+                <div class="scroll-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUTH -->
+    <section class="truth">
+        <div class="truth-inner">
+            <div class="truth-label">The problem</div>
+            <div class="truth-statements">
+                <div class="truth-item reveal">
+                    <div class="truth-num">01</div>
+                    <div class="truth-text">You're not struggling because you're bad at medicine. You're struggling because <em>no one filtered the noise for you.</em></div>
+                </div>
+                <div class="truth-item reveal">
+                    <div class="truth-num">02</div>
+                    <div class="truth-text">Textbooks are written for completeness. Not for <em>a human being at 2am</em> before a morning ward round.</div>
+                </div>
+                <div class="truth-item reveal">
+                    <div class="truth-num">03</div>
+                    <div class="truth-text">The best students aren't the ones who read everything. They're the ones who learned <em>what actually matters.</em></div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Trusted By -->
-    <div class="trusted">
-        <div class="container">
-            <p>Trusted by students and residents at</p>
-            <div class="trusted-logos">
-                <span class="trusted-logo">Harvard Med</span>
-                <span class="trusted-logo">Johns Hopkins</span>
-                <span class="trusted-logo">Stanford</span>
-                <span class="trusted-logo">UCSF</span>
-                <span class="trusted-logo">Mayo Clinic</span>
+    <!-- WHAT VENT IS -->
+    <section class="what-section" id="how">
+        <div class="section-label">What Vent is</div>
+        <h2 class="what-headline reveal">
+            Every condition.<br>
+            <span>No filler.</span><br>
+            Just what you need.
+        </h2>
+        <div class="feature-list">
+            <div class="feature-item reveal">
+                <div class="feature-num">01 — CONSULTS</div>
+                <div class="feature-title">60-second clinical summaries</div>
+                <div class="feature-desc">The 20% of knowledge that covers 80% of what shows up on rotations. Distilled by physicians who remember what it was like to not know.</div>
+            </div>
+            <div class="feature-item reveal">
+                <div class="feature-num">02 — REASONING</div>
+                <div class="feature-title">Decision frameworks, not facts</div>
+                <div class="feature-desc">You don't need to memorize everything. You need a framework to think through it. We build the clinical logic, you apply it.</div>
+            </div>
+            <div class="feature-item reveal">
+                <div class="feature-num">03 — FLOW</div>
+                <div class="feature-title">Built for the real schedule</div>
+                <div class="feature-desc">Between rounds. On the bus. Pre-call. 5 minutes or 50 — Vent meets you exactly where you are, with exactly what you need right now.</div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="container">
-        <!-- Features -->
-        <div class="features">
-            <div class="section-header">
-                <h2>Built for clinical workflow</h2>
-                <p>Designed by physicians who understand the pressure of medical training.</p>
+    <!-- BREATHE -->
+    <section class="breathe">
+        <div class="breathe-bg"></div>
+        <div class="breathe-inner">
+            <span class="breathe-word">BREATHE</span>
+            <p class="breathe-desc reveal">
+                Medicine is already hard enough.<br>
+                <strong>Your tools shouldn't make it harder.</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- TOPICS -->
+    <section class="topics-section">
+        <div class="section-label">What's covered</div>
+        <div class="topics-grid">
+            <div class="topic-card reveal">
+                <span class="topic-icon">🫀</span>
+                <div class="topic-name">Cardiology</div>
+                <div class="topic-count">Core + advanced</div>
             </div>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">⏱️</div>
-                    <h3>60-second consults</h3>
-                    <p>Every condition distilled to its clinical essence. What you need, when you need it.</p>
+            <div class="topic-card reveal">
+                <span class="topic-icon">🧠</span>
+                <div class="topic-name">Neurology</div>
+                <div class="topic-count">Core + advanced</div>
+            </div>
+            <div class="topic-card reveal">
+                <span class="topic-icon">🫁</span>
+                <div class="topic-name">Pulmonology</div>
+                <div class="topic-count">Core + advanced</div>
+            </div>
+            <div class="topic-card reveal">
+                <span class="topic-icon">🩺</span>
+                <div class="topic-name">Internal Med</div>
+                <div class="topic-count">Core + advanced</div>
+            </div>
+            <div class="topic-card reveal">
+                <span class="topic-icon">⚗️</span>
+                <div class="topic-name">Pharmacology</div>
+                <div class="topic-count">Core only</div>
+            </div>
+            <div class="topic-card reveal">
+                <span class="topic-icon">🔬</span>
+                <div class="topic-name">Pathology</div>
+                <div class="topic-count">Core only</div>
+            </div>
+            <div class="topic-card reveal">
+                <span class="topic-icon">👶</span>
+                <div class="topic-name">Pediatrics</div>
+                <div class="topic-count">Core only</div>
+            </div>
+            <div class="topic-card reveal">
+                <span class="topic-icon">🔪</span>
+                <div class="topic-name">Surgery</div>
+                <div class="topic-count">Core only</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="manifesto">
+        <div class="manifesto-inner">
+            <div class="manifesto-left reveal">
+                <div class="manifesto-quote">
+                    Built by people who<br>
+                    <span class="hl">survived</span><br>
+                    what you're in.
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🫁</div>
-                    <h3>Clinical algorithms</h3>
-                    <p>Step-by-step decision trees for differential diagnosis and management.</p>
+                <div class="manifesto-body">
+                    <p>We didn't build Vent to compete with Amboss or UpToDate. We built it because those tools are archives — and you need a lifeline.</p>
+                    <p>Every piece of content on Vent went through one filter: <em>"Would a good senior resident actually say this out loud?"</em> If yes, it's in. If it's filler — it's gone.</p>
+                    <p>You're becoming a physician. You deserve tools built for that reality.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Knowledge mapping</h3>
-                    <p>Visualize connections between concepts and track your progress.</p>
+            </div>
+            <div class="manifesto-right reveal">
+                <div class="manifesto-stat">
+                    <div class="stat-val">60s</div>
+                    <div class="stat-desc">Maximum time to understand any single condition on Vent. Not a word longer.</div>
+                </div>
+                <div class="manifesto-stat">
+                    <div class="stat-val">0</div>
+                    <div class="stat-desc">Filler content. Every sentence earns its place or it doesn't exist.</div>
+                </div>
+                <div class="manifesto-stat">
+                    <div class="stat-val">∞</div>
+                    <div class="stat-desc">Times you can come back. Pre-call, post-call, mid-panic. Vent is always there.</div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- How It Works -->
-    <div class="how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <h2>How it works</h2>
-                <p>Three steps to clinical mastery.</p>
-            </div>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Learn</h3>
-                    <p>60-second video consults that explain core concepts with clinical context.</p>
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <div class="testimonials-inner">
+            <div class="section-label">From students like you</div>
+            <div class="testimonial-scroll">
+                <div class="t-card reveal">
+                    <p class="t-text">I used to spend 3 hours studying one condition. Now I spend 10 minutes and actually remember it on rounds. This is what studying should feel like.</p>
+                    <div class="t-author"><span>MS3</span> — Internal Medicine rotation</div>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Apply</h3>
-                    <p>Interactive cases that challenge your reasoning and decision-making.</p>
+                <div class="t-card reveal">
+                    <p class="t-text">I don't know who made this but they clearly went through it. Nothing on here feels like it was written for an exam. It feels like someone explaining it to you at 6am before rounds.</p>
+                    <div class="t-author"><span>MS4</span> — Final year</div>
                 </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Reinforce</h3>
-                    <p>Spaced repetition and quizzes that lock in knowledge long-term.</p>
+                <div class="t-card reveal">
+                    <p class="t-text">I was drowning in Year 2. A senior sent me this and said "stop reading, start understanding." Best advice I ever got. Vent is that advice made into a product.</p>
+                    <div class="t-author"><span>MS2</span> — Pre-clinical</div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="container">
-        <!-- Testimonials -->
-        <div class="testimonials">
-            <div class="section-header">
-                <h2>Trusted by future physicians</h2>
-                <p>Join thousands of medical students who've accelerated their learning.</p>
+    <!-- CTA -->
+    <section class="cta-section" id="waitlist">
+        <div class="cta-left reveal">
+            <h2>Time to<br><span>breathe.</span></h2>
+            <p>Vent is in early access. Join the waitlist and be first in when we open the doors. No spam. Just the signal.</p>
+        </div>
+        <div class="cta-right reveal">
+            <div class="cta-input-group">
+                <input type="email" class="cta-input" placeholder="your@email.com">
+                <select class="cta-input" style="cursor:pointer;">
+                    <option value="" disabled selected>What year are you?</option>
+                    <option>MS1 — Pre-clinical Year 1</option>
+                    <option>MS2 — Pre-clinical Year 2</option>
+                    <option>MS3 — Clinical rotations</option>
+                    <option>MS4 — Final year</option>
+                    <option>Resident</option>
+                </select>
+                <button class="cta-submit">Join the waitlist →</button>
             </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "VENT changed how I study. The 60-second format forces me to focus on what actually matters for rounds."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar"></div>
-                        <div class="author-info">
-                            <h4>Dr. Sarah Chen</h4>
-                            <p>Internal Medicine Resident, MGH</p>
-                        </div>
-                    </div>
+            <p class="cta-note">// no spam. no filler. just vent.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <div class="logo-dot"></div>
+                    VENT
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "Finally, a resource that understands how clinical reasoning actually develops. Worth every minute."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar"></div>
-                        <div class="author-info">
-                            <h4>Michael Okonkwo</h4>
-                            <p>MS4, Johns Hopkins</p>
-                        </div>
-                    </div>
-                </div>
+                <p class="footer-tagline">Finally. Just what you need as a med student. No filler, no noise — just breath.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <a href="#">How it works</a>
+                <a href="#">Topics covered</a>
+                <a href="#">For medical schools</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy</a>
             </div>
         </div>
-
-        <!-- CTA -->
-        <div class="cta-section">
-            <h2>Start learning today</h2>
-            <p>Join 47,000+ students already using VENT to accelerate their clinical reasoning.</p>
-            <div class="cta-form">
-                <input type="email" placeholder="Enter your email" class="cta-input">
-                <button class="cta-button">Get Started</button>
+        <div class="footer-bottom">
+            <p>© 2026 VENT — All rights reserved.</p>
+            <div class="footer-status">
+                <div class="status-dot"></div>
+                Early access open
             </div>
         </div>
-    </div>
+    </footer>
 
-    <!-- Footer -->
-    <div class="container">
-        <footer class="footer">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <div class="logo" style="margin-bottom: 20px;">
-                        <span class="logo-icon" style="display: inline-block; width: 32px; height: 32px; font-size: 16px;">🫁</span>
-                        <span class="logo-text" style="font-size: 18px;">VENT</span>
+    <script>
+        // Scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        reveals.forEach(el => observer.observe(el));
+
+        // Stagger children in grids
+        document.querySelectorAll('.feature-list, .topics-grid, .testimonial-scroll, .truth-statements').forEach(grid => {
+            grid.querySelectorAll('.reveal').forEach((el, i) => {
+                el.style.transitionDelay = `${i * 0.08}s`;
+            });
+        });
+
+        // Waitlist form
+        document.querySelector('.cta-submit').addEventListener('click', () => {
+            const email = document.querySelector('.cta-input').value;
+            if (email) {
+                document.querySelector('.cta-right').innerHTML = `
+                    <div style="padding: 40px 0;">
+                        <div style="font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--accent); letter-spacing: 2px; margin-bottom: 16px;">You're in.</div>
+                        <p style="color: var(--text-mid); font-size: 15px; font-weight: 300; line-height: 1.7;">We'll reach out when Vent opens. Until then — breathe.</p>
                     </div>
-                    <p>Clinical reasoning, accelerated.<br>Built by physicians, for physicians.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Product</h4>
-                    <a href="#">Features</a>
-                    <a href="#">Pricing</a>
-                    <a href="#">For Teams</a>
-                    <a href="#">Enterprise</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Resources</h4>
-                    <a href="#">Blog</a>
-                    <a href="#">Clinical Library</a>
-                    <a href="#">Support</a>
-                    <a href="#">Contact</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Legal</h4>
-                    <a href="#">Privacy</a>
-                    <a href="#">Terms</a>
-                    <a href="#">Security</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div>© 2026 VENT — Clinical reasoning, accelerated.</div>
-                <div>🫁</div>
-            </div>
-        </footer>
-    </div>
+                `;
+            }
+        });
+    </script>
+
 </body>
 </html>
