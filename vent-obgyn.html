@@ -259,6 +259,14 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
   .nv-hdr,.nv-body{padding-left:20px;padding-right:20px;}
   .insight{margin-left:-20px;margin-right:-20px;padding:32px 20px;}
 }
+
+/* ── REAL CLINICAL IMAGES ── */
+.real-img-wrap{margin:28px 0;overflow:hidden;background:#1a1510;position:relative;border-radius:2px;}
+.real-img-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#c8452a,transparent);z-index:1;}
+.real-img{width:100%;max-height:400px;object-fit:cover;object-position:center;display:block;opacity:.92;}
+.real-img-cap{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;background:#1a1510;border-top:1px solid rgba(255,255,255,.07);}
+.real-img-cap span{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(245,242,235,.4);letter-spacing:.5px;}
+.real-img-credit{color:rgba(245,242,235,.2) !important;}
 </style>
 </head>
 <body>
