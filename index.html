@@ -413,3 +413,1754 @@ document.getElementById('sb').addEventListener('click',async()=>{
 </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VENT — OB/GYN Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f2eb;--bg2:#ede9e0;--bg3:#e4dfd4;
+  --ink:#1a1510;--ink2:#3d3628;--ink3:#5c5244;--ink4:#b5a898;
+  --accent:#c8452a;--accent2:#e85d3f;
+  --border:#d8d2c6;--white:#faf8f4;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9997;opacity:.5;}
+
+/* ── LANGUAGE ── */
+/* In EN mode: show .en, hide .ar */
+/* In AR mode: show .ar, hide .en */
+.ar { display: none !important; }
+.en { display: block; }
+
+body.ar-mode .ar { display: block !important; }
+body.ar-mode .en { display: none !important; }
+body.ar-mode .note-modal, body.ar-mode .note-page { direction: rtl; }
+body.ar-mode .ar { font-family: 'Noto Naskh Arabic', serif; font-size: 17px; line-height: 2.1; }
+
+/* inline elements */
+span.ar { display: none !important; }
+body.ar-mode span.ar { display: inline !important; }
+body.ar-mode span.en { display: none !important; }
+span.en { display: inline; }
+
+.drug { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: rgba(200,69,42,.09); border: 1px solid rgba(200,69,42,.22); padding: 1px 7px; border-radius: 3px; color: var(--accent); direction: ltr; display: inline-block; }
+
+/* LANG TOGGLE */
+.lang-toggle { display: flex; gap: 2px; background: rgba(245,242,235,.08); border: 1px solid rgba(245,242,235,.15); border-radius: 100px; padding: 3px; }
+.lbtn { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1px; color: rgba(245,242,235,.4); padding: 7px 16px; border-radius: 100px; border: none; background: none; cursor: pointer; transition: all .2s; }
+.lbtn.on { background: var(--accent); color: white; }
+
+/* OVERLAY */
+.overlay { position: fixed; inset: 0; background: rgba(8,5,3,.93); backdrop-filter: blur(18px); z-index: 10000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .35s; padding: 20px; }
+.overlay.open { opacity: 1; pointer-events: all; }
+.note-modal { background: var(--white); max-width: 960px; width: 100%; max-height: 92vh; overflow-y: auto; border-radius: 2px; transform: translateY(36px) scale(.97); transition: transform .45s cubic-bezier(.16,1,.3,1); box-shadow: 0 80px 160px rgba(0,0,0,.7); scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+.overlay.open .note-modal { transform: translateY(0) scale(1); }
+.note-modal::-webkit-scrollbar { width: 3px; }
+.note-modal::-webkit-scrollbar-thumb { background: var(--border); }
+
+/* MODAL BAR */
+.mbar { position: sticky; top: 0; background: var(--ink); padding: 15px 36px; display: flex; justify-content: space-between; align-items: center; z-index: 5; border-bottom: 1px solid rgba(255,255,255,.06); }
+.mbar-l { display: flex; align-items: center; gap: 12px; }
+.mpulse { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s ease infinite; flex-shrink: 0; }
+@keyframes pulse { 0%,100%{opacity:1;}50%{opacity:.2;} }
+.mbc { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; color: rgba(245,242,235,.28); text-transform: uppercase; }
+.mbar-r { display: flex; align-items: center; gap: 8px; }
+.mclose { width: 32px; height: 32px; background: rgba(255,255,255,.06); border: none; border-radius: 50%; color: rgba(255,255,255,.45); font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+.mclose:hover { background: var(--accent); color: white; }
+.mexpand { width: 32px; height: 32px; background: rgba(255,255,255,.06); border: none; border-radius: 50%; color: rgba(255,255,255,.45); font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+.mexpand:hover { background: rgba(255,255,255,.14); color: white; }
+
+/* FULL PAGE */
+.note-page { display: none; min-height: 100vh; background: var(--white); }
+.note-page.active { display: block; }
+.pnav { display: flex; justify-content: space-between; align-items: center; background: var(--ink); padding: 18px 64px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,.06); }
+.pnav-back { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(245,242,235,.45); letter-spacing: 1px; cursor: pointer; border: none; background: none; transition: color .2s; }
+.pnav-back:hover { color: rgba(245,242,235,.9); }
+.page-inner { max-width: 960px; margin: 0 auto; }
+
+/* ══════════════════════════════
+   NOTE CONTENT STYLES
+══════════════════════════════ */
+
+/* HERO */
+.n-hero { background: var(--ink); padding: 64px 64px 52px; position: relative; overflow: hidden; }
+.nhero-glow { position: absolute; right: -60px; top: -60px; width: 380px; height: 380px; background: radial-gradient(circle,rgba(200,69,42,.11),transparent 70%); pointer-events: none; }
+.n-rule { width: 36px; height: 2px; background: var(--accent); margin-bottom: 22px; }
+.n-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 14px; }
+.n-title { font-family: 'Instrument Serif', serif; font-size: clamp(44px,6vw,72px); font-weight: 400; color: var(--white); line-height: .95; margin-bottom: 20px; }
+.n-oneliner { font-size: 17px; color: rgba(245,242,235,.48); line-height: 1.75; max-width: 560px; margin-bottom: 32px; font-style: italic; }
+.n-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+.nbadge { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(245,242,235,.32); background: rgba(245,242,235,.05); border: 1px solid rgba(245,242,235,.1); padding: 5px 13px; border-radius: 100px; }
+
+/* KEY VISUAL */
+.n-visual { background: var(--bg2); border-top: 3px solid var(--accent); border-bottom: 1px solid var(--border); }
+.nv-hdr { display: flex; justify-content: space-between; align-items: center; padding: 16px 64px; border-bottom: 1px solid var(--border); }
+.nv-title { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--ink); }
+.nv-sub { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink4); }
+.nv-body { padding: 40px 64px; }
+.nv-body svg { width: 100%; height: auto; display: block; }
+
+/* NOTE BODY */
+.nbody { padding: 56px 64px 80px; background: var(--white); }
+
+/* opener */
+.n-opener { padding-bottom: 44px; border-bottom: 1px solid var(--border); margin-bottom: 44px; }
+.n-opener-kicker { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 14px; }
+.n-opener-hl { font-family: 'Instrument Serif', serif; font-size: 30px; color: var(--ink); line-height: 1.15; margin-bottom: 18px; }
+.n-opener-body { font-size: 16px; color: var(--ink3); line-height: 1.9; }
+.n-opener-body strong { color: var(--ink); font-weight: 600; }
+
+/* section heading */
+.shead { display: flex; align-items: center; gap: 18px; margin: 52px 0 20px; }
+.shead-n { font-family: 'Instrument Serif', serif; font-size: 13px; font-style: italic; color: var(--accent); width: 20px; flex-shrink: 0; }
+.shead-t { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--ink); }
+.shead-l { flex: 1; height: 1px; background: var(--border); }
+
+/* body text */
+.nb { font-size: 16px; color: var(--ink3); line-height: 1.9; margin-bottom: 20px; }
+.nb strong { color: var(--ink); font-weight: 600; }
+
+/* POINTS — intentional list */
+.points { display: flex; flex-direction: column; gap: 2px; margin: 20px 0 28px; }
+.point { display: grid; grid-template-columns: 52px 1fr; background: var(--border); gap: 1px; transition: all .15s; }
+.pt-n { background: var(--bg2); display: flex; align-items: flex-start; justify-content: center; padding-top: 18px; font-family: 'Instrument Serif', serif; font-size: 20px; font-style: italic; color: var(--ink4); min-height: 72px; }
+.pt-b { background: var(--white); padding: 18px 24px; }
+.pt-title { font-size: 15px; font-weight: 700; color: var(--ink); display: block; margin-bottom: 7px; }
+.pt-body { font-size: 14px; color: var(--ink3); line-height: 1.8; }
+.pt-body .drug { font-size: 11px; }
+.point:hover .pt-n { background: var(--accent); color: white; }
+.point:hover .pt-b { background: var(--bg3); }
+
+/* BOX — important things */
+.box { border: 1px solid var(--border); margin: 24px 0 28px; overflow: hidden; }
+.box-hdr { background: var(--ink); padding: 13px 22px; display: flex; align-items: center; gap: 10px; }
+.box-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
+.box-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; color: rgba(245,242,235,.45); text-transform: uppercase; }
+.box-body { padding: 22px; background: var(--bg2); font-size: 15px; color: var(--ink2); line-height: 1.8; }
+.box-body strong { color: var(--ink); }
+.box-body ul { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 7px; margin-top: 10px; }
+.box-body ul li { font-size: 14px; color: var(--ink2); line-height: 1.7; padding-left: 18px; position: relative; }
+.box-body ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 11px; top: 3px; }
+.box-body ul li strong { color: var(--ink); }
+
+/* IMAGE BLOCK — real images */
+.img-block { margin: 32px 0; background: var(--ink); overflow: hidden; }
+.img-block-hdr { padding: 13px 22px; border-bottom: 1px solid rgba(245,242,235,.07); display: flex; justify-content: space-between; align-items: center; }
+.img-block-title { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; color: rgba(245,242,235,.38); text-transform: uppercase; }
+.img-block-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); }
+.img-block-body { display: flex; gap: 0; }
+.img-block-fig { flex: 1; min-width: 0; }
+.img-block-fig img { width: 100%; height: 260px; object-fit: cover; display: block; filter: brightness(.9) contrast(1.05); }
+.img-block-text { flex: 1; min-width: 200px; padding: 28px 28px; display: flex; flex-direction: column; justify-content: center; }
+.img-block-text h4 { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: rgba(245,242,235,.9); margin-bottom: 14px; }
+.img-block-text ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.img-block-text ul li { font-size: 13px; color: rgba(245,242,235,.58); line-height: 1.65; padding-left: 16px; position: relative; }
+.img-block-text ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 10px; top: 2px; }
+.img-block-text ul li strong { color: rgba(245,242,235,.88); }
+.img-block-single img { width: 100%; max-height: 340px; object-fit: cover; display: block; filter: brightness(.88) contrast(1.08); }
+.img-block-single .img-caption { padding: 12px 22px; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: rgba(245,242,235,.25); letter-spacing: 1px; }
+
+/* MECH */
+.mech { background: var(--ink); padding: 26px 28px; margin: 20px 0; border-left: 3px solid var(--accent); }
+.mech-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; }
+.mech p { font-size: 15px; color: rgba(245,242,235,.62); line-height: 1.85; }
+.mech p strong { color: rgba(245,242,235,.9); }
+
+/* WARN */
+.warn { background: #fff8f5; border: 1px solid #f0c0b0; border-left: 3px solid var(--accent); padding: 20px 24px; margin: 24px 0; display: flex; gap: 16px; }
+.warn-ico { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+.warn-lbl { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
+.warn p { font-size: 14px; color: var(--ink2); line-height: 1.75; }
+.warn p strong { color: var(--accent); }
+
+/* 2 col */
+.twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 20px 0; background: var(--border); }
+.tcc { padding: 28px; background: var(--white); }
+.tcc.shade { background: var(--bg2); }
+.tcc-lbl { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--ink4); text-transform: uppercase; margin-bottom: 10px; }
+.tcc-title { font-family: 'Instrument Serif', serif; font-size: 20px; color: var(--ink); margin-bottom: 10px; }
+.tcc-body { font-size: 14px; color: var(--ink3); line-height: 1.75; }
+.tcc-body strong { color: var(--ink); }
+
+/* INSIGHT */
+.insight { margin: 56px -64px 0; background: var(--ink); padding: 52px 64px; position: relative; overflow: hidden; }
+.insight::before { content: ''; position: absolute; right: -40px; top: -40px; width: 260px; height: 260px; background: radial-gradient(circle,rgba(200,69,42,.07),transparent 70%); pointer-events: none; }
+.ins-kicker { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.ins-kicker::before { content: '//'; color: rgba(200,69,42,.35); }
+.ins-hl { font-family: 'Instrument Serif', serif; font-size: clamp(26px,3.5vw,40px); color: var(--white); line-height: 1.2; margin-bottom: 16px; }
+.ins-hl em { color: var(--accent2); font-style: italic; }
+.ins-body { font-size: 16px; color: rgba(245,242,235,.52); line-height: 1.9; max-width: 640px; position: relative; z-index: 1; }
+.ins-body strong { color: rgba(245,242,235,.86); }
+
+/* NOTE FOOTER */
+.nfoot { padding: 32px 0 0; border-top: 1px solid var(--border); margin-top: 48px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.ntag { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--ink4); background: var(--bg2); border: 1px solid var(--border); padding: 4px 11px; border-radius: 100px; }
+.ntime { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--ink4); margin-left: auto; }
+
+/* ══ PAGE CHROME ══ */
+nav { display: flex; justify-content: space-between; align-items: center; padding: 24px 64px; position: sticky; top: 0; z-index: 500; background: rgba(245,242,235,.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo-name { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: 4px; color: var(--ink); }
+.nav-back { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink3); text-decoration: none; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; transition: color .2s; }
+.nav-back:hover { color: var(--ink); }
+.nav-pill { background: var(--ink); color: var(--bg); padding: 10px 24px; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; border-radius: 100px; transition: all .2s; }
+.nav-pill:hover { background: var(--accent); }
+
+.shero { background: var(--ink); padding: 88px 64px 64px; position: relative; overflow: hidden; }
+.shero-glow { position: absolute; right: -100px; top: -100px; width: 500px; height: 500px; background: radial-gradient(circle,rgba(200,69,42,.08),transparent 70%); pointer-events: none; }
+.shero-kick { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
+.shero-kick::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
+.shero-h1 { font-family: 'Instrument Serif', serif; font-size: clamp(52px,7.5vw,88px); font-weight: 400; color: var(--white); line-height: .95; margin-bottom: 24px; }
+.shero-h1 em { font-style: italic; color: var(--accent2); }
+.shero-desc { font-size: 16px; color: rgba(245,242,235,.42); line-height: 1.8; max-width: 560px; margin-bottom: 48px; }
+.shero-stats { display: flex; gap: 52px; }
+.sv { font-family: 'Instrument Serif', serif; font-size: 40px; color: var(--accent); line-height: 1; }
+.sl { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(245,242,235,.24); letter-spacing: 1px; margin-top: 5px; }
+
+.notes-sec { padding: 80px 64px; max-width: 1360px; margin: 0 auto; }
+.ns-hdr { margin-bottom: 52px; }
+.ns-h2 { font-family: 'Instrument Serif', serif; font-size: clamp(34px,4.5vw,52px); font-weight: 400; color: var(--ink); line-height: 1.05; margin-bottom: 10px; }
+.ns-h2 em { font-style: italic; color: var(--accent); }
+.ns-sub { font-size: 14px; color: var(--ink3); line-height: 1.7; max-width: 460px; margin-bottom: 24px; }
+.ns-filters { display: flex; gap: 8px; }
+.filt { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink4); background: none; border: 1px solid var(--border); padding: 7px 16px; border-radius: 100px; cursor: pointer; transition: all .2s; letter-spacing: .5px; }
+.filt.on, .filt:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+/* CARDS */
+.notes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: var(--border); }
+.nc { background: var(--white); padding: 36px 32px 28px; cursor: pointer; transition: all .3s cubic-bezier(.16,1,.3,1); display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.nc::after { content: ''; position: absolute; inset: 0; background: var(--ink); transform: translateY(101%); transition: transform .42s cubic-bezier(.16,1,.3,1); z-index: 0; }
+.nc:not(.soon):hover::after { transform: translateY(0); }
+.nc > * { position: relative; z-index: 1; }
+.nc:not(.soon):hover .nc-type, .nc:not(.soon):hover .nc-num { color: rgba(200,69,42,.7); }
+.nc:not(.soon):hover .nc-title { color: rgba(245,242,235,.95); }
+.nc:not(.soon):hover .nc-preview { color: rgba(245,242,235,.45); }
+.nc:not(.soon):hover .nc-meta { color: rgba(245,242,235,.3); }
+.nc:not(.soon):hover .nc-arr { background: var(--accent); color: white; transform: rotate(45deg); }
+.nc-type { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 18px; transition: color .3s; }
+.nc-num { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--ink4); margin-bottom: 8px; transition: color .3s; }
+.diff { display: flex; gap: 4px; margin-bottom: 12px; }
+.dd { width: 7px; height: 7px; border-radius: 50%; background: var(--border); }
+.dd.on { background: var(--accent); }
+.nc-title { font-family: 'Instrument Serif', serif; font-size: 27px; font-weight: 400; color: var(--ink); line-height: 1.05; margin-bottom: 11px; transition: color .3s; }
+.nc-preview { font-size: 14px; color: var(--ink3); line-height: 1.65; flex: 1; margin-bottom: 22px; transition: color .3s; }
+.nc-foot { display: flex; justify-content: space-between; align-items: center; }
+.nc-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink4); transition: color .3s; }
+.nc-arr { width: 34px; height: 34px; background: var(--bg2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ink3); font-size: 14px; flex-shrink: 0; transition: all .3s; }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@keyframes fu { from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);} }
+.toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(16px); background: var(--ink); color: var(--bg); padding: 13px 28px; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 11px; z-index: 9999; opacity: 0; transition: all .4s cubic-bezier(.16,1,.3,1); pointer-events: none; border: 1px solid rgba(245,242,235,.1); white-space: nowrap; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+@media(max-width:1024px){
+  nav{padding:18px 24px;} .shero{padding:60px 24px 40px;} .notes-sec{padding:56px 24px;}
+  .notes-grid{grid-template-columns:1fr 1fr;}
+  .nbody{padding:40px 28px 60px;} .n-hero{padding:48px 28px 40px;}
+  .nv-hdr,.nv-body{padding-left:28px;padding-right:28px;}
+  .insight{margin-left:-28px;margin-right:-28px;padding:40px 28px;}
+  .img-block-body{flex-direction:column;} .twocol{grid-template-columns:1fr;}
+  .pnav{padding:16px 24px;}
+}
+@media(max-width:640px){
+  .notes-grid{grid-template-columns:1fr;} .shero-stats{gap:24px;}
+  .nbody{padding:32px 20px 48px;} .n-hero{padding:36px 20px 28px;}
+  .nv-hdr,.nv-body{padding-left:20px;padding-right:20px;}
+  .insight{margin-left:-20px;margin-right:-20px;padding:32px 20px;}
+}
+</style>
+</head>
+<body>
+<div class="toast" id="toast"></div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeBg(event)">
+  <div class="note-modal" id="modal">
+    <div class="mbar">
+      <div class="mbar-l"><div class="mpulse"></div><span class="mbc">OB/GYN — VENT</span></div>
+      <div class="mbar-r">
+        <div class="lang-toggle">
+          <button class="lbtn on" id="btn-en" onclick="setLang('en')">EN</button>
+          <button class="lbtn" id="btn-ar" onclick="setLang('ar')">AR</button>
+        </div>
+        <button class="mexpand" onclick="goFullPage()" title="Full page">⤢</button>
+        <button class="mclose" onclick="closeModal()">✕</button>
+      </div>
+    </div>
+    <div id="mcontent"></div>
+  </div>
+</div>
+
+<!-- FULL PAGE -->
+<div class="note-page" id="note-page">
+  <div class="pnav">
+    <button class="pnav-back" onclick="closeFullPage()">← Back to notes</button>
+    <div class="lang-toggle">
+      <button class="lbtn on" id="btn-en2" onclick="setLang('en')">EN</button>
+      <button class="lbtn" id="btn-ar2" onclick="setLang('ar')">AR</button>
+    </div>
+  </div>
+  <div class="page-inner" id="page-content"></div>
+</div>
+
+<!-- MAIN PAGE -->
+<div id="main-page">
+<nav>
+  <a href="vent-home.html" class="logo">
+    <svg width="40" height="40" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" stroke="#1a1510" stroke-width="1.5"/><path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M10 30 Q22 36 34 30" stroke="#1a1510" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="22" cy="10" r="2.5" fill="#c8452a"/></svg>
+    <span class="logo-name">Vent</span>
+  </a>
+  <a href="vent-home.html" class="nav-back">← Home</a>
+  <a href="index.html#waitlist" class="nav-pill">Join waitlist</a>
+</nav>
+
+<section class="shero">
+  <div class="shero-glow"></div>
+  <div class="shero-kick">Clinical Notes</div>
+  <h1 class="shero-h1">Obstetrics &amp;<br><em>Gynaecology</em></h1>
+  <p class="shero-desc">Six conditions. Built to make you understand — not memorise. The mechanism, the clinical framing, and the insight your textbook left out.</p>
+  <div class="shero-stats">
+    <div><div class="sv">6</div><div class="sl">Notes</div></div>
+    <div><div class="sv">EN/AR</div><div class="sl">Bilingual</div></div>
+    <div><div class="sv">4 min</div><div class="sl">Per note</div></div>
+  </div>
+</section>
+
+<section class="notes-sec">
+  <div class="ns-hdr reveal">
+    <h2 class="ns-h2">All <em>OB/GYN</em> notes</h2>
+    <p class="ns-sub">Open in overlay or expand to full page. Toggle EN/AR in any note.</p>
+    <div class="ns-filters">
+      <button class="filt on">All</button>
+      <button class="filt">Emergency</button>
+      <button class="filt">Antenatal</button>
+    </div>
+  </div>
+  <div class="notes-grid">
+    <div class="nc reveal" onclick="openNote('pph')">
+      <div class="nc-type">Emergency</div><div class="nc-num">Note 01</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Postpartum Haemorrhage</div>
+      <p class="nc-preview">The leading cause of maternal mortality. The 4 Ts, why BP is a late sign, and how to escalate without hesitation.</p>
+      <div class="nc-foot"><div class="nc-meta">4 Ts · Atony · Emergency</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" onclick="openNote('preeclampsia')">
+      <div class="nc-type">Antenatal</div><div class="nc-num">Note 02</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Preeclampsia</div>
+      <p class="nc-preview">Not a blood pressure problem. A disease of the placenta that raises BP. The distinction changes how you manage it entirely.</p>
+      <div class="nc-foot"><div class="nc-meta">HTN · HELLP · Magnesium</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" onclick="openNote('ectopic')">
+      <div class="nc-type">Emergency</div><div class="nc-num">Note 03</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Ectopic Pregnancy</div>
+      <p class="nc-preview">Ectopic until proven otherwise. What the triad is, the discriminatory zone, and what negative urine hCG actually rules out.</p>
+      <div class="nc-foot"><div class="nc-meta">hCG · Rupture · Ultrasound</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" onclick="openNote('placenta')">
+      <div class="nc-type">Antenatal</div><div class="nc-num">Note 04</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd"></div></div>
+      <div class="nc-title">Placenta Praevia</div>
+      <p class="nc-preview">Painless bright red bleeding in the third trimester. Why placental position determines route of delivery — and why you never do a VE.</p>
+      <div class="nc-foot"><div class="nc-meta">Bleeding · Caesarean</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" onclick="openNote('gdm')">
+      <div class="nc-type">Antenatal</div><div class="nc-num">Note 05</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd"></div></div>
+      <div class="nc-title">Gestational Diabetes</div>
+      <p class="nc-preview">Why hyperglycaemia in pregnancy endangers both mother and baby. The OGTT, thresholds, and why macrosomia is not just a big baby.</p>
+      <div class="nc-foot"><div class="nc-meta">OGTT · Macrosomia · Insulin</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" onclick="openNote('shoulder')">
+      <div class="nc-type">Emergency</div><div class="nc-num">Note 06</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Shoulder Dystocia</div>
+      <p class="nc-preview">The head delivers. The shoulders don't follow. Five minutes. HELPERR must be automatic — not recalled under pressure.</p>
+      <div class="nc-foot"><div class="nc-meta">HELPERR · McRoberts · Drill</div><div class="nc-arr">↗</div></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<script>
+let currentNote = null;
+let lang = 'en';
+
+function setLang(l) {
+  lang = l;
+  document.body.classList.toggle('ar-mode', l === 'ar');
+  ['btn-en','btn-en2'].forEach(id => { const el = document.getElementById(id); if(el) el.classList.toggle('on', l==='en'); });
+  ['btn-ar','btn-ar2'].forEach(id => { const el = document.getElementById(id); if(el) el.classList.toggle('on', l==='ar'); });
+}
+
+function openNote(id) {
+  currentNote = id;
+  const html = NOTES[id] ? NOTES[id]() : stub(id);
+  document.getElementById('mcontent').innerHTML = html;
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('modal').scrollTop = 0;
+  setLang('en');
+}
+function closeModal() {
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeBg(e) { if(e.target === document.getElementById('overlay')) closeModal(); }
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+function goFullPage() {
+  const html = NOTES[currentNote] ? NOTES[currentNote]() : stub(currentNote);
+  document.getElementById('page-content').innerHTML = html;
+  document.getElementById('note-page').classList.add('active');
+  document.getElementById('main-page').style.display = 'none';
+  closeModal();
+  window.scrollTo(0,0);
+  setLang('en');
+}
+function closeFullPage() {
+  document.getElementById('note-page').classList.remove('active');
+  document.getElementById('main-page').style.display = '';
+  window.scrollTo(0,0);
+}
+
+const NOTES = {};
+
+/* ═══════════════════
+   PPH
+═══════════════════ */
+NOTES.pph = () => `
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Obstetrics · Emergency · Note 01</div>
+  <div class="n-title">Postpartum<br>Haemorrhage</div>
+  <div class="n-oneliner">The moment you think it might be PPH — it already is. Act immediately.</div>
+  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">4 Ts framework</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+
+<div class="n-visual">
+  <div class="nv-hdr">
+    <span class="nv-title">The 4 Ts — bar width = incidence</span>
+    <span class="nv-sub">Assess all four simultaneously, never one by one</span>
+  </div>
+  <div class="nv-body">
+    <svg viewBox="0 0 760 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="320" height="190" rx="2" fill="#c8452a"/>
+      <text x="160" y="46" font-family="Syne,sans-serif" font-size="28" fill="white" text-anchor="middle" font-weight="800">TONE</text>
+      <rect x="30" y="56" width="260" height="20" rx="10" fill="rgba(255,255,255,.18)"/>
+      <text x="160" y="70" font-family="JetBrains Mono,monospace" font-size="10" fill="white" text-anchor="middle" font-weight="700">70% of all PPH</text>
+      <text x="160" y="104" font-family="JetBrains Mono,monospace" font-size="12" fill="rgba(255,255,255,.82)" text-anchor="middle">Uterine atony</text>
+      <text x="160" y="124" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.58)" text-anchor="middle">Soft, boggy, non-contracting uterus</text>
+      <text x="160" y="158" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.35)" text-anchor="middle">Feel the fundus first. Always.</text>
+      <rect x="328" y="22" width="188" height="168" rx="2" fill="#8a2818"/>
+      <text x="422" y="58" font-family="Syne,sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="800">TRAUMA</text>
+      <text x="422" y="78" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(255,255,255,.6)" text-anchor="middle">20%</text>
+      <text x="422" y="108" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(255,255,255,.8)" text-anchor="middle">Lacerations</text>
+      <text x="422" y="126" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.6)" text-anchor="middle">Uterine rupture</text>
+      <text x="422" y="166" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Uterus firm → still bleeding</text>
+      <rect x="524" y="48" width="116" height="142" rx="2" fill="#5a1810"/>
+      <text x="582" y="84" font-family="Syne,sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="800">TISSUE</text>
+      <text x="582" y="104" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(255,255,255,.6)" text-anchor="middle">9%</text>
+      <text x="582" y="132" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.72)" text-anchor="middle">Retained</text>
+      <text x="582" y="148" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.72)" text-anchor="middle">placenta</text>
+      <rect x="648" y="78" width="112" height="112" rx="2" fill="#1a1510" stroke="#c8452a" stroke-width="1.5"/>
+      <text x="704" y="108" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800">THROMBIN</text>
+      <text x="704" y="128" font-family="JetBrains Mono,monospace" font-size="12" fill="rgba(200,69,42,.9)" text-anchor="middle">1%</text>
+      <text x="704" y="152" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.45)" text-anchor="middle">DIC · HELLP</text>
+      <text x="704" y="168" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.32)" text-anchor="middle">No clot at IV</text>
+    </svg>
+  </div>
+</div>
+
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">Blood loss &gt;500 mL after vaginal delivery or &gt;1000 mL after caesarean. But the number is not the point.</div>
+    <div class="n-opener-body">
+      By the time you have measured 500 mL, she may have lost considerably more — <strong>estimation of blood loss is notoriously inaccurate, often half the actual volume.</strong> The real diagnosis is made clinically: tachycardia, a boggy uterus, ongoing visible bleeding. PPH is the leading cause of maternal mortality worldwide — and most deaths occur not from ignorance of the condition, but from hesitation in acting on it.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">Why blood pressure is a dangerously late sign</span><div class="shead-l"></div></div>
+
+  <div class="mech">
+    <div class="mech-label">The physiology behind the compensation</div>
+    <p>Pregnancy increases circulating blood volume by <strong>40–50%.</strong> This is protective for the fetus — but it means a postpartum woman has enormous compensatory reserve before her blood pressure falls. <strong>By the time BP drops, she has already lost ≥30% of her total circulating volume.</strong> Tachycardia is the first and most important warning sign. Never wait for BP to confirm what the heart rate is already telling you.</p>
+  </div>
+
+  <div class="box">
+    <div class="box-hdr"><div class="box-dot"></div><div class="box-label">Shock Index — use this, not BP alone</div></div>
+    <div class="box-body">
+      <strong>Heart rate ÷ Systolic BP.</strong> Normal is &lt;0.9. If &gt;1.0 → treat as major haemorrhage immediately, regardless of the BP number in isolation. A "normal" BP reading with ongoing bleeding and a rising heart rate is not reassurance — it is a countdown to decompensation.
+    </div>
+  </div>
+
+  <div class="nb">The 4 Ts framework is not a sequential checklist — it is a simultaneous assessment. While you are calling for help, you are already palpating the fundus. While blood is being drawn, you are starting uterotonics. Everything happens at the same time.</div>
+
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">Management ladder — escalate without hesitation</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">1</div>
+      <div class="pt-b">
+        <span class="pt-title">Call for help before you finish your assessment</span>
+        <div class="pt-body">Senior obstetrician, anaesthetist, theatre team. Two large-bore IVs simultaneously. FBC + coagulation screen + group and crossmatch — all at the same moment. Assign one person to document timing. Never manage PPH alone.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">2</div>
+      <div class="pt-b">
+        <span class="pt-title">Uterotonics — first line for atony (70% of cases)</span>
+        <div class="pt-body"><span class="drug">Oxytocin</span> 10 IU slow IV — never as a fast bolus (causes profound hypotension). Escalate to <span class="drug">Ergometrine</span> (avoid if hypertensive or cardiac disease) → <span class="drug">Carboprost</span> (contraindicated in asthma, give IM) → <span class="drug">Misoprostol</span> 800–1000 mcg PR as adjunct. Run through the uterotonic ladder fully before declaring failure.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">3</div>
+      <div class="pt-b">
+        <span class="pt-title">Tranexamic acid 1g IV — within 3 hours, no delay</span>
+        <div class="pt-body">The WOMAN trial demonstrated clear mortality reduction with tranexamic acid in PPH. Give within 3 hours of delivery — beyond this, evidence of benefit diminishes. If bleeding continues at 30 minutes, a second 1g dose should be given. This is one of the most evidence-backed interventions in obstetric emergency care.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">4</div>
+      <div class="pt-b">
+        <span class="pt-title">Bimanual uterine compression — buys time</span>
+        <div class="pt-body">One fist inside the vaginal fornix, one hand compressing the uterus from the abdomen. You are physically squeezing the open sinusoids shut between your hands. This is a temporising measure only — it buys time while uterotonics take effect. Do not mistake it for definitive treatment.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">5</div>
+      <div class="pt-b">
+        <span class="pt-title">Surgical escalation — each step is a decision, not a drift</span>
+        <div class="pt-body">Intrauterine balloon tamponade → B-Lynch compression suture → Uterine artery ligation → Interventional radiology embolisation → Hysterectomy. Do not drift between steps. Each one requires an active decision. Delay at any point costs blood volume you cannot afford to lose.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REAL IMAGE: uterine atony / management -->
+  <div class="img-block">
+    <div class="img-block-hdr">
+      <span class="img-block-title">Bimanual uterine compression — the technique</span>
+      <span class="img-block-label">Step 4 in practice</span>
+    </div>
+    <div class="img-block-body">
+      <div class="img-block-fig">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Uterine_bimanual_compression.jpg/640px-Uterine_bimanual_compression.jpg" alt="Bimanual uterine compression technique" onerror="this.parentElement.parentElement.style.display='none'">
+      </div>
+      <div class="img-block-text">
+        <h4>What you're actually doing</h4>
+        <ul>
+          <li><strong>Vaginal fist:</strong> Placed in the anterior fornix, pushing the uterus up</li>
+          <li><strong>Abdominal hand:</strong> Cups the posterior uterine wall from outside</li>
+          <li><strong>Compression:</strong> Squeeze both hands together — you're closing open sinusoids mechanically</li>
+          <li><strong>Hold firmly:</strong> Maintain until the uterus firms up or uterotonics take effect</li>
+          <li>This is <strong>not definitive treatment</strong> — it buys minutes, not hours</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <div class="warn-ico">⚠</div>
+    <div>
+      <div class="warn-lbl">Never do this</div>
+      <p><strong>No fundal pressure</strong> to expel the placenta or stop bleeding. It can invert the uterus — a catastrophic complication that is harder to manage than the original PPH. Fundal massage is correct. Fundal pressure downward is not.</p>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">iii</span><span class="shead-t">The 4 Ts in detail — what each one looks like clinically</span><div class="shead-l"></div></div>
+
+  <div class="twocol">
+    <div class="tcc shade">
+      <div class="tcc-lbl">Tone — 70%</div>
+      <div class="tcc-title">Atony</div>
+      <p class="tcc-body">The uterus is soft and boggy on palpation. It should feel firm and contracted — like a hard ball in the abdomen. If it doesn't, <strong>massage the fundus while starting oxytocin simultaneously.</strong> The physiology: 500–800 mL/min flows through the placental bed. The only thing stopping haemorrhage is the uterus contracting around those open vessels. When it fails — that blood flows freely.</p>
+    </div>
+    <div class="tcc">
+      <div class="tcc-lbl">Trauma — 20%</div>
+      <div class="tcc-title">Lacerations / Rupture</div>
+      <p class="tcc-body">The uterus is well-contracted but bleeding continues. Systematically inspect: cervix, vaginal walls, perineum, periurethral area. Use good lighting and an assistant to retract. <strong>Cervical lacerations are commonly missed</strong> — use ring forceps to systematically walk around the cervix. Uterine rupture presents with acute maternal collapse, fetal distress, and a palpable defect on bimanual.</p>
+    </div>
+    <div class="tcc">
+      <div class="tcc-lbl">Tissue — 9%</div>
+      <div class="tcc-title">Retained placenta / clot</div>
+      <p class="tcc-body">Is the placenta complete? Inspect membranes and placental cotyledons carefully — a missing cotyledon means retained tissue. A retained placenta that does not deliver within 30 minutes requires manual removal under anaesthesia. <strong>Retained clot also prevents the uterus from contracting</strong> — ensure the uterus is emptied before declaring atony treatment failure.</p>
+    </div>
+    <div class="tcc shade">
+      <div class="tcc-lbl">Thrombin — 1%</div>
+      <div class="tcc-title">Coagulopathy / DIC</div>
+      <p class="tcc-body">Look at the IV site — is blood clotting normally? No visible clot formation = coagulopathy until proven otherwise. This can be the cause (pre-existing or antepartum — abruption, IUFD, amniotic fluid embolism) or the consequence of massive haemorrhage consuming clotting factors. <strong>Fresh frozen plasma, cryoprecipitate, and platelets in a 1:1:1 ratio</strong> with packed red cells in massive transfusion.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">PPH most often follows <em>completely normal deliveries.</em></div>
+    <div class="ins-body">The high-risk patient is not always the complicated one. The grand multipara who just delivered her fifth baby quickly and easily — her exhausted uterus simply does not contract. The long labour with oxytocin augmentation. The woman who was fine five minutes ago. <strong>Never lower your vigilance after a straightforward delivery.</strong> Feel the uterus every 15 minutes postpartum. The moment it is soft and boggy — the clock has already started, and you are already behind.</div>
+  </div>
+
+  <div class="nfoot"><span class="ntag">Obstetrics</span><span class="ntag">Emergency</span><span class="ntag">4 Ts</span><span class="ntag">WOMAN trial</span><span class="ntag">Atony</span><span class="ntag">Shock Index</span><span class="ntime">⏱ 5 min</span></div>
+</div>`;
+
+/* ═══════════════════
+   SHOULDER DYSTOCIA
+═══════════════════ */
+NOTES.shoulder = () => `
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Obstetrics · Emergency Drill · Note 06</div>
+  <div class="n-title">Shoulder<br>Dystocia</div>
+  <div class="n-oneliner">The head delivers. The shoulders don't follow. You have five minutes. HELPERR must be in your hands before you ever enter a delivery room.</div>
+  <div class="n-badges"><span class="nbadge">Emergency drill</span><span class="nbadge">HELPERR</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+
+<div class="n-visual">
+  <div class="nv-hdr">
+    <span class="nv-title">HELPERR — every step in this exact order</span>
+    <span class="nv-sub">Do not skip · Do not pull · Traction = Erb's palsy</span>
+  </div>
+  <div class="nv-body">
+    <svg viewBox="0 0 760 294" fill="none" xmlns="http://www.w3.org/2000/svg">
+      ${[
+        ['H','Help','Call for help immediately — announce "shoulder dystocia" out loud to the room','#c8452a'],
+        ['E','Evaluate for episiotomy','Only if needed for manual access to the shoulder — not routine','#982016'],
+        ['L','Legs — McRoberts manoeuvre','Hyperflexion of thighs onto abdomen — resolves 40–50% of cases alone','#741610'],
+        ['P','Pressure — suprapubic only','Downward &amp; lateral on posterior aspect of anterior shoulder. Never fundal pressure.','#541008'],
+        ['E','Enter — rotational manoeuvres','Rubin II + Woods screw — adduct shoulder, reduce bisacromial diameter','#3a0a06'],
+        ['R','Remove the posterior arm','Sweep posterior arm across fetal chest, deliver hand first','#2a1010'],
+        ['R','Roll — all fours (Gaskin)','Hands and knees position — gravity may alone free the impacted shoulder','#1a1510'],
+      ].map(([l,w,d,c],i) => `
+        <rect x="0" y="${i*42}" width="760" height="40" rx="1" fill="${c}" ${c==='#1a1510'?'stroke="#c8452a" stroke-width="1"':''}/>
+        <text x="18" y="${i*42+27}" font-family="Instrument Serif,serif" font-size="22" fill="rgba(255,255,255,0.14)" font-style="italic" font-weight="bold">${l}</text>
+        <text x="52" y="${i*42+16}" font-family="Syne,sans-serif" font-size="13" fill="white" font-weight="700">${w}</text>
+        <text x="52" y="${i*42+30}" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,0.48)">${d}</text>
+        <text x="748" y="${i*42+24}" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,0.14)" text-anchor="end">${i+1}</text>
+      `).join('')}
+    </svg>
+  </div>
+</div>
+
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">The anterior shoulder is impacted behind the symphysis pubis. This is a mechanical problem — and traction makes it worse.</div>
+    <div class="n-opener-body">
+      After the fetal head delivers, the bisacromial diameter — the distance across the fetal shoulders — is too wide to pass through the pelvic outlet at its current angle and position. The anterior shoulder catches on the underside of the maternal symphysis pubis and cannot descend further. <strong>The instinct is to apply more traction. This is exactly the wrong response.</strong> Downward traction on the fetal head when the shoulder is impacted stretches the brachial plexus (C5–C6 nerve roots) — and this is how Erb's palsy is caused. Every single manoeuvre in HELPERR works by changing the geometry of the pelvis or the orientation of the fetal shoulders. Not by force. By geometry.
+    </div>
+  </div>
+
+  <!-- REAL IMAGE: HELPERR / shoulder dystocia -->
+  <div class="img-block" style="margin-bottom:36px;">
+    <div class="img-block-hdr">
+      <span class="img-block-title">Shoulder dystocia — the impaction explained</span>
+      <span class="img-block-label">Why traction fails</span>
+    </div>
+    <div class="img-block-single">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Shoulder_dystocia.jpg/640px-Shoulder_dystocia.jpg" alt="Shoulder dystocia impaction diagram" onerror="this.style.display='none'">
+      <div class="img-caption">ANTERIOR SHOULDER IMPACTED BEHIND SYMPHYSIS PUBIS — the mechanical problem HELPERR solves</div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">McRoberts — why it should be first and why it works</span><div class="shead-l"></div></div>
+
+  <div class="mech">
+    <div class="mech-label">The biomechanics</div>
+    <p>Hyperflexing both maternal thighs sharply onto the abdomen does two things simultaneously: it <strong>flattens the lumbar lordosis</strong>, which straightens the sacrum relative to the lumbar spine, and it <strong>rotates the symphysis pubis superiorly</strong> — effectively lifting it up and over the impacted shoulder. This increases the functional AP diameter of the pelvic outlet. The net effect: what was stuck has room to pass. McRoberts alone resolves 40–50% of shoulder dystocia cases, and combined with suprapubic pressure, the figure rises to over 50–60%.</p>
+  </div>
+
+  <!-- REAL IMAGE: McRoberts -->
+  <div class="img-block">
+    <div class="img-block-hdr">
+      <span class="img-block-title">McRoberts manoeuvre in practice</span>
+      <span class="img-block-label">First-line · Resolves ~50% of cases</span>
+    </div>
+    <div class="img-block-body">
+      <div class="img-block-fig">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/McRoberts_maneuver.jpg/480px-McRoberts_maneuver.jpg" alt="McRoberts maneuver" onerror="this.src='https://www.aafp.org/content/dam/AAFP/images/journals/afp/2004/0401/1707fig1.jpg';this.onerror=null;">
+      </div>
+      <div class="img-block-text">
+        <h4>How to perform McRoberts correctly</h4>
+        <ul>
+          <li><strong>Two assistants needed</strong> — one on each leg</li>
+          <li>Flex both thighs <strong>sharply</strong> onto the abdomen — this is more extreme than you think</li>
+          <li>Hold at the back of the thigh, not the foot (foot-hold is less effective and causes ankle pain)</li>
+          <li>Simultaneously, a third person applies <strong>suprapubic pressure</strong> — downward and laterally toward the fetal face</li>
+          <li><strong>Never fundal pressure</strong> — wedges shoulder deeper, risks uterine rupture</li>
+          <li>Call the time — if no delivery in 30 seconds, move to Enter</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">If McRoberts fails — Enter: rotational manoeuvres</span><div class="shead-l"></div></div>
+
+  <div class="nb">Rotational manoeuvres work by adducting the shoulder — reducing the bisacromial diameter so it fits through the pelvis in the oblique diameter (which is wider than the AP diameter). You are solving a geometry problem, not a strength problem.</div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">E1</div>
+      <div class="pt-b">
+        <span class="pt-title">Rubin II — push the anterior shoulder forward</span>
+        <div class="pt-body">Reach vaginally and apply pressure to the <strong>posterior aspect of the anterior shoulder</strong>, pushing it toward the fetal chest. This adducts the shoulder — reducing the bisacromial diameter — and rotates it obliquely into the wider oblique pelvic diameter. This is the most consistently effective internal manoeuvre.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">E2</div>
+      <div class="pt-b">
+        <span class="pt-title">Woods screw — rotate from the posterior shoulder</span>
+        <div class="pt-body">Apply pressure to the <strong>anterior aspect of the posterior shoulder</strong>, rotating it in the same direction as Rubin II. When combined (Rubin II + Woods = the corkscrew manoeuvre), both shoulders rotate together around the long axis of the fetus like a screw — this is the most powerful rotational combination available.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">R1</div>
+      <div class="pt-b">
+        <span class="pt-title">Remove the posterior arm — highest success rate of all manoeuvres</span>
+        <div class="pt-body">Reach posteriorly into the sacral hollow, locate the posterior arm, sweep it across the fetal chest, and deliver the hand and forearm first. This effectively converts a two-shoulder delivery into a one-shoulder delivery — the bisacromial diameter collapses. Studies show posterior arm delivery has the highest success rate (~86%) of any individual manoeuvre.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REAL IMAGE: rotational manoeuvres -->
+  <div class="img-block">
+    <div class="img-block-hdr">
+      <span class="img-block-title">HELPERR mnemonic — the full algorithm visualised</span>
+      <span class="img-block-label">Know this before your first delivery</span>
+    </div>
+    <div class="img-block-single">
+      <img src="https://i.pinimg.com/originals/36/4d/a2/364da2b2e3e2e3c3e3c3e3c3e3c3e3c3.jpg" alt="HELPERR shoulder dystocia algorithm" onerror="this.src='https://www.aafp.org/content/dam/AAFP/images/journals/afp/2004/0401/1707fig2.jpg';this.onerror=null;this.style.display='none'">
+      <div class="img-caption">HELPERR ALGORITHM — ADVANCED LIFE SUPPORT IN OBSTETRICS (ALSO) COURSE</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <div class="warn-ico">⚠</div>
+    <div>
+      <div class="warn-lbl">This is how Erb's palsy happens — document everything</div>
+      <p><strong>Excessive lateral traction on the fetal head</strong> stretches the brachial plexus (C5–C6). The result: the classic waiter's tip posture — arm hanging by the side, internally rotated, elbow extended, wrist flexed. Over 90% resolve within one year, but 5–8% are permanent. If shoulder dystocia occurs, document: time of impaction, time of delivery, every manoeuvre used, direction and estimate of traction applied. This documentation matters legally and clinically.</p>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">iii</span><span class="shead-t">After delivery — what to anticipate</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">1</div>
+      <div class="pt-b">
+        <span class="pt-title">PPH risk doubles — be ready before the placenta delivers</span>
+        <div class="pt-body">Prolonged second stage, uterine exhaustion from the emergency, and lacerations from internal manoeuvres all combine to dramatically increase PPH risk. Actively manage the third stage with <span class="drug">Oxytocin</span>. Inspect every centimetre of the perineum, vagina, and cervix carefully. Have blood products available before they are needed.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">2</div>
+      <div class="pt-b">
+        <span class="pt-title">Neonatal assessment — cord blood gas mandatory</span>
+        <div class="pt-body">Hypoxic brain injury begins after 5–7 minutes of impaction. Cord blood gas (arterial and venous) must be taken immediately. The neonatal team should be in the room for any high-risk delivery and must be called immediately when shoulder dystocia is announced. Document the head-to-body delivery interval — this is the key medicolegal and clinical data point.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">3</div>
+      <div class="pt-b">
+        <span class="pt-title">Debrief the team and document in full</span>
+        <div class="pt-body">Shoulder dystocia is one of the highest-risk events for litigation in obstetrics. Document everything: time of diagnosis, every manoeuvre, who performed it, time of delivery, neonatal condition, blood loss. A contemporaneous, detailed record is both good clinical practice and the best medico-legal protection available.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">The mistake is not failing to recall HELPERR. <em>It's pulling while recalling it.</em></div>
+    <div class="ins-body">In the panic of shoulder dystocia, instinct is traction — more traction, frantic traction. <strong>The first and hardest clinical skill is to stop your hands.</strong> Announce "shoulder dystocia" loud and clearly. Call for help. Then HELPERR, in order, calmly and deliberately. McRoberts alone resolves half of all cases. The problem is geometry, not force. You cannot pull your way out of this. But you can rotate your way out of it every time — if you stop pulling long enough to try.</div>
+  </div>
+
+  <div class="nfoot"><span class="ntag">Shoulder Dystocia</span><span class="ntag">HELPERR</span><span class="ntag">McRoberts</span><span class="ntag">Erb's palsy</span><span class="ntag">Rubin II</span><span class="ntag">Woods screw</span><span class="ntime">⏱ 5 min</span></div>
+</div>`;
+
+/* ═══════════════════
+   PREECLAMPSIA
+═══════════════════ */
+NOTES.preeclampsia = () => `
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Obstetrics · Antenatal · Note 02</div>
+  <div class="n-title">Preeclampsia</div>
+  <div class="n-oneliner">Not a blood pressure problem. A disease of the placenta that happens to cause hypertension — and that distinction changes everything.</div>
+  <div class="n-badges"><span class="nbadge">Antenatal</span><span class="nbadge">HELLP</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+
+<div class="n-visual">
+  <div class="nv-hdr">
+    <span class="nv-title">Pathophysiology cascade — everything from defective placentation</span>
+    <span class="nv-sub">Understanding this is the whole note</span>
+  </div>
+  <div class="nv-body">
+    <svg viewBox="0 0 760 268" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="230" y="0" width="300" height="46" rx="2" fill="#2a6b6e"/>
+      <text x="380" y="20" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="700">Abnormal placentation</text>
+      <text x="380" y="38" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,0.58)" text-anchor="middle">Defective trophoblast invasion · spiral arteries stay narrow</text>
+      <text x="380" y="58" font-family="Syne,sans-serif" font-size="14" fill="rgba(245,242,235,0.22)" text-anchor="middle">↓</text>
+      <rect x="190" y="64" width="380" height="44" rx="2" fill="#3a5a6e"/>
+      <text x="380" y="84" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="700">↓ Uteroplacental perfusion</text>
+      <text x="380" y="100" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,0.53)" text-anchor="middle">Placental ischaemia · oxidative stress · antiangiogenic factors released</text>
+      <text x="380" y="120" font-family="Syne,sans-serif" font-size="14" fill="rgba(245,242,235,0.22)" text-anchor="middle">↓</text>
+      <rect x="130" y="126" width="500" height="44" rx="2" fill="#7a3060"/>
+      <text x="380" y="146" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="700">↑ sFlt-1 · ↓ PlGF circulate systemically</text>
+      <text x="380" y="162" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,0.53)" text-anchor="middle">Binds and neutralises VEGF → endothelial injury throughout maternal body</text>
+      <text x="380" y="182" font-family="Syne,sans-serif" font-size="14" fill="rgba(245,242,235,0.22)" text-anchor="middle">↓</text>
+      <rect x="40" y="188" width="680" height="52" rx="2" fill="#c8452a"/>
+      <text x="380" y="212" font-family="Syne,sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="800">Systemic endothelial dysfunction</text>
+      <text x="380" y="230" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,0.7)" text-anchor="middle">Vasoconstriction · Proteinuria · Oedema · Organ failure · HELLP · Eclampsia</text>
+      <line x1="380" y1="240" x2="96" y2="256" stroke="rgba(245,242,235,0.12)" stroke-width="1"/>
+      <line x1="380" y1="240" x2="280" y2="256" stroke="rgba(245,242,235,0.12)" stroke-width="1"/>
+      <line x1="380" y1="240" x2="480" y2="256" stroke="rgba(245,242,235,0.12)" stroke-width="1"/>
+      <line x1="380" y1="240" x2="664" y2="256" stroke="rgba(245,242,235,0.12)" stroke-width="1"/>
+      <text x="96" y="268" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(245,242,235,0.35)" text-anchor="middle">HTN</text>
+      <text x="280" y="268" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(245,242,235,0.35)" text-anchor="middle">Proteinuria</text>
+      <text x="480" y="268" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(245,242,235,0.35)" text-anchor="middle">HELLP / Eclampsia</text>
+      <text x="664" y="268" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(245,242,235,0.35)" text-anchor="middle">Fetal growth ↓</text>
+    </svg>
+  </div>
+</div>
+
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">HTN ≥140/90 after 20 weeks, plus proteinuria or end-organ damage. But the definition tells you nothing about what to do.</div>
+    <div class="n-opener-body">
+      Preeclampsia begins weeks before any clinical sign appears — in the placenta, at the time of implantation. Defective trophoblast invasion means the spiral arteries fail to properly dilate. The placenta becomes ischaemic, releases antiangiogenic factors (primarily sFlt-1), and those factors circulate throughout the maternal body, damaging endothelial cells everywhere. <strong>The hypertension is a symptom of endothelial injury. The endothelial dysfunction is the disease.</strong> This distinction is not academic — it determines every management decision. You cannot cure preeclampsia by lowering blood pressure. You can only cure it by removing the placenta.
+    </div>
+  </div>
+
+  <!-- IMAGE: preeclampsia pathophysiology -->
+  <div class="img-block">
+    <div class="img-block-hdr">
+      <span class="img-block-title">Preeclampsia — the placental origin</span>
+      <span class="img-block-label">Normal vs defective placentation</span>
+    </div>
+    <div class="img-block-single">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Preeclampsia_-_Pathophysiology.jpg/640px-Preeclampsia_-_Pathophysiology.jpg" alt="Preeclampsia pathophysiology" onerror="this.style.display='none'">
+      <div class="img-caption">NORMAL: SPIRAL ARTERIES DILATE → HIGH FLOW, LOW RESISTANCE · PREECLAMPSIA: ARTERIES STAY NARROW → ISCHAEMIA → sFlt-1 RELEASE</div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">Diagnosis — know every threshold</span><div class="shead-l"></div></div>
+
+  <div class="box">
+    <div class="box-hdr"><div class="box-dot"></div><div class="box-label">Diagnostic criteria — all of these must be known</div></div>
+    <div class="box-body">
+      <strong>Hypertension:</strong> ≥140/90 mmHg on two readings at least 4 hours apart after 20 weeks gestation.<br><br>
+      <strong>Plus ONE of:</strong>
+      <ul>
+        <li>Proteinuria ≥300 mg/24h, or protein:creatinine ratio ≥30 mg/mmol, or dipstick ≥2+</li>
+        <li>Thrombocytopaenia &lt;100 × 10⁹/L</li>
+        <li>Renal impairment: creatinine &gt;90 μmol/L or doubling of baseline</li>
+        <li>Liver involvement: LFTs twice normal or severe RUQ/epigastric pain</li>
+        <li>New-onset headache unresponsive to medication, or visual symptoms</li>
+        <li>Pulmonary oedema</li>
+      </ul>
+      <br><strong>Critical point:</strong> Severe features can develop without proteinuria. The absence of protein in the urine does NOT exclude preeclampsia or its severe complications.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">Severe features — any one changes management immediately</span><div class="shead-l"></div></div>
+
+  <div class="nb">The moment any severe feature is present, the clinical situation has escalated. Expedite delivery — do not wait for more features to accumulate. That is how patients deteriorate catastrophically.</div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">CNS</div>
+      <div class="pt-b">
+        <span class="pt-title">Persistent headache + visual disturbance — eclampsia is imminent</span>
+        <div class="pt-body">Headache not responding to paracetamol, visual changes (scotomata, blurring, photopsia), or altered consciousness. Start <span class="drug">MgSO₄</span> now — do not wait for a seizure to occur. A seizure in a woman with preeclampsia means eclampsia, and it carries 1–2% maternal mortality.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">LFT</div>
+      <div class="pt-b">
+        <span class="pt-title">Epigastric / RUQ pain → suspect HELLP</span>
+        <div class="pt-body">Liver capsule distension from haematoma or oedema. Check LFTs, platelets, and blood film urgently. HELLP (Haemolysis, Elevated Liver enzymes, Low Platelets) can occur without significant hypertension and can deteriorate rapidly to hepatic rupture — a surgical emergency with very high mortality.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">PLT</div>
+      <div class="pt-b">
+        <span class="pt-title">Platelets &lt;100 × 10⁹/L — and watch the trend</span>
+        <div class="pt-body">Monitor the trend, not just the single value. Platelets &lt;50 × 10⁹/L → epidural contraindicated. Platelets &lt;20 × 10⁹/L → risk of spontaneous intracranial haemorrhage. Transfuse proactively. In HELLP, haemolysis + elevated LFTs + low platelets is the triad — any two should trigger the third investigation.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">Cr</div>
+      <div class="pt-b">
+        <span class="pt-title">Creatinine &gt;90 μmol/L or rising — this is AKI in pregnancy</span>
+        <div class="pt-body">GFR increases by 40–50% in normal pregnancy, so baseline creatinine is lower than in non-pregnant women (typically 50–70 μmol/L). A value of 90 μmol/L that would be normal in a non-pregnant person is already significantly elevated in pregnancy. Watch the trend carefully — a rising creatinine indicates worsening endothelial damage in the renal vasculature.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">iii</span><span class="shead-t">Management — the goal at every step</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">1</div>
+      <div class="pt-b">
+        <span class="pt-title">Antihypertensives when BP ≥150/100 — target 135/85</span>
+        <div class="pt-body">First-line oral: <span class="drug">Labetalol</span> 200mg or modified-release <span class="drug">Nifedipine</span> 10mg. IV options: <span class="drug">Labetalol</span> infusion or <span class="drug">Hydralazine</span> boluses. Avoid <span class="drug">ACE inhibitors</span> and <span class="drug">ARBs</span> — fetotoxic. The target is 135/85 — not lower. Reducing BP too aggressively impairs uteroplacental perfusion and worsens fetal outcome. <strong>You are preventing maternal stroke. You are not treating the disease.</strong></div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">2</div>
+      <div class="pt-b">
+        <span class="pt-title">Magnesium sulphate — any severe feature → give it</span>
+        <div class="pt-body">Loading dose: 4g IV over 15–20 minutes. Maintenance: 1g/hr infusion. Monitor three things continuously: <strong>reflexes</strong> (loss of patellar reflex at 7–10 mmol/L precedes respiratory depression), <strong>urine output</strong> (&gt;25 mL/hr — magnesium is renally cleared), <strong>respiratory rate</strong> (&gt;12/min). Antidote: <span class="drug">Calcium gluconate</span> 10 mL of 10% IV over 3 minutes — keep it drawn up at the bedside.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">3</div>
+      <div class="pt-b">
+        <span class="pt-title">Corticosteroids — &lt;34 weeks with delivery anticipated</span>
+        <div class="pt-body"><span class="drug">Betamethasone</span> 12mg IM, two doses 24 hours apart — promotes fetal lung surfactant production. Reduces neonatal RDS, IVH, and necrotising enterocolitis significantly. Do not delay delivery for steroid course completion if the maternal clinical picture is deteriorating — maternal safety takes priority.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">4</div>
+      <div class="pt-b">
+        <span class="pt-title">Delivery — the only cure. Timing depends on gestation and severity.</span>
+        <div class="pt-body">≥37 weeks: deliver. Severe features at any gestation: expedite delivery. 34–36 weeks: individualise based on maternal severity vs fetal maturity — discussion with senior. &lt;34 weeks without severe features: close monitoring may allow conservative management with daily assessment. Route depends on cervical favourability — most preeclamptic women do not require caesarean section.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">Antihypertensives buy time. <em>Delivery cures.</em></div>
+    <div class="ins-body">Every student memorises the antihypertensive protocol and thinks they understand preeclampsia. They don't — not yet. <strong>The placenta is the source. Until it is delivered, the sFlt-1 continues to circulate, and the endothelium continues to be damaged.</strong> The moment the placenta delivers, the antiangiogenic signal stops. The endothelium begins to heal. The blood pressure — over hours to days — normalises on its own without any further intervention. Understand this, and every management decision becomes obvious: antihypertensives are a bridge to delivery, not a treatment. And delivery is not a last resort. It is the therapy.</div>
+  </div>
+
+  <div class="nfoot"><span class="ntag">Preeclampsia</span><span class="ntag">HELLP</span><span class="ntag">MgSO₄</span><span class="ntag">sFlt-1</span><span class="ntag">Severe features</span><span class="ntag">Delivery</span><span class="ntime">⏱ 5 min</span></div>
+</div>`;
+
+/* STUBS */
+function stub(id) {
+  const data = {
+    ectopic: { title: 'Ectopic Pregnancy', sub: 'Ectopic until proven otherwise. The triad, risk factors, the discriminatory zone, and what a negative urine hCG does and does not rule out.' },
+    placenta: { title: 'Placenta Praevia', sub: 'Painless bright red bleeding in the third trimester. Why placental position determines everything — including why you never perform a vaginal examination.' },
+    gdm: { title: 'Gestational Diabetes', sub: 'The OGTT thresholds, why hyperglycaemia in pregnancy endangers both mother and baby, and why macrosomia is not just a big baby problem.' }
+  };
+  const d = data[id] || { title: 'Note', sub: '' };
+  return `<div class="n-hero"><div class="nhero-glow"></div><div class="n-rule"></div><div class="n-tag">OB/GYN · In progress</div>
+<div class="n-title">${d.title}</div><div class="n-oneliner">${d.sub}</div>
+<div class="n-badges"><span class="nbadge">Coming soon</span><span class="nbadge">EN / AR</span></div></div>
+<div class="nbody"><div class="n-opener"><div class="n-opener-kicker">In progress</div>
+<div class="n-opener-hl">This note is being built to the same standard.</div>
+<div class="n-opener-body">${d.sub} Every note on Vent earns its place before going live.</div></div>
+<div class="insight"><div class="ins-kicker">Vent promise</div><div class="ins-hl">We'd rather give you nothing <em>than something half-built.</em></div>
+<div class="ins-body">The whole premise is understanding, not information. If we can't build it to that standard, it doesn't ship.</div></div>
+<div class="nfoot"><span class="ntag">${d.title}</span><span class="ntag">Coming soon</span><span class="ntime">⏱ In progress</span></div></div>`;
+}
+
+/* REVEAL */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:.08, rootMargin:'0px 0px -24px 0px'});
+document.querySelectorAll('.reveal').forEach((el,i) => {
+  const p = el.closest('.notes-grid');
+  if(p) { const idx = Array.from(p.children).indexOf(el); if(idx>-1) el.style.transitionDelay = idx*.08+'s'; }
+  obs.observe(el);
+});
+document.querySelectorAll('.filt').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filt').forEach(b => b.classList.remove('on'));
+    this.classList.add('on');
+  });
+});
+</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VENT — Ophthalmology Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f2eb;--bg2:#ede9e0;--bg3:#e4dfd4;--ink:#1a1510;--ink2:#3d3628;--ink3:#7a6f5e;--ink4:#b5a898;--accent:#c8452a;--accent2:#e85d3f;--teal:#2a6b6e;--border:#d8d2c6;--white:#faf8f4;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;cursor:none;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;opacity:.5;}
+#cdot{position:fixed;width:8px;height:8px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform .15s ease;}
+#cring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(200,69,42,.35);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s;}
+#cdot.big{transform:translate(-50%,-50%) scale(2.4);}
+#cring.big{width:54px;height:54px;border-color:rgba(200,69,42,.65);}
+
+/* ARABIC */
+.ar{display:none;}
+.en{display:block;}
+body.arabic .ar{display:block;}
+body.arabic .en{display:none;}
+body.arabic .note-modal{direction:rtl;}
+body.arabic .ar{font-family:'Noto Naskh Arabic',serif;line-height:1.95;font-size:15.5px;}
+.drug{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--bg2);padding:1px 6px;border-radius:3px;direction:ltr;display:inline-block;color:var(--ink2);}
+
+/* LANG TOGGLE */
+.lang-toggle{display:flex;align-items:center;gap:2px;background:rgba(245,242,235,.08);border:1px solid rgba(245,242,235,.15);border-radius:100px;padding:3px;}
+.lang-btn{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;color:rgba(245,242,235,.4);padding:6px 14px;border-radius:100px;border:none;background:none;cursor:pointer;transition:all .2s;}
+.lang-btn.on{background:var(--accent);color:white;}
+
+/* MODAL */
+.overlay{position:fixed;inset:0;background:rgba(10,7,4,.9);backdrop-filter:blur(12px);z-index:10000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:16px;}
+.overlay.open{opacity:1;pointer-events:all;}
+.note-modal{background:var(--white);max-width:920px;width:100%;max-height:94vh;overflow-y:auto;border-radius:2px;transform:translateY(28px) scale(.97);transition:transform .4s cubic-bezier(.16,1,.3,1);box-shadow:0 60px 120px rgba(0,0,0,.6);scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+.overlay.open .note-modal{transform:translateY(0) scale(1);}
+.note-modal::-webkit-scrollbar{width:3px;}
+.note-modal::-webkit-scrollbar-thumb{background:var(--border);}
+.modal-bar{position:sticky;top:0;background:var(--ink);padding:14px 28px;display:flex;justify-content:space-between;align-items:center;z-index:5;border-bottom:1px solid rgba(255,255,255,.06);}
+.modal-left{display:flex;align-items:center;gap:12px;}
+.mpulse{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s ease infinite;flex-shrink:0;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.mbc{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:rgba(245,242,235,.35);text-transform:uppercase;}
+.modal-right{display:flex;align-items:center;gap:12px;}
+.mclose{width:30px;height:30px;background:rgba(255,255,255,.07);border:none;border-radius:50%;color:rgba(255,255,255,.5);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.mclose:hover{background:var(--accent);color:white;}
+
+/* NOTE COVER */
+.ncover{background:var(--ink);padding:52px 48px 44px;position:relative;overflow:hidden;}
+.ncover-glow{position:absolute;right:-80px;top:-80px;width:360px;height:360px;background:radial-gradient(circle,rgba(200,69,42,.14),transparent 70%);pointer-events:none;}
+.ncover-rule{width:36px;height:2px;background:var(--accent);margin-bottom:20px;}
+.ncover-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:14px;}
+.ncover-title{font-family:'Instrument Serif',serif;font-size:clamp(36px,5vw,58px);font-weight:400;color:var(--white);line-height:.95;margin-bottom:20px;}
+.ncover-sub{font-size:15px;color:rgba(245,242,235,.45);line-height:1.7;max-width:520px;margin-bottom:28px;}
+.nbadges{display:flex;gap:8px;flex-wrap:wrap;}
+.nbadge{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(245,242,235,.38);background:rgba(245,242,235,.06);border:1px solid rgba(245,242,235,.1);padding:4px 12px;border-radius:100px;}
+
+/* NOTE BODY */
+.nbody{padding:0 48px 64px;background:var(--white);}
+
+/* PULL QUOTE */
+.pq{margin:44px -48px 0;padding:28px 48px;background:var(--ink);border-left:4px solid var(--accent);}
+.pq p{font-family:'Instrument Serif',serif;font-size:20px;color:var(--white);line-height:1.6;font-style:italic;}
+.pq p strong{color:var(--accent2);font-style:normal;}
+.pq-src{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.22);letter-spacing:2px;text-transform:uppercase;margin-top:10px;}
+
+/* SECTION HEAD */
+.sh{display:flex;align-items:center;gap:14px;margin:44px 0 20px;}
+.sh-n{font-family:'Instrument Serif',serif;font-size:13px;font-style:italic;color:var(--accent);width:20px;flex-shrink:0;}
+.sh-t{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink);}
+.sh-l{flex:1;height:1px;background:var(--border);}
+
+/* BODY TEXT */
+.nt{font-size:15px;color:var(--ink3);line-height:1.8;margin-bottom:20px;}
+.nt strong{color:var(--ink);font-weight:600;}
+.nt em{font-style:italic;color:var(--ink2);}
+
+/* ILLUS PANEL */
+.illus{margin:28px -48px;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:36px 48px;position:relative;}
+.illus::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent);}
+.illus-hdr{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px;}
+.illus-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink);}
+.illus-sub{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ink4);}
+
+/* INSET */
+.inset{float:right;width:256px;margin:0 0 20px 28px;background:var(--bg2);border:1px solid var(--border);padding:18px;clear:right;}
+.inset::after{content:'';display:table;clear:both;}
+.inset-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:8px;}
+.inset-val{font-family:'Instrument Serif',serif;font-size:26px;color:var(--ink);line-height:1;margin-bottom:6px;}
+.inset-desc{font-size:12px;color:var(--ink3);line-height:1.5;}
+
+/* TWO COL */
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:24px 0;background:var(--border);}
+.tcc{padding:24px;background:var(--white);}
+.tcc.shaded{background:var(--bg2);}
+.tcc-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--ink4);text-transform:uppercase;margin-bottom:10px;}
+.tcc-title{font-family:'Instrument Serif',serif;font-size:18px;color:var(--ink);margin-bottom:10px;}
+.tcc p{font-size:13px;color:var(--ink3);line-height:1.65;}
+.tcc p strong{color:var(--ink);}
+
+/* STEPS */
+.steps{display:flex;flex-direction:column;margin:20px 0;}
+.step{display:grid;grid-template-columns:52px 1fr;border-bottom:1px solid var(--border);transition:all .2s;}
+.step:first-child{border-top:1px solid var(--border);}
+.step:hover .step-n{background:var(--accent);}
+.step:hover .step-b{background:var(--bg3);}
+.step-n{background:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:22px;font-style:italic;color:var(--accent);transition:all .2s;}
+.step-b{padding:18px 22px;background:var(--bg2);transition:background .2s;}
+.step-b strong{font-size:14px;font-weight:700;color:var(--ink);display:block;margin-bottom:4px;}
+.step-b span{font-size:13px;color:var(--ink3);line-height:1.6;}
+
+/* WARNING */
+.warn{background:#fff8f6;border:1px solid #f0c4b8;border-left:3px solid var(--accent);padding:18px 22px;margin:24px 0;display:flex;gap:14px;}
+.warn-icon{font-size:16px;flex-shrink:0;margin-top:2px;}
+.warn-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:6px;}
+.warn p{font-size:13px;color:var(--ink2);line-height:1.65;}
+.warn p strong{color:var(--accent);}
+
+/* INSIGHT */
+.insight{margin:28px -48px 0;background:var(--ink);padding:36px 48px;position:relative;overflow:hidden;}
+.insight::after{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(200,69,42,.07),transparent 70%);}
+.ins-eye{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.ins-eye::before{content:'//';color:rgba(200,69,42,.4);}
+.ins-q{font-family:'Instrument Serif',serif;font-size:20px;color:var(--white);line-height:1.6;font-style:italic;position:relative;z-index:1;}
+.ins-q strong{color:var(--accent2);font-style:normal;}
+
+/* NOTE FOOTER */
+.nfooter{padding:28px 0 0;border-top:1px solid var(--border);margin-top:44px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.ntag{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ink4);background:var(--bg2);border:1px solid var(--border);padding:4px 10px;border-radius:100px;}
+.ntime{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ink4);margin-left:auto;}
+
+/* PAGE */
+nav{display:flex;justify-content:space-between;align-items:center;padding:24px 60px;position:sticky;top:0;z-index:500;background:rgba(245,242,235,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.logo-name{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;letter-spacing:4px;color:var(--ink);}
+.nav-back{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink3);text-decoration:none;letter-spacing:1px;transition:color .2s;}
+.nav-back:hover{color:var(--ink);}
+.nav-cta{background:var(--ink);color:var(--bg);padding:10px 22px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border-radius:100px;transition:all .2s;}
+.nav-cta:hover{background:var(--accent);}
+
+.spec-hero{background:var(--ink);padding:80px 60px 60px;position:relative;overflow:hidden;}
+.sh-glow{position:absolute;right:-100px;top:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(200,69,42,.1),transparent 70%);pointer-events:none;}
+.sh-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+.sh-tag::before{content:'';width:24px;height:1px;background:var(--accent);}
+.sh-ttl{font-family:'Instrument Serif',serif;font-size:clamp(48px,7vw,88px);font-weight:400;color:var(--white);line-height:.95;margin-bottom:24px;}
+.sh-ttl em{font-style:italic;color:var(--accent2);}
+.sh-desc{font-size:16px;color:rgba(245,242,235,.45);line-height:1.7;max-width:560px;margin-bottom:40px;}
+.sh-stats{display:flex;gap:48px;}
+.sh-sv{font-family:'Instrument Serif',serif;font-size:40px;color:var(--accent);line-height:1;}
+.sh-sl{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(245,242,235,.3);letter-spacing:1px;margin-top:4px;}
+
+.notes-wrap{padding:80px 60px;max-width:1360px;margin:0 auto;}
+.nw-hdr{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid var(--border);padding-bottom:28px;margin-bottom:48px;}
+.nw-h2{font-family:'Instrument Serif',serif;font-size:clamp(32px,4vw,48px);font-weight:400;color:var(--ink);line-height:1.1;}
+.nw-h2 em{font-style:italic;color:var(--accent);}
+.notes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.ncard{background:var(--white);border:1px solid var(--border);border-radius:2px;overflow:hidden;cursor:pointer;transition:all .3s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;}
+.ncard:hover{transform:translateY(-6px);box-shadow:0 28px 56px rgba(26,21,16,.12);border-color:var(--accent);}
+.ncard-hdr{background:var(--ink);padding:18px 24px;display:flex;justify-content:space-between;align-items:center;}
+.ncard-spec{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;}
+.ncard-badge{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(245,242,235,.28);}
+.ncard-body{padding:24px;flex:1;display:flex;flex-direction:column;}
+.ncard-icon{font-size:28px;margin-bottom:12px;}
+.diff{display:flex;gap:4px;margin-bottom:10px;}
+.dd{width:7px;height:7px;border-radius:50%;background:var(--border);}
+.dd.on{background:var(--accent);}
+.ncard-title{font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;color:var(--ink);line-height:1.05;margin-bottom:10px;}
+.ncard-prev{font-size:13px;color:var(--ink3);line-height:1.6;margin-bottom:20px;flex:1;}
+.ncard-foot{display:flex;justify-content:space-between;align-items:center;}
+.ncard-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.nc-tag{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ink4);background:var(--bg2);border:1px solid var(--border);padding:3px 8px;border-radius:100px;}
+.ncard-arrow{width:32px;height:32px;background:var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--bg);font-size:14px;flex-shrink:0;transition:all .2s;}
+.ncard:hover .ncard-arrow{background:var(--accent);transform:rotate(45deg);}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:960px){
+  nav{padding:18px 20px;}.spec-hero{padding:60px 24px 40px;}.notes-wrap{padding:60px 20px;}.notes-grid{grid-template-columns:1fr 1fr;}
+  .nbody{padding:0 24px 48px;}.pq,.illus,.insight{margin-left:-24px;margin-right:-24px;padding-left:24px;padding-right:24px;}
+  .twocol{grid-template-columns:1fr;}.inset{float:none;width:100%;margin:0 0 20px 0;}
+}
+@media(max-width:600px){.notes-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div id="cdot"></div>
+<div id="cring"></div>
+
+<div class="overlay" id="overlay" onclick="closeBg(event)">
+  <div class="note-modal" id="modal">
+    <div class="modal-bar">
+      <div class="modal-left"><div class="mpulse"></div><span class="mbc" id="mbc">OPHTHALMOLOGY</span></div>
+      <div class="modal-right">
+        <div class="lang-toggle">
+          <button class="lang-btn on" id="btn-en" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">AR</button>
+        </div>
+        <button class="mclose" onclick="closeModal()">&#10005;</button>
+      </div>
+    </div>
+    <div id="mcontent"></div>
+  </div>
+</div>
+
+<nav>
+  <a href="vent-home.html" class="logo">
+    <svg width="40" height="40" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" stroke="#1a1510" stroke-width="1.5"/><path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M10 30 Q22 36 34 30" stroke="#1a1510" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="22" cy="10" r="2.5" fill="#c8452a"/><path d="M14 22 Q10 26 10 30" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity="0.4"/><path d="M30 22 Q34 26 34 30" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity="0.4"/></svg>
+    <span class="logo-name">Vent</span>
+  </a>
+  <a href="vent-home.html" class="nav-back">&#8592; All specialties</a>
+  <a href="vent-home.html#waitlist" class="nav-cta">Join waitlist</a>
+</nav>
+
+<section class="spec-hero">
+  <div class="sh-glow"></div>
+  <div class="sh-tag">Clinical Notes</div>
+  <h1 class="sh-ttl">Ophthal&shy;<em>mology</em></h1>
+  <p class="sh-desc">Six high-yield ophthalmology notes. Lens anatomy, cataracts, corneal infections, the retina, diabetic retinopathy, and hypertensive retinopathy. Built for every doctor, not just ophthalmologists.</p>
+  <div class="sh-stats">
+    <div><div class="sh-sv">6</div><div class="sh-sl">notes</div></div>
+    <div><div class="sh-sv">EN/AR</div><div class="sh-sl">bilingual</div></div>
+    <div><div class="sh-sv">4 min</div><div class="sh-sl">per note</div></div>
+  </div>
+</section>
+
+<section class="notes-wrap">
+  <div class="nw-hdr reveal">
+    <h2 class="nw-h2">All <em>ophtho</em> notes</h2>
+  </div>
+  <div class="notes-grid">
+    <div class="ncard reveal" onclick="openNote('lens')">
+      <div class="ncard-hdr"><span class="ncard-spec">Anatomy</span><span class="ncard-badge">EN/AR</span></div>
+      <div class="ncard-body">
+        <div class="ncard-icon">&#128065;</div>
+        <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd"></div></div>
+        <div class="ncard-title">The Lens</div>
+        <p class="ncard-prev">Structure, transparency, accommodation and why it matters clinically. Understanding the lens explains cataracts, aphakia, and every refractive procedure.</p>
+        <div class="ncard-foot"><div class="ncard-tags"><span class="nc-tag">Anatomy</span><span class="nc-tag">Refraction</span></div><div class="ncard-arrow">&#8599;</div></div>
+      </div>
+    </div>
+    <div class="ncard reveal" onclick="openNote('cataract')">
+      <div class="ncard-hdr"><span class="ncard-spec">Lens Pathology</span><span class="ncard-badge">EN/AR</span></div>
+      <div class="ncard-body">
+        <div class="ncard-icon">&#128300;</div>
+        <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+        <div class="ncard-title">Cataracts</div>
+        <p class="ncard-prev">Nuclear, cortical, posterior subcapsular. Why age and steroids do different things to the lens, and what the slit lamp shows you.</p>
+        <div class="ncard-foot"><div class="ncard-tags"><span class="nc-tag">Types</span><span class="nc-tag">Surgery</span></div><div class="ncard-arrow">&#8599;</div></div>
+      </div>
+    </div>
+    <div class="ncard reveal" onclick="openNote('cornea')">
+      <div class="ncard-hdr"><span class="ncard-spec">Cornea</span><span class="ncard-badge">EN/AR</span></div>
+      <div class="ncard-body">
+        <div class="ncard-icon">&#127775;</div>
+        <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+        <div class="ncard-title">Corneal Infections</div>
+        <p class="ncard-prev">Bacterial, viral (HSV), fungal, Acanthamoeba. The contact lens wearer with a red eye, the dendritic ulcer you must not miss, and why steroids can be catastrophic.</p>
+        <div class="ncard-foot"><div class="ncard-tags"><span class="nc-tag">Keratitis</span><span class="nc-tag">HSV</span><span class="nc-tag">Emergency</span></div><div class="ncard-arrow">&#8599;</div></div>
+      </div>
+    </div>
+    <div class="ncard reveal" onclick="openNote('retina')">
+      <div class="ncard-hdr"><span class="ncard-spec">Anatomy</span><span class="ncard-badge">EN/AR</span></div>
+      <div class="ncard-body">
+        <div class="ncard-icon">&#129298;</div>
+        <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd"></div></div>
+        <div class="ncard-title">The Retina</div>
+        <p class="ncard-prev">10 layers, two photoreceptor types, the macula and fovea. Understanding retinal anatomy makes fundoscopy findings make sense for the first time.</p>
+        <div class="ncard-foot"><div class="ncard-tags"><span class="nc-tag">Anatomy</span><span class="nc-tag">Fundoscopy</span></div><div class="ncard-arrow">&#8599;</div></div>
+      </div>
+    </div>
+    <div class="ncard reveal" onclick="openNote('dr')">
+      <div class="ncard-hdr"><span class="ncard-spec">Retinal Disease</span><span class="ncard-badge">EN/AR</span></div>
+      <div class="ncard-body">
+        <div class="ncard-icon">&#128308;</div>
+        <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+        <div class="ncard-title">Diabetic Retinopathy</div>
+        <p class="ncard-prev">NPDR vs PDR, the staging that drives management, and why neovascularisation is both a survival response and a disaster. The most common cause of blindness in working-age adults.</p>
+        <div class="ncard-foot"><div class="ncard-tags"><span class="nc-tag">NPDR</span><span class="nc-tag">PDR</span><span class="nc-tag">Laser</span></div><div class="ncard-arrow">&#8599;</div></div>
+      </div>
+    </div>
+    <div class="ncard reveal" onclick="openNote('hr')">
+      <div class="ncard-hdr"><span class="ncard-spec">Retinal Disease</span><span class="ncard-badge">EN/AR</span></div>
+      <div class="ncard-body">
+        <div class="ncard-icon">&#128280;</div>
+        <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+        <div class="ncard-title">Hypertensive Retinopathy</div>
+        <p class="ncard-prev">Keith-Wagener-Barker grades I-IV. The AV nipping, flame haemorrhages, cotton wool spots and papilloedema that tell you about the whole cardiovascular system.</p>
+        <div class="ncard-foot"><div class="ncard-tags"><span class="nc-tag">KWB grades</span><span class="nc-tag">Papilloedema</span></div><div class="ncard-arrow">&#8599;</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* CURSOR */
+const dot=document.getElementById('cdot'),ring=document.getElementById('cring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+(function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button,.ncard').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{dot.classList.add('big');ring.classList.add('big');});
+  el.addEventListener('mouseleave',()=>{dot.classList.remove('big');ring.classList.remove('big');});
+});
+
+/* REVEAL */
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.08,rootMargin:'0px 0px -32px 0px'});
+document.querySelectorAll('.reveal').forEach((el,i)=>{
+  const p=el.closest('.notes-grid');
+  if(p){const idx=Array.from(p.children).indexOf(el);if(idx>-1)el.style.transitionDelay=(idx*.08)+'s';}
+  obs.observe(el);
+});
+
+/* LANG */
+let lang='en';
+function setLang(l){
+  lang=l;
+  document.body.classList.toggle('arabic',l==='ar');
+  document.getElementById('modal').style.direction=l==='ar'?'rtl':'ltr';
+  document.getElementById('btn-en').classList.toggle('on',l==='en');
+  document.getElementById('btn-ar').classList.toggle('on',l==='ar');
+}
+
+/* MODAL */
+function openNote(id){
+  const n=notes[id];
+  document.getElementById('mbc').textContent='OPHTHALMOLOGY \u2014 VENT';
+  document.getElementById('mcontent').innerHTML=n();
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  document.getElementById('modal').scrollTop=0;
+  setLang('en');
+}
+function closeModal(){document.getElementById('overlay').classList.remove('open');document.body.style.overflow='';}
+function closeBg(e){if(e.target===document.getElementById('overlay'))closeModal();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+/* COVER HELPER */
+function cover(tag,title,sub,badges){
+  return '<div class="ncover"><div class="ncover-glow"></div><div class="ncover-rule"></div><div class="ncover-tag">'+tag+'</div><div class="ncover-title">'+title+'</div><div class="ncover-sub">'+sub+'</div><div class="nbadges">'+badges.map(b=>'<span class="nbadge">'+b+'</span>').join('')+'</div></div>';
+}
+
+/* ===================== NOTES ===================== */
+const notes = {};
+
+/* -------- 1. THE LENS -------- */
+notes.lens = () => cover('Ophthalmology &middot; Anatomy','The Lens','A transparent, biconvex, avascular structure suspended by zonular fibres. Understanding how it achieves and maintains transparency explains every lens disease.',['Anatomy &amp; Physiology','MS2&ndash;MS3','&#9201; 4 min']) + `
+<div class="nbody">
+<div class="pq"><p class="en">The lens has <strong>no blood supply, no nerves, no pain</strong>. It relies entirely on the aqueous humour for nutrients. This is why lens disease is painless and insidious &mdash; by the time a patient notices, significant damage has occurred.</p><p class="ar">العدسة <strong>لا وعاء دموي، لا أعصاب، لا ألم</strong>. تعتمد كلياً على السائل المائي للحصول على الغذاء. لهذا السبب تكون أمراض العدسة غير مؤلمة وخفية.</p><div class="pq-src">// One-liner</div></div>
+
+<div class="sh"><span class="sh-n">i</span><span class="sh-t">Structure</span><div class="sh-l"></div></div>
+<div class="inset"><div class="inset-lbl">Refractive power</div><div class="inset-val">+15 to +25D</div><div class="inset-desc">Variable contribution to the eye's total ~60D. Cornea provides the fixed ~43D. The lens provides the adjustable component.</div></div>
+<p class="nt en">The lens sits behind the iris, suspended by <strong>zonular fibres (zonules of Zinn)</strong> that attach to the ciliary body. It has three layers. The <strong>capsule</strong> is the outermost elastic membrane &mdash; very important surgically as it holds the intraocular lens after cataract surgery. Beneath it lies the <strong>epithelium</strong>, a single layer of cells found only anteriorly, which constantly divide and differentiate into <strong>lens fibres</strong> throughout life. These fibres make up the bulk of the lens &mdash; they lose their nuclei and organelles as they mature, which is essential for transparency.</p>
+<p class="nt ar">تقع العدسة خلف القزحية، مثبتة بـ<strong>الألياف الزوالية (زوائد زين)</strong> المتصلة بالجسم الهدبي. لها ثلاث طبقات: <strong>المحفظة</strong> (أهمية جراحية كبيرة)، و<strong>الظهارة</strong> (طبقة وحيدة أمامياً)، و<strong>الألياف العدسية</strong> التي تفقد نواتها مع النضج لتحقيق الشفافية.</p>
+
+<div class="illus">
+<div class="illus-hdr"><span class="illus-title">Lens structure &mdash; cross section</span><span class="illus-sub">Layers and their clinical relevance</span></div>
+<svg viewBox="0 0 700 220" style="width:100%;height:auto;">
+  <ellipse cx="350" cy="110" rx="180" ry="100" fill="rgba(200,69,42,0.07)" stroke="#c8452a" stroke-width="2"/>
+  <ellipse cx="350" cy="110" rx="165" ry="86" fill="rgba(200,69,42,0.05)" stroke="#a03020" stroke-width="1.5"/>
+  <ellipse cx="350" cy="110" rx="120" ry="62" fill="rgba(42,107,110,0.08)" stroke="#2a6b6e" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <ellipse cx="350" cy="110" rx="60" ry="32" fill="rgba(42,107,110,0.12)" stroke="#2a6b6e" stroke-width="1.5"/>
+  <text x="350" y="114" font-family="JetBrains Mono,monospace" font-size="10" fill="#2a6b6e" text-anchor="middle" font-weight="bold">Nucleus</text>
+  <text x="350" y="155" font-family="JetBrains Mono,monospace" font-size="9" fill="#2a6b6e" text-anchor="middle">Cortex</text>
+  <text x="350" y="186" font-family="JetBrains Mono,monospace" font-size="9" fill="#a03020" text-anchor="middle">Epithelium (anterior only)</text>
+  <text x="350" y="204" font-family="JetBrains Mono,monospace" font-size="9" fill="#c8452a" text-anchor="middle">Capsule (outermost)</text>
+  <line x1="530" y1="110" x2="600" y2="70" stroke="#c8452a" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="604" y="68" font-family="JetBrains Mono,monospace" font-size="9" fill="#c8452a">Capsule &mdash; holds IOL post-op</text>
+  <line x1="520" y1="88" x2="600" y2="50" stroke="#7a6f5e" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="604" y="48" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e">No organelles &rarr; transparent</text>
+  <line x1="155" y1="108" x2="80" y2="80" stroke="#7a6f5e" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="8" y="78" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e">Zonular fibres</text>
+  <text x="8" y="90" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e">attach here</text>
+</svg>
+</div>
+
+<div class="sh"><span class="sh-n">ii</span><span class="sh-t">Accommodation</span><div class="sh-l"></div></div>
+<p class="nt en">Accommodation is the ability to change focus from distance to near. When the <strong>ciliary muscle contracts</strong>, the ciliary body moves forward and inward, <strong>relaxing tension on the zonules</strong>. The lens, which is naturally elastic, rounds up &mdash; increasing its refractive power. When the ciliary muscle relaxes, zonular tension increases, flattening the lens for distance vision.</p>
+<p class="nt ar">التكيف هو القدرة على تغيير التركيز من البعيد إلى القريب. عند <strong>انقباض العضلة الهدبية</strong>، ترتخي الألياف الزوالية، وتصبح العدسة أكثر استدارة، مما يزيد من قوتها الانكسارية.</p>
+<div class="twocol">
+  <div class="tcc shaded"><div class="tcc-lbl">Near vision (accommodation)</div><div class="tcc-title">Ciliary muscle contracts</div><p class="en">Zonules relax &rarr; lens rounds up &rarr; increased refractive power &rarr; near focus. This is parasympathetically mediated via CN III.</p><p class="ar">تنقبض العضلة الهدبية &rarr; ترتخي الألياف الزوالية &rarr; تستدير العدسة &rarr; قوة انكسارية أعلى &rarr; تركيز على القريب.</p></div>
+  <div class="tcc"><div class="tcc-lbl">Distance vision (relaxed)</div><div class="tcc-title">Ciliary muscle relaxes</div><p class="en">Zonules tighten &rarr; lens flattens &rarr; lower refractive power &rarr; distance focus. Presbyopia occurs when the lens loses elasticity with age &mdash; cannot round up sufficiently.</p><p class="ar">ترتخي العضلة الهدبية &rarr; تشتد الألياف الزوالية &rarr; تتسطح العدسة &rarr; تركيز على البعيد. الشيخوخة البصرية تحدث حين تفقد العدسة مرونتها.</p></div>
+</div>
+
+<div class="sh"><span class="sh-n">iii</span><span class="sh-t">Why transparency is maintained &mdash; and lost</span><div class="sh-l"></div></div>
+<p class="nt en">Transparency requires the lens fibres to be <strong>uniform in size, tightly packed, and free of organelles and proteins that scatter light</strong>. The lens achieves this through three mechanisms: loss of all organelles during fibre maturation, expression of specific <strong>crystallin proteins</strong> that maintain ordered structure, and active transport of glucose and antioxidants via the aqueous humour. Any disruption &mdash; oxidative stress, UV radiation, metabolic disease (diabetes), corticosteroids, or trauma &mdash; causes protein aggregation, scattering of light, and loss of transparency. The result is a <strong>cataract</strong>.</p>
+<p class="nt ar">تتطلب الشفافية أن تكون ألياف العدسة <strong>منتظمة الحجم، مضغوطة، وخالية من العضيات والبروتينات التي تبعثر الضوء</strong>. أي اضطراب &mdash; إجهاد تأكسدي، أشعة فوق بنفسجية، مرض السكري، كورتيكوستيرويدات، أو رضح &mdash; يسبب تجمع البروتينات وفقدان الشفافية. والنتيجة هي <strong>إعتام عدسة العين</strong>.</p>
+
+<div class="insight"><div class="ins-eye">The resident insight</div>
+<div class="ins-q en">The lens grows throughout life &mdash; it never stops adding fibres. <strong>This is why it gets harder with age.</strong> The oldest fibres are in the centre (nucleus), the newest at the periphery (cortex). This explains exactly why nuclear cataracts cause myopic shift (denser nucleus = higher refractive index) while cortical cataracts cause glare.</div>
+<div class="ins-q ar">تستمر العدسة في النمو طوال الحياة &mdash; لا تتوقف عن إضافة ألياف جديدة. <strong>لهذا تصبح أكثر صلابة مع التقدم في العمر.</strong> الألياف القديمة في المركز، والجديدة في المحيط. هذا يفسر لماذا يسبب إعتام عدسة النواة تحولاً نحو قصر النظر.</div>
+</div>
+<div class="nfooter"><span class="ntag">Lens anatomy</span><span class="ntag">Accommodation</span><span class="ntag">Crystallins</span><span class="ntag">Transparency</span><span class="ntime">&#9201; 4 min</span></div>
+</div>`;
+
+/* -------- 2. CATARACTS -------- */
+notes.cataract = () => cover('Ophthalmology &middot; Lens Pathology','Cataracts','Opacity of the lens. The leading cause of reversible blindness worldwide. Three types, each with a different location, cause, and clinical fingerprint.',['Lens Pathology','MS3&ndash;MS4','&#9201; 4 min']) + `
+<div class="nbody">
+<div class="pq"><p class="en">A cataract is any opacity of the lens. The <strong>type tells you the cause</strong>: nuclear = age and smoking; posterior subcapsular = steroids, diabetes, young patient; cortical = UV, diabetes, early age-related. Location on the slit lamp is your diagnostic shortcut.</p><p class="ar">إعتام عدسة العين هو أي عتامة في العدسة. <strong>النوع يخبرك بالسبب</strong>: النووي = التقدم في السن والتدخين؛ الخلفي تحت المحفظة = الستيرويدات والسكري وصغار السن؛ القشري = الأشعة فوق بنفسجية والسكري.</p><div class="pq-src">// One-liner</div></div>
+
+<div class="sh"><span class="sh-n">i</span><span class="sh-t">Three types &mdash; location is everything</span><div class="sh-l"></div></div>
+<p class="nt en">Cataracts are classified by where the opacity forms in the lens. This matters because <strong>location predicts cause, symptoms, and how vision is affected</strong>.</p>
+<p class="nt ar">يُصنَّف إعتام عدسة العين حسب موضع العتامة في العدسة. هذا مهم لأن <strong>الموضع يتنبأ بالسبب والأعراض وطريقة تأثيره على الرؤية</strong>.</p>
+
+<div class="illus">
+<div class="illus-hdr"><span class="illus-title">Three cataract types &mdash; location and characteristics</span><span class="illus-sub">Slit lamp appearance</span></div>
+<svg viewBox="0 0 700 260" style="width:100%;height:auto;">
+  <!-- Nuclear -->
+  <rect x="8" y="8" width="210" height="244" rx="3" fill="#1a1510"/>
+  <text x="113" y="32" font-family="Syne,sans-serif" font-size="13" fill="#c8452a" text-anchor="middle" font-weight="800">NUCLEAR</text>
+  <ellipse cx="113" cy="110" rx="72" ry="72" fill="rgba(200,69,42,0.08)" stroke="rgba(200,69,42,0.3)" stroke-width="1.5"/>
+  <ellipse cx="113" cy="110" rx="52" ry="52" fill="rgba(200,69,42,0.15)" stroke="rgba(200,69,42,0.5)" stroke-width="1.5"/>
+  <ellipse cx="113" cy="110" rx="32" ry="32" fill="rgba(200,69,42,0.4)" stroke="#c8452a" stroke-width="2"/>
+  <text x="113" y="114" font-family="JetBrains Mono,monospace" font-size="8" fill="white" text-anchor="middle">opacity</text>
+  <text x="113" y="200" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,0.6)" text-anchor="middle">Age, smoking</text>
+  <text x="113" y="215" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,0.6)" text-anchor="middle">Myopic shift</text>
+  <text x="113" y="230" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,0.45)" text-anchor="middle">Dim, hazy vision</text>
+  <text x="113" y="246" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(200,69,42,0.7)" text-anchor="middle">Brunescent = very dense</text>
+  <!-- PSC -->
+  <rect x="226" y="8" width="248" height="244" rx="3" fill="#1a1510"/>
+  <text x="350" y="32" font-family="Syne,sans-serif" font-size="11" fill="#c8452a" text-anchor="middle" font-weight="800">POSTERIOR SUBCAPSULAR</text>
+  <ellipse cx="350" cy="110" rx="80" ry="80" fill="rgba(200,69,42,0.06)" stroke="rgba(200,69,42,0.25)" stroke-width="1.5"/>
+  <ellipse cx="350" cy="155" rx="50" ry="18" fill="rgba(200,69,42,0.5)" stroke="#c8452a" stroke-width="2"/>
+  <text x="350" y="159" font-family="JetBrains Mono,monospace" font-size="8" fill="white" text-anchor="middle">PSC opacity</text>
+  <text x="350" y="72" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.3)" text-anchor="middle">posterior pole</text>
+  <text x="350" y="200" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,0.6)" text-anchor="middle">Steroids, DM, young</text>
+  <text x="350" y="215" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,0.6)" text-anchor="middle">Worst in bright light &amp; reading</text>
+  <text x="350" y="230" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,0.45)" text-anchor="middle">Glare, haloes</text>
+  <text x="350" y="246" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(200,69,42,0.7)" text-anchor="middle">Pupil constricts &rarr; covers opacity</text>
+  <!-- Cortical -->
+  <rect x="482" y="8" width="210" height="244" rx="3" fill="#1a1510"/>
+  <text x="587" y="32" font-family="Syne,sans-serif" font-size="13" fill="#c8452a" text-anchor="middle" font-weight="800">CORTICAL</text>
+  <ellipse cx="587" cy="110" rx="72" ry="72" fill="rgba(200,69,42,0.06)" stroke="rgba(200,69,42,0.2)" stroke-width="1.5"/>
+  <g transform="translate(587,110)">
+    <line x1="0" y1="-70" x2="0" y2="-40" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="49" y1="-50" x2="28" y2="-29" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="68" y1="0" x2="39" y2="0" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="49" y1="50" x2="28" y2="29" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="0" y1="70" x2="0" y2="40" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="-49" y1="50" x2="-28" y2="29" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="-68" y1="0" x2="-39" y2="0" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="-49" y1="-50" x2="-28" y2="-29" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <text x="587" y="200" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,0.6)" text-anchor="middle">UV, DM, age-related</text>
+  <text x="587" y="215" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,0.6)" text-anchor="middle">Spoke-like opacities</text>
+  <text x="587" y="230" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,0.45)" text-anchor="middle">Glare, monocular diplopia</text>
+  <text x="587" y="246" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(200,69,42,0.7)" text-anchor="middle">Water clefts on slit lamp</text>
+</svg>
+</div>
+
+<div class="sh"><span class="sh-n">ii</span><span class="sh-t">Causes by type</span><div class="sh-l"></div></div>
+<div class="twocol">
+  <div class="tcc shaded"><div class="tcc-lbl">PSC &mdash; always ask about steroids</div><div class="tcc-title">Posterior Subcapsular</div><p class="en"><strong>Corticosteroids</strong> (topical, inhaled, systemic &mdash; all routes), <strong>diabetes mellitus</strong>, radiation, young patients with atopy or uveitis. The opacity sits exactly at the posterior pole of the lens. <strong>Vision is worst in bright light</strong> because the pupil constricts and the visual axis passes directly through the opacity.</p><p class="ar"><strong>الكورتيكوستيرويدات</strong> (موضعية أو استنشاقية أو جهازية)، <strong>مرض السكري</strong>، الإشعاع، الشباب المصابون بالأكزيما أو التهاب العنبية. الرؤية أسوأ في الضوء الساطع.</p></div>
+  <div class="tcc"><div class="tcc-lbl">Nuclear &mdash; the myopic shift clue</div><div class="tcc-title">Nuclear Sclerosis</div><p class="en"><strong>Age</strong> is the main cause. Smoking doubles the risk. The central nucleus hardens and becomes denser &mdash; this increases its refractive index. Patients may report <strong>improved near vision</strong> (second sight of the aged) as the myopic shift temporarily corrects presbyopia. A tell that is rarely taught.</p><p class="ar"><strong>التقدم في السن</strong> هو السبب الرئيسي. التدخين يضاعف الخطر. قد يلاحظ المريض <strong>تحسناً مؤقتاً في رؤية القريب</strong> (&laquo;البصر الثاني&raquo;).</p></div>
+</div>
+
+<div class="sh"><span class="sh-n">iii</span><span class="sh-t">Management</span><div class="sh-l"></div></div>
+<p class="nt en">There is no proven medical treatment for cataracts. Surgery is the only effective intervention. The indication is <strong>functional visual impairment that affects the patient's daily life</strong> &mdash; not a specific visual acuity number. The procedure is <strong>phacoemulsification</strong>: ultrasonic fragmentation of the lens through a 2-3mm incision, with removal by aspiration and insertion of a foldable <strong>intraocular lens (IOL)</strong> into the remaining capsular bag.</p>
+<p class="nt ar">لا يوجد علاج دوائي مثبت لإعتام عدسة العين. الجراحة هي التدخل الوحيد الفعال. المؤشر هو <strong>ضعف بصري وظيفي يؤثر على الحياة اليومية</strong>. الإجراء هو <strong>استحلاب العدسة</strong>: تفتيت العدسة بالموجات فوق الصوتية وإدراج <strong>عدسة مقعرة داخل العين</strong>.</p>
+
+<div class="warn"><div class="warn-icon">&#9888;</div><div><div class="warn-lbl">Posterior capsule opacification (PCO)</div><p class="en">The most common complication after cataract surgery. Residual lens epithelial cells migrate onto the posterior capsule and cause it to become opaque &mdash; visual symptoms return. Treated with <strong><span class="drug">Nd:YAG laser capsulotomy</span></strong> in clinic. Patients often think their cataract has come back &mdash; it hasn't, but the effect is the same.</p><p class="ar">أكثر مضاعفات جراحة الساد شيوعاً. تتكاثر خلايا ظهارة العدسة المتبقية على المحفظة الخلفية. يُعالج بـ<strong><span class="drug">Nd:YAG laser capsulotomy</span></strong> في العيادة.</p></div></div>
+
+<div class="insight"><div class="ins-eye">The resident insight</div>
+<div class="ins-q en">PSC cataracts from steroids can develop within <strong>weeks to months</strong> of starting high-dose treatment. <strong>Always ask about steroid use in any patient with cataract under 60.</strong> Inhaled steroids for asthma, topical steroids for skin, epidural injections &mdash; all count. The patient often doesn't think to mention them because they don't consider them medication.</div>
+<div class="ins-q ar">قد تتطور إعتامات عدسة العين الخلفية تحت المحفظة الناجمة عن الستيرويدات خلال <strong>أسابيع إلى أشهر</strong> من بدء العلاج بجرعات عالية. <strong>اسأل دائماً عن استخدام الستيرويدات في أي مريض تقل سنه عن 60 عاماً.</strong></div>
+</div>
+<div class="nfooter"><span class="ntag">Cataracts</span><span class="ntag">PSC</span><span class="ntag">Nuclear sclerosis</span><span class="ntag">Phacoemulsification</span><span class="ntag">IOL</span><span class="ntime">&#9201; 4 min</span></div>
+</div>`;
+
+/* -------- 3. CORNEAL INFECTIONS -------- */
+notes.cornea = () => cover('Ophthalmology &middot; Cornea','Corneal Infections','Keratitis &mdash; infection of the corneal stroma. A red eye with a white spot is a corneal ulcer until proven otherwise. The pathogen determines everything: cause, appearance, and treatment.',['Emergency','MS3&ndash;MS4','&#9201; 5 min']) + `
+<div class="nbody">
+<div class="pq"><p class="en">A painful red eye with photophobia, reduced vision, and a white corneal opacity is a <strong>corneal ulcer until proven otherwise</strong>. Refer same day. Do not prescribe steroids without a slit lamp diagnosis &mdash; steroids in HSV keratitis or fungal infection can cause catastrophic progression.</p><p class="ar">عين حمراء مؤلمة مع رهاب الضوء وانخفاض الرؤية وعتامة قرنية بيضاء هي <strong>قرحة قرنية حتى يثبت العكس</strong>. الإحالة في نفس اليوم. لا تصف الستيرويدات دون تشخيص بالمصباح الشقي.</p><div class="pq-src">// One-liner</div></div>
+
+<div class="sh"><span class="sh-n">i</span><span class="sh-t">Four pathogens &mdash; four different presentations</span><div class="sh-l"></div></div>
+
+<div class="illus">
+<div class="illus-hdr"><span class="illus-title">Keratitis &mdash; key features by pathogen</span><span class="illus-sub">Pattern recognition on slit lamp</span></div>
+<svg viewBox="0 0 700 280" style="width:100%;height:auto;">
+  <rect x="8" y="8" width="684" height="28" rx="2" fill="#1a1510"/>
+  <text x="100" y="27" font-family="JetBrains Mono,monospace" font-size="9" fill="#c8452a" text-anchor="middle" letter-spacing="1">PATHOGEN</text>
+  <text x="270" y="27" font-family="JetBrains Mono,monospace" font-size="9" fill="#c8452a" text-anchor="middle" letter-spacing="1">KEY RISK FACTOR</text>
+  <text x="450" y="27" font-family="JetBrains Mono,monospace" font-size="9" fill="#c8452a" text-anchor="middle" letter-spacing="1">APPEARANCE</text>
+  <text x="620" y="27" font-family="JetBrains Mono,monospace" font-size="9" fill="#c8452a" text-anchor="middle" letter-spacing="1">TREATMENT</text>
+  <!-- Bacterial -->
+  <rect x="8" y="38" width="684" height="54" fill="#ede9e0"/>
+  <text x="100" y="60" font-family="Syne,sans-serif" font-size="14" fill="#1a1510" text-anchor="middle" font-weight="700">Bacterial</text>
+  <text x="100" y="78" font-family="JetBrains Mono,monospace" font-size="8" fill="#7a6f5e" text-anchor="middle">Pseudomonas, Staph</text>
+  <text x="270" y="60" font-family="JetBrains Mono,monospace" font-size="9" fill="#1a1510" text-anchor="middle">Contact lens wear</text>
+  <text x="270" y="75" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e" text-anchor="middle">Corneal trauma / abrasion</text>
+  <text x="450" y="60" font-family="JetBrains Mono,monospace" font-size="9" fill="#1a1510" text-anchor="middle">Dense white/grey stromal</text>
+  <text x="450" y="75" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e" text-anchor="middle">infiltrate + hypopyon</text>
+  <text x="620" y="60" font-family="Syne,sans-serif" font-size="11" fill="#c8452a" text-anchor="middle" font-weight="700">Topical fluoroquinolone</text>
+  <text x="620" y="78" font-family="JetBrains Mono,monospace" font-size="8" fill="#7a6f5e" text-anchor="middle">hourly initially</text>
+  <!-- HSV -->
+  <rect x="8" y="94" width="684" height="54" fill="#f5f2eb"/>
+  <text x="100" y="116" font-family="Syne,sans-serif" font-size="14" fill="#1a1510" text-anchor="middle" font-weight="700">HSV</text>
+  <text x="100" y="134" font-family="JetBrains Mono,monospace" font-size="8" fill="#7a6f5e" text-anchor="middle">Herpes simplex virus 1</text>
+  <text x="270" y="116" font-family="JetBrains Mono,monospace" font-size="9" fill="#1a1510" text-anchor="middle">Reactivation of latent virus</text>
+  <text x="270" y="131" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e" text-anchor="middle">Stress, UV, immunosupp.</text>
+  <text x="450" y="111" font-family="JetBrains Mono,monospace" font-size="9" fill="#c8452a" text-anchor="middle" font-weight="bold">DENDRITIC ULCER</text>
+  <text x="450" y="126" font-family="JetBrains Mono,monospace" font-size="9" fill="#1a1510" text-anchor="middle">Branching pattern on</text>
+  <text x="450" y="141" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e" text-anchor="middle">fluorescein staining</text>
+  <text x="620" y="111" font-family="Syne,sans-serif" font-size="11" fill="#c8452a" text-anchor="middle" font-weight="700">Topical aciclovir</text>
+  <text x="620" y="126" font-family="JetBrains Mono,monospace" font-size="8" fill="#7a6f5e" text-anchor="middle">NO STEROIDS</text>
+  <text x="620" y="141" font-family="JetBrains Mono,monospace" font-size="8" fill="#c8452a" text-anchor="middle">&#9888; fatal if given</text>
+  <!-- Fungal -->
+  <rect x="8" y="150" width="684" height="54" fill="#ede9e0"/>
+  <text x="100" y="172" font-family="Syne,sans-serif" font-size="14" fill="#1a1510" text-anchor="middle" font-weight="700">Fungal</text>
+  <text x="100" y="190" font-family="JetBrains Mono,monospace" font-size="8" fill="#7a6f5e" text-anchor="middle">Fusarium, Aspergillus</text>
+  <text x="270" y="172" font-family="JetBrains Mono,monospace" font-size="9" fill="#1a1510" text-anchor="middle">Vegetable / soil trauma</text>
+  <text x="270" y="187" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e" text-anchor="middle">Agricultural workers</text>
+  <text x="450" y="172" font-family="JetBrains Mono,monospace" font-size="9" fill="#1a1510" text-anchor="middle">Feathery / satellite lesions</text>
+  <text x="450" y="187" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e" text-anchor="middle">Dry-looking infiltrate</text>
+  <text x="620" y="172" font-family="Syne,sans-serif" font-size="11" fill="#c8452a" text-anchor="middle" font-weight="700">Topical natamycin /</text>
+  <text x="620" y="187" font-family="JetBrains Mono,monospace" font-size="8" fill="#7a6f5e" text-anchor="middle">voriconazole. Long tx.</text>
+  <!-- Acanthamoeba -->
+  <rect x="8" y="206" width="684" height="66" fill="#f5f2eb"/>
+  <text x="100" y="228" font-family="Syne,sans-serif" font-size="12" fill="#1a1510" text-anchor="middle" font-weight="700">Acanthamoeba</text>
+  <text x="100" y="246" font-family="JetBrains Mono,monospace" font-size="8" fill="#7a6f5e" text-anchor="middle">Protozoan cyst</text>
+  <text x="270" y="228" font-family="JetBrains Mono,monospace" font-size="9" fill="#c8452a" text-anchor="middle" font-weight="bold">Contact lens + tap water</text>
+  <text x="270" y="243" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e" text-anchor="middle">Swimming / showering in lenses</text>
+  <text x="450" y="228" font-family="JetBrains Mono,monospace" font-size="9" fill="#1a1510" text-anchor="middle">Ring-shaped infiltrate</text>
+  <text x="450" y="243" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e" text-anchor="middle">Pain disproportionate to signs</text>
+  <text x="620" y="228" font-family="Syne,sans-serif" font-size="11" fill="#c8452a" text-anchor="middle" font-weight="700">PHMB + propamidine</text>
+  <text x="620" y="243" font-family="JetBrains Mono,monospace" font-size="8" fill="#7a6f5e" text-anchor="middle">Very prolonged treatment</text>
+  <text x="620" y="258" font-family="JetBrains Mono,monospace" font-size="8" fill="#c8452a" text-anchor="middle">Often misdiagnosed</text>
+</svg>
+</div>
+
+<div class="sh"><span class="sh-n">ii</span><span class="sh-t">The dendritic ulcer &mdash; do not miss this</span><div class="sh-l"></div></div>
+<p class="nt en">HSV keratitis causes a <strong>dendritic (branching) ulcer</strong> on the corneal epithelium. This is pathognomonic and visible with fluorescein staining under cobalt blue light. The branching pattern reflects viral spread along epithelial cell junctions. Key features: <strong>terminal bulbs</strong> at the ends of each branch (distinguishing from healing epithelial defects), reduced corneal sensation (the virus damages corneal nerves), and a history of cold sores or previous episodes.</p>
+<p class="nt ar">يسبب التهاب القرنية بفيروس HSV <strong>قرحة متفرعة (شجيرية)</strong> في ظهارة القرنية. يمكن رؤيتها بالفلورسين تحت الضوء الأزرق. السمات الرئيسية: <strong>بصيلات طرفية</strong> في نهاية كل فرع، وانخفاض الإحساس القرني.</p>
+
+<div class="twocol">
+  <div class="tcc shaded"><div class="tcc-lbl">How to examine</div><div class="tcc-title">Fluorescein technique</div><p class="en">Instil fluorescein drop. Use <strong>cobalt blue slit lamp beam</strong>. Dendritic ulcer fluoresces bright green in the ulcer bed. The raised edges stain with <span class="drug">rose bengal</span> (devitalised cells). Always compare sensation &mdash; use a cotton wisp to test both corneas. Reduced sensation in HSV is diagnostic.</p><p class="ar">ضع نقطة فلورسين. استخدم <strong>الضوء الأزرق في المصباح الشقي</strong>. تضيء القرحة الشجيرية باللون الأخضر الساطع. اختبر الإحساس دائماً &mdash; يساعد انخفاضه في تشخيص HSV.</p></div>
+  <div class="tcc"><div class="tcc-lbl">Geographic ulcer &mdash; advanced HSV</div><div class="tcc-title">When dendrite enlarges</div><p class="en">If untreated, the dendritic ulcer enlarges into a <strong>geographic (amoeboid) ulcer</strong> &mdash; a larger irregular epithelial defect. This can also occur when steroids are given inadvertently. The epithelial disease responds to <span class="drug">topical aciclovir</span>. Stromal HSV (disciform keratitis) is different &mdash; it is immune-mediated and may require carefully monitored steroids.</p><p class="ar">إذا لم يُعالَج، تتوسع القرحة الشجيرية إلى <strong>قرحة جغرافية</strong>. تستجيب للـ<span class="drug">aciclovir</span> الموضعي. التهاب القرنية الستروما بـHSV مختلف وقد يستلزم ستيرويدات بحذر شديد.</p></div>
+</div>
+
+<div class="warn"><div class="warn-icon">&#9888;</div><div><div class="warn-lbl">The steroid rule</div><p class="en"><strong>Never prescribe topical steroids for a red eye without slit lamp examination and a confident diagnosis.</strong> Steroids in HSV epithelial keratitis cause massive viral replication and corneal melting. Steroids in fungal keratitis cause rapid progression. The only exception is disciform (stromal) HSV keratitis under expert supervision. In primary care: if in doubt, refer.</p><p class="ar"><strong>لا تصف الستيرويدات الموضعية لعين حمراء دون فحص بالمصباح الشقي وتشخيص مؤكد.</strong> الستيرويدات في التهاب القرنية الظهاري بـHSV تسبب تكاثراً هائلاً للفيروس وذوبان القرنية.</p></div></div>
+
+<div class="insight"><div class="ins-eye">The resident insight</div>
+<div class="ins-q en">Acanthamoeba keratitis is almost exclusively a disease of <strong>contact lens wearers who use tap water</strong> to store, rinse, or make solutions. The pain is disproportionately severe for the initial clinical appearance. <strong>It is chronically misdiagnosed as HSV keratitis</strong> and treated with aciclovir, which does nothing. Ask every contact lens patient: do you shower or swim in your lenses? Do you use tap water?</div>
+<div class="ins-q ar">التهاب القرنية بالأميبا الحرة يصيب تقريباً حصراً <strong>مستخدمي العدسات اللاصقة الذين يستخدمون مياه الصنبور</strong>. الألم شديد بشكل غير متناسب مع المظهر السريري. <strong>كثيراً ما يُشخَّص خطأً كـHSV</strong> ويُعالَج بـ<span class="drug">aciclovir</span> الذي لا ينفع.</div>
+</div>
+<div class="nfooter"><span class="ntag">Keratitis</span><span class="ntag">HSV</span><span class="ntag">Dendritic ulcer</span><span class="ntag">Acanthamoeba</span><span class="ntag">Contact lens</span><span class="ntime">&#9201; 5 min</span></div>
+</div>`;
+
+/* -------- 4. THE RETINA -------- */
+notes.retina = () => cover('Ophthalmology &middot; Anatomy','The Retina','Ten layers of neural tissue lining the posterior two-thirds of the eye. Understanding retinal anatomy turns fundoscopy from guesswork into structured clinical reasoning.',['Anatomy &amp; Physiology','MS2&ndash;MS3','&#9201; 4 min']) + `
+<div class="nbody">
+<div class="pq"><p class="en">The retina is not just a receptor sheet. It is <strong>a piece of the brain</strong> &mdash; embryologically derived from the diencephalon, with five classes of neurone performing first-stage visual processing before the signal even reaches the optic nerve.</p><p class="ar">الشبكية ليست مجرد طبقة مستقبلة. إنها <strong>جزء من الدماغ</strong> &mdash; مشتقة جنينياً من الدماغ البيني، مع خمسة أصناف من الخلايا العصبية تُجري معالجة بصرية أولية قبل وصول الإشارة إلى العصب البصري.</p><div class="pq-src">// One-liner</div></div>
+
+<div class="sh"><span class="sh-n">i</span><span class="sh-t">Layers from inside out</span><div class="sh-l"></div></div>
+<p class="nt en">The retina has <strong>10 layers</strong>. From the vitreous inward: inner limiting membrane, nerve fibre layer (this is what is lost in glaucoma), ganglion cell layer, inner plexiform layer, inner nuclear layer, outer plexiform layer, outer nuclear layer, external limiting membrane, photoreceptor layer (rods and cones), and retinal pigment epithelium (RPE). The blood supply comes from two sources: the <strong>central retinal artery</strong> supplies the inner layers; the <strong>choroidal circulation</strong> (beneath the RPE) supplies the photoreceptors.</p>
+<p class="nt ar">للشبكية <strong>10 طبقات</strong>. من الزجاجية إلى الداخل: الغشاء الحدي الداخلي، طبقة الألياف العصبية (هذه هي التي تُفقد في الجلوكوما)، طبقة خلايا العقدة، الطبقة الضفيرية الداخلية، الطبقة النووية الداخلية، الطبقة الضفيرية الخارجية، الطبقة النووية الخارجية، الغشاء الحدي الخارجي، طبقة المستقبلات الضوئية، الظهارة الصبغية للشبكية.</p>
+
+<div class="illus">
+<div class="illus-hdr"><span class="illus-title">Retinal layers &mdash; clinical correlations</span><span class="illus-sub">What each layer means at the bedside</span></div>
+<svg viewBox="0 0 700 310" style="width:100%;height:auto;">
+  <rect x="8" y="8" width="340" height="294" rx="2" fill="#1a1510"/>
+  <text x="178" y="30" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(245,242,235,0.4)" text-anchor="middle" letter-spacing="2">VITREOUS SIDE</text>
+  <rect x="24" y="38" width="308" height="22" rx="2" fill="rgba(245,242,235,0.07)"/>
+  <text x="178" y="53" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(245,242,235,0.5)" text-anchor="middle">Inner Limiting Membrane</text>
+  <rect x="24" y="62" width="308" height="22" rx="2" fill="rgba(200,69,42,0.2)"/>
+  <text x="178" y="77" font-family="JetBrains Mono,monospace" font-size="9" fill="#e85d3f" text-anchor="middle" font-weight="bold">Nerve Fibre Layer &mdash; lost in glaucoma</text>
+  <rect x="24" y="86" width="308" height="22" rx="2" fill="rgba(200,69,42,0.15)"/>
+  <text x="178" y="101" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(245,242,235,0.7)" text-anchor="middle">Ganglion Cell Layer</text>
+  <rect x="24" y="110" width="308" height="22" rx="2" fill="rgba(245,242,235,0.05)"/>
+  <text x="178" y="125" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(245,242,235,0.4)" text-anchor="middle">Inner Plexiform Layer</text>
+  <rect x="24" y="134" width="308" height="22" rx="2" fill="rgba(245,242,235,0.08)"/>
+  <text x="178" y="149" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(245,242,235,0.5)" text-anchor="middle">Inner Nuclear Layer (bipolar cells)</text>
+  <rect x="24" y="158" width="308" height="22" rx="2" fill="rgba(245,242,235,0.05)"/>
+  <text x="178" y="173" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(245,242,235,0.4)" text-anchor="middle">Outer Plexiform Layer</text>
+  <rect x="24" y="182" width="308" height="22" rx="2" fill="rgba(245,242,235,0.08)"/>
+  <text x="178" y="197" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(245,242,235,0.5)" text-anchor="middle">Outer Nuclear Layer (photoreceptor nuclei)</text>
+  <rect x="24" y="206" width="308" height="22" rx="2" fill="rgba(42,107,110,0.15)"/>
+  <text x="178" y="221" font-family="JetBrains Mono,monospace" font-size="9" fill="#7ec4c6" text-anchor="middle" font-weight="bold">Photoreceptors &mdash; Rods &amp; Cones</text>
+  <rect x="24" y="230" width="308" height="28" rx="2" fill="rgba(42,107,110,0.3)"/>
+  <text x="178" y="247" font-family="JetBrains Mono,monospace" font-size="9" fill="#7ec4c6" text-anchor="middle" font-weight="bold">RPE &mdash; nourishes photoreceptors</text>
+  <text x="178" y="262" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(42,107,110,0.7)" text-anchor="middle">AMD = RPE/Bruch's membrane failure</text>
+  <text x="178" y="294" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(245,242,235,0.3)" text-anchor="middle" letter-spacing="2">CHOROID SIDE</text>
+  <!-- Right panel: key points -->
+  <text x="380" y="36" font-family="JetBrains Mono,monospace" font-size="9" fill="#c8452a" letter-spacing="2">CLINICAL CORRELATIONS</text>
+  <rect x="370" y="50" width="322" height="50" rx="2" fill="#f5f2eb"/>
+  <text x="384" y="68" font-family="Syne,sans-serif" font-size="12" fill="#1a1510" font-weight="700">Two blood supplies</text>
+  <text x="384" y="84" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e">Inner layers: central retinal artery</text>
+  <text x="384" y="96" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e">Photoreceptors: choroidal circulation</text>
+  <rect x="370" y="108" width="322" height="50" rx="2" fill="#f5f2eb"/>
+  <text x="384" y="126" font-family="Syne,sans-serif" font-size="12" fill="#1a1510" font-weight="700">Macula &amp; Fovea</text>
+  <text x="384" y="142" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e">Fovea = only cones, thinnest retina</text>
+  <text x="384" y="154" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e">Best visual acuity. No vessels.</text>
+  <rect x="370" y="166" width="322" height="50" rx="2" fill="#f5f2eb"/>
+  <text x="384" y="184" font-family="Syne,sans-serif" font-size="12" fill="#1a1510" font-weight="700">Optic disc</text>
+  <text x="384" y="200" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e">No photoreceptors = blind spot</text>
+  <text x="384" y="212" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e">Cup:disc ratio &gt;0.6 = glaucoma risk</text>
+  <rect x="370" y="224" width="322" height="62" rx="2" fill="#fff8f6" stroke="#f0c4b8" stroke-width="1"/>
+  <text x="384" y="242" font-family="Syne,sans-serif" font-size="12" fill="#c8452a" font-weight="700">Rods vs Cones</text>
+  <text x="384" y="258" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e">Rods: 120M, peripheral, scotopic</text>
+  <text x="384" y="272" font-family="JetBrains Mono,monospace" font-size="9" fill="#7a6f5e">Cones: 6M, foveal, colour, photopic</text>
+  <text x="384" y="286" font-family="JetBrains Mono,monospace" font-size="9" fill="#c8452a">RP = rod death first &rarr; night blindness</text>
+</svg>
+</div>
+
+<div class="sh"><span class="sh-n">ii</span><span class="sh-t">The macula &mdash; why it matters</span><div class="sh-l"></div></div>
+<p class="nt en">The macula is a 5mm area of the central retina specialised for <strong>high-acuity, colour vision</strong>. Its centre &mdash; the <strong>fovea</strong> &mdash; contains only cone photoreceptors, has no overlying neurons (they are displaced laterally), and has no blood vessels. This is why macular disease causes <strong>central scotoma and loss of reading vision</strong> rather than peripheral field loss. It is also why the fovea appears as a bright central reflex on fundoscopy &mdash; light reflects off the thinned internal limiting membrane.</p>
+<p class="nt ar">البقعة هي منطقة مركزية قطرها 5 ملم متخصصة في <strong>الرؤية عالية الدقة والألوان</strong>. مركزها &mdash; <strong>الحفرة المركزية</strong> &mdash; يحتوي فقط على المخاريط، وليس فيه أوعية دموية. لهذا تسبب أمراض البقعة <strong>غاما مركزياً وفقداناً في رؤية القراءة</strong>.</p>
+
+<div class="insight"><div class="ins-eye">The resident insight</div>
+<div class="ins-q en">The retina is transparent. What you see on fundoscopy is mostly the <strong>RPE and choroid underneath</strong>. The red colour of the fundus comes from the choroidal vasculature showing through the RPE. This is why a cherry red spot at the fovea in central retinal artery occlusion stands out: the surrounding pale, oedematous retina (cloudy swelling from ischaemia) contrasts with the fovea, which has no overlying cells and maintains its colour from the underlying choroid.</div>
+<div class="ins-q ar">الشبكية شفافة. ما تراه في قاع العين هو في الأساس <strong>الظهارة الصبغية والمشيمية تحتها</strong>. هذا يفسر البقعة الحمراء الكرزية في انسداد الشريان الشبكي المركزي.</div>
+</div>
+<div class="nfooter"><span class="ntag">Retina anatomy</span><span class="ntag">Macula</span><span class="ntag">Fovea</span><span class="ntag">Rods and cones</span><span class="ntag">Fundoscopy</span><span class="ntime">&#9201; 4 min</span></div>
+</div>`;
+
+/* -------- 5. DIABETIC RETINOPATHY -------- */
+notes.dr = () => cover('Ophthalmology &middot; Retinal Disease','Diabetic Retinopathy','The most common cause of blindness in working-age adults in the developed world. Driven by chronic hyperglycaemia damaging retinal capillaries. Classification drives every management decision.',['High-yield','MS3&ndash;MS4','&#9201; 5 min']) + `
+<div class="nbody">
+<div class="pq"><p class="en">Diabetic retinopathy is entirely preventable. <strong>The single most important intervention is tight glycaemic and blood pressure control.</strong> By the time a patient has visual symptoms, the disease is advanced. Screening exists to catch it before that point.</p><p class="ar">اعتلال الشبكية السكري قابل للوقاية تماماً. <strong>أهم تدخل وحيد هو التحكم الصارم في نسبة السكر وضغط الدم.</strong> بحلول وقت ظهور أعراض بصرية، تكون المرض قد تقدم.</p><div class="pq-src">// One-liner</div></div>
+
+<div class="sh"><span class="sh-n">i</span><span class="sh-t">Pathophysiology &mdash; why hyperglycaemia damages the retina</span><div class="sh-l"></div></div>
+<p class="nt en">Chronic hyperglycaemia damages retinal capillaries through several mechanisms: <strong>pericyte loss</strong> (pericytes regulate capillary tone; their loss leads to microaneurysm formation), breakdown of the <strong>blood-retinal barrier</strong> (causing leakage of fluid and lipids &mdash; the origin of hard exudates), thickening of the <strong>capillary basement membrane</strong>, and ultimately <strong>capillary occlusion</strong> causing retinal ischaemia. It is the ischaemia that drives neovascularisation.</p>
+<p class="nt ar">يضر فرط السكر المزمن بالشعيرات الدموية الشبكية من خلال: <strong>فقدان الخلايا المحيطية</strong> (مما يؤدي إلى تشكّل أوعية دموية مجهرية)، وانهيار <strong>الحاجز الدموي الشبكي</strong> (مسبباً تسرب السوائل والدهون)، وفي النهاية <strong>انسداد الشعيرات</strong> يسبب نقص تروية الشبكية وتكوّن أوعية دموية جديدة.</p>
+
+<div class="sh"><span class="sh-n">ii</span><span class="sh-t">Classification &mdash; NPDR vs PDR</span><div class="sh-l"></div></div>
+
+<div class="illus">
+<div class="illus-hdr"><span class="illus-title">DR staging &mdash; what to look for on fundoscopy</span><span class="illus-sub">Each finding corresponds to a specific pathological process</span></div>
+<svg viewBox="0 0 700 320" style="width:100%;height:auto;">
+  <!-- NPDR block -->
+  <rect x="8" y="8" width="330" height="304" rx="3" fill="#1a4446"/>
+  <text x="173" y="34" font-family="Syne,sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="800">NON-PROLIFERATIVE (NPDR)</text>
+  <text x="173" y="52" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,0.5)" text-anchor="middle">No new vessels. Progressive capillary damage.</text>
+  <rect x="24" y="62" width="298" height="38" rx="2" fill="rgba(255,255,255,0.07)"/>
+  <text x="40" y="78" font-family="Syne,sans-serif" font-size="11" fill="white" font-weight="700">Microaneurysms</text>
+  <text x="40" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.55)">Earliest sign. Small red dots. Pericyte loss.</text>
+  <rect x="24" y="104" width="298" height="38" rx="2" fill="rgba(255,255,255,0.07)"/>
+  <text x="40" y="120" font-family="Syne,sans-serif" font-size="11" fill="white" font-weight="700">Dot and blot haemorrhages</text>
+  <text x="40" y="134" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.55)">Deeper layers. Round shape = intraretinal.</text>
+  <rect x="24" y="146" width="298" height="38" rx="2" fill="rgba(255,255,255,0.07)"/>
+  <text x="40" y="162" font-family="Syne,sans-serif" font-size="11" fill="white" font-weight="700">Hard exudates</text>
+  <text x="40" y="176" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.55)">Yellow waxy deposits. Lipid leakage from BRB breakdown.</text>
+  <rect x="24" y="188" width="298" height="38" rx="2" fill="rgba(255,255,255,0.1)"/>
+  <text x="40" y="204" font-family="Syne,sans-serif" font-size="11" fill="white" font-weight="700">Cotton wool spots</text>
+  <text x="40" y="218" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.55)">Fluffy white. Nerve fibre layer infarcts. Worsening ischaemia.</text>
+  <rect x="24" y="230" width="298" height="38" rx="2" fill="rgba(255,255,255,0.12)"/>
+  <text x="40" y="246" font-family="Syne,sans-serif" font-size="11" fill="#c8d4ff" font-weight="700">Venous beading / IRMA</text>
+  <text x="40" y="260" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.55)">Pre-proliferative. High risk of progression to PDR.</text>
+  <text x="173" y="294" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,0.35)" text-anchor="middle">Treatable with glycaemic control</text>
+  <!-- PDR block -->
+  <rect x="362" y="8" width="330" height="304" rx="3" fill="#c8452a"/>
+  <text x="527" y="34" font-family="Syne,sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="800">PROLIFERATIVE (PDR)</text>
+  <text x="527" y="52" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,0.6)" text-anchor="middle">New vessels. Surgical emergency territory.</text>
+  <rect x="378" y="62" width="298" height="50" rx="2" fill="rgba(255,255,255,0.12)"/>
+  <text x="394" y="80" font-family="Syne,sans-serif" font-size="11" fill="white" font-weight="700">Neovascularisation (NVD / NVE)</text>
+  <text x="394" y="94" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.7)">NVD = disc. NVE = elsewhere. Both bleed.</text>
+  <text x="394" y="106" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.55)">VEGF-driven response to ischaemia.</text>
+  <rect x="378" y="116" width="298" height="38" rx="2" fill="rgba(255,255,255,0.12)"/>
+  <text x="394" y="132" font-family="Syne,sans-serif" font-size="11" fill="white" font-weight="700">Vitreous haemorrhage</text>
+  <text x="394" y="146" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.7)">New vessels bleed into vitreous. Sudden vision loss.</text>
+  <rect x="378" y="158" width="298" height="38" rx="2" fill="rgba(255,255,255,0.12)"/>
+  <text x="394" y="174" font-family="Syne,sans-serif" font-size="11" fill="white" font-weight="700">Tractional retinal detachment</text>
+  <text x="394" y="188" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.7)">Fibrovascular tissue contracts, pulls retina off.</text>
+  <rect x="378" y="200" width="298" height="38" rx="2" fill="rgba(255,255,255,0.15)"/>
+  <text x="394" y="218" font-family="Syne,sans-serif" font-size="11" fill="white" font-weight="700">Rubeosis iridis</text>
+  <text x="394" y="232" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.7)">NV on iris. Causes neovascular glaucoma.</text>
+  <text x="527" y="272" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="700">Treat: PRP laser + anti-VEGF</text>
+  <text x="527" y="290" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,0.5)" text-anchor="middle">Vitrectomy if haemorrhage/detachment</text>
+</svg>
+</div>
+
+<div class="sh"><span class="sh-n">iii</span><span class="sh-t">Diabetic maculopathy &mdash; the most common cause of visual loss</span><div class="sh-l"></div></div>
+<p class="nt en">Diabetic maculopathy is oedema or hard exudate deposition at or near the macula. It can occur at <strong>any stage of DR</strong>, including mild NPDR, and is the most common cause of visual impairment in diabetic eye disease. It does not follow the NPDR/PDR staging &mdash; it is a separate process. <strong>Clinically significant macular oedema (CSME)</strong> is defined by thickening within 500&mu;m of the fovea or hard exudates within 500&mu;m of the fovea with adjacent thickening. Treated with intravitreal <span class="drug">anti-VEGF</span> (e.g. <span class="drug">ranibizumab</span>, <span class="drug">bevacizumab</span>) or focal laser.</p>
+<p class="nt ar">اعتلال بقعة السكري هو وذمة أو ترسب إفرازات صلبة في البقعة أو بالقرب منها. يمكن أن يحدث في <strong>أي مرحلة من DR</strong>، وهو السبب الأكثر شيوعاً لضعف البصر في مرض السكري. يُعالج بحقن <span class="drug">anti-VEGF</span> داخل الزجاجية.</p>
+
+<div class="warn"><div class="warn-icon">&#9888;</div><div><div class="warn-lbl">Screening schedule</div><p class="en">Type 1 DM: screen from <strong>5 years after diagnosis</strong>, then annually. Type 2 DM: screen <strong>at diagnosis</strong>, then annually. Pregnancy: screen at booking and 28 weeks (retinopathy can rapidly worsen). <strong>Good glycaemic control can cause acute worsening</strong> when insulin is started &mdash; warn patients and increase screening frequency during periods of rapid HbA1c improvement.</p><p class="ar">السكري نوع 1: الفحص من <strong>5 سنوات بعد التشخيص</strong>، ثم سنوياً. النوع 2: الفحص <strong>عند التشخيص</strong>، ثم سنوياً. الحمل: الفحص عند الحجز و28 أسبوعاً. <strong>قد يؤدي التحكم الجيد في السكر إلى تفاقم حاد</strong> عند بدء الأنسولين.</p></div></div>
+
+<div class="insight"><div class="ins-eye">The resident insight</div>
+<div class="ins-q en">Neovascularisation is <strong>not a disease process</strong> &mdash; it is the retina trying to save itself. The ischaemic retina secretes VEGF to grow new blood vessels. The problem is these new vessels are <strong>structurally abnormal</strong>: no tight junctions, fragile walls, grow on the wrong surface (vitreous face and iris). Understanding this tells you why anti-VEGF works and why panretinal photocoagulation (PRP) works &mdash; PRP destroys ischaemic retina, removing the VEGF source.</div>
+<div class="ins-q ar">تكوّن الأوعية الدموية الجديدة <strong>ليس عملية مرضية</strong> &mdash; إنه الشبكية تحاول إنقاذ نفسها. الشبكية نقصة التروية تفرز VEGF لتنمية أوعية جديدة. المشكلة أن هذه الأوعية <strong>غير طبيعية هيكلياً</strong>. فهم هذا يشرح لماذا ينجح <span class="drug">anti-VEGF</span> ولماذا ينجح ليزر PRP.</div>
+</div>
+<div class="nfooter"><span class="ntag">Diabetic retinopathy</span><span class="ntag">NPDR</span><span class="ntag">PDR</span><span class="ntag">Maculopathy</span><span class="ntag">Anti-VEGF</span><span class="ntag">PRP</span><span class="ntime">&#9201; 5 min</span></div>
+</div>`;
+
+/* -------- 6. HYPERTENSIVE RETINOPATHY -------- */
+notes.hr = () => cover('Ophthalmology &middot; Retinal Disease','Hypertensive Retinopathy','The eye is the only place in the body where you can directly visualise blood vessels without a surgical incision. Fundoscopy in hypertension tells you the duration and severity of the disease.',['High-yield','MS3&ndash;MS4','&#9201; 4 min']) + `
+<div class="nbody">
+<div class="pq"><p class="en">Hypertensive retinopathy is a <strong>window into the systemic vasculature</strong>. Grade III-IV changes are a hypertensive emergency and require immediate blood pressure management. <strong>Papilloedema means end-organ damage is occurring right now.</strong></p><p class="ar">اعتلال شبكية العين الارتفاعي هو <strong>نافذة على الجهاز الوعائي الجهازي</strong>. التغيرات من الدرجة الثالثة إلى الرابعة تمثل طوارئ ارتفاع ضغط الدم. <strong>الوذمة الحليمية تعني أن تلف الأعضاء النهائية يحدث الآن.</strong></p><div class="pq-src">// One-liner</div></div>
+
+<div class="sh"><span class="sh-n">i</span><span class="sh-t">Keith-Wagener-Barker grading</span><div class="sh-l"></div></div>
+<p class="nt en">The KWB classification grades hypertensive retinopathy from I to IV based on fundoscopic findings. It correlates with the <strong>severity and chronicity of hypertension</strong> and guides urgency of management. Grades I-II reflect chronic, adaptive changes. Grade III-IV reflect acute, severe hypertension with end-organ damage.</p>
+<p class="nt ar">يُصنّف تصنيف KWB اعتلال الشبكية الارتفاعي من I إلى IV بناءً على نتائج قاع العين. يرتبط بـ<strong>شدة وزمنية ارتفاع ضغط الدم</strong> ويوجه إلحاحية الإدارة.</p>
+
+<div class="illus">
+<div class="illus-hdr"><span class="illus-title">KWB grading &mdash; what you see and what it means</span><span class="illus-sub">Each grade tells you something about the vessel wall</span></div>
+<svg viewBox="0 0 700 310" style="width:100%;height:auto;">
+  <!-- Grade I -->
+  <rect x="8" y="8" width="160" height="294" rx="3" fill="#1a4446"/>
+  <rect x="8" y="8" width="160" height="28" rx="3" fill="#1a6a6e"/>
+  <text x="88" y="28" font-family="Syne,sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="800">Grade I</text>
+  <text x="88" y="60" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,0.8)" text-anchor="middle">Silver wiring</text>
+  <line x1="28" y1="100" x2="148" y2="100" stroke="rgba(255,255,255,0.6)" stroke-width="4" stroke-linecap="round"/>
+  <text x="88" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.5)" text-anchor="middle">Arteriolar wall</text>
+  <text x="88" y="142" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.5)" text-anchor="middle">thickening</text>
+  <text x="88" y="170" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.5)" text-anchor="middle">Increased light</text>
+  <text x="88" y="182" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.5)" text-anchor="middle">reflex</text>
+  <text x="88" y="270" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.35)" text-anchor="middle">Mild chronic HTN</text>
+  <text x="88" y="284" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.35)" text-anchor="middle">Manage BP</text>
+  <!-- Grade II -->
+  <rect x="176" y="8" width="160" height="294" rx="3" fill="#2a5a5e"/>
+  <rect x="176" y="8" width="160" height="28" rx="3" fill="#2a7a7e"/>
+  <text x="256" y="28" font-family="Syne,sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="800">Grade II</text>
+  <text x="256" y="60" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,0.8)" text-anchor="middle">AV nipping</text>
+  <circle cx="256" cy="100" r="30" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="220" y1="100" x2="292" y2="100" stroke="rgba(255,255,255,0.7)" stroke-width="5" stroke-linecap="round"/>
+  <line x1="256" y1="68" x2="256" y2="132" stroke="rgba(100,180,200,0.7)" stroke-width="3" stroke-linecap="round"/>
+  <text x="256" y="152" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.5)" text-anchor="middle">Artery compresses</text>
+  <text x="256" y="164" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.5)" text-anchor="middle">vein at crossings</text>
+  <text x="256" y="180" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.5)" text-anchor="middle">Gunn's sign</text>
+  <text x="256" y="270" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.35)" text-anchor="middle">Moderate chronic</text>
+  <text x="256" y="284" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.35)" text-anchor="middle">Manage BP</text>
+  <!-- Grade III -->
+  <rect x="344" y="8" width="168" height="294" rx="3" fill="#8a2418"/>
+  <rect x="344" y="8" width="168" height="28" rx="3" fill="#a03020"/>
+  <text x="428" y="28" font-family="Syne,sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="800">Grade III</text>
+  <text x="428" y="52" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,0.8)" text-anchor="middle">Haemorrhages +</text>
+  <text x="428" y="64" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,0.8)" text-anchor="middle">cotton wool spots</text>
+  <circle cx="406" cy="100" r="5" fill="rgba(255,255,255,0.8)"/>
+  <circle cx="428" cy="112" r="4" fill="rgba(255,255,255,0.7)"/>
+  <circle cx="450" cy="95" r="4" fill="rgba(255,255,255,0.7)"/>
+  <ellipse cx="415" cy="130" rx="12" ry="6" fill="rgba(255,200,100,0.8)"/>
+  <text x="415" y="133" font-family="JetBrains Mono,monospace" font-size="6" fill="#1a1510" text-anchor="middle">CWS</text>
+  <text x="428" y="165" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.6)" text-anchor="middle">Flame haemorrhages</text>
+  <text x="428" y="177" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.6)" text-anchor="middle">Hard exudates</text>
+  <text x="428" y="189" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.6)" text-anchor="middle">Cotton wool spots</text>
+  <rect x="360" y="254" width="136" height="22" rx="11" fill="rgba(255,255,255,0.2)"/>
+  <text x="428" y="269" font-family="JetBrains Mono,monospace" font-size="8" fill="white" text-anchor="middle" font-weight="bold">URGENT BP control</text>
+  <text x="428" y="290" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.5)" text-anchor="middle">Same-day review</text>
+  <!-- Grade IV -->
+  <rect x="520" y="8" width="172" height="294" rx="3" fill="#c8452a"/>
+  <rect x="520" y="8" width="172" height="28" rx="3" fill="#e85d3f"/>
+  <text x="606" y="28" font-family="Syne,sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="800">Grade IV</text>
+  <text x="606" y="52" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,0.9)" text-anchor="middle">ALL of Grade III</text>
+  <text x="606" y="64" font-family="JetBrains Mono,monospace" font-size="9" fill="white" text-anchor="middle" font-weight="bold">+ PAPILLOEDEMA</text>
+  <circle cx="606" cy="105" r="24" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+  <circle cx="606" cy="105" r="14" fill="rgba(255,255,255,0.25)"/>
+  <text x="606" y="109" font-family="JetBrains Mono,monospace" font-size="7" fill="white" text-anchor="middle">disc oedema</text>
+  <text x="606" y="155" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.8)" text-anchor="middle">Blurred disc margins</text>
+  <text x="606" y="167" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.8)" text-anchor="middle">Raised ICP or malignant</text>
+  <text x="606" y="179" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.8)" text-anchor="middle">hypertension</text>
+  <rect x="536" y="242" width="140" height="28" rx="2" fill="rgba(255,255,255,0.2)"/>
+  <text x="606" y="258" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="700">HYPERTENSIVE</text>
+  <text x="606" y="272" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="700">EMERGENCY</text>
+  <text x="606" y="292" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,0.6)" text-anchor="middle">Admit. IV treatment.</text>
+</svg>
+</div>
+
+<div class="sh"><span class="sh-n">ii</span><span class="sh-t">Individual findings explained</span><div class="sh-l"></div></div>
+<div class="twocol">
+  <div class="tcc shaded"><div class="tcc-lbl">AV nipping (nicking)</div><div class="tcc-title">Gunn's sign</div><p class="en">At arteriovenous crossings, the arteriole and venule share a common adventitial sheath. A thickened, sclerosed arteriole <strong>compresses the underlying venule</strong>, making it appear to narrow or disappear. This is pathognomonic of <strong>chronic hypertension with arteriolar sclerosis</strong>. Not seen in acute hypertension alone.</p><p class="ar">في مواضع تقاطع الشرايين والأوردة، يضغط الشريين الصلب <strong>على الوريد الصغير تحته</strong>. هذه علامة مميزة لـ<strong>ارتفاع ضغط الدم المزمن مع تصلب الشرايين الصغيرة</strong>.</p></div>
+  <div class="tcc"><div class="tcc-lbl">Flame haemorrhages</div><div class="tcc-title">Nerve fibre layer bleeds</div><p class="en">Flame-shaped because blood spreads along <strong>nerve fibre layer</strong> axons in the superficial retina. The flame shape follows the trajectory of the nerve fibres. Contrast with <strong>dot/blot haemorrhages</strong> (deeper, round, from diabetic capillary disease) and <strong>subhyaloid haemorrhages</strong> (boat-shaped, above the retina, in subarachnoid haemorrhage).</p><p class="ar">الشكل اللهبي لأن الدم ينتشر على طول محاور <strong>طبقة الألياف العصبية</strong> السطحية. قارن مع النزيف النقطي (أعمق، دائري، من داء السكري).</p></div>
+  <div class="tcc shaded"><div class="tcc-lbl">Cotton wool spots</div><div class="tcc-title">Nerve fibre layer infarcts</div><p class="en">Fluffy white patches caused by <strong>localised ischaemia of the nerve fibre layer</strong>. Axoplasmic flow is interrupted &mdash; axonal contents accumulate, causing the fluffy appearance. They are not exudates &mdash; they contain no lipid. Seen in hypertension, diabetes, HIV retinopathy, and any cause of retinal arteriole occlusion.</p><p class="ar">بقع بيضاء رقيقة تنجم عن <strong>نقص التروية الموضعي في طبقة الألياف العصبية</strong>. هي ليست إفرازات &mdash; لا تحتوي على دهون. تُرى في ارتفاع الضغط والسكري.</p></div>
+  <div class="tcc"><div class="tcc-lbl">Papilloedema in Grade IV</div><div class="tcc-title">True end-organ damage</div><p class="en"><strong>Blurred disc margins, elevated disc</strong>, obscuration of vessels at the disc edge. In hypertensive retinopathy, papilloedema indicates either malignant hypertension (very high BP causing capillary leak around the optic nerve) or raised intracranial pressure secondary to hypertensive encephalopathy. <strong>This is a medical emergency.</strong> Target BP reduction of &lt;25% in first hour to avoid ischaemia.</p><p class="ar"><strong>حواف حليمية غير واضحة، حليمة مرتفعة</strong>. في اعتلال الشبكية الارتفاعي، تدل الوذمة الحليمية على ارتفاع ضغط الدم الخبيث أو ارتفاع الضغط داخل الجمجمة. <strong>هذه حالة طارئة طبية.</strong></p></div>
+</div>
+
+<div class="insight"><div class="ins-eye">The resident insight</div>
+<div class="ins-q en">AV nipping tells you about <strong>chronic</strong> hypertension. Haemorrhages and cotton wool spots tell you about <strong>acute</strong> severe hypertension. A patient can have Grade II AV nipping from years of poorly controlled hypertension, then develop acute Grade III changes from a sudden hypertensive crisis &mdash; <strong>both processes visible simultaneously on the same fundus.</strong> Reading the fundus carefully tells you the whole history.</div>
+<div class="ins-q ar">تقاطع الشرايين والأوردة يخبرك عن ارتفاع ضغط الدم <strong>المزمن</strong>. النزيف ومناطق القطن تخبرك عن ارتفاع ضغط الدم <strong>الحاد الشديد</strong>. يمكن أن يكون لدى المريض تغييرات مزمنة وحادة على نفس قاع العين &mdash; <strong>كلا العمليتين مرئيتان في آن واحد.</strong></div>
+</div>
+<div class="nfooter"><span class="ntag">Hypertensive retinopathy</span><span class="ntag">KWB grading</span><span class="ntag">AV nipping</span><span class="ntag">Papilloedema</span><span class="ntag">Cotton wool</span><span class="ntime">&#9201; 4 min</span></div>
+</div>`;
+
+</script>
+</body>
+</html>
