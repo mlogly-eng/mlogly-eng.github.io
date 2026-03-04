@@ -409,7 +409,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
     <span class="logo-name">Vent</span>
   </a>
   <a href="vent-home.html" class="nav-back">← Home</a>
-  <a href="vent-home.html#waitlist" class="nav-pill">Join waitlist</a>
+  <a href="index.html#waitlist" class="nav-pill">Join waitlist</a>
 </nav>
 
 <section class="shero">
@@ -527,7 +527,6 @@ function dismissVentPopup(){
 }
 function startMCQ(){
   dismissVentPopup();
-  if(!NOTES_MCQ[currentNote]||NOTES_MCQ[currentNote].length===0){return;}
   if(!mcqState[currentNote]){
     mcqState[currentNote]={current:0,answers:Array(NOTES_MCQ[currentNote].length).fill(null)};
   }
@@ -535,7 +534,6 @@ function startMCQ(){
   document.getElementById('page-mcq-ob').style.display='block';
   document.getElementById('mcq-inner-ob').innerHTML=renderQuestion(currentNote);
   document.getElementById('modal').scrollTop=0;
-}
 }
 function backToNote(){
   document.getElementById('page-mcq-ob').style.display='none';
@@ -655,27 +653,6 @@ NOTES_MCQ.preeclampsia=[
 ];
 
 
-NOTES_MCQ.ectopic=[
-  {q:"A woman presents with 7 weeks amenorrhoea, left iliac fossa pain, and light vaginal bleeding. Urine βhCG is positive. First investigation:",opts:["Transvaginal ultrasound","Diagnostic laparoscopy","Serum progesterone","CT abdomen"],ans:0,focus:"Ectopic pregnancy investigation sequence",exp:"<strong>Transvaginal ultrasound (TVUS)</strong> is first-line. It can identify an intrauterine pregnancy, an adnexal mass, and free fluid. Laparoscopy is diagnostic and therapeutic but not first-line without imaging. The goal of TVUS is to locate the pregnancy — an empty uterus with a positive hCG and adnexal mass = ectopic until proven otherwise."},
-  {q:"The discriminatory zone in ectopic pregnancy refers to:",opts:["βhCG level above which TVUS should always detect an IUP","The zone of uterine pain on examination","Serum progesterone threshold","Gestational age at which ectopic is most common"],ans:0,focus:"Discriminatory zone concept",exp:"The <strong>discriminatory zone</strong> is the βhCG level above which a normal intrauterine pregnancy should be visible on TVUS — typically <strong>1500–2000 IU/L</strong>. If βhCG exceeds this and TVUS shows an empty uterus → ectopic or failed IUP. Below this threshold, a normal early IUP may not yet be visible."},
-  {q:"A haemodynamically unstable patient with suspected ruptured ectopic pregnancy. Correct management:",opts:["Serial βhCG measurements","Methotrexate IM","Emergency laparoscopy or laparotomy","Transvaginal ultrasound to confirm diagnosis first"],ans:2,focus:"Ruptured ectopic — immediate surgical management",exp:"Haemodynamic instability from ruptured ectopic = <strong>immediate surgical intervention</strong>. No time for serial bloods or imaging. Two large-bore IVs, blood products, call theatre. Laparoscopy is preferred if skill available; laparotomy if unstable. Methotrexate is only for unruptured, stable, haemodynamically normal patients."},
-  {q:"Methotrexate for ectopic pregnancy is contraindicated in:",opts:["βhCG of 800 IU/L","Adnexal mass of 25mm","Fetal cardiac activity present on USS","Previous PID"],ans:2,focus:"Methotrexate contraindications",exp:"<strong>Fetal cardiac activity</strong> is an absolute contraindication to methotrexate. Other contraindications: βhCG >5000, mass >35mm, haemodynamic instability, immunodeficiency, liver/renal disease, breastfeeding. The presence of cardiac activity indicates a more advanced ectopic with higher risk of failure from medical management."},
-  {q:"Which βhCG pattern is most reassuring for a viable intrauterine pregnancy?",opts:["Plateau over 48 hours","Rise of 15% over 48 hours","Rise of ≥66% over 48 hours","Any positive result on serial testing"],ans:2,focus:"Serial βhCG interpretation",exp:"In a viable IUP, βhCG should rise by <strong>≥66% every 48 hours</strong> in early pregnancy. A rise &lt;66% suggests failing IUP or ectopic. A plateau or fall suggests non-viable pregnancy. Note: a falling hCG does not always mean safe — ectopics can have falling hCG and still rupture."}
-];
-NOTES_MCQ.placenta=[
-  {q:"A woman at 32 weeks presents with painless, bright red vaginal bleeding. She has had two previous caesarean sections. Most likely diagnosis:",opts:["Placental abruption","Placenta praevia","Show","Vasa praevia"],ans:1,focus:"Placenta praevia — classic presentation",exp:"<strong>Placenta praevia</strong> = painless, bright red bleeding in the third trimester. Previous uterine surgery is a major risk factor. Placental abruption causes painful, dark bleeding with a tender woody uterus. Vasa praevia presents at rupture of membranes. The painless nature and previous CS scars make praevia the diagnosis here."},
-  {q:"In suspected placenta praevia, vaginal examination is:",opts:["Helpful to assess cervical dilation","Contraindicated — can precipitate catastrophic haemorrhage","Indicated only if the patient is haemodynamically stable","Replaced by rectal examination"],ans:1,focus:"Never perform VE in placenta praevia",exp:"<strong>Never perform a vaginal examination</strong> in placenta praevia. The examining finger can disrupt the placenta overlying the cervical os and cause massive, uncontrollable haemorrhage. Diagnosis is by ultrasound — ideally transvaginal (paradoxically safer than transabdominal for posterior praevia). This is an absolute rule."},
-  {q:"A placenta praevia is classified as major when:",opts:["Placental edge within 20mm of internal os","Placenta reaches but does not cover the os","Placenta covers the internal os","Any placenta in the lower segment"],ans:2,focus:"Classification of placenta praevia",exp:"<strong>Major praevia</strong>: placenta covers the internal os. <strong>Minor praevia</strong>: placental edge within 20mm of the os but not covering it. Major praevia mandates caesarean section. Minor praevia may allow vaginal birth depending on the exact distance — decision made on case-by-case basis with senior input."},
-  {q:"The primary risk of placenta praevia accreta in a patient with two prior CS scars is:",opts:["Preterm labour","Abnormal placental attachment requiring hysterectomy","Postpartum depression","Cord prolapse"],ans:1,focus:"Placenta accreta spectrum",exp:"Prior CS scars create uterine scarring. When placenta praevia overlies a CS scar, trophoblast can invade abnormally deeply — <strong>placenta accreta spectrum (PAS)</strong>. Accreta: invades myometrium. Increta: through myometrium. Percreta: through serosa. PAS often requires <strong>caesarean hysterectomy</strong> — plan delivery at a centre with multidisciplinary haematology, urology, and interventional radiology support."},
-  {q:"Antepartum haemorrhage due to placenta praevia at 34 weeks, mother stable, baby well. Correct management:",opts:["Emergency caesarean section","Expectant management with steroids, crossmatch, and senior review","Induce labour to expedite delivery","Methotrexate to reduce placental vascularity"],ans:1,focus:"Expectant management of placenta praevia",exp:"At 34 weeks with a stable mother and fetus, <strong>expectant management</strong> is appropriate. Give <strong>corticosteroids</strong> for fetal lung maturity, crossmatch blood, admit for monitoring, senior obstetric review. Aim to reach 36–37 weeks before planned caesarean if no further bleeds. Emergency CS only if haemodynamic compromise, fetal compromise, or uncontrolled haemorrhage."}
-];
-NOTES_MCQ.gdm=[
-  {q:"The diagnostic test for gestational diabetes mellitus (GDM) is:",opts:["Random blood glucose >11.1","Fasting glucose on two occasions","75g oral glucose tolerance test (OGTT) at 24–28 weeks","HbA1c >48 mmol/mol"],ans:2,focus:"GDM diagnosis — OGTT",exp:"The <strong>75g OGTT at 24–28 weeks</strong> is the gold standard for GDM diagnosis. GDM is diagnosed if: fasting glucose ≥5.6 mmol/L OR 2-hour glucose ≥7.8 mmol/L (NICE thresholds). HbA1c is unreliable in pregnancy due to increased red cell turnover. Random glucose and fasting alone are insufficient."},
-  {q:"Which fetal complication is most directly caused by maternal hyperglycaemia in GDM?",opts:["Intrauterine growth restriction","Macrosomia","Neural tube defect","Renal agenesis"],ans:1,focus:"Macrosomia — mechanism in GDM",exp:"Maternal glucose crosses the placenta; fetal insulin does not. Fetal hyperglycaemia → <strong>fetal hyperinsulinaemia</strong> → excess anabolic drive → <strong>macrosomia</strong> (birthweight >4kg or >90th centile). Macrosomia increases risk of shoulder dystocia, operative delivery, and birth trauma. IUGR occurs in pre-existing diabetes with vascular disease, not typically GDM."},
-  {q:"A woman with GDM fails dietary management. First pharmacological step:",opts:["Insulin","Metformin","Glibenclamide","Acarbose"],ans:1,focus:"GDM pharmacological management",exp:"<strong>Metformin</strong> is first-line pharmacological treatment when diet and exercise fail. It crosses the placenta (which has been studied — no demonstrated harm) and is effective. If metformin is insufficient or not tolerated, <strong>insulin</strong> is added. Glibenclamide is second-line in some guidelines. Acarbose is rarely used in pregnancy."},
-  {q:"The most important neonatal complication to monitor for immediately after delivery in GDM:",opts:["Jaundice","Hypoglycaemia","Polycythaemia","Respiratory distress syndrome"],ans:1,focus:"Neonatal hypoglycaemia in GDM",exp:"<strong>Neonatal hypoglycaemia</strong> is the priority. In utero, the fetus was exposed to high glucose → high insulin. At birth, the glucose supply stops abruptly but insulin levels remain high → hypoglycaemia within minutes to hours. Monitor blood glucose within 1–2 hours of birth. Feed early. Thresholds vary by unit — typically BG <2.0–2.6 mmol/L requires intervention."},
-  {q:"A woman who had GDM should be tested postpartum with:",opts:["Urine dipstick at 6-week check","75g OGTT at 6–13 weeks postpartum","Annual HbA1c for 5 years only","No follow-up needed if delivery glucose was normal"],ans:1,focus:"Postpartum GDM follow-up",exp:"Women with GDM have a <strong>50% lifetime risk of developing type 2 diabetes</strong>. NICE recommends a <strong>75g OGTT at 6–13 weeks postpartum</strong> to rule out persistent diabetes, then annual HbA1c indefinitely. Many women who appear normal at discharge are in fact glucose-impaired. Lifelong surveillance is essential — this is not a condition that ends at delivery."}
-];
 const NOTES={};
 NOTES.pph=()=>`
 <div class="n-hero">
