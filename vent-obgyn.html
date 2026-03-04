@@ -36,6 +36,21 @@ span.en { display: inline; }
 
 .drug { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: rgba(200,69,42,.09); border: 1px solid rgba(200,69,42,.22); padding: 1px 7px; border-radius: 3px; color: var(--accent); direction: ltr; display: inline-block; }
 
+/* DISC TOGGLE */
+.disc-toggle { display:flex; gap:6px; margin-top:20px; flex-wrap:wrap; }
+.dtab { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; padding:9px 20px; border:1px solid var(--border); background:none; color:var(--ink3); cursor:pointer; border-radius:100px; transition:all .2s; display:flex; align-items:center; gap:8px; }
+.dtab:hover { border-color:var(--ink3); color:var(--ink); }
+.dtab.on { background:var(--ink); color:var(--white); border-color:var(--ink); }
+.dtab-count { font-size:10px; opacity:.5; }
+.dtab.on .dtab-count { opacity:.6; }
+.nc.hidden { display:none; }
+
+/* FULLSCREEN */
+.mfull { width:32px; height:32px; background:rgba(255,255,255,.06); border:none; border-radius:50%; color:rgba(255,255,255,.45); font-size:14px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .2s; }
+.mfull:hover { background:rgba(255,255,255,.12); color:white; }
+.overlay.fullscreen { padding:0; }
+.overlay.fullscreen .note-modal { max-width:100%; width:100%; max-height:100vh; border-radius:0; height:100vh; }
+
 /* LANG TOGGLE */
 .lang-toggle { display: flex; gap: 2px; background: rgba(245,242,235,.08); border: 1px solid rgba(245,242,235,.15); border-radius: 100px; padding: 3px; }
 .lbtn { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1px; color: rgba(245,242,235,.4); padding: 7px 16px; border-radius: 100px; border: none; background: none; cursor: pointer; transition: all .2s; }
@@ -376,12 +391,11 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 <div class="overlay" id="overlay" onclick="closeBg(event)">
   <div class="note-modal" id="modal">
     <div class="mbar">
-      <div class="mbar-l"><div class="mpulse"></div><span class="mbc">OB/GYN &mdash; VENT</span></div>
+      <div class="mbar-l"><div class="mpulse"></div><span class="mbc" id="mbar-title">OB/GYN &mdash; VENT</span></div>
       <div class="mbar-r">
-        <div class="lang-toggle">
-          <button class="lbtn on" id="btn-en" onclick="setLang('en')">EN</button>
-          <button class="lbtn" id="btn-ar" onclick="setLang('ar')">AR</button>
-        </div>
+        <button class="mfull" id="btn-fullscreen" onclick="toggleFullscreen()" title="Full screen">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 5V1h4M9 1h4v4M13 9v4h-4M5 13H1V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
         <button class="mclose" onclick="closeModal()">&#10005;</button>
       </div>
     </div>
@@ -420,98 +434,224 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
   <div class="shero-glow"></div>
   <div class="shero-kick">Clinical Notes</div>
   <h1 class="shero-h1">Obstetrics &amp;<br><em>Gynaecology</em></h1>
-  <p class="shero-desc">Nine conditions across obstetrics and gynaecology. Built to make you understand — not memorise. The mechanism, the clinical framing, and the insight your textbook left out.</p>
+  <p class="shero-desc">Twenty-seven conditions across obstetrics and gynaecology. Built to make you understand — not memorise. The mechanism, the clinical framing, and the insight your textbook left out.</p>
   <div class="shero-stats">
-    <div><div class="sv">9</div><div class="sl">Notes</div></div>
-    <div><div class="sv">OB/GYN</div><div class="sl">Separated</div></div>
-    <div><div class="sv">EN/AR</div><div class="sl">Bilingual</div></div>
+    <div><div class="sv">21</div><div class="sl">Notes</div></div>
+    <div><div class="sv">OB / GYN</div><div class="sl">Toggle</div></div>
+    <div><div class="sv">5 min</div><div class="sl">Per note</div></div>
   </div>
 </section>
 
 <section class="notes-sec">
 
-  <!-- ── OBSTETRICS ── -->
   <div class="ns-hdr reveal">
-    <div class="ns-discipline-tag">Obstetrics</div>
-    <h2 class="ns-h2"><em>Obstetrics</em> notes</h2>
-    <p class="ns-sub">Pregnancy, labour, and the puerperium. Six conditions where timing and mechanism determine outcome.</p>
+    <h2 class="ns-h2">All <em>OB/GYN</em> notes</h2>
+    <p class="ns-sub">Toggle between disciplines or view all at once.</p>
+    <div class="disc-toggle">
+      <button class="dtab on" data-filter="all">All <span class="dtab-count">27</span></button>
+      <button class="dtab" data-filter="ob">Obstetrics <span class="dtab-count">12</span></button>
+      <button class="dtab" data-filter="gyn">Gynaecology <span class="dtab-count">15</span></button>
+    </div>
   </div>
-  <div class="notes-grid">
-    <div class="nc reveal" onclick="openNote('pph')">
+
+  <div class="notes-grid" id="notes-grid">
+
+    <!-- OB -->
+    <div class="nc reveal" data-disc="ob" onclick="openNote('pph')">
       <div class="nc-type">Emergency · OB</div><div class="nc-num">OB 01</div>
       <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
       <div class="nc-title">Postpartum Haemorrhage</div>
       <p class="nc-preview">The leading cause of maternal mortality. The 4 Ts, why BP is a late sign, and how to escalate without hesitation.</p>
       <div class="nc-foot"><div class="nc-meta">4 Ts · Atony · Emergency</div><div class="nc-arr">↗</div></div>
     </div>
-    <div class="nc reveal" onclick="openNote('preeclampsia')">
+    <div class="nc reveal" data-disc="ob" onclick="openNote('preeclampsia')">
       <div class="nc-type">Antenatal · OB</div><div class="nc-num">OB 02</div>
       <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
       <div class="nc-title">Preeclampsia</div>
       <p class="nc-preview">Not a blood pressure problem. A disease of the placenta that raises BP. The distinction changes how you manage it entirely.</p>
       <div class="nc-foot"><div class="nc-meta">HTN · HELLP · Magnesium</div><div class="nc-arr">↗</div></div>
     </div>
-    <div class="nc reveal" onclick="openNote('ectopic')">
+    <div class="nc reveal" data-disc="ob" onclick="openNote('ectopic')">
       <div class="nc-type">Emergency · OB</div><div class="nc-num">OB 03</div>
       <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
       <div class="nc-title">Ectopic Pregnancy</div>
       <p class="nc-preview">Ectopic until proven otherwise. What the triad is, the discriminatory zone, and what negative urine hCG actually rules out.</p>
       <div class="nc-foot"><div class="nc-meta">hCG · Rupture · Ultrasound</div><div class="nc-arr">↗</div></div>
     </div>
-    <div class="nc reveal" onclick="openNote('placenta')">
+    <div class="nc reveal" data-disc="ob" onclick="openNote('placenta')">
       <div class="nc-type">Antenatal · OB</div><div class="nc-num">OB 04</div>
       <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
       <div class="nc-title">Placenta Praevia</div>
       <p class="nc-preview">Painless bright red bleeding in the third trimester. Why placental position determines route of delivery — and why you never do a VE.</p>
       <div class="nc-foot"><div class="nc-meta">APH · Accreta · Caesarean</div><div class="nc-arr">↗</div></div>
     </div>
-    <div class="nc reveal" onclick="openNote('gdm')">
+    <div class="nc reveal" data-disc="ob" onclick="openNote('gdm')">
       <div class="nc-type">Antenatal · OB</div><div class="nc-num">OB 05</div>
       <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
       <div class="nc-title">Gestational Diabetes</div>
       <p class="nc-preview">Why hyperglycaemia in pregnancy endangers both mother and baby. The OGTT, thresholds, and why macrosomia is not just a big baby.</p>
       <div class="nc-foot"><div class="nc-meta">OGTT · Macrosomia · Insulin</div><div class="nc-arr">↗</div></div>
     </div>
-    <div class="nc reveal" onclick="openNote('shoulder')">
+    <div class="nc reveal" data-disc="ob" onclick="openNote('shoulder')">
       <div class="nc-type">Emergency · OB</div><div class="nc-num">OB 06</div>
       <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
       <div class="nc-title">Shoulder Dystocia</div>
       <p class="nc-preview">The head delivers. The shoulders don't follow. Five minutes. HELPERR must be automatic — not recalled under pressure.</p>
       <div class="nc-foot"><div class="nc-meta">HELPERR · McRoberts · Drill</div><div class="nc-arr">↗</div></div>
     </div>
-    <div class="nc reveal" onclick="openNote('pretermlabour')">
+    <div class="nc reveal" data-disc="ob" onclick="openNote('pretermlabour')">
       <div class="nc-type">Emergency · OB</div><div class="nc-num">OB 07</div>
       <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
       <div class="nc-title">Preterm Labour</div>
       <p class="nc-preview">Labour before 37 weeks. Why you give steroids before tocolysis, and why magnesium at 28 weeks is not about seizures.</p>
       <div class="nc-foot"><div class="nc-meta">Tocolysis · Steroids · Neuroprotection</div><div class="nc-arr">↗</div></div>
     </div>
-  </div>
+    <div class="nc reveal" data-disc="ob" onclick="openNote('miscarriage')">
+      <div class="nc-type">Early Pregnancy · OB</div><div class="nc-num">OB 08</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Miscarriage</div>
+      <p class="nc-preview">Pregnancy loss before 24 weeks. The types, what the ultrasound tells you, and why management is a shared decision — not a protocol.</p>
+      <div class="nc-foot"><div class="nc-meta">ERPC · Misoprostol · Anti-D</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" data-disc="ob" onclick="openNote('cordprolapse')">
+      <div class="nc-type">Emergency · OB</div><div class="nc-num">OB 09</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Cord Prolapse</div>
+      <p class="nc-preview">The cord delivers before the baby. Every second of cord compression is fetal hypoxia. Position before anything else.</p>
+      <div class="nc-foot"><div class="nc-meta">Category 1 CS · Decompression · Position</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" data-disc="ob" onclick="openNote('abruption')">
+      <div class="nc-type">Emergency · OB</div><div class="nc-num">OB 10</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Placental Abruption</div>
+      <p class="nc-preview">Painful dark bleeding — but 20% of abruptions have no visible bleeding at all. The concealed abruption is the one that kills.</p>
+      <div class="nc-foot"><div class="nc-meta">APH · Coagulopathy · DIC</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" data-disc="ob" onclick="openNote('iol')">
+      <div class="nc-type">Intrapartum · OB</div><div class="nc-num">OB 11</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Induction of Labour</div>
+      <p class="nc-preview">One in three labours is induced. The Bishop score, the methods, and why uterine hyperstimulation is a clinical emergency not a monitor alarm.</p>
+      <div class="nc-foot"><div class="nc-meta">Bishop Score · Prostaglandins · Oxytocin</div><div class="nc-arr">↗</div></div>
+    </div>
 
-  <!-- ── GYNAECOLOGY ── -->
-  <div class="ns-hdr reveal" style="margin-top:80px;">
-    <div class="ns-discipline-tag ns-discipline-tag--gyn">Gynaecology</div>
-    <h2 class="ns-h2"><em>Gynaecology</em> notes</h2>
-    <p class="ns-sub">The non-pregnant pelvis. Pathology, presentations, and the clinical reasoning that separates urgent from watchful waiting.</p>
-  </div>
-  <div class="notes-grid">
-    <div class="nc reveal" onclick="openNote('ovarycyst')">
+    <!-- GYN -->
+    <div class="nc reveal" data-disc="gyn" onclick="openNote('ovarycyst')">
       <div class="nc-type">Gynaecology · GYN</div><div class="nc-num">GYN 01</div>
       <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
       <div class="nc-title">Ovarian Cysts</div>
       <p class="nc-preview">Not all cysts are equal. Functional vs pathological, the IOTA rules, and when a cyst stops being a cyst and becomes a torsion.</p>
       <div class="nc-foot"><div class="nc-meta">IOTA · Torsion · CA-125</div><div class="nc-arr">↗</div></div>
     </div>
-    <div class="nc reveal" onclick="openNote('cervicalcancer')">
+    <div class="nc reveal" data-disc="gyn" onclick="openNote('cervicalcancer')">
       <div class="nc-type">Oncology · GYN</div><div class="nc-num">GYN 02</div>
       <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
       <div class="nc-title">Cervical Cancer</div>
       <p class="nc-preview">HPV drives almost every case. The screening programme, the CIN progression model, and why the vaccine does not replace the smear.</p>
       <div class="nc-foot"><div class="nc-meta">HPV · CIN · Colposcopy</div><div class="nc-arr">↗</div></div>
     </div>
-  </div>
+    <div class="nc reveal" data-disc="gyn" onclick="openNote('endometriosis')">
+      <div class="nc-type">Gynaecology · GYN</div><div class="nc-num">GYN 03</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Endometriosis</div>
+      <p class="nc-preview">Endometrium outside the uterus. Why it takes 7–10 years to diagnose, and why pain severity does not predict disease stage.</p>
+      <div class="nc-foot"><div class="nc-meta">Dysmenorrhoea · Laparoscopy · Fertility</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" data-disc="gyn" onclick="openNote('pcos')">
+      <div class="nc-type">Endocrine · GYN</div><div class="nc-num">GYN 04</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">PCOS</div>
+      <p class="nc-preview">The most common endocrine disorder in women of reproductive age. Rotterdam criteria, the metabolic risk hiding behind the cycle problem.</p>
+      <div class="nc-foot"><div class="nc-meta">Rotterdam · Insulin Resistance · Anovulation</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" data-disc="gyn" onclick="openNote('fibroids')">
+      <div class="nc-type">Gynaecology · GYN</div><div class="nc-num">GYN 05</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Uterine Fibroids</div>
+      <p class="nc-preview">Benign smooth muscle tumours. Why location matters more than size, and the management ladder from GnRH to hysterectomy.</p>
+      <div class="nc-foot"><div class="nc-meta">FIGO Classification · HMB · Myomectomy</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" data-disc="gyn" onclick="openNote('pid')">
+      <div class="nc-type">Infectious · GYN</div><div class="nc-num">GYN 06</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Pelvic Inflammatory Disease</div>
+      <p class="nc-preview">Ascending infection of the upper genital tract. Chlamydia leads, but the sequelae — infertility, ectopic, chronic pain — outlast the infection.</p>
+      <div class="nc-foot"><div class="nc-meta">Chlamydia · Fitz-Hugh-Curtis · Sequelae</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" data-disc="gyn" onclick="openNote('menopause')">
+      <div class="nc-type">Endocrine · GYN</div><div class="nc-num">GYN 07</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Menopause &amp; HRT</div>
+      <p class="nc-preview">Not just hot flushes. The systemic consequences of oestrogen withdrawal — and why the risks of HRT were overstated for a generation.</p>
+      <div class="nc-foot"><div class="nc-meta">HRT · Bone · Cardiovascular · MHT</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" data-disc="gyn" onclick="openNote('vulvalconditions')">
+      <div class="nc-type">Gynaecology · GYN</div><div class="nc-num">GYN 08</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Vulval Conditions</div>
+      <p class="nc-preview">Lichen sclerosus, vulvodynia, VIN. Why the diagnosis is frequently delayed — and why lichen sclerosus is not just a skin condition.</p>
+      <div class="nc-foot"><div class="nc-meta">Lichen Sclerosus · Vulvodynia · VIN</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" data-disc="gyn" onclick="openNote('ovariancancer')">
+      <div class="nc-type">Oncology · GYN</div><div class="nc-num">GYN 09</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Ovarian Cancer</div>
+      <p class="nc-preview">The silent killer that isn't silent — the symptoms are there, they're just vague. What they are, and why stage at diagnosis determines everything.</p>
+      <div class="nc-foot"><div class="nc-meta">CA-125 · FIGO · BRCA · Debulking</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" data-disc="gyn" onclick="openNote('subfertility')">
+      <div class="nc-type">Reproductive · GYN</div><div class="nc-num">GYN 10</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Subfertility</div>
+      <p class="nc-preview">One in seven couples. The structured investigation, when to start, and why IVF is the end of the pathway — not the beginning.</p>
+      <div class="nc-foot"><div class="nc-meta">Semen Analysis · IVF · Tubal · Anovulation</div><div class="nc-arr">↗</div></div>
+    </div>
 
-</section>
+    <div class="nc reveal" data-disc="ob" onclick="openNote('obstetriccholestasis')">
+      <div class="nc-type">Antenatal · OB</div><div class="nc-num">OB 12</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Obstetric Cholestasis</div>
+      <p class="nc-preview">Intense pruritus, no rash, abnormal LFTs in the third trimester. The risk is not to the mother — it is sudden unexplained fetal death.</p>
+      <div class="nc-foot"><div class="nc-meta">Bile Acids · Pruritus · IOL</div><div class="nc-arr">↗</div></div>
+    </div>
+
+    <div class="nc reveal" data-disc="gyn" onclick="openNote('endometrialcancer')">
+      <div class="nc-type">Oncology · GYN</div><div class="nc-num">GYN 11</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Endometrial Cancer</div>
+      <p class="nc-preview">The most common gynaecological cancer. Postmenopausal bleeding is the alarm symptom — and 90% of women present because of it. Early by design.</p>
+      <div class="nc-foot"><div class="nc-meta">PMB · Type I/II · Hysterectomy</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" data-disc="gyn" onclick="openNote('urinaryincontinence')">
+      <div class="nc-type">Urogynaecology · GYN</div><div class="nc-num">GYN 12</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Urinary Incontinence</div>
+      <p class="nc-preview">Stress vs urgency — the mechanism, the investigation, and why surgery before conservative treatment is always the wrong sequence.</p>
+      <div class="nc-foot"><div class="nc-meta">Urodynamics · TVT · Bladder Training</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" data-disc="gyn" onclick="openNote('contraception')">
+      <div class="nc-type">Reproductive · GYN</div><div class="nc-num">GYN 13</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Contraception</div>
+      <p class="nc-preview">Pearl index, UKMEC, reversibility. Why the most effective methods are the ones least frequently offered first.</p>
+      <div class="nc-foot"><div class="nc-meta">LARC · UKMEC · Emergency</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" data-disc="gyn" onclick="openNote('sexuallytransmitted')">
+      <div class="nc-type">Infectious · GYN</div><div class="nc-num">GYN 14</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">STIs</div>
+      <p class="nc-preview">Chlamydia, gonorrhoea, syphilis, herpes. The presentations, the tests, the treatments — and why partner notification is part of the prescription.</p>
+      <div class="nc-foot"><div class="nc-meta">NAAT · Syphilis · Herpes · Contact Tracing</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" data-disc="gyn" onclick="openNote('acutegynae')">
+      <div class="nc-type">Emergency · GYN</div><div class="nc-num">GYN 15</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Acute Gynaecology</div>
+      <p class="nc-preview">Ovarian torsion, TOA, acute vulval haematoma. The time-critical diagnoses — and the clinical details that make the difference between ovary saved and ovary lost.</p>
+      <div class="nc-foot"><div class="nc-meta">Torsion · TOA · Bartholin's</div><div class="nc-arr">↗</div></div>
+    </div>
+
+  </div>
 </div>
 
 
@@ -525,6 +665,34 @@ function setLang(l) {
   document.body.classList.toggle('ar-mode', l === 'ar');
   ['btn-en','btn-en2'].forEach(id => { const el = document.getElementById(id); if(el) el.classList.toggle('on', l==='en'); });
   ['btn-ar','btn-ar2'].forEach(id => { const el = document.getElementById(id); if(el) el.classList.toggle('on', l==='ar'); });
+}
+
+// DISC TOGGLE
+document.querySelectorAll('.dtab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.dtab').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('#notes-grid .nc').forEach(card => {
+      if (filter === 'all' || card.dataset.disc === filter) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
+
+// FULLSCREEN
+let isFullscreen = false;
+function toggleFullscreen() {
+  const overlay = document.getElementById('overlay');
+  const btn = document.getElementById('btn-fullscreen');
+  isFullscreen = !isFullscreen;
+  overlay.classList.toggle('fullscreen', isFullscreen);
+  btn.innerHTML = isFullscreen
+    ? '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 1v4H1M13 5h-4V1M9 13V9h4M1 9h4v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    : '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 5V1h4M9 1h4v4M13 9v4h-4M5 13H1V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 }
 
 
@@ -543,8 +711,11 @@ function openNote(id){
   document.getElementById('page-mcq-ob').style.display='none';
 }
 function closeModal(){
-  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open','fullscreen');
   document.body.style.overflow='';
+  isFullscreen=false;
+  const btn=document.getElementById('btn-fullscreen');
+  if(btn) btn.innerHTML='<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 5V1h4M9 1h4v4M13 9v4h-4M5 13H1V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   dismissVentPopup();
 }
 function closeBg(e){if(e.target===document.getElementById('overlay'))closeModal();}
@@ -664,7 +835,1069 @@ function retryMCQ(noteId){
 }
 
 const NOTES={};
+NOTES.abruption=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Obstetrics · Emergency · OB 10</div>
+  <div class="n-title">Placental<br>Abruption</div>
+  <div class="n-oneliner">Painful dark bleeding — but 20% have no visible bleeding at all. The concealed abruption is the one that kills.</div>
+  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">APH</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+<div class="n-visual">
+  <div class="nv-hdr"><span class="nv-title">Abruption vs Praevia — the clinical distinction</span><span class="nv-sub">Both cause APH. The mechanism, pain, and blood character separate them.</span></div>
+  <div class="nv-body" style="padding:0;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);">
+      <div style="background:#c8452a;padding:28px 24px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase;">Abruption</div>
+        <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:white;line-height:1.1;">Painful · Dark · Woody uterus</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.65);margin-top:8px;line-height:1.8;">Retroplacental haematoma<br>Uterus tense / rigid<br>20% concealed — no bleeding<br>Fetal compromise ± DIC<br>Risk: HTN, cocaine, trauma, smoking</div>
+        <div style="margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.15);font-family:'JetBrains Mono',monospace;font-size:11px;color:white;font-weight:700;">Deliver — maternal stability first</div>
+      </div>
+      <div style="background:#3a5a6e;padding:28px 24px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Praevia</div>
+        <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:white;line-height:1.1;">Painless · Bright · Soft uterus</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.58);margin-top:8px;line-height:1.8;">Placenta over internal os<br>Uterus non-tender<br>Fetus usually well<br>No VE — ever<br>Risk: prev CS, multiparity</div>
+        <div style="margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.1);font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(160,200,220,.9);font-weight:700;">Manage by gestation + blood loss</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">Premature separation of a normally sited placenta from the uterine wall. The blood pools behind the placenta — it may or may not escape.</div>
+    <div class="n-opener-body">Placental abruption complicates approximately 1% of pregnancies and is a leading cause of perinatal mortality and significant maternal morbidity. The key concept is the <strong>concealed abruption</strong>: in up to 20% of cases, the blood remains trapped behind the placenta and does not escape vaginally. These women present with severe abdominal pain, a rigid woody uterus, and fetal compromise — but no bleeding. The absence of visible blood does not reduce the severity. In severe cases, the volume of blood sequestered retroplacentally is sufficient to cause DIC and maternal cardiovascular collapse.</div>
+  </div>
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">Risk factors and mechanism</span><div class="shead-l"></div></div>
+  <div class="mech">
+    <div class="mech-label">Why the placenta separates</div>
+    <p>Abruption begins with disruption of the maternal vessels at the decidua basalis — the interface between placenta and uterine wall. Haemorrhage into this space strips the placenta progressively from the myometrium. The separated area cannot participate in gas exchange. <strong>The clinical severity is determined by the area of separation and the speed of blood loss — not whether it is visible.</strong> Risk factors: pre-eclampsia and hypertension (most common), cocaine use (acute severe vasoconstriction), direct abdominal trauma, smoking, thrombophilia, previous abruption (10× recurrence risk), PPROM, polyhydramnios.</p>
+  </div>
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">Severity grading and management</span><div class="shead-l"></div></div>
+  <div class="points">
+    <div class="point"><div class="pt-n">1</div><div class="pt-b"><span class="pt-title">Mild — small bleed, fetus alive and well</span><div class="pt-body">Small retroplacental clot, &lt;100mL blood loss. Uterus not tense. Fetus well on CTG. <strong>Admit, monitor, steroid course if &lt;34+6 weeks.</strong> IV access, FBC, clotting, crossmatch, group and save. If preterm and stable — conservative management to gain gestation. If term — consider delivery. Anti-D for all Rh-negative women.</div></div></div>
+    <div class="point"><div class="pt-n">2</div><div class="pt-b"><span class="pt-title">Moderate — significant bleeding, fetal compromise</span><div class="pt-body">100–500mL blood loss. Uterus tense. CTG abnormal — decelerations, reduced variability. Maternal haemodynamic instability developing. <strong>Immediate senior review. Two large-bore IV cannulae. Bloods urgently including clotting. Crossmatch 4–6 units.</strong> Category 1 or 2 CS depending on fetal condition and maternal stability. If vaginal delivery imminent and fetus alive — ARM to hasten delivery and continuous CTG.</div></div></div>
+    <div class="point"><div class="pt-n">3</div><div class="pt-b"><span class="pt-title">Severe — massive haemorrhage, DIC, fetal death</span><div class="pt-body">&gt;500mL. Rigid wooden uterus. Maternal shock. DIC (PT, APTT prolonged, fibrinogen &lt;1g/L, platelets falling). <strong>This is a life-threatening maternal emergency.</strong> Activate major haemorrhage protocol. Massive transfusion (1:1:1 pRBC:FFP:platelets). Cryoprecipitate for fibrinogen &lt;1.5g/L. Delivery regardless of fetal condition — maternal life takes priority. Consider haematology and critical care input immediately.</div></div></div>
+  </div>
+  <div class="warn">
+    <div class="warn-ico">⚠</div>
+    <div><div class="warn-lbl">DIC in abruption — fibrinogen is the critical number</div>
+    <p>DIC in abruption is driven by placental thromboplastin release activating the coagulation cascade. <strong>Fibrinogen is the most sensitive and earliest marker</strong> — it falls before PT/APTT become abnormal. A fibrinogen &lt;2g/L in pregnancy is already critically low (normal in pregnancy: 4–6g/L). Replace with cryoprecipitate (each pool raises fibrinogen by ~1g/L). Do not wait for frank clinical coagulopathy before acting on a falling fibrinogen.</p></div>
+  </div>
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">The blood you cannot see is more dangerous than the blood you can.</div>
+    <div class="ins-body">Every clinician learns to fear the woman bleeding heavily from a known praevia. The concealed abruption is more dangerous precisely because it does not announce itself. <strong>A woman at 34 weeks with sudden severe continuous abdominal pain, a tense uterus, and a fetus in distress — even with only minimal vaginal bleeding — has a severe abruption until proven otherwise.</strong> The retroplacental haematoma can sequester enough blood to cause DIC and maternal cardiovascular collapse while the bedside estimate of visible blood loss appears reassuringly small. Trust the uterus. A wooden uterus is a haematological emergency.</div>
+  </div>
+  <div class="nfoot"><span class="ntag">Abruption</span><span class="ntag">Concealed Haemorrhage</span><span class="ntag">DIC</span><span class="ntag">Fibrinogen</span><span class="ntag">APH</span><span class="ntime">⏱ 5 min</span></div>
+<div class="note-end-cta" onclick="showVentPopup()"><div class="note-end-cta-tag">// End of note</div><div class="note-end-cta-title">Are you ventilating?</div><div class="note-end-cta-sub">5 questions. No feedback until the end.</div><div class="note-end-cta-arrow">&#8599;</div></div>
+</div>`;
+
+NOTES.iol=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Obstetrics · Intrapartum · OB 11</div>
+  <div class="n-title">Induction of<br>Labour</div>
+  <div class="n-oneliner">One in three labours is induced. The Bishop score, the methods, and why uterine hyperstimulation is a clinical emergency — not a monitor alarm.</div>
+  <div class="n-badges"><span class="nbadge">Intrapartum</span><span class="nbadge">Bishop Score</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+<div class="n-visual">
+  <div class="nv-hdr"><span class="nv-title">Bishop score — cervical assessment before induction</span><span class="nv-sub">Score ≥8 = favourable cervix. Score &lt;6 = needs ripening first.</span></div>
+  <div class="nv-body" style="padding:0;">
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--border);">
+      <div style="background:#1a1510;padding:20px 12px;display:flex;flex-direction:column;gap:6px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(200,69,42,.7);text-transform:uppercase;">Parameter</div><div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:800;color:white;line-height:1.3;">Dilation<br>Effacement<br>Station<br>Consistency<br>Position</div></div>
+      <div style="background:#5a1810;padding:20px 12px;display:flex;flex-direction:column;gap:6px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Score 0</div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.65);line-height:1.9;">Closed<br>&lt;30%<br>−3<br>Firm<br>Posterior</div></div>
+      <div style="background:#8a2818;padding:20px 12px;display:flex;flex-direction:column;gap:6px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.45);text-transform:uppercase;">Score 1</div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.7);line-height:1.9;">1–2cm<br>40–50%<br>−2<br>Medium<br>Mid</div></div>
+      <div style="background:#c8452a;padding:20px 12px;display:flex;flex-direction:column;gap:6px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase;">Score 2</div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.85);line-height:1.9;">3–4cm<br>60–70%<br>−1/0<br>Soft<br>Anterior</div></div>
+      <div style="background:#2a5a3e;padding:20px 12px;display:flex;flex-direction:column;gap:6px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Score 3</div><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(160,220,160,.9);line-height:1.9;">≥5cm<br>≥80%<br>+1/+2<br>—<br>—</div></div>
+    </div>
+  </div>
+</div>
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">Artificial initiation of labour before spontaneous onset. Affects 33% of all UK deliveries. Carries real risks that require real monitoring.</div>
+    <div class="n-opener-body">Induction of labour (IOL) is one of the most common obstetric interventions. Common indications: post-dates (≥41+0 weeks), pre-labour rupture of membranes at term, gestational diabetes, pre-eclampsia, fetal growth restriction, maternal medical conditions. <strong>IOL is not the same as waiting for labour — it carries a higher rate of uterine hyperstimulation, fetal distress, and operative delivery compared to spontaneous onset.</strong> Continuous CTG is mandatory throughout. The Bishop score determines the starting point: unfavourable cervix requires ripening before ARM/oxytocin.</div>
+  </div>
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">Methods — sequential, not simultaneous</span><div class="shead-l"></div></div>
+  <div class="points">
+    <div class="point"><div class="pt-n">1</div><div class="pt-b"><span class="pt-title">Cervical ripening — for Bishop score &lt;6</span><div class="pt-body"><span class="drug">Dinoprostone</span> (PGE2) pessary or gel — inserted vaginally, repeat after 6 hours if no response (max 2 doses). Or <span class="drug">Misoprostol</span> (PGE1) 25mcg vaginally every 2 hours — more potent, lower cost, more hyperstimulation risk, not for women with prior CS. Or balloon catheter (Cook balloon) — mechanical ripening, inserted through cervix and inflated, avoids prostaglandin hyperstimulation risk, preferred in VBAC candidates. <strong>CTG before and after each dose. Continuous CTG if any uterine activity.</strong></div></div></div>
+    <div class="point"><div class="pt-n">2</div><div class="pt-b"><span class="pt-title">Amniotomy (ARM) — when cervix is favourable (Bishop ≥6)</span><div class="pt-body">Artificial rupture of membranes with an amnihook — releases prostaglandins, stimulates labour. Confirms presentation and allows assessment of liquor (clear vs meconium). <strong>Note the time — if no established labour within 1–2 hours, oxytocin augmentation is required.</strong> Assess for cord prolapse immediately after ARM — check fetal heart continuously for 15–20 minutes post-ARM.</div></div></div>
+    <div class="point"><div class="pt-n">3</div><div class="pt-b"><span class="pt-title">Oxytocin infusion — augmentation after ARM</span><div class="pt-body"><span class="drug">Syntocinon</span> (oxytocin) IV infusion — titrated to achieve 3–4 contractions in 10 minutes, each lasting 40–60 seconds. Start at 1–2 mU/min, increase every 30 minutes until adequate contractions. Maximum dose varies by protocol (~32 mU/min). <strong>Continuous CTG is mandatory throughout oxytocin infusion.</strong> Oxytocin is the most common cause of hyperstimulation. Know how to stop it.</div></div></div>
+  </div>
+  <div class="warn">
+    <div class="warn-ico">⚠</div>
+    <div><div class="warn-lbl">Uterine hyperstimulation — stop the oxytocin, call for help</div>
+    <p><strong>Hyperstimulation</strong>: contractions lasting &gt;2 minutes, or &gt;5 contractions in 10 minutes (tachysystole). Causes fetal hypoxia through impaired uteroplacental perfusion during prolonged contraction. Management: <strong>stop the oxytocin immediately</strong>. Left lateral position. <span class="drug">Terbutaline</span> 250mcg SC (tocolytic) if CTG abnormal and hyperstimulation persists after stopping oxytocin. Urgent review. If CTG remains pathological → delivery. This is not a situation to wait and observe.</p></div>
+  </div>
+  <div class="box">
+    <div class="box-hdr"><div class="box-dot"></div><div class="box-label">IOL after previous caesarean section (VBAC)</div></div>
+    <div class="box-body">Prostaglandins in women with a previous uterine scar increase the risk of <strong>uterine rupture</strong> — particularly misoprostol (PGE1), which is contraindicated. Mechanical ripening (balloon catheter) is the preferred method. Oxytocin augmentation after ARM is acceptable but requires continuous CTG and a low threshold for caesarean section. The risk of uterine rupture with IOL in a scarred uterus is approximately 0.5–1% — compared to 0.2% in spontaneous labour with a prior CS. This must be part of the consent discussion.</div>
+  </div>
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">Induction is not a passive process. <em>It requires active surveillance from start to finish.</em></div>
+    <div class="ins-body">The most dangerous moment in an induction is when it appears to be going well. A woman contracting regularly, progressing, comfortable — and the CTG showing subtle decelerations that are being normalised because "she's doing fine." <strong>Induction with oxytocin mandates continuous CTG for the entire duration of the infusion.</strong> Hyperstimulation can develop suddenly, and fetal compromise follows within minutes of sustained hypercontraction. The resident who knows to stop the Syntocinon first, position left lateral, and call for senior review — before the CTG becomes a flat line — is the resident who prevents a serious adverse outcome. The drip is always the first thing to turn off.</div>
+  </div>
+  <div class="nfoot"><span class="ntag">IOL</span><span class="ntag">Bishop Score</span><span class="ntag">Dinoprostone</span><span class="ntag">Oxytocin</span><span class="ntag">Hyperstimulation</span><span class="ntag">VBAC</span><span class="ntime">⏱ 5 min</span></div>
+<div class="note-end-cta" onclick="showVentPopup()"><div class="note-end-cta-tag">// End of note</div><div class="note-end-cta-title">Are you ventilating?</div><div class="note-end-cta-sub">5 questions. No feedback until the end.</div><div class="note-end-cta-arrow">&#8599;</div></div>
+</div>`;
+
+NOTES.menopause=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Gynaecology · Endocrine · GYN 07</div>
+  <div class="n-title">Menopause<br>&amp; HRT</div>
+  <div class="n-oneliner">Not just hot flushes. The systemic consequences of oestrogen withdrawal — and why the risks of HRT were overstated for a generation.</div>
+  <div class="n-badges"><span class="nbadge">Endocrine</span><span class="nbadge">MHT / HRT</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+<div class="n-visual">
+  <div class="nv-hdr"><span class="nv-title">Consequences of oestrogen withdrawal — by system</span><span class="nv-sub">HRT addresses most of these; the benefits extend beyond vasomotor symptoms</span></div>
+  <div class="nv-body" style="padding:0;">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);">
+      <div style="background:#c8452a;padding:22px 16px;display:flex;flex-direction:column;gap:5px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase;">Vasomotor</div><div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:white;line-height:1.2;">Hot flushes<br>Night sweats</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.6);margin-top:6px;line-height:1.6;">75% of women<br>Avg duration 7 years<br>Disrupts sleep and work</div></div>
+      <div style="background:#7a3060;padding:22px 16px;display:flex;flex-direction:column;gap:5px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Skeletal</div><div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:white;line-height:1.2;">Osteoporosis<br>Fracture risk</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.55);margin-top:6px;line-height:1.6;">Up to 20% bone loss<br>in first 5–7 yrs<br>Hip fracture mortality 20%</div></div>
+      <div style="background:#3a5a6e;padding:22px 16px;display:flex;flex-direction:column;gap:5px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Urogenital</div><div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:white;line-height:1.2;">GSM<br>Dyspareunia</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.52);margin-top:6px;line-height:1.6;">Vaginal atrophy<br>Recurrent UTIs<br>Urinary urgency</div></div>
+      <div style="background:#2a3a5a;padding:22px 16px;display:flex;flex-direction:column;gap:5px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Neurological</div><div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:white;line-height:1.2;">Mood · Cognition<br>Joint pain</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.52);margin-top:6px;line-height:1.6;">Anxiety · Low mood<br>Brain fog<br>Musculoskeletal pain</div></div>
+    </div>
+  </div>
+</div>
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">The permanent cessation of menstruation due to ovarian follicle depletion. Diagnosed retrospectively after 12 months of amenorrhoea. Average age in the UK: 51.</div>
+    <div class="n-opener-body">Menopause is not a disease — it is a physiological transition. But the consequences of oestrogen withdrawal are real, systemic, and in many cases significantly debilitating. <strong>The clinical imperative is accurate diagnosis, comprehensive symptom assessment, and honest evidence-based discussion of HRT — without the distortion introduced by the 2002 WHI study, which overstated risks for a generation of women and doctors.</strong> Menopausal hormone therapy (MHT/HRT) remains the most effective treatment for vasomotor symptoms and has significant additional benefits for bone, cardiovascular health (when started early), and quality of life. The balance of risks and benefits is highly individual — and most women under 60 who start HRT within 10 years of menopause have a favourable benefit-risk profile.</div>
+  </div>
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">Diagnosis — when to measure FSH, when not to</span><div class="shead-l"></div></div>
+  <div class="mech">
+    <div class="mech-label">FSH is more useful in some situations than others</div>
+    <p>In women over 45 with typical vasomotor symptoms, menopause is a clinical diagnosis — <strong>FSH measurement is not required</strong>. In women under 45 with suspected premature ovarian insufficiency (POI), FSH should be measured (elevated &gt;25 IU/L on two occasions 4–6 weeks apart, with low oestradiol). In women on the COCP or progestogen-only pill, FSH cannot be reliably interpreted. Perimenopause is characterised by irregular cycles, vasomotor symptoms, and cycle-related mood changes — FSH fluctuates and a single normal result does not exclude perimenopause.</p>
+  </div>
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">HRT — the evidence, the types, and the real risks</span><div class="shead-l"></div></div>
+  <div class="points">
+    <div class="point"><div class="pt-n">E</div><div class="pt-b"><span class="pt-title">Oestrogen — the active component, available in multiple routes</span><div class="pt-body">Systemic: patches, gel, spray (transdermal), or oral tablets. <strong>Transdermal oestrogen does not increase VTE risk</strong> — unlike oral oestrogen, which undergoes first-pass hepatic metabolism increasing clotting factor production. For women with VTE risk factors or BMI &gt;30, transdermal is preferred. Doses: low (25mcg patch), standard (50mcg), high (75–100mcg). Local (vaginal): oestradiol tablets, cream, or ring — for GSM only, systemic absorption negligible, can be used without progestogen, indefinitely.</div></div></div>
+    <div class="point"><div class="pt-n">P</div><div class="pt-b"><span class="pt-title">Progestogen — required to protect the endometrium in women with a uterus</span><div class="pt-body">Unopposed oestrogen stimulates endometrial proliferation → hyperplasia → carcinoma. <strong>Any woman with a uterus must have progestogen added.</strong> Options: continuous combined (no withdrawal bleed — for postmenopausal women or those who have been amenorrhoeic for &gt;1 year). Sequential (cyclic progestogen — produces monthly bleed — for perimenopausal women). <span class="drug">Micronised progesterone</span> (Utrogestan) — body-identical, associated with lower breast cancer risk and lower VTE risk than synthetic progestogens. LNG-IUS provides local endometrial protection with minimal systemic progestogen effect.</div></div></div>
+    <div class="point"><div class="pt-n">R</div><div class="pt-b"><span class="pt-title">The real risk picture — correcting the WHI legacy</span><div class="pt-body">The 2002 WHI study used oral conjugated equine oestrogen + medroxyprogesterone acetate in women with average age 63 — not representative of standard HRT use. <strong>Modern transdermal oestrogen + micronised progesterone</strong>: no increased VTE risk, no increased stroke risk, and lower breast cancer risk than the WHI combination. The breast cancer risk with combined HRT is approximately <strong>1 extra case per 1000 women per year of use</strong> — comparable to drinking 1–2 units of alcohol per day. For women with severe menopausal symptoms, this risk is almost universally acceptable. Women should be told actual numbers, not relative risk ratios.</div></div></div>
+  </div>
+  <div class="box">
+    <div class="box-hdr"><div class="box-dot"></div><div class="box-label">Premature ovarian insufficiency (POI) — HRT is mandatory, not optional</div></div>
+    <div class="box-body">POI (menopause before age 40) affects 1% of women. In the absence of oestrogen from age 40, the risks of cardiovascular disease, osteoporosis, dementia, and premature mortality are substantially elevated. <strong>HRT in POI is not optional — it is replacement of a hormone the body should still be producing.</strong> It should be continued at minimum until the average age of natural menopause (51). Standard HRT doses may be insufficient — women with POI often need higher doses to achieve symptom control. The breast cancer risk associated with HRT in POI is negligible — it simply restores what was lost prematurely.</div>
+  </div>
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">A generation of women was undertreated because of one study. <em>Know the evidence well enough to correct that.</em></div>
+    <div class="ins-body">The WHI study was published in 2002. For the following 15 years, HRT prescriptions halved, menopausal symptoms went undertreated, and women were told that HRT was too dangerous to use. <strong>That interpretation was wrong.</strong> The WHI population was older, used an oral formulation that increases VTE risk, and used a synthetic progestogen since superseded by body-identical progesterone. The current evidence supports HRT as safe and beneficial for the vast majority of women under 60 who start within 10 years of menopause. Your job is to have a genuinely informed conversation — not to reflexively caution against a treatment that is, for most women, the right one.</div>
+  </div>
+  <div class="nfoot"><span class="ntag">Menopause</span><span class="ntag">HRT / MHT</span><span class="ntag">Transdermal Oestrogen</span><span class="ntag">Micronised Progesterone</span><span class="ntag">POI</span><span class="ntag">WHI</span><span class="ntime">⏱ 5 min</span></div>
+<div class="note-end-cta" onclick="showVentPopup()"><div class="note-end-cta-tag">// End of note</div><div class="note-end-cta-title">Are you ventilating?</div><div class="note-end-cta-sub">5 questions. No feedback until the end.</div><div class="note-end-cta-arrow">&#8599;</div></div>
+</div>`;
+
+NOTES.vulvalconditions=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Gynaecology · GYN 08</div>
+  <div class="n-title">Vulval<br>Conditions</div>
+  <div class="n-oneliner">Lichen sclerosus, vulvodynia, VIN. Underdiagnosed, underdiscussed, and not benign — lichen sclerosus carries a 4–5% lifetime risk of squamous cell carcinoma.</div>
+  <div class="n-badges"><span class="nbadge">Gynaecology</span><span class="nbadge">Dermatology</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+<div class="n-visual">
+  <div class="nv-hdr"><span class="nv-title">Key vulval conditions — clinical features at a glance</span><span class="nv-sub">Each has a distinct appearance, mechanism, and risk profile</span></div>
+  <div class="nv-body" style="padding:0;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);">
+      <div style="background:#c8452a;padding:24px 18px;display:flex;flex-direction:column;gap:6px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase;">Lichen Sclerosus</div><div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:white;line-height:1.1;">White plaques<br>Thin crinkled skin</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.6);margin-top:6px;line-height:1.7;">Intense itch<br>"Figure of 8" distribution<br>Autoimmune mechanism<br>SCC risk 4–5%</div><div style="margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,.15);font-family:'JetBrains Mono',monospace;font-size:10px;color:white;font-weight:700;">Potent topical steroid · Biopsy if uncertain</div></div>
+      <div style="background:#3a5a6e;padding:24px 18px;display:flex;flex-direction:column;gap:6px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Vulvodynia</div><div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:white;line-height:1.1;">Pain · Normal<br>appearance</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.52);margin-top:6px;line-height:1.7;">Chronic vulval pain<br>No identifiable cause<br>Allodynia · Hyperalgesia<br>Q-tip test positive</div><div style="margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(160,200,220,.9);font-weight:700;">Multidisciplinary · Amitriptyline</div></div>
+      <div style="background:#5a3a7a;padding:24px 18px;display:flex;flex-direction:column;gap:6px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">VIN / Vulval Cancer</div><div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:white;line-height:1.1;">Raised lesion<br>Ulcer · Lump</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.52);margin-top:6px;line-height:1.7;">HPV-driven (younger)<br>LS-related (older)<br>Itching · Bleeding<br>Any suspicious lesion → biopsy</div><div style="margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(220,160,220,.9);font-weight:700;">Urgent 2WW referral</div></div>
+    </div>
+  </div>
+</div>
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">A group of distinct vulval conditions — inflammatory, neuropathic, and neoplastic — that share a tendency to be dismissed, misdiagnosed as thrush, and inadequately treated for years.</div>
+    <div class="n-opener-body">Vulval conditions are common, undertaught, and frequently undertreated. The average diagnostic delay for lichen sclerosus is 5–6 years. Vulvodynia affects approximately 15% of women at some point in their lives. The clinical error pattern is consistent: chronic vulval symptoms attributed to recurrent candidiasis without examination, antifungal courses prescribed without confirmation, and the actual diagnosis missed for years. <strong>The first clinical rule: examine the vulva.</strong> Many conditions are immediately apparent on inspection and would be diagnosed years earlier if examined.</div>
+  </div>
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">Lichen sclerosus — the condition that cannot be ignored</span><div class="shead-l"></div></div>
+  <div class="mech">
+    <div class="mech-label">Mechanism and malignant risk</div>
+    <p>Lichen sclerosus (LS) is a chronic inflammatory dermatosis of the anogenital skin with an autoimmune basis — associated with thyroid disease, vitiligo, and pernicious anaemia. Characteristically: ivory-white plaques, thin crinkled "cigarette paper" texture, in a figure-of-8 distribution around the vulva and perianal area. Fusion of the labia minora and clitoral phimosis in advanced disease. <strong>4–5% lifetime risk of vulval squamous cell carcinoma</strong> — arising in areas of chronic LS or through the LS → differentiated VIN → SCC pathway. Annual clinical review is mandatory. Biopsy any suspicious area that does not respond to treatment or shows ulceration, induration, or raised edges.</p>
+  </div>
+  <div class="points">
+    <div class="point"><div class="pt-n">Rx</div><div class="pt-b"><span class="pt-title">Treatment — potent topical steroid, correctly applied</span><div class="pt-body"><span class="drug">Clobetasol propionate 0.05%</span> (Dermovate) — the most potent topical corticosteroid. Apply to affected skin once daily for 1 month, alternate days for 1 month, then twice weekly long-term. <strong>A pea-sized amount to the entire affected area.</strong> Most women require long-term maintenance treatment to prevent progression. Do not use weaker steroids first — they are insufficient. Review at 3 months to assess response. Symptoms that do not respond after 3 months of correct treatment require biopsy.</div></div></div>
+  </div>
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">Vulvodynia — pain with a normal examination</span><div class="shead-l"></div></div>
+  <div class="mech">
+    <div class="mech-label">Why vulvodynia is not psychological</div>
+    <p>Vulvodynia is defined as chronic vulval pain (≥3 months) without an identifiable cause. The vulva looks normal. The pain is real — driven by peripheral sensitisation of vulval nerve endings and central pain sensitisation. Provoked vestibulodynia (pain only on contact/pressure) is the most common subtype — diagnosed by positive Q-tip test (touch with a cotton-tipped swab reproduces pain). <strong>Treatment requires a multidisciplinary approach</strong>: low-oxalate diet, topical anaesthetics, tricyclic antidepressants (<span class="drug">amitriptyline</span> 10–75mg), pregabalin, pelvic floor physiotherapy, and psychological support. Telling a woman "nothing is wrong" because the examination is normal is incorrect and harmful.</p>
+  </div>
+  <div class="shead"><span class="shead-n">iii</span><span class="shead-t">Vulval intraepithelial neoplasia (VIN) and vulval cancer</span><div class="shead-l"></div></div>
+  <div class="twocol">
+    <div class="tcc"><div class="tcc-lbl">HPV-associated VIN (usual type)</div><div class="tcc-title">Younger women</div><div class="tcc-body">Caused by high-risk HPV (16, 18). Multifocal. Warty or basaloid lesions. Associated with CIN and vaginal intraepithelial neoplasia. Treatment: surgical excision, laser ablation, or topical <span class="drug">imiquimod</span> (immune modulator). Lower malignant potential than differentiated VIN.</div></div>
+    <div class="tcc shade"><div class="tcc-lbl">Differentiated VIN (non-HPV)</div><div class="tcc-title">Older women, arising in LS</div><div class="tcc-body">Arises in chronic LS. Unifocal. Higher malignant potential — can progress to SCC rapidly. Easily missed clinically. <strong>Any area of thickening, ulceration, or erythema within LS must be biopsied.</strong> Punch biopsy under local anaesthetic. Urgent referral to vulval disease specialist / gynaecological oncology.</div></div>
+  </div>
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">Thrush does not cause five years of symptoms. <em>Examine the vulva.</em></div>
+    <div class="ins-body">The most common reason vulval conditions are diagnosed late is that they are never looked at. A woman presents with itching and dyspareunia. Thrush is assumed. Antifungals are prescribed. She returns. More antifungals. Repeat swabs. All negative. Another antifungal. <strong>Five years later, she has lichen sclerosus with labial fusion and a pre-malignant lesion that required surgical excision.</strong> This is not a rare story. Every woman who presents with vulval symptoms — regardless of age, regardless of how typical the history sounds — deserves a proper vulval examination. It takes 60 seconds. The diagnosis is often visible immediately. The skill is in doing it.</div>
+  </div>
+  <div class="nfoot"><span class="ntag">Lichen Sclerosus</span><span class="ntag">Vulvodynia</span><span class="ntag">VIN</span><span class="ntag">Clobetasol</span><span class="ntag">SCC Risk</span><span class="ntag">Q-tip Test</span><span class="ntime">⏱ 5 min</span></div>
+<div class="note-end-cta" onclick="showVentPopup()"><div class="note-end-cta-tag">// End of note</div><div class="note-end-cta-title">Are you ventilating?</div><div class="note-end-cta-sub">5 questions. No feedback until the end.</div><div class="note-end-cta-arrow">&#8599;</div></div>
+</div>`;
+
+NOTES.ovariancancer=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Gynaecology · Oncology · GYN 09</div>
+  <div class="n-title">Ovarian<br>Cancer</div>
+  <div class="n-oneliner">The symptoms are there — they're just vague and non-specific. 75% are diagnosed at stage III/IV. Stage at diagnosis is everything.</div>
+  <div class="n-badges"><span class="nbadge">Oncology</span><span class="nbadge">BRCA</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+<div class="n-visual">
+  <div class="nv-hdr"><span class="nv-title">FIGO staging — 5-year survival by stage</span><span class="nv-sub">The difference between early and late detection is stark</span></div>
+  <div class="nv-body" style="padding:0;">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);">
+      <div style="background:#2a5a3e;padding:24px 18px;display:flex;flex-direction:column;gap:5px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Stage I</div><div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:white;line-height:1.1;">Confined to<br>ovary/tube</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.52);margin-top:6px;">Only 15% diagnosed here</div><div style="margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);font-family:'JetBrains Mono',monospace;font-size:14px;color:rgba(160,220,160,.9);font-weight:700;">~90%<br><span style="font-size:10px;opacity:.6;">5-year survival</span></div></div>
+      <div style="background:#3a5a6e;padding:24px 18px;display:flex;flex-direction:column;gap:5px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Stage II</div><div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:white;line-height:1.1;">Pelvic<br>extension</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.52);margin-top:6px;">Uterus, tubes, other pelvic</div><div style="margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,.08);font-family:'JetBrains Mono',monospace;font-size:14px;color:rgba(160,200,220,.9);font-weight:700;">~70%<br><span style="font-size:10px;opacity:.6;">5-year survival</span></div></div>
+      <div style="background:#8a2818;padding:24px 18px;display:flex;flex-direction:column;gap:5px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Stage III</div><div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:white;line-height:1.1;">Peritoneal<br>spread</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.52);margin-top:6px;">Abdominal / LN involvement</div><div style="margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,.08);font-family:'JetBrains Mono',monospace;font-size:14px;color:rgba(255,200,80,.9);font-weight:700;">~40%<br><span style="font-size:10px;opacity:.6;">5-year survival</span></div></div>
+      <div style="background:#c8452a;padding:24px 18px;display:flex;flex-direction:column;gap:5px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase;">Stage IV</div><div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:white;line-height:1.1;">Distant<br>metastases</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.6);margin-top:6px;">Liver parenchyma, pleura, distant</div><div style="margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,.12);font-family:'JetBrains Mono',monospace;font-size:14px;color:rgba(200,69,42,.9);font-weight:700;">&lt;20%<br><span style="font-size:10px;opacity:.6;">5-year survival</span></div></div>
+    </div>
+  </div>
+</div>
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">The fifth most common cancer in women and the leading cause of gynaecological cancer death. Predominantly high-grade serous carcinoma, arising from the fallopian tube epithelium.</div>
+    <div class="n-opener-body">Ovarian cancer has a reputation as the "silent killer" — but this is a misnomer. The symptoms are present in most women with ovarian cancer; they are simply non-specific, intermittent, and easily attributable to irritable bowel or stress. <strong>The most important clinical skill is recognising the symptom cluster — persistent bloating, early satiety, pelvic or abdominal pain, urinary urgency — particularly in women over 50 — and acting on it with appropriate investigation rather than reassurance.</strong> Early detection transforms outcomes: stage I disease has 90% 5-year survival. Stage III/IV, where most women are diagnosed, has 20–40%.</div>
+  </div>
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">Symptoms — the cluster that should trigger investigation</span><div class="shead-l"></div></div>
+  <div class="box">
+    <div class="box-hdr"><div class="box-dot"></div><div class="box-label">NICE criteria for urgent CA-125 + USS (2WW threshold)</div></div>
+    <div class="box-body">In women over 50: <strong>persistent (≥12 times/month) bloating, early satiety, pelvic or abdominal pain, or urinary symptoms (urgency/frequency)</strong> → CA-125 measurement. If CA-125 ≥35 IU/mL → urgent pelvic USS. If USS suspicious → urgent 2WW referral to gynaecological oncology. In women under 50: the same symptoms should prompt CA-125, but normal CA-125 in premenopausal women is less reassuring — if strong clinical suspicion, proceed to USS regardless. Ascites, palpable abdominal or pelvic mass, unexplained weight loss → urgent direct referral without waiting for CA-125 result.</div>
+  </div>
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">Genetics — BRCA and hereditary ovarian cancer</span><div class="shead-l"></div></div>
+  <div class="mech">
+    <div class="mech-label">Who should be referred for genetic testing</div>
+    <p><strong>BRCA1 mutation</strong>: lifetime ovarian cancer risk 39–46%. <strong>BRCA2 mutation</strong>: lifetime risk 10–27%. Lynch syndrome (MLH1, MSH2, MSH6, PMS2 mutations): lifetime risk 3–15%. Refer for genetic counselling if: personal history of ovarian cancer at any age, breast cancer diagnosed &lt;50, breast cancer diagnosed &lt;60 if triple negative, two or more close relatives with breast or ovarian cancer, male breast cancer in the family. <strong>Risk-reducing salpingo-oophorectomy</strong> (RRSO) reduces ovarian cancer risk by &gt;95% in BRCA1/2 carriers and is recommended at age 35–40 (BRCA1) or 40–45 (BRCA2) after completion of family.</p>
+  </div>
+  <div class="shead"><span class="shead-n">iii</span><span class="shead-t">Treatment — surgery and chemotherapy</span><div class="shead-l"></div></div>
+  <div class="points">
+    <div class="point"><div class="pt-n">S</div><div class="pt-b"><span class="pt-title">Surgical debulking — the extent of resection predicts survival</span><div class="pt-body">Primary cytoreductive surgery (debulking): total abdominal hysterectomy + bilateral salpingo-oophorectomy + omentectomy + peritoneal sampling + removal of all macroscopic disease. <strong>Optimal debulking (no residual disease &gt;1cm) significantly improves survival</strong> — this is why specialist gynaecological oncology surgical teams perform better. In patients not fit for upfront surgery, neoadjuvant chemotherapy (NACT) followed by interval debulking is an alternative.</div></div></div>
+    <div class="point"><div class="pt-n">C</div><div class="pt-b"><span class="pt-title">Chemotherapy and PARP inhibitors</span><div class="pt-body">First-line: platinum-based chemotherapy — <span class="drug">carboplatin</span> + <span class="drug">paclitaxel</span> × 6 cycles. <strong>PARP inhibitors</strong> (olaparib, niraparib, rucaparib) — maintenance therapy after response to first-line chemotherapy, particularly in BRCA-mutated tumours. PARP inhibitors exploit the homologous recombination deficiency in BRCA-mutated cells (synthetic lethality). Bevacizumab (anti-VEGF) in combination with chemotherapy for advanced disease. Most patients relapse within 2 years — second-line platinum retreatment or clinical trials.</div></div></div>
+  </div>
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">She mentioned bloating three times in the last year. <em>The notes say IBS each time.</em></div>
+    <div class="ins-body">The most common scenario in ovarian cancer presentation is not a dramatic acute presentation. It is a woman who has been seen multiple times over 6–18 months for vague, persistent abdominal symptoms — bloating, early satiety, intermittent pelvic discomfort — attributed to functional bowel disease, stress, or perimenopause. <strong>Persistent, progressive, or new symptoms in a woman over 50 are ovarian cancer until proven otherwise.</strong> A CA-125 costs £15. A pelvic USS is a routine investigation. The systematic decision to investigate rather than reassure when the clinical picture demands it is what closes the gap between stage I and stage III diagnosis.  </div>
+  </div>
+  <div class="nfoot"><span class="ntag">Ovarian Cancer</span><span class="ntag">FIGO Staging</span><span class="ntag">CA-125</span><span class="ntag">BRCA1/2</span><span class="ntag">PARP Inhibitors</span><span class="ntag">Debulking</span><span class="ntime">⏱ 5 min</span></div>
+<div class="note-end-cta" onclick="showVentPopup()"><div class="note-end-cta-tag">// End of note</div><div class="note-end-cta-title">Are you ventilating?</div><div class="note-end-cta-sub">5 questions. No feedback until the end.</div><div class="note-end-cta-arrow">&#8599;</div></div>
+</div>`;
+
+NOTES.subfertility=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Gynaecology · Reproductive · GYN 10</div>
+  <div class="n-title">Subfertility</div>
+  <div class="n-oneliner">One in seven couples. The structured investigation, when to start, and why IVF is the end of the pathway — not the beginning.</div>
+  <div class="n-badges"><span class="nbadge">Reproductive</span><span class="nbadge">IVF</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+<div class="n-visual">
+  <div class="nv-hdr"><span class="nv-title">Causes of subfertility — proportional contribution</span><span class="nv-sub">Male factor is the single most common identifiable cause</span></div>
+  <div class="nv-body" style="padding:0;">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);">
+      <div style="background:#c8452a;padding:24px 18px;display:flex;flex-direction:column;gap:5px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase;">Male factor</div><div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:white;">30%</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.6);margin-top:4px;line-height:1.6;">Semen analysis abnormal<br>Count · Motility · Morphology</div><div style="margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,.15);font-family:'JetBrains Mono',monospace;font-size:10px;color:white;font-weight:700;">Investigate first</div></div>
+      <div style="background:#7a3060;padding:24px 18px;display:flex;flex-direction:column;gap:5px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Ovulatory</div><div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:white;">25%</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.52);margin-top:4px;line-height:1.6;">PCOS most common<br>Hypothalamic · POI</div><div style="margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(220,160,220,.9);font-weight:700;">Letrozole / FSH</div></div>
+      <div style="background:#3a5a6e;padding:24px 18px;display:flex;flex-direction:column;gap:5px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Tubal</div><div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:white;">20%</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.52);margin-top:4px;line-height:1.6;">PID · Endometriosis<br>Previous surgery</div><div style="margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,.08);font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(160,200,220,.9);font-weight:700;">HyCoSy · Laparoscopy</div></div>
+      <div style="background:#2a3a5a;padding:24px 18px;display:flex;flex-direction:column;gap:5px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Unexplained</div><div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:white;">25%</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.48);margin-top:4px;line-height:1.6;">All investigations normal<br>Still treatable with IVF</div><div style="margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,.08);font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(160,180,220,.8);font-weight:700;">Expectant or IUI/IVF</div></div>
+    </div>
+  </div>
+</div>
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">Failure to conceive after 12 months of regular unprotected intercourse. Affects 1 in 7 couples. Investigate both partners simultaneously from the outset.</div>
+    <div class="n-opener-body">Subfertility is common, emotionally significant, and highly treatable in many cases. The clinical instinct to focus the investigation on the woman is incorrect — <strong>male factor contributes to ~30% of cases and is the most common single identifiable cause.</strong> Semen analysis should be requested at the first consultation, alongside the female investigations. The structured investigation takes 3–6 months. Referral to a specialist fertility clinic should occur after 1 year of trying (or 6 months if woman is over 35, or immediately if there is a known cause: oligomenorrhoea, previous tubal disease, azoospermia).</div>
+  </div>
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">The structured investigation — both partners, simultaneously</span><div class="shead-l"></div></div>
+  <div class="twocol">
+    <div class="tcc"><div class="tcc-lbl">Female investigations</div><div class="tcc-title">Ovulation + tubes + uterus</div><div class="tcc-body"><strong>Ovarian reserve:</strong> day 2–5 FSH, LH, oestradiol; AMH (anti-Müllerian hormone — most reliable marker of ovarian reserve, not cycle-dependent). <strong>Ovulation confirmation:</strong> day 21 progesterone (mid-luteal phase) — &gt;30 nmol/L confirms ovulation in a 28-day cycle. <strong>Tubal patency:</strong> HyCoSy (hysterosonosalpingography) — first-line; laparoscopy + dye if HyCoSy inconclusive or pelvic pathology suspected. <strong>Uterine cavity:</strong> sonohysterography or hysteroscopy if USS shows abnormality. Rubella immunity. BMI, thyroid function, prolactin.</div></div>
+    <div class="tcc shade"><div class="tcc-lbl">Male investigations</div><div class="tcc-title">Semen analysis — WHO 2021 criteria</div><div class="tcc-body"><strong>WHO 2021 lower reference limits:</strong> Volume ≥1.4mL · Total sperm number ≥39 million · Concentration ≥16 million/mL · Total motility ≥42% · Progressive motility ≥30% · Morphology ≥4% normal forms. Repeat if abnormal (2–3 month interval — sperm production cycle is 74 days). If severely abnormal: FSH, LH, testosterone, karyotype, Y chromosome microdeletion screen, CFTR mutation (azoospermia). Refer to urology/andrology if azoospermia or severe oligospermia.</div></div>
+  </div>
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">Treatment — matched to the cause</span><div class="shead-l"></div></div>
+  <div class="points">
+    <div class="point"><div class="pt-n">OI</div><div class="pt-b"><span class="pt-title">Anovulatory subfertility — ovulation induction</span><div class="pt-body">PCOS (most common): lifestyle modification → <span class="drug">Letrozole</span> (first-line) → <span class="drug">Clomifene</span> → FSH injections with follicle tracking → IVF. Hypogonadotrophic hypogonadism (low FSH/LH): pulsatile GnRH or FSH + LH injections. POI: oocyte donation. <strong>All cycles of ovulation induction require USS follicle monitoring</strong> to confirm response and prevent multiple pregnancy.</div></div></div>
+    <div class="point"><div class="pt-n">TF</div><div class="pt-b"><span class="pt-title">Tubal factor — surgery or IVF depending on extent</span><div class="pt-body">Minimal/mild tubal disease: laparoscopic tubal surgery may restore patency. Severe bilateral tubal damage (post-PID, bilateral occlusion): <strong>IVF is more effective than surgery.</strong> Hydrosalpinx reduces IVF success rates by 50% — bilateral salpingectomy before IVF is recommended. Endometriosis-related tubal disease: surgical treatment of stage I/II improves spontaneous conception; IVF for severe disease.</div></div></div>
+    <div class="point"><div class="pt-n">IVF</div><div class="pt-b"><span class="pt-title">IVF — when and what to expect</span><div class="pt-body">Indications: unexplained subfertility after 2 years, failed ovulation induction, tubal disease not amenable to surgery, severe male factor (ICSI), same-sex female couples. <strong>Success rate per cycle (live birth): ~32% under 35, declining to ~4% over 42.</strong> NHS funding: 3 cycles for women under 40 who meet criteria (varies by CCG). Risks: OHSS (ovarian hyperstimulation syndrome) — mild in 33%, severe in 1%; multiple pregnancy with multiple embryo transfer. Single embryo transfer is now standard practice in most UK units.</div></div></div>
+  </div>
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">IVF is the destination for those who need it. <em>The investigation is what tells you who those people are.</em></div>
+    <div class="ins-body">Couples presenting with subfertility often arrive expecting to be told they need IVF. Many of them do not. <strong>A structured investigation identifies a treatable cause in approximately 75% of cases.</strong> Ovulation induction with letrozole for a woman with PCOS and regular sex at the right time. Treatment of a chlamydia-related hydrosalpinx. Correction of a varicocele reducing sperm DNA fragmentation. These are not IVF cases — they are cases where understanding the mechanism leads to a targeted, less invasive, and often highly effective intervention. The investigation is the most important part of fertility management. Do it thoroughly, do it in both partners, and do it without assuming the answer before you start.</div>
+  </div>
+  <div class="nfoot"><span class="ntag">Subfertility</span><span class="ntag">Semen Analysis</span><span class="ntag">AMH</span><span class="ntag">Ovulation Induction</span><span class="ntag">IVF / ICSI</span><span class="ntag">Tubal Factor</span><span class="ntime">⏱ 5 min</span></div>
+<div class="note-end-cta" onclick="showVentPopup()"><div class="note-end-cta-tag">// End of note</div><div class="note-end-cta-title">Are you ventilating?</div><div class="note-end-cta-sub">5 questions. No feedback until the end.</div><div class="note-end-cta-arrow">&#8599;</div></div>
+</div>`;
+
 const NOTES_MCQ={};
+NOTES.miscarriage=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Obstetrics · Early Pregnancy · OB 08</div>
+  <div class="n-title">Miscarriage</div>
+  <div class="n-oneliner">Pregnancy loss before 24 weeks. The types, what ultrasound tells you, and why management is a shared decision — not a protocol.</div>
+  <div class="n-badges"><span class="nbadge">Early Pregnancy</span><span class="nbadge">Expectant · Medical · Surgical</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+
+<div class="n-visual">
+  <div class="nv-hdr">
+    <span class="nv-title">Classification of miscarriage — by clinical and ultrasound findings</span>
+    <span class="nv-sub">The type determines the management options</span>
+  </div>
+  <div class="nv-body" style="padding:0;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);">
+      <div style="background:#3a5a6e;padding:26px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Threatened</div>
+        <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:white;line-height:1.2;">Bleeding + closed os<br>+ viable fetus</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.5);margin-top:4px;line-height:1.6;">FHR present on USS<br>Cervix closed</div>
+        <div style="margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(160,200,220,.9);font-weight:700;">Expectant — no intervention</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.35);margin-top:2px;">~75% continue to term</div>
+        </div>
+      </div>
+      <div style="background:#5a1810;padding:26px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Inevitable / Incomplete</div>
+        <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:white;line-height:1.2;">Open os<br>± retained tissue</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.5);margin-top:4px;line-height:1.6;">Cervix dilated<br>Partial tissue passage</div>
+        <div style="margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,200,80,.9);font-weight:700;">3 options — shared decision</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.35);margin-top:2px;">Expectant · Medical · Surgical</div>
+        </div>
+      </div>
+      <div style="background:#7a3060;padding:26px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Missed</div>
+        <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:white;line-height:1.2;">No FHR<br>closed os, no bleeding</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.5);margin-top:4px;line-height:1.6;">Silent on USS<br>Often no symptoms</div>
+        <div style="margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(220,160,220,.9);font-weight:700;">Confirm on 2nd scan</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.35);margin-top:2px;">before any management</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">Spontaneous loss of an intrauterine pregnancy before 24 weeks. It affects 1 in 5 recognised pregnancies — and most have no identifiable cause.</div>
+    <div class="n-opener-body">
+      Miscarriage is the most common complication of pregnancy. Over 80% occur in the first trimester, and the majority are caused by chromosomal abnormalities in the embryo — most commonly aneuploidy. <strong>This is not a preventable event in most cases, and it is not caused by normal activity, sex, exercise, or stress.</strong> The clinical imperative is accurate diagnosis, sensitive communication, and genuinely shared decision-making about management. There is no single right answer — expectant, medical, and surgical management have equivalent success rates for uncomplicated miscarriage. The right choice is the one that fits the patient's circumstances, values, and timeline.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">Diagnosis — what the ultrasound must show</span><div class="shead-l"></div></div>
+
+  <div class="box">
+    <div class="box-hdr"><div class="box-dot"></div><div class="box-label">Diagnostic criteria — never act on a single scan for missed miscarriage</div></div>
+    <div class="box-body">
+      <strong>Non-viable pregnancy confirmed when:</strong>
+      <ul>
+        <li>Crown-rump length ≥7mm with <strong>no fetal heartbeat</strong> — confirm on second scan by different operator or after 7–14 days if CRL 6–7mm</li>
+        <li>Mean sac diameter ≥25mm with <strong>no embryo</strong> (empty sac — anembryonic pregnancy)</li>
+        <li>No embryo with heartbeat ≥2 weeks after scan showing gestational sac without yolk sac</li>
+        <li>No embryo with heartbeat ≥11 days after scan showing gestational sac with yolk sac</li>
+      </ul>
+      <strong>The most important rule: if any uncertainty, repeat the scan.</strong> The consequences of acting on a misdiagnosis are irreversible.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">Management — three equally valid options</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">E</div>
+      <div class="pt-b">
+        <span class="pt-title">Expectant — wait for natural passage</span>
+        <div class="pt-body">Allow the pregnancy to pass naturally, typically within 1–2 weeks. Success rate ~50–80% within 2 weeks for incomplete miscarriage; lower for missed miscarriage. Suitable for: women who prefer no intervention, haemodynamically stable, no signs of infection. Requires clear safety-netting — return immediately if heavy bleeding (soaking more than 1 pad/hour), fever, or severe pain. Follow-up urine pregnancy test at 3 weeks to confirm complete.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">M</div>
+      <div class="pt-b">
+        <span class="pt-title">Medical — misoprostol to accelerate passage</span>
+        <div class="pt-body"><span class="drug">Misoprostol</span> 800mcg vaginally (or sublingually) — a prostaglandin E1 analogue that softens the cervix and stimulates uterine contractions. Success rate ~80–85% within 2 weeks. Side effects: cramping, bleeding, nausea, diarrhoea. Suitable for: women who want faster resolution than expectant but wish to avoid surgery. Requires the same safety-netting and follow-up. A second dose can be given after 48 hours if incomplete.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">S</div>
+      <div class="pt-b">
+        <span class="pt-title">Surgical — ERPC or manual vacuum aspiration</span>
+        <div class="pt-body">Evacuation of retained products of conception (ERPC) under general anaesthetic, or manual vacuum aspiration (MVA) under local anaesthetic in clinic. Success rate ~95–99%. <strong>First-line if:</strong> haemodynamic instability, evidence of infection (treat with antibiotics first), patient preference, failed medical management, or significant retained tissue on USS. Risks include uterine perforation (~1 in 1000), cervical trauma, intrauterine adhesions (rare), and anaesthetic risks.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">iii</span><span class="shead-t">Key clinical points</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">Rh</div>
+      <div class="pt-b">
+        <span class="pt-title">Anti-D — Rh-negative women ≥12 weeks, or at any gestation if surgical management</span>
+        <div class="pt-body">Anti-D immunoglobulin is required for all Rh-negative women having surgical management regardless of gestation, and for all Rh-negative women with miscarriage at ≥12 weeks. For threatened or expectant miscarriage &lt;12 weeks, anti-D is not routinely required unless there is heavy bleeding or pain. <strong>Never assume — check the blood group.</strong></div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">RPL</div>
+      <div class="pt-b">
+        <span class="pt-title">Recurrent miscarriage — investigate after 3 losses, or 2 if over 35</span>
+        <div class="pt-body">Defined as 3 or more consecutive pregnancy losses. Affects 1% of couples. Investigations: parental karyotype, antiphospholipid antibodies (lupus anticoagulant, anticardiolipin IgG/IgM — if positive, treat with <span class="drug">aspirin</span> + <span class="drug">LMWH</span> in next pregnancy), pelvic USS for uterine anomaly, thyroid function, and blood glucose. In over 50% of cases no cause is found — prognosis is still ~60–70% chance of live birth in subsequent pregnancy.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">ψ</div>
+      <div class="pt-b">
+        <span class="pt-title">Psychological impact — acknowledge it, every time</span>
+        <div class="pt-body">Miscarriage causes grief regardless of gestational age. Rates of depression and anxiety in the months following miscarriage are clinically significant and frequently underrecognised. <strong>Acknowledge the loss explicitly.</strong> Provide written information. Refer to miscarriage support organisations. Advise waiting at least one full menstrual cycle before trying again — not for medical reasons but to allow accurate dating of the next pregnancy. Never minimise the experience with phrases like "it was early" or "at least you can get pregnant."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">You cannot make miscarriage better. <em>You can make the care around it better.</em></div>
+    <div class="ins-body">The clinical management of miscarriage is straightforward. The human management is not. <strong>The woman sitting across from you has lost something she wanted.</strong> She does not need to be told it is common. She does not need to be told it was probably chromosomal. She needs to feel heard, to have her options explained clearly and without pressure, and to leave with a plan she chose. Most of medicine is about information. This is about presence. The clinical skill is being the kind of doctor who can hold both at once — the ultrasound and the person in front of you who is devastated by it.</div>
+  </div>
+
+  <div class="nfoot"><span class="ntag">Miscarriage</span><span class="ntag">ERPC</span><span class="ntag">Misoprostol</span><span class="ntag">Expectant Management</span><span class="ntag">Anti-D</span><span class="ntag">Recurrent Miscarriage</span><span class="ntime">⏱ 5 min</span></div>
+<div class="note-end-cta" onclick="showVentPopup()">
+  <div class="note-end-cta-tag">// End of note</div>
+  <div class="note-end-cta-title">Are you ventilating?</div>
+  <div class="note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="note-end-cta-arrow">&#8599;</div>
+</div>
+</div>`;
+
+NOTES.cordprolapse=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Obstetrics · Emergency · OB 09</div>
+  <div class="n-title">Cord<br>Prolapse</div>
+  <div class="n-oneliner">The cord delivers before the baby. Every second of cord compression is fetal hypoxia. Position before anything else.</div>
+  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">Category 1 CS</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+
+<div class="n-visual">
+  <div class="nv-hdr">
+    <span class="nv-title">Cord prolapse — the mechanism of fetal compromise</span>
+    <span class="nv-sub">Compression of the cord = compression of fetal oxygen supply</span>
+  </div>
+  <div class="nv-body" style="padding:0;">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--border);">
+      <div style="background:#c8452a;padding:28px 24px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase;">Step 1</div>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:white;line-height:1.1;">Cord descends<br>past presenting part</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.6);margin-top:6px;line-height:1.6;">Membranes rupture<br>Cord enters cervix / vagina</div>
+        <div style="margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.15);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.45);">Occult: cord alongside<br>Overt: cord visible</div>
+        </div>
+      </div>
+      <div style="background:#8a2818;padding:28px 24px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase;">Step 2</div>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:white;line-height:1.1;">Cord compressed<br>by presenting part</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.6);margin-top:6px;line-height:1.6;">Umbilical arteries occluded<br>Fetal oxygen supply cut</div>
+        <div style="margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.12);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,200,80,.8);">CTG: prolonged decel<br>or bradycardia</div>
+        </div>
+      </div>
+      <div style="background:#1a1510;border:1px solid rgba(200,69,42,.35);padding:28px 24px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(200,69,42,.7);text-transform:uppercase;">Step 3</div>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:white;line-height:1.1;">Hypoxia → acidosis<br>→ brain injury</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.5);margin-top:6px;line-height:1.6;">Within minutes<br>of complete occlusion</div>
+        <div style="margin-top:auto;padding-top:14px;border-top:1px solid rgba(200,69,42,.2);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(200,69,42,.9);font-weight:700;">Decision-to-delivery: &lt;30 min</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">The umbilical cord descends through the cervix ahead of or alongside the presenting part after membrane rupture. Incidence: 1 in 500 deliveries.</div>
+    <div class="n-opener-body">
+      Cord prolapse is uncommon but immediately catastrophic. The presenting part descends and compresses the cord against the pelvis or cervix, occluding umbilical blood flow. Without intervention, complete cord occlusion causes fetal bradycardia, acidosis, and hypoxic brain injury within minutes. <strong>The entire management strategy is built around one principle: relieve cord compression and deliver as fast as possible.</strong> The sequence of actions is predetermined — any deviation wastes time the fetus does not have. This is a note to memorise before you ever need it, not to recall during it.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">Risk factors — who is at risk</span><div class="shead-l"></div></div>
+
+  <div class="twocol">
+    <div class="tcc">
+      <div class="tcc-lbl">Predisposing factors</div>
+      <div class="tcc-title">When to anticipate it</div>
+      <div class="tcc-body">Malpresentation: footling breech, transverse lie, unstable lie. Prematurity (small presenting part, ample space). Polyhydramnios (cord floats). Multiparity (lax lower segment). Low-lying placenta. Multiple pregnancy (second twin after first delivery). Unengaged head at membrane rupture.</div>
+    </div>
+    <div class="tcc shade">
+      <div class="tcc-lbl">Iatrogenic triggers</div>
+      <div class="tcc-title">Times of highest risk</div>
+      <div class="tcc-body"><strong>Artificial rupture of membranes (ARM)</strong> with high or unengaged presenting part is the most common iatrogenic cause. Always check the presenting part is well-applied to the cervix before performing ARM. External cephalic version. Insertion of internal fetal scalp electrode with high head. <strong>Never perform ARM if the head is not engaged unless in theatre.</strong></div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">Immediate management — the sequence is everything</span><div class="shead-l"></div></div>
+
+  <div class="mech">
+    <div class="mech-label">Why position comes first</div>
+    <p>The single most immediately effective intervention is changing the maternal position to reduce pressure of the presenting part on the cord. <strong>This does not require equipment, assistance, or theatre — it can be done in the time it takes to shout for help.</strong> Knee-chest position or left lateral with Trendelenburg (head down, pelvis elevated) uses gravity to allow the presenting part to fall away from the cord, partially relieving compression while theatre is prepared. Every other action follows this.</p>
+  </div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">1</div>
+      <div class="pt-b">
+        <span class="pt-title">Call for help + position immediately — simultaneously</span>
+        <div class="pt-body">Call the emergency buzzer/2222. <strong>Knee-chest position or exaggerated left lateral with Trendelenburg.</strong> Do not move the woman to theatre before doing this — position her where she is, first. This buys time. Alert: senior obstetrician, anaesthetist, theatre team, neonatal team. Do not hang up the phone to help — keep the line open.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">2</div>
+      <div class="pt-b">
+        <span class="pt-title">Manual elevation of the presenting part — do not remove your hand until delivery</span>
+        <div class="pt-body">Insert two fingers vaginally and manually elevate the presenting part off the cord. <strong>Do not handle the cord itself</strong> — manipulation causes vasospasm. Keep your hand in place, continuously supporting the presenting part. This is maintained throughout transfer to theatre and until the baby is delivered. This is not comfortable — for you or the patient. It is necessary.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">3</div>
+      <div class="pt-b">
+        <span class="pt-title">Bladder filling — an adjunct to relieve compression</span>
+        <div class="pt-body">Instil 500–750mL of normal saline into the bladder via a Foley catheter. A full bladder elevates the presenting part passively, reduces cord compression, and can reduce cord vasospasm. Useful during transfer to theatre or if theatre is delayed. Leave the catheter in — empty immediately before the caesarean incision.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">4</div>
+      <div class="pt-b">
+        <span class="pt-title">Category 1 caesarean section — decision-to-delivery within 30 minutes</span>
+        <div class="pt-body">This is a Category 1 CS — immediate threat to life of mother or fetus. Decision-to-delivery interval target: <strong>≤30 minutes</strong> (ideally ≤20 minutes). General anaesthesia is often used for speed. Spinal is acceptable if rapid to establish. <strong>Exception: if the cervix is fully dilated and the head is low, instrumental delivery may be faster than CS.</strong> Senior obstetric decision required immediately.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <div class="warn-ico">⚠</div>
+    <div>
+      <div class="warn-lbl">Do not try to replace the cord</div>
+      <p><strong>Never attempt to push the cord back above the presenting part.</strong> This causes cord vasospasm and worsens fetal compromise. The only correct action is to relieve compression of the cord — not to reposition it. The cord stays where it is. The presenting part is elevated away from it. The baby is delivered as fast as possible. These are the three actions. Nothing else.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">The hand goes in. <em>The hand does not come out.</em></div>
+    <div class="ins-body">Every second of cord prolapse management is a negotiation between what you know needs to happen and the instinct to pause, reassess, or wait for someone more senior. <strong>Do not pause. Do not wait.</strong> The moment you palpate cord at a vaginal examination — or the moment a patient tells you something is coming out — call for help loudly, position the patient, and get your hand in to elevate the presenting part. Then keep it there. Through transfer. Through theatre prep. Through draping. Your hand does not leave until the obstetrician cuts and the baby is out. That continuity of decompression is what buys the fetal brain the minutes it needs.</div>
+  </div>
+
+  <div class="nfoot"><span class="ntag">Cord Prolapse</span><span class="ntag">Category 1 CS</span><span class="ntag">Manual Elevation</span><span class="ntag">Bladder Filling</span><span class="ntag">Knee-Chest</span><span class="ntag">ARM Risk</span><span class="ntime">⏱ 5 min</span></div>
+<div class="note-end-cta" onclick="showVentPopup()">
+  <div class="note-end-cta-tag">// End of note</div>
+  <div class="note-end-cta-title">Are you ventilating?</div>
+  <div class="note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="note-end-cta-arrow">&#8599;</div>
+</div>
+</div>`;
+
+NOTES.endometriosis=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Gynaecology · GYN 03</div>
+  <div class="n-title">Endometriosis</div>
+  <div class="n-oneliner">Endometrium-like tissue outside the uterus. It takes an average of 7–10 years to diagnose — and pain severity tells you almost nothing about disease extent.</div>
+  <div class="n-badges"><span class="nbadge">Gynaecology</span><span class="nbadge">Chronic Pelvic Pain</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+
+<div class="n-visual">
+  <div class="nv-hdr">
+    <span class="nv-title">Sites of endometriotic implants — from common to rare</span>
+    <span class="nv-sub">Deep infiltrating endometriosis causes the worst symptoms</span>
+  </div>
+  <div class="nv-body" style="padding:0;">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);">
+      <div style="background:#c8452a;padding:24px 18px;display:flex;flex-direction:column;gap:5px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase;">Most common</div>
+        <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:white;line-height:1.2;">Ovaries<br>Peritoneum</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.58);margin-top:4px;line-height:1.6;">Chocolate cysts<br>Superficial deposits</div>
+        <div style="margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,.15);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:white;font-weight:700;">Endometrioma</div>
+        </div>
+      </div>
+      <div style="background:#7a3060;padding:24px 18px;display:flex;flex-direction:column;gap:5px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Common</div>
+        <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:white;line-height:1.2;">Uterosacral<br>ligaments</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.52);margin-top:4px;line-height:1.6;">Deep infiltrating<br>Dyspareunia</div>
+        <div style="margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,.12);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(220,160,220,.9);font-weight:700;">DIE lesions</div>
+        </div>
+      </div>
+      <div style="background:#3a5a6e;padding:24px 18px;display:flex;flex-direction:column;gap:5px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Less common</div>
+        <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:white;line-height:1.2;">Rectovaginal<br>septum / Bowel</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.52);margin-top:4px;line-height:1.6;">Rectal bleeding<br>Dyschezia</div>
+        <div style="margin-top:auto;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(160,200,220,.9);font-weight:700;">Bowel symptoms</div>
+        </div>
+      </div>
+      <div style="background:#2a2520;border:1px solid rgba(200,69,42,.25);padding:24px 18px;display:flex;flex-direction:column;gap:5px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(200,69,42,.6);text-transform:uppercase;">Rare</div>
+        <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:white;line-height:1.2;">Bladder<br>Diaphragm<br>Lung</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.42);margin-top:4px;line-height:1.6;">Haematuria<br>Catamenial pneumothorax</div>
+        <div style="margin-top:auto;padding-top:10px;border-top:1px solid rgba(200,69,42,.15);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(200,69,42,.7);font-weight:700;">Cyclical symptoms</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">Endometrium-like glands and stroma implanted outside the uterine cavity. Oestrogen-dependent. Chronic. Inflammatory. And profoundly underdiagnosed.</div>
+    <div class="n-opener-body">
+      Endometriosis affects approximately 10% of women of reproductive age — around 190 million globally. Despite this prevalence, the average time from symptom onset to diagnosis remains 7–10 years. The reasons are a combination of normalisation of period pain, diagnostic difficulty, and the absence of reliable non-invasive biomarkers. <strong>Laparoscopy with histological confirmation remains the gold standard for diagnosis</strong> — but empirical treatment is often started based on clinical picture alone. The key insight that changes clinical practice: <strong>disease extent on laparoscopy does not predict symptom severity.</strong> A woman with stage IV disease and frozen pelvis may have less pain than one with minimal peritoneal deposits. Treat the patient, not the stage.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">Why it causes pain — the mechanism</span><div class="shead-l"></div></div>
+
+  <div class="mech">
+    <div class="mech-label">Retrograde menstruation — the leading theory</div>
+    <p>During menstruation, endometrial fragments flow retrograde through the fallopian tubes into the peritoneal cavity. In most women, these are cleared by the immune system. In women who develop endometriosis, the fragments implant on peritoneal surfaces and proliferate under oestrogen stimulation. Each cycle, these implants bleed — causing local inflammation, fibrosis, and adhesion formation. <strong>The cyclical bleeding triggers inflammatory cytokine release, nerve sensitisation, and ultimately central sensitisation — which explains why the pain often persists even after hormonal treatment that suppresses the lesions.</strong></p>
+  </div>
+
+  <div class="twocol">
+    <div class="tcc">
+      <div class="tcc-lbl">Classic symptom triad</div>
+      <div class="tcc-title">The 3 Ds</div>
+      <div class="tcc-body"><strong>Dysmenorrhoea</strong> — cyclical, often beginning before the period and lasting through it. <strong>Dyspareunia</strong> — deep, not superficial; worse at certain times of the cycle. <strong>Dyschezia</strong> — painful defecation, particularly at menstruation. Also: chronic pelvic pain, subfertility, fatigue. <strong>Cyclical nature is the key feature</strong> — if symptoms recur predictably with each cycle, think endometriosis.</div>
+    </div>
+    <div class="tcc shade">
+      <div class="tcc-lbl">Clinical examination findings</div>
+      <div class="tcc-title">What to look for</div>
+      <div class="tcc-body">Often completely normal. In severe disease: fixed retroverted uterus (adhesions). Uterosacral ligament nodularity on bimanual examination. Tender adnexal mass (endometrioma). Posterior fornix nodularity or scarring. <strong>A normal examination does not exclude endometriosis.</strong> Most early disease has no palpable findings. A negative bimanual does not reassure the patient or change the clinical suspicion.</div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">Management — staged and individualised</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">1</div>
+      <div class="pt-b">
+        <span class="pt-title">Analgesia and hormonal suppression — first-line</span>
+        <div class="pt-body">NSAIDs for pain (e.g. <span class="drug">Mefenamic acid</span>, <span class="drug">Naproxen</span>). Combined oral contraceptive pill or progestogen-only pill — suppress ovulation and reduce cyclical bleeding. Levonorgestrel IUS (Mirena) — highly effective for pain and heavy menstrual bleeding. <span class="drug">Norethisterone</span> or <span class="drug">Desogestrel</span> continuously. These do not cure endometriosis but manage symptoms effectively in the majority.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">2</div>
+      <div class="pt-b">
+        <span class="pt-title">GnRH analogues — second-line, induces temporary menopause</span>
+        <div class="pt-body"><span class="drug">Leuprorelin</span> or <span class="drug">Goserelin</span> SC/IM monthly — suppress LH/FSH, abolish ovarian oestrogen production, induce medical menopause. Effective for pain in ~80% of cases. Side effects: vasomotor symptoms, bone density loss (&gt;6 months requires add-back HRT). <strong>Not used for &gt;12 months without add-back therapy.</strong> Does not improve fertility and should not replace surgery in women wishing to conceive.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">3</div>
+      <div class="pt-b">
+        <span class="pt-title">Laparoscopic surgery — for diagnosis, excision, and fertility</span>
+        <div class="pt-body">Laparoscopic excision or ablation of endometriotic deposits. Excision of endometriomas (cystectomy — not drainage, which has high recurrence). Division of adhesions. Deep infiltrating endometriosis involving bowel or bladder requires specialist multidisciplinary centre. For subfertility: laparoscopic treatment of stage I/II disease improves spontaneous conception rates. Endometrioma surgery before IVF does not consistently improve outcomes and risks ovarian reserve — individualised decision.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">Seven to ten years. <em>That is the average time she waited for someone to believe her.</em></div>
+    <div class="ins-body">The diagnostic delay in endometriosis is not a failure of technology — there is no reliable blood test, and USS misses the majority of peritoneal disease. It is a failure of clinical culture. <strong>Women with endometriosis are frequently told their pain is normal, exaggerated, or psychological.</strong> They are given analgesia and sent home. They return the following month. The clinician who closes this gap is the one who listens to the cyclical pattern, takes the history of deep dyspareunia seriously, and says — even before the laparoscopy is booked — "I believe you, this is likely endometriosis, and here is what we will do." That sentence, at the right time, changes the trajectory of someone's care by years.</div>
+  </div>
+
+  <div class="nfoot"><span class="ntag">Endometriosis</span><span class="ntag">Dysmenorrhoea</span><span class="ntag">DIE</span><span class="ntag">GnRH Analogues</span><span class="ntag">Laparoscopy</span><span class="ntag">Subfertility</span><span class="ntime">⏱ 5 min</span></div>
+<div class="note-end-cta" onclick="showVentPopup()">
+  <div class="note-end-cta-tag">// End of note</div>
+  <div class="note-end-cta-title">Are you ventilating?</div>
+  <div class="note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="note-end-cta-arrow">&#8599;</div>
+</div>
+</div>`;
+
+NOTES.pcos=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Gynaecology · Endocrine · GYN 04</div>
+  <div class="n-title">PCOS</div>
+  <div class="n-oneliner">The most common endocrine disorder in women of reproductive age. The cycle problem is the presentation. The metabolic risk is the disease.</div>
+  <div class="n-badges"><span class="nbadge">Endocrine</span><span class="nbadge">Rotterdam Criteria</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+
+<div class="n-visual">
+  <div class="nv-hdr">
+    <span class="nv-title">Rotterdam criteria — diagnosis requires 2 of 3 features</span>
+    <span class="nv-sub">After exclusion of other causes of hyperandrogenism and anovulation</span>
+  </div>
+  <div class="nv-body" style="padding:0;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);">
+      <div style="background:#c8452a;padding:28px 22px;display:flex;flex-direction:column;gap:7px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase;">Criterion 1</div>
+        <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:white;line-height:1.1;">Oligo- or<br>anovulation</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.62);margin-top:6px;line-height:1.7;">Cycles &gt;35 days<br>or &lt;8 cycles/year<br>or amenorrhoea</div>
+        <div style="margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.15);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:white;font-weight:700;">The fertility problem</div>
+        </div>
+      </div>
+      <div style="background:#7a3060;padding:28px 22px;display:flex;flex-direction:column;gap:7px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.45);text-transform:uppercase;">Criterion 2</div>
+        <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:white;line-height:1.1;">Clinical or<br>biochemical<br>hyperandrogenism</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.58);margin-top:6px;line-height:1.7;">Acne · Hirsutism<br>Alopecia · ↑Testosterone<br>↑DHEAS</div>
+        <div style="margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.12);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(220,160,220,.9);font-weight:700;">The cosmetic burden</div>
+        </div>
+      </div>
+      <div style="background:#3a5a6e;padding:28px 22px;display:flex;flex-direction:column;gap:7px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.45);text-transform:uppercase;">Criterion 3</div>
+        <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:white;line-height:1.1;">Polycystic<br>ovary<br>morphology</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.58);margin-top:6px;line-height:1.7;">≥20 follicles/ovary<br>OR ovarian volume<br>&gt;10mL on USS</div>
+        <div style="margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.12);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(160,200,220,.9);font-weight:700;">The USS finding</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">A heterogeneous syndrome of anovulation, hyperandrogenism, and polycystic ovarian morphology. Affects 10–15% of women of reproductive age.</div>
+    <div class="n-opener-body">
+      PCOS is the most common cause of anovulatory infertility and the most common endocrine disorder in women of reproductive age. It is not a single disease — it is a spectrum. Some women present with irregular cycles and nothing else. Others present with significant metabolic dysfunction: insulin resistance, dyslipidaemia, and substantially elevated lifetime risk of type 2 diabetes and cardiovascular disease. <strong>The cycle irregularity brings women to the clinic. The metabolic risk is what will harm them in the long term.</strong> Managing PCOS well means addressing both — the reproductive features the patient presents with, and the cardiometabolic consequences that may not yet be apparent.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">Pathophysiology — why everything connects</span><div class="shead-l"></div></div>
+
+  <div class="mech">
+    <div class="mech-label">The central role of insulin resistance</div>
+    <p>Insulin resistance — present in 50–70% of women with PCOS regardless of BMI — causes compensatory hyperinsulinaemia. Insulin at the ovary stimulates androgen production from theca cells (synergistically with LH). Elevated androgens impair follicular maturation, causing follicles to arrest at the antral stage — producing the characteristic string-of-pearls appearance on ultrasound. <strong>Arrested follicles do not ovulate.</strong> No ovulation means no progesterone production in the luteal phase. Unopposed oestrogen stimulates endometrial proliferation — raising the risk of endometrial hyperplasia and carcinoma in women with prolonged amenorrhoea.</p>
+  </div>
+
+  <div class="box">
+    <div class="box-hdr"><div class="box-dot"></div><div class="box-label">Investigations — what to check and why</div></div>
+    <div class="box-body">
+      <ul>
+        <li><strong>LH:FSH ratio</strong> — classically elevated (&gt;2:1) but not diagnostic and not required for Rotterdam criteria</li>
+        <li><strong>Total and free testosterone, DHEAS</strong> — biochemical hyperandrogenism; exclude adrenal tumour if very high</li>
+        <li><strong>17-OH progesterone</strong> — exclude late-onset congenital adrenal hyperplasia</li>
+        <li><strong>TSH, prolactin</strong> — exclude thyroid disease and hyperprolactinaemia as causes of cycle irregularity</li>
+        <li><strong>Fasting glucose and HbA1c</strong> — screen for impaired glucose tolerance and T2DM at diagnosis and every 1–3 years</li>
+        <li><strong>Fasting lipids</strong> — dyslipidaemia is common; cardiovascular risk assessment required</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">Management — by presenting problem</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">M</div>
+      <div class="pt-b">
+        <span class="pt-title">Metabolic — lifestyle is the most powerful intervention</span>
+        <div class="pt-body">Weight loss of 5–10% in overweight women restores ovulation in up to 55% and reduces insulin resistance, androgen levels, and cardiovascular risk. <strong>This is not about aesthetics — it is about endocrine function.</strong> Dietary counselling and exercise should be offered to all women with PCOS regardless of presenting complaint. <span class="drug">Metformin</span> reduces insulin resistance, improves cycle regularity, and reduces T2DM risk — particularly beneficial in women with BMI &gt;25 or impaired fasting glucose.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">C</div>
+      <div class="pt-b">
+        <span class="pt-title">Cycle regulation — COCP or progestogen cycling</span>
+        <div class="pt-body">COCP regulates cycles, reduces androgen levels (particularly anti-androgenic progestogens: drospirenone, cyproterone), treats acne and hirsutism. <strong>Critical: women with amenorrhoea (&gt;3–4 months without a period) require endometrial protection</strong> — either with COCP or cyclic progestogen (e.g. <span class="drug">Norethisterone</span> 5mg TDS for 10 days every 3 months) to prevent unopposed oestrogen-driven endometrial hyperplasia.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">F</div>
+      <div class="pt-b">
+        <span class="pt-title">Fertility — ovulation induction</span>
+        <div class="pt-body">First-line: <span class="drug">Letrozole</span> (aromatase inhibitor) — superior to clomifene for ovulation induction in PCOS with lower multiple pregnancy rate. Second-line: <span class="drug">Clomifene citrate</span> (anti-oestrogen). Third-line: gonadotrophin injections (FSH) or laparoscopic ovarian drilling (LOD — destroys androgen-producing tissue, restores ovulation in ~50%). IVF if all else fails — PCOS carries high OHSS risk; use GnRH antagonist protocol with careful monitoring.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">She came about her periods. <em>Leave her knowing about her heart.</em></div>
+    <div class="ins-body">The consultation about irregular cycles or difficulty conceiving is the moment PCOS is diagnosed. It is also the only moment most women will ever be told about their metabolic risk. <strong>Women with PCOS have a 5–10× increased risk of type 2 diabetes and a 2× increased cardiovascular risk compared to age-matched controls.</strong> These numbers are not incidental — they define the long-term morbidity of the condition. If you treat only the presenting complaint (irregular cycles, acne, fertility), you have missed the most important part of the consultation. Check the glucose. Check the lipids. Advise on lifestyle. Set up annual review. The reproductive features may resolve with time or menopause. The metabolic consequences will not.</div>
+  </div>
+
+  <div class="nfoot"><span class="ntag">PCOS</span><span class="ntag">Rotterdam Criteria</span><span class="ntag">Insulin Resistance</span><span class="ntag">Anovulation</span><span class="ntag">Letrozole</span><span class="ntag">Metformin</span><span class="ntime">⏱ 5 min</span></div>
+<div class="note-end-cta" onclick="showVentPopup()">
+  <div class="note-end-cta-tag">// End of note</div>
+  <div class="note-end-cta-title">Are you ventilating?</div>
+  <div class="note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="note-end-cta-arrow">&#8599;</div>
+</div>
+</div>`;
+
+NOTES.fibroids=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Gynaecology · GYN 05</div>
+  <div class="n-title">Uterine<br>Fibroids</div>
+  <div class="n-oneliner">Benign smooth muscle tumours. Location matters more than size — and the management ladder runs from the IUS to hysterectomy.</div>
+  <div class="n-badges"><span class="nbadge">Gynaecology</span><span class="nbadge">HMB</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+
+<div class="n-visual">
+  <div class="nv-hdr">
+    <span class="nv-title">FIGO fibroid classification — location determines symptoms</span>
+    <span class="nv-sub">Submucosal fibroids cause the most bleeding; subserosal cause the most bulk symptoms</span>
+  </div>
+  <div class="nv-body" style="padding:0;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);">
+      <div style="background:#c8452a;padding:26px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase;">FIGO 0–2 · Submucosal</div>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:white;line-height:1.1;">Beneath the<br>endometrium</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.6);margin-top:6px;line-height:1.6;">Distorts the uterine cavity<br>Heaviest bleeding<br>Subfertility impact</div>
+        <div style="margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.15);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:white;font-weight:700;">Hysteroscopic removal</div>
+        </div>
+      </div>
+      <div style="background:#3a5a6e;padding:26px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">FIGO 3–4 · Intramural</div>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:white;line-height:1.1;">Within the<br>myometrium</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.55);margin-top:6px;line-height:1.6;">Most common type<br>Heavy bleeding if large<br>Pelvic pressure</div>
+        <div style="margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(160,200,220,.9);font-weight:700;">Medical or myomectomy</div>
+        </div>
+      </div>
+      <div style="background:#2a5a3e;padding:26px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">FIGO 5–7 · Subserosal</div>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:white;line-height:1.1;">Beneath the<br>serosa / pedunculated</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.52);margin-top:6px;line-height:1.6;">Minimal bleeding<br>Urinary frequency<br>Constipation · Torsion</div>
+        <div style="margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.08);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(160,220,160,.9);font-weight:700;">Symptom-guided</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">Benign monoclonal tumours of uterine smooth muscle (leiomyomata). Present in 70% of women by age 50. Most are asymptomatic.</div>
+    <div class="n-opener-body">
+      Fibroids are oestrogen- and progesterone-dependent — they grow during reproductive years, and regress after menopause. They are the most common benign gynaecological tumour and the leading indication for hysterectomy worldwide. <strong>The key clinical distinction is between fibroids that are symptomatic and those that are not.</strong> Asymptomatic fibroids require no treatment. Symptomatic fibroids are managed according to the woman's symptoms, fertility wishes, fibroid location and size, and preference for uterine conservation. Malignant transformation (leiomyosarcoma) is rare — approximately 1 in 1000 — and cannot be reliably predicted by clinical features or USS; rapid growth alone is not an indication for surgery.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">Symptoms — determined by location, not size</span><div class="shead-l"></div></div>
+
+  <div class="twocol">
+    <div class="tcc">
+      <div class="tcc-lbl">Heavy menstrual bleeding</div>
+      <div class="tcc-title">The most common symptom</div>
+      <div class="tcc-body">Caused predominantly by submucosal fibroids that distort the cavity and impair normal endometrial haemostasis. Blood loss &gt;80mL/cycle by formal measurement, but clinically: flooding, clots, soaking through protection, social/work impact. Leads to iron deficiency anaemia in many women. <strong>Treat the anaemia before treating the fibroid</strong> — correct iron stores before any surgical procedure.</div>
+    </div>
+    <div class="tcc shade">
+      <div class="tcc-lbl">Bulk symptoms</div>
+      <div class="tcc-title">From large or subserosal fibroids</div>
+      <div class="tcc-body">Urinary frequency or urgency (anterior fibroid compresses bladder). Constipation (posterior fibroid). Chronic pelvic pressure or dragging. Abdominal distension. Ureteric obstruction in large fibroids — check renal USS if fibroid &gt;10cm. Pedunculated fibroid torsion: sudden severe pain, nausea — requires urgent surgical intervention.</div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">Management ladder — from conservative to definitive</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">1</div>
+      <div class="pt-b">
+        <span class="pt-title">Medical — for HMB without cavity distortion</span>
+        <div class="pt-body">Levonorgestrel IUS (Mirena) — first-line for HMB; reduces blood loss by ~90%, but less effective if cavity significantly distorted. <span class="drug">Tranexamic acid</span> and NSAIDs for cycle-by-cycle management. COCP. <span class="drug">Norethisterone</span>. GnRH analogues (e.g. <span class="drug">Leuprorelin</span>) shrink fibroids by ~35–50% — used pre-operatively to reduce size, correct anaemia, and decrease intraoperative blood loss. Not a long-term solution — fibroids regrow on cessation.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">2</div>
+      <div class="pt-b">
+        <span class="pt-title">Uterine artery embolisation — for women who want uterine preservation without surgery</span>
+        <div class="pt-body">Interventional radiology procedure — bilateral UAE occludes fibroid blood supply, causing infarction and shrinkage. ~85% improvement in HMB. Avoids surgery. <strong>Not appropriate for women wishing future pregnancy</strong> — associated with reduced ovarian reserve and pregnancy complications. Post-procedure pain can be severe (post-embolisation syndrome). Expulsion of submucosal fibroids post-UAE is a complication to warn about.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">3</div>
+      <div class="pt-b">
+        <span class="pt-title">Myomectomy — removal of fibroids preserving the uterus</span>
+        <div class="pt-body">Hysteroscopic myomectomy for submucosal fibroids (FIGO 0–1): gold standard, outpatient or day case. Laparoscopic or open myomectomy for intramural/subserosal fibroids. <strong>Fibroid recurrence after myomectomy: 25–50% at 10 years.</strong> Suitable for women wishing to preserve fertility. Intraoperative haemorrhage risk — especially for large or multiple fibroids. CS in subsequent pregnancy may be required if uterine cavity was entered.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">4</div>
+      <div class="pt-b">
+        <span class="pt-title">Hysterectomy — definitive treatment</span>
+        <div class="pt-body">The only permanent cure. Appropriate for: completed family, failed/declined other treatments, multiple or very large fibroids, concurrent uterine pathology. Laparoscopic hysterectomy preferred over open for most cases. <strong>Ovarian conservation should be the default in premenopausal women</strong> — bilateral salpingo-oophorectomy at time of hysterectomy increases cardiovascular and cognitive risk if performed before natural menopause.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">Fibroids are not a problem until they are. <em>The question is always: a problem for whom?</em></div>
+    <div class="ins-body">A 7cm intramural fibroid found incidentally on ultrasound in a woman with no symptoms requires nothing except reassurance and a plan to re-scan if symptoms develop. The same fibroid in a woman with flooding periods and a haemoglobin of 74 g/L is a clinical priority requiring immediate action. <strong>The fibroid does not determine the management — the woman's experience of it does.</strong> Your job is to understand what the fibroids are doing to her quality of life, what her fertility plans are, and what level of intervention she wants. The ladder from IUS to hysterectomy exists precisely so that every point on the spectrum of severity has a proportionate and acceptable option. There is no single right answer — and never push a patient toward hysterectomy simply because it is the most definitive solution.</div>
+  </div>
+
+  <div class="nfoot"><span class="ntag">Fibroids</span><span class="ntag">HMB</span><span class="ntag">FIGO Classification</span><span class="ntag">UAE</span><span class="ntag">Myomectomy</span><span class="ntag">GnRH Analogues</span><span class="ntime">⏱ 5 min</span></div>
+<div class="note-end-cta" onclick="showVentPopup()">
+  <div class="note-end-cta-tag">// End of note</div>
+  <div class="note-end-cta-title">Are you ventilating?</div>
+  <div class="note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="note-end-cta-arrow">&#8599;</div>
+</div>
+</div>`;
+
+NOTES.pid=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Gynaecology · Infectious · GYN 06</div>
+  <div class="n-title">Pelvic<br>Inflammatory<br>Disease</div>
+  <div class="n-oneliner">Ascending infection of the upper genital tract. Chlamydia leads, but the sequelae — infertility, ectopic, chronic pain — outlast the infection by years.</div>
+  <div class="n-badges"><span class="nbadge">Infectious</span><span class="nbadge">STI</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+
+<div class="n-visual">
+  <div class="nv-hdr">
+    <span class="nv-title">PID — ascending infection and its consequences</span>
+    <span class="nv-sub">One episode doubles the risk of ectopic; three episodes → 75% tubal factor infertility</span>
+  </div>
+  <div class="nv-body" style="padding:0;">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--border);">
+      <div style="background:#3a5a6e;padding:26px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Causative organisms</div>
+        <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:white;line-height:1.2;">Polymicrobial</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.56);margin-top:6px;line-height:1.7;"><em>Chlamydia trachomatis</em> — most common STI cause<br><em>Neisseria gonorrhoeae</em> — most severe<br>Anaerobes · Enterobacteriaceae<br><em>Mycoplasma genitalium</em></div>
+        <div style="margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(160,200,220,.9);font-weight:700;">Treat for all — empirically</div>
+        </div>
+      </div>
+      <div style="background:#c8452a;padding:26px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase;">Complications</div>
+        <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:white;line-height:1.2;">Acute</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.6);margin-top:6px;line-height:1.7;">Tubo-ovarian abscess<br>Fitz-Hugh-Curtis syndrome<br>Peritonitis · Sepsis</div>
+        <div style="margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.15);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:white;font-weight:700;">IV antibiotics + consider drainage</div>
+        </div>
+      </div>
+      <div style="background:#5a1810;padding:26px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">Long-term sequelae</div>
+        <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:white;line-height:1.2;">Chronic</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.56);margin-top:6px;line-height:1.7;">Tubal factor infertility<br>10× ectopic risk (×3 episodes)<br>Chronic pelvic pain<br>Dyspareunia</div>
+        <div style="margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,200,80,.9);font-weight:700;">Prevented by early treatment</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">Infection of the upper female genital tract — endometrium, fallopian tubes, ovaries, and peritoneum. Often polymicrobial. Always worth treating early.</div>
+    <div class="n-opener-body">
+      PID arises when sexually transmitted organisms (predominantly <em>Chlamydia trachomatis</em> and <em>Neisseria gonorrhoeae</em>) ascend from the vagina and cervix into the upper genital tract. Many cases are subclinical — mild or asymptomatic — yet even subclinical PID causes tubal scarring that impairs fertility. <strong>The sequelae of PID are not proportional to its severity.</strong> A single episode of mild PID can be enough to cause irreversible tubal damage. This is why the threshold for empirical treatment should be low — the cost of treating unnecessarily is a course of antibiotics. The cost of missing it is infertility.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">Diagnosis — a clinical one, not a microbiological one</span><div class="shead-l"></div></div>
+
+  <div class="mech">
+    <div class="mech-label">Why the threshold for treatment should be low</div>
+    <p>There is no single pathognomonic test for PID. Endometrial biopsy and laparoscopy are the gold standard — but impractical in routine clinical practice. In practice, <strong>PID is a clinical diagnosis</strong> made on the basis of symptoms, examination findings, and risk factors. The BASHH guidelines state: <strong>empirical treatment should be started in sexually active young women with pelvic pain and uterine, adnexal, or cervical motion tenderness on bimanual examination — in the absence of another diagnosis.</strong> The low specificity of clinical criteria is intentional.</p>
+  </div>
+
+  <div class="box">
+    <div class="box-hdr"><div class="box-dot"></div><div class="box-label">Minimum diagnostic criteria (BASHH / CDC)</div></div>
+    <div class="box-body">
+      <strong>Treat empirically if any of:</strong>
+      <ul>
+        <li>Uterine tenderness on bimanual examination</li>
+        <li>Adnexal tenderness</li>
+        <li>Cervical motion tenderness ("chandelier sign")</li>
+      </ul>
+      <strong>Supporting criteria (increase diagnostic certainty):</strong> Fever &gt;38.3°C · Abnormal cervical or vaginal discharge · CRP/ESR elevated · WBC elevated · Positive NAAT for <em>Chlamydia</em> or <em>Gonorrhoea</em> · Endometritis on biopsy · Tubo-ovarian complex on USS.
+      <strong>The minimum criteria are enough to start treatment.</strong> Do not wait for NAAT results — they take days and treatment delay causes harm.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">Management — antibiotics, partners, and follow-up</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">Oral</div>
+      <div class="pt-b">
+        <span class="pt-title">Outpatient oral regimen — BASHH first-line</span>
+        <div class="pt-body"><span class="drug">Ceftriaxone</span> 500mg IM single dose + <span class="drug">Doxycycline</span> 100mg BD for 14 days + <span class="drug">Metronidazole</span> 400mg BD for 14 days. This regimen covers gonorrhoea (ceftriaxone), chlamydia and anaerobes (doxycycline + metronidazole). <strong>14 days is the minimum course</strong> — shorter courses are associated with higher recurrence and sequelae rates. Compliance counselling is essential.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">IV</div>
+      <div class="pt-b">
+        <span class="pt-title">Inpatient IV therapy — when to admit</span>
+        <div class="pt-body">Admit for IV treatment if: tubo-ovarian abscess, surgical emergency cannot be excluded, clinically severe PID, failure of oral therapy, pregnancy, or immunocompromise. IV regimen: <span class="drug">Cefoxitin</span> or <span class="drug">Ceftriaxone</span> + <span class="drug">Doxycycline</span> IV/oral + <span class="drug">Metronidazole</span>. Switch to oral after 24 hours of clinical improvement. TOA that fails to respond to IV antibiotics after 72 hours requires image-guided drainage or surgical intervention.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">P</div>
+      <div class="pt-b">
+        <span class="pt-title">Partner notification — mandatory component of management</span>
+        <div class="pt-body">All sexual partners within the preceding 6 months (or the last partner, whichever is longer) should be notified, tested, and treated empirically. This is both a public health requirement and the only way to prevent reinfection. Refer to GUM/sexual health clinic for contact tracing. <strong>Reinfection significantly multiplies the risk of tubal damage and infertility</strong> — a treated episode followed by reinfection from an untreated partner undoes all the benefit of treatment.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="twocol">
+    <div class="tcc">
+      <div class="tcc-lbl">Fitz-Hugh-Curtis syndrome</div>
+      <div class="tcc-title">The perihepatitis of PID</div>
+      <div class="tcc-body">Inflammation of the liver capsule (perihepatic) as PID spreads to the upper abdomen via the paracolic gutters. Presents as <strong>right upper quadrant pain</strong> — often mistaken for cholecystitis or pleurisy. "Violin-string" adhesions between liver capsule and anterior abdominal wall on laparoscopy. LFTs are typically normal. Treat with the same PID regimen — no additional intervention usually required.</div>
+    </div>
+    <div class="tcc shade">
+      <div class="tcc-lbl">IUD and PID</div>
+      <div class="tcc-title">When to remove the device</div>
+      <div class="tcc-body">IUD does not need to be removed routinely in PID unless there is failure to respond to antibiotics after 72 hours, or a TOA is present. Advise against IUD insertion within 3 weeks after a PID episode. IUD should not be inserted in the context of active PID. <strong>Prior history of PID is not a contraindication to IUD</strong> — but screen for STIs before insertion in women at risk.</div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">The infection lasts days. <em>The tubal damage lasts a lifetime.</em></div>
+    <div class="ins-body">PID is one of the conditions where early treatment has a disproportionately large impact on long-term outcome. <strong>The fallopian tube does not recover well from inflammation.</strong> Each episode of PID causes progressive fibrosis, cilial destruction, and luminal narrowing. One episode doubles the risk of ectopic pregnancy. Three episodes bring a 75% chance of tubal factor infertility. These are not rare complications — they are the expected natural history of inadequately treated or recurrent PID. The clinical message is simple: when a young sexually active woman has pelvic tenderness, the threshold for empirical treatment should be low, the antibiotic course should be complete, and the partner must be treated. The fertility at stake is not hypothetical.</div>
+  </div>
+
+  <div class="nfoot"><span class="ntag">PID</span><span class="ntag">Chlamydia</span><span class="ntag">Fitz-Hugh-Curtis</span><span class="ntag">Tubo-ovarian Abscess</span><span class="ntag">Partner Notification</span><span class="ntag">Tubal Infertility</span><span class="ntime">⏱ 5 min</span></div>
+<div class="note-end-cta" onclick="showVentPopup()">
+  <div class="note-end-cta-tag">// End of note</div>
+  <div class="note-end-cta-title">Are you ventilating?</div>
+  <div class="note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="note-end-cta-arrow">&#8599;</div>
+</div>
+</div>`;
 
 NOTES.pretermlabour=()=>`
 <div class="n-hero">
@@ -673,7 +1906,7 @@ NOTES.pretermlabour=()=>`
   <div class="n-tag">Obstetrics · Emergency · OB 07</div>
   <div class="n-title">Preterm<br>Labour</div>
   <div class="n-oneliner">Labour before 37 weeks. The steroids come before the tocolysis — and the magnesium at 28 weeks is not about seizures.</div>
-  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">Neuroprotection</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">Neuroprotection</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -855,7 +2088,7 @@ NOTES.ovarycyst=()=>`
   <div class="n-tag">Gynaecology · GYN 01</div>
   <div class="n-title">Ovarian<br>Cysts</div>
   <div class="n-oneliner">Not all cysts are equal. Functional vs pathological, the IOTA simple rules, and when a cyst stops being a cyst and becomes a surgical emergency.</div>
-  <div class="n-badges"><span class="nbadge">Gynaecology</span><span class="nbadge">IOTA Rules</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Gynaecology</span><span class="nbadge">IOTA Rules</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -1021,7 +2254,7 @@ NOTES.cervicalcancer=()=>`
   <div class="n-tag">Gynaecology · Oncology · GYN 02</div>
   <div class="n-title">Cervical<br>Cancer</div>
   <div class="n-oneliner">HPV drives almost every case. Understand the progression from infection to invasion — and why the vaccine does not replace the smear.</div>
-  <div class="n-badges"><span class="nbadge">Oncology</span><span class="nbadge">Screening</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Oncology</span><span class="nbadge">Screening</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -1239,6 +2472,90 @@ NOTES_MCQ.cervicalcancer=[
   {q:"The most classic presenting symptom of early invasive cervical cancer is:",opts:["Pelvic pain","Postcoital bleeding","Urinary frequency","Vaginal discharge only"],ans:1,focus:"Cervical cancer symptoms — postcoital bleeding",exp:"<strong>Postcoital bleeding (PCB)</strong> is the hallmark symptom of cervical cancer — bleeding after sexual intercourse caused by a friable, vascular tumour on the cervix. Any woman with unexplained PCB requires a <strong>speculum examination regardless of recent normal smear</strong> — a normal smear does not exclude invasive cancer. Pelvic pain = late disease (parametrial involvement). Early disease is often asymptomatic."},
   {q:"A 28-year-old with stage 1B1 cervical cancer (&lt;2cm) wishes to preserve fertility. The appropriate surgical option is:",opts:["Radical hysterectomy","Simple trachelectomy","Radical trachelectomy with pelvic lymph node dissection","Cone biopsy alone"],ans:2,focus:"Trachelectomy — fertility-sparing surgery for early cervical cancer",exp:"<strong>Radical trachelectomy</strong> (removal of the cervix, parametrium, and upper vagina with uterine preservation) is the fertility-sparing option for stage 1A2–1B1 with tumour &lt;2cm. Pelvic lymph node dissection or sentinel node biopsy is performed simultaneously. Post-operative pregnancy rates ~50–70%, with increased preterm birth risk. Must be discussed at MDT before any treatment begins — once a radical hysterectomy is performed, fertility cannot be restored."}
 ];
+NOTES_MCQ.miscarriage=[
+  {q:"A TVUS shows a crown-rump length of 8mm with no fetal heartbeat. The correct next step is:",opts:["Arrange ERPC immediately","Prescribe misoprostol","Repeat the scan with a second operator or in 7–14 days","Reassure — CRL is too small to assess"],ans:2,focus:"Missed miscarriage — confirm before acting",exp:"A CRL of ≥7mm with no heartbeat is highly suggestive of missed miscarriage — but <strong>must be confirmed on a second scan</strong> by a different operator or after 7–14 days before any management. The consequences of a false positive diagnosis are irreversible. Never manage on a single scan finding."},
+  {q:"A haemodynamically stable woman at 9 weeks has incomplete miscarriage confirmed on USS. She has no fever. Best management approach:",opts:["Emergency ERPC under GA","Expectant management only","Discuss all three options — expectant, misoprostol, or surgical","IV antibiotics first then ERPC"],ans:2,focus:"Incomplete miscarriage — shared decision making",exp:"For a stable woman with no infection, all three options (expectant, medical misoprostol, surgical ERPC) have equivalent success and safety profiles. <strong>Shared decision-making is the correct approach</strong>. Only haemodynamic instability or infection mandate immediate surgical management."},
+  {q:"Anti-D immunoglobulin is required in which scenario?",opts:["Threatened miscarriage at 8 weeks with light spotting in Rh-negative woman","Missed miscarriage at 10 weeks managed expectantly in Rh-negative woman","Surgical ERPC for miscarriage at 7 weeks in Rh-negative woman","Complete miscarriage at 6 weeks in Rh-negative woman"],ans:2,focus:"Anti-D in miscarriage — indications",exp:"Anti-D is required for all Rh-negative women having <strong>surgical management at any gestation</strong>, and for all Rh-negative women with miscarriage at ≥12 weeks. For threatened or expectant management &lt;12 weeks without heavy bleeding, Anti-D is not routinely required."},
+  {q:"Recurrent miscarriage is defined as:",opts:["Any two consecutive losses","Three or more consecutive pregnancy losses","Two or more losses after 12 weeks","Three or more losses in any order"],ans:1,focus:"Recurrent miscarriage — definition",exp:"Recurrent miscarriage is defined as <strong>3 or more consecutive pregnancy losses</strong> before 24 weeks. Investigations include parental karyotype, antiphospholipid antibodies, pelvic USS, thyroid function, and blood glucose. In &gt;50% of cases no cause is found — but prognosis for subsequent pregnancy is still ~60–70%."},
+  {q:"Antiphospholipid syndrome is identified in a woman with recurrent miscarriage. Treatment in next pregnancy:",opts:["LMWH alone","Aspirin alone","Low-dose aspirin plus LMWH from positive pregnancy test","Warfarin throughout pregnancy"],ans:2,focus:"APS and recurrent miscarriage — treatment",exp:"<strong>Low-dose aspirin (75mg) plus LMWH</strong> from positive pregnancy test until 34 weeks improves live birth rate from ~10% to ~70% in APS. This is the RCOG-recommended regimen. Warfarin is teratogenic in the first trimester. LMWH alone is less effective than combination therapy for APS."}
+];
+NOTES_MCQ.cordprolapse=[
+  {q:"Cord prolapse is identified at vaginal examination. The very first action is:",opts:["Prepare theatre for category 1 CS","Push the cord back above the presenting part","Position to relieve compression and call for help simultaneously","Apply fetal scalp electrode to assess CTG"],ans:2,focus:"Cord prolapse — immediate response",exp:"The <strong>simultaneous first steps</strong> are: call for help AND position the woman (knee-chest or left lateral Trendelenburg). This requires no equipment and relieves cord compression immediately while theatre is prepared. Never attempt to replace the cord — this causes vasospasm."},
+  {q:"Manual elevation of the presenting part in cord prolapse requires:",opts:["Grasping and elevating the cord","Two fingers vaginally elevating the presenting part off the cord","Applying fundal pressure to keep the head high","Balloon a Foley catheter against the presenting part"],ans:1,focus:"Manual decompression — technique",exp:"<strong>Two fingers inserted vaginally to manually elevate the presenting part off the cord</strong>. The hand remains in place continuously — through transfer, through theatre prep — until the obstetrician delivers the baby. Do not handle the cord itself — manipulation causes vasospasm."},
+  {q:"The most common iatrogenic trigger for cord prolapse is:",opts:["External cephalic version","Fetal scalp electrode insertion","ARM with an unengaged presenting part","Epidural anaesthesia"],ans:2,focus:"Cord prolapse — iatrogenic risk",exp:"<strong>ARM with a high or unengaged presenting part</strong> is the most common iatrogenic cause. Always confirm the presenting part is well-applied before ARM. When the head is not engaged, the cord can descend through the cervix as liquor rushes out."},
+  {q:"Bladder filling with 500–750mL saline in cord prolapse works by:",opts:["Inducing uterine relaxation","Elevating the presenting part passively","Improving cord blood flow","Slowing labour to allow theatre prep"],ans:1,focus:"Bladder filling — mechanism",exp:"A distended bladder <strong>physically elevates the presenting part</strong> passively, reducing cord compression. It is useful during transfer or when theatre is delayed. Leave the catheter in and empty it immediately before the caesarean incision."},
+  {q:"The target decision-to-delivery interval for cord prolapse is:",opts:["Under 75 minutes","Under 45 minutes","Under 30 minutes","Under 15 minutes"],ans:2,focus:"Category 1 CS — DDI target",exp:"Cord prolapse is a <strong>Category 1 CS</strong>. Target decision-to-delivery interval: <strong>≤30 minutes</strong>, ideally ≤20. If the cervix is fully dilated and the head is low, instrumental delivery may be faster — requires immediate senior decision."}
+];
+NOTES_MCQ.endometriosis=[
+  {q:"The average time from symptom onset to diagnosis of endometriosis is:",opts:["1–2 years","3–4 years","7–10 years","Less than 6 months"],ans:2,focus:"Diagnostic delay in endometriosis",exp:"The average time from symptom onset to diagnosis is <strong>7–10 years</strong>. This reflects normalisation of period pain, diagnostic difficulty, and absence of reliable non-invasive biomarkers. Laparoscopy with histological confirmation is the gold standard but empirical treatment is appropriate when clinical suspicion is high."},
+  {q:"A woman with stage IV endometriosis reports minimal pain. A woman with stage I has debilitating dysmenorrhoea. The correct interpretation is:",opts:["The stage IV diagnosis must be wrong","Stage correlates poorly with symptom severity","The stage I pain is likely psychogenic","Re-staging required before treatment"],ans:1,focus:"Endometriosis staging vs symptom severity",exp:"<strong>Stage correlates poorly with symptom severity.</strong> Minimal disease can cause severe pain through inflammatory mediators and central sensitisation. Stage IV disease may be relatively asymptomatic. Treat the patient's symptoms, not the laparoscopy report."},
+  {q:"First-line medical management of endometriosis-associated pain is:",opts:["GnRH analogue (leuprorelin)","Laparoscopic excision","COCP or progestogen-only pill plus NSAIDs","Danazol"],ans:2,focus:"Endometriosis — first-line treatment",exp:"<strong>NSAIDs plus hormonal suppression (COCP or progestogen-only pill/LNG-IUS)</strong> are first-line. GnRH analogues are second-line — effective but cause menopausal side effects and bone loss. Laparoscopy is for diagnostic confirmation or when medical treatment fails."},
+  {q:"Endometrioma is best treated surgically by:",opts:["Drainage and sclerotherapy","Oophorectomy","Laparoscopic cystectomy (excision of cyst wall)","Alcohol ablation"],ans:2,focus:"Endometrioma — surgical management",exp:"<strong>Laparoscopic cystectomy</strong> has lower recurrence rates than drainage or ablation. However it removes some normal ovarian cortex, reducing reserve — weigh carefully in women with bilateral endometriomas or reduced reserve. Drainage alone has ~75% recurrence at 2 years."},
+  {q:"GnRH analogues for endometriosis beyond 6 months without add-back HRT cause:",opts:["Loss of analogue efficacy","Endometrial cancer risk","Progressive bone density loss","Ovarian hyperstimulation"],ans:2,focus:"GnRH analogues — bone loss and add-back",exp:"GnRH analogues suppress oestrogen to menopausal levels causing <strong>progressive bone density loss</strong>. Beyond 6 months, <strong>add-back HRT</strong> (low-dose oestrogen ± progestogen) is required to protect bone without significantly reducing analogue efficacy."}
+];
+NOTES_MCQ.pcos=[
+  {q:"The Rotterdam criteria diagnose PCOS when a woman has at least 2 of which 3 features?",opts:["Obesity + anovulation + elevated LH","Oligo/anovulation + hyperandrogenism + polycystic ovary morphology","Elevated LH:FSH + acne + irregular periods","Insulin resistance + hirsutism + elevated prolactin"],ans:1,focus:"Rotterdam criteria",exp:"<strong>Rotterdam criteria (2 of 3 required):</strong> (1) Oligo- or anovulation, (2) clinical or biochemical hyperandrogenism, (3) polycystic ovary morphology on USS (≥20 follicles/ovary OR volume &gt;10mL). After exclusion of other causes. LH:FSH ratio and insulin resistance are associated features but not diagnostic criteria."},
+  {q:"A woman with PCOS has had no period for 5 months. Why is endometrial protection required?",opts:["Progesterone deficiency causes atrophy","Prolonged anovulation → unopposed oestrogen → endometrial hyperplasia risk","LH excess stimulates endometrial growth independently","Insulin resistance damages the endometrium directly"],ans:1,focus:"Endometrial protection in PCOS",exp:"In PCOS with anovulation, <strong>no corpus luteum forms → no progesterone</strong>. Unopposed oestrogen drives endometrial proliferation → hyperplasia → carcinoma risk over years. Women with amenorrhoea &gt;3–4 months require a withdrawal bleed via cyclic progestogen or COCP at minimum every 3 months."},
+  {q:"First-line pharmacological ovulation induction in PCOS is currently:",opts:["Clomifene citrate","FSH injections","Letrozole","Metformin alone"],ans:2,focus:"Ovulation induction — letrozole vs clomifene",exp:"<strong>Letrozole (aromatase inhibitor)</strong> is now first-line, having superseded clomifene. It achieves higher live birth rates with a lower multiple pregnancy rate. Metformin improves cycle regularity but is insufficient alone for ovulation induction. FSH injections are second/third-line."},
+  {q:"The most important long-term risk to screen for in all women with PCOS at diagnosis is:",opts:["Thyroid cancer","Type 2 diabetes and dyslipidaemia","Adrenal insufficiency","Premature ovarian insufficiency"],ans:1,focus:"PCOS metabolic risk",exp:"Women with PCOS have a <strong>5–10× increased risk of type 2 diabetes</strong> and elevated cardiovascular risk. Screen with fasting glucose/HbA1c and fasting lipids at diagnosis and every 1–3 years. Weight loss of 5–10% dramatically reduces these risks."},
+  {q:"A woman with PCOS and BMI 32 wants to improve her symptoms. Most evidence-based initial recommendation:",opts:["Bariatric surgery","GnRH analogue while she diets","Lifestyle modification — diet and exercise","Orlistat plus metformin from the outset"],ans:2,focus:"PCOS — lifestyle as primary intervention",exp:"<strong>Lifestyle modification</strong> is first-line. Weight loss of 5–10% restores ovulation in up to 55%, reduces insulin resistance and androgen levels. More powerful than any pharmacological intervention. Metformin is a useful adjunct but should accompany, not replace, lifestyle advice."}
+];
+NOTES_MCQ.fibroids=[
+  {q:"Which fibroid type causes the heaviest menstrual bleeding and most significantly impacts fertility?",opts:["Subserosal (FIGO 5–7)","Intramural (FIGO 3–4)","Submucosal (FIGO 0–2)","Cervical fibroid"],ans:2,focus:"Fibroid location and clinical impact",exp:"<strong>Submucosal fibroids (FIGO 0–2)</strong> distort the uterine cavity, impair endometrial haemostasis, and are most strongly associated with heavy menstrual bleeding and subfertility. Subserosal fibroids cause bulk symptoms with minimal bleeding effect."},
+  {q:"GnRH analogues pre-operatively for fibroids aim to:",opts:["Permanently shrink the fibroids","Prevent recurrence after surgery","Reduce size 35–50% and correct anaemia before surgery","Sterilise the patient prior to hysterectomy"],ans:2,focus:"GnRH analogues — pre-operative role",exp:"GnRH analogues shrink fibroids by <strong>35–50%</strong>, reduce intraoperative blood loss, may convert open to laparoscopic surgery, and allow time to correct anaemia. <strong>Fibroids regrow on cessation</strong> — not a long-term treatment. Used for maximum 3–6 months pre-operatively."},
+  {q:"A woman with a 9cm intramural fibroid, Hb 78 g/L, and flooding periods declines surgery. Most appropriate immediate step:",opts:["Book urgent hysterectomy","Start GnRH analogue and correct anaemia, then rediscuss","Insert Mirena IUS immediately","Tranexamic acid alone and review in 6 months"],ans:1,focus:"Fibroid management — anaemia correction first",exp:"<strong>Correct the iron deficiency anaemia first</strong> — GnRH analogue stops periods and allows haemoglobin recovery while also shrinking the fibroid pre-operatively. Operating on Hb 78 g/L carries significantly higher risk. Mirena is less effective with a distorted cavity."},
+  {q:"Uterine artery embolisation is contraindicated in a patient who:",opts:["Has multiple intramural fibroids","Is postmenopausal","Wishes to conceive in the future","Had a previous myomectomy"],ans:2,focus:"UAE — contraindication in future fertility",exp:"UAE is <strong>not appropriate for women who wish future pregnancy</strong>. It reduces ovarian reserve via collateral vessel embolisation and is associated with abnormal placentation and preterm birth. Excellent option for women with completed family who want uterine preservation without surgery."},
+  {q:"A pedunculated subserosal fibroid causes sudden severe pelvic pain and nausea. The diagnosis is:",opts:["Red degeneration","Fibroid torsion","Uterine rupture","Endometrioma rupture"],ans:1,focus:"Pedunculated fibroid — torsion",exp:"<strong>Pedunculated fibroid torsion</strong> — rotation on its vascular pedicle causes ischaemia. Sudden severe unilateral pelvic pain with nausea, mimicking ovarian torsion. USS confirms pedunculated morphology. Treatment: laparoscopic myomectomy. Red degeneration occurs in pregnancy."}
+];
+NOTES_MCQ.pid=[
+  {q:"The minimum criterion to start empirical treatment for PID is:",opts:["Positive chlamydia NAAT","CRP elevated plus vaginal discharge","Uterine, adnexal, or cervical motion tenderness on examination","Fever >38°C plus lower abdominal pain"],ans:2,focus:"PID — minimum clinical criteria",exp:"BASHH: empirical treatment should start with <strong>uterine, adnexal, or cervical motion tenderness</strong> in a sexually active young woman with pelvic pain, in the absence of another diagnosis. Positive STI test and fever increase certainty but are not required. The low threshold is intentional — missed PID causes infertility."},
+  {q:"The standard outpatient BASHH PID regimen covers which organisms?",opts:["Chlamydia only","Gonorrhoea and chlamydia only","Gonorrhoea, chlamydia, and anaerobes","Gonorrhoea only"],ans:2,focus:"PID antibiotics — polymicrobial cover",exp:"PID is polymicrobial. Standard regimen — <strong>IM ceftriaxone + doxycycline 14 days + metronidazole 14 days</strong> — covers gonorrhoea (ceftriaxone), chlamydia (doxycycline), and anaerobes (metronidazole). All three components are required. 14 days is the minimum."},
+  {q:"Fitz-Hugh-Curtis syndrome is:",opts:["Bilateral tubo-ovarian abscess","Perihepatic inflammation causing right upper quadrant pain as a complication of PID","Gonorrhoeal septic arthritis","Ovarian torsion in the context of PID"],ans:1,focus:"Fitz-Hugh-Curtis syndrome",exp:"<strong>Fitz-Hugh-Curtis</strong>: perihepatitis caused by spread of PID organisms to the liver capsule via the paracolic gutters. Presents as RUQ pain — often mistaken for cholecystitis. LFTs are normal. 'Violin-string' adhesions on laparoscopy. Treat with the same PID antibiotic regimen."},
+  {q:"One episode of PID changes ectopic pregnancy risk by approximately:",opts:["No significant change","Doubles the risk","Reduces risk due to scarring","10-fold increase"],ans:1,focus:"PID sequelae — ectopic risk",exp:"One episode of PID <strong>doubles the risk of ectopic pregnancy</strong>. Three episodes → ~75% tubal factor infertility. Tubal scarring narrows the lumen and destroys cilia, preventing embryo transport. This is why early empirical treatment and partner notification matter so much."},
+  {q:"In a woman with PID who has an IUD in situ, the IUD should be removed:",opts:["Immediately on diagnosis","Only if failure to respond after 72hrs antibiotics, or tubo-ovarian abscess present","Never — removal worsens prognosis","Always if infection is chlamydial"],ans:1,focus:"IUD management in PID",exp:"The IUD does <strong>not need to be removed routinely</strong>. Remove if: failure to respond to antibiotics after 72 hours, or tubo-ovarian abscess present. Routine removal in mild/moderate PID responding to treatment is not necessary and reduces contraceptive cover immediately."}
+];
+NOTES_MCQ.abruption=[
+  {q:"A woman at 32 weeks has sudden severe continuous abdominal pain, a rigid uterus, and fetal bradycardia. There is only minimal vaginal bleeding. The most likely diagnosis is:",opts:["Placenta praevia","Concealed placental abruption","Uterine rupture","Vasa praevia"],ans:1,focus:"Concealed abruption — absent visible bleeding",exp:"<strong>Concealed placental abruption</strong> — 20% of abruptions have no visible external bleeding. The blood is trapped behind the placenta. The clinical signs are: rigid woody uterus, severe continuous pain, fetal compromise, and maternal haemodynamic instability — all disproportionate to the visible blood loss. This is more dangerous than revealed abruption precisely because blood loss is underestimated."},
+  {q:"In massive placental abruption with DIC, which laboratory marker is the most sensitive early indicator?",opts:["Prolonged PT","Prolonged APTT","Falling fibrinogen","Thrombocytopaenia"],ans:2,focus:"DIC in abruption — fibrinogen falls first",exp:"<strong>Fibrinogen is the earliest and most sensitive marker of DIC in abruption.</strong> Normal pregnancy fibrinogen is 4–6g/L. A value &lt;2g/L is critically low. PT and APTT prolong later. Fibrinogen &lt;1.5g/L → give cryoprecipitate immediately. Do not wait for PT/APTT to become abnormal if fibrinogen is falling rapidly."},
+  {q:"Which is the single most common risk factor for placental abruption?",opts:["Multiparity","Pre-eclampsia and hypertension","Cocaine use","Previous caesarean section"],ans:1,focus:"Abruption risk factors — HTN most common",exp:"<strong>Pre-eclampsia and hypertension</strong> are the most common risk factors for abruption, present in up to 40% of cases. Cocaine causes acute severe vasoconstriction and is a potent trigger. Direct abdominal trauma, smoking, PPROM, previous abruption (10× recurrence risk), and thrombophilia are also significant. Previous CS is the main risk factor for praevia, not abruption."},
+  {q:"The key clinical distinction between placental abruption and placenta praevia is:",opts:["Volume of blood loss","Fetal presentation","Painful vs painless bleeding + uterine tone","Gestation at presentation"],ans:2,focus:"Abruption vs praevia — distinguishing features",exp:"<strong>Abruption: painful, dark blood, tense/woody uterus.</strong> <strong>Praevia: painless, bright red blood, soft uterus.</strong> Both can present with fetal compromise. Never perform a VE in either case until praevia is excluded. The uterine tone is the most reliable distinguishing clinical sign."},
+  {q:"In a woman with suspected abruption and a fetal bradycardia, the correct management priority is:",opts:["Urgent ultrasound to confirm abruption before delivery","Maternal resuscitation and delivery — route and urgency based on fetal condition and gestation","Wait for the CTG to return to normal before deciding","Tocolysis to relax the uterus and improve placental blood flow"],ans:1,focus:"Abruption management — deliver, treat mother simultaneously",exp:"<strong>Maternal resuscitation and delivery</strong> — simultaneously. Two large-bore IV cannulae. FBC, clotting, crossmatch. IV fluids. Senior review immediately. Fetal bradycardia with abruption = Category 1 CS unless delivery is imminent vaginally. Tocolysis is absolutely contraindicated — the uterus must contract to tamponade the bleeding. Ultrasound does not change management if the clinical picture is clear."}
+];
+NOTES_MCQ.iol=[
+  {q:"A Bishop score of 4 means the cervix is:",opts:["Favourable — proceed to ARM","Unfavourable — cervical ripening required first","Borderline — oxytocin can be started immediately","Irrelevant — ultrasound assessment is required instead"],ans:1,focus:"Bishop score — favourable vs unfavourable cervix",exp:"<strong>Bishop score &lt;6 = unfavourable cervix → cervical ripening required before ARM or oxytocin.</strong> Score ≥8 = favourable cervix → ARM alone may initiate labour. A score of 4 requires ripening (prostaglandins or balloon catheter) before proceeding to ARM. Attempting ARM on an unfavourable cervix risks failed induction and increased operative delivery."},
+  {q:"Misoprostol (PGE1) is contraindicated for cervical ripening in which situation?",opts:["Post-dates pregnancy at 41 weeks","GDM requiring induction at 38 weeks","Previous caesarean section","Bishop score of 3"],ans:2,focus:"Misoprostol — contraindicated with uterine scar",exp:"<strong>Misoprostol is contraindicated in women with a previous uterine scar</strong> (including previous caesarean section) due to significantly increased risk of uterine rupture. Dinoprostone (PGE2) at the standard dose is used with caution; mechanical ripening (balloon catheter) is preferred for VBAC candidates."},
+  {q:"Uterine hyperstimulation during oxytocin induction is defined as:",opts:["Contractions every 3 minutes lasting 45 seconds","More than 5 contractions in 10 minutes or contractions lasting >2 minutes","Fetal heart rate decelerations during any contraction","Oxytocin infusion rate >20 mU/min"],ans:1,focus:"Hyperstimulation — definition and recognition",exp:"<strong>Hyperstimulation (tachysystole): &gt;5 contractions in 10 minutes, or contractions lasting &gt;2 minutes.</strong> Causes fetal hypoxia through impaired uteroplacental perfusion. Immediate management: stop the oxytocin infusion, position left lateral, if CTG abnormal and persists → terbutaline 250mcg SC. Do not reduce the rate — stop it entirely."},
+  {q:"Immediately after ARM, the most important clinical check is:",opts:["Maternal BP and pulse","Urine output","Fetal heart rate for 15–20 minutes to exclude cord prolapse","Colour and volume of liquor only"],ans:2,focus:"Post-ARM assessment — exclude cord prolapse",exp:"<strong>Continuous fetal heart rate monitoring for 15–20 minutes post-ARM to exclude cord prolapse.</strong> ARM with a high or unengaged presenting part is a risk factor for cord prolapse. Liquor colour (meconium vs clear) is also important. Maternal observations are routine but the fetal heart check is the most immediately critical safety step."},
+  {q:"The most appropriate method for cervical ripening in a woman with a previous caesarean section is:",opts:["Misoprostol 25mcg vaginally","Dinoprostone pessary (standard dose)","Mechanical balloon catheter","Oxytocin infusion alone"],ans:2,focus:"Cervical ripening in VBAC — mechanical preferred",exp:"<strong>Balloon catheter (mechanical ripening)</strong> is preferred in women with a previous uterine scar. It does not carry the risk of uterine hyperstimulation associated with prostaglandins. Misoprostol is contraindicated. Dinoprostone can be used with caution at lower doses in some protocols but mechanical ripening is the safest option. Oxytocin cannot ripen an unfavourable cervix."}
+];
+NOTES_MCQ.menopause=[
+  {q:"Which HRT formulation carries the lowest risk of VTE?",opts:["Oral conjugated equine oestrogen","Transdermal oestrogen (patch or gel)","Oral oestradiol valerate","Subcutaneous oestrogen implant"],ans:1,focus:"Transdermal oestrogen — no VTE risk increase",exp:"<strong>Transdermal oestrogen</strong> (patch, gel, spray) does not undergo first-pass hepatic metabolism and does not increase VTE risk — unlike oral oestrogen, which increases hepatic clotting factor synthesis. This is clinically significant for women with BMI &gt;30, personal or family history of VTE, or thrombophilia — transdermal is the preferred route for all of these."},
+  {q:"A woman with a uterus starts oestrogen-only HRT. The risk this creates is:",opts:["Increased breast cancer risk","Endometrial hyperplasia and cancer from unopposed oestrogen","Increased cardiovascular disease","Osteoporosis acceleration"],ans:1,focus:"Unopposed oestrogen — endometrial risk",exp:"<strong>Unopposed oestrogen (without progestogen) causes endometrial hyperplasia and significantly increases endometrial carcinoma risk</strong> in women with a uterus. Any woman with a uterus must have progestogen added to HRT. Women who have had a hysterectomy can take oestrogen-only HRT safely. Micronised progesterone (Utrogestan) is associated with the lowest breast cancer and VTE risk among progestogen options."},
+  {q:"Premature ovarian insufficiency (POI) is diagnosed in a 32-year-old. Regarding HRT:",opts:["HRT should be avoided — breast cancer risk is too high","HRT is recommended until at least the average age of natural menopause (~51)","Only vaginal oestrogen should be used","HRT should be started only if symptoms are severe"],ans:1,focus:"POI — HRT is mandatory treatment",exp:"In POI, <strong>HRT is not optional — it is hormone replacement for oestrogen the body should still be producing.</strong> Without it, risks of cardiovascular disease, osteoporosis, dementia, and premature mortality are substantially elevated. HRT should be continued until at least age 51. The breast cancer risk associated with HRT in POI is negligible — it simply replaces what was lost prematurely."},
+  {q:"The main reason the 2002 WHI study overstated HRT risks was:",opts:["It used too low a dose of oestrogen","Its participants were older (mean age 63), used oral oestrogen, and used a synthetic progestogen not representative of modern HRT","It only studied women with severe symptoms","It did not measure bone density outcomes"],ans:1,focus:"WHI study limitations — overestimated risk",exp:"The WHI used women with <strong>mean age 63</strong> (≥10 years post-menopause), <strong>oral conjugated equine oestrogen</strong> (which increases VTE), and <strong>medroxyprogesterone acetate</strong> (synthetic progestogen associated with higher breast cancer risk than micronised progesterone). Modern HRT — transdermal oestrogen + micronised progesterone started within 10 years of menopause — has a significantly more favourable risk profile."},
+  {q:"A woman asks about the breast cancer risk of combined HRT. The most accurate statement is:",opts:["Combined HRT doubles the risk of breast cancer","The increased risk is approximately 1 extra case per 1000 women per year of use — comparable to drinking 1–2 units/day","There is no increased breast cancer risk with any HRT formulation","The risk only applies after 10 years of use"],ans:1,focus:"HRT breast cancer risk — absolute numbers",exp:"The breast cancer risk with combined HRT (oestrogen + synthetic progestogen) is approximately <strong>1 extra case per 1000 women per year of use</strong>. With micronised progesterone, the risk is lower still. This should be communicated as an absolute number, not a relative risk. For women with severe menopausal symptoms significantly affecting quality of life, this risk is almost universally acceptable when the benefits are also explained."}
+];
+NOTES_MCQ.vulvalconditions=[
+  {q:"The first-line treatment for lichen sclerosus is:",opts:["Topical oestrogen cream","Clobetasol propionate 0.05% (Dermovate)","Oral antihistamines","Topical antifungal cream"],ans:1,focus:"Lichen sclerosus — treatment with potent topical steroid",exp:"<strong>Clobetasol propionate 0.05%</strong> is the standard first-line treatment for lichen sclerosus. Applied once daily for 1 month → alternate days for 1 month → twice weekly maintenance. A pea-sized amount covers the entire affected area. Weaker steroids are insufficient. Topical oestrogen has no role. Most women require long-term maintenance treatment to prevent disease progression and SCC risk."},
+  {q:"The lifetime risk of squamous cell carcinoma (SCC) in women with untreated or poorly controlled lichen sclerosus is approximately:",opts:["&lt;0.1%","1–2%","4–5%","20–25%"],ans:2,focus:"Lichen sclerosus — malignant transformation risk",exp:"Lichen sclerosus carries a <strong>4–5% lifetime risk of vulval SCC</strong>, arising via the differentiated VIN pathway in areas of chronic inflammation. This is why: (1) LS requires treatment and annual review, and (2) any suspicious area (ulceration, induration, raised edges, non-response to steroids) requires biopsy. This risk is significantly reduced with adequate steroid treatment and regular surveillance."},
+  {q:"Vulvodynia is best characterised as:",opts:["Vulval pain caused by chronic candidiasis","Chronic vulval pain ≥3 months with no identifiable cause, normal examination","Vulval pain caused by lichen sclerosus","Vulval pain exclusively during intercourse in women with endometriosis"],ans:1,focus:"Vulvodynia — definition",exp:"<strong>Vulvodynia</strong>: chronic vulval pain ≥3 months with no identifiable cause and a normal-appearing vulva. It is driven by peripheral sensitisation and central pain sensitisation — not infection, not LS, not a psychological condition. The Q-tip test (cotton-tipped swab reproduces pain on light contact) is positive in provoked vestibulodynia, the most common subtype. Treatment: multidisciplinary — TCAs, pregabalin, pelvic floor physiotherapy, psychological support."},
+  {q:"A 67-year-old with known lichen sclerosus develops a firm raised area at the right labium majus that has not responded to clobetasol for 3 months. Next step:",opts:["Increase clobetasol to twice daily application","Patch test for contact allergy","Punch biopsy under local anaesthetic and urgent referral","Prescribe oral antifungal and reassess in 6 weeks"],ans:2,focus:"Suspicious vulval lesion in LS — biopsy",exp:"Any area of <strong>thickening, ulceration, raised edges, or non-response to adequate steroid treatment in lichen sclerosus requires biopsy</strong>. This is how differentiated VIN and early vulval SCC are detected. Punch biopsy under local anaesthetic is quick and diagnostic. Do not delay with empirical treatments when the clinical picture demands histological diagnosis."},
+  {q:"HPV-associated VIN (usual type) differs from differentiated VIN in that:",opts:["It arises in older women with chronic lichen sclerosus","It is multifocal, occurs in younger women, and has lower malignant potential","It has higher malignant potential and progresses more rapidly","It cannot be treated with imiquimod"],ans:1,focus:"VIN types — HPV-associated vs differentiated",exp:"<strong>HPV-associated (usual) VIN</strong>: younger women, multifocal, warty/basaloid lesions, associated with CIN, lower malignant potential. Treatable with imiquimod, laser, or excision. <strong>Differentiated VIN</strong>: older women, arises in chronic LS, unifocal, higher malignant potential, can progress to SCC rapidly. Both require treatment but the urgency and surgical approach differ."}
+];
+NOTES_MCQ.ovariancancer=[
+  {q:"The 5-year survival rate for stage I ovarian cancer (confined to the ovary) is approximately:",opts:["20–30%","50–60%","~90%","~40%"],ans:2,focus:"Ovarian cancer — stage I prognosis",exp:"Stage I ovarian cancer (confined to the ovary/tube) has a <strong>~90% 5-year survival</strong>. This contrasts sharply with stage III (~40%) and stage IV (&lt;20%). The clinical tragedy of ovarian cancer is that 75% of women are diagnosed at stage III/IV — after peritoneal spread. Early detection through symptom awareness and low-threshold investigation transforms outcomes."},
+  {q:"NICE recommends measuring CA-125 in women over 50 with which symptom pattern?",opts:["Single episode of bloating","Persistent symptoms occurring ≥12 times per month — bloating, early satiety, pelvic pain, or urinary symptoms","Any abdominal symptom lasting more than 2 weeks","Unexplained weight gain only"],ans:1,focus:"NICE 2WW criteria — symptom frequency threshold",exp:"NICE: measure CA-125 in women over 50 with <strong>persistent symptoms (≥12 times/month)</strong>: bloating, early satiety, pelvic/abdominal pain, or urinary frequency/urgency. If CA-125 ≥35 IU/mL → urgent USS. If USS suspicious → 2WW referral. Ascites or palpable mass → direct urgent referral without waiting for CA-125."},
+  {q:"A BRCA1 carrier has a lifetime risk of ovarian cancer of approximately:",opts:["1–2% (same as general population)","10–15%","39–46%","75–80%"],ans:2,focus:"BRCA1 — ovarian cancer risk",exp:"<strong>BRCA1 carriers have a 39–46% lifetime risk of ovarian cancer</strong> (vs ~2% in the general population). BRCA2 carriers: 10–27%. Risk-reducing salpingo-oophorectomy (RRSO) at age 35–40 reduces this risk by &gt;95% and is recommended for BRCA1 carriers after completion of family. BRCA testing should be offered to all women diagnosed with ovarian cancer, and to their first-degree relatives."},
+  {q:"PARP inhibitors (e.g. olaparib) are most effective in ovarian cancer patients who have:",opts:["Stage I disease","Platinum-resistant disease","BRCA1/2 mutations or homologous recombination deficiency","Clear cell histology"],ans:2,focus:"PARP inhibitors — BRCA and HRD tumours",exp:"<strong>PARP inhibitors exploit synthetic lethality in BRCA-mutated and HRD tumours</strong>. BRCA-mutated cells rely on PARP for DNA repair; inhibiting PARP causes irreparable DNA damage and cell death. Olaparib as maintenance therapy after response to first-line platinum chemotherapy significantly improves progression-free survival in BRCA-mutated ovarian cancer."},
+  {q:"Optimal surgical debulking in ovarian cancer is defined as:",opts:["Complete hysterectomy and BSO only","Removal of all visible tumour (no residual disease)","Removal of all tumour deposits &gt;2cm","Removal of the primary tumour only"],ans:1,focus:"Debulking — definition of optimal cytoreduction",exp:"<strong>Optimal cytoreduction: no macroscopic residual disease</strong> after surgery (or residual &lt;1cm in some definitions). This is the single strongest surgical predictor of survival in ovarian cancer. Each 10% increase in completeness of cytoreduction is associated with a ~5% improvement in median survival. This is why specialist gynaecological oncology surgical units achieve better outcomes than general gynaecology units."}
+];
+NOTES_MCQ.subfertility=[
+  {q:"After how long of regular unprotected intercourse should subfertility be investigated?",opts:["6 months in all couples","12 months, or 6 months if woman is over 35 or there is a known risk factor","24 months — most couples will conceive spontaneously by then","3 months if the woman has regular cycles"],ans:1,focus:"Subfertility — when to investigate",exp:"<strong>Investigate after 12 months</strong> of regular unprotected intercourse, or <strong>after 6 months</strong> if the woman is over 35, or <strong>immediately</strong> if there is a known cause (oligomenorrhoea, previous PID/tubal disease, azoospermia, chemotherapy history). Both partners should be investigated simultaneously at the first consultation — do not investigate the woman alone and then the man later."},
+  {q:"The single most common identifiable cause of subfertility is:",opts:["Tubal factor","Unexplained","Male factor","Ovulatory disorder"],ans:2,focus:"Subfertility causes — male factor most common",exp:"<strong>Male factor subfertility contributes to approximately 30% of cases</strong> — the single most common identifiable cause. Semen analysis should be requested at the first consultation alongside female investigations. The common error is to focus the investigation entirely on the woman, delaying identification of male factor by months."},
+  {q:"A mid-luteal progesterone of 32 nmol/L on day 21 of a 28-day cycle indicates:",opts:["Anovulation — progesterone is too low","Ovulation has occurred","PCOS — progesterone is elevated","The test was performed too early"],ans:1,focus:"Day 21 progesterone — ovulation confirmation",exp:"<strong>Day 21 progesterone &gt;30 nmol/L confirms ovulation</strong> in a 28-day cycle (sample taken 7 days before expected period — i.e. day 21 in a 28-day cycle, day 28 in a 35-day cycle). A value of 32 nmol/L confirms ovulation. Values &lt;10 nmol/L suggest anovulation. For irregular cycles, sample in the presumed mid-luteal phase or repeatedly until ovulation is confirmed."},
+  {q:"Hydrosalpinx significantly affects IVF outcomes. The recommended management before IVF is:",opts:["Antibiotic treatment to resolve the hydrosalpinx","Laparoscopic drainage of the hydrosalpinx","Bilateral salpingectomy before commencing IVF","No intervention — proceed directly to IVF"],ans:2,focus:"Hydrosalpinx — salpingectomy before IVF",exp:"<strong>Hydrosalpinx reduces IVF live birth rates by approximately 50%</strong>. The mechanism: hydrosalpinx fluid refluxes into the uterine cavity, is embryotoxic, and impairs implantation. <strong>Bilateral salpingectomy before IVF is recommended</strong> to restore implantation rates to the expected level for the patient's age. Drainage alone is not effective — the hydrosalpinx refills. Antibiotics do not treat established hydrosalpinx."},
+  {q:"The current first-line treatment for ovulation induction in anovulatory PCOS is:",opts:["Clomifene citrate","Metformin alone","Letrozole (aromatase inhibitor)","FSH injections"],ans:2,focus:"Ovulation induction — letrozole first-line",exp:"<strong>Letrozole</strong> is now first-line for ovulation induction in PCOS, having superseded clomifene. It achieves higher live birth rates and lower multiple pregnancy rates. Metformin improves cycle regularity but is insufficient alone for ovulation induction. FSH injections are second/third-line due to higher multiple pregnancy risk and requirement for intensive monitoring. All cycles require USS follicle tracking."}
+];
 NOTES.pph=()=>`
 <div class="n-hero">
   <div class="nhero-glow"></div>
@@ -1246,7 +2563,7 @@ NOTES.pph=()=>`
   <div class="n-tag">Obstetrics · Emergency · Note 01</div>
   <div class="n-title">Postpartum<br>Haemorrhage</div>
   <div class="n-oneliner">The moment you think it might be PPH — it already is. Act immediately.</div>
-  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">4 Ts framework</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">4 Ts framework</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -1426,7 +2743,7 @@ NOTES.shoulder=()=>`
   <div class="n-tag">Obstetrics · Emergency Drill · Note 06</div>
   <div class="n-title">Shoulder<br>Dystocia</div>
   <div class="n-oneliner">The head delivers. The shoulders don't follow. You have five minutes. HELPERR must be in your hands before you ever enter a delivery room.</div>
-  <div class="n-badges"><span class="nbadge">Emergency drill</span><span class="nbadge">HELPERR</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Emergency drill</span><span class="nbadge">HELPERR</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -1603,7 +2920,7 @@ NOTES.preeclampsia=()=>`
   <div class="n-tag">Obstetrics · Antenatal · Note 02</div>
   <div class="n-title">Preeclampsia</div>
   <div class="n-oneliner">Not a blood pressure problem. A disease of the placenta that happens to cause hypertension — and that distinction changes everything.</div>
-  <div class="n-badges"><span class="nbadge">Antenatal</span><span class="nbadge">HELLP</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Antenatal</span><span class="nbadge">HELLP</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -1771,7 +3088,7 @@ NOTES.ectopic=()=>`
   <div class="n-tag">Gynaecology · Emergency · Note 03</div>
   <div class="n-title">Ectopic<br>Pregnancy</div>
   <div class="n-oneliner">Ectopic until proven otherwise. The triad is classic. But the classic presentation is the exception — not the rule.</div>
-  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">Pregnancy of Unknown Location</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">Pregnancy of Unknown Location</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -1938,7 +3255,7 @@ NOTES.placenta=()=>`
   <div class="n-tag">Obstetrics · Antenatal · Note 04</div>
   <div class="n-title">Placenta<br>Praevia</div>
   <div class="n-oneliner">Painless bright red bleeding in the third trimester. Placental position determines everything — including why you never reach for a speculum.</div>
-  <div class="n-badges"><span class="nbadge">Antepartum Haemorrhage</span><span class="nbadge">Accreta Spectrum</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Antepartum Haemorrhage</span><span class="nbadge">Accreta Spectrum</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -2090,7 +3407,7 @@ NOTES.gdm=()=>`
   <div class="n-tag">Obstetrics · Antenatal · Note 05</div>
   <div class="n-title">Gestational<br>Diabetes</div>
   <div class="n-oneliner">Not just a big baby problem. GDM reconfigures fetal metabolism — and the consequences extend far beyond birthweight.</div>
-  <div class="n-badges"><span class="nbadge">Antenatal</span><span class="nbadge">Macrosomia</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Antenatal</span><span class="nbadge">Macrosomia</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
