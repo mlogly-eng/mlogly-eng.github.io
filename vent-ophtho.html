@@ -573,6 +573,27 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:24px 6
   .note-modal{max-width:100%;} .nbody,.mcq-page,.ncover{padding-left:24px;padding-right:24px;}
 }
 @media(max-width:600px){.notes-grid{grid-template-columns:1fr;}}
+
+/* ── POPUP WELCOME BACK STATE ── */
+.vent-popup-inner.has-history .vp-fresh { display: flex; }
+.vent-popup-inner.has-history .vp-first { display: none; }
+.vent-popup-inner:not(.has-history) .vp-fresh { display: none; }
+.vent-popup-inner:not(.has-history) .vp-first { display: block; }
+.vp-score-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(200,69,42,.12); border: 1px solid rgba(200,69,42,.25);
+  padding: 7px 14px; margin-bottom: 18px; border-radius: 2px;
+}
+.vp-score-pill-num { font-family: 'Instrument Serif', serif; font-size: 22px; color: #c8452a; line-height: 1; }
+.vp-score-pill-lbl { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(245,242,235,.4); letter-spacing: 1px; }
+.vp-fresh-title { font-family: 'Instrument Serif', serif; font-size: 32px; color: var(--white); line-height: 1.05; margin-bottom: 10px; }
+.vp-fresh-title em { font-style: italic; color: #e85d3f; }
+.vp-fresh-sub { font-size: 13px; color: rgba(245,242,235,.38); line-height: 1.6; margin-bottom: 26px; max-width: 400px; }
+.vp-fresh-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.vp-btn-retry { background: rgba(255,255,255,.07); color: rgba(245,242,235,.7); border: 1.5px solid rgba(255,255,255,.15); padding: 13px 22px; font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; transition: all .2s; border-radius: 2px; }
+.vp-btn-retry:hover { border-color: var(--accent); color: #f5f2eb; }
+.vp-btn-fresh { background: var(--accent); color: white; border: none; padding: 13px 22px; font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; transition: all .2s; border-radius: 2px; }
+.vp-btn-fresh:hover { background: var(--accent2); }
 </style>
 </head>
 <body>
@@ -597,14 +618,33 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:24px 6
 
 <!-- VENTILATE POPUP -->
 <div id="vent-popup" class="vent-popup">
-  <div class="vent-popup-inner">
+  <div class="vent-popup-inner" id="vent-popup-inner">
     <div class="vent-popup-glow"></div>
-    <div class="vent-popup-tag">// End of note</div>
-    <div class="vent-popup-title">Are you<br><em>ventilating?</em></div>
-    <div class="vent-popup-sub">Test whether this note actually landed. 5 questions. No pressure.</div>
-    <div class="vent-popup-btns">
-      <button class="vent-yes" onclick="startMCQ()">Let&#39;s find out &#8594;</button>
-      <button class="vent-no" onclick="dismissVentPopup()">Not now</button>
+
+    <!-- FIRST TIME -->
+    <div class="vp-first">
+      <div class="vent-popup-tag">// End of note</div>
+      <div class="vent-popup-title">Are you<br><em>ventilating?</em></div>
+      <div class="vent-popup-sub">Test whether this note actually landed. 5 questions. No feedback until the end.</div>
+      <div class="vent-popup-btns">
+        <button class="vent-yes" onclick="startFreshMCQ()">Let&#39;s find out &rarr;</button>
+        <button class="vent-no" onclick="dismissVentPopup()">Not now</button>
+      </div>
+    </div>
+
+    <!-- RETURNING -->
+    <div class="vp-fresh">
+      <div class="vent-popup-tag">// You&#39;ve been here before</div>
+      <div id="vp-score-display" class="vp-score-pill">
+        <span class="vp-score-pill-num" id="vp-prev-score">—</span>
+        <span class="vp-score-pill-lbl">last score</span>
+      </div>
+      <div class="vp-fresh-title">Back for<br><em>another round?</em></div>
+      <div class="vp-fresh-sub">Pick up where you left off, or start completely fresh with the same questions reshuffled.</div>
+      <div class="vp-fresh-btns">
+        <button class="vp-btn-retry" onclick="startRetryMCQ()">&#8635; Same questions</button>
+        <button class="vp-btn-fresh" onclick="startFreshMCQ()">&#10022; Fresh start &rarr;</button>
+      </div>
     </div>
   </div>
 </div>
@@ -746,6 +786,19 @@ function closeBg(e){if(e.target===document.getElementById('overlay'))closeModal(
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
 function showVentPopup(){
+  const inner = document.getElementById('vent-popup-inner');
+  const state = mcqState[currentNote];
+  const mcqs = NOTES[currentNote]?.mcqs || NOTES_MCQ?.[currentNote];
+  const total = mcqs ? mcqs.length : 5;
+  // check if already completed (all answered)
+  const completed = state && state.answers && state.answers.filter(a=>a!==null).length === total;
+  if(completed){
+    inner.classList.add('has-history');
+    const correct = state.answers.filter((a,i)=>a===mcqs[i].ans).length;
+    document.getElementById('vp-prev-score').textContent = correct+'/'+total;
+  } else {
+    inner.classList.remove('has-history');
+  }
   document.getElementById('vent-popup').classList.add('show');
   document.getElementById('vent-backdrop').classList.add('show');
 }
@@ -753,14 +806,27 @@ function dismissVentPopup(){
   document.getElementById('vent-popup').classList.remove('show');
   document.getElementById('vent-backdrop').classList.remove('show');
 }
-function startMCQ(){
+function startFreshMCQ(){
   dismissVentPopup();
-  // hide note, show mcq
+  // reset state fully
+  const mcqs = NOTES[currentNote].mcqs;
+  mcqState[currentNote] = { current:0, answers:Array(mcqs.length).fill(null) };
   document.getElementById('page-note').style.display='none';
   document.getElementById('page-mcq').style.display='block';
-  document.getElementById('mqcontent').innerHTML=renderMCQs(NOTES[currentNote].mcqs, currentNote);
+  document.getElementById('mqcontent').innerHTML=renderMCQs(mcqs, currentNote);
   document.getElementById('modal').scrollTop=0;
 }
+function startRetryMCQ(){
+  dismissVentPopup();
+  // reset position but keep same questions
+  const mcqs = NOTES[currentNote].mcqs;
+  mcqState[currentNote] = { current:0, answers:Array(mcqs.length).fill(null) };
+  document.getElementById('page-note').style.display='none';
+  document.getElementById('page-mcq').style.display='block';
+  document.getElementById('mqcontent').innerHTML=renderMCQs(mcqs, currentNote);
+  document.getElementById('modal').scrollTop=0;
+}
+function startMCQ(){ startFreshMCQ(); }
 function backToNote(){
   document.getElementById('page-mcq').style.display='none';
   document.getElementById('page-note').style.display='block';
