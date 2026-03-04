@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VENT — OB/GYN Notes</title>
+<title>VENT — OB/GYN</title>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+
 :root{
   --bg:#f5f2eb;--bg2:#ede9e0;--bg3:#e4dfd4;
   --ink:#1a1510;--ink2:#3d3628;--ink3:#5c5244;--ink4:#b5a898;
@@ -260,49 +261,147 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
   .insight{margin-left:-20px;margin-right:-20px;padding:32px 20px;}
 }
 
-/* ── REAL CLINICAL IMAGES ── */
-.real-img-wrap{margin:28px 0;overflow:hidden;background:#1a1510;position:relative;border-radius:2px;}
-.real-img-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#c8452a,transparent);z-index:1;}
-.real-img{width:100%;max-height:400px;object-fit:cover;object-position:center;display:block;opacity:.92;}
-.real-img-cap{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;background:#1a1510;border-top:1px solid rgba(255,255,255,.07);}
-.real-img-cap span{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(245,242,235,.4);letter-spacing:.5px;}
-.real-img-credit{color:rgba(245,242,235,.2) !important;}
+
+/* ══════════════════════════════════════
+   MCQ ROOM
+══════════════════════════════════════ */
+#page-mcq-ob{background:#1e1c19;min-height:100%;}
+.mcq-room-header{background:#161412;border-bottom:1px solid rgba(255,255,255,.06);padding:18px 44px;display:flex;justify-content:space-between;align-items:center;}
+.mcq-room-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#c8452a;text-transform:uppercase;}
+.mcq-room-note-title{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.22);letter-spacing:1px;}
+.mcq-progress-strip{height:2px;background:rgba(255,255,255,.07);position:relative;}
+.mcq-progress-fill{height:100%;background:#c8452a;transition:width .5s cubic-bezier(.16,1,.3,1);position:absolute;top:0;left:0;}
+.mcq-body{padding:32px 44px 56px;background:#1e1c19;}
+.mcq-counter{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:22px;}
+.mcq-counter-q{font-family:'Instrument Serif',serif;font-size:13px;font-style:italic;color:rgba(255,255,255,.25);}
+.mcq-counter-dots{display:flex;gap:6px;}
+.mcq-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.12);transition:background .3s;}
+.mcq-dot.done{background:rgba(200,69,42,.5);}
+.mcq-dot.current{background:#c8452a;}
+.mcq-q-wrap{margin-bottom:26px;}
+.mcq-q-num{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#c8452a;text-transform:uppercase;margin-bottom:12px;}
+.mcq-q-text{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:#f5f2eb;line-height:1.6;}
+.mcq-opts-list{display:flex;flex-direction:column;gap:10px;margin-bottom:30px;}
+.mcq-opt-btn{display:flex;align-items:flex-start;gap:16px;padding:16px 20px;border:1.5px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);cursor:pointer;text-align:left;transition:all .2s;border-radius:2px;width:100%;}
+.mcq-opt-btn:hover:not(.answered){border-color:#c8452a;background:rgba(200,69,42,.08);transform:translateX(6px);}
+.mcq-opt-ltr{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:rgba(255,255,255,.25);min-width:22px;margin-top:2px;flex-shrink:0;}
+.mcq-opt-txt{font-size:14px;color:rgba(255,255,255,.6);line-height:1.6;font-family:'Syne',sans-serif;}
+.mcq-opt-btn.answered{cursor:default;}
+.mcq-opt-btn.selected{border-color:#c8452a;background:rgba(200,69,42,.12);}
+.mcq-opt-btn.selected .mcq-opt-ltr{color:#c8452a;}
+.mcq-opt-btn.selected .mcq-opt-txt{color:#f5f2eb;font-weight:600;}
+.mcq-next-wrap{display:flex;justify-content:flex-end;}
+.mcq-next-btn{background:#c8452a;color:white;border:none;padding:16px 32px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;letter-spacing:.5px;border-radius:2px;}
+.mcq-next-btn:hover:not(:disabled){background:#e85d3f;transform:translateY(-2px);}
+.mcq-next-btn:disabled{opacity:.2;cursor:default;transform:none;}
+/* RESULTS */
+.res-hero{background:#161412;border-bottom:1px solid rgba(255,255,255,.06);padding:40px 44px;display:flex;align-items:center;gap:32px;position:relative;overflow:hidden;}
+.res-hero::after{content:'';position:absolute;right:-60px;top:-60px;width:240px;height:240px;background:radial-gradient(circle,rgba(200,69,42,.08),transparent 70%);pointer-events:none;}
+.res-circle{width:96px;height:96px;border-radius:50%;border:3px solid;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;}
+.res-circle-num{font-family:'Instrument Serif',serif;font-size:30px;line-height:1;}
+.res-circle-pct{font-family:'JetBrains Mono',monospace;font-size:10px;margin-top:3px;opacity:.7;}
+.res-hero-grade{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:#f5f2eb;margin-bottom:6px;}
+.res-hero-sub{font-size:14px;color:rgba(255,255,255,.35);line-height:1.6;}
+.res-body{padding:28px 44px 48px;background:#1e1c19;}
+.res-section-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#c8452a;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.res-section-lbl::before{content:'//';color:rgba(200,69,42,.4);}
+.res-focus-box{background:rgba(200,69,42,.07);border:1px solid rgba(200,69,42,.2);border-left:3px solid #c8452a;padding:18px 22px;margin-bottom:32px;}
+.res-focus-item{font-size:14px;font-weight:600;color:rgba(255,255,255,.7);padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:10px;}
+.res-focus-item::before{content:'→';color:#c8452a;font-size:12px;}
+.res-focus-item:last-child{border-bottom:none;}
+.res-qlist{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+.res-qblock{border:1px solid rgba(255,255,255,.08);overflow:hidden;border-radius:2px;}
+.res-qblock.res-right{border-left:3px solid #4db87a;}
+.res-qblock.res-wrong{border-left:3px solid #e05a5a;}
+.res-qblock-header{display:flex;justify-content:space-between;align-items:center;padding:11px 16px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.06);}
+.res-qbadge{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1px;}
+.res-qbadge.right{color:#4db87a;}
+.res-qbadge.wrong{color:#e05a5a;}
+.res-qblock-num{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.2);}
+.res-qblock-q{padding:14px 16px;font-size:14px;font-weight:700;color:#f5f2eb;line-height:1.55;border-bottom:1px solid rgba(255,255,255,.06);font-family:'Syne',sans-serif;}
+.res-opts-wrap{padding:10px 16px;display:flex;flex-direction:column;gap:5px;border-bottom:1px solid rgba(255,255,255,.06);}
+.res-opt{display:flex;gap:12px;padding:7px 10px;font-size:13px;color:rgba(255,255,255,.3);border-radius:2px;align-items:flex-start;}
+.res-opt-ltr{font-family:'JetBrains Mono',monospace;font-size:10px;min-width:18px;margin-top:1px;opacity:.4;}
+.res-opt.correct{background:rgba(77,184,122,.12);color:#a8e6c0;font-weight:600;}
+.res-opt.correct .res-opt-ltr{color:#4db87a;opacity:1;}
+.res-opt.chosen-wrong{background:rgba(224,90,90,.1);color:#f0a8a8;}
+.res-opt.chosen-wrong .res-opt-ltr{color:#e05a5a;opacity:1;}
+.res-explain-block{padding:14px 16px;background:rgba(0,0,0,.2);}
+.res-explain-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#c8452a;text-transform:uppercase;margin-bottom:7px;}
+.res-explain-txt{font-size:13px;color:rgba(255,255,255,.55);line-height:1.7;}
+.res-explain-txt strong{color:rgba(255,255,255,.85);}
+.res-actions{display:flex;gap:10px;}
+.res-btn-retry{flex:1;background:none;border:1.5px solid rgba(255,255,255,.15);padding:14px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:rgba(255,255,255,.4);cursor:pointer;transition:all .2s;border-radius:2px;}
+.res-btn-retry:hover{border-color:#c8452a;color:#c8452a;}
+.res-btn-back{flex:1;background:#c8452a;border:none;padding:14px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:white;cursor:pointer;transition:all .2s;border-radius:2px;}
+.res-btn-back:hover{background:#e85d3f;}
+/* NOTE END CTA */
+.note-end-cta{margin:48px 64px 8px;padding:28px 32px;background:var(--ink);position:relative;overflow:hidden;cursor:pointer;transition:all .3s;}
+.note-end-cta:hover{background:#2a1f18;}
+.note-end-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#c8452a,transparent);}
+.note-end-cta-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#c8452a;text-transform:uppercase;margin-bottom:8px;}
+.note-end-cta-title{font-family:'Instrument Serif',serif;font-size:22px;color:var(--white);font-style:italic;margin-bottom:5px;}
+.note-end-cta-sub{font-size:13px;color:rgba(245,242,235,.38);line-height:1.5;}
+.note-end-cta-arrow{position:absolute;right:28px;top:50%;transform:translateY(-50%);width:36px;height:36px;background:#c8452a;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:15px;transition:all .3s;}
+.note-end-cta:hover .note-end-cta-arrow{transform:translateY(-50%) scale(1.15);}
+/* VENTILATE POPUP */
+.vent-backdrop{position:fixed;inset:0;background:rgba(10,7,4,.65);z-index:10100;opacity:0;pointer-events:none;transition:opacity .3s;}
+.vent-backdrop.show{opacity:1;pointer-events:all;}
+.vent-popup{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(100%);width:100%;max-width:960px;z-index:10200;transition:transform .45s cubic-bezier(.16,1,.3,1);background:var(--ink);border-top:2px solid #c8452a;}
+.vent-popup.show{transform:translateX(-50%) translateY(0);}
+.vent-popup-inner{padding:36px 48px 40px;position:relative;overflow:hidden;}
+.vent-popup-glow{position:absolute;right:-60px;top:-60px;width:260px;height:260px;background:radial-gradient(circle,rgba(200,69,42,.12),transparent 70%);pointer-events:none;}
+.vent-popup-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#c8452a;text-transform:uppercase;margin-bottom:14px;}
+.vent-popup-title{font-family:'Instrument Serif',serif;font-size:clamp(28px,4vw,44px);color:var(--white);line-height:1;margin-bottom:12px;}
+.vent-popup-title em{font-style:italic;color:#e85d3f;}
+.vent-popup-sub{font-size:14px;color:rgba(245,242,235,.4);line-height:1.65;max-width:440px;margin-bottom:28px;}
+.vent-popup-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.vent-yes{background:#c8452a;color:white;border:none;padding:15px 30px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.5px;transition:all .2s;border-radius:2px;}
+.vent-yes:hover{background:#e85d3f;transform:translateY(-2px);}
+.vent-no{background:none;color:rgba(245,242,235,.3);border:1px solid rgba(245,242,235,.12);padding:15px 22px;font-family:'Syne',sans-serif;font-size:13px;cursor:pointer;letter-spacing:.5px;transition:all .2s;border-radius:2px;}
+.vent-no:hover{color:rgba(245,242,235,.6);}
+@media(max-width:768px){
+  .note-end-cta{margin:32px 20px 8px;}
+  .mcq-body,.res-body,.mcq-room-header,.res-hero{padding-left:20px;padding-right:20px;}
+  .vent-popup-inner{padding:24px 20px 28px;}
+}
 </style>
 </head>
 <body>
-<div class="toast" id="toast"></div>
 
-<!-- OVERLAY -->
 <div class="overlay" id="overlay" onclick="closeBg(event)">
   <div class="note-modal" id="modal">
     <div class="mbar">
-      <div class="mbar-l"><div class="mpulse"></div><span class="mbc">OB/GYN — VENT</span></div>
+      <div class="mbar-l"><div class="mpulse"></div><span class="mbc">OB/GYN &mdash; VENT</span></div>
       <div class="mbar-r">
         <div class="lang-toggle">
           <button class="lbtn on" id="btn-en" onclick="setLang('en')">EN</button>
           <button class="lbtn" id="btn-ar" onclick="setLang('ar')">AR</button>
         </div>
-        <button class="mexpand" onclick="goFullPage()" title="Full page">⤢</button>
-        <button class="mclose" onclick="closeModal()">✕</button>
+        <button class="mclose" onclick="closeModal()">&#10005;</button>
       </div>
     </div>
-    <div id="mcontent"></div>
+    <div id="page-note-ob"><div id="mcontent"></div></div>
+    <div id="page-mcq-ob" style="display:none;"><div id="mcq-inner-ob"></div></div>
   </div>
 </div>
 
-<!-- FULL PAGE -->
-<div class="note-page" id="note-page">
-  <div class="pnav">
-    <button class="pnav-back" onclick="closeFullPage()">← Back to notes</button>
-    <div class="lang-toggle">
-      <button class="lbtn on" id="btn-en2" onclick="setLang('en')">EN</button>
-      <button class="lbtn" id="btn-ar2" onclick="setLang('ar')">AR</button>
+<!-- VENTILATE POPUP -->
+<div id="vent-popup" class="vent-popup">
+  <div class="vent-popup-inner">
+    <div class="vent-popup-glow"></div>
+    <div class="vent-popup-tag">// End of note</div>
+    <div class="vent-popup-title">Are you<br><em>ventilating?</em></div>
+    <div class="vent-popup-sub">Test whether this note actually landed. 5 questions. No pressure.</div>
+    <div class="vent-popup-btns">
+      <button class="vent-yes" onclick="startMCQ()">Let&#39;s find out &rarr;</button>
+      <button class="vent-no" onclick="dismissVentPopup()">Not now</button>
     </div>
   </div>
-  <div class="page-inner" id="page-content"></div>
 </div>
+<div id="vent-backdrop" class="vent-backdrop" onclick="dismissVentPopup()"></div>
 
-<!-- MAIN PAGE -->
+
 <div id="main-page">
 <nav>
   <a href="vent-home.html" class="logo">
@@ -382,6 +481,8 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 </section>
 </div>
 
+
+
 <script>
 let currentNote = null;
 let lang = 'en';
@@ -393,43 +494,167 @@ function setLang(l) {
   ['btn-ar','btn-ar2'].forEach(id => { const el = document.getElementById(id); if(el) el.classList.toggle('on', l==='ar'); });
 }
 
-function openNote(id) {
-  currentNote = id;
-  const html = NOTES[id] ? NOTES[id]() : stub(id);
-  document.getElementById('mcontent').innerHTML = html;
+
+const mcqState={};
+
+function openNote(id){
+  currentNote=id;
+  const html=NOTES[id]?NOTES[id]():stub(id);
+  document.getElementById('mcontent').innerHTML=html;
   document.getElementById('overlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  document.getElementById('modal').scrollTop = 0;
+  document.body.style.overflow='hidden';
+  document.getElementById('modal').scrollTop=0;
   setLang('en');
+  // show note, hide mcq
+  document.getElementById('page-note-ob').style.display='block';
+  document.getElementById('page-mcq-ob').style.display='none';
 }
-function closeModal() {
+function closeModal(){
   document.getElementById('overlay').classList.remove('open');
-  document.body.style.overflow = '';
+  document.body.style.overflow='';
+  dismissVentPopup();
 }
-function closeBg(e) { if(e.target === document.getElementById('overlay')) closeModal(); }
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+function closeBg(e){if(e.target===document.getElementById('overlay'))closeModal();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
-function goFullPage() {
-  const html = NOTES[currentNote] ? NOTES[currentNote]() : stub(currentNote);
-  document.getElementById('page-content').innerHTML = html;
-  document.getElementById('note-page').classList.add('active');
-  document.getElementById('main-page').style.display = 'none';
-  closeModal();
-  window.scrollTo(0,0);
-  setLang('en');
+function showVentPopup(){
+  document.getElementById('vent-popup').classList.add('show');
+  document.getElementById('vent-backdrop').classList.add('show');
 }
-function closeFullPage() {
-  document.getElementById('note-page').classList.remove('active');
-  document.getElementById('main-page').style.display = '';
-  window.scrollTo(0,0);
+function dismissVentPopup(){
+  document.getElementById('vent-popup').classList.remove('show');
+  document.getElementById('vent-backdrop').classList.remove('show');
+}
+function startMCQ(){
+  dismissVentPopup();
+  if(!mcqState[currentNote]){
+    mcqState[currentNote]={current:0,answers:Array(NOTES_MCQ[currentNote].length).fill(null)};
+  }
+  document.getElementById('page-note-ob').style.display='none';
+  document.getElementById('page-mcq-ob').style.display='block';
+  document.getElementById('mcq-inner-ob').innerHTML=renderQuestion(currentNote);
+  document.getElementById('modal').scrollTop=0;
+}
+function backToNote(){
+  document.getElementById('page-mcq-ob').style.display='none';
+  document.getElementById('page-note-ob').style.display='block';
+  document.getElementById('modal').scrollTop=0;
+}
+function renderQuestion(noteId){
+  const state=mcqState[noteId];
+  const mcqs=NOTES_MCQ[noteId];
+  const qi=state.current,total=mcqs.length,q=mcqs[qi];
+  const letters=['A','B','C','D','E'];
+  const pct=Math.round((qi/total)*100);
+  let dots='';
+  for(let i=0;i<total;i++) dots+=`<div class="mcq-dot ${i<qi?'done':i===qi?'current':''}"></div>`;
+  return `<div class="mcq-room-header">
+    <span class="mcq-room-label">// Test yourself</span>
+    <span class="mcq-room-note-title">${qi+1} of ${total}</span>
+  </div>
+  <div class="mcq-progress-strip"><div class="mcq-progress-fill" style="width:${pct}%"></div></div>
+  <div class="mcq-body">
+    <div class="mcq-counter">
+      <span class="mcq-counter-q">Question ${qi+1} of ${total}</span>
+      <div class="mcq-counter-dots">${dots}</div>
+    </div>
+    <div class="mcq-q-wrap">
+      <div class="mcq-q-num">Question ${qi+1}</div>
+      <div class="mcq-q-text">${q.q}</div>
+    </div>
+    <div class="mcq-opts-list" id="ob-opts-${noteId}">
+      ${q.opts.map((o,i)=>`<button class="mcq-opt-btn" onclick="selectOpt('${noteId}',${i})">
+        <span class="mcq-opt-ltr">${letters[i]}</span><span class="mcq-opt-txt">${o}</span>
+      </button>`).join('')}
+    </div>
+    <div class="mcq-next-wrap">
+      <button class="mcq-next-btn" id="ob-next-${noteId}" onclick="nextQuestion('${noteId}')" disabled>
+        ${qi+1<total?'Next &rarr;':'See results &rarr;'}
+      </button>
+    </div>
+  </div>`;
+}
+function selectOpt(noteId,oi){
+  const state=mcqState[noteId];
+  if(state.answers[state.current]!==null)return;
+  state.answers[state.current]=oi;
+  document.querySelectorAll(`#ob-opts-${noteId} .mcq-opt-btn`).forEach((b,i)=>{
+    b.classList.add('answered');
+    if(i===oi)b.classList.add('selected');
+  });
+  document.getElementById(`ob-next-${noteId}`).disabled=false;
+}
+function nextQuestion(noteId){
+  const state=mcqState[noteId];
+  if(state.current+1<NOTES_MCQ[noteId].length){state.current++;document.getElementById('mcq-inner-ob').innerHTML=renderQuestion(noteId);}
+  else showResults(noteId);
+}
+function showResults(noteId){
+  const state=mcqState[noteId],mcqs=NOTES_MCQ[noteId],letters=['A','B','C','D','E'];
+  let correct=0,missed=[];
+  mcqs.forEach((q,i)=>{if(state.answers[i]===q.ans)correct++;else missed.push(q.focus||'Review this topic');});
+  const pct=Math.round((correct/mcqs.length)*100);
+  const gc=pct>=80?'#4db87a':pct>=60?'#c8a040':'#e05a5a';
+  const gl=pct===100?'Perfect score.':pct>=80?'Well ventilated.':pct>=60?'Getting there.':'Back to the note.';
+  const gs=pct===100?'Every concept landed.':pct>=80?'Solid. Review what you missed.':pct>=60?'Good base. Some gaps to close.':"That's okay. Read the note again, then retry.";
+  let html=`<div class="mcq-room-header"><span class="mcq-room-label">// Results</span><span class="mcq-room-note-title">${correct}/${mcqs.length} correct</span></div>
+  <div class="mcq-progress-strip"><div class="mcq-progress-fill" style="width:${pct}%"></div></div>
+  <div class="res-hero">
+    <div class="res-circle" style="border-color:${gc}">
+      <div class="res-circle-num" style="color:${gc}">${correct}/${mcqs.length}</div>
+      <div class="res-circle-pct" style="color:${gc}">${pct}%</div>
+    </div>
+    <div><div class="res-hero-grade">${gl}</div><div class="res-hero-sub">${gs}</div></div>
+  </div>
+  <div class="res-body">`;
+  if(missed.length){const u=[...new Set(missed)];html+=`<div class="res-section-lbl">Focus on</div><div class="res-focus-box">${u.map(m=>`<div class="res-focus-item">${m}</div>`).join('')}</div>`;}
+  html+=`<div class="res-section-lbl">Full breakdown</div><div class="res-qlist">`;
+  mcqs.forEach((q,i)=>{
+    const ch=state.answers[i],ok=ch===q.ans;
+    html+=`<div class="res-qblock ${ok?'res-right':'res-wrong'}">
+      <div class="res-qblock-header"><span class="res-qbadge ${ok?'right':'wrong'}">${ok?'&#10003; Correct':'&#10007; Incorrect'}</span><span class="res-qblock-num">Q${i+1}</span></div>
+      <div class="res-qblock-q">${q.q}</div>
+      <div class="res-opts-wrap">${q.opts.map((o,oi)=>`<div class="res-opt${oi===q.ans?' correct':oi===ch?' chosen-wrong':''}"><span class="res-opt-ltr">${letters[oi]}</span><span>${o}${oi===q.ans?' &#10003;':oi===ch?' &#10007;':''}</span></div>`).join('')}</div>
+      <div class="res-explain-block"><div class="res-explain-lbl">Why</div><div class="res-explain-txt">${q.exp}</div></div>
+    </div>`;
+  });
+  html+=`</div><div class="res-actions">
+    <button class="res-btn-retry" onclick="retryMCQ('${noteId}')">&#8635; Retry</button>
+    <button class="res-btn-back" onclick="backToNote()">&#8592; Back to note</button>
+  </div></div>`;
+  document.getElementById('mcq-inner-ob').innerHTML=html;
+}
+function retryMCQ(noteId){
+  mcqState[noteId]={current:0,answers:Array(NOTES_MCQ[noteId].length).fill(null)};
+  document.getElementById('mcq-inner-ob').innerHTML=renderQuestion(noteId);
 }
 
-const NOTES = {};
+const NOTES_MCQ={};
+NOTES_MCQ.pph=[
+  {q:"A woman delivers vaginally and loses 1200ml. The uterus is soft and boggy. What is the most likely cause?",opts:["Retained placenta","Uterine atony","Genital tract trauma","Coagulopathy"],ans:1,focus:"4 Ts — Tone as most common cause",exp:"<strong>Uterine atony</strong> causes 70–80% of PPH. A soft boggy uterus that fails to contract is the classic sign. The 4 Ts: <strong>Tone</strong> (most common), Trauma, Tissue, Thrombin. First steps: bimanual massage + oxytocin immediately."},
+  {q:"First-line uterotonic for PPH prevention and treatment is:",opts:["Ergometrine","Carboprost","Tranexamic acid","Oxytocin"],ans:3,focus:"Uterotonic drug hierarchy",exp:"<strong>Oxytocin</strong> is first-line for both prevention (active management of third stage) and PPH treatment. Ergometrine is second-line (contraindicated in hypertension). Carboprost (PGF2α) when both fail. Tranexamic acid is an antifibrinolytic — not a uterotonic, give within 3 hours."},
+  {q:"The WOMAN trial showed tranexamic acid reduces PPH mortality when given within:",opts:["1 hour of delivery","3 hours of PPH onset","6 hours of PPH onset","Only with confirmed coagulopathy"],ans:1,focus:"WOMAN trial — tranexamic acid timing",exp:"The <strong>WOMAN trial</strong>: tranexamic acid reduces PPH-related death when given within <strong>3 hours of onset</strong>. Benefit drops sharply after 3 hours. Dose: 1g IV over 10 min, repeat after 30 min if still bleeding."},
+  {q:"After oxytocin and ergometrine fail in PPH, the next pharmacological step is:",opts:["Misoprostol PR","Carboprost IM","IV tranexamic acid","B-Lynch suture"],ans:1,focus:"Uterotonic escalation ladder",exp:"<strong>Carboprost (15-methyl PGF2α)</strong> is third-line after oxytocin and ergometrine. Give 250mcg IM, repeat every 15 min, max 8 doses. <strong>Contraindicated in asthma</strong> — causes bronchospasm. B-Lynch is a surgical intervention, not pharmacological."},
+  {q:"Shock Index >1 in PPH indicates:",opts:["Normal haemodynamics","Mild blood loss only","Significant haemodynamic compromise requiring action","Coagulopathy confirmed"],ans:2,focus:"Shock Index in haemorrhage assessment",exp:"<strong>Shock Index = HR ÷ Systolic BP.</strong> Normal: 0.5–0.7. Value <strong>>1.0</strong> = significant haemodynamic compromise, predicts need for massive transfusion. Detects shock earlier than HR or BP alone because compensation maintains BP while perfusion is critically impaired."}
+];
+NOTES_MCQ.shoulder=[
+  {q:"Shoulder dystocia is diagnosed when:",opts:["Head delivers but shoulders take >60 seconds","Gentle axial traction fails to deliver the shoulders after head delivery","CTG shows late decels in second stage","Estimated fetal weight exceeds 4.5kg"],ans:1,focus:"Definition of shoulder dystocia",exp:"<strong>Shoulder dystocia</strong> = gentle axial traction fails to deliver the shoulders after head delivery. It is <strong>not time-based</strong>. The anterior shoulder is impacted behind the pubic symphysis. An obstetric emergency with risk of brachial plexus injury and neonatal asphyxia."},
+  {q:"In the HELPERR mnemonic, what does 'H' stand for?",opts:["Head delivery first","Hyperflexion (McRoberts)","Help — call for it immediately","Hydrostatic reduction"],ans:2,focus:"HELPERR — sequence and meaning",exp:"<strong>H = Call for Help.</strong> HELPERR: <strong>H</strong>elp, <strong>E</strong>pisiotomy if needed, <strong>L</strong>egs (McRoberts), <strong>P</strong>ressure (suprapubic), <strong>E</strong>nter (internal manoeuvres), <strong>R</strong>emove posterior arm, <strong>R</strong>oll to all-fours. Help is always first — you need senior obstetrics, anaesthetics, and neonatology."},
+  {q:"The McRoberts manoeuvre resolves shoulder dystocia by:",opts:["Widening the true conjugate of the pelvis","Flattening lumbar lordosis and rotating the symphysis superiorly","Directly dislodging the impacted shoulder","Increasing uterine contraction strength"],ans:1,focus:"McRoberts mechanism",exp:"<strong>McRoberts</strong>: maternal thighs hyperflexed onto abdomen. This flattens lumbar lordosis and rotates the pubic symphysis <strong>superiorly</strong>, increasing the relative AP outlet diameter. Resolves ~40% of cases when combined with suprapubic pressure."},
+  {q:"Suprapubic pressure in shoulder dystocia should be directed:",opts:["Straight down on the fundus","Laterally onto the posterior aspect of the anterior shoulder toward the fetal face","Upward to push the shoulder above the inlet","Circumferentially around the fundus"],ans:1,focus:"Suprapubic pressure technique",exp:"Suprapubic pressure is applied <strong>laterally downward</strong> onto the posterior aspect of the anterior shoulder, adducting it toward the fetal face to reduce the shoulder-to-shoulder diameter. <strong>Not fundal pressure</strong> — fundal pressure worsens impaction. Use a rocking motion."},
+  {q:"Excessive lateral traction on the head during shoulder dystocia causes:",opts:["Clavicle fracture","Erb's palsy (C5-C6 brachial plexus injury)","Hypoxic-ischaemic encephalopathy","Uterine rupture"],ans:1,focus:"Erb's palsy — mechanism and prevention",exp:"<strong>Erb's palsy</strong> (C5-C6) results from excessive lateral traction stretching the brachial plexus. Classic posture: arm adducted, internally rotated, elbow extended. This is why <strong>axial traction only</strong> is allowed — never lateral. ~10% have permanent injury."}
+];
+NOTES_MCQ.preeclampsia=[
+  {q:"Preeclampsia is defined as new hypertension after 20 weeks with:",opts:["Headache and visual disturbance","Proteinuria or end-organ dysfunction","Facial and hand oedema","BP >140 on a single reading"],ans:1,focus:"Diagnostic criteria for preeclampsia",exp:"<strong>Preeclampsia</strong> = new hypertension (≥140/90) after 20 weeks + <strong>proteinuria OR end-organ dysfunction</strong> (renal, hepatic, neurological, haematological, uteroplacental). Oedema alone is not diagnostic. BP must be on two readings ≥4 hours apart unless severe."},
+  {q:"First-line treatment for severe hypertension (≥160/110) in pregnancy:",opts:["Methyldopa","Atenolol","Labetalol IV or oral nifedipine","Ramipril"],ans:2,focus:"Antihypertensives safe in pregnancy",exp:"<strong>Labetalol IV</strong> or <strong>oral nifedipine</strong> for acute severe hypertension. ACE inhibitors (ramipril) are <strong>absolutely contraindicated</strong> — cause fetal renal agenesis and oligohydramnios. Atenolol causes fetal growth restriction. Methyldopa is safe but too slow for acute control."},
+  {q:"Magnesium sulphate is given in eclampsia to:",opts:["Lower blood pressure urgently","Prevent and treat seizures","Accelerate fetal lung maturity","Reverse coagulopathy"],ans:1,focus:"Role and mechanism of magnesium sulphate",exp:"<strong>MgSO₄</strong> prevents and treats eclamptic seizures — it is <strong>not antihypertensive</strong>. Blocks NMDA receptors and reduces cerebral vasospasm. Loading: 4g IV over 5–15 min. Maintenance: 1g/hr. Toxicity signs: loss of patellar reflexes → respiratory depression → cardiac arrest. Antidote: <strong>calcium gluconate</strong>."},
+  {q:"HELLP syndrome is characterised by:",opts:["Haemolysis, Elevated Liver enzymes, Low Platelets","Hypertension, Encephalopathy, Liver failure, Low Pressure","Haematuria, Elevated LDH, Low Protein","Haemolysis, Elevated LDH, Low Pulse"],ans:0,focus:"HELLP syndrome — definition and features",exp:"<strong>HELLP</strong>: Haemolysis + Elevated Liver enzymes + Low Platelets. Severe variant of preeclampsia. Key labs: schistocytes on film, AST/ALT >70 IU/L, platelets <100×10⁹/L. Can occur without hypertension or proteinuria. Only definitive treatment is delivery."},
+  {q:"The only definitive treatment for preeclampsia is:",opts:["Magnesium sulphate","Corticosteroids","Delivery","Antihypertensive therapy"],ans:2,focus:"Delivery as the only cure",exp:"<strong>Delivery</strong> is the only cure — the placenta is the cause. All other treatments are supportive. Decision timing: ≥37 weeks → deliver. <37 weeks → balance prematurity vs maternal risk. Severe disease or HELLP → deliver regardless of gestation. Corticosteroids given for lung maturity if <34 weeks."}
+];
 
-/* ═══════════════════
-   PPH
-═══════════════════ */
-NOTES.pph = () => `
+
+const NOTES={};
+NOTES.pph=()=>`
 <div class="n-hero">
   <div class="nhero-glow"></div>
   <div class="n-rule"></div>
@@ -601,12 +826,15 @@ NOTES.pph = () => `
   </div>
 
   <div class="nfoot"><span class="ntag">Obstetrics</span><span class="ntag">Emergency</span><span class="ntag">4 Ts</span><span class="ntag">WOMAN trial</span><span class="ntag">Atony</span><span class="ntag">Shock Index</span><span class="ntime">⏱ 5 min</span></div>
-</div>`;
 
-/* ═══════════════════
-   SHOULDER DYSTOCIA
-═══════════════════ */
-NOTES.shoulder = () => `
+<div class="note-end-cta" onclick="showVentPopup()">
+  <div class="note-end-cta-tag">// End of note</div>
+  <div class="note-end-cta-title">Are you ventilating?</div>
+  <div class="note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="note-end-cta-arrow">&#8599;</div>
+</div>
+</div>`;
+NOTES.shoulder=()=>`
 <div class="n-hero">
   <div class="nhero-glow"></div>
   <div class="n-rule"></div>
@@ -775,12 +1003,15 @@ NOTES.shoulder = () => `
   </div>
 
   <div class="nfoot"><span class="ntag">Shoulder Dystocia</span><span class="ntag">HELPERR</span><span class="ntag">McRoberts</span><span class="ntag">Erb's palsy</span><span class="ntag">Rubin II</span><span class="ntag">Woods screw</span><span class="ntime">⏱ 5 min</span></div>
-</div>`;
 
-/* ═══════════════════
-   PREECLAMPSIA
-═══════════════════ */
-NOTES.preeclampsia = () => `
+<div class="note-end-cta" onclick="showVentPopup()">
+  <div class="note-end-cta-tag">// End of note</div>
+  <div class="note-end-cta-title">Are you ventilating?</div>
+  <div class="note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="note-end-cta-arrow">&#8599;</div>
+</div>
+</div>`;
+NOTES.preeclampsia=()=>`
 <div class="n-hero">
   <div class="nhero-glow"></div>
   <div class="n-rule"></div>
@@ -939,9 +1170,15 @@ NOTES.preeclampsia = () => `
   </div>
 
   <div class="nfoot"><span class="ntag">Preeclampsia</span><span class="ntag">HELLP</span><span class="ntag">MgSO₄</span><span class="ntag">sFlt-1</span><span class="ntag">Severe features</span><span class="ntag">Delivery</span><span class="ntime">⏱ 5 min</span></div>
+
+<div class="note-end-cta" onclick="showVentPopup()">
+  <div class="note-end-cta-tag">// End of note</div>
+  <div class="note-end-cta-title">Are you ventilating?</div>
+  <div class="note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="note-end-cta-arrow">&#8599;</div>
+</div>
 </div>`;
 
-/* STUBS */
 function stub(id) {
   const data = {
     ectopic: { title: 'Ectopic Pregnancy', sub: 'Ectopic until proven otherwise. The triad, risk factors, the discriminatory zone, and what a negative urine hCG does and does not rule out.' },
@@ -975,6 +1212,8 @@ document.querySelectorAll('.filt').forEach(btn => {
     this.classList.add('on');
   });
 });
+
+
 </script>
 </body>
 </html>
