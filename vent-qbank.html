@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VENT — Q-Bank</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #f3f0e8;
+  --bg2:      #ebe7de;
+  --bg3:      #e2ddd3;
+  --card:     #faf8f4;
+  --ink:      #0d0b08;
+  --ink2:     #1a1814;
+  --ink3:     #38342e;
+  --ink4:     #786e64;
+  --ink5:     #a89e94;
+  --red:      #c8452a;
+  --red2:     #e0583a;
+  --redfaint: #f7eeeb;
+  --green:    #2a6642;
+  --greenfaint:#eaf3ed;
+  --border:   #d6d0c6;
+  --border2:  #c8c2b8;
+  --white:    #fdfcfa;
+  --dark:     #141210;
+  --dark2:    #1e1c18;
+  --dark3:    #2a2822;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Syne',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;opacity:.6;
+}
+
+/* ── NAV ── */
+nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 64px;
+  background:var(--card);
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:500;
+}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;}
+.logo-name{font-size:18px;font-weight:800;letter-spacing:4px;color:var(--ink);}
+.nav-back{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--ink4);text-decoration:none;letter-spacing:1px;transition:color .2s;
+}
+.nav-back:hover{color:var(--ink);}
+.nav-label{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:3px;color:var(--red);text-transform:uppercase;
+}
+
+
+.sys-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.sys-btn.soon{
+  padding:22px 20px;border:1.5px solid var(--border);background:var(--bg2);
+  text-align:left;opacity:.45;cursor:not-allowed;
+}
+.sys-btn.soon .sn{font-size:15px;font-weight:700;color:var(--ink3);}
+.sys-btn.soon .ss{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink5);}
+@media(max-width:960px){.sys-grid{grid-template-columns:1fr 1fr;}}
+
+/* ── SCREENS ── */
+#screen-launcher{display:block;}
+#screen-session{display:none;}
+#screen-results{display:none;}
+
+/* ════════════════════════════
+   LAUNCHER
+════════════════════════════ */
+.launcher{max-width:860px;margin:0 auto;padding:80px 64px 100px;}
+
+.l-eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:3px;color:var(--red);text-transform:uppercase;
+  margin-bottom:20px;display:flex;align-items:center;gap:14px;
+}
+.l-eyebrow::before{content:'';width:28px;height:1px;background:var(--red);}
+
+.l-h1{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(56px,8vw,96px);
+  font-weight:400;color:var(--ink);line-height:.92;
+  margin-bottom:24px;
+}
+.l-h1 em{font-style:italic;color:var(--red);}
+
+.l-sub{
+  font-size:16px;color:var(--ink4);line-height:1.8;
+  max-width:480px;margin-bottom:80px;
+}
+
+/* config rows */
+.cfg{margin-bottom:56px;}
+.cfg-label{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:3px;color:var(--ink5);text-transform:uppercase;
+  margin-bottom:14px;display:flex;align-items:center;gap:12px;
+}
+.cfg-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* system */
+.sys-row{display:flex;gap:8px;}
+.sys-btn{
+  flex:1;padding:22px 20px;
+  border:1.5px solid var(--border);background:var(--card);
+  cursor:pointer;text-align:left;transition:all .2s;
+}
+.sys-btn:hover{border-color:var(--ink3);}
+.sys-btn.on{border-color:var(--ink);background:var(--ink);}
+.sys-btn.on .sn{color:var(--bg);}
+.sys-btn.on .ss{color:rgba(243,240,232,.35);}
+.sn{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px;transition:color .2s;}
+.ss{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink5);transition:color .2s;}
+
+/* mode */
+.mode-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.mode-btn{
+  padding:24px 22px;
+  border:1.5px solid var(--border);background:var(--card);
+  cursor:pointer;text-align:left;transition:all .2s;
+}
+.mode-btn:hover{border-color:var(--ink3);}
+.mode-btn.on{border-color:var(--ink);background:var(--ink);}
+.mode-btn.on .mn{color:var(--bg);}
+.mode-btn.on .md{color:rgba(243,240,232,.35);}
+.mn{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:7px;transition:color .2s;}
+.md{font-size:13px;color:var(--ink4);line-height:1.55;transition:color .2s;}
+
+/* count */
+.count-row{display:flex;align-items:center;gap:24px;}
+.count-input{
+  width:110px;padding:14px 18px;
+  font-family:'Instrument Serif',serif;font-size:30px;font-style:italic;
+  color:var(--ink);background:var(--card);
+  border:1.5px solid var(--border);outline:none;
+  transition:border-color .2s;text-align:center;
+  -moz-appearance:textfield;
+}
+.count-input::-webkit-inner-spin-button,.count-input::-webkit-outer-spin-button{-webkit-appearance:none;}
+.count-input:focus{border-color:var(--ink);}
+.count-note{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink5);line-height:1.7;}
+
+/* launch */
+.launch-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:44px;border-top:1px solid var(--border);
+}
+.launch-summary{
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  color:var(--ink5);letter-spacing:.3px;
+}
+.launch-summary strong{color:var(--ink3);}
+.launch-btn{
+  background:var(--ink);color:var(--bg);border:none;
+  padding:20px 56px;
+  font-family:'Syne',sans-serif;font-size:15px;font-weight:700;
+  cursor:pointer;transition:all .25s;
+  display:flex;align-items:center;gap:14px;letter-spacing:.3px;
+}
+.launch-btn:hover{background:var(--red);}
+.launch-arr{font-size:20px;transition:transform .2s;}
+.launch-btn:hover .launch-arr{transform:translateX(5px);}
+
+/* ════════════════════════════
+   SESSION
+════════════════════════════ */
+.session{display:grid;grid-template-columns:256px 1fr;min-height:calc(100vh - 61px);}
+
+/* sidebar */
+.sidebar{
+  background:var(--dark);
+  padding:36px 28px;
+  display:flex;flex-direction:column;
+  position:sticky;top:61px;height:calc(100vh - 61px);overflow-y:auto;
+}
+.sb-ey{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:3px;color:rgba(243,240,232,.2);
+  text-transform:uppercase;margin-bottom:28px;
+}
+.sb-big{
+  font-family:'Instrument Serif',serif;font-size:52px;font-style:italic;
+  color:var(--bg);line-height:1;margin-bottom:2px;
+}
+.sb-big span{font-size:22px;color:rgba(243,240,232,.25);}
+.sb-prog-lbl{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:rgba(243,240,232,.22);margin-bottom:18px;
+}
+.sb-bar{height:2px;background:rgba(255,255,255,.07);margin-bottom:30px;}
+.sb-bar-fill{height:100%;background:var(--red);transition:width .5s cubic-bezier(.16,1,.3,1);}
+.sb-dots{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:auto;}
+.sb-dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.09);transition:all .3s;}
+.sb-dot.cur{background:var(--red);box-shadow:0 0 0 2px rgba(200,69,42,.25);}
+.sb-dot.ok{background:rgba(42,102,66,.8);}
+.sb-dot.bad{background:rgba(200,69,42,.55);}
+.sb-footer{margin-top:28px;}
+.sb-mode-tag{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:rgba(243,240,232,.2);letter-spacing:1px;
+  display:flex;align-items:center;gap:8px;margin-bottom:14px;
+}
+.sb-dot-sm{width:5px;height:5px;border-radius:50%;background:var(--red);flex-shrink:0;}
+.sb-exit{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:rgba(243,240,232,.18);background:none;
+  border:1px solid rgba(255,255,255,.07);padding:10px 14px;
+  cursor:pointer;width:100%;letter-spacing:1px;transition:all .2s;
+}
+.sb-exit:hover{color:rgba(200,69,42,.75);border-color:rgba(200,69,42,.22);}
+
+/* question area */
+.q-area{background:var(--bg);padding:56px 64px 80px;}
+
+.q-meta{display:flex;gap:12px;align-items:center;margin-bottom:28px;}
+.q-num{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--red);text-transform:uppercase;}
+.q-sep{width:1px;height:12px;background:var(--border2);}
+.q-topic{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--ink5);text-transform:uppercase;}
+
+/* vignette */
+.vignette{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-left:3px solid var(--ink3);
+  padding:28px 32px;margin-bottom:24px;max-width:720px;
+}
+.vig-label{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:3px;color:var(--ink5);text-transform:uppercase;margin-bottom:12px;
+}
+.vig-text{font-size:15px;color:var(--ink2);line-height:1.9;}
+.vig-text strong{color:var(--ink);font-weight:700;}
+
+.q-stem{
+  font-family:'Instrument Serif',serif;font-size:22px;
+  color:var(--ink);line-height:1.45;font-style:italic;
+  margin-bottom:28px;max-width:680px;
+}
+
+/* options */
+.opts{display:flex;flex-direction:column;gap:7px;max-width:680px;margin-bottom:24px;}
+.opt{
+  display:flex;align-items:stretch;
+  border:1.5px solid var(--border);background:var(--card);
+  cursor:pointer;text-align:left;overflow:hidden;
+  transition:border-color .18s,background .18s,transform .18s;
+  width:100%;
+}
+.opt:hover:not(.locked){border-color:var(--ink3);transform:translateX(3px);}
+.opt-ltr{
+  font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;
+  color:var(--ink5);background:var(--bg2);
+  padding:18px 18px;min-width:52px;text-align:center;
+  border-right:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:all .18s;
+}
+.opt-txt{font-size:14px;color:var(--ink2);line-height:1.6;padding:18px 22px;flex:1;text-align:left;}
+
+/* selected */
+.opt.sel{border-color:var(--ink);background:var(--white);}
+.opt.sel .opt-ltr{background:var(--ink);color:var(--bg);border-color:var(--ink);}
+.opt.sel .opt-txt{color:var(--ink);font-weight:600;}
+
+/* revealed */
+.opt.locked{cursor:default;transform:none !important;}
+.opt.rev-ok{border-color:var(--green);background:var(--greenfaint);}
+.opt.rev-ok .opt-ltr{background:var(--green);color:white;border-color:var(--green);}
+.opt.rev-ok .opt-txt{color:#0f2d1c;font-weight:600;}
+.opt.rev-bad{border-color:var(--red);background:var(--redfaint);}
+.opt.rev-bad .opt-ltr{background:var(--red);color:white;border-color:var(--red);}
+.opt.rev-bad .opt-txt{color:#2d0e08;font-weight:600;}
+.opt.rev-dim{border-color:var(--border);background:var(--bg2);opacity:.5;}
+
+/* confirm bar */
+.confirm-bar{
+  max-width:680px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:16px 22px;background:var(--card);border:1px solid var(--border);
+  margin-bottom:24px;
+  opacity:0;pointer-events:none;
+  transition:opacity .22s,transform .22s;
+  transform:translateY(6px);
+}
+.confirm-bar.show{opacity:1;pointer-events:all;transform:translateY(0);}
+.confirm-hint{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink5);letter-spacing:.3px;}
+.confirm-btn{
+  background:var(--ink);color:var(--bg);border:none;
+  padding:12px 30px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;
+  cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0;
+}
+.confirm-btn:hover{background:var(--red);}
+
+/* explanation block — one block, below all options */
+.exp-block{
+  max-width:680px;background:var(--dark);
+  margin-bottom:28px;
+  display:none;
+  animation:expIn .3s cubic-bezier(.16,1,.3,1);
+}
+.exp-block.show{display:block;}
+@keyframes expIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+.exp-verdict{
+  display:flex;align-items:center;gap:14px;
+  padding:16px 28px;border-bottom:1px solid rgba(255,255,255,.06);
+}
+.exp-badge{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  font-weight:700;letter-spacing:2px;padding:5px 14px;border-radius:100px;
+}
+.exp-badge.ok{background:rgba(42,102,66,.2);color:#7ed4a0;border:1px solid rgba(42,102,66,.3);}
+.exp-badge.bad{background:rgba(200,69,42,.14);color:#f09070;border:1px solid rgba(200,69,42,.24);}
+.exp-correct-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(243,240,232,.28);}
+
+/* per-option rows inside explanation */
+.exp-opts{border-bottom:1px solid rgba(255,255,255,.05);}
+.exp-opt-row{
+  display:flex;gap:16px;
+  padding:16px 28px;border-bottom:1px solid rgba(255,255,255,.04);
+}
+.exp-opt-row:last-child{border-bottom:none;}
+.exp-opt-ltr{
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;
+  min-width:20px;flex-shrink:0;margin-top:1px;
+}
+.exp-opt-ltr.ok{color:#7ed4a0;}
+.exp-opt-ltr.bad{color:rgba(243,240,232,.22);}
+.exp-opt-body{font-size:13px;color:rgba(243,240,232,.48);line-height:1.75;}
+.exp-opt-body strong{color:rgba(243,240,232,.82);}
+.exp-opt-row.is-correct .exp-opt-body{color:rgba(243,240,232,.75);}
+
+/* learning objective */
+.exp-lo{padding:20px 28px;background:rgba(200,69,42,.06);}
+.exp-lo-label{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:3px;color:var(--red);text-transform:uppercase;
+  margin-bottom:8px;display:flex;align-items:center;gap:8px;
+}
+.exp-lo-label::before{content:'//';color:rgba(200,69,42,.38);}
+.exp-lo-text{
+  font-family:'Instrument Serif',serif;font-size:17px;
+  color:rgba(243,240,232,.68);font-style:italic;line-height:1.55;
+}
+
+/* next */
+.next-wrap{max-width:680px;display:flex;justify-content:flex-end;}
+.next-btn{
+  background:var(--ink);color:var(--bg);border:none;
+  padding:18px 48px;
+  font-family:'Syne',sans-serif;font-size:14px;font-weight:700;
+  cursor:pointer;transition:all .25s;
+  display:flex;align-items:center;gap:12px;
+  opacity:0;pointer-events:none;
+}
+.next-btn.show{opacity:1;pointer-events:all;}
+.next-btn:hover{background:var(--red);}
+
+/* ════════════════════════════
+   RESULTS
+════════════════════════════ */
+.results{max-width:800px;margin:0 auto;padding:64px 64px 100px;}
+
+.res-top{
+  display:grid;grid-template-columns:auto 1fr;
+  gap:44px;align-items:center;
+  padding-bottom:48px;border-bottom:1px solid var(--border);margin-bottom:52px;
+}
+.score-ring{position:relative;width:128px;height:128px;flex-shrink:0;}
+.score-ring svg{transform:rotate(-90deg);}
+.score-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.score-n{font-family:'Instrument Serif',serif;font-size:32px;font-style:italic;color:var(--ink);line-height:1;}
+.score-pct{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink5);margin-top:3px;}
+.res-grade{font-family:'Instrument Serif',serif;font-size:46px;color:var(--ink);line-height:1;margin-bottom:10px;}
+.res-grade em{font-style:italic;color:var(--red);}
+.res-sub{font-size:15px;color:var(--ink4);line-height:1.7;margin-bottom:18px;}
+.res-tally{display:flex;gap:20px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink5);}
+.td{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:5px;vertical-align:middle;}
+.td.ok{background:var(--green);}.td.bad{background:var(--red);}
+
+.res-section-label{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:3px;color:var(--ink5);text-transform:uppercase;
+  margin-bottom:14px;display:flex;align-items:center;gap:10px;
+}
+.res-section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.focus-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px;}
+.focus-chip{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--red);background:var(--redfaint);
+  border:1px solid rgba(200,69,42,.18);padding:6px 14px;
+}
+
+.res-list{display:flex;flex-direction:column;gap:12px;margin-bottom:48px;}
+.res-q{border:1px solid var(--border);background:var(--card);overflow:hidden;}
+.res-q.ok{border-left:4px solid var(--green);}
+.res-q.bad{border-left:4px solid var(--red);}
+.res-q-hdr{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 18px;background:var(--bg2);border-bottom:1px solid var(--border);
+}
+.res-q-badge{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.5px;}
+.res-q-badge.ok{color:var(--green);}.res-q-badge.bad{color:var(--red);}
+.res-q-topic{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink5);}
+.res-vig{padding:14px 18px;font-size:13px;color:var(--ink4);line-height:1.65;border-bottom:1px solid var(--border);font-style:italic;}
+.res-stem{font-size:14px;font-weight:700;color:var(--ink);line-height:1.5;padding:14px 18px;border-bottom:1px solid var(--border);}
+.res-opts{padding:10px 18px;display:flex;flex-direction:column;gap:5px;border-bottom:1px solid var(--border);}
+.res-opt{display:flex;gap:10px;font-size:13px;color:var(--ink5);padding:5px 8px;align-items:flex-start;}
+.res-opt-ltr{font-family:'JetBrains Mono',monospace;font-size:10px;min-width:18px;opacity:.4;margin-top:1px;}
+.res-opt.rk{color:var(--green);font-weight:600;}.res-opt.rk .res-opt-ltr{opacity:1;}
+.res-opt.rw{color:var(--red);}.res-opt.rw .res-opt-ltr{opacity:1;}
+.res-exp-wrap{padding:18px 18px;background:var(--dark);}
+.res-exp-opts{border-bottom:1px solid rgba(255,255,255,.05);margin-bottom:16px;}
+.res-exp-lo-label{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:3px;color:var(--red);text-transform:uppercase;
+  margin-bottom:8px;display:flex;align-items:center;gap:8px;
+}
+.res-exp-lo-label::before{content:'//';color:rgba(200,69,42,.35);}
+.res-exp-lo-text{
+  font-family:'Instrument Serif',serif;font-size:16px;
+  color:rgba(243,240,232,.65);font-style:italic;line-height:1.5;
+}
+
+.res-actions{display:flex;gap:10px;}
+.ra-retry{
+  flex:1;background:none;border:1.5px solid var(--border2);
+  padding:18px;font-family:'Syne',sans-serif;font-size:14px;
+  font-weight:700;color:var(--ink3);cursor:pointer;transition:all .2s;
+}
+.ra-retry:hover{border-color:var(--ink);color:var(--ink);}
+.ra-new{
+  flex:1;background:var(--ink);border:none;
+  padding:18px;font-family:'Syne',sans-serif;font-size:14px;
+  font-weight:700;color:var(--bg);cursor:pointer;transition:all .2s;
+}
+.ra-new:hover{background:var(--red);}
+
+@media(max-width:960px){
+  nav{padding:16px 22px;}
+  .launcher{padding:48px 24px 72px;}
+  .session{grid-template-columns:1fr;}
+  .sidebar{display:none;}
+  .q-area{padding:36px 22px 60px;}
+  .results{padding:48px 22px 72px;}
+  .launch-row{flex-direction:column;align-items:flex-start;gap:20px;}
+  .res-top{grid-template-columns:1fr;gap:24px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="vent-home.html" class="logo">
+    <svg width="34" height="34" viewBox="0 0 44 44" fill="none">
+      <circle cx="22" cy="22" r="21" stroke="#0d0b08" stroke-width="1.5"/>
+      <path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M10 30 Q22 36 34 30" stroke="#0d0b08" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <circle cx="22" cy="10" r="2.5" fill="#c8452a"/>
+    </svg>
+    <span class="logo-name">Vent</span>
+  </a>
+  <a href="vent-home.html" class="nav-back">← Home</a>
+  <div class="nav-label">Q-Bank</div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     LAUNCHER
+══════════════════════════════════════════ -->
+<div id="screen-launcher">
+<div class="launcher">
+
+  <div class="l-eyebrow">Q-Bank</div>
+  <h1 class="l-h1">Cases.<br><em>No notes.</em></h1>
+  <p class="l-sub">Clinical vignettes. Hard questions. Real reasoning required. Choose your system and go.</p>
+
+    <div class="cfg">
+    <div class="cfg-label">System</div>
+    <div class="sys-grid">
+      <button class="sys-btn on" data-sys="all" onclick="pickSys(this,'all')">
+        <div class="sn">Everything</div>
+        <div class="ss" id="sc-all">— questions</div>
+      </button>
+      <button class="sys-btn" data-sys="obgyn" onclick="pickSys(this,'obgyn')">
+        <div class="sn">OB / GYN</div>
+        <div class="ss" id="sc-obgyn">— questions</div>
+      </button>
+      <button class="sys-btn" data-sys="ophtho" onclick="pickSys(this,'ophtho')">
+        <div class="sn">Ophthalmology</div>
+        <div class="ss" id="sc-ophtho">— questions</div>
+      </button>
+      <div class="sys-btn soon">
+        <div class="sn">Internal Med</div>
+        <div class="ss">Coming soon</div>
+      </div>
+      <div class="sys-btn soon">
+        <div class="sn">Surgery</div>
+        <div class="ss">Coming soon</div>
+      </div>
+      <div class="sys-btn soon">
+        <div class="sn">Neurology</div>
+        <div class="ss">Coming soon</div>
+      </div>
+      <div class="sys-btn soon">
+        <div class="sn">Paediatrics</div>
+        <div class="ss">Coming soon</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="cfg">
+    <div class="cfg-label">Questions</div>
+    <div class="count-row">
+      <input type="number" id="count-input" class="count-input" value="10" min="5" max="40" onchange="clampCount()" oninput="updateSummary()">
+      <div class="count-note">questions per session<br>minimum 5</div>
+    </div>
+  </div>
+
+  <div class="cfg">
+    <div class="cfg-label">Mode</div>
+    <div class="mode-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <button class="mode-btn on" onclick="pickMode(this,'normal')">
+        <div class="mn">Normal</div>
+        <div class="md">Answer, get immediate feedback, move on.</div>
+      </button>
+      <button class="mode-btn" onclick="pickMode(this,'exam')">
+        <div class="mn">Exam</div>
+        <div class="md">No feedback until the session ends.</div>
+      </button>
+    </div>
+  </div>
+
+  <div class="launch-row">
+    <div class="launch-summary" id="launch-summary"></div>
+    <button class="launch-btn" onclick="launch()">
+      Begin <span class="launch-arr">→</span>
+    </button>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     SESSION
+══════════════════════════════════════════ -->
+<div id="screen-session">
+<div class="session">
+
+  <div class="sidebar">
+    <div class="sb-ey">Session</div>
+    <div class="sb-big" id="sb-big">1 <span id="sb-total">/ —</span></div>
+    <div class="sb-prog-lbl" id="sb-prog-lbl">Question 1 of —</div>
+    <div class="sb-bar"><div class="sb-bar-fill" id="sb-bar-fill" style="width:0%"></div></div>
+    <div class="sb-dots" id="sb-dots"></div>
+    <div class="sb-footer">
+      <div class="sb-mode-tag" id="sb-mode-tag">
+        <span class="sb-dot-sm"></span>
+        <span id="sb-mode-txt">Normal</span>
+      </div>
+      <button class="sb-exit" onclick="exitSession()">✕ &nbsp;Exit</button>
+    </div>
+  </div>
+
+  <div class="q-area" id="q-area">
+    <!-- rendered -->
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     RESULTS
+══════════════════════════════════════════ -->
+<div id="screen-results">
+<div class="results">
+  <div id="res-content"></div>
+</div>
+</div>
+
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+//  QUESTION BANK
+//  Every question: clinical vignette → stem → options → explanations per option → learning objective
+// ═══════════════════════════════════════════════════════════════
+const QB = [
+
+// ════════════════════════════════════════
+//  OB/GYN — POSTPARTUM HAEMORRHAGE (12 Qs)
+// ════════════════════════════════════════
+
+{ sys:'obgyn', topic:'PPH',
+  vig:`A 29-year-old G2P1 delivers vaginally at 39 weeks after a 3-hour labour. The placenta is delivered intact 8 minutes later. At 25 minutes postpartum the midwife notices brisk ongoing vaginal bleeding. The uterus is <strong>soft, boggy, and poorly contracted</strong>. BP 104/68, HR 102. EBL 850 mL.`,
+  stem:`What is the most important immediate combined intervention?`,
+  opts:["Tranexamic acid 1g IV bolus","Bimanual uterine compression and oxytocin simultaneously","Inspect cervix and vaginal walls for lacerations","Cross-match blood and prepare for theatre"],
+  ans:1,
+  lo:"Uterine atony accounts for 70% of PPH. A soft boggy fundus demands simultaneous bimanual compression and uterotonic therapy — you compress the sinusoids physically while oxytocin drives myometrial contraction.",
+  oe:["TXA is an antifibrinolytic — it does not cause uterine contraction. Starting with TXA alone while leaving atony unaddressed will not stop the haemorrhage; it must accompany, not precede, uterotonic therapy.",
+      "<strong>Correct.</strong> Atony is the cause in ~70% of PPH. Bimanual compression physically occludes the open sinusoids while oxytocin drives contraction. These happen simultaneously.",
+      "Trauma inspection is indicated when the uterus is firm and bleeding continues — the 2nd T. Here the uterus is boggy, pointing to atony as the primary cause.",
+      "Cross-match and theatre preparation are important escalation steps but do not address the bleeding source. Uterotonic therapy comes first."]
+},
+
+{ sys:'obgyn', topic:'PPH',
+  vig:`Following an elective LSCS for breech presentation, a 33-year-old G1P0 continues to bleed despite oxytocin and ergometrine. The uterus is firm and contracted. The scrub nurse notes blood in the surgical field is not clotting. IV site is oozing. Total EBL is now 1.9 L.`,
+  stem:`Which of the four Ts is responsible, and what is the correct treatment?`,
+  opts:["Tone — escalate to carboprost","Trauma — systematic inspection of uterine incision","Tissue — manual removal of retained products","Thrombin — blood products in 1:1:1 ratio"],
+  ans:3,
+  lo:"Firm uterus + absent clot formation at remote sites = DIC (the 4th T). The treatment is blood products — not more uterotonics.",
+  oe:["The uterus is firm — atony is not the problem. Carboprost will not address a systemic coagulation failure.",
+      "Trauma is possible after any operative delivery but the defining sign is absent clot formation at a remote IV site — a systemic coagulopathy, not a local bleed.",
+      "Products were delivered at LSCS — retained tissue is not the diagnosis here.",
+      "<strong>Correct.</strong> Firm uterus + remote oozing + absent clot = DIC. Treatment: FFP, platelets, cryoprecipitate in 1:1:1 ratio with packed red cells. Urgent haematology."]
+},
+
+{ sys:'obgyn', topic:'PPH',
+  vig:`A 26-year-old G3P2 delivers at home with a midwife. Estimated blood loss reaches 1100 mL. The uterus is contracting intermittently. The midwife has given oxytocin. She is calling for transfer. BP is 92/60, HR 118, GCS 15.`,
+  stem:`Which single drug should be given immediately while waiting for the ambulance?`,
+  opts:["Ergometrine IM","Tranexamic acid 1g IV or IM","Carboprost IM","Misoprostol 1000mcg sublingual"],
+  ans:1,
+  lo:"The WOMAN trial: TXA reduces mortality from PPH when given within 3 hours of onset. At 1100 mL blood loss with haemodynamic compromise, TXA must be given immediately — it is simple to administer and requires no IV access.",
+  oe:["Ergometrine is a 2nd-line uterotonic — contraindicated in hypertension and requires refrigeration. With a BP of 92/60 this patient is hypotensive, not hypertensive, but ergometrine is not the priority drug here.",
+      "<strong>Correct.</strong> TXA 1g IV (or IM if no IV access) should be given as soon as PPH is identified. The WOMAN trial demonstrated a mortality reduction when given within 3 hours. It does not require refrigeration and can be given in any setting.",
+      "Carboprost requires refrigeration and is contraindicated in asthma — it is a 3rd-line uterotonic not available in a community setting.",
+      "Misoprostol 1000mcg sublingual is an option in resource-limited settings but is not the priority drug when TXA is available."]
+},
+
+{ sys:'obgyn', topic:'PPH',
+  vig:`A woman's uterus remains atonic despite oxytocin, ergometrine, and carboprost. Bimanual compression has been applied. Bleeding is ongoing. EBL is now 2.4 L. She is in theatre. The surgical team is considering next steps.`,
+  stem:`Which surgical intervention is performed first before considering hysterectomy?`,
+  opts:["Bilateral uterine artery ligation","B-Lynch suture compression of the uterus","Internal iliac artery ligation","Uterine packing with balloon tamponade"],
+  ans:3,
+  lo:"Uterine balloon tamponade (e.g. Bakri balloon) is the first surgical step — it is quick, reversible, and successful in ~80% of cases. The compression sutures and vessel ligation come after if tamponade fails.",
+  oe:["Bilateral uterine artery ligation is a valid surgical step but comes after balloon tamponade has been attempted and failed.",
+      "B-Lynch compression suture is effective but is a more invasive step — balloon tamponade is attempted first as it is quicker and reversible.",
+      "Internal iliac artery ligation is technically demanding and used late in the surgical escalation pathway.",
+      "<strong>Correct.</strong> Balloon tamponade (Bakri, Sengstaken-Blakemore, or condom catheter) is the first surgical intervention. It is quick, reversible, and succeeds in ~80% of cases of atonic PPH refractory to uterotonics."]
+},
+
+{ sys:'obgyn', topic:'PPH',
+  vig:`A 34-year-old with known placenta accreta spectrum (anterior praevia overlying a previous CS scar) is taken to theatre at 36 weeks for planned caesarean hysterectomy. The multidisciplinary team includes interventional radiology, haematology, urology, and anaesthetics. Intraoperatively, haemorrhage is massive.`,
+  stem:`Why is this patient at highest risk for PPH and what makes it so difficult to control?`,
+  opts:["She has uterine atony due to the abnormal placentation","The placenta has invaded beyond the myometrium — vessels cannot be ligated because the placenta does not separate","She has an undiagnosed coagulopathy worsened by the placenta","The CS scar prevents normal uterine contraction"],
+  ans:1,
+  lo:"Placenta accreta spectrum: trophoblast invades the myometrium (accreta), beyond it (increta), or through the serosa (percreta). The placenta does not separate at delivery. Attempting removal tears open vascular channels. Hysterectomy en-bloc is the definitive management.",
+  oe:["The bleeding is not from atony — the uterus may be contracting normally. The problem is that the placenta is fused to the uterine wall and cannot be delivered without creating massive haemorrhage at the attachment site.",
+      "<strong>Correct.</strong> In PAS, trophoblast has invaded through the decidua basalis into or beyond the myometrium. The placenta cannot be manually removed without tearing the vascular bed it has grown into. Caesarean hysterectomy with the placenta left in situ is the standard approach.",
+      "Coagulopathy develops as a consequence of massive haemorrhage — it is not the primary cause of the bleeding.",
+      "CS scars reduce myometrial thickness in the lower segment, predisposing to abnormal placentation — but the problem is placental invasion, not failure of uterine contraction."]
+},
+
+{ sys:'obgyn', topic:'PPH',
+  vig:`A 31-year-old G1P0 with a twin pregnancy delivers both twins vaginally at 36 weeks. Immediately after delivery of the second placenta, vaginal bleeding escalates rapidly. The uterus is large and poorly contracted. HR is 128, BP 86/54. She looks pale and confused.`,
+  stem:`Why are twin pregnancies at higher risk of PPH from atony?`,
+  opts:["Twin pregnancies always require oxytocin which desensitises receptors","The overdistended uterus is less able to contract effectively after delivery","Twin delivery requires forceps which cause uterine trauma","Twins are always premature and preterm uteri do not contract"],
+  ans:1,
+  lo:"Overdistension is a major risk factor for uterine atony — a uterus stretched beyond its normal capacity (twins, polyhydramnios, macrosomia) cannot achieve effective contraction of the sinusoids after delivery.",
+  oe:["Oxytocin receptor desensitisation is a real phenomenon with prolonged high-dose infusion but is not the primary reason twins carry higher atony risk.",
+      "<strong>Correct.</strong> The uterine muscle is stretched by twin pregnancy. An overdistended uterus lacks the mechanical ability to contract and retract efficiently around the open placental sinusoids — the same principle applies to polyhydramnios and macrosomia.",
+      "Forceps are not routinely used in twin delivery and uterine trauma is not the dominant risk.",
+      "Twin pregnancies can be delivered at term. The issue is overdistension, not prematurity."]
+},
+
+{ sys:'obgyn', topic:'PPH',
+  vig:`A 40-year-old G5P4 delivers a 4.6 kg baby at 40+3 weeks. The third stage takes 35 minutes and is actively managed with oxytocin. After manual removal of the placenta, bleeding is heavy. The uterus contracts to palpation but blood loss is now 900 mL and rising.`,
+  stem:`The most important risk factor acting here is:`,
+  opts:["Advanced maternal age","Grand multiparity causing myometrial fibrosis and atony","Macrosomia causing overdistension","Prolonged third stage suggesting retained cotyledon"],
+  ans:3,
+  lo:"A prolonged third stage (>30 min) after active management raises the possibility of retained placental tissue — even a single retained cotyledon prevents the uterus from fully contracting. Examination of the placenta for completeness is mandatory.",
+  oe:["Advanced maternal age is a risk factor for many obstetric complications but is not the most operationally important clue in this specific presentation.",
+      "Grand multiparity does predispose to atony, but the uterus is contracting to palpation — the specific combination of prolonged third stage and ongoing bleeding points more directly to retained products.",
+      "Macrosomia is a risk factor for overdistension-related atony — but the uterus is contracting. The prolonged third stage is the more specific clue.",
+      "<strong>Correct.</strong> A third stage lasting >30 minutes after active management should prompt careful inspection of the placenta for completeness. A retained cotyledon or membrane keeps the uterine wall open. If retained products are suspected, explore the uterine cavity."]
+},
+
+{ sys:'obgyn', topic:'PPH',
+  vig:`Oxytocin is being prepared for IV infusion following a routine vaginal delivery. The midwife is about to give a rapid 10-unit IV bolus as she has seen done previously on the ward.`,
+  stem:`Why is a rapid IV bolus of oxytocin dangerous?`,
+  opts:["It can cause uterine rupture","It causes profound vasodilatation and hypotension — potentially fatal","It stimulates prolactin release and inhibits lactation","It crosses the placenta and causes neonatal bradycardia"],
+  ans:1,
+  lo:"Oxytocin given as a rapid IV bolus causes profound peripheral vasodilatation and can cause fatal hypotension, particularly in women who are already haemodynamically compromised. It must be given as a slow infusion.",
+  oe:["Oxytocin does not cause uterine rupture — it stimulates myometrial contraction within normal physiological parameters.",
+      "<strong>Correct.</strong> Rapid IV bolus oxytocin causes sudden vasodilatation — BP can drop dramatically. Several maternal deaths have been attributed to this error. The correct route is slow IV infusion (10 units over 4 hours) or IM injection.",
+      "Oxytocin does not inhibit lactation. Prolactin release is governed by suckling and hypothalamic signals.",
+      "The baby is already delivered — placental transfer is not relevant at this point."]
+},
+
+{ sys:'obgyn', topic:'PPH',
+  vig:`A 27-year-old is 4 hours postpartum following a normal vaginal delivery. She reports feeling faint and soaking through 2 pads in the last hour. On examination, the uterus is well-contracted at the umbilicus. There is a steady trickle of bright red blood from the vagina. The perineum shows a first-degree tear that was not sutured.`,
+  stem:`What is the most likely source of bleeding and what should happen next?`,
+  opts:["Uterine atony — re-examine and give oxytocin","Secondary PPH due to endometritis — start antibiotics","Unrepaired perineal laceration or missed vaginal wall tear — inspect and suture","Coagulopathy — send urgent clotting screen"],
+  ans:2,
+  lo:"A contracted uterus with ongoing bright red bleeding = Trauma until proven otherwise. Systematic inspection of the lower genital tract — perineum, vaginal walls, and cervix — is the next step.",
+  oe:["The uterus is well contracted — atony is not the diagnosis here. More oxytocin will not address a soft tissue bleed.",
+      "Secondary PPH (>24 hours postpartum) is often related to endometritis or retained products. This is within 4 hours of delivery — primary PPH from trauma.",
+      "<strong>Correct.</strong> Contracted uterus + ongoing bright red blood = trauma. The known unrepaired first-degree tear plus possible missed vaginal wall tear must be inspected systematically. Suture any identified bleeder.",
+      "Coagulopathy is possible in massive haemorrhage but is not the first diagnosis in a well-contracted uterus with a known perineal tear and 4-hour postpartum timing."]
+},
+
+{ sys:'obgyn', topic:'PPH',
+  vig:`A 36-year-old develops PPH with EBL of 2.8 L. She has received 4 units of packed red cells and 4 units of FFP. Her latest labs: Hb 72 g/L, platelets 68 × 10⁹/L, fibrinogen 1.1 g/L, PT ratio 1.6. She is still actively bleeding.`,
+  stem:`Based on these results, which product is most urgently needed next?`,
+  opts:["More packed red cells — Hb is critically low","More FFP — PT ratio is elevated","Cryoprecipitate — fibrinogen is critically low","Platelet transfusion — platelets are below 75"],
+  ans:2,
+  lo:"Fibrinogen is the first coagulation factor to become critically low in massive obstetric haemorrhage. A fibrinogen below 2 g/L is associated with severe coagulopathy — below 1.5 g/L is a critical level requiring immediate cryoprecipitate.",
+  oe:["The Hb of 72 is low but not the most urgent abnormality — the coagulation failure (fibrinogen 1.1, PT 1.6) will perpetuate bleeding regardless of how much red blood is transfused.",
+      "FFP contains fibrinogen at ~2 g/L concentration but the volume required to correct critically low fibrinogen is prohibitive. Cryoprecipitate delivers fibrinogen at ~15x higher concentration.",
+      "<strong>Correct.</strong> Fibrinogen of 1.1 g/L is critically low. Cryoprecipitate (fibrinogen concentrate) is the most urgent product. Target fibrinogen >2 g/L in obstetric haemorrhage. ROTEM/TEG can guide this in real time.",
+      "Platelets at 68 × 10⁹/L need addressing — target >75 in active haemorrhage — but the fibrinogen is the most immediately critical abnormality."]
+},
+
+{ sys:'obgyn', topic:'PPH',
+  vig:`Active management of the third stage is being discussed at an antenatal booking appointment with a 24-year-old primigravida who wants a physiological third stage.`,
+  stem:`What does active management consist of, and what is the evidence for it?`,
+  opts:["Routine IV oxytocin, cord traction, and uterine massage — reduces PPH risk by 50%","Uterotonic agent after delivery, early cord clamping, and controlled cord traction — reduces risk of PPH >500 mL and need for further uterotonics","Immediate placental delivery by fundal pressure — reduces retained placenta risk","Ergometrine alone after delivery of the anterior shoulder"],
+  ans:1,
+  lo:"Active management of the third stage reduces PPH risk by approximately 60%. It consists of a uterotonic agent (oxytocin first-line), controlled cord traction after signs of separation, and deferred cord clamping is now recommended after 1 minute.",
+  oe:["Routine uterine massage after delivery of the placenta is no longer recommended by WHO — it causes pain without reducing PPH. The core of active management is the uterotonic + controlled cord traction.",
+      "<strong>Correct.</strong> Active management: uterotonic agent (oxytocin 10 IU IM as first-line) + controlled cord traction after signs of placental separation. This reduces PPH >500 mL by ~60% compared to physiological management.",
+      "Fundal pressure to deliver the placenta is not part of active management and risks uterine inversion.",
+      "Ergometrine alone is not first-line due to hypertensive side effects and is less effective than oxytocin as a sole agent."]
+},
+
+{ sys:'obgyn', topic:'PPH',
+  vig:`A 28-year-old has had a PPH following vaginal delivery. She received 6 units of packed red cells, 6 units of FFP, 2 pools of platelets, and 2 pools of cryoprecipitate. Bleeding is now controlled. Three hours later she develops oliguria, creatinine is rising (184 µmol/L), and ALT has increased to 210 U/L.`,
+  stem:`What complication is developing?`,
+  opts:["Sepsis from intrapartum infection","Transfusion-related acute lung injury (TRALI)","Multi-organ dysfunction from ischaemia during massive haemorrhage","Pre-eclampsia developing in the postpartum period"],
+  ans:2,
+  lo:"Massive haemorrhage causes ischaemia across multiple organ beds. The kidneys and liver are the first to show dysfunction. Rising creatinine + rising transaminases after major PPH = multi-organ dysfunction from ischaemic injury during the period of haemodynamic compromise.",
+  oe:["Sepsis is possible but the more parsimonious explanation for oliguria and rising LFTs immediately after massive haemorrhage and resuscitation is ischaemic organ dysfunction.",
+      "TRALI typically presents within 6 hours of transfusion with respiratory compromise — hypoxia and bilateral pulmonary infiltrates. Renal and hepatic dysfunction are not the primary features.",
+      "<strong>Correct.</strong> Multi-organ dysfunction is a recognised complication of massive obstetric haemorrhage. The kidneys (acute tubular necrosis from ischaemia) and liver are particularly vulnerable. HDU/ICU care, fluid balance optimisation, and monitoring for Sheehan syndrome are required.",
+      "Postpartum pre-eclampsia typically presents with hypertension and proteinuria — not the specific pattern of oliguria + rising LFTs immediately following massive haemorrhage."]
+},
+
+// ════════════════════════════════════════
+//  OB/GYN — PREECLAMPSIA (12 Qs)
+// ════════════════════════════════════════
+
+{ sys:'obgyn', topic:'Preeclampsia',
+  vig:`A 22-year-old primigravida at 35 weeks presents with a 3-day frontal headache unresponsive to paracetamol and flashing lights in her peripheral vision. BP is 162/108 on two readings. PCR is 52 mg/mmol. Platelets 74 × 10⁹/L, ALT 188 U/L. She is not seizing.`,
+  stem:`She has HELLP syndrome with neurological features. What must happen first?`,
+  opts:["Start oral labetalol and admit to antenatal ward","Give betamethasone 12mg IM and plan delivery at 36 weeks","Administer magnesium sulphate 4g IV loading dose now","Arrange emergency caesarean section immediately"],
+  ans:2,
+  lo:"Severe preeclampsia with neurological symptoms = imminent eclampsia risk. MgSO₄ prevents the seizure before delivery is arranged. Seizure prophylaxis precedes the delivery decision.",
+  oe:["Oral labetalol treats BP but does nothing to prevent an eclamptic seizure — and this patient is at high risk of seizing in the next hour.",
+      "Betamethasone is appropriate and should follow, but planning delivery at 36 weeks while leaving the seizure risk unaddressed is dangerous. The 36-week timeline is also wrong for a patient with HELLP.",
+      "<strong>Correct.</strong> MgSO₄ 4g IV over 15–20 min is the most urgent intervention — it prevents the seizure. Antihypertensives and delivery planning run in parallel immediately after.",
+      "Delivery is the definitive treatment and will follow, but without MgSO₄ first the patient may seize on the way to theatre."]
+},
+
+{ sys:'obgyn', topic:'Preeclampsia',
+  vig:`A 19-year-old at 32 weeks presents with BP 148/96. She has 2+ protein on dipstick. She has no headache, visual symptoms, or epigastric pain. Platelets, LFTs, and renal function are normal.`,
+  stem:`This is mild preeclampsia. What is the recommended antihypertensive target?`,
+  opts:["135/85 mmHg","150/100 mmHg — to maintain uteroplacental flow","120/70 mmHg — normalise completely","No treatment needed — treat only if >160/110"],
+  ans:0,
+  lo:"NICE recommends a target BP of 135/85 mmHg in preeclampsia. Over-treatment risks placental under-perfusion (fetal growth restriction). Under-treatment risks maternal stroke.",
+  oe:["<strong>Correct.</strong> NICE target: <135/85 mmHg. This balances maternal safety (stroke prevention) with fetal wellbeing (avoiding excessive reduction in uteroplacental flow).",
+      "Leaving BP at 150/100 without treating risks progressive end-organ damage. The NICE threshold for treatment is ≥140/90 in preeclampsia.",
+      "Normalising to 120/70 risks over-treatment and placental under-perfusion. The target is 135/85, not physiological normotension.",
+      "The NICE threshold for starting antihypertensive treatment in preeclampsia is ≥140/90 — this patient at 148/96 meets the criteria."]
+},
+
+{ sys:'obgyn', topic:'Preeclampsia',
+  vig:`A 31-year-old at 38 weeks with known preeclampsia is stable on labetalol (BP 136/84). A registrar suggests continuing expectant management and awaiting spontaneous labour.`,
+  stem:`Why is this plan incorrect?`,
+  opts:["Labetalol is unsafe beyond 38 weeks","BP may rise further before 40 weeks","At ≥37 weeks with preeclampsia, the ongoing placental disease outweighs any benefit of waiting","The fetus will become macrosomic if pregnancy continues"],
+  ans:2,
+  lo:"Delivery is the only cure. At 37 weeks with preeclampsia, the fetus is mature and ongoing placental disease carries daily risks — stroke, eclampsia, HELLP, abruption. Waiting for spontaneous labour is not appropriate.",
+  oe:["Labetalol is safe throughout pregnancy — not the reason the plan is wrong.",
+      "The risk of BP rising is one component — but the fundamental error is treating BP as the disease. The placenta is the disease and it remains active every day.",
+      "<strong>Correct.</strong> Preeclampsia is a placental disease. Antihypertensives lower the cuff reading — they do not remove the placenta. At term with preeclampsia, delivery is indicated.",
+      "Macrosomia is not a concern in preeclampsia — these pregnancies are more likely to have growth-restricted fetuses due to impaired placental perfusion."]
+},
+
+{ sys:'obgyn', topic:'Preeclampsia',
+  vig:`Magnesium sulphate is being infused (1 g/hr maintenance) in a patient with eclampsia. The nursing staff notice she has had no urine output for 3 hours, respiratory rate is 8/min, and her knee reflexes are absent.`,
+  stem:`What has happened and what is the immediate treatment?`,
+  opts:["She has developed eclampsia — give a repeat MgSO₄ bolus","She has MgSO₄ toxicity — give calcium gluconate 10mL of 10% IV immediately and stop the infusion","She is in neurogenic respiratory depression — intubate immediately","She has had a PE — give anticoagulation"],
+  ans:1,
+  lo:"MgSO₄ toxicity: loss of reflexes (first sign) → respiratory depression → cardiac arrest. The antidote is calcium gluconate 10 mL of 10% IV. Monitor: reflexes must be present, RR >12, urine output >25 mL/hr.",
+  oe:["She is showing signs of MgSO₄ toxicity — absent reflexes + respiratory depression + oliguria. Giving more magnesium would be fatal.",
+      "<strong>Correct.</strong> Loss of reflexes + RR 8 + oliguria = MgSO₄ toxicity. Stop infusion immediately. Give calcium gluconate 10 mL of 10% IV over 10 min — it antagonises the neuromuscular effects of magnesium. Call for anaesthetic support.",
+      "Intubation may be required if respiratory depression worsens, but the antidote must be given first.",
+      "PE does not present with absent reflexes and oliguria in a patient receiving MgSO₄."]
+},
+
+{ sys:'obgyn', topic:'Preeclampsia',
+  vig:`A 25-year-old G1P0 has eclampsia at 36 weeks. She is having a generalised tonic-clonic seizure. She is on her side in the recovery position. The midwife has called for help.`,
+  stem:`What is the first pharmacological intervention for the active seizure?`,
+  opts:["Diazepam 10mg IV","Lorazepam 4mg IV","Magnesium sulphate 4g IV over 5–10 minutes","Phenytoin 18 mg/kg IV"],
+  ans:2,
+  lo:"MgSO₄ is first-line for both treating and preventing eclamptic seizures. It is superior to diazepam and phenytoin in RCT evidence (Magpie trial). Diazepam is a 2nd-line option if MgSO₄ is unavailable.",
+  oe:["Diazepam was the historical treatment for eclampsia but has been superseded by MgSO₄ on the evidence from the Magpie and Collaborative Eclampsia trials. It is 2nd-line only.",
+      "Lorazepam has no established role as first-line treatment for eclamptic seizures.",
+      "<strong>Correct.</strong> MgSO₄ 4g IV over 5–10 min is first-line for the acute eclamptic seizure. If seizures recur, a further 2g bolus can be given. The Collaborative Eclampsia Trial showed MgSO₄ superior to diazepam and phenytoin.",
+      "Phenytoin is not recommended for eclamptic seizures — multiple trials show it is inferior to MgSO₄."]
+},
+
+{ sys:'obgyn', topic:'Preeclampsia',
+  vig:`A 34-year-old at 28 weeks is admitted with severe preeclampsia. She is on labetalol and MgSO₄. The obstetric team is considering whether to deliver.`,
+  stem:`Which feature, if present, would mandate immediate delivery regardless of gestational age?`,
+  opts:["Proteinuria >5 g in 24 hours","Persistent BP >150/100 despite two antihypertensives","Platelet count <50 × 10⁹/L with rising LFTs and right upper quadrant pain","Fetal growth below the 10th centile on ultrasound"],
+  ans:2,
+  lo:"Severe HELLP with platelets <50 × 10⁹/L, rising transaminases, and RUQ pain (hepatic capsule distension, risk of hepatic rupture) mandates delivery regardless of gestational age — the maternal risk of continuing is too high.",
+  oe:["Heavy proteinuria is a marker of severity but alone does not mandate immediate delivery — it must be assessed in context with other features.",
+      "Persistent hypertension is a concern but can often be managed with escalating antihypertensive therapy while continuing the pregnancy to gain fetal maturity.",
+      "<strong>Correct.</strong> Platelets <50 × 10⁹/L + rising LFTs + RUQ pain = severe HELLP with risk of hepatic haematoma or rupture. This constellation mandates delivery regardless of gestational age.",
+      "Fetal growth restriction below the 10th centile triggers intensified surveillance and may lead to delivery — but alone, without deteriorating maternal parameters, it does not mandate immediate delivery."]
+},
+
+{ sys:'obgyn', topic:'Preeclampsia',
+  vig:`A 29-year-old developed preeclampsia in her first pregnancy at 34 weeks. She is now 8 weeks into her second pregnancy and asks about preventing preeclampsia this time.`,
+  stem:`What evidence-based intervention should be recommended?`,
+  opts:["Low-molecular weight heparin from 12 weeks","Low-dose aspirin 75–150 mg daily from 12 weeks until 36 weeks","Calcium supplementation only","No prevention possible — recurrence risk must be accepted"],
+  ans:1,
+  lo:"Low-dose aspirin started before 16 weeks reduces the risk of preterm preeclampsia by approximately 62% in high-risk women (ASPRE trial). It should be taken at night as absorption is better.",
+  oe:["LMWH is used to prevent thrombosis in women with antiphospholipid syndrome or thrombophilia — it has no proven role in preeclampsia prevention as a sole agent.",
+      "<strong>Correct.</strong> Low-dose aspirin 75–150 mg daily from 12 weeks (ideally before 16 weeks) until 36 weeks. ASPRE trial: 62% reduction in preterm preeclampsia. Previous preeclampsia <34 weeks is a high-risk indication.",
+      "Calcium supplementation reduces preeclampsia risk in populations with low dietary calcium intake — but it is not the evidence-based first-line intervention in a well-nourished population.",
+      "Recurrence risk after preterm preeclampsia is ~15–20%. Evidence-based prevention with aspirin exists and should be offered."]
+},
+
+{ sys:'obgyn', topic:'Preeclampsia',
+  vig:`A 40-year-old primigravida with pre-existing hypertension is at 20 weeks. She is on methyldopa. Her BP today is 158/102.`,
+  stem:`What differentiates superimposed preeclampsia from worsening chronic hypertension?`,
+  opts:["BP >160/110 at any point in pregnancy","New proteinuria, new end-organ dysfunction, or worsening BP despite treatment after 20 weeks","Headache and visual symptoms with any elevated BP","The presence of oedema of the hands and face"],
+  ans:1,
+  lo:"Superimposed preeclampsia is defined by the development of new proteinuria OR new end-organ dysfunction (thrombocytopaenia, renal impairment, liver dysfunction, neurological features) in a woman with pre-existing hypertension, after 20 weeks.",
+  oe:["BP >160/110 alone doesn't distinguish superimposed preeclampsia from poorly controlled chronic hypertension — the key is new proteinuria or organ dysfunction.",
+      "<strong>Correct.</strong> Superimposed preeclampsia: new proteinuria (PCR >30 mg/mmol) or new end-organ dysfunction in a woman with known chronic hypertension. This triggers the same management pathway as de novo preeclampsia.",
+      "Symptoms alone (headache, visual disturbance) are concerning but need to be assessed with blood tests and urine protein — not diagnostic in isolation.",
+      "Oedema is no longer part of the diagnostic criteria for preeclampsia — it is non-specific and common in normal pregnancy."]
+},
+
+{ sys:'obgyn', topic:'Preeclampsia',
+  vig:`A woman who had preeclampsia with HELLP is 3 days postpartum. She is on antihypertensives. Her platelets on day 3 are 38 × 10⁹/L — lower than her nadir during the acute episode at 74 × 10⁹/L.`,
+  stem:`Why can HELLP get worse after delivery, and what does this mean for management?`,
+  opts:["HELLP always resolves within 48 hours of delivery — these results must be a laboratory error","Postpartum HELLP can worsen for 24–72 hours before improving — this is expected and requires continued HDU monitoring","She has developed an immune thrombocytopenic purpura complicating delivery","She should receive immediate plasmapheresis"],
+  ans:1,
+  lo:"HELLP can paradoxically worsen in the first 48–72 hours postpartum before beginning to resolve. Platelets may fall further before rising. Close HDU monitoring is required until a clear upward trend is established.",
+  oe:["HELLP does not always resolve within 48 hours — the first 72 hours postpartum carry ongoing risk. Attributing abnormal results to laboratory error is dangerous.",
+      "<strong>Correct.</strong> Postpartum HELLP can worsen transiently before improving, typically reaching its nadir at 24–72 hours and then recovering. Continued HDU level care, platelet monitoring, and MgSO₄ for 24 hours postpartum is standard.",
+      "ITP is a separate diagnosis with a different clinical context — the temporal relationship to delivery and preeclampsia makes HELLP the correct explanation here.",
+      "Plasmapheresis is considered in cases of HELLP not resolving beyond 72 hours or in atypical HUS/TTP overlap — not as a routine early intervention."]
+},
+
+{ sys:'obgyn', topic:'Preeclampsia',
+  vig:`A 26-year-old with preeclampsia at 36 weeks is contracting regularly and is 5cm dilated. She is on a MgSO₄ infusion. Her BP is 148/94 on labetalol.`,
+  stem:`Is vaginal delivery contraindicated in preeclampsia?`,
+  opts:["Yes — all women with preeclampsia must have caesarean section","No — vaginal delivery is preferred if the cervix is favourable and there are no other obstetric indications for caesarean","Yes — the risk of eclampsia during pushing makes vaginal delivery too dangerous","Yes — MgSO₄ suppresses uterine contractions and labour cannot progress"],
+  ans:1,
+  lo:"Preeclampsia alone is not an indication for caesarean section. Vaginal delivery is preferred when the cervix is favourable and there are no other obstetric indications for operative delivery.",
+  oe:["Preeclampsia is not itself an indication for CS. The mode of delivery is determined by obstetric factors — presentation, cervical status, fetal condition.",
+      "<strong>Correct.</strong> Vaginal delivery is preferred in preeclampsia. This patient is at 5cm with an unspecified but presumably favourable cervix. The decision for CS should be based on standard obstetric indications, not preeclampsia alone.",
+      "Eclamptic seizures are prevented by MgSO₄ — the second stage can be shortened with assisted delivery if there are concerns, but routine CS for all preeclamptic women is not evidence-based.",
+      "MgSO₄ does not suppress uterine contractions — this is a common misconception. It has no significant tocolytic effect at therapeutic doses."]
+},
+
+{ sys:'obgyn', topic:'Preeclampsia',
+  vig:`A 37-year-old with a BMI of 36 attends booking at 10 weeks. She has no past history of hypertension or renal disease. She is a primigravida.`,
+  stem:`Which combination of risk factors would lead NICE to recommend aspirin prophylaxis?`,
+  opts:["One moderate risk factor: nulliparity","Two moderate risk factors: nulliparity + BMI >35","Any single risk factor regardless of category","Only if there is a prior history of preeclampsia"],
+  ans:1,
+  lo:"NICE: recommend aspirin if ≥1 high-risk factor OR ≥2 moderate-risk factors. High-risk: previous preeclampsia, chronic kidney disease, autoimmune disease, diabetes, chronic hypertension. Moderate-risk: nulliparity, BMI >35, age >40, >10-year interpregnancy interval, family history, multiple pregnancy.",
+  oe:["Nulliparity alone is a moderate-risk factor — NICE recommends aspirin when there are ≥2 moderate-risk factors, not one alone.",
+      "<strong>Correct.</strong> This woman has two moderate risk factors: nulliparity and BMI >35. NICE recommends aspirin 75–150 mg daily from 12 weeks in this situation.",
+      "Single moderate-risk factors do not trigger aspirin prophylaxis in the NICE guideline — it requires either one high-risk or two moderate-risk factors.",
+      "Prior preeclampsia is a high-risk factor and alone would indicate aspirin — but aspirin is also indicated in women with no prior history who have ≥2 moderate factors."]
+},
+
+{ sys:'obgyn', topic:'Preeclampsia',
+  vig:`A 30-year-old has her BP measured in the antenatal clinic at 20 weeks: 144/92 on two readings 4 hours apart. Urine PCR is 6 mg/mmol. She has no symptoms. All blood tests including platelets, LFTs, and renal function are normal.`,
+  stem:`What is the most accurate diagnosis?`,
+  opts:["Preeclampsia — proteinuria is present","Gestational hypertension — new hypertension after 20 weeks without proteinuria or end-organ dysfunction","Chronic hypertension — she has always had elevated BP","Normal variant — white-coat hypertension is common"],
+  ans:1,
+  lo:"Gestational hypertension = new hypertension ≥140/90 after 20 weeks WITHOUT proteinuria or end-organ dysfunction. A PCR of 6 mg/mmol is normal (threshold 30 mg/mmol). This is not preeclampsia yet — but 25% of women with gestational hypertension will develop it.",
+  oe:["PCR 6 mg/mmol is well below the proteinuria threshold of 30 mg/mmol — preeclampsia requires proteinuria OR end-organ dysfunction. Neither is present.",
+      "<strong>Correct.</strong> New hypertension ≥140/90 after 20 weeks without proteinuria or organ dysfunction = gestational hypertension. Management: twice-weekly BP monitoring, urine protein and bloods weekly, antihypertensives if BP ≥150/100.",
+      "Chronic hypertension is present before 20 weeks or pre-dates pregnancy. This is new-onset at 20 weeks.",
+      "White-coat hypertension is possible but should not be assumed without ambulatory BP monitoring — a diagnosis of gestational hypertension is more appropriate at this stage."]
+},
+
+// ════════════════════════════════════════
+//  OB/GYN — ECTOPIC PREGNANCY (10 Qs)
+// ════════════════════════════════════════
+
+{ sys:'obgyn', topic:'Ectopic Pregnancy',
+  vig:`A 26-year-old attends the ED with 4 days of left pelvic pain and dark vaginal spotting. LMP was 7 weeks ago. Urine βhCG: positive. Observations are stable. TVUS: no IUP, 25mm left adnexal mass, small free fluid in the pouch of Douglas. Serum βhCG: 2800 IU/L.`,
+  stem:`What is the correct immediate management?`,
+  opts:["Discharge with safety-netting — βhCG is not very high","Diagnose as PUL and repeat βhCG in 48 hours","Treat as confirmed ectopic — refer for surgical or medical management now","Repeat TVUS in one week to assess the mass"],
+  ans:2,
+  lo:"βhCG above the discriminatory zone (1500–2000 IU/L) + no IUP on TVUS + adnexal mass = ectopic pregnancy. This is not a PUL. Immediate management is required.",
+  oe:["βhCG 2800 IU/L is well above the discriminatory zone — this is not a low-risk presentation. A 25mm adnexal mass with no IUP at this level is an ectopic.",
+      "PUL applies when no IUP or ectopic can be identified on USS. An adnexal mass is identified here — this is not a PUL.",
+      "<strong>Correct.</strong> All three criteria: βhCG above discriminatory zone + no IUP + adnexal mass. This is an ectopic pregnancy. Refer immediately for laparoscopy or methotrexate if criteria met.",
+      "Waiting a week with a 25mm adnexal mass and βhCG above the discriminatory zone risks rupture."]
+},
+
+{ sys:'obgyn', topic:'Ectopic Pregnancy',
+  vig:`A 31-year-old received methotrexate 7 days ago for a confirmed tubal ectopic (βhCG 2200, 28mm mass, no cardiac activity). Today βhCG is 1960 IU/L. She calls to report right shoulder tip pain and postural dizziness developing over the past 2 hours.`,
+  stem:`The βhCG has fallen. Is this reassuring?`,
+  opts:["Yes — a falling βhCG confirms methotrexate is working","No — shoulder tip pain and postural dizziness indicate haemoperitoneum; this is a surgical emergency","The dizziness is a methotrexate side effect — advise rest","Repeat βhCG now — if it has fallen further she can be observed"],
+  ans:1,
+  lo:"A falling βhCG does not exclude rupture. Shoulder tip pain = subdiaphragmatic irritation from haemoperitoneum. These signs override any biochemical trend.",
+  oe:["A falling βhCG is reassuring in an asymptomatic patient. The moment shoulder tip pain and postural symptoms develop, the biochemical trend is irrelevant.",
+      "<strong>Correct.</strong> Shoulder tip pain = blood under the diaphragm = haemoperitoneum. Postural dizziness = haemodynamic compromise. This is a ruptured ectopic. Two large-bore IVs, blood products, theatre immediately.",
+      "Shoulder tip pain in a patient being monitored for ectopic is never a side effect of methotrexate — it is a red flag for intraperitoneal bleeding.",
+      "Another βhCG will not change management when there are clinical signs of haemodynamic compromise. This patient needs theatre."]
+},
+
+{ sys:'obgyn', topic:'Ectopic Pregnancy',
+  vig:`A 24-year-old has a serum βhCG of 850 IU/L. TVUS shows no intrauterine or extrauterine pregnancy. She is haemodynamically stable and has mild left-sided pain.`,
+  stem:`How should this pregnancy of unknown location (PUL) be managed?`,
+  opts:["Admit for diagnostic laparoscopy immediately","Discharge — a βhCG below the discriminatory zone is reassuring","Serial serum βhCG measurement 48 hours apart with safety-netting; manage based on trend","Give methotrexate empirically — most PULs are ectopic"],
+  ans:2,
+  lo:"PUL management is based on the rate of βhCG change over 48 hours. A rise ≥63% suggests a viable IUP. A rise <50% or a rise without a visible IUP suggests ectopic or failing IUP. A falling βhCG suggests a failing pregnancy.",
+  oe:["Immediate laparoscopy is not indicated for a haemodynamically stable patient with no identified ectopic on USS — this would expose many women with early viable IUPs to unnecessary surgery.",
+      "A βhCG below the discriminatory zone means a viable IUP may be too early to see — it does not exclude ectopic. Safety-netting and serial monitoring are essential.",
+      "<strong>Correct.</strong> Serial βhCG 48 hours apart: rise ≥63% → likely viable IUP, repeat TVUS. Rise <50% → likely ectopic or failing IUP, further assessment. Fall of >50% → likely miscarriage.",
+      "Empirical methotrexate in a PUL risks treating a viable intrauterine pregnancy with a chemotherapy agent. Methotrexate requires confirmed ectopic before use."]
+},
+
+{ sys:'obgyn', topic:'Ectopic Pregnancy',
+  vig:`A 29-year-old has a confirmed left tubal ectopic pregnancy. βhCG is 1600 IU/L, the mass is 22mm, there is no cardiac activity, no free fluid, and she is haemodynamically stable. She wants to preserve her fertility.`,
+  stem:`Which of these is an absolute contraindication to methotrexate?`,
+  opts:["Previous ectopic pregnancy in the contralateral tube","βhCG of 1600 IU/L","Fetal cardiac activity on USS","Desire for future fertility"],
+  ans:2,
+  lo:"Absolute contraindications to methotrexate for ectopic pregnancy: fetal cardiac activity, βhCG >5000 IU/L, mass >35mm, haemodynamic instability, breastfeeding, hepatic/renal disease, immunodeficiency, inability to comply with follow-up.",
+  oe:["Previous contralateral ectopic is not a contraindication to methotrexate — it is a risk factor for future ectopics and makes tube conservation more important, not less achievable.",
+      "βhCG of 1600 IU/L is well below the 5000 IU/L threshold — not a contraindication.",
+      "<strong>Correct.</strong> Fetal cardiac activity is an absolute contraindication to methotrexate. A cardiac activity positive ectopic has a significantly lower success rate with methotrexate and poses higher rupture risk. Surgical management is required.",
+      "Desire for future fertility is actually the main reason methotrexate is preferred — tube conservation is the goal."]
+},
+
+{ sys:'obgyn', topic:'Ectopic Pregnancy',
+  vig:`A 32-year-old is being managed conservatively (expectant management) for a PUL after a βhCG rise of only 10% over 48 hours. At day 7, βhCG is 680 IU/L. She calls from home describing sudden severe right-sided pelvic pain rated 9/10.`,
+  stem:`How should this call be handled?`,
+  opts:["Advise analgesia and review at next scheduled appointment","Tell her to attend A&E immediately — acute pain during PUL follow-up is rupture until proven otherwise","Advise that 10% βhCG rise suggests miscarriage, pain is expected cramping","Arrange a repeat USS in 48 hours"],
+  ans:1,
+  lo:"Any acute pain during PUL follow-up must be treated as a ruptured ectopic until proven otherwise, regardless of the βhCG level or trend. Rupture can occur at any βhCG level.",
+  oe:["Advising analgesia and delaying review is dangerous — acute severe pain during PUL monitoring is an emergency.",
+      "<strong>Correct.</strong> Sudden severe pelvic pain during PUL follow-up = ruptured ectopic until proven otherwise. Attend A&E immediately. βhCG levels do not predict rupture — rupture can occur even with falling levels.",
+      "A slow βhCG rise does suggest failing pregnancy but does not guarantee it is intrauterine. Acute pain overrides the biochemical picture.",
+      "A repeat USS in 48 hours is wholly inadequate for acute severe pain — this patient needs immediate assessment."]
+},
+
+{ sys:'obgyn', topic:'Ectopic Pregnancy',
+  vig:`A 23-year-old with a confirmed right tubal ectopic pregnancy (βhCG 3800 IU/L, 32mm, no cardiac activity) undergoes laparoscopic salpingotomy (tube-conserving surgery). Her post-operative βhCG on day 1 is 2900 IU/L. Day 7 βhCG is 2650 IU/L.`,
+  stem:`The βhCG is falling very slowly. What is this called and how is it managed?`,
+  opts:["Normal post-operative decline — discharge and review in 2 weeks","Persistent trophoblast — monitor closely and consider methotrexate if the decline is inadequate","Post-operative infection — start antibiotics","Intrauterine implantation — check TVUS for IUP"],
+  ans:1,
+  lo:"Persistent trophoblast is a complication of salpingotomy — residual trophoblastic tissue continues to proliferate. Weekly βhCG monitoring is required. If decline is inadequate, methotrexate is given. This occurs in ~15–20% of salpingotomies.",
+  oe:["A fall from 3800 to 2650 over 7 days post-salpingotomy is inadequate — this is not a normal decline and warrants monitoring for persistent trophoblast.",
+      "<strong>Correct.</strong> Persistent trophoblast complicates ~15% of salpingotomies. Continued weekly βhCG until undetectable. If inadequate decline, systemic methotrexate is indicated to prevent rupture of residual trophoblast.",
+      "Post-operative infection would present with fever, wound signs, and systemic illness — not isolated slow βhCG decline.",
+      "An IUP after salpingotomy for ectopic is not the explanation for slow βhCG decline in this early post-operative period."]
+},
+
+{ sys:'obgyn', topic:'Ectopic Pregnancy',
+  vig:`A 19-year-old presents with 6 weeks amenorrhoea, lower abdominal pain, and an open cervical os on examination. βhCG is 4200 IU/L. TVUS shows products of conception in the cervical canal and no uterine contents.`,
+  stem:`What is this diagnosis and why does it matter?`,
+  opts:["Inevitable miscarriage — manage expectantly","Cervical ectopic pregnancy — potentially life-threatening haemorrhage, specialist management required","Cervical stenosis with trapped products","Incomplete miscarriage — give misoprostol"],
+  ans:1,
+  lo:"Cervical ectopic pregnancy is rare but potentially catastrophic — the cervix lacks myometrium and cannot contract to control haemorrhage. Surgical curettage can cause uncontrollable bleeding requiring hysterectomy. Methotrexate is first-line.",
+  oe:["Inevitable miscarriage passes products through a dilated os — but the TVUS showing products within the cervical canal in a viable-appearing pregnancy (βhCG 4200) with no uterine sac points to cervical ectopic, not inevitable miscarriage.",
+      "<strong>Correct.</strong> Cervical ectopic — trophoblast implanted in the endocervical canal. The vascular cervix cannot contract to limit haemorrhage. Methotrexate is first-line management. Curettage risks uncontrollable haemorrhage requiring emergency hysterectomy.",
+      "Cervical stenosis would present differently and at an older patient age — not in a 19-year-old with a βhCG of 4200.",
+      "Misoprostol to a cervical ectopic would provoke catastrophic haemorrhage."]
+},
+
+{ sys:'obgyn', topic:'Ectopic Pregnancy',
+  vig:`A 36-year-old G3P1 (one previous CS, one previous laparotomy for ruptured ectopic) has a positive pregnancy test at 6 weeks. TVUS shows a gestational sac implanted within the CS scar myometrium with a thin overlying myometrium.`,
+  stem:`What is this and what is the risk if not recognised?`,
+  opts:["Low-lying implantation that will migrate superiorly — reassure and rescan at 12 weeks","Caesarean scar pregnancy — risk of placenta accreta, uterine rupture, and catastrophic haemorrhage if not treated early","Subchorionic haematoma — monitor and discharge","Cervical pregnancy — treat identically to standard miscarriage"],
+  ans:1,
+  lo:"Caesarean scar pregnancy is a type of ectopic implanting into the CS scar. If it continues, it can develop into placenta accreta/percreta, invade the bladder, and cause uterine rupture. Early diagnosis and treatment (methotrexate, aspiration, or surgery) is critical.",
+  oe:["Gestational sacs do not migrate superiorly — this is a fixed implantation site within the scar. Waiting until 12 weeks allows progression to a dangerous placenta accreta.",
+      "<strong>Correct.</strong> CS scar pregnancy carries a high risk of placenta accreta spectrum if it continues. Uterine rupture and life-threatening haemorrhage are the risks of expectant management. Early intervention (methotrexate ± aspiration) is required.",
+      "A subchorionic haematoma appears as a crescent of blood separate from the gestational sac — not a sac implanted within the myometrium.",
+      "CS scar pregnancy is a distinct entity requiring early specialist intervention — not treated as a standard miscarriage."]
+},
+
+{ sys:'obgyn', topic:'Ectopic Pregnancy',
+  vig:`A 22-year-old who has never been pregnant presents with acute right iliac fossa pain and a positive pregnancy test. The pain came on suddenly 3 hours ago. BP is 76/44, HR 148. She is pale and clammy. TVUS shows a 4cm right adnexal mass with large volume free fluid in the abdomen and pelvis.`,
+  stem:`What is the single most important immediate action?`,
+  opts:["Serial serum βhCG measurements to confirm ectopic","Methotrexate IM","Emergency laparotomy or laparoscopy — this is haemorrhagic shock from a ruptured ectopic","Transfer to a specialised ectopic pregnancy unit"],
+  ans:2,
+  lo:"Haemodynamic collapse + positive pregnancy test + pelvic free fluid = ruptured ectopic pregnancy until proven otherwise. This is a surgical emergency. No further investigation is needed — get to theatre.",
+  oe:["Serial βhCG has no role in haemodynamic collapse — this patient is dying and needs theatre, not phlebotomy.",
+      "Methotrexate is contraindicated in haemodynamic instability. It requires weeks to act — this patient is in shock and needs immediate surgical haemostasis.",
+      "<strong>Correct.</strong> BP 76/44 + HR 148 + positive pregnancy test + large-volume haemoperitoneum = ruptured ectopic in haemorrhagic shock. Two large-bore IVs, blood products, call theatre now. Laparoscopy or laparotomy depending on stability.",
+      "Transfer is dangerous in haemodynamic collapse — this patient needs theatre in the same hospital immediately."]
+},
+
+{ sys:'obgyn', topic:'Ectopic Pregnancy',
+  vig:`After a laparoscopic salpingectomy for ectopic pregnancy, a 28-year-old asks about her future fertility. She has no other known gynaecological problems.`,
+  stem:`What should she be told about her risk of future ectopic pregnancy and chances of IUP?`,
+  opts:["Her fertility is unaffected — the remaining tube is fully compensatory","Her risk of future ectopic is approximately 10% and overall chance of IUP in subsequent pregnancy is ~65%","She will need IVF for all future pregnancies","Risk of ectopic in the remaining tube is negligible — only if she had PID"],
+  ans:1,
+  lo:"After salpingectomy for ectopic, the risk of a further ectopic pregnancy in the remaining tube is approximately 10%. The cumulative IUP rate after salpingectomy is 65% within 2 years. The underlying cause of the first ectopic (e.g. tubal damage from previous PID) increases the risk.",
+  oe:["The remaining tube does have compensatory function but the underlying reason for the first ectopic (often subclinical tubal damage) means both tubes may be affected — risk cannot be dismissed.",
+      "<strong>Correct.</strong> Approximately 10% risk of future ectopic in subsequent pregnancies. Cumulative IUP rate ~65% at 2 years. She should be counselled to have an early TVUS in any future pregnancy.",
+      "IVF is not routinely recommended after a single tubal ectopic with a normal contralateral tube — she has a good chance of IUP.",
+      "Risk of future ectopic is not limited to women with PID history — any tubal damage, or idiopathic tubal dysfunction, increases risk."]
+},
+
+// ════════════════════════════════════════
+//  OB/GYN — PLACENTA PRAEVIA (7 Qs)
+// ════════════════════════════════════════
+
+{ sys:'obgyn', topic:'Placenta Praevia',
+  vig:`A 30-year-old G3P2 at 30 weeks presents with her third episode of painless bright red vaginal bleeding. She is haemodynamically stable. CTG is normal. TVUS confirms the placenta completely covers the internal os. The SHO asks to perform a speculum examination.`,
+  stem:`What is the correct response?`,
+  opts:["Proceed — speculum is safe if no digital examination is done","Proceed — patient is stable so it is safe","Do not proceed — both speculum and digital examination are contraindicated","Proceed with speculum if theatre is immediately available"],
+  ans:2,
+  lo:"Any instrumentation of the os in major praevia is contraindicated — speculum included. The placenta overlies the os. A speculum can disrupt placental vessels and trigger catastrophic haemorrhage. TVUS has already provided the diagnosis.",
+  oe:["Speculum examination in major praevia is also contraindicated — the instrument can disrupt placental vessels overlying the os. Both examinations are forbidden.",
+      "Haemodynamic stability does not make examination safe — the risk is mechanical disruption of placental tissue, not related to current clinical status.",
+      "<strong>Correct.</strong> Both speculum and digital examination are absolutely contraindicated in major praevia. All assessment is by ultrasound.",
+      "Proximity to theatre does not change the risk — haemorrhage once triggered may be uncontrollable."]
+},
+
+{ sys:'obgyn', topic:'Placenta Praevia',
+  vig:`A 28-year-old is found to have a low-lying placenta (posterior edge 12mm from the internal os) at her 20-week anomaly scan.`,
+  stem:`What is the most appropriate management?`,
+  opts:["Immediate caesarean section is required — any placenta within 20mm of the os is major praevia","Plan vaginal delivery — a 12mm distance is safely beyond the critical zone","Repeat TVUS at 32–36 weeks — most low-lying placentas migrate away from the os","Advise bedrest for the remainder of the pregnancy"],
+  ans:2,
+  lo:"Most low-lying placentas identified at the 20-week scan migrate away from the os as the lower uterine segment develops. Repeat TVUS at 32–36 weeks is required to confirm final position before delivery planning.",
+  oe:["A 12mm distance at 20 weeks is classified as low-lying, not major praevia. Major praevia = placenta covering the os. Caesarean section is not indicated based on the 20-week scan alone.",
+      "Planning vaginal delivery based on the 20-week scan is premature — the final position must be confirmed at 32–36 weeks, as some low-lying placentas do not migrate sufficiently.",
+      "<strong>Correct.</strong> Up to 90% of low-lying placentas at 20 weeks resolve by term. Repeat TVUS at 32–36 weeks is standard to confirm the position before planning delivery.",
+      "Bedrest has no evidence for preventing complications in asymptomatic low-lying placenta — it is not recommended."]
+},
+
+{ sys:'obgyn', topic:'Placenta Praevia',
+  vig:`A 34-year-old G3P2 (two previous caesarean sections) at 36 weeks has an anterior major praevia confirmed on MRI. The placenta is found to invade the bladder wall.`,
+  stem:`This represents which grade of placenta accreta spectrum and what does it imply?`,
+  opts:["Accreta — placenta adherent to myometrium; controllable haemorrhage expected","Increta — placenta invades into myometrium; hysterectomy likely but not certain","Percreta — placenta invades through serosa into bladder; planned caesarean hysterectomy at specialist centre is required","Grade 1 PAS — manageable with conservative measures"],
+  ans:2,
+  lo:"Percreta is the most severe form of PAS — trophoblast invades through the serosa into adjacent organs (most commonly the bladder). Bladder involvement on MRI mandates delivery at a specialist PAS centre with a multidisciplinary team: urology, interventional radiology, haematology, and a senior obstetrician experienced in PAS.",
+  oe:["Accreta = adherent to but not invasive into myometrium. Bladder invasion is not accreta.",
+      "Increta = invasion into myometrium. Bladder invasion beyond the serosa is percreta — the most severe grade.",
+      "<strong>Correct.</strong> Percreta with bladder involvement. This is the most severe PAS grade. Planned caesarean hysterectomy at a specialist PAS centre is the standard of care. Ureteric stenting and interventional radiology (balloon catheters) are considered pre-operatively.",
+      "There is no 'Grade 1 PAS' classification in current use — the clinical grading is accreta, increta, percreta."]
+},
+
+{ sys:'obgyn', topic:'Placenta Praevia',
+  vig:`A 32-year-old G1P0 with a major praevia at 34 weeks has a large bleed requiring 4 units of red cells. She is now haemodynamically stable. She is Rhesus D negative.`,
+  stem:`In addition to obstetric management, what must not be forgotten?`,
+  opts:["Anti-D immunoglobulin — fetomaternal haemorrhage may have occurred","Prophylactic antibiotics for the next 4 weeks","Iron infusion to replace haemoglobin losses only","Aspirin to prevent placental thrombosis"],
+  ans:0,
+  lo:"Any antepartum haemorrhage in a Rh-D negative woman is a sensitising event. Anti-D immunoglobulin must be given within 72 hours. A Kleihauer-Betke test quantifies fetomaternal haemorrhage and determines if additional anti-D is needed.",
+  oe:["<strong>Correct.</strong> Anti-D immunoglobulin must be given to all Rh-D negative women following any antepartum haemorrhage. A Kleihauer-Betke test determines if a standard dose is sufficient or if additional anti-D is required.",
+      "Prophylactic antibiotics are not indicated for haemorrhage in the absence of infection or operative intervention.",
+      "Iron supplementation is appropriate for anaemia but is not the immediately critical management point here — anti-D timing is 72 hours.",
+      "Aspirin has no role in placenta praevia management and risks worsening haemorrhage."]
+},
+
+{ sys:'obgyn', topic:'Placenta Praevia',
+  vig:`A stable patient with confirmed major praevia is admitted at 30 weeks after a herald bleed. She asks when she will be delivered.`,
+  stem:`What is the recommended gestation for elective delivery in uncomplicated major praevia?`,
+  opts:["34 weeks — risk of further bleeding is too high","36–37 weeks — balance between fetal maturity and haemorrhage risk","39–40 weeks — await spontaneous labour if bleeding settles","32 weeks — deliver before the risk period of maximum haemorrhage"],
+  ans:1,
+  lo:"RCOG recommends planned caesarean at 36–37 weeks for uncomplicated major praevia. Corticosteroids should be given before 36 weeks. Earlier delivery if bleeding is uncontrollable or there is fetal compromise.",
+  oe:["34 weeks is earlier than recommended for uncomplicated stable praevia — the neonatal risks of prematurity at 34 weeks are significant.",
+      "<strong>Correct.</strong> RCOG: 36–37 weeks for uncomplicated major praevia with no previous bleeding. If there have been significant bleeds, 34–36 weeks may be appropriate. Corticosteroids for fetal lung maturity if delivery before 36 weeks.",
+      "39–40 weeks risks a catastrophic haemorrhage during the final weeks of pregnancy — planned delivery before 37 weeks is the standard.",
+      "32 weeks carries significant neonatal prematurity risks and is earlier than recommended for uncomplicated disease."]
+},
+
+{ sys:'obgyn', topic:'Placenta Praevia',
+  vig:`A 33-year-old G2P1 is admitted with heavy antepartum haemorrhage at 31 weeks. She has major praevia. Haemodynamics are initially stable (BP 108/70, HR 94) but the bleeding is ongoing and she has soaked 6 pads in the last 30 minutes.`,
+  stem:`What is the threshold for emergency caesarean section despite prematurity?`,
+  opts:["EBL >500 mL regardless of clinical status","Haemodynamic instability (maternal) or evidence of fetal compromise","Only if EBL exceeds 2 L","Only if gestational age is >34 weeks"],
+  ans:1,
+  lo:"Emergency CS in praevia is triggered by haemodynamic compromise in the mother OR fetal compromise on CTG — not by an arbitrary blood loss figure. A rapidly deteriorating clinical picture overrides gestational age.",
+  oe:["500 mL is the threshold for defining PPH postpartum — it is not the trigger for emergency CS in antepartum haemorrhage from praevia.",
+      "<strong>Correct.</strong> The trigger for emergency CS is maternal haemodynamic instability OR fetal compromise. The decision is clinical, not volume-based. Ongoing heavy haemorrhage with a rising HR is approaching this threshold.",
+      "2 L is an arbitrary figure — a patient can decompensate rapidly from a smaller blood loss, particularly if pre-existing anaemia. Clinical assessment is paramount.",
+      "Gestational age does not override a haemodynamically deteriorating patient — the mother's life takes priority."]
+},
+
+{ sys:'obgyn', topic:'Placenta Praevia',
+  vig:`At her 36-week TVUS, a woman previously diagnosed with anterior low-lying placenta at 20 weeks is found to have a posterior placenta with the edge 22mm from the internal os.`,
+  stem:`What does this mean for her delivery plan?`,
+  opts:["She requires caesarean section — any placenta within 25mm of the os mandates operative delivery","She can plan vaginal delivery — a posterior placental edge ≥20mm from the os is associated with a low risk of haemorrhage","She must be delivered at a specialist centre due to haemorrhage risk","Vaginal delivery is absolutely contraindicated — induce at 38 weeks for CS"],
+  ans:1,
+  lo:"A placental edge ≥20mm from the internal os at term is associated with a low risk of haemorrhage at vaginal delivery. Vaginal birth can be planned. A distance of <20mm on the posterior wall warrants discussion of the mode of delivery.",
+  oe:["The 25mm threshold for mandatory CS is not an established cut-off — the accepted guidance is that ≥20mm from the os is compatible with planned vaginal delivery.",
+      "<strong>Correct.</strong> A posterior edge ≥20mm from the internal os at ≥35 weeks = plan vaginal delivery. The risk of haemorrhage at delivery is low.",
+      "This woman does not require delivery at a specialist centre — she has a normally sited posterior placenta at term with adequate distance from the os.",
+      "Induction and CS are not indicated — the TVUS has confirmed migration and adequate distance from the os."]
+},
+
+// ════════════════════════════════════════
+//  OB/GYN — GESTATIONAL DIABETES (8 Qs)
+// ════════════════════════════════════════
+
+{ sys:'obgyn', topic:'Gestational Diabetes',
+  vig:`A 35-year-old woman is diagnosed with GDM at 27 weeks. She adheres strictly to dietary management for 3 weeks. Fasting glucose remains 5.8–6.2 mmol/L and 2-hour post-meal readings are 8.4–9.1 mmol/L.`,
+  stem:`Diet has failed. What is the first-line pharmacological intervention?`,
+  opts:["Insulin — start immediately, metformin is not safe","Glibenclamide — first-line sulfonylurea in most guidelines","Metformin — first-line when diet fails","Insulin lispro before each meal with glargine at night"],
+  ans:2,
+  lo:"NICE: metformin is first-line pharmacological therapy when dietary measures fail in GDM. Insulin is added if metformin is insufficient or not tolerated.",
+  oe:["Metformin is safe and effective in pregnancy with extensive data. It is the first pharmacological step — not insulin.",
+      "Glibenclamide is not NICE/RCOG first-line due to increased neonatal hypoglycaemia risk compared to metformin.",
+      "<strong>Correct.</strong> Metformin first-line per NICE when diet fails. It crosses the placenta but has extensive long-term safety data from follow-up studies.",
+      "Basal-bolus insulin is appropriate when metformin is insufficient or contraindicated — not as the first pharmacological step."]
+},
+
+{ sys:'obgyn', topic:'Gestational Diabetes',
+  vig:`A 38-year-old woman with GDM delivers a 4.3 kg male at 38 weeks by CS. At discharge her glucose is normal without medication. The GP asks whether further testing is needed.`,
+  stem:`What is the correct postpartum surveillance plan?`,
+  opts:["No follow-up — GDM resolves with delivery","Annual HbA1c for 5 years then discharge","75g OGTT at 6–13 weeks postpartum then annual HbA1c indefinitely","Random glucose at 6-week check is sufficient"],
+  ans:2,
+  lo:"Women with GDM have a 50% lifetime risk of type 2 diabetes. NICE: 75g OGTT at 6–13 weeks postpartum (HbA1c is unreliable this early), then annual HbA1c lifelong.",
+  oe:["GDM resolving at delivery is the immediate metabolic relief — the underlying predisposition to T2DM remains. Follow-up is mandatory.",
+      "5 years and discharge is insufficient — the risk is lifelong. Many women develop T2DM 10–20 years later.",
+      "<strong>Correct.</strong> 75g OGTT at 6–13 weeks postpartum (HbA1c unreliable in early postpartum due to red cell turnover), then annual HbA1c indefinitely. This is a permanent metabolic risk.",
+      "A random glucose at 6 weeks will miss impaired fasting glucose and impaired glucose tolerance."]
+},
+
+{ sys:'obgyn', topic:'Gestational Diabetes',
+  vig:`A 30-year-old with GDM at 32 weeks has a fetus estimated to weigh 3.8 kg on ultrasound — above the 90th centile for gestation. She has been on metformin and diet.`,
+  stem:`What is the mechanism linking GDM to fetal macrosomia?`,
+  opts:["Maternal insulin crosses the placenta and stimulates fetal growth directly","Maternal glucose crosses the placenta; fetal hyperglycaemia drives fetal hyperinsulinaemia and excess anabolism","Placental insufficiency causes compensatory fetal growth","Metformin crosses the placenta and stimulates IGF-1 in the fetus"],
+  ans:1,
+  lo:"Maternal glucose crosses the placenta freely; maternal insulin does not. Fetal hyperglycaemia stimulates fetal pancreatic insulin secretion. Fetal hyperinsulinaemia drives excess anabolic activity — fat deposition, organomegaly, macrosomia.",
+  oe:["Insulin is a large protein and does not cross the placental barrier. The fetus must produce its own insulin in response to glucose.",
+      "<strong>Correct.</strong> The Pedersen hypothesis: maternal glucose → fetal hyperglycaemia → fetal hyperinsulinaemia → macrosomia. This is the direct mechanism and explains why tight glucose control prevents macrosomia.",
+      "Placental insufficiency causes IUGR — the opposite of macrosomia. GDM placentas are typically large and hypervascular.",
+      "Metformin crosses the placenta but does not stimulate fetal IGF-1. Its antenatal effects on the fetus are an area of ongoing research but macrosomia is not its mechanism."]
+},
+
+{ sys:'obgyn', topic:'Gestational Diabetes',
+  vig:`A neonate born to a mother with insulin-dependent GDM is jittery at 2 hours of life. Blood glucose is 1.8 mmol/L.`,
+  stem:`What is the mechanism of neonatal hypoglycaemia in this context, and what is the treatment?`,
+  opts:["Maternal insulin in fetal circulation causes hypoglycaemia — treat with glucagon","Fetal hyperinsulinaemia persists after birth while maternal glucose supply ceases — treat with early feeds or IV dextrose","Metformin causes neonatal hypoglycaemia via gluconeogenesis inhibition","Neonatal hypoglycaemia is only significant below 1.0 mmol/L"],
+  ans:1,
+  lo:"The fetal pancreas has been hyperstimulated by chronic hyperglycaemia throughout pregnancy. At delivery, the maternal glucose supply stops at cord cutting — but fetal hyperinsulinaemia persists for hours. The result is neonatal hypoglycaemia.",
+  oe:["Insulin does not cross the placenta — maternal insulin cannot cause neonatal hypoglycaemia. The neonatal insulin is the fetus's own.",
+      "<strong>Correct.</strong> Fetal hyperinsulinaemia persists after birth while the maternal glucose supply is abruptly removed. Neonatal pancreatic function takes time to regulate. Treat: early breastfeeding, formula if necessary, IV dextrose for severe or symptomatic hypoglycaemia.",
+      "Metformin crosses the placenta but its primary neonatal effect is not significant hypoglycaemia at standard doses in GDM.",
+      "Symptomatic hypoglycaemia (jitteriness, seizures) at any level requires treatment. The BAPM threshold for intervention is ≤2.0 mmol/L with symptoms."]
+},
+
+{ sys:'obgyn', topic:'Gestational Diabetes',
+  vig:`A 32-year-old with GDM at 38 weeks has well-controlled glucose on metformin alone. Fetal weight is estimated at 3.3 kg. She asks whether her baby needs to be delivered by caesarean.`,
+  stem:`What is the correct advice regarding mode and timing of delivery in well-controlled GDM?`,
+  opts:["All women with GDM must have elective caesarean at 37 weeks","Delivery should be offered at 40+6 weeks — no earlier","NICE recommends offering delivery at 38 weeks in women with GDM requiring medication, even if well-controlled","Continue to 42 weeks unless complications arise"],
+  ans:2,
+  lo:"NICE: offer delivery at 38+0 weeks to women with GDM requiring medication (metformin or insulin). This reduces the risk of stillbirth and shoulder dystocia associated with the excess fetal growth that occurs beyond 38 weeks in GDM.",
+  oe:["CS is not routinely recommended in GDM without other obstetric indications. Vaginal delivery is appropriate.",
+      "Continuation to 40+6 weeks risks progressive macrosomia and increasing stillbirth risk — this is not recommended for pharmacologically treated GDM.",
+      "<strong>Correct.</strong> NICE: offer delivery at 38+0 weeks to women with GDM on medication. This is not mandatory CS — it is an offer of induction of labour. Mode of delivery follows standard obstetric decision-making.",
+      "Continuing to 42 weeks in medicated GDM would be a departure from NICE guidance and increases risks of macrosomia, shoulder dystocia, and stillbirth."]
+},
+
+{ sys:'obgyn', topic:'Gestational Diabetes',
+  vig:`A 27-year-old at 26 weeks with no previous pregnancy complications has a fasting glucose of 5.4 mmol/L and 2-hour glucose of 7.4 mmol/L on her 75g OGTT.`,
+  stem:`Does this meet the NICE diagnostic criteria for GDM?`,
+  opts:["No — fasting must be ≥5.6 mmol/L OR 2-hour ≥7.8 mmol/L to diagnose GDM","Yes — fasting ≥5.1 mmol/L OR 2-hour ≥7.0 mmol/L meets WHO criteria used in many units","Yes — any elevated glucose in pregnancy is diagnostic of GDM","No — she needs a repeat OGTT in 4 weeks"],
+  ans:1,
+  lo:"Two diagnostic thresholds exist: WHO 2013 (fasting ≥5.1 mmol/L or 2-hour ≥8.5 mmol/L) vs NICE (fasting ≥5.6 or 2-hour ≥7.8). This result meets WHO but not NICE criteria. UK hospitals vary in which they use. Clinicians should know their local protocol.",
+  oe:["These are the NICE thresholds: fasting ≥5.6 mmol/L OR 2-hour ≥7.8 mmol/L. This patient has fasting 5.4 and 2-hour 7.4 — below both NICE thresholds. Under NICE, this does not diagnose GDM.",
+      "<strong>Correct.</strong> This result meets WHO 2013 criteria (fasting ≥5.1, 2-hour ≥8.5 from plasma) but is below NICE thresholds. Many UK units now use WHO criteria. This answer highlights the ambiguity and importance of knowing local policy.",
+      "Not any elevated glucose — GDM requires meeting specific validated cut-offs.",
+      "A repeat OGTT is not indicated — the test is valid and the result must be interpreted against the threshold used locally."]
+},
+
+{ sys:'obgyn', topic:'Gestational Diabetes',
+  vig:`A 40-year-old G4P3 with GDM, BMI 38, and treated hypertension has a fetal AC on the 90th centile at 34 weeks. She is on insulin.`,
+  stem:`Which TWO complications are most important to discuss at this appointment?`,
+  opts:["Shoulder dystocia risk and timing of delivery","Increased risk of Down syndrome and need for amniocentesis","Gestational hypertension and aspirin prophylaxis — she does not yet have preeclampsia","Maternal ketonaemia requiring hospital admission"],
+  ans:0,
+  lo:"Macrosomia (AC >90th centile) in GDM significantly increases the risk of shoulder dystocia at vaginal delivery. Combined with grand multiparity and maternal obesity, delivery planning discussion including mode and timing is essential.",
+  oe:["<strong>Correct.</strong> AC >90th centile = macrosomia. Combined with GDM, grand multiparity, and obesity, shoulder dystocia risk is significantly elevated. The discussion must include: birth weight estimation, planned delivery gestation (38 weeks on insulin), and shoulder dystocia risk counselling.",
+      "Down syndrome risk is age-related and would have been screened at first trimester. It is not the relevant concern at 34 weeks.",
+      "She already has treated hypertension — aspirin prophylaxis is a first-trimester consideration. At 34 weeks the relevant discussion is delivery planning.",
+      "Maternal DKA is a concern in type 1 diabetes during intercurrent illness — in GDM at this stage, macrosomia and delivery planning are the priority."]
+},
+
+{ sys:'obgyn', topic:'Gestational Diabetes',
+  vig:`A 29-year-old without any GDM risk factors has a routine booking bloods at 10 weeks. Her HbA1c is 47 mmol/mol.`,
+  stem:`What does this result indicate?`,
+  opts:["Normal — HbA1c up to 48 mmol/mol is acceptable in pregnancy","Pre-existing type 2 diabetes mellitus detected in early pregnancy","GDM diagnosed — start dietary management immediately","A borderline result — repeat OGTT at 24–28 weeks to confirm"],
+  ans:1,
+  lo:"An HbA1c ≥48 mmol/mol in the first trimester indicates pre-existing type 2 diabetes, not GDM. GDM is a new diagnosis after 20 weeks. This woman needs to be managed as a pre-existing diabetic — higher risk category with stricter targets and more intensive monitoring.",
+  oe:["HbA1c ≥48 mmol/mol is the diagnostic threshold for diabetes. This is not normal.",
+      "<strong>Correct.</strong> HbA1c ≥48 mmol/mol in the first trimester = undiagnosed pre-existing type 2 diabetes. This is a different diagnosis and higher-risk category than GDM — it requires immediate specialist MDT review, tighter glycaemic targets, and folic acid 5mg (not 400mcg).",
+      "GDM is diagnosed by OGTT after 20 weeks. An HbA1c of 47–48 in the first trimester indicates pre-existing diabetes.",
+      "An OGTT at 24–28 weeks would not add information — the HbA1c already meets the diabetes threshold."]
+},
+
+// ════════════════════════════════════════
+//  OB/GYN — SHOULDER DYSTOCIA (6 Qs)
+// ════════════════════════════════════════
+
+{ sys:'obgyn', topic:'Shoulder Dystocia',
+  vig:`Following delivery of the head, the midwife is unable to deliver the shoulders with gentle axial traction. The head retracts back against the perineum. The time is noted. Help is called.`,
+  stem:`After calling for help, what are the first two simultaneous manoeuvres?`,
+  opts:["Fundal pressure and internal rotation","McRoberts position and suprapubic pressure","Delivery of the posterior arm and episiotomy","Zavanelli manoeuvre and emergency CS"],
+  ans:1,
+  lo:"HELPERR: H = Help; E = Episiotomy if needed; L = Legs (McRoberts); P = Pressure (suprapubic); E = Enter (internal rotation); R = Remove posterior arm; R = Roll (all-fours). McRoberts + suprapubic pressure is the first combined response and resolves ~40% of cases.",
+  oe:["Fundal pressure worsens shoulder dystocia by driving the anterior shoulder deeper into the pubic arch — it is absolutely contraindicated.",
+      "<strong>Correct.</strong> McRoberts (hyperflexion of thighs) + suprapubic pressure (lateral, onto posterior aspect of anterior shoulder). This is the first combined manoeuvre and resolves approximately 40% of shoulder dystocia cases.",
+      "Delivery of the posterior arm is a highly effective internal manoeuvre — it comes as 'R' in HELPERR after McRoberts and suprapubic pressure have failed.",
+      "Zavanelli (cephalic replacement + CS) is a last resort. It is not a first-line response."]
+},
+
+{ sys:'obgyn', topic:'Shoulder Dystocia',
+  vig:`McRoberts and suprapubic pressure have failed. The obstetrician decides to attempt internal rotation.`,
+  stem:`The Rubin II manoeuvre involves pressure applied to which aspect of which shoulder?`,
+  opts:["Anterior aspect of the anterior shoulder — to rotate posteriorly","Posterior aspect of the anterior shoulder — to adduct it and rotate into the oblique diameter","Posterior aspect of the posterior shoulder — to rotate it anteriorly","Anterior shoulder directly downward — to increase AP diameter"],
+  ans:1,
+  lo:"Rubin II: pressure applied to the posterior aspect of the anterior (impacted) shoulder, directed towards the fetal face — this adducts the shoulder and rotates it from the AP into the oblique diameter, where more space is available.",
+  oe:["Pressure on the anterior aspect of the anterior shoulder would push it further against the pubic symphysis — the opposite of what is needed.",
+      "<strong>Correct.</strong> Rubin II: posterior aspect of the anterior shoulder, directed toward the fetal face. This adducts the shoulder blades and rotates the anterior shoulder into the oblique pelvic diameter.",
+      "The posterior aspect of the posterior shoulder is the site for Woods screw — pressing here combined with Rubin II completes the screw rotation.",
+      "Pressure directly downward on the anterior shoulder drives it into the pubic symphysis — contraindicated."]
+},
+
+{ sys:'obgyn', topic:'Shoulder Dystocia',
+  vig:`All internal rotational manoeuvres have failed. The obstetric registrar decides to attempt delivery of the posterior arm.`,
+  stem:`Why does delivery of the posterior arm resolve shoulder dystocia?`,
+  opts:["It creates enough space to rotate the anterior shoulder past the pubic symphysis","It reduces the bisacromial diameter to the acromion-to-elbow distance, allowing passage through the pelvis","It relaxes the posterior shoulder girdle muscles","It reverses the turtle sign by reducing venous congestion in the neck"],
+  ans:1,
+  lo:"Removing the posterior arm from the pelvic inlet reduces the effective diameter the baby must present — from bisacromial (shoulder to shoulder) to the smaller acromion-to-elbow diameter. This allows passage through the pelvis.",
+  oe:["Rotation of the anterior shoulder alone does not explain why posterior arm removal is effective — the mechanism is reduction of the presenting diameter.",
+      "<strong>Correct.</strong> Delivery of the posterior arm reduces the presenting diameter from bisacromial to acromion-to-elbow — a reduction of several centimetres. This allows the baby to pass through the inlet.",
+      "Muscle relaxation is not the mechanism — the problem is bony impaction, not muscular resistance.",
+      "The turtle sign (retraction of the head) reflects impaction, not venous congestion. It is not reversed by venous drainage."]
+},
+
+{ sys:'obgyn', topic:'Shoulder Dystocia',
+  vig:`A 4.6 kg baby is delivered after shoulder dystocia managed with McRoberts, suprapubic pressure, and delivery of the posterior arm. He is born in poor condition with Apgar 2 at 1 minute. On examination, his left arm is held limply adducted and internally rotated. There is no Moro reflex on the left.`,
+  stem:`Which nerve roots are injured?`,
+  opts:["C4–C5","C5–C6 (upper brachial plexus — Erb's palsy)","C7–C8 (lower brachial plexus — Klumpke's palsy)","T1 only"],
+  ans:1,
+  lo:"Erb's palsy: C5–C6 injury from excessive lateral neck traction during difficult delivery. The classic waiter's tip posture — arm adducted, internally rotated, forearm pronated. ~85% recover fully.",
+  oe:["C4–C5 is not the correct level — Erb's palsy is C5–C6.",
+      "<strong>Correct.</strong> Erb's palsy (C5–C6): adduction, internal rotation, absent Moro on the affected side — the waiter's tip posture. Caused by excessive lateral traction on the head stretching the upper brachial plexus. Most (85%) recover fully within 3 months.",
+      "C7–C8 injury causes Klumpke's palsy — wrist and finger weakness with claw hand. Different distribution.",
+      "T1 alone causes Horner syndrome as part of Klumpke's — not Erb's palsy."]
+},
+
+{ sys:'obgyn', topic:'Shoulder Dystocia',
+  vig:`A junior registrar is reviewing a case of shoulder dystocia documented in the notes. The entry reads: 'Suprapubic pressure applied from above, head pushed back, successful delivery of anterior shoulder achieved.' The registrar is concerned about the documentation.`,
+  stem:`Which two aspects of this management are clinically incorrect?`,
+  opts:["Suprapubic pressure should be applied from below, and head replacement is a last resort — not a routine manoeuvre","Suprapubic pressure should be applied laterally onto the posterior aspect of the anterior shoulder, and cephalic replacement (Zavanelli) is a last resort, not described here as a routine step","The documentation is correct — this is a standard technique","Suprapubic pressure was correctly applied but McRoberts should have been attempted first"],
+  ans:1,
+  lo:"Suprapubic pressure must be directed laterally (not straight down) onto the posterior aspect of the anterior shoulder. Pushing the head back in (Zavanelli/cephalic replacement) is an extreme last resort — if used, it should be explicitly named and justified in the notes.",
+  oe:["Suprapubic pressure is always applied from above (the operator's hands are on the abdomen) — 'from above' is the correct physical description. The error is in the direction, not the side of the operator.",
+      "<strong>Correct.</strong> Suprapubic pressure should be applied laterally, directed onto the posterior aspect of the anterior shoulder toward the fetal face — not straight downward. Pushing the head back (Zavanelli) is not described as such but 'head pushed back' suggests this — it is a last resort requiring specific consent and immediate CS arrangements.",
+      "The documentation contains significant clinical errors — this analysis is important for learning.",
+      "McRoberts should have been first — but the description of suprapubic pressure direction and head replacement are the errors being tested here."]
+},
+
+{ sys:'obgyn', topic:'Shoulder Dystocia',
+  vig:`A 42-year-old G3P2 with GDM, BMI 42, and a previous shoulder dystocia in her last pregnancy presents at 36 weeks for counselling about her delivery plan.`,
+  stem:`Which mode of delivery should be discussed with this patient?`,
+  opts:["Elective caesarean section is mandatory given her risk profile","Induction of labour at 37 weeks is mandatory — vaginal delivery is safe","She should be counselled about the risks and benefits of elective CS vs induction of labour, with shared decision-making","No intervention is needed — previous shoulder dystocia does not increase recurrence risk"],
+  ans:2,
+  lo:"Previous shoulder dystocia + GDM + obesity + macrosomia risk = very high-risk delivery. RCOG recommends offering elective CS after counselling. Shoulder dystocia recurrence risk is approximately 10–17%. Informed shared decision-making is essential.",
+  oe:["Elective CS is not mandatory — but it should be offered and discussed given the very high-risk profile. Ultimately this is shared decision-making.",
+      "Induction of labour at 37 weeks is one option but is not 'mandatory' and vaginal delivery carries recurrence risk of shoulder dystocia — this needs to be part of the discussion.",
+      "<strong>Correct.</strong> High-risk shoulder dystocia profile. RCOG: offer and discuss elective CS. Recurrence risk is ~10–17%. Inform about all options including induction of labour with continuous monitoring and shoulder dystocia drill preparedness.",
+      "Recurrence risk after shoulder dystocia is approximately 10–17%. This is clinically significant and must inform the delivery plan."]
+},
+
+// ════════════════════════════════════════
+//  OB/GYN — MISCARRIAGE (6 Qs)
+// ════════════════════════════════════════
+
+{ sys:'obgyn', topic:'Miscarriage',
+  vig:`A 28-year-old at 9 weeks has a TVUS showing a fetal pole measuring 8mm with no cardiac activity. A repeat scan 12 days later confirms no interval growth.`,
+  stem:`Which of the following is NOT a valid management option?`,
+  opts:["Expectant — await natural expulsion","Medical — misoprostol","Surgical — MVA or ERPC","Methotrexate injection"],
+  ans:3,
+  lo:"Methotrexate treats ectopic pregnancy. It has no role in intrauterine pregnancy loss. The three options for missed miscarriage are expectant, medical (misoprostol), and surgical (MVA/ERPC).",
+  oe:["Expectant management is valid — ~80% complete naturally within 2 weeks with appropriate safety-netting.",
+      "Misoprostol is a prostaglandin E1 analogue that induces uterine contractions. Effective in 80–90% within 2 weeks.",
+      "MVA or ERPC provides definitive management and is appropriate when the patient prefers certainty or if other methods fail.",
+      "<strong>Correct — methotrexate is NOT an option.</strong> It is used for ectopic pregnancy to stop trophoblast growth outside the uterus. Using it for an intrauterine pregnancy loss would be a serious clinical error."]
+},
+
+{ sys:'obgyn', topic:'Miscarriage',
+  vig:`A 32-year-old presents at 8 weeks with vaginal bleeding. TVUS shows a live intrauterine pregnancy (CRL 16mm, cardiac activity present) with a large subchorionic haematoma measuring 4 × 3 cm.`,
+  stem:`What should she be told?`,
+  opts:["Bed rest will prevent miscarriage — she must be admitted immediately","A subchorionic haematoma at this size always leads to miscarriage — counsel accordingly","The pregnancy is currently viable. Subchorionic haematomas are common and many resolve — risk of miscarriage is increased but the majority of viable pregnancies with SCH continue to term","She needs surgical evacuation of the haematoma"],
+  ans:2,
+  lo:"Subchorionic haematoma is a common finding. Approximately 20% may miscarry, but the majority of women with a live embryo at 8 weeks and a SCH go on to deliver at term. Bed rest has no evidence. Surgical evacuation is not indicated.",
+  oe:["Bed rest has no evidence for preventing miscarriage in subchorionic haematoma and is not recommended.",
+      "A large SCH increases miscarriage risk but does not make miscarriage inevitable — most viable pregnancies continue. Providing unwarranted certainty of loss is harmful.",
+      "<strong>Correct.</strong> The pregnancy is currently viable. Subchorionic haematomas are common — many resolve spontaneously. The risk of miscarriage is moderately increased with large SCH but the majority of ongoing viable pregnancies deliver at term. Follow-up scan in 2–4 weeks is appropriate.",
+      "Surgical evacuation is not indicated for a subchorionic haematoma with a live pregnancy — it would risk terminating a potentially viable pregnancy."]
+},
+
+{ sys:'obgyn', topic:'Miscarriage',
+  vig:`A 34-year-old has had three consecutive first-trimester miscarriages. All three were confirmed as intrauterine and all occurred before 10 weeks. She has no other significant medical history.`,
+  stem:`What is the most appropriate next step?`,
+  opts:["Reassure — three early miscarriages are statistically likely in her age group","Refer for recurrent miscarriage investigations including antiphospholipid antibodies, thrombophilia screen, and uterine cavity assessment","Start progesterone supplementation in the next pregnancy empirically","Recommend IVF with preimplantation genetic testing immediately"],
+  ans:1,
+  lo:"Recurrent miscarriage is defined as three or more consecutive pregnancy losses. RCOG recommends formal investigation after three losses. Antiphospholipid syndrome is found in ~15% and is the most important treatable cause. Uterine anomalies and parental karyotypes are also assessed.",
+  oe:["Three consecutive miscarriages is the threshold for formal investigation — reassurance alone would miss treatable causes such as antiphospholipid syndrome.",
+      "<strong>Correct.</strong> RCOG: refer for recurrent miscarriage investigations after three losses. Tests: antiphospholipid antibodies (LA, anticardiolipin, anti-β2GPI × 2, 12 weeks apart), uterine cavity assessment (saline sonography or hysteroscopy), and consider parental karyotyping.",
+      "Empirical progesterone without investigation may miss an underlying treatable cause. The PRISM trial showed benefit for bleeding in early pregnancy — but investigation for a treatable cause comes first.",
+      "PGT-A is considered in couples where chromosome abnormalities are found on parental karyotyping or where recurrent aneuploid losses are documented — not as a first-line response."]
+},
+
+{ sys:'obgyn', topic:'Miscarriage',
+  vig:`A 25-year-old has a surgical ERPC for a missed miscarriage at 11 weeks. On histology the products of conception show partial molar change — increased trophoblast proliferation and abnormal chorionic villi consistent with a partial hydatidiform mole.`,
+  stem:`What follow-up is now required?`,
+  opts:["Routine GP follow-up — partial moles do not require special monitoring","Register with a gestational trophoblastic disease centre and measure serial serum or urine hCG until normalisation","Repeat ERPC immediately — all molar tissue must be removed surgically","Prophylactic chemotherapy is required for all partial moles"],
+  ans:1,
+  lo:"All gestational trophoblastic disease (including partial moles) requires registration with a GTD centre and serial hCG monitoring. Approximately 1–5% of partial moles develop into gestational trophoblastic neoplasia (GTN) requiring chemotherapy.",
+  oe:["Partial moles can develop into persistent GTN — they cannot simply be discharged to routine GP follow-up.",
+      "<strong>Correct.</strong> All molar pregnancies (partial and complete) must be registered with one of the three UK GTD centres (Sheffield, Dundee, Charing Cross). Serial hCG until normalisation. 1–5% of partial moles develop GTN requiring chemotherapy.",
+      "A repeat ERPC may be performed if there is residual molar tissue on ultrasound — but it is not automatic for all partial moles, and the key management is hCG surveillance.",
+      "Prophylactic chemotherapy is not given for partial moles — chemotherapy is reserved for the minority who develop GTN (rising or plateauing hCG)."]
+},
+
+{ sys:'obgyn', topic:'Miscarriage',
+  vig:`A 27-year-old at 6 weeks has a transvaginal USS showing a gestational sac of 22mm mean diameter with no fetal pole visible. She had a scan 7 days ago showing a sac of 16mm.`,
+  stem:`How should this be interpreted and managed?`,
+  opts:["Definitive empty sac >25mm = missed miscarriage — ERPC today","The criteria for diagnosing miscarriage are not yet met — repeat USS in 7–14 days before concluding loss","This is a normal finding for 6 weeks — reassure and discharge","A fetal pole should be visible at 22mm MSD — diagnose miscarriage now"],
+  ans:1,
+  lo:"NICE criteria for diagnosing miscarriage by USS: empty sac MSD ≥25mm OR CRL ≥7mm with no cardiac activity, on a single scan. Below these thresholds a repeat scan is required to avoid misdiagnosis. At 22mm MSD, criteria are not yet met.",
+  oe:["The threshold for diagnosing empty sac miscarriage on a single scan is ≥25mm MSD, not 22mm. Acting on a sac below this threshold risks terminating a viable early pregnancy.",
+      "<strong>Correct.</strong> NICE: MSD ≥25mm with no fetal pole = miscarriage on single scan. MSD 22mm is below this threshold — a repeat USS in 7–14 days is mandatory before concluding loss. This prevents misdiagnosis of viable early intrauterine pregnancy.",
+      "Reassurance and discharge without follow-up would miss a developing miscarriage that needs monitoring.",
+      "The threshold for CRL-based diagnosis is ≥7mm with no cardiac activity on a single scan. The sac size threshold is ≥25mm. At 22mm, neither threshold is met — wait."]
+},
+
+{ sys:'obgyn', topic:'Miscarriage',
+  vig:`A 30-year-old had a miscarriage at 9 weeks managed medically with misoprostol 10 days ago. She calls to say she is still having moderate vaginal bleeding and cramping. TVUS shows hyperechoic material (2 × 1.5 cm) within the uterine cavity.`,
+  stem:`What is this and how should it be managed?`,
+  opts:["Normal post-misoprostol appearance — reassure and discharge","Retained products of conception — options include repeat misoprostol, expectant management, or surgical evacuation","Uterine fibroid — no treatment needed","Endometrial carcinoma — urgent biopsy required"],
+  ans:1,
+  lo:"Retained products of conception (RPOC) complicates ~15% of medical management of miscarriage. Management options mirror those for primary miscarriage: expectant, repeat misoprostol, or surgical (MVA). Infection (secondary PPH) must be excluded.",
+  oe:["Hyperechoic intrauterine material 10 days after misoprostol is not a normal finding — it represents retained products of conception.",
+      "<strong>Correct.</strong> RPOC after medical management. Management options: expectant (if haemodynamically stable, no infection), repeat misoprostol, or MVA. Check temperature and CRP — if signs of infection (secondary PPH/endometritis), antibiotics are required.",
+      "A uterine fibroid would have been present before the pregnancy — it does not appear acutely 10 days after a miscarriage.",
+      "Endometrial carcinoma is not the appropriate diagnosis in a 30-year-old following a recently confirmed intrauterine pregnancy. RPOC is overwhelmingly more likely."]
+},
+
+// ════════════════════════════════════════
+//  OB/GYN — GYNAECOLOGY MIXED (10 Qs)
+// ════════════════════════════════════════
+
+{ sys:'obgyn', topic:'Ovarian Torsion',
+  vig:`A 19-year-old presents at 11pm with sudden right iliac fossa pain (8/10), vomiting, and near-syncope. She has had two milder episodes over the past 3 weeks. TVUS: 7cm right ovarian cyst, absent Doppler flow to the right ovary. βhCG negative.`,
+  stem:`Absent Doppler flow to the ovary — what must happen?`,
+  opts:["Normal variant in a cyst this size — discharge with analgesia","Haemorrhagic cyst — admit and repeat scan in 72 hours","Ovarian torsion until proven otherwise — urgent laparoscopy for detorsion tonight","Ruptured cyst — drain under USS guidance"],
+  ans:2,
+  lo:"Absent Doppler flow + acute unilateral pelvic pain + ovarian cyst = ovarian torsion. Time is tissue. Detorse first — even a dark ischaemic ovary can recover if untwisted promptly.",
+  oe:["Absent Doppler flow is never a normal variant with this clinical picture — it represents vascular compromise.",
+      "Haemorrhagic cysts cause acute pain but Doppler flow is preserved. Absent Doppler flow changes the diagnosis entirely.",
+      "<strong>Correct.</strong> Ovarian torsion until proven otherwise. Urgent laparoscopy — untwist first, assess viability after. The intermittent prior episodes suggest intermittent torsion that has now become fixed.",
+      "Ruptured cysts cause acute pain but USS-guided drainage is not the management for absent ovarian Doppler flow."]
+},
+
+{ sys:'obgyn', topic:'PID',
+  vig:`An 18-year-old presents with 4 days of bilateral lower abdominal pain, fever (38.6°C), and purulent discharge. She has a new sexual partner. Bimanual: bilateral adnexal tenderness and cervical motion tenderness. CRP 84 mg/L. Swabs sent.`,
+  stem:`Swab results take 5 days. What is the correct antibiotic approach?`,
+  opts:["Wait for swab results — starting antibiotics without confirmed organism is inappropriate","Start oral metronidazole and doxycycline as outpatient","Admit and start broad-spectrum IV antibiotics empirically now","Single dose azithromycin and review when results are available"],
+  ans:2,
+  lo:"PID is a clinical diagnosis. The fallopian tube damage happens while you wait for culture results. Treat empirically, immediately, on clinical grounds — delay causes infertility.",
+  oe:["Waiting for cultures in PID is the most damaging decision — salpingeal inflammation progresses hourly.",
+      "Outpatient treatment suits mild PID — this patient has fever and raised CRP meeting criteria for inpatient IV therapy.",
+      "<strong>Correct.</strong> Systemic signs = admit + IV antibiotics now. BASHH: IV cefoxitin + doxycycline, or clindamycin + gentamicin. Switch to oral when apyrexial for 24 hours.",
+      "Single-dose monotherapy is wholly inadequate for the polymicrobial infection of PID."]
+},
+
+{ sys:'obgyn', topic:'Cervical Cancer',
+  vig:`A 31-year-old has 3 months of postcoital bleeding. Her last smear at 25 was normal. Speculum examination shows a 2.5cm irregular contact-bleeding lesion on the anterior cervical lip.`,
+  stem:`What is the single most appropriate action?`,
+  opts:["Take a cervical smear from the lesion","Treat empirically for cervical ectropion with silver nitrate","Urgent 2-week-wait colposcopy referral for directed biopsy","Reassure — the previous normal smear makes cancer unlikely"],
+  ans:2,
+  lo:"A visible cervical lesion with contact bleeding is cancer until proven otherwise. A smear is a screening tool for a visually normal cervix — it has no role when a macroscopic lesion is visible. Biopsy is required urgently.",
+  oe:["A smear cannot evaluate a macroscopic lesion — it is a screening test, not a diagnostic one. Biopsy is required.",
+      "Ectropion can never be assumed without excluding malignancy — applying silver nitrate to a possible cancer is a serious error.",
+      "<strong>Correct.</strong> Any visible cervical lesion with contact bleeding = urgent 2WW referral. Directed biopsy at colposcopy is the investigation.",
+      "A normal smear 6 years ago provides no protection — HPV-driven carcinoma can develop within years."]
+},
+
+{ sys:'obgyn', topic:'Endometriosis',
+  vig:`A 31-year-old has a 9-year history of progressive dysmenorrhoea, deep dyspareunia, and 18 months of subfertility. Examination: nodularity on uterosacral ligaments, fixed retroverted uterus. CA-125: 48 U/mL.`,
+  stem:`Which investigation provides the definitive diagnosis?`,
+  opts:["MRI pelvis","CA-125 level","Transvaginal ultrasound","Diagnostic laparoscopy with histological biopsy"],
+  ans:3,
+  lo:"Laparoscopy with biopsy is the gold standard for diagnosing endometriosis. USS and MRI detect endometriomas and deep disease but miss peritoneal implants — the most common form.",
+  oe:["MRI is excellent for deep infiltrating disease and surgical planning but cannot detect peritoneal implants.",
+      "CA-125 is non-specific — elevated in many benign and malignant conditions. At 48 U/mL it cannot diagnose or exclude endometriosis.",
+      "TVUS detects endometriomas and some deep disease but peritoneal implants — the most common form — are invisible.",
+      "<strong>Correct.</strong> Laparoscopy with biopsy is the only way to see and confirm peritoneal endometriosis. It is both diagnostic and potentially therapeutic."]
+},
+
+{ sys:'obgyn', topic:'PCOS',
+  vig:`A 27-year-old with BMI 31 has had cycles every 50–70 days since age 16, hirsutism, and 14 months of subfertility. USS: bilateral polycystic morphology. LH:FSH 2.8, elevated FAI. Prolactin, TSH, 17-OHP normal.`,
+  stem:`PCOS confirmed. What is the most evidence-based first intervention for fertility?`,
+  opts:["Start letrozole 2.5mg for ovulation induction immediately","Start COCP to regulate cycles before attempting conception","Lifestyle modification — 5–10% weight loss is the most powerful first intervention","Refer directly to IVF — she has failed to conceive for >12 months"],
+  ans:2,
+  lo:"In overweight PCOS, 5–10% weight loss restores spontaneous ovulatory cycles in many women. This precedes pharmacological ovulation induction.",
+  oe:["Letrozole is first-line pharmacological ovulation induction — but not before the patient has had the opportunity to benefit from weight loss, which may restore ovulation without pharmacological risk.",
+      "The COCP suppresses ovulation — it is not a fertility intervention.",
+      "<strong>Correct.</strong> 5–10% weight loss in overweight PCOS restores ovulatory cycles in a significant proportion. It is the most cost-effective, risk-free first step. Letrozole follows after.",
+      "IVF referral is premature — a treatable diagnosis exists and lifestyle + ovulation induction should be tried first."]
+},
+
+{ sys:'obgyn', topic:'Fibroids',
+  vig:`A 38-year-old presents with 12 months of heavy menstrual bleeding, pelvic pressure, and urinary frequency. She passed a large clot last month requiring ED attendance. USS confirms a 9cm submucous fibroid distorting the uterine cavity. Hb is 78 g/L.`,
+  stem:`Which symptom profile is most directly caused by the submucous location of this fibroid?`,
+  opts:["Urinary frequency","Heavy menstrual bleeding and anaemia","Pelvic pressure and constipation","Infertility only"],
+  ans:1,
+  lo:"Submucous fibroids (type 0, 1, 2 — within or abutting the endometrial cavity) cause heavy menstrual bleeding by distorting the cavity and impairing normal endometrial haemostasis. Urinary symptoms are more commonly caused by anterior subserosal or intramural fibroids.",
+  oe:["Urinary frequency from a fibroid occurs when an anterior fibroid or large intramural fibroid compresses the bladder — not specifically from a submucous location.",
+      "<strong>Correct.</strong> Submucous fibroids distort the endometrial cavity, increase the surface area of menstrual shedding, and impair normal haemostasis. Heavy menstrual bleeding and anaemia are the cardinal consequences of submucous location.",
+      "Pelvic pressure and constipation are typically caused by large intramural or posterior subserosal fibroids.",
+      "Submucous fibroids do cause subfertility and recurrent miscarriage — but the presenting symptom complex here of heavy bleeding and anaemia is the direct consequence of the submucous location."]
+},
+
+{ sys:'obgyn', topic:'Ectopic/Trophoblastic',
+  vig:`A 24-year-old had a suction evacuation for a complete hydatidiform mole 4 weeks ago. Her follow-up serum βhCG today is 3600 IU/L — it was 4200 IU/L at the time of evacuation and 4000 IU/L two weeks ago.`,
+  stem:`This plateau in βhCG is concerning for what?`,
+  opts:["Normal post-molar decline — reassure and repeat in 4 weeks","Gestational trophoblastic neoplasia — referral for chemotherapy at a GTD centre","A new intrauterine pregnancy","Persistent molar tissue — repeat evacuation immediately"],
+  ans:1,
+  lo:"Indicators of gestational trophoblastic neoplasia after evacuation: βhCG >20,000 IU/L at 4 weeks; any plateau (±10%) over 3 measurements; any rise; persistent uterine disease at 4 weeks; metastatic disease. Chemotherapy at a GTD centre is curative in >95%.",
+  oe:["A plateau over 4 weeks (4200 → 4000 → 3600 — effectively flat) is not a normal decline. This pattern triggers the GTN criteria.",
+      "<strong>Correct.</strong> A βhCG plateau after molar evacuation meets criteria for GTN. Refer to GTD centre (Sheffield, Dundee, or Charing Cross) for assessment and chemotherapy if confirmed. GTN is highly chemo-sensitive — >95% cure rate.",
+      "A new intrauterine pregnancy following molar evacuation is possible — contraception is advised for 6 months. However the first priority is to exclude GTN, not to assume a new pregnancy.",
+      "Repeat evacuation is not recommended for GTN — it increases the risk of uterine perforation and is less effective than chemotherapy. It is sometimes performed for suspected RPOC early after evacuation, not for a plateau at 4 weeks."]
+},
+
+{ sys:'obgyn', topic:'Contraception',
+  vig:`A 32-year-old who is exclusively breastfeeding asks about contraception 6 weeks postpartum. She has no contraindications to any method. She wants the most effective method that is compatible with breastfeeding.`,
+  stem:`Which combined or progesterone-based method is CONTRAINDICATED in breastfeeding women at 6 weeks postpartum?`,
+  opts:["Progesterone-only pill","Levonorgestrel IUS (Mirena)","Combined oral contraceptive pill (containing oestrogen)","Depo-Provera injection"],
+  ans:2,
+  lo:"The combined oral contraceptive pill is contraindicated in breastfeeding women in the first 6 months postpartum (UK MEC category 3–4) — oestrogen reduces milk supply. Progesterone-only methods are all safe and highly effective.",
+  oe:["The POP is safe during breastfeeding and does not affect milk supply — UK MEC category 1.",
+      "The LNG-IUS is safe during breastfeeding and can be inserted from 4 weeks postpartum — it is one of the most effective methods available.",
+      "<strong>Correct.</strong> The combined pill (containing oestrogen) is UK MEC category 3 (risks outweigh benefits) in the first 6 months of breastfeeding — oestrogen reduces prolactin and milk production. All progesterone-only methods are safe.",
+      "Depo-Provera (progesterone-only injection) is safe during breastfeeding — UK MEC category 1 after 6 weeks postpartum."]
+},
+
+{ sys:'obgyn', topic:'Menopause',
+  vig:`A 52-year-old presents with 18 months of vasomotor symptoms (hot flushes, night sweats), urogenital atrophy, and low mood. Her LMP was 14 months ago. She has no personal or family history of breast cancer, VTE, or cardiovascular disease.`,
+  stem:`What is the first-line treatment for her symptoms?`,
+  opts:["SSRI antidepressants — first-line for all menopausal symptoms","HRT with combined oestrogen/progesterone — oestrogen relieves symptoms; progesterone protects the endometrium","HRT with oestrogen alone — she has had a hysterectomy","Complementary therapies including black cohosh"],
+  ans:1,
+  lo:"HRT is the most effective treatment for vasomotor menopausal symptoms. Women with an intact uterus require combined (oestrogen + progestogen) HRT — oestrogen alone causes endometrial hyperplasia. This woman has no documented contraindications.",
+  oe:["SSRIs have modest evidence for vasomotor symptoms — they are used when HRT is contraindicated. They are not first-line for a woman with no contraindications.",
+      "<strong>Correct.</strong> Combined HRT (oestrogen + progestogen) for a woman with an intact uterus. Oestrogen relieves symptoms; progestogen prevents endometrial hyperplasia from unopposed oestrogen. Transdermal oestrogen + micronised progesterone has the lowest VTE and breast cancer risk profile.",
+      "Oestrogen alone is used only in women who have had a hysterectomy — she has a uterus and would be at risk of endometrial hyperplasia and carcinoma without progestogen.",
+      "Complementary therapies have limited evidence and are not first-line for a symptomatic woman with no HRT contraindications."]
+},
+
+{ sys:'obgyn', topic:'Ovarian Cancer',
+  vig:`A 63-year-old presents with 4 months of abdominal bloating, early satiety, urinary frequency, and 3 kg weight loss. Examination reveals a fixed irregular pelvic mass. CA-125 is 820 U/mL. Pelvic USS shows bilateral complex adnexal masses with ascites.`,
+  stem:`What is the RMI (Risk of Malignancy Index) in this case, and what does it indicate?`,
+  opts:["RMI cannot be calculated without CT","RMI = CA-125 × menopausal score × USS score. This patient's RMI is very high — she requires urgent referral to a cancer MDT","RMI only applies to premenopausal women","RMI <200 is reassuring — no urgent referral needed"],
+  ans:1,
+  lo:"RMI = CA-125 × menopausal score (1 for pre, 3 for post) × USS score (1 for 1 feature, 3 for ≥2 features). This patient: 820 × 3 × 3 = 7380 — massively elevated. RMI >250 requires urgent referral to a cancer MDT. RMI >200 = high risk.",
+  oe:["RMI uses USS findings, CA-125, and menopausal status — not CT. CT is used for staging after diagnosis.",
+      "<strong>Correct.</strong> RMI = 820 × 3 × 3 = 7380. Any RMI >250 requires urgent referral to a cancer centre MDT. This patient has clinical, biochemical, and radiological features strongly suggestive of ovarian cancer.",
+      "RMI applies to all women — the menopausal status is incorporated as a multiplier (1 for pre, 3 for post).",
+      "RMI of 7380 is not reassuring — this is among the highest-risk presentations. Immediate cancer MDT referral."]
+},
+
+// ════════════════════════════════════════
+//  OPHTHALMOLOGY — GLAUCOMA (8 Qs)
+// ════════════════════════════════════════
+
+{ sys:'ophtho', topic:'Glaucoma',
+  vig:`A 64-year-old presents to the optometrist for a routine check. He has no visual complaints. IOP: 26 mmHg bilaterally. Cup-to-disc ratio: 0.7 OD with inferior notching. Humphrey fields: arcuate scotoma in the superior right field.`,
+  stem:`Why has he never noticed any vision loss?`,
+  opts:["The defect is on the opposite side to his dominant eye","Glaucoma begins in the peripheral field — peripheral loss is not consciously perceived until ~40% of ganglion cells are lost","The scotoma is intermittent","His brain compensates by filling in the defect temporarily"],
+  ans:1,
+  lo:"Glaucoma destroys peripheral vision silently. The peripheral visual field has no conscious representation — loss is not perceived until it is extensive. By the time symptoms emerge, significant irreversible damage has occurred.",
+  oe:["The location of a scotoma does not determine whether it is noticed — peripheral loss at any location is typically unperceived.",
+      "<strong>Correct.</strong> ~40% of retinal ganglion cells can be lost before noticeable visual disturbance occurs. This is why screening and IOP measurement before damage occurs are critical.",
+      "Glaucomatous field defects are fixed and progressive — not intermittent.",
+      "Visual completion (filling-in) is permanent, not temporary — the brain fills in the defect, which is why the patient doesn't notice it, not because it will resolve."]
+},
+
+{ sys:'ophtho', topic:'Glaucoma',
+  vig:`A 70-year-old long-sighted woman presents with a 5-hour history of severe right eye pain, nausea, vomiting, and the worst headache of her life. She started a new bladder medication last week. Right eye: red, hazy cornea, mid-dilated fixed pupil, rock-hard globe. IOP: 58 mmHg.`,
+  stem:`What medication class precipitated this attack?`,
+  opts:["Beta-blockers","Anticholinergics","ACE inhibitors","Proton pump inhibitors"],
+  ans:1,
+  lo:"Anticholinergics cause pupillary dilation. In a narrow-angle eye (common in hyperopes), dilation pushes the peripheral iris against the trabecular meshwork, blocking aqueous outflow and precipitating acute angle closure.",
+  oe:["Beta-blockers are used in the treatment of glaucoma — they reduce aqueous production and are not precipitants.",
+      "<strong>Correct.</strong> Anticholinergic bladder medications (oxybutynin, solifenacin) cause mydriasis. In a narrow-angle eye, this forces the peripheral iris against the trabecular meshwork → acute angle closure.",
+      "ACE inhibitors have no effect on pupil size or trabecular meshwork dynamics.",
+      "PPIs have no ophthalmological mechanism that would precipitate angle closure."]
+},
+
+{ sys:'ophtho', topic:'Glaucoma',
+  vig:`A 68-year-old with POAG on latanoprost returns for review. His IOP is 18 mmHg (was 26 mmHg at diagnosis). He asks whether the drops are curing his glaucoma.`,
+  stem:`What is the correct explanation?`,
+  opts:["Yes — IOP <21 mmHg means the glaucoma is cured","The drops lower IOP, which slows progression — but ganglion cells already lost are not recovered, and the disease is managed not cured","The drops will no longer be needed once IOP is normalised for 1 year","Glaucoma treatment aims to restore normal vision in affected areas"],
+  ans:1,
+  lo:"Glaucoma treatment lowers IOP to slow the rate of ganglion cell loss — it does not reverse existing damage. Damaged ganglion cells do not regenerate. The goal is preservation of remaining function.",
+  oe:["IOP <21 mmHg (the statistical upper limit of normal) is a treatment target — but glaucoma can progress even at normal IOP, and existing damage is not cured.",
+      "<strong>Correct.</strong> Latanoprost lowers IOP by increasing uveoscleral outflow. This slows ganglion cell loss but existing structural damage (optic nerve notching, visual field defects) is permanent. The disease is managed, not cured.",
+      "Glaucoma drops must be continued indefinitely in most cases — stopping when IOP normalises would allow progression to resume.",
+      "Ganglion cells do not regenerate — areas of field loss from glaucoma are permanent. The goal is to preserve what remains."]
+},
+
+{ sys:'ophtho', topic:'Glaucoma',
+  vig:`A 50-year-old is referred after a normal eye test showing IOP of 28 mmHg bilaterally. His optic discs look normal. Visual fields are full. There is no family history of glaucoma.`,
+  stem:`This is ocular hypertension (OHT). What determines whether to treat?`,
+  opts:["Any IOP >21 mmHg requires immediate treatment to prevent glaucoma","Risk of conversion to glaucoma based on IOP level, central corneal thickness, visual field, and optic disc — the Ocular Hypertension Treatment Study risk algorithm guides treatment","Treat if IOP >30 mmHg only","OHT always converts to glaucoma — all patients need treatment"],
+  ans:1,
+  lo:"OHT management is risk-stratified. The OHTS and European Glaucoma Prevention Study provide algorithms using IOP level, CCT, age, optic disc appearance, and PSD to estimate conversion risk. Not all OHT requires treatment.",
+  oe:["Not all OHT requires treatment — IOP >21 mmHg alone, without other risk factors, often merits monitoring rather than immediate drops.",
+      "<strong>Correct.</strong> Risk stratification using OHTS/EGPS parameters: IOP, CCT (thinner corneas = higher true IOP and higher risk), age, disc appearance, and field data. High-risk patients benefit from treatment; low-risk patients may be monitored.",
+      "IOP >30 mmHg significantly increases risk — but the treatment threshold is not simply '>30'. Risk stratification guides individual decisions.",
+      "Only about 10% of OHT converts to glaucoma over 5 years without treatment — treating all OHT would expose many low-risk patients to lifelong drops unnecessarily."]
+},
+
+{ sys:'ophtho', topic:'Glaucoma',
+  vig:`A 55-year-old with normal-tension glaucoma (NTG) has progressive field loss despite IOP maintained at 14 mmHg on maximal topical therapy.`,
+  stem:`What does NTG demonstrate about the pathophysiology of glaucomatous optic neuropathy?`,
+  opts:["IOP is irrelevant in glaucoma — vascular factors are the only cause","IOP is always the primary cause of glaucomatous damage — NTG must therefore be a different disease","IOP is an important but not the only risk factor — vascular insufficiency, reduced cerebrospinal fluid pressure, and mitochondrial dysfunction may also drive ganglion cell loss","NTG only occurs in Asian populations"],
+  ans:2,
+  lo:"NTG shows that IOP-independent mechanisms contribute to glaucomatous optic neuropathy. Vascular dysregulation (disc haemorrhages, migraine, Raynaud's phenomenon are associated), reduced CSF pressure gradient, and primary mitochondrial dysfunction are all implicated.",
+  oe:["IOP is a major modifiable risk factor even in NTG — the Collaborative NTG study showed lowering IOP by 30% slows progression even at normal baseline pressures. It is not irrelevant.",
+      "NTG is a recognised variant of glaucoma, not a separate disease — glaucomatous optic neuropathy can occur at any IOP level. Calling it a different disease would be incorrect.",
+      "<strong>Correct.</strong> IOP is an important risk factor but is not the only one. NTG demonstrates that optic nerve susceptibility, vascular regulation, CSF pressure, and mitochondrial factors can all contribute to ganglion cell loss independent of elevated IOP.",
+      "NTG affects all populations — it is not restricted to Asian patients, though there is a higher prevalence in some East Asian populations compared to Europeans."]
+},
+
+{ sys:'ophtho', topic:'Glaucoma',
+  vig:`A 45-year-old is referred with pigment dispersion syndrome (PDS). Slit-lamp shows Krukenberg spindle, mid-peripheral spoke-like iris transillumination defects, and posterior iris insertion.`,
+  stem:`What is the mechanism of secondary glaucoma in PDS?`,
+  opts:["Anterior synechiae block the trabecular meshwork from trauma","Posterior iris bowing causes friction against the zonular fibres, releasing pigment that clogs the trabecular meshwork","Increased aqueous production overwhelms outflow","Neovascularisation occludes the angle"],
+  ans:1,
+  lo:"PDS: posterior iris insertion causes the iris to bow backwards, rubbing against the zonular fibres during accommodation or exercise. Pigment granules are shed and deposited in the trabecular meshwork, reducing outflow and raising IOP.",
+  oe:["Anterior synechiae are a feature of angle-closure or uveitic glaucoma — not PDS, which is an open-angle secondary glaucoma.",
+      "<strong>Correct.</strong> The concave iris profile bows posteriorly (reverse pupillary block mechanism), rubbing against the zonular fibres. This liberates pigment that blocks the trabecular meshwork. Exercise (which increases accommodation) can trigger acute pigment showers and IOP spikes.",
+      "Aqueous overproduction is not the mechanism — this is an outflow problem caused by pigment blockage of the trabecular meshwork.",
+      "Neovascularisation of the angle occurs in neovascular glaucoma (from ischaemic retinal conditions) — not PDS."]
+},
+
+{ sys:'ophtho', topic:'Glaucoma',
+  vig:`A 72-year-old with exfoliation syndrome (XFS) has IOP 32 mmHg in the right eye. Gonioscopy shows a Sampaolesi line and heavy pigmentation of the trabecular meshwork. The optic disc shows a CDR of 0.8 with superior notching.`,
+  stem:`Why is exfoliative glaucoma often more aggressive than POAG?`,
+  opts:["XFS patients are always older and therefore more vulnerable","XFS produces a fibrillar material that clogs the trabecular meshwork; IOP tends to be higher and more variable; zonular weakness increases risk of complications during cataract surgery","XFS only causes glaucoma in one eye","XFS is associated with reduced corneal thickness causing IOP overestimation"],
+  ans:1,
+  lo:"Exfoliative glaucoma is more severe than POAG because: higher and more fluctuating IOP; more rapid disc damage; worse prognosis for medical control; zonular weakness complicates cataract surgery (risk of lens subluxation, vitreous loss).",
+  oe:["Age alone does not explain the more aggressive behaviour of exfoliative glaucoma.",
+      "<strong>Correct.</strong> XFS material deposits in the trabecular meshwork → higher, more variable IOP → faster disc damage. Zonular weakness (XFS fibrils weaken zonular fibres) increases the risk of intraoperative complications during cataract surgery.",
+      "XFS typically presents unilaterally but the systemic nature of the condition means the other eye is also at risk — it is not limited to one eye.",
+      "XFS is actually associated with increased central corneal thickness in some studies, not reduced. CCT is not the explanation for its aggressive behaviour."]
+},
+
+{ sys:'ophtho', topic:'Glaucoma',
+  vig:`A 40-year-old with no ocular history is referred after a random clinic IOP reading of 22 mmHg. She is of West African origin. The optic disc shows a vertical CDR of 0.75 with no notching and full visual fields.`,
+  stem:`Why should ethnicity influence the threshold for investigation and treatment in this case?`,
+  opts:["West African patients have structurally larger optic nerves and therefore larger normal cup sizes","Black African/Afro-Caribbean patients have a 4–5 fold higher risk of POAG, typically younger onset, more severe disease, and worse response to treatment — earlier and more aggressive assessment is indicated","Ethnicity has no effect on glaucoma risk — standard protocols apply","West African patients have higher corneal thickness causing false IOP elevation"],
+  ans:1,
+  lo:"Primary open-angle glaucoma is 4–5 times more prevalent in Black African/Afro-Caribbean populations compared to white Europeans. Onset is typically a decade earlier, severity greater, and visual loss more common. This population requires lower screening thresholds and more vigilant monitoring.",
+  oe:["While larger physiological disc sizes can be seen, this does not explain the significantly higher disease burden — the elevated risk is not merely an anatomical variant.",
+      "<strong>Correct.</strong> Black African/Afro-Caribbean ethnicity is one of the strongest risk factors for POAG — 4–5 fold higher risk, younger onset, and worse visual outcomes on average. A CDR of 0.75 in a 40-year-old of this background requires thorough baseline assessment.",
+      "Ethnicity is a significant risk modifier in glaucoma — standard European-derived protocols may not provide sufficient protection for high-risk populations.",
+      "Black African patients, on average, have thinner corneas than European patients — this may lead to underestimation of true IOP (the opposite of what this answer states)."]
+},
+
+// ════════════════════════════════════════
+//  OPHTHALMOLOGY — DIABETIC RETINOPATHY (7 Qs)
+// ════════════════════════════════════════
+
+{ sys:'ophtho', topic:'Diabetic Retinopathy',
+  vig:`A 48-year-old with 20-year type 2 diabetes has cotton wool spots and venous beading in two quadrants on fundal photography. No neovascularisation.`,
+  stem:`How should this be classified and what is the urgency?`,
+  opts:["Mild NPDR — reassure, repeat in 12 months","Moderate NPDR — refer, repeat in 6 months","Severe/pre-proliferative NPDR — urgent ophthalmology; ~50% risk of PDR within 1 year","Proliferative DR — panretinal laser needed today"],
+  ans:2,
+  lo:"Cotton wool spots and venous beading = severe/pre-proliferative NPDR. The 4-2-1 rule defines this stage. ~50% progress to PDR within 12 months. Urgent referral.",
+  oe:["Mild NPDR is microaneurysms only. Cotton wool spots and venous beading are far more advanced.",
+      "Moderate NPDR lacks the severe features present here.",
+      "<strong>Correct.</strong> 4-2-1 rule: haemorrhages in 4 quadrants, venous beading in ≥2 quadrants, or IRMA in ≥1 quadrant = severe NPDR. ~50% progress to PDR within 1 year. Urgent referral.",
+      "No neovascularisation is present — this is not yet PDR. Urgent referral now prevents progression to sight-threatening disease."]
+},
+
+{ sys:'ophtho', topic:'Diabetic Retinopathy',
+  vig:`A 55-year-old with type 2 diabetes has bilateral centre-involving diabetic macular oedema on OCT, confirmed by hard exudates and retinal thickening at the fovea. VA 6/18 right, 6/12 left.`,
+  stem:`What is the first-line treatment for centre-involving diabetic macular oedema?`,
+  opts:["Focal macular laser photocoagulation","Intravitreal anti-VEGF injections","Panretinal photocoagulation","Topical NSAID drops"],
+  ans:1,
+  lo:"Intravitreal anti-VEGF (ranibizumab or aflibercept) is first-line for centre-involving DMO. It improves VA in ~30–50% of patients. Focal laser is used for non-centre-involving DMO.",
+  oe:["Focal laser was the gold standard before anti-VEGF. For centre-involving DMO, anti-VEGF gives superior VA outcomes.",
+      "<strong>Correct.</strong> Intravitreal anti-VEGF (ranibizumab, aflibercept) is first-line for centre-involving DMO. Monthly loading doses then treat-and-extend. Intravitreal steroid (dexamethasone implant) is an alternative in selected cases.",
+      "PRP is for proliferative diabetic retinopathy — not DMO.",
+      "Topical NSAIDs have no proven role in the treatment of DMO."]
+},
+
+{ sys:'ophtho', topic:'Diabetic Retinopathy',
+  vig:`A 38-year-old with type 1 diabetes for 18 years notices sudden painless loss of vision in his right eye on waking. VA is hand movement. Fundal view is obscured by a dense dark vitreous haemorrhage on USS. IOP is normal.`,
+  stem:`What is the most likely underlying cause of the vitreous haemorrhage?`,
+  opts:["Posterior vitreous detachment causing a retinal tear","Proliferative diabetic retinopathy — new fragile vessels have bled into the vitreous","Hypertensive emergency causing choroidal haemorrhage","Central retinal vein occlusion"],
+  ans:1,
+  lo:"Proliferative diabetic retinopathy causes neovascularisation on the disc (NVD) or elsewhere (NVE). These new vessels are structurally fragile and bleed easily, particularly overnight when the vitreous moves. Sudden painless vitreous haemorrhage in a young diabetic = PDR until proven otherwise.",
+  oe:["PVD can cause vitreous haemorrhage from a retinal tear — but in an 18-year type 1 diabetic, PDR is by far the more likely cause.",
+      "<strong>Correct.</strong> Neovascular vessels in PDR are fragile and bleed without provocation. Overnight vitreous traction triggers haemorrhage. Urgent ophthalmology referral — USS to exclude traction retinal detachment; PRP when the view clears.",
+      "Hypertensive choroidal haemorrhage would require severely elevated BP and typically causes sub-retinal, not vitreous haemorrhage.",
+      "CRVO causes painless visual loss with a haemorrhagic retinal appearance — the haemorrhage is subretinal/pre-retinal, not typically a dense vitreous haemorrhage obscuring the view entirely."]
+},
+
+{ sys:'ophtho', topic:'Diabetic Retinopathy',
+  vig:`A 65-year-old type 2 diabetic has NVD (new vessels on the disc) in both eyes. He is referred for treatment.`,
+  stem:`What is the mechanism of panretinal photocoagulation (PRP) in treating PDR?`,
+  opts:["It directly destroys the new vessels by coagulating them","It destroys ischaemic peripheral retina, reducing VEGF production and causing regression of new vessels","It strengthens the retino-choroidal adhesion to prevent traction detachment","It lowers IOP, which reduces retinal ischaemia"],
+  ans:1,
+  lo:"PRP: laser burns destroy the ischaemic peripheral retina that is producing excess VEGF. Reducing VEGF production causes the new vessels to regress. The trade-off is permanent loss of peripheral vision and adaptation to dark.",
+  oe:["PRP does not directly coagulate the new vessels — it targets the ischaemic retina producing the angiogenic stimulus (VEGF).",
+      "<strong>Correct.</strong> PRP destroys 1200–1600 spots of ischaemic peripheral retina → reduced VEGF → regression of NVD/NVE. The trade-off: peripheral visual field loss, reduced dark adaptation. Anti-VEGF injections can be used adjunctively or as an alternative.",
+      "Retinochoroidal adhesion is created by laser scars but this is not the mechanism by which PRP treats PDR.",
+      "PRP has no effect on IOP — the mechanism is entirely VEGF-mediated."]
+},
+
+{ sys:'ophtho', topic:'Diabetic Retinopathy',
+  vig:`A type 1 diabetic is told at his annual diabetic eye screen that he has 'R0 M0' in both eyes.`,
+  stem:`What does this grading mean and when should he be re-screened?`,
+  opts:["No diabetic retinopathy, no DMO — re-screen in 12 months","Mild NPDR both eyes — re-screen in 6 months","Background DR — treatment needed","Uncertain — grading requires clinical examination"],
+  ans:0,
+  lo:"UK diabetic eye screening grading: R0 = no retinopathy; R1 = background DR; R2 = pre-proliferative; R3 = proliferative; M0 = no DMO; M1 = DMO present. R0M0 = no DR, no DMO — annual re-screening.",
+  oe:["<strong>Correct.</strong> R0 = no diabetic retinopathy; M0 = no maculopathy (DMO). This is the best possible result. Re-screen annually.",
+      "R1M0 = background DR, no DMO — still re-screen annually in most cases.",
+      "Background DR (R1) does not require treatment — it requires monitoring. R0 means no background DR is present.",
+      "The UK NHS Diabetic Eye Screening Programme uses standardised grading — this is a well-defined code."]
+},
+
+{ sys:'ophtho', topic:'Diabetic Retinopathy',
+  vig:`A 44-year-old type 1 diabetic starts a new GP who tells him his diabetes is well-controlled (HbA1c 47 mmol/mol) so he does not need diabetic eye screening any more.`,
+  stem:`Why is this advice incorrect?`,
+  opts:["Screening is only needed if symptomatic","Eye screening is required regardless of glycaemic control — retinopathy can progress even with good control, and screening detects pre-symptomatic treatable disease","Screening is only needed in type 2 diabetes","HbA1c <48 confirms no retinopathy is present"],
+  ans:1,
+  lo:"Annual diabetic eye screening is recommended for all patients with diabetes (type 1 and type 2) regardless of glycaemic control. Good HbA1c reduces progression risk but does not eliminate it — and disease already present needs monitoring.",
+  oe:["By the time diabetic retinopathy is symptomatic (visual loss), it may be at an advanced and difficult-to-treat stage. The purpose of screening is to detect pre-symptomatic treatable disease.",
+      "<strong>Correct.</strong> Annual eye screening continues regardless of HbA1c. Good glycaemic control reduces the risk and rate of progression but does not eliminate it. Duration of diabetes and BP control are also independent risk factors.",
+      "Both type 1 and type 2 diabetics require annual screening — type 1 from 12 years old or 5 years after diagnosis.",
+      "HbA1c reflects average blood glucose — it does not directly report on retinal status. Retinopathy can be present at any HbA1c."]
+},
+
+{ sys:'ophtho', topic:'Diabetic Retinopathy',
+  vig:`A 58-year-old type 2 diabetic undergoes rapid intensification of glucose control — HbA1c drops from 92 to 51 mmol/mol over 4 months. Shortly after, she develops worsening retinopathy with cotton wool spots appearing on a previously clear fundus.`,
+  stem:`What is this phenomenon?`,
+  opts:["A coincidental new diagnosis of hypertensive retinopathy","Early worsening of retinopathy following rapid glycaemic improvement — a well-recognised phenomenon","The previous screening was incorrect — the DR was always present","Anti-VEGF should be started immediately to prevent progression"],
+  ans:1,
+  lo:"Early worsening of diabetic retinopathy following rapid glucose lowering is a well-recognised phenomenon. The mechanism is thought to involve changes in retinal blood flow and IGF-1 signalling. It typically stabilises and reverses over 6–18 months if glucose control is maintained.",
+  oe:["This is not hypertensive retinopathy — the temporal relationship to rapid glucose lowering is the key diagnostic clue.",
+      "<strong>Correct.</strong> Rapid normalisation of long-standing hyperglycaemia can transiently worsen retinopathy — the DCCT and UKPDS both documented early worsening in intensively treated groups. It stabilises over 6–18 months. This is why glucose lowering should be gradual in patients with pre-existing DR.",
+      "The previous clear fundus and temporal relationship to HbA1c drop makes this an iatrogenic phenomenon — not a screening error.",
+      "Anti-VEGF is not indicated for this self-limiting early worsening — it is managed with continued monitoring and maintaining the improved glycaemic control."]
+},
+
+// ════════════════════════════════════════
+//  OPHTHALMOLOGY — RETINAL DISEASE (8 Qs)
+// ════════════════════════════════════════
+
+{ sys:'ophtho', topic:'Retinal Detachment',
+  vig:`A 52-year-old high myope describes sudden onset of multiple new floaters, flashes, and a dark inferior curtain rising over 2 hours in his right eye. Central vision is intact.`,
+  stem:`Why does high myopia confer high risk of retinal detachment?`,
+  opts:["Myopia causes raised IOP which pushes the retina forward","In high myopia the globe is axially elongated — the peripheral retina is stretched thin, prone to degeneration and tears","Myopic patients have a thicker vitreous exerting more traction","High myopia causes choroidal neovascularisation which lifts the retina"],
+  ans:1,
+  lo:"High myopia = increased axial length = stretched peripheral retina = lattice degeneration and atrophic holes. PVD can tear these weak points — fluid enters and detaches the neurosensory retina. Same-day ophthalmology is mandatory.",
+  oe:["Myopia is not associated with raised IOP — that is a risk factor for glaucoma.",
+      "<strong>Correct.</strong> The elongated myopic globe stretches the peripheral retina over a larger surface, causing thinning and lattice degeneration. PVD creates tears at these weak points. Fluid enters and detaches the retina.",
+      "High myopes have a larger but more liquefied (synechetic) vitreous — not thicker. Vitreous traction relates to PVD, not thickness.",
+      "Choroidal neovascularisation in high myopia causes central visual loss — not the floaters-then-curtain pattern of rhegmatogenous RD."]
+},
+
+{ sys:'ophtho', topic:'Retinal Detachment',
+  vig:`A 60-year-old undergoes successful vitrectomy and SF6 gas tamponade for a superotemporal retinal detachment. The surgeon tells him he cannot fly for 8 weeks.`,
+  stem:`Why is flying contraindicated with intraocular gas?`,
+  opts:["Corneal oedema occurs at altitude","Reduced cabin pressure allows the gas to expand, causing acute IOP elevation that can permanently damage the optic nerve","Gas refracts light differently at altitude causing diplopia","Flying risk is due to infection, not the gas itself"],
+  ans:1,
+  lo:"Intraocular gas (SF6, C3F8) expands at reduced atmospheric pressure (as experienced in aircraft cabins). This expansion causes acute, potentially catastrophic IOP elevation. Flying is contraindicated until the gas has fully reabsorbed.",
+  oe:["Corneal oedema is not the concern — the issue is pressure within the closed globe.",
+      "<strong>Correct.</strong> Aircraft cabins are pressurised to 75–80 kPa (~8000 feet). Reduced atmospheric pressure allows the gas bubble to expand. In a closed eye, this causes acute IOP elevation that can exceed 60–70 mmHg — potentially causing central retinal artery occlusion and permanent vision loss.",
+      "Gas does not affect refraction in this way — the optical concern in the early post-operative period is the gas-fluid interface causing distortion, not altitude-related refraction.",
+      "The restriction is specifically due to gas expansion, not infection risk."]
+},
+
+{ sys:'ophtho', topic:'Retinal Detachment',
+  vig:`A 45-year-old presents with a new floater — a single fixed ring-shaped opacity. Slit lamp shows a complete Weiss ring floating in the vitreous. Visual acuity is 6/6. No retinal tears are seen on dilated fundal examination.`,
+  stem:`What is a Weiss ring and what management is appropriate?`,
+  opts:["A sign of posterior segment infection requiring urgent IV antivirals","The detached optic disc margin from PVD — reassure and review with low threshold for re-examination if new symptoms develop","Evidence of a retinal tear requiring immediate laser retinopexy","A sign of diabetic retinopathy requiring urgent referral"],
+  ans:1,
+  lo:"A Weiss ring is the glial ring at the optic disc that comes away en-masse during posterior vitreous detachment (PVD) — visible as a circular floater. PVD itself is common and usually benign. The risk is that PVD can cause a retinal tear in ~10–15% of cases in the 6 weeks after onset.",
+  oe:["A Weiss ring is not infectious — it is a structural consequence of the vitreous separating from the optic disc.",
+      "<strong>Correct.</strong> A Weiss ring is pathognomonic of PVD. In the absence of a retinal tear, the patient can be reassured. However, 10–15% of PVDs cause retinal tears in the following 6 weeks — the patient must be warned to return immediately if new flashes, a shower of floaters, or a visual field defect develops.",
+      "A Weiss ring with no retinal tear does not require immediate laser. Retinopexy is for retinal tears — not uncomplicated PVD.",
+      "A Weiss ring has nothing to do with diabetic retinopathy — it is a consequence of vitreous ageing and separation."]
+},
+
+{ sys:'ophtho', topic:'Retinal Vascular',
+  vig:`A 68-year-old with hypertension and atrial fibrillation not on anticoagulation presents with sudden, painless, complete loss of vision in his right eye. VA is 'no light perception'. The fundus shows a pale retina with a cherry red spot at the fovea. IOP is normal.`,
+  stem:`What is the diagnosis and what is the time window for treatment?`,
+  opts:["Central retinal vein occlusion — anti-VEGF within 3 months","Central retinal artery occlusion — treatment within 4.5 hours if available; ophthalmology emergency","Ischaemic optic neuropathy — MRI urgently","Vitreous haemorrhage — examine with USS and refer electively"],
+  ans:1,
+  lo:"CRAO: pale retina (ischaemic inner retinal oedema) + cherry red spot (fovea perfused by choroidal circulation) + sudden painless complete visual loss + NLP vision = ophthalmic emergency. The treatment window is analogous to stroke — up to 4.5 hours for thrombolysis.",
+  oe:["CRVO presents with haemorrhages in all four quadrants ('blood and thunder fundus'), blurred vision but rarely NLP — and anti-VEGF is for the macular oedema that follows, not emergency treatment.",
+      "<strong>Correct.</strong> CRAO. Pale ischaemic retina + cherry red spot + sudden painless NLP vision. This is an ophthalmic stroke. Immediate same-day ophthalmology. Consider IV tPA within 4.5 hours if no contraindications (EAGLE trial). Also urgent investigation for carotid atherosclerosis and AF (cardioembolic source).",
+      "Ischaemic optic neuropathy causes inferior altitudinal field loss, not complete NLP vision, and the fundus shows a swollen disc, not a cherry red spot.",
+      "Vitreous haemorrhage causes blurred vision but not NLP. Fundal view is obscured, not showing a classic cherry red spot."]
+},
+
+{ sys:'ophtho', topic:'Retinal Vascular',
+  vig:`A 75-year-old with hypertension notices sudden visual loss in the inferior half of his left visual field over 30 minutes. VA is 6/9. Fundus shows flame haemorrhages, disc oedema, and dilated tortuous veins in the superior retina.`,
+  stem:`This is a branch retinal vein occlusion (BRVO). What is the long-term visual threat and its treatment?`,
+  opts:["Risk of retinal detachment — prophylactic laser retinopexy","Macular oedema at the fovea — intravitreal anti-VEGF or steroid injections","Neovascular glaucoma — urgent angle laser","Posterior scleritis — systemic steroids"],
+  ans:1,
+  lo:"Macular oedema is the primary cause of visual loss in BRVO. It occurs when the obstructed retina becomes ischaemic and VEGF is released, increasing vascular permeability at the fovea. Intravitreal anti-VEGF (or dexamethasone implant) is first-line treatment.",
+  oe:["Retinal detachment is not a typical complication of BRVO — it can complicate severe PDR or CRVO but is not the primary risk in BRVO.",
+      "<strong>Correct.</strong> Macular oedema from ischaemia-driven VEGF release is the primary visual threat in BRVO. Intravitreal anti-VEGF (ranibizumab, bevacizumab) or dexamethasone implant are the treatment options.",
+      "Neovascular glaucoma is a complication of ischaemic CRVO — not typically of BRVO.",
+      "Posterior scleritis causes eye pain, disc oedema, and choroidal folds — not the haemorrhagic picture of BRVO."]
+},
+
+{ sys:'ophtho', topic:'AMD',
+  vig:`A 79-year-old woman with dry AMD notices metamorphopsia in her right eye. OCT shows a subfoveal CNV with subretinal fluid.`,
+  stem:`Her dry AMD has converted to wet AMD. What is the mechanism?`,
+  opts:["Geographic atrophy has extended to the fovea","VEGF-driven choroidal new vessels have grown under the retina — they are leaky and accumulate fluid distorting photoreceptors","Drusen have calcified and physically lift the RPE","Vitreous traction causes central distortion"],
+  ans:1,
+  lo:"Wet AMD: VEGF overexpression → choroidal neovascularisation → leaky vessels → subretinal fluid → photoreceptor distortion → metamorphopsia and central visual loss. Anti-VEGF blocks this cascade.",
+  oe:["Geographic atrophy is the end-stage of dry AMD — a progressive slow process, not the cause of acute metamorphopsia with subretinal fluid.",
+      "<strong>Correct.</strong> VEGF drives growth of abnormal choroidal new vessels beneath the RPE. These vessels are leaky — subretinal fluid accumulates, lifts photoreceptors, and causes metamorphopsia. Anti-VEGF (ranibizumab, aflibercept) blocks this.",
+      "Drusen calcification is part of dry AMD progression — not the mechanism of wet AMD conversion.",
+      "Vitreomacular traction is a separate entity not related to AMD conversion."]
+},
+
+{ sys:'ophtho', topic:'AMD',
+  vig:`A 74-year-old man is diagnosed with bilateral large drusen (>125 µm diameter) and areas of pigmentary change on fundoscopy. VA is 6/9 bilaterally. He has no symptoms.`,
+  stem:`What is his diagnosis, what is his risk, and what can he do?`,
+  opts:["Early/intermediate dry AMD — 43% risk of progressing to advanced AMD (geographic atrophy or wet AMD) within 5 years — AREDS2 supplements can reduce this risk by ~25%","Mild NPDR from undiagnosed diabetes — screen for diabetes","Normal ageing changes — reassure and discharge","Wet AMD already present — start anti-VEGF"],
+  ans:0,
+  lo:"Intermediate dry AMD (large drusen >125 µm + pigmentary change, bilateral) carries a significant risk of progression to advanced AMD. The AREDS2 formulation (vitamin C, E, zinc, copper, lutein, zeaxanthin) reduces progression by ~25%.",
+  oe:["<strong>Correct.</strong> Large bilateral drusen + pigmentary change = intermediate dry AMD. 5-year risk of progression to advanced AMD ~43%. AREDS2 supplement reduces this by ~25%. He should also stop smoking, eat a Mediterranean diet, and self-monitor with an Amsler grid.",
+      "Large drusen are AMD, not NPDR — the appearance is distinct and diabetes screening, while generally appropriate, does not address the AMD diagnosis.",
+      "Large bilateral drusen with pigmentary change are not a normal ageing finding — this requires monitoring and AREDS2 supplements.",
+      "No subretinal fluid or CNV is present — this is dry AMD at the intermediate stage, not wet AMD. Anti-VEGF is not indicated."]
+},
+
+{ sys:'ophtho', topic:'Cataract',
+  vig:`A 71-year-old retired driver has a posterior subcapsular cataract. His clinic Snellen acuity is 6/9. He reports severe glare and halos around oncoming headlights making night driving impossible.`,
+  stem:`Why does his Snellen acuity underestimate his disability?`,
+  opts:["Snellen acuity is always inaccurate over 70","Posterior subcapsular cataracts cause disproportionate glare in bright light — Snellen testing in dim clinic light does not capture this","His glasses prescription is incorrect","He is exaggerating for insurance purposes"],
+  ans:1,
+  lo:"Posterior subcapsular cataracts are located directly in the visual axis and cause profound glare and contrast sensitivity loss in bright light. Snellen acuity in a dim clinic dilates the pupil, routing light around the central opacity — real-world disability is dramatically worse.",
+  oe:["Snellen acuity is valid at any age — the issue is the specific properties of PSC cataracts and the conditions of testing.",
+      "<strong>Correct.</strong> PSC cataracts maximally affect vision in bright light (pupil constricts, light passes through the dense opacity). In a dim clinic room the pupil dilates, routing light around the opacity. Snellen acuity dramatically underestimates the functional impact.",
+      "The prescription was updated without improvement — the problem is optical (cataract), not refractive.",
+      "His disability is entirely consistent with the known behaviour of PSC cataracts — this is the expected symptom profile."]
+},
+
+// ════════════════════════════════════════
+//  OPHTHALMOLOGY — OCULAR SURFACE / ANTERIOR (5 Qs)
+// ════════════════════════════════════════
+
+{ sys:'ophtho', topic:'Uveitis',
+  vig:`A 28-year-old with known HLA-B27 positivity presents with a painful red right eye, photophobia, and blurred vision for 2 days. Slit-lamp shows keratic precipitates, flare and cells in the anterior chamber, and posterior synechiae.`,
+  stem:`What is the diagnosis and most important immediate complication to prevent?`,
+  opts:["Acute conjunctivitis — start chloramphenicol drops","Acute anterior uveitis (iritis) — dilate pupil with mydriatics and start topical steroids to prevent posterior synechiae and raised IOP","Corneal ulcer — start antiviral treatment","Scleritis — start oral NSAIDs"],
+  ans:1,
+  lo:"Acute anterior uveitis: cells/flare in anterior chamber, keratic precipitates, posterior synechiae. HLA-B27 association (ankylosing spondylitis, reactive arthritis). Treatment: cycloplegic mydriatic (to break synechiae and reduce ciliary spasm) + topical steroid (to suppress inflammation). Complication: posterior synechiae → pupil block → secondary glaucoma.",
+  oe:["Conjunctivitis does not cause cells in the anterior chamber, keratic precipitates, or posterior synechiae — these are anterior segment signs of iritis.",
+      "<strong>Correct.</strong> Acute anterior uveitis. Mydriatics (cyclopentolate or atropine) break existing posterior synechiae and prevent new ones forming. Topical steroid (prednisolone acetate) suppresses inflammation. If synechiae cause pupil block → 360° adhesion → iris bombé → acute glaucoma.",
+      "Corneal ulcer presents with epithelial defect on fluorescein staining and infiltrate — not anterior chamber cells and synechiae.",
+      "Scleritis causes deep boring pain and scleral injection — not anterior chamber inflammatory signs."]
+},
+
+{ sys:'ophtho', topic:'Cornea',
+  vig:`A 22-year-old contact lens wearer presents with a 2-day history of severe right eye pain, photophobia, discharge, and VA 6/36. Slit-lamp shows a 3mm central corneal ulcer with dense stromal infiltrate. Fluorescein staining confirms an epithelial defect.`,
+  stem:`What is the most important first action?`,
+  opts:["Prescribe chloramphenicol drops and review in one week","Stop contact lens wear, take corneal scrapes for culture and sensitivities, and start intensive topical fluoroquinolone antibiotics urgently","Start topical steroid to reduce corneal scarring","Reassure — contact lens overwear is self-limiting"],
+  ans:1,
+  lo:"Bacterial keratitis in contact lens wearers is a sight-threatening emergency. Pseudomonas aeruginosa is the most common organism. Treatment: corneal scrapes before antibiotics (for culture), then intensive topical fluoroquinolone (levofloxacin or ofloxacin) hourly. Never start topical steroids before excluding infection.",
+  oe:["Chloramphenicol is inadequate — it does not cover Pseudomonas, the most common organism in contact lens keratitis. The frequency (one week review) is also dangerously delayed.",
+      "<strong>Correct.</strong> Stop lenses immediately. Take corneal scrapes (culture + sensitivities) before starting antibiotics. Intensive topical fluoroquinolone (levofloxacin 0.5% or ofloxacin) hourly. Same-day emergency ophthalmology referral.",
+      "Topical steroids are absolutely contraindicated until infection is excluded — they would accelerate corneal destruction in bacterial or acanthamoeba keratitis.",
+      "VA of 6/36 and a 3mm central infiltrate is not self-limiting overwear — this is a potentially blinding infection requiring emergency treatment."]
+},
+
+{ sys:'ophtho', topic:'Strabismus & Neuro-ophthalmology',
+  vig:`A 52-year-old hypertensive man presents with 2 days of binocular horizontal diplopia. On examination he cannot abduct his right eye beyond the midline. The right eye converges but cannot turn outward. All other eye movements are full.`,
+  stem:`Which cranial nerve is affected and what is the most important diagnosis to exclude first?`,
+  opts:["CN3 palsy — exclude posterior communicating artery aneurysm","CN4 palsy — exclude superior oblique trauma","CN6 (abducens) palsy — exclude raised intracranial pressure as the cause (false localising sign)","CN7 palsy — Bell's palsy affecting the extraocular muscles"],
+  ans:2,
+  lo:"CN6 palsy causes failure of abduction (lateral rectus). CN6 has the longest intracranial course and is prone to stretching in raised intracranial pressure — making isolated CN6 palsy a 'false localising sign' for raised ICP. In an adult with CN6 palsy, raised ICP must be excluded.",
+  oe:["CN3 palsy causes ptosis, a down-and-out eye, and typically a fixed dilated pupil (if compressive from PComm aneurysm). CN3 does not cause an isolated failure of abduction.",
+      "CN4 palsy causes a subtle vertical diplopia with head tilt — not a horizontal diplopia with failure of abduction.",
+      "<strong>Correct.</strong> Right CN6 palsy — lateral rectus paresis → failure of abduction → horizontal diplopia. CN6 has the longest intracranial course; in raised ICP, the nerve is stretched over the petrous apex. Urgent neuroimaging and ophthalmology review.",
+      "CN7 (facial nerve) controls facial muscles and orbicularis — it has no role in extraocular movements."]
+},
+
+{ sys:'ophtho', topic:'Neuro-ophthalmology',
+  vig:`A 68-year-old woman with a 1-month history of jaw claudication, scalp tenderness, and 2-week history of amaurosis fugax in the right eye presents with sudden painless complete loss of vision in the right eye. ESR is 104 mm/hr, CRP is 68 mg/L.`,
+  stem:`What is the diagnosis and what must happen in the next 30 minutes?`,
+  opts:["Central retinal artery occlusion — arrange elective neuro-ophthalmology referral","Giant cell arteritis with arteritic anterior ischaemic optic neuropathy — start high-dose IV methylprednisolone immediately to protect the other eye","Migraine with aura — reassure and review in 6 weeks","Functional visual loss — refer to psychiatry"],
+  ans:1,
+  lo:"GCA presenting with visual loss is an emergency. Arteritic AION causes sudden, irreversible vision loss. High-dose steroids (methylprednisolone 500mg–1g IV for 3 days) must be started immediately to protect the fellow eye — which can go blind within days if untreated.",
+  oe:["This is GCA until proven otherwise — jaw claudication, scalp tenderness, amaurosis fugax, ESR 104. An elective referral is inappropriate; the fellow eye is at imminent risk.",
+      "<strong>Correct.</strong> GCA with arteritic AION — a vascular emergency. IV methylprednisolone immediately to prevent blindness in the fellow eye. Temporal artery biopsy is arranged urgently but must NOT delay steroid treatment. Steroids do not recover lost vision but prevent contralateral loss.",
+      "This clinical picture — jaw claudication, scalp tenderness, ESR 104, sudden visual loss in a 68-year-old — is GCA until proven otherwise. Migraine does not present this way at this age.",
+      "There is a clear organic explanation (GCA with inflammatory markers and vascular risk history) — functional visual loss is not appropriate here."]
+},
+
+{ sys:'ophtho', topic:'Thyroid Eye Disease',
+  vig:`A 45-year-old with recently diagnosed Graves' disease presents with bilateral proptosis, periorbital oedema, and injected conjunctivae. She reports severe dryness and difficulty closing her eyes at night. VA is 6/6. Colour vision and RAPD are normal.`,
+  stem:`What is the most urgent complication to screen for in thyroid eye disease?`,
+  opts:["Corneal exposure keratopathy from lagophthalmos — treat with lubricants and tape at night","Compressive optic neuropathy from enlarged extraocular muscles — loss of colour vision or RAPD is an emergency requiring urgent decompression","Cosmetic disfigurement — refer to oculoplastics","Conjunctival prolapse requiring immediate surgery"],
+  ans:1,
+  lo:"Compressive optic neuropathy (CON) is the sight-threatening complication of TED. Enlarged extraocular muscles compress the optic nerve at the orbital apex. Colour vision and RAPD testing at every visit — any loss is an emergency requiring IV steroids or surgical decompression within days.",
+  oe:["Corneal exposure from lagophthalmos is the most common active complication and must be treated with lubricants and taping — but it is managed, not the most dangerous complication to screen for.",
+      "<strong>Correct.</strong> Compressive optic neuropathy is the sight-threatening emergency. Colour vision loss (red desaturation) or a new RAPD are the early signs — preceding VA loss. Any suspicion warrants urgent IV methylprednisolone or surgical orbital decompression.",
+      "Cosmetic rehabilitation (proptosis correction, strabismus surgery, eyelid surgery) is addressed in the inactive phase after the active inflammatory phase — not the urgent priority.",
+      "Conjunctival prolapse (chemosis) is uncomfortable and managed with lubricants — it is not the surgical emergency in TED."]
+}
+
+]; // end QB
+
+// ═══════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════
+const S = { sys:'all', mode:'normal', count:10, queue:[], ci:0, sel:null, confirmed:false, answers:[] };
+const LTR = ['A','B','C','D','E'];
+
+// ═══════════════════════════════════════════════════
+//  LAUNCHER
+// ═══════════════════════════════════════════════════
+function pickSys(btn, sys) {
+  document.querySelectorAll('.sys-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on'); S.sys = sys; updateSummary();
+}
+function pickMode(btn, mode) {
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on'); S.mode = mode; updateSummary();
+}
+function clampCount() {
+  const el = document.getElementById('count-input');
+  let v = parseInt(el.value) || 10;
+  if(v < 5) v = 5;
+  el.value = v;
+  updateSummary();
+}
+function updateSummary() {
+  const pool = QB.filter(q => S.sys === 'all' || q.sys === S.sys);
+  const n = Math.min(parseInt(document.getElementById('count-input').value) || 10, pool.length);
+  const syslbl = {all:'All Systems', obgyn:'OB / GYN', ophtho:'Ophthalmology'}[S.sys];
+  document.getElementById('launch-summary').innerHTML =
+    `<strong>${n}</strong> questions &nbsp;·&nbsp; <strong>${syslbl}</strong> &nbsp;·&nbsp; <strong>${S.mode === 'normal' ? 'Normal' : 'Exam'}</strong>`;
+  document.getElementById('sc-all').textContent = QB.length + ' questions';
+  document.getElementById('sc-obgyn').textContent = QB.filter(q => q.sys==='obgyn').length + ' questions';
+  document.getElementById('sc-ophtho').textContent = QB.filter(q => q.sys==='ophtho').length + ' questions';
+}
+
+function shuffle(a) {
+  const b = [...a];
+  for(let i = b.length-1; i > 0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [b[i],b[j]] = [b[j],b[i]];
+  }
+  return b;
+}
+
+function launch() {
+  clampCount();
+  const count = Math.max(5, parseInt(document.getElementById('count-input').value) || 10);
+  const pool = QB.filter(q => S.sys === 'all' || q.sys === S.sys);
+  S.queue = shuffle(pool).slice(0, Math.min(count, pool.length));
+  S.ci = 0;
+  S.answers = Array(S.queue.length).fill(null);
+  S.sel = null; S.confirmed = false;
+  show('screen-session');
+  buildSidebar();
+  renderQ();
+}
+
+// ═══════════════════════════════════════════════════
+//  SIDEBAR
+// ═══════════════════════════════════════════════════
+function buildSidebar() {
+  document.getElementById('sb-total').textContent = '/ ' + S.queue.length;
+  document.getElementById('sb-mode-txt').textContent = S.mode === 'normal' ? 'Normal mode' : 'Exam mode';
+  updateSidebar();
+}
+function updateSidebar() {
+  const qi = S.ci, total = S.queue.length;
+  document.getElementById('sb-big').childNodes[0].textContent = (qi+1) + ' ';
+  document.getElementById('sb-prog-lbl').textContent = `Question ${qi+1} of ${total}`;
+  document.getElementById('sb-bar-fill').style.width = Math.round((qi/total)*100) + '%';
+  let dots = '';
+  for(let i = 0; i < total; i++) {
+    let cls = '';
+    if(i === qi) cls = 'cur';
+    else if(S.answers[i] !== null) cls = S.answers[i] === S.queue[i].ans ? 'ok' : 'bad';
+    dots += `<div class="sb-dot ${cls}"></div>`;
+  }
+  document.getElementById('sb-dots').innerHTML = dots;
+}
+
+// ═══════════════════════════════════════════════════
+//  QUESTION
+// ═══════════════════════════════════════════════════
+function renderQ() {
+  const q = S.queue[S.ci];
+  S.sel = null; S.confirmed = false;
+  updateSidebar();
+  const isLast = S.ci === S.queue.length - 1;
+
+  const optsHtml = q.opts.map((o,i) => `
+    <button class="opt" id="opt-${i}" onclick="selectOpt(${i})">
+      <span class="opt-ltr">${LTR[i]}</span>
+      <span class="opt-txt">${o}</span>
+    </button>`).join('');
+
+  document.getElementById('q-area').innerHTML = `
+    <div class="q-meta">
+      <span class="q-num">Q${S.ci+1} / ${S.queue.length}</span>
+      <span class="q-sep"></span>
+      <span class="q-topic">${q.topic}</span>
+    </div>
+
+    <div class="vignette">
+      <div class="vig-label">Clinical scenario</div>
+      <div class="vig-text">${q.vig}</div>
+    </div>
+
+    <div class="q-stem">${q.stem}</div>
+
+    <div class="opts">${optsHtml}</div>
+
+    <div class="confirm-bar" id="confirm-bar">
+      <span class="confirm-hint">Lock in your answer — can't change after</span>
+      <button class="confirm-btn" onclick="confirmAnswer()">Confirm →</button>
+    </div>
+
+    <div class="exp-block" id="exp-block"></div>
+
+    <div class="next-wrap">
+      <button class="next-btn" id="next-btn" onclick="nextQ()">
+        ${isLast ? 'See results' : 'Next'} →
+      </button>
+    </div>
+  `;
+}
+
+function selectOpt(i) {
+  if(S.confirmed) return;
+  S.sel = i;
+  document.querySelectorAll('.opt').forEach((el, idx) => el.classList.toggle('sel', idx === i));
+  document.getElementById('confirm-bar').classList.add('show');
+}
+
+function confirmAnswer() {
+  if(S.sel === null) return;
+  S.confirmed = true;
+  S.answers[S.ci] = S.sel;
+  const q = S.queue[S.ci];
+  const sel = S.sel, correct = q.ans;
+  const isOk = sel === correct;
+
+  // colour options
+  document.querySelectorAll('.opt').forEach((el, i) => {
+    el.classList.add('locked');
+    el.classList.remove('sel');
+    if(i === correct)    el.classList.add('rev-ok');
+    else if(i === sel)   el.classList.add('rev-bad');
+    else                 el.classList.add('rev-dim');
+  });
+
+  document.getElementById('confirm-bar').classList.remove('show');
+
+  if(S.mode === 'normal') {
+    // per-option rows
+    const optRows = q.opts.map((o, i) => {
+      const isC = i === correct;
+      const txt = q.oe && q.oe[i] ? q.oe[i] : (isC ? q.exp : '');
+      return `<div class="exp-opt-row ${isC ? 'is-correct' : ''}">
+        <span class="exp-opt-ltr ${isC ? 'ok' : 'bad'}">${LTR[i]}</span>
+        <div class="exp-opt-body">${txt}</div>
+      </div>`;
+    }).join('');
+
+    const block = document.getElementById('exp-block');
+    block.innerHTML = `
+      <div class="exp-verdict">
+        <span class="exp-badge ${isOk ? 'ok' : 'bad'}">${isOk ? '✓ Correct' : '✗ Incorrect'}</span>
+        <span class="exp-correct-label">Correct: ${LTR[correct]}</span>
+      </div>
+      <div class="exp-opts">${optRows}</div>
+      <div class="exp-lo">
+        <div class="exp-lo-label">Learning objective</div>
+        <div class="exp-lo-text">${q.lo}</div>
+      </div>`;
+    block.classList.add('show');
+  } else {
+    // exam mode: minimal feedback, full breakdown at results
+    const block = document.getElementById('exp-block');
+    block.innerHTML = `
+      <div class="exp-verdict">
+        <span class="exp-badge ${isOk ? 'ok' : 'bad'}">${isOk ? '✓ Correct' : '✗ Incorrect'}</span>
+        <span class="exp-correct-label">Correct: ${LTR[correct]}</span>
+      </div>`;
+    block.classList.add('show');
+  }
+
+  document.getElementById('next-btn').classList.add('show');
+  updateSidebar();
+}
+
+function nextQ() {
+  if(S.ci + 1 < S.queue.length) { S.ci++; renderQ(); window.scrollTo(0,0); }
+  else showResults();
+}
+
+function exitSession() {
+  if(confirm('Exit this session?')) show('screen-launcher');
+}
+
+// ═══════════════════════════════════════════════════
+//  RESULTS
+// ═══════════════════════════════════════════════════
+function showResults() {
+  const total = S.queue.length;
+  let correct = 0, missed = [];
+  S.queue.forEach((q,i) => {
+    if(S.answers[i] === q.ans) correct++;
+    else missed.push(q.topic);
+  });
+  const pct = Math.round((correct/total)*100);
+  const gc  = pct>=80 ? '#2a6642' : pct>=60 ? '#8a6020' : '#c8452a';
+  const gl  = pct===100 ? 'Perfect.' : pct>=80 ? `${correct} of ${total}.` : pct>=60 ? 'Getting there.' : 'Review and retry.';
+  const gs  = pct===100 ? 'Every concept locked in.' : pct>=80 ? 'Solid. Look at what you missed.' : pct>=60 ? 'Good base. Gaps to close.' : 'Go back to the notes, then return.';
+
+  const r=54, circ=2*Math.PI*r, dash=(pct/100)*circ;
+  const uniqueMissed = [...new Set(missed)];
+
+  const qBlocks = S.queue.map((q,i) => {
+    const ch = S.answers[i], ok = ch === q.ans;
+    const opts = q.opts.map((o,oi) => {
+      let cls='';
+      if(oi===q.ans) cls='rk'; else if(oi===ch) cls='rw';
+      return `<div class="res-opt ${cls}"><span class="res-opt-ltr">${LTR[oi]}</span><span>${o}${oi===q.ans?' ✓':oi===ch?' ✗':''}</span></div>`;
+    }).join('');
+
+    const optExpRows = q.oe ? q.opts.map((o,oi) => {
+      const isC = oi===q.ans;
+      return `<div class="exp-opt-row ${isC?'is-correct':''}">
+        <span class="exp-opt-ltr ${isC?'ok':'bad'}">${LTR[oi]}</span>
+        <div class="exp-opt-body">${q.oe[oi]||''}</div>
+      </div>`;
+    }).join('') : '';
+
+    return `<div class="res-q ${ok?'ok':'bad'}">
+      <div class="res-q-hdr">
+        <span class="res-q-badge ${ok?'ok':'bad'}">${ok?'✓ Correct':'✗ Incorrect'}</span>
+        <span class="res-q-topic">Q${i+1} · ${q.topic}</span>
+      </div>
+      <div class="res-vig">${q.vig.replace(/<[^>]*>/g,'').substring(0,130)}…</div>
+      <div class="res-stem">${q.stem}</div>
+      <div class="res-opts">${opts}</div>
+      <div class="res-exp-wrap">
+        ${optExpRows ? `<div class="res-exp-opts">${optExpRows}</div>` : ''}
+        <div class="exp-lo">
+          <div class="exp-lo-label">Learning objective</div>
+          <div class="exp-lo-text">${q.lo}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('res-content').innerHTML = `
+    <div class="res-top">
+      <div class="score-ring">
+        <svg width="128" height="128" viewBox="0 0 128 128">
+          <circle cx="64" cy="64" r="${r}" fill="none" stroke="#e2ddd3" stroke-width="7"/>
+          <circle cx="64" cy="64" r="${r}" fill="none" stroke="${gc}" stroke-width="7"
+            stroke-dasharray="${dash} ${circ}" stroke-linecap="round"/>
+        </svg>
+        <div class="score-inner">
+          <div class="score-n">${correct}/${total}</div>
+          <div class="score-pct">${pct}%</div>
+        </div>
+      </div>
+      <div>
+        <div class="res-grade"><em>${gl}</em></div>
+        <div class="res-sub">${gs}</div>
+        <div class="res-tally">
+          <span><span class="td ok"></span>${correct} correct</span>
+          <span><span class="td bad"></span>${total-correct} missed</span>
+        </div>
+      </div>
+    </div>
+
+    ${uniqueMissed.length ? `
+      <div class="res-section-label">Topics to revisit</div>
+      <div class="focus-chips">${uniqueMissed.map(t=>`<div class="focus-chip">${t}</div>`).join('')}</div>
+    ` : ''}
+
+    <div class="res-section-label">Full breakdown</div>
+    <div class="res-list">${qBlocks}</div>
+
+    <div class="res-actions">
+      <button class="ra-retry" onclick="retrySession()">↺ &nbsp;Retry same questions</button>
+      <button class="ra-new" onclick="show('screen-launcher');updateSummary()">New session →</button>
+    </div>
+  `;
+
+  show('screen-results');
+}
+
+function retrySession() {
+  S.ci=0; S.answers=Array(S.queue.length).fill(null);
+  S.sel=null; S.confirmed=false;
+  show('screen-session'); buildSidebar(); renderQ();
+}
+
+function show(id) {
+  ['screen-launcher','screen-session','screen-results'].forEach(s => {
+    document.getElementById(s).style.display = s===id ? 'block' : 'none';
+  });
+  window.scrollTo(0,0);
+}
+
+updateSummary();
+</script>
+</body>
+</html>
