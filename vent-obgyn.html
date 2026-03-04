@@ -2,429 +2,1241 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VENT — Finally breathe.</title>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<title>VENT — OB/GYN</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f5f2eb;--bg2:#ede9e0;--bg3:#e4dfd4;--ink:#1a1510;--ink2:#3d3628;--ink3:#7a6f5e;--ink4:#b5a898;--accent:#c8452a;--accent2:#e85d3f;--border:#d8d2c6;--white:#faf8f4;}
-*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
-body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;opacity:.5;}
-@media(hover:hover) and (pointer:fine){
-  body{cursor:none;}
-  #cdot{position:fixed;width:8px;height:8px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform .15s;}
-  #cring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(200,69,42,.35);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s;}
-}
-nav{display:flex;justify-content:space-between;align-items:center;padding:28px 64px;position:sticky;top:0;z-index:500;background:rgba(245,242,235,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
-.logo{display:flex;align-items:center;gap:14px;text-decoration:none;}
-.logo-name{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:4px;color:var(--ink);}
-.nav-links{display:flex;gap:40px;}
-.nav-links a{font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);text-decoration:none;transition:color .2s;}
-.nav-links a:hover{color:var(--ink);}
-.nav-pill{background:var(--ink);color:var(--bg);padding:11px 26px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border-radius:100px;transition:all .2s;}
-.nav-pill:hover{background:var(--accent);}
-.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
-.nav-hamburger span{display:block;width:24px;height:2px;background:var(--ink);border-radius:2px;transition:all .3s;}
-.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.nav-drawer{display:none;position:fixed;inset:0;top:73px;background:rgba(245,242,235,.98);backdrop-filter:blur(24px);z-index:499;flex-direction:column;justify-content:center;align-items:center;gap:44px;opacity:0;transition:opacity .3s;}
-.nav-drawer.open{opacity:1;}
-.nav-drawer a{font-family:'Instrument Serif',serif;font-size:clamp(30px,8vw,52px);font-weight:400;font-style:italic;color:var(--ink);text-decoration:none;transition:color .2s;}
-.nav-drawer a:hover{color:var(--accent);}
-.nav-drawer .drawer-pill{font-family:'Syne',sans-serif;font-style:normal;font-size:15px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:var(--accent);color:white;padding:15px 36px;border-radius:100px;margin-top:8px;}
-/* HERO */
-.hero{min-height:96vh;display:grid;grid-template-columns:1fr 1fr;}
-.hero-l{padding:80px 64px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border);}
-.hero-kick{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:var(--ink4);text-transform:uppercase;margin-bottom:48px;display:flex;align-items:center;gap:12px;opacity:0;animation:fu .7s ease forwards .1s;}
-.hero-kick::before{content:'—';color:var(--accent);}
-.hero-hl{font-family:'Instrument Serif',serif;font-size:clamp(64px,7.5vw,108px);line-height:.93;color:var(--ink);margin-bottom:44px;font-weight:400;opacity:0;animation:fu .7s ease forwards .25s;}
-.hero-hl em{font-style:italic;color:var(--accent);}
-.hero-body{font-size:17px;color:var(--ink3);line-height:1.75;max-width:420px;margin-bottom:44px;opacity:0;animation:fu .7s ease forwards .4s;}
-.hero-body strong{color:var(--ink);}
-.hero-ctas{display:flex;align-items:center;gap:24px;flex-wrap:wrap;opacity:0;animation:fu .7s ease forwards .55s;}
-.btn-p{background:var(--accent);color:white;padding:16px 36px;border-radius:100px;text-decoration:none;font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;transition:all .25s;display:inline-block;}
-.btn-p:hover{background:var(--ink);transform:translateY(-2px);box-shadow:0 12px 32px rgba(26,21,16,.18);}
-.btn-g{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink3);text-decoration:none;letter-spacing:1px;display:flex;align-items:center;gap:8px;transition:color .2s;}
-.btn-g:hover{color:var(--ink);}
-/* HERO RIGHT — BRAND PANEL */
-.hero-r{background:var(--ink);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-.hero-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(200,69,42,.15),transparent 60%);}
-.particle{position:absolute;width:3px;height:3px;background:var(--accent);border-radius:50%;opacity:0;animation:fp linear infinite;}
-@keyframes fp{0%{transform:translateY(100vh);opacity:0;}10%{opacity:.5;}90%{opacity:.2;}100%{transform:translateY(-80px);opacity:0;}}
-.hero-brand-panel{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:28px;opacity:0;animation:fu 1s ease forwards .3s;}
-.hbp-logo{filter:drop-shadow(0 0 48px rgba(200,69,42,.28));}
-.hbp-name{font-family:'Syne',sans-serif;font-size:72px;font-weight:800;letter-spacing:20px;color:rgba(245,242,235,.9);}
-.hbp-sub{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;color:rgba(245,242,235,.22);text-transform:uppercase;}
-.hbp-stats{display:flex;align-items:center;gap:32px;margin-top:16px;padding:24px 40px;border:1px solid rgba(245,242,235,.07);}
-.hbp-stat{display:flex;flex-direction:column;align-items:center;gap:6px;}
-.hbp-stat-n{font-family:'Instrument Serif',serif;font-size:28px;font-style:italic;color:var(--accent2);}
-.hbp-stat-l{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(245,242,235,.25);text-transform:uppercase;}
-.hbp-divider{width:1px;height:40px;background:rgba(245,242,235,.08);}
-/* SPECIALTIES */
-.specs{padding:120px 64px;max-width:1360px;margin:0 auto;}
-.sec-kick{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;color:var(--ink4);text-transform:uppercase;margin-bottom:16px;}
-.sec-hl{font-family:'Instrument Serif',serif;font-size:clamp(40px,5vw,64px);font-weight:400;color:var(--ink);line-height:1.05;margin-bottom:16px;}
-.sec-hl em{font-style:italic;color:var(--accent);}
-.sec-desc{font-size:16px;color:var(--ink3);max-width:500px;line-height:1.65;margin-bottom:64px;}
-.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);}
-.sc{background:var(--white);padding:40px;transition:all .3s cubic-bezier(.16,1,.3,1);text-decoration:none;display:flex;flex-direction:column;gap:18px;position:relative;overflow:hidden;}
-.sc::after{content:'';position:absolute;inset:0;background:var(--ink);transform:translateY(101%);transition:transform .42s cubic-bezier(.16,1,.3,1);z-index:0;}
-.sc:not(.soon):hover::after{transform:translateY(0);}
-.sc>*{position:relative;z-index:1;}
-.sc:not(.soon):hover .sc-title,.sc:not(.soon):hover .sc-num{color:rgba(245,242,235,.9);}
-.sc:not(.soon):hover .sc-desc{color:rgba(245,242,235,.45);}
-.sc:not(.soon):hover .sc-meta{color:rgba(245,242,235,.3);}
-.sc:not(.soon):hover .sc-arr{background:var(--accent);color:white;transform:rotate(45deg);}
-.sc-icon{font-size:30px;}
-.sc-num{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--ink4);transition:color .3s;}
-.sc-title{font-family:'Instrument Serif',serif;font-size:27px;font-weight:400;color:var(--ink);line-height:1.1;transition:color .3s;}
-.sc-desc{font-size:13px;color:var(--ink3);line-height:1.65;flex:1;transition:color .3s;}
-.sc-foot{display:flex;justify-content:space-between;align-items:center;}
-.sc-meta{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink4);transition:color .3s;}
-.sc-arr{width:34px;height:34px;background:var(--bg2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--ink3);transition:all .3s;}
-.sc.soon{cursor:default;}
-.soon-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--ink4);background:var(--bg3);border:1px solid var(--border);padding:3px 10px;border-radius:100px;text-transform:uppercase;width:fit-content;}
-.sc-notify{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--accent);text-transform:uppercase;background:none;border:none;cursor:pointer;padding:0;transition:opacity .2s;}
-.sc-notify:hover{opacity:.6;}
-.sc-notify:disabled{opacity:.4;cursor:default;}
-/* STORY */
-.story{background:var(--ink);padding:120px 64px;}
-.story-in{max-width:1200px;margin:0 auto;}
-.s-eye{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;color:var(--accent);text-transform:uppercase;margin-bottom:80px;display:flex;align-items:center;gap:16px;}
-.s-eye::after{content:'';flex:1;height:1px;background:rgba(245,242,235,.1);}
-.s-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;}
-.s-left{position:sticky;top:120px;}
-.s-hl{font-family:'Instrument Serif',serif;font-size:clamp(40px,5vw,64px);line-height:1.1;color:var(--bg);font-weight:400;margin-bottom:32px;}
-.s-hl em{font-style:italic;color:var(--accent2);}
-.mb{margin-top:48px;border:1px solid rgba(245,242,235,.1);padding:32px;}
-.mb-t{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(245,242,235,.25);text-transform:uppercase;margin-bottom:24px;}
-.mb-r{display:flex;align-items:start;gap:16px;padding:16px 0;border-bottom:1px solid rgba(245,242,235,.07);}
-.mb-r:last-child{border-bottom:none;}
-.mb-ico{width:32px;height:32px;background:rgba(200,69,42,.15);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;}
-.mb-w{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--accent2);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
-.mb-d{font-size:13px;color:rgba(245,242,235,.62);line-height:1.6;}
-.s-right{padding-top:8px;}
-.ch{margin-bottom:60px;}
-.ch-n{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:18px;}
-.ch-t{font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;color:var(--bg);margin-bottom:14px;line-height:1.3;}
-.ch-b{font-size:15px;color:rgba(245,242,235,.62);line-height:1.8;}
-.ch-b strong{color:rgba(245,242,235,.88);}
-/* WHAT */
-.what{padding:120px 64px;max-width:1200px;margin:0 auto;}
-.w-hdr{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid var(--border);padding-bottom:32px;margin-bottom:80px;}
-.w-hl{font-family:'Instrument Serif',serif;font-size:clamp(40px,5vw,64px);font-weight:400;color:var(--ink);line-height:1.1;}
-.w-hl em{font-style:italic;color:var(--accent);}
-.w-note{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink4);max-width:220px;text-align:right;line-height:1.6;}
-.w-rows{display:flex;flex-direction:column;gap:2px;}
-.wr{display:grid;grid-template-columns:72px 1fr 1fr;background:var(--border);gap:1px;transition:all .25s;}
-.wr:hover .wrn{background:var(--accent);color:white;}
-.wr:hover .wrm{background:var(--bg3);}
-.wrn{background:var(--bg2);display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:28px;font-style:italic;color:var(--ink4);transition:all .25s;}
-.wrm{background:var(--bg);padding:32px;transition:background .25s;}
-.wrm h3{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px;}
-.wrm p{font-size:14px;color:var(--ink3);line-height:1.7;}
-.wrx{background:var(--bg);padding:32px;}
-.wrxl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--ink4);text-transform:uppercase;margin-bottom:8px;}
-.wrxv{font-size:14px;color:var(--ink2);font-weight:500;line-height:1.6;}
-/* BREATHE */
-.breathe{background:var(--accent);padding:120px 64px;text-align:center;position:relative;overflow:hidden;}
-.bring{position:absolute;border:1px solid rgba(255,255,255,.15);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);animation:br linear infinite;}
-.bring:nth-child(1){animation-duration:4s;animation-delay:0s;}.bring:nth-child(2){animation-duration:4s;animation-delay:1s;}.bring:nth-child(3){animation-duration:4s;animation-delay:2s;}.bring:nth-child(4){animation-duration:4s;animation-delay:3s;}
-@keyframes br{0%{width:80px;height:80px;opacity:.8;}100%{width:1000px;height:1000px;opacity:0;}}
-.bc{position:relative;z-index:1;}
-.bc h2{font-family:'Instrument Serif',serif;font-size:clamp(48px,9vw,120px);font-weight:400;color:white;line-height:1;margin-bottom:28px;}
-.bc h2 em{font-style:italic;opacity:.65;}
-.bc p{font-size:19px;color:rgba(255,255,255,.82);max-width:440px;margin:0 auto 36px;line-height:1.65;}
-.bc-cta{display:inline-block;background:white;color:var(--accent);padding:16px 40px;border-radius:100px;font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;text-decoration:none;transition:all .25s;}
-.bc-cta:hover{background:var(--ink);color:white;transform:translateY(-2px);}
-/* CTA */
-.cta{background:var(--ink);padding:140px 64px;position:relative;overflow:hidden;}
-.ctabg{position:absolute;bottom:-60px;right:-20px;font-family:'Instrument Serif',serif;font-size:300px;color:rgba(245,242,235,.025);pointer-events:none;font-style:italic;line-height:1;}
-.cta-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;position:relative;z-index:1;}
-.c-hl{font-family:'Instrument Serif',serif;font-size:clamp(52px,6vw,88px);font-weight:400;color:var(--bg);line-height:1.05;margin-bottom:28px;}
-.c-hl em{font-style:italic;color:var(--accent2);}
-.c-body{font-size:16px;color:rgba(245,242,235,.72);line-height:1.75;}
-.c-form{display:flex;flex-direction:column;gap:14px;}
-.c-field{background:rgba(245,242,235,.06);border:1px solid rgba(245,242,235,.12);color:var(--bg);padding:18px 24px;font-size:15px;font-family:'Syne',sans-serif;border-radius:2px;outline:none;transition:border-color .2s;}
-.c-field:focus{border-color:var(--accent2);}
-.c-field::placeholder{color:rgba(245,242,235,.3);}
-select.c-field option{background:var(--ink);}
-.c-btn{background:var(--accent);color:white;border:none;padding:20px;font-size:14px;font-weight:700;font-family:'Syne',sans-serif;letter-spacing:1.5px;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:all .2s;}
-.c-btn:hover{background:var(--accent2);transform:translateY(-2px);}
-.c-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
-.c-note{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(245,242,235,.32);text-align:center;}
-.c-err{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent2);display:none;padding:2px 0;}
-.c-err.show{display:block;}
-/* FOOTER */
-footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:56px 64px;}
-.f-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;gap:40px;align-items:center;}
-.f-logo{display:flex;align-items:center;gap:14px;margin-bottom:10px;}
-.f-name{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;letter-spacing:4px;color:var(--bg);}
-.f-tag{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(245,242,235,.32);line-height:1.7;}
-.f-links{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;}
-.f-links a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(245,242,235,.38);text-decoration:none;text-transform:uppercase;transition:color .2s;}
-.f-links a:hover{color:var(--bg);}
-.f-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
-.f-social{display:flex;gap:20px;}
-.f-social a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(245,242,235,.38);text-decoration:none;text-transform:uppercase;transition:color .2s;}
-.f-social a:hover{color:var(--accent);}
-.f-copy{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(245,242,235,.18);letter-spacing:1px;}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
-@keyframes fu{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--ink);color:var(--bg);padding:13px 28px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.5px;z-index:9999;opacity:0;transition:all .4s cubic-bezier(.16,1,.3,1);pointer-events:none;border:1px solid rgba(245,242,235,.12);white-space:nowrap;}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-@media(max-width:1024px){
-  nav{padding:20px 24px;}.nav-links{display:none;}.nav-pill{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:flex;}
-  .hero{grid-template-columns:1fr;}.hero-r{display:none;}.hero-l{padding:60px 24px;border-right:none;min-height:auto;}
-  .specs{padding:80px 24px;}.spec-grid{grid-template-columns:1fr 1fr;}
-  .story{padding:80px 24px;}.s-grid{grid-template-columns:1fr;gap:60px;}.s-left{position:static;}
-  .what{padding:80px 24px;}.w-hdr{flex-direction:column;align-items:start;gap:16px;}.w-note{text-align:left;max-width:100%;}
-  .wr{grid-template-columns:1fr;}.wrn{height:52px;}
-  .breathe{padding:80px 24px;}.cta{padding:80px 24px;}.cta-in{grid-template-columns:1fr;gap:60px;}
-  footer{padding:40px 24px;}.f-in{grid-template-columns:1fr;text-align:center;}.f-logo{justify-content:center;}.f-links{justify-content:center;}.f-right{align-items:center;}
-}
-@media(max-width:640px){.spec-grid{grid-template-columns:1fr;}.hero-ctas{flex-direction:column;align-items:flex-start;gap:16px;}}
 
-@keyframes breathe{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.35;transform:scale(.75);}}
-.breathing-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;color:var(--accent);display:flex;align-items:center;gap:6px;margin-top:4px;transition:color .3s;}
-.breathing-dot{width:5px;height:5px;background:var(--accent);border-radius:50%;display:inline-block;animation:breathe 2s ease infinite;flex-shrink:0;transition:background .3s;}
-.sc:not(.soon):hover .breathing-badge{color:rgba(245,242,235,.55);}
-.sc:not(.soon):hover .breathing-dot{background:rgba(245,242,235,.55);}
+:root{
+  --bg:#f5f2eb;--bg2:#ede9e0;--bg3:#e4dfd4;
+  --ink:#1a1510;--ink2:#3d3628;--ink3:#5c5244;--ink4:#b5a898;
+  --accent:#c8452a;--accent2:#e85d3f;
+  --border:#d8d2c6;--white:#faf8f4;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9997;opacity:.5;}
+
+/* ── LANGUAGE ── */
+/* In EN mode: show .en, hide .ar */
+/* In AR mode: show .ar, hide .en */
+.ar { display: none !important; }
+.en { display: block; }
+
+body.ar-mode .ar { display: block !important; }
+body.ar-mode .en { display: none !important; }
+body.ar-mode .note-modal, body.ar-mode .note-page { direction: rtl; }
+body.ar-mode .ar { font-family: 'Noto Naskh Arabic', serif; font-size: 17px; line-height: 2.1; }
+
+/* inline elements */
+span.ar { display: none !important; }
+body.ar-mode span.ar { display: inline !important; }
+body.ar-mode span.en { display: none !important; }
+span.en { display: inline; }
+
+.drug { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: rgba(200,69,42,.09); border: 1px solid rgba(200,69,42,.22); padding: 1px 7px; border-radius: 3px; color: var(--accent); direction: ltr; display: inline-block; }
+
+/* LANG TOGGLE */
+.lang-toggle { display: flex; gap: 2px; background: rgba(245,242,235,.08); border: 1px solid rgba(245,242,235,.15); border-radius: 100px; padding: 3px; }
+.lbtn { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1px; color: rgba(245,242,235,.4); padding: 7px 16px; border-radius: 100px; border: none; background: none; cursor: pointer; transition: all .2s; }
+.lbtn.on { background: var(--accent); color: white; }
+
+/* OVERLAY */
+.overlay { position: fixed; inset: 0; background: rgba(8,5,3,.93); backdrop-filter: blur(18px); z-index: 10000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .35s; padding: 20px; }
+.overlay.open { opacity: 1; pointer-events: all; }
+.note-modal { background: var(--white); max-width: 960px; width: 100%; max-height: 92vh; overflow-y: auto; border-radius: 2px; transform: translateY(36px) scale(.97); transition: transform .45s cubic-bezier(.16,1,.3,1); box-shadow: 0 80px 160px rgba(0,0,0,.7); scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+.overlay.open .note-modal { transform: translateY(0) scale(1); }
+.note-modal::-webkit-scrollbar { width: 3px; }
+.note-modal::-webkit-scrollbar-thumb { background: var(--border); }
+
+/* MODAL BAR */
+.mbar { position: sticky; top: 0; background: var(--ink); padding: 15px 36px; display: flex; justify-content: space-between; align-items: center; z-index: 5; border-bottom: 1px solid rgba(255,255,255,.06); }
+.mbar-l { display: flex; align-items: center; gap: 12px; }
+.mpulse { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s ease infinite; flex-shrink: 0; }
+@keyframes pulse { 0%,100%{opacity:1;}50%{opacity:.2;} }
+.mbc { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; color: rgba(245,242,235,.28); text-transform: uppercase; }
+.mbar-r { display: flex; align-items: center; gap: 8px; }
+.mclose { width: 32px; height: 32px; background: rgba(255,255,255,.06); border: none; border-radius: 50%; color: rgba(255,255,255,.45); font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+.mclose:hover { background: var(--accent); color: white; }
+.mexpand { width: 32px; height: 32px; background: rgba(255,255,255,.06); border: none; border-radius: 50%; color: rgba(255,255,255,.45); font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+.mexpand:hover { background: rgba(255,255,255,.14); color: white; }
+
+/* FULL PAGE */
+.note-page { display: none; min-height: 100vh; background: var(--white); }
+.note-page.active { display: block; }
+.pnav { display: flex; justify-content: space-between; align-items: center; background: var(--ink); padding: 18px 64px; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,.06); }
+.pnav-back { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(245,242,235,.45); letter-spacing: 1px; cursor: pointer; border: none; background: none; transition: color .2s; }
+.pnav-back:hover { color: rgba(245,242,235,.9); }
+.page-inner { max-width: 960px; margin: 0 auto; }
+
+/* ══════════════════════════════
+   NOTE CONTENT STYLES
+══════════════════════════════ */
+
+/* HERO */
+.n-hero { background: var(--ink); padding: 64px 64px 52px; position: relative; overflow: hidden; }
+.nhero-glow { position: absolute; right: -60px; top: -60px; width: 380px; height: 380px; background: radial-gradient(circle,rgba(200,69,42,.11),transparent 70%); pointer-events: none; }
+.n-rule { width: 36px; height: 2px; background: var(--accent); margin-bottom: 22px; }
+.n-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 14px; }
+.n-title { font-family: 'Instrument Serif', serif; font-size: clamp(44px,6vw,72px); font-weight: 400; color: var(--white); line-height: .95; margin-bottom: 20px; }
+.n-oneliner { font-size: 17px; color: rgba(245,242,235,.48); line-height: 1.75; max-width: 560px; margin-bottom: 32px; font-style: italic; }
+.n-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+.nbadge { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(245,242,235,.32); background: rgba(245,242,235,.05); border: 1px solid rgba(245,242,235,.1); padding: 5px 13px; border-radius: 100px; }
+
+/* KEY VISUAL */
+.n-visual { background: var(--bg2); border-top: 3px solid var(--accent); border-bottom: 1px solid var(--border); }
+.nv-hdr { display: flex; justify-content: space-between; align-items: center; padding: 16px 64px; border-bottom: 1px solid var(--border); }
+.nv-title { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--ink); }
+.nv-sub { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink4); }
+.nv-body { padding: 40px 64px; }
+.nv-body svg { width: 100%; height: auto; display: block; }
+
+/* NOTE BODY */
+.nbody { padding: 56px 64px 80px; background: var(--white); }
+
+/* opener */
+.n-opener { padding-bottom: 44px; border-bottom: 1px solid var(--border); margin-bottom: 44px; }
+.n-opener-kicker { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 14px; }
+.n-opener-hl { font-family: 'Instrument Serif', serif; font-size: 30px; color: var(--ink); line-height: 1.15; margin-bottom: 18px; }
+.n-opener-body { font-size: 16px; color: var(--ink3); line-height: 1.9; }
+.n-opener-body strong { color: var(--ink); font-weight: 600; }
+
+/* section heading */
+.shead { display: flex; align-items: center; gap: 18px; margin: 52px 0 20px; }
+.shead-n { font-family: 'Instrument Serif', serif; font-size: 13px; font-style: italic; color: var(--accent); width: 20px; flex-shrink: 0; }
+.shead-t { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--ink); }
+.shead-l { flex: 1; height: 1px; background: var(--border); }
+
+/* body text */
+.nb { font-size: 16px; color: var(--ink3); line-height: 1.9; margin-bottom: 20px; }
+.nb strong { color: var(--ink); font-weight: 600; }
+
+/* POINTS — intentional list */
+.points { display: flex; flex-direction: column; gap: 2px; margin: 20px 0 28px; }
+.point { display: grid; grid-template-columns: 52px 1fr; background: var(--border); gap: 1px; transition: all .15s; }
+.pt-n { background: var(--bg2); display: flex; align-items: flex-start; justify-content: center; padding-top: 18px; font-family: 'Instrument Serif', serif; font-size: 20px; font-style: italic; color: var(--ink4); min-height: 72px; }
+.pt-b { background: var(--white); padding: 18px 24px; }
+.pt-title { font-size: 15px; font-weight: 700; color: var(--ink); display: block; margin-bottom: 7px; }
+.pt-body { font-size: 14px; color: var(--ink3); line-height: 1.8; }
+.pt-body .drug { font-size: 11px; }
+.point:hover .pt-n { background: var(--accent); color: white; }
+.point:hover .pt-b { background: var(--bg3); }
+
+/* BOX — important things */
+.box { border: 1px solid var(--border); margin: 24px 0 28px; overflow: hidden; }
+.box-hdr { background: var(--ink); padding: 13px 22px; display: flex; align-items: center; gap: 10px; }
+.box-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
+.box-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; color: rgba(245,242,235,.45); text-transform: uppercase; }
+.box-body { padding: 22px; background: var(--bg2); font-size: 15px; color: var(--ink2); line-height: 1.8; }
+.box-body strong { color: var(--ink); }
+.box-body ul { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 7px; margin-top: 10px; }
+.box-body ul li { font-size: 14px; color: var(--ink2); line-height: 1.7; padding-left: 18px; position: relative; }
+.box-body ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 11px; top: 3px; }
+.box-body ul li strong { color: var(--ink); }
+
+/* IMAGE BLOCK — real images */
+.img-block { margin: 32px 0; background: var(--ink); overflow: hidden; }
+.img-block-hdr { padding: 13px 22px; border-bottom: 1px solid rgba(245,242,235,.07); display: flex; justify-content: space-between; align-items: center; }
+.img-block-title { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; color: rgba(245,242,235,.38); text-transform: uppercase; }
+.img-block-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); }
+.img-block-body { display: flex; gap: 0; }
+.img-block-fig { flex: 1; min-width: 0; }
+.img-block-fig img { width: 100%; height: 260px; object-fit: cover; display: block; filter: brightness(.9) contrast(1.05); }
+.img-block-text { flex: 1; min-width: 200px; padding: 28px 28px; display: flex; flex-direction: column; justify-content: center; }
+.img-block-text h4 { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: rgba(245,242,235,.9); margin-bottom: 14px; }
+.img-block-text ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.img-block-text ul li { font-size: 13px; color: rgba(245,242,235,.58); line-height: 1.65; padding-left: 16px; position: relative; }
+.img-block-text ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 10px; top: 2px; }
+.img-block-text ul li strong { color: rgba(245,242,235,.88); }
+.img-block-single img { width: 100%; max-height: 340px; object-fit: cover; display: block; filter: brightness(.88) contrast(1.08); }
+.img-block-single .img-caption { padding: 12px 22px; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: rgba(245,242,235,.25); letter-spacing: 1px; }
+
+/* MECH */
+.mech { background: var(--ink); padding: 26px 28px; margin: 20px 0; border-left: 3px solid var(--accent); }
+.mech-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; }
+.mech p { font-size: 15px; color: rgba(245,242,235,.62); line-height: 1.85; }
+.mech p strong { color: rgba(245,242,235,.9); }
+
+/* WARN */
+.warn { background: #fff8f5; border: 1px solid #f0c0b0; border-left: 3px solid var(--accent); padding: 20px 24px; margin: 24px 0; display: flex; gap: 16px; }
+.warn-ico { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+.warn-lbl { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
+.warn p { font-size: 14px; color: var(--ink2); line-height: 1.75; }
+.warn p strong { color: var(--accent); }
+
+/* 2 col */
+.twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 20px 0; background: var(--border); }
+.tcc { padding: 28px; background: var(--white); }
+.tcc.shade { background: var(--bg2); }
+.tcc-lbl { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--ink4); text-transform: uppercase; margin-bottom: 10px; }
+.tcc-title { font-family: 'Instrument Serif', serif; font-size: 20px; color: var(--ink); margin-bottom: 10px; }
+.tcc-body { font-size: 14px; color: var(--ink3); line-height: 1.75; }
+.tcc-body strong { color: var(--ink); }
+
+/* INSIGHT */
+.insight { margin: 56px -64px 0; background: var(--ink); padding: 52px 64px; position: relative; overflow: hidden; }
+.insight::before { content: ''; position: absolute; right: -40px; top: -40px; width: 260px; height: 260px; background: radial-gradient(circle,rgba(200,69,42,.07),transparent 70%); pointer-events: none; }
+.ins-kicker { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.ins-kicker::before { content: '//'; color: rgba(200,69,42,.35); }
+.ins-hl { font-family: 'Instrument Serif', serif; font-size: clamp(26px,3.5vw,40px); color: var(--white); line-height: 1.2; margin-bottom: 16px; }
+.ins-hl em { color: var(--accent2); font-style: italic; }
+.ins-body { font-size: 16px; color: rgba(245,242,235,.52); line-height: 1.9; max-width: 640px; position: relative; z-index: 1; }
+.ins-body strong { color: rgba(245,242,235,.86); }
+
+/* NOTE FOOTER */
+.nfoot { padding: 32px 0 0; border-top: 1px solid var(--border); margin-top: 48px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.ntag { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--ink4); background: var(--bg2); border: 1px solid var(--border); padding: 4px 11px; border-radius: 100px; }
+.ntime { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--ink4); margin-left: auto; }
+
+/* ══ PAGE CHROME ══ */
+nav { display: flex; justify-content: space-between; align-items: center; padding: 24px 64px; position: sticky; top: 0; z-index: 500; background: rgba(245,242,235,.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo-name { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: 4px; color: var(--ink); }
+.nav-back { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink3); text-decoration: none; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; transition: color .2s; }
+.nav-back:hover { color: var(--ink); }
+.nav-pill { background: var(--ink); color: var(--bg); padding: 10px 24px; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; border-radius: 100px; transition: all .2s; }
+.nav-pill:hover { background: var(--accent); }
+
+.shero { background: var(--ink); padding: 88px 64px 64px; position: relative; overflow: hidden; }
+.shero-glow { position: absolute; right: -100px; top: -100px; width: 500px; height: 500px; background: radial-gradient(circle,rgba(200,69,42,.08),transparent 70%); pointer-events: none; }
+.shero-kick { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
+.shero-kick::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
+.shero-h1 { font-family: 'Instrument Serif', serif; font-size: clamp(52px,7.5vw,88px); font-weight: 400; color: var(--white); line-height: .95; margin-bottom: 24px; }
+.shero-h1 em { font-style: italic; color: var(--accent2); }
+.shero-desc { font-size: 16px; color: rgba(245,242,235,.42); line-height: 1.8; max-width: 560px; margin-bottom: 48px; }
+.shero-stats { display: flex; gap: 52px; }
+.sv { font-family: 'Instrument Serif', serif; font-size: 40px; color: var(--accent); line-height: 1; }
+.sl { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(245,242,235,.24); letter-spacing: 1px; margin-top: 5px; }
+
+.notes-sec { padding: 80px 64px; max-width: 1360px; margin: 0 auto; }
+.ns-hdr { margin-bottom: 52px; }
+.ns-h2 { font-family: 'Instrument Serif', serif; font-size: clamp(34px,4.5vw,52px); font-weight: 400; color: var(--ink); line-height: 1.05; margin-bottom: 10px; }
+.ns-h2 em { font-style: italic; color: var(--accent); }
+.ns-sub { font-size: 14px; color: var(--ink3); line-height: 1.7; max-width: 460px; margin-bottom: 24px; }
+.ns-filters { display: flex; gap: 8px; }
+.filt { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink4); background: none; border: 1px solid var(--border); padding: 7px 16px; border-radius: 100px; cursor: pointer; transition: all .2s; letter-spacing: .5px; }
+.filt.on, .filt:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+/* CARDS */
+.notes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: var(--border); }
+.nc { background: var(--white); padding: 36px 32px 28px; cursor: pointer; transition: all .3s cubic-bezier(.16,1,.3,1); display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.nc::after { content: ''; position: absolute; inset: 0; background: var(--ink); transform: translateY(101%); transition: transform .42s cubic-bezier(.16,1,.3,1); z-index: 0; }
+.nc:not(.soon):hover::after { transform: translateY(0); }
+.nc > * { position: relative; z-index: 1; }
+.nc:not(.soon):hover .nc-type, .nc:not(.soon):hover .nc-num { color: rgba(200,69,42,.7); }
+.nc:not(.soon):hover .nc-title { color: rgba(245,242,235,.95); }
+.nc:not(.soon):hover .nc-preview { color: rgba(245,242,235,.45); }
+.nc:not(.soon):hover .nc-meta { color: rgba(245,242,235,.3); }
+.nc:not(.soon):hover .nc-arr { background: var(--accent); color: white; transform: rotate(45deg); }
+.nc-type { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 18px; transition: color .3s; }
+.nc-num { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--ink4); margin-bottom: 8px; transition: color .3s; }
+.diff { display: flex; gap: 4px; margin-bottom: 12px; }
+.dd { width: 7px; height: 7px; border-radius: 50%; background: var(--border); }
+.dd.on { background: var(--accent); }
+.nc-title { font-family: 'Instrument Serif', serif; font-size: 27px; font-weight: 400; color: var(--ink); line-height: 1.05; margin-bottom: 11px; transition: color .3s; }
+.nc-preview { font-size: 14px; color: var(--ink3); line-height: 1.65; flex: 1; margin-bottom: 22px; transition: color .3s; }
+.nc-foot { display: flex; justify-content: space-between; align-items: center; }
+.nc-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink4); transition: color .3s; }
+.nc-arr { width: 34px; height: 34px; background: var(--bg2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ink3); font-size: 14px; flex-shrink: 0; transition: all .3s; }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@keyframes fu { from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);} }
+.toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(16px); background: var(--ink); color: var(--bg); padding: 13px 28px; border-radius: 100px; font-family: 'JetBrains Mono', monospace; font-size: 11px; z-index: 9999; opacity: 0; transition: all .4s cubic-bezier(.16,1,.3,1); pointer-events: none; border: 1px solid rgba(245,242,235,.1); white-space: nowrap; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+@media(max-width:1024px){
+  nav{padding:18px 24px;} .shero{padding:60px 24px 40px;} .notes-sec{padding:56px 24px;}
+  .notes-grid{grid-template-columns:1fr 1fr;}
+  .nbody{padding:40px 28px 60px;} .n-hero{padding:48px 28px 40px;}
+  .nv-hdr,.nv-body{padding-left:28px;padding-right:28px;}
+  .insight{margin-left:-28px;margin-right:-28px;padding:40px 28px;}
+  .img-block-body{flex-direction:column;} .twocol{grid-template-columns:1fr;}
+  .pnav{padding:16px 24px;}
+}
+@media(max-width:640px){
+  .notes-grid{grid-template-columns:1fr;} .shero-stats{gap:24px;}
+  .nbody{padding:32px 20px 48px;} .n-hero{padding:36px 20px 28px;}
+  .nv-hdr,.nv-body{padding-left:20px;padding-right:20px;}
+  .insight{margin-left:-20px;margin-right:-20px;padding:32px 20px;}
+}
+
+
+/* ══════════════════════════════════════
+   MCQ ROOM
+══════════════════════════════════════ */
+#page-mcq-ob{background:#1e1c19;min-height:100%;}
+.mcq-room-header{background:#161412;border-bottom:1px solid rgba(255,255,255,.06);padding:18px 44px;display:flex;justify-content:space-between;align-items:center;}
+.mcq-room-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#c8452a;text-transform:uppercase;}
+.mcq-room-note-title{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.22);letter-spacing:1px;}
+.mcq-progress-strip{height:2px;background:rgba(255,255,255,.07);position:relative;}
+.mcq-progress-fill{height:100%;background:#c8452a;transition:width .5s cubic-bezier(.16,1,.3,1);position:absolute;top:0;left:0;}
+.mcq-body{padding:32px 44px 56px;background:#1e1c19;}
+.mcq-counter{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:22px;}
+.mcq-counter-q{font-family:'Instrument Serif',serif;font-size:13px;font-style:italic;color:rgba(255,255,255,.25);}
+.mcq-counter-dots{display:flex;gap:6px;}
+.mcq-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.12);transition:background .3s;}
+.mcq-dot.done{background:rgba(200,69,42,.5);}
+.mcq-dot.current{background:#c8452a;}
+.mcq-q-wrap{margin-bottom:26px;}
+.mcq-q-num{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#c8452a;text-transform:uppercase;margin-bottom:12px;}
+.mcq-q-text{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:#f5f2eb;line-height:1.6;}
+.mcq-opts-list{display:flex;flex-direction:column;gap:10px;margin-bottom:30px;}
+.mcq-opt-btn{display:flex;align-items:flex-start;gap:16px;padding:16px 20px;border:1.5px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);cursor:pointer;text-align:left;transition:all .2s;border-radius:2px;width:100%;}
+.mcq-opt-btn:hover:not(.answered){border-color:#c8452a;background:rgba(200,69,42,.08);transform:translateX(6px);}
+.mcq-opt-ltr{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:rgba(255,255,255,.25);min-width:22px;margin-top:2px;flex-shrink:0;}
+.mcq-opt-txt{font-size:14px;color:rgba(255,255,255,.6);line-height:1.6;font-family:'Syne',sans-serif;}
+.mcq-opt-btn.answered{cursor:default;}
+.mcq-opt-btn.selected{border-color:#c8452a;background:rgba(200,69,42,.12);}
+.mcq-opt-btn.selected .mcq-opt-ltr{color:#c8452a;}
+.mcq-opt-btn.selected .mcq-opt-txt{color:#f5f2eb;font-weight:600;}
+.mcq-next-wrap{display:flex;justify-content:flex-end;}
+.mcq-next-btn{background:#c8452a;color:white;border:none;padding:16px 32px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;letter-spacing:.5px;border-radius:2px;}
+.mcq-next-btn:hover:not(:disabled){background:#e85d3f;transform:translateY(-2px);}
+.mcq-next-btn:disabled{opacity:.2;cursor:default;transform:none;}
+/* RESULTS */
+.res-hero{background:#161412;border-bottom:1px solid rgba(255,255,255,.06);padding:40px 44px;display:flex;align-items:center;gap:32px;position:relative;overflow:hidden;}
+.res-hero::after{content:'';position:absolute;right:-60px;top:-60px;width:240px;height:240px;background:radial-gradient(circle,rgba(200,69,42,.08),transparent 70%);pointer-events:none;}
+.res-circle{width:96px;height:96px;border-radius:50%;border:3px solid;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;}
+.res-circle-num{font-family:'Instrument Serif',serif;font-size:30px;line-height:1;}
+.res-circle-pct{font-family:'JetBrains Mono',monospace;font-size:10px;margin-top:3px;opacity:.7;}
+.res-hero-grade{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:#f5f2eb;margin-bottom:6px;}
+.res-hero-sub{font-size:14px;color:rgba(255,255,255,.35);line-height:1.6;}
+.res-body{padding:28px 44px 48px;background:#1e1c19;}
+.res-section-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#c8452a;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.res-section-lbl::before{content:'//';color:rgba(200,69,42,.4);}
+.res-focus-box{background:rgba(200,69,42,.07);border:1px solid rgba(200,69,42,.2);border-left:3px solid #c8452a;padding:18px 22px;margin-bottom:32px;}
+.res-focus-item{font-size:14px;font-weight:600;color:rgba(255,255,255,.7);padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:10px;}
+.res-focus-item::before{content:'→';color:#c8452a;font-size:12px;}
+.res-focus-item:last-child{border-bottom:none;}
+.res-qlist{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+.res-qblock{border:1px solid rgba(255,255,255,.08);overflow:hidden;border-radius:2px;}
+.res-qblock.res-right{border-left:3px solid #4db87a;}
+.res-qblock.res-wrong{border-left:3px solid #e05a5a;}
+.res-qblock-header{display:flex;justify-content:space-between;align-items:center;padding:11px 16px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.06);}
+.res-qbadge{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1px;}
+.res-qbadge.right{color:#4db87a;}
+.res-qbadge.wrong{color:#e05a5a;}
+.res-qblock-num{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.2);}
+.res-qblock-q{padding:14px 16px;font-size:14px;font-weight:700;color:#f5f2eb;line-height:1.55;border-bottom:1px solid rgba(255,255,255,.06);font-family:'Syne',sans-serif;}
+.res-opts-wrap{padding:10px 16px;display:flex;flex-direction:column;gap:5px;border-bottom:1px solid rgba(255,255,255,.06);}
+.res-opt{display:flex;gap:12px;padding:7px 10px;font-size:13px;color:rgba(255,255,255,.3);border-radius:2px;align-items:flex-start;}
+.res-opt-ltr{font-family:'JetBrains Mono',monospace;font-size:10px;min-width:18px;margin-top:1px;opacity:.4;}
+.res-opt.correct{background:rgba(77,184,122,.12);color:#a8e6c0;font-weight:600;}
+.res-opt.correct .res-opt-ltr{color:#4db87a;opacity:1;}
+.res-opt.chosen-wrong{background:rgba(224,90,90,.1);color:#f0a8a8;}
+.res-opt.chosen-wrong .res-opt-ltr{color:#e05a5a;opacity:1;}
+.res-explain-block{padding:14px 16px;background:rgba(0,0,0,.2);}
+.res-explain-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#c8452a;text-transform:uppercase;margin-bottom:7px;}
+.res-explain-txt{font-size:13px;color:rgba(255,255,255,.55);line-height:1.7;}
+.res-explain-txt strong{color:rgba(255,255,255,.85);}
+.res-actions{display:flex;gap:10px;}
+.res-btn-retry{flex:1;background:none;border:1.5px solid rgba(255,255,255,.15);padding:14px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:rgba(255,255,255,.4);cursor:pointer;transition:all .2s;border-radius:2px;}
+.res-btn-retry:hover{border-color:#c8452a;color:#c8452a;}
+.res-btn-back{flex:1;background:#c8452a;border:none;padding:14px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:white;cursor:pointer;transition:all .2s;border-radius:2px;}
+.res-btn-back:hover{background:#e85d3f;}
+/* NOTE END CTA */
+.note-end-cta{margin:48px 64px 8px;padding:28px 32px;background:var(--ink);position:relative;overflow:hidden;cursor:pointer;transition:all .3s;}
+.note-end-cta:hover{background:#2a1f18;}
+.note-end-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#c8452a,transparent);}
+.note-end-cta-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#c8452a;text-transform:uppercase;margin-bottom:8px;}
+.note-end-cta-title{font-family:'Instrument Serif',serif;font-size:22px;color:var(--white);font-style:italic;margin-bottom:5px;}
+.note-end-cta-sub{font-size:13px;color:rgba(245,242,235,.38);line-height:1.5;}
+.note-end-cta-arrow{position:absolute;right:28px;top:50%;transform:translateY(-50%);width:36px;height:36px;background:#c8452a;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:15px;transition:all .3s;}
+.note-end-cta:hover .note-end-cta-arrow{transform:translateY(-50%) scale(1.15);}
+/* VENTILATE POPUP */
+.vent-backdrop{position:fixed;inset:0;background:rgba(10,7,4,.65);z-index:10100;opacity:0;pointer-events:none;transition:opacity .3s;}
+.vent-backdrop.show{opacity:1;pointer-events:all;}
+.vent-popup{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(100%);width:100%;max-width:960px;z-index:10200;transition:transform .45s cubic-bezier(.16,1,.3,1);background:var(--ink);border-top:2px solid #c8452a;}
+.vent-popup.show{transform:translateX(-50%) translateY(0);}
+.vent-popup-inner{padding:36px 48px 40px;position:relative;overflow:hidden;}
+.vent-popup-glow{position:absolute;right:-60px;top:-60px;width:260px;height:260px;background:radial-gradient(circle,rgba(200,69,42,.12),transparent 70%);pointer-events:none;}
+.vent-popup-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:#c8452a;text-transform:uppercase;margin-bottom:14px;}
+.vent-popup-title{font-family:'Instrument Serif',serif;font-size:clamp(28px,4vw,44px);color:var(--white);line-height:1;margin-bottom:12px;}
+.vent-popup-title em{font-style:italic;color:#e85d3f;}
+.vent-popup-sub{font-size:14px;color:rgba(245,242,235,.4);line-height:1.65;max-width:440px;margin-bottom:28px;}
+.vent-popup-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.vent-yes{background:#c8452a;color:white;border:none;padding:15px 30px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.5px;transition:all .2s;border-radius:2px;}
+.vent-yes:hover{background:#e85d3f;transform:translateY(-2px);}
+.vent-no{background:none;color:rgba(245,242,235,.3);border:1px solid rgba(245,242,235,.12);padding:15px 22px;font-family:'Syne',sans-serif;font-size:13px;cursor:pointer;letter-spacing:.5px;transition:all .2s;border-radius:2px;}
+.vent-no:hover{color:rgba(245,242,235,.6);}
+@media(max-width:768px){
+  .note-end-cta{margin:32px 20px 8px;}
+  .mcq-body,.res-body,.mcq-room-header,.res-hero{padding-left:20px;padding-right:20px;}
+  .vent-popup-inner{padding:24px 20px 28px;}
+}
 </style>
 </head>
 <body>
-<div id="cdot"></div><div id="cring"></div>
-<div class="toast" id="toast"></div>
 
-<nav>
-  <a href="index.html" class="logo">
-    <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" stroke="#1a1510" stroke-width="1.5"/><path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M10 30 Q22 36 34 30" stroke="#1a1510" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="22" cy="10" r="2.5" fill="#c8452a"/><path d="M14 22 Q10 26 10 30" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity="0.4"/><path d="M30 22 Q34 26 34 30" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity="0.4"/></svg>
-    <span class="logo-name">Vent</span>
-  </a>
-  <div class="nav-links"><a href="#specialties">Specialties</a><a href="#story">Our story</a><a href="#waitlist">Early access</a></div>
-  <a href="#waitlist" class="nav-pill">Join waitlist</a>
-  <button class="nav-hamburger" id="hbg" aria-label="Open menu"><span></span><span></span><span></span></button>
-</nav>
-<div class="nav-drawer" id="drawer">
-  <a href="#specialties" class="drawer-link">Specialties</a>
-  <a href="#story" class="drawer-link">Our story</a>
-  <a href="#waitlist" class="drawer-link drawer-pill">Join waitlist</a>
+<div class="overlay" id="overlay" onclick="closeBg(event)">
+  <div class="note-modal" id="modal">
+    <div class="mbar">
+      <div class="mbar-l"><div class="mpulse"></div><span class="mbc">OB/GYN &mdash; VENT</span></div>
+      <div class="mbar-r">
+        <div class="lang-toggle">
+          <button class="lbtn on" id="btn-en" onclick="setLang('en')">EN</button>
+          <button class="lbtn" id="btn-ar" onclick="setLang('ar')">AR</button>
+        </div>
+        <button class="mclose" onclick="closeModal()">&#10005;</button>
+      </div>
+    </div>
+    <div id="page-note-ob"><div id="mcontent"></div></div>
+    <div id="page-mcq-ob" style="display:none;"><div id="mcq-inner-ob"></div></div>
+  </div>
 </div>
 
-<section class="hero">
-  <div class="hero-l">
-    <div class="hero-kick">2026 — Built by a final-year student</div>
-    <h1 class="hero-hl">Finally,<br><em>breathe.</em></h1>
-    <p class="hero-body">Medical school gives you <strong>10,000 pages</strong> when you need ten minutes. Vent gives you the framework — built by someone still in the chaos — so you can finally understand, not just memorise.</p>
-    <div class="hero-ctas">
-      <a href="#specialties" class="btn-p">Browse notes</a>
-      <a href="#story" class="btn-g">Read the story →</a>
+<!-- VENTILATE POPUP -->
+<div id="vent-popup" class="vent-popup">
+  <div class="vent-popup-inner">
+    <div class="vent-popup-glow"></div>
+    <div class="vent-popup-tag">// End of note</div>
+    <div class="vent-popup-title">Are you<br><em>ventilating?</em></div>
+    <div class="vent-popup-sub">Test whether this note actually landed. 5 questions. No pressure.</div>
+    <div class="vent-popup-btns">
+      <button class="vent-yes" onclick="startMCQ()">Let&#39;s find out &rarr;</button>
+      <button class="vent-no" onclick="dismissVentPopup()">Not now</button>
     </div>
   </div>
-  <div class="hero-r">
-    <div class="particle" style="left:20%;animation-duration:6s;animation-delay:0s;"></div>
-    <div class="particle" style="left:45%;animation-duration:8s;animation-delay:1.5s;width:5px;height:5px;"></div>
-    <div class="particle" style="left:68%;animation-duration:5s;animation-delay:.8s;"></div>
-    <div class="particle" style="left:82%;animation-duration:9s;animation-delay:3s;"></div>
-    <div class="hero-glow"></div>
-    <div class="hero-brand-panel">
-      <div class="hbp-logo">
-        <svg width="120" height="120" viewBox="0 0 44 44" fill="none">
-          <circle cx="22" cy="22" r="21" stroke="rgba(245,242,235,0.07)" stroke-width="1.5"/>
-          <path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M10 30 Q22 36 34 30" stroke="rgba(245,242,235,0.22)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-          <circle cx="22" cy="10" r="2.5" fill="#c8452a"/>
-          <circle cx="22" cy="10" r="5" fill="#c8452a" opacity="0.15">
-            <animate attributeName="r" values="2.5;10;2.5" dur="3s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.2;0;0.2" dur="3s" repeatCount="indefinite"/>
-          </circle>
-          <path d="M14 22 Q10 26 10 30" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
-          <path d="M30 22 Q34 26 34 30" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
-        </svg>
-      </div>
-      <div class="hbp-name">VENT</div>
-      <div class="hbp-sub">ventilate · vent · breathe</div>
-      <div class="hbp-stats">
-        <div class="hbp-stat"><div class="hbp-stat-n">12</div><div class="hbp-stat-l">Notes live</div></div>
-        <div class="hbp-divider"></div>
-        <div class="hbp-stat"><div class="hbp-stat-n">60+</div><div class="hbp-stat-l">MCQs</div></div>
-        <div class="hbp-divider"></div>
-        <div class="hbp-stat"><div class="hbp-stat-n">2</div><div class="hbp-stat-l">Specialties</div></div>
-        <div class="hbp-divider"></div>
-        <div class="hbp-stat"><div class="hbp-stat-n">EN/AR</div><div class="hbp-stat-l">Bilingual</div></div>
-      </div>
-    </div>
+</div>
+<div id="vent-backdrop" class="vent-backdrop" onclick="dismissVentPopup()"></div>
+
+
+<div id="main-page">
+<nav>
+  <a href="vent-home.html" class="logo">
+    <svg width="40" height="40" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" stroke="#1a1510" stroke-width="1.5"/><path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M10 30 Q22 36 34 30" stroke="#1a1510" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="22" cy="10" r="2.5" fill="#c8452a"/></svg>
+    <span class="logo-name">Vent</span>
+  </a>
+  <a href="vent-home.html" class="nav-back">← Home</a>
+  <a href="vent-home.html#waitlist" class="nav-pill">Join waitlist</a>
+</nav>
+
+<section class="shero">
+  <div class="shero-glow"></div>
+  <div class="shero-kick">Clinical Notes</div>
+  <h1 class="shero-h1">Obstetrics &amp;<br><em>Gynaecology</em></h1>
+  <p class="shero-desc">Six conditions. Built to make you understand — not memorise. The mechanism, the clinical framing, and the insight your textbook left out.</p>
+  <div class="shero-stats">
+    <div><div class="sv">6</div><div class="sl">Notes</div></div>
+    <div><div class="sv">EN/AR</div><div class="sl">Bilingual</div></div>
+    <div><div class="sv">4 min</div><div class="sl">Per note</div></div>
   </div>
 </section>
 
-<section class="specs" id="specialties">
-  <div class="reveal">
-    <div class="sec-kick">// Clinical notes</div>
-    <h2 class="sec-hl">Choose your<br><em>specialty</em></h2>
-    <p class="sec-desc">Every note built to the same standard — integrated visuals, clinical reasoning frameworks, and the insight no textbook gives you. English and Arabic.</p>
-  </div>
-  <div class="spec-grid">
-    <a href="vent-ophtho.html" class="sc reveal">
-      <div class="sc-icon">👁</div><div class="sc-num">01 — Ophthalmology</div>
-      <div class="sc-title">Eye &amp; Vision</div>
-      <p class="sc-desc">Lens anatomy, cataracts and their types, corneal infections, retinal anatomy, diabetic retinopathy, hypertensive retinopathy. The eye conditions every doctor must know.</p>
-      <div class="sc-foot" style="flex-direction:column;align-items:flex-start;gap:8px;">
-        <div class="breathing-badge"><span class="breathing-dot"></span>Test yourself — 5 MCQs per note</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;"><div class="sc-meta">6 notes · 5 MCQs each · EN/AR · Live</div><div class="sc-arr">↗</div></div>
-      </div>
-    </a>
-    <a href="vent-obgyn.html" class="sc reveal">
-      <div class="sc-icon">🩺</div><div class="sc-num">02 — OB/GYN</div>
-      <div class="sc-title">Obstetrics &amp; Gynaecology</div>
-      <p class="sc-desc">PPH, preeclampsia, ectopic pregnancy, placenta praevia, gestational diabetes, shoulder dystocia. The emergencies and the antenatal essentials.</p>
-      <div class="sc-foot" style="flex-direction:column;align-items:flex-start;gap:8px;">
-        <div class="breathing-badge"><span class="breathing-dot"></span>Test yourself — 5 MCQs per note</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;"><div class="sc-meta">6 notes · 5 MCQs each · EN/AR · Live</div><div class="sc-arr">↗</div></div>
-      </div>
-    </a>
-    <div class="sc soon reveal">
-      <div class="soon-tag">Coming soon</div><div class="sc-icon">🫀</div><div class="sc-num">03 — Internal Medicine</div>
-      <div class="sc-title">Internal Med</div>
-      <p class="sc-desc">Heart failure, ACS, pneumonia, COPD, sepsis, AKI, liver disease. The bread and butter of every medicine rotation.</p>
-      <div class="sc-foot"><div class="sc-meta">In progress</div><button class="sc-notify" onclick="notifyMe(this,'Internal Medicine')">Notify me →</button></div>
-    </div>
-    <div class="sc soon reveal">
-      <div class="soon-tag">Coming soon</div><div class="sc-icon">🩻</div><div class="sc-num">04 — Surgery</div>
-      <div class="sc-title">Surgery</div>
-      <p class="sc-desc">Appendicitis, bowel obstruction, hernias, acute abdomen, perioperative care. What you need before you scrub in.</p>
-      <div class="sc-foot"><div class="sc-meta">In progress</div><button class="sc-notify" onclick="notifyMe(this,'Surgery')">Notify me →</button></div>
-    </div>
-    <div class="sc soon reveal">
-      <div class="soon-tag">Coming soon</div><div class="sc-icon">🧠</div><div class="sc-num">05 — Neurology</div>
-      <div class="sc-title">Neurology</div>
-      <p class="sc-desc">Stroke, seizures, meningitis, Parkinson's, MS. Where pattern recognition saves lives and milliseconds matter.</p>
-      <div class="sc-foot"><div class="sc-meta">In progress</div><button class="sc-notify" onclick="notifyMe(this,'Neurology')">Notify me →</button></div>
-    </div>
-    <div class="sc soon reveal">
-      <div class="soon-tag">Coming soon</div><div class="sc-icon">👶</div><div class="sc-num">06 — Paediatrics</div>
-      <div class="sc-title">Paediatrics</div>
-      <p class="sc-desc">Paediatric sepsis, bronchiolitis, febrile convulsions, developmental milestones. Emergencies that look different from adults.</p>
-      <div class="sc-foot"><div class="sc-meta">In progress</div><button class="sc-notify" onclick="notifyMe(this,'Paediatrics')">Notify me →</button></div>
+<section class="notes-sec">
+  <div class="ns-hdr reveal">
+    <h2 class="ns-h2">All <em>OB/GYN</em> notes</h2>
+    <p class="ns-sub">Open in overlay or expand to full page. Toggle EN/AR in any note.</p>
+    <div class="ns-filters">
+      <button class="filt on">All</button>
+      <button class="filt">Emergency</button>
+      <button class="filt">Antenatal</button>
     </div>
   </div>
-</section>
-
-<section class="story" id="story">
-  <div class="story-in">
-    <div class="s-eye">The story behind Vent</div>
-    <div class="s-grid">
-      <div class="s-left reveal">
-        <h2 class="s-hl">One word.<br><em>Two truths.</em></h2>
-        <div class="mb">
-          <div class="mb-t">// What "Vent" means</div>
-          <div class="mb-r"><div class="mb-ico">🫁</div><div><div class="mb-w">Ventilate</div><div class="mb-d">To supply fresh air. In medicine — keeping someone alive when they can't breathe alone. That's what this does for your mind.</div></div></div>
-          <div class="mb-r"><div class="mb-ico">💬</div><div><div class="mb-w">To Vent</div><div class="mb-d">To release. To express what's suffocating you. Med school is overwhelming — you need somewhere to exhale.</div></div></div>
-          <div class="mb-r"><div class="mb-ico">⚡</div><div><div class="mb-w">The Logo</div><div class="mb-d">A V tracing the bronchial tree. A breath entering, branching. Relief made into a mark.</div></div></div>
-        </div>
-      </div>
-      <div class="s-right">
-        <div class="ch reveal"><div class="ch-n">Chapter 01 — The problem</div><div class="ch-t">I was suffocating in my own curriculum.</div><p class="ch-b">Final year. Every week a new mountain of material. <strong>No one tells you which 20% actually matters.</strong></p></div>
-        <div class="ch reveal"><div class="ch-n">Chapter 02 — The realization</div><div class="ch-t">The best students weren't reading more.</div><p class="ch-b">They had frameworks. They knew <strong>what to look for, not everything there is to see.</strong></p></div>
-        <div class="ch reveal"><div class="ch-n">Chapter 03 — The answer</div><div class="ch-t">So I built what I needed.</div><p class="ch-b">Not a database. Not a question bank. <strong>A breathing room</strong> — where content earns its place or gets cut.</p></div>
-      </div>
+  <div class="notes-grid">
+    <div class="nc reveal" onclick="openNote('pph')">
+      <div class="nc-type">Emergency</div><div class="nc-num">Note 01</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Postpartum Haemorrhage</div>
+      <p class="nc-preview">The leading cause of maternal mortality. The 4 Ts, why BP is a late sign, and how to escalate without hesitation.</p>
+      <div class="nc-foot"><div class="nc-meta">4 Ts · Atony · Emergency</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" onclick="openNote('preeclampsia')">
+      <div class="nc-type">Antenatal</div><div class="nc-num">Note 02</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Preeclampsia</div>
+      <p class="nc-preview">Not a blood pressure problem. A disease of the placenta that raises BP. The distinction changes how you manage it entirely.</p>
+      <div class="nc-foot"><div class="nc-meta">HTN · HELLP · Magnesium</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" onclick="openNote('ectopic')">
+      <div class="nc-type">Emergency</div><div class="nc-num">Note 03</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Ectopic Pregnancy</div>
+      <p class="nc-preview">Ectopic until proven otherwise. What the triad is, the discriminatory zone, and what negative urine hCG actually rules out.</p>
+      <div class="nc-foot"><div class="nc-meta">hCG · Rupture · Ultrasound</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" onclick="openNote('placenta')">
+      <div class="nc-type">Antenatal</div><div class="nc-num">Note 04</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd"></div></div>
+      <div class="nc-title">Placenta Praevia</div>
+      <p class="nc-preview">Painless bright red bleeding in the third trimester. Why placental position determines route of delivery — and why you never do a VE.</p>
+      <div class="nc-foot"><div class="nc-meta">Bleeding · Caesarean</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" onclick="openNote('gdm')">
+      <div class="nc-type">Antenatal</div><div class="nc-num">Note 05</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd"></div></div>
+      <div class="nc-title">Gestational Diabetes</div>
+      <p class="nc-preview">Why hyperglycaemia in pregnancy endangers both mother and baby. The OGTT, thresholds, and why macrosomia is not just a big baby.</p>
+      <div class="nc-foot"><div class="nc-meta">OGTT · Macrosomia · Insulin</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" onclick="openNote('shoulder')">
+      <div class="nc-type">Emergency</div><div class="nc-num">Note 06</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Shoulder Dystocia</div>
+      <p class="nc-preview">The head delivers. The shoulders don't follow. Five minutes. HELPERR must be automatic — not recalled under pressure.</p>
+      <div class="nc-foot"><div class="nc-meta">HELPERR · McRoberts · Drill</div><div class="nc-arr">↗</div></div>
     </div>
   </div>
 </section>
+</div>
 
-<section class="what">
-  <div class="w-hdr reveal">
-    <h2 class="w-hl">What Vent<br><em>actually is</em></h2>
-    <p class="w-note">Notes. MCQs. Bilingual. In one place. Nothing you do not need.</p>
-  </div>
-  <div class="w-rows">
-    <div class="wr reveal"><div class="wrn">1</div><div class="wrm"><h3>Concept-driven visual notes</h3><p>Every condition with integrated diagrams that teach, not just label. The visual is the explanation.</p></div><div class="wrx"><div class="wrxl">Format</div><div class="wrxv">Premium SVG diagrams built into the text flow. Not appended — integrated.</div></div></div>
-    <div class="wr reveal"><div class="wrn">2</div><div class="wrm"><h3>Clinical reasoning frameworks</h3><p>Here's how to think through it when the patient is in front of you at 3am, not just the facts.</p></div><div class="wrx"><div class="wrxl">The differentiator</div><div class="wrxv">Every note ends with "what everyone gets wrong" — the insight no textbook includes.</div></div></div>
-    <div class="wr reveal"><div class="wrn">3</div><div class="wrm"><h3>Bilingual — English &amp; Arabic</h3><p>Every note in Modern Standard Arabic. Drug names, procedures, clinical terms stay in English.</p></div><div class="wrx"><div class="wrxl">Language</div><div class="wrxv">One toggle in every note. Full flip. No loss of clinical precision.</div></div></div>
-    <div class="wr reveal"><div class="wrn">4</div><div class="wrm"><h3>Test yourself — built in, not bolted on</h3><p>5 clinical MCQs at the end of every note. Not a separate app. Not later. Right there, in the same breath.</p></div><div class="wrx"><div class="wrxl">How it works</div><div class="wrxv">Finish reading. One tap. The questions are written from the note — so they test exactly what you just learned. Immediate results. Explanations for every answer.</div></div></div>
-  </div>
-</section>
 
-<section class="breathe">
-  <div class="bring"></div><div class="bring"></div><div class="bring"></div><div class="bring"></div>
-  <div class="bc">
-    <h2>You can<br><em>breathe now.</em></h2>
-    <p>Medicine is already the hardest thing you'll ever do. Your notes shouldn't be.</p>
-    <a href="#waitlist" class="bc-cta">Get early access →</a>
-  </div>
-</section>
-
-<section class="cta" id="waitlist">
-  <div class="ctabg">Breathe.</div>
-  <div class="cta-in">
-    <div class="reveal">
-      <h2 class="c-hl">Time to<br><em>exhale.</em></h2>
-      <p class="c-body">Vent is in early access. Join the waitlist and be first through the door. No spam. No filler. Just the signal.</p>
-    </div>
-    <div class="c-form reveal" id="fc">
-      <input type="email" class="c-field" placeholder="your@email.com" id="ei" autocomplete="email">
-      <select class="c-field" id="yr"><option value="" disabled selected>What year are you in?</option><option value="MS1">MS1</option><option value="MS2">MS2</option><option value="MS3">MS3</option><option value="MS4">MS4</option><option value="Resident">Resident</option><option value="Other">Other</option></select>
-      <p class="c-err" id="cerr">Please enter a valid email address.</p>
-      <button class="c-btn" id="sb">Join the waitlist →</button>
-      <p class="c-note">// no spam. no filler. just vent.</p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="f-in">
-    <div>
-      <div class="f-logo"><svg width="28" height="28" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" stroke="rgba(245,242,235,0.2)" stroke-width="1.5"/><path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M10 30 Q22 36 34 30" stroke="rgba(245,242,235,0.3)" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="22" cy="10" r="2.5" fill="#c8452a"/></svg><span class="f-name">VENT</span></div>
-      <p class="f-tag">Finally. Just what you need.<br>Beta · 2026</p>
-    </div>
-    <div class="f-links"><a href="#story">Story</a><a href="#specialties">Specialties</a><a href="#waitlist">Early access</a><a href="#">Privacy</a></div>
-    <div class="f-right"><div class="f-social"><a href="#">Instagram</a><a href="#">X / Twitter</a></div><div class="f-copy">© 2026 Vent. All rights reserved.</div></div>
-  </div>
-</footer>
 
 <script>
-if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
-  const dot=document.getElementById('cdot'),ring=document.getElementById('cring');
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
-  (function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
-  document.querySelectorAll('a,button,.sc').forEach(el=>{
-    el.addEventListener('mouseenter',()=>{dot.style.transform='translate(-50%,-50%) scale(2.2)';ring.style.width='52px';ring.style.height='52px';ring.style.borderColor='rgba(200,69,42,.65)';});
-    el.addEventListener('mouseleave',()=>{dot.style.transform='translate(-50%,-50%)';ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(200,69,42,.35)';});
-  });
+let currentNote = null;
+let lang = 'en';
+
+function setLang(l) {
+  lang = l;
+  document.body.classList.toggle('ar-mode', l === 'ar');
+  ['btn-en','btn-en2'].forEach(id => { const el = document.getElementById(id); if(el) el.classList.toggle('on', l==='en'); });
+  ['btn-ar','btn-ar2'].forEach(id => { const el = document.getElementById(id); if(el) el.classList.toggle('on', l==='ar'); });
 }
-const hbg=document.getElementById('hbg'),drawer=document.getElementById('drawer');
-hbg.addEventListener('click',()=>{
-  const opening=!hbg.classList.contains('open');
-  hbg.classList.toggle('open');
-  if(opening){drawer.style.display='flex';requestAnimationFrame(()=>drawer.classList.add('open'));document.body.style.overflow='hidden';}
-  else{drawer.classList.remove('open');setTimeout(()=>{drawer.style.display='none';},300);document.body.style.overflow='';}
-});
-document.querySelectorAll('.drawer-link').forEach(l=>l.addEventListener('click',()=>{
-  hbg.classList.remove('open');drawer.classList.remove('open');
-  setTimeout(()=>{drawer.style.display='none';},300);document.body.style.overflow='';
-}));
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:.08,rootMargin:'0px 0px -32px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>{
-  const p=el.closest('.spec-grid,.s-right,.w-rows');
-  if(p){const i=Array.from(p.children).indexOf(el);if(i>-1)el.style.transitionDelay=i*.1+'s';}
+
+
+const mcqState={};
+
+function openNote(id){
+  currentNote=id;
+  const html=NOTES[id]?NOTES[id]():stub(id);
+  document.getElementById('mcontent').innerHTML=html;
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  document.getElementById('modal').scrollTop=0;
+  setLang('en');
+  // show note, hide mcq
+  document.getElementById('page-note-ob').style.display='block';
+  document.getElementById('page-mcq-ob').style.display='none';
+}
+function closeModal(){
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow='';
+  dismissVentPopup();
+}
+function closeBg(e){if(e.target===document.getElementById('overlay'))closeModal();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+function showVentPopup(){
+  document.getElementById('vent-popup').classList.add('show');
+  document.getElementById('vent-backdrop').classList.add('show');
+}
+function dismissVentPopup(){
+  document.getElementById('vent-popup').classList.remove('show');
+  document.getElementById('vent-backdrop').classList.remove('show');
+}
+function startMCQ(){
+  dismissVentPopup();
+  if(!NOTES_MCQ[currentNote]||NOTES_MCQ[currentNote].length===0){return;}
+  if(!mcqState[currentNote]){
+    mcqState[currentNote]={current:0,answers:Array(NOTES_MCQ[currentNote].length).fill(null)};
+  }
+  document.getElementById('page-note-ob').style.display='none';
+  document.getElementById('page-mcq-ob').style.display='block';
+  document.getElementById('mcq-inner-ob').innerHTML=renderQuestion(currentNote);
+  document.getElementById('modal').scrollTop=0;
+}
+}
+function backToNote(){
+  document.getElementById('page-mcq-ob').style.display='none';
+  document.getElementById('page-note-ob').style.display='block';
+  document.getElementById('modal').scrollTop=0;
+}
+function renderQuestion(noteId){
+  const state=mcqState[noteId];
+  const mcqs=NOTES_MCQ[noteId];
+  const qi=state.current,total=mcqs.length,q=mcqs[qi];
+  const letters=['A','B','C','D','E'];
+  const pct=Math.round((qi/total)*100);
+  let dots='';
+  for(let i=0;i<total;i++) dots+=`<div class="mcq-dot ${i<qi?'done':i===qi?'current':''}"></div>`;
+  return `<div class="mcq-room-header">
+    <span class="mcq-room-label">// Test yourself</span>
+    <span class="mcq-room-note-title">${qi+1} of ${total}</span>
+  </div>
+  <div class="mcq-progress-strip"><div class="mcq-progress-fill" style="width:${pct}%"></div></div>
+  <div class="mcq-body">
+    <div class="mcq-counter">
+      <span class="mcq-counter-q">Question ${qi+1} of ${total}</span>
+      <div class="mcq-counter-dots">${dots}</div>
+    </div>
+    <div class="mcq-q-wrap">
+      <div class="mcq-q-num">Question ${qi+1}</div>
+      <div class="mcq-q-text">${q.q}</div>
+    </div>
+    <div class="mcq-opts-list" id="ob-opts-${noteId}">
+      ${q.opts.map((o,i)=>`<button class="mcq-opt-btn" onclick="selectOpt('${noteId}',${i})">
+        <span class="mcq-opt-ltr">${letters[i]}</span><span class="mcq-opt-txt">${o}</span>
+      </button>`).join('')}
+    </div>
+    <div class="mcq-next-wrap">
+      <button class="mcq-next-btn" id="ob-next-${noteId}" onclick="nextQuestion('${noteId}')" disabled>
+        ${qi+1<total?'Next &rarr;':'See results &rarr;'}
+      </button>
+    </div>
+  </div>`;
+}
+function selectOpt(noteId,oi){
+  const state=mcqState[noteId];
+  if(state.answers[state.current]!==null)return;
+  state.answers[state.current]=oi;
+  document.querySelectorAll(`#ob-opts-${noteId} .mcq-opt-btn`).forEach((b,i)=>{
+    b.classList.add('answered');
+    if(i===oi)b.classList.add('selected');
+  });
+  document.getElementById(`ob-next-${noteId}`).disabled=false;
+}
+function nextQuestion(noteId){
+  const state=mcqState[noteId];
+  if(state.current+1<NOTES_MCQ[noteId].length){state.current++;document.getElementById('mcq-inner-ob').innerHTML=renderQuestion(noteId);}
+  else showResults(noteId);
+}
+function showResults(noteId){
+  const state=mcqState[noteId],mcqs=NOTES_MCQ[noteId],letters=['A','B','C','D','E'];
+  let correct=0,missed=[];
+  mcqs.forEach((q,i)=>{if(state.answers[i]===q.ans)correct++;else missed.push(q.focus||'Review this topic');});
+  const pct=Math.round((correct/mcqs.length)*100);
+  const gc=pct>=80?'#4db87a':pct>=60?'#c8a040':'#e05a5a';
+  const gl=pct===100?'Perfect score.':pct>=80?'Well ventilated.':pct>=60?'Getting there.':'Back to the note.';
+  const gs=pct===100?'Every concept landed.':pct>=80?'Solid. Review what you missed.':pct>=60?'Good base. Some gaps to close.':"That's okay. Read the note again, then retry.";
+  let html=`<div class="mcq-room-header"><span class="mcq-room-label">// Results</span><span class="mcq-room-note-title">${correct}/${mcqs.length} correct</span></div>
+  <div class="mcq-progress-strip"><div class="mcq-progress-fill" style="width:${pct}%"></div></div>
+  <div class="res-hero">
+    <div class="res-circle" style="border-color:${gc}">
+      <div class="res-circle-num" style="color:${gc}">${correct}/${mcqs.length}</div>
+      <div class="res-circle-pct" style="color:${gc}">${pct}%</div>
+    </div>
+    <div><div class="res-hero-grade">${gl}</div><div class="res-hero-sub">${gs}</div></div>
+  </div>
+  <div class="res-body">`;
+  if(missed.length){const u=[...new Set(missed)];html+=`<div class="res-section-lbl">Focus on</div><div class="res-focus-box">${u.map(m=>`<div class="res-focus-item">${m}</div>`).join('')}</div>`;}
+  html+=`<div class="res-section-lbl">Full breakdown</div><div class="res-qlist">`;
+  mcqs.forEach((q,i)=>{
+    const ch=state.answers[i],ok=ch===q.ans;
+    html+=`<div class="res-qblock ${ok?'res-right':'res-wrong'}">
+      <div class="res-qblock-header"><span class="res-qbadge ${ok?'right':'wrong'}">${ok?'&#10003; Correct':'&#10007; Incorrect'}</span><span class="res-qblock-num">Q${i+1}</span></div>
+      <div class="res-qblock-q">${q.q}</div>
+      <div class="res-opts-wrap">${q.opts.map((o,oi)=>`<div class="res-opt${oi===q.ans?' correct':oi===ch?' chosen-wrong':''}"><span class="res-opt-ltr">${letters[oi]}</span><span>${o}${oi===q.ans?' &#10003;':oi===ch?' &#10007;':''}</span></div>`).join('')}</div>
+      <div class="res-explain-block"><div class="res-explain-lbl">Why</div><div class="res-explain-txt">${q.exp}</div></div>
+    </div>`;
+  });
+  html+=`</div><div class="res-actions">
+    <button class="res-btn-retry" onclick="retryMCQ('${noteId}')">&#8635; Retry</button>
+    <button class="res-btn-back" onclick="backToNote()">&#8592; Back to note</button>
+  </div></div>`;
+  document.getElementById('mcq-inner-ob').innerHTML=html;
+}
+function retryMCQ(noteId){
+  mcqState[noteId]={current:0,answers:Array(NOTES_MCQ[noteId].length).fill(null)};
+  document.getElementById('mcq-inner-ob').innerHTML=renderQuestion(noteId);
+}
+
+const NOTES_MCQ={};
+NOTES_MCQ.pph=[
+  {q:"A woman delivers vaginally and loses 1200ml. The uterus is soft and boggy. What is the most likely cause?",opts:["Retained placenta","Uterine atony","Genital tract trauma","Coagulopathy"],ans:1,focus:"4 Ts — Tone as most common cause",exp:"<strong>Uterine atony</strong> causes 70–80% of PPH. A soft boggy uterus that fails to contract is the classic sign. The 4 Ts: <strong>Tone</strong> (most common), Trauma, Tissue, Thrombin. First steps: bimanual massage + oxytocin immediately."},
+  {q:"First-line uterotonic for PPH prevention and treatment is:",opts:["Ergometrine","Carboprost","Tranexamic acid","Oxytocin"],ans:3,focus:"Uterotonic drug hierarchy",exp:"<strong>Oxytocin</strong> is first-line for both prevention (active management of third stage) and PPH treatment. Ergometrine is second-line (contraindicated in hypertension). Carboprost (PGF2α) when both fail. Tranexamic acid is an antifibrinolytic — not a uterotonic, give within 3 hours."},
+  {q:"The WOMAN trial showed tranexamic acid reduces PPH mortality when given within:",opts:["1 hour of delivery","3 hours of PPH onset","6 hours of PPH onset","Only with confirmed coagulopathy"],ans:1,focus:"WOMAN trial — tranexamic acid timing",exp:"The <strong>WOMAN trial</strong>: tranexamic acid reduces PPH-related death when given within <strong>3 hours of onset</strong>. Benefit drops sharply after 3 hours. Dose: 1g IV over 10 min, repeat after 30 min if still bleeding."},
+  {q:"After oxytocin and ergometrine fail in PPH, the next pharmacological step is:",opts:["Misoprostol PR","Carboprost IM","IV tranexamic acid","B-Lynch suture"],ans:1,focus:"Uterotonic escalation ladder",exp:"<strong>Carboprost (15-methyl PGF2α)</strong> is third-line after oxytocin and ergometrine. Give 250mcg IM, repeat every 15 min, max 8 doses. <strong>Contraindicated in asthma</strong> — causes bronchospasm. B-Lynch is a surgical intervention, not pharmacological."},
+  {q:"Shock Index >1 in PPH indicates:",opts:["Normal haemodynamics","Mild blood loss only","Significant haemodynamic compromise requiring action","Coagulopathy confirmed"],ans:2,focus:"Shock Index in haemorrhage assessment",exp:"<strong>Shock Index = HR ÷ Systolic BP.</strong> Normal: 0.5–0.7. Value <strong>>1.0</strong> = significant haemodynamic compromise, predicts need for massive transfusion. Detects shock earlier than HR or BP alone because compensation maintains BP while perfusion is critically impaired."}
+];
+NOTES_MCQ.shoulder=[
+  {q:"Shoulder dystocia is diagnosed when:",opts:["Head delivers but shoulders take >60 seconds","Gentle axial traction fails to deliver the shoulders after head delivery","CTG shows late decels in second stage","Estimated fetal weight exceeds 4.5kg"],ans:1,focus:"Definition of shoulder dystocia",exp:"<strong>Shoulder dystocia</strong> = gentle axial traction fails to deliver the shoulders after head delivery. It is <strong>not time-based</strong>. The anterior shoulder is impacted behind the pubic symphysis. An obstetric emergency with risk of brachial plexus injury and neonatal asphyxia."},
+  {q:"In the HELPERR mnemonic, what does 'H' stand for?",opts:["Head delivery first","Hyperflexion (McRoberts)","Help — call for it immediately","Hydrostatic reduction"],ans:2,focus:"HELPERR — sequence and meaning",exp:"<strong>H = Call for Help.</strong> HELPERR: <strong>H</strong>elp, <strong>E</strong>pisiotomy if needed, <strong>L</strong>egs (McRoberts), <strong>P</strong>ressure (suprapubic), <strong>E</strong>nter (internal manoeuvres), <strong>R</strong>emove posterior arm, <strong>R</strong>oll to all-fours. Help is always first — you need senior obstetrics, anaesthetics, and neonatology."},
+  {q:"The McRoberts manoeuvre resolves shoulder dystocia by:",opts:["Widening the true conjugate of the pelvis","Flattening lumbar lordosis and rotating the symphysis superiorly","Directly dislodging the impacted shoulder","Increasing uterine contraction strength"],ans:1,focus:"McRoberts mechanism",exp:"<strong>McRoberts</strong>: maternal thighs hyperflexed onto abdomen. This flattens lumbar lordosis and rotates the pubic symphysis <strong>superiorly</strong>, increasing the relative AP outlet diameter. Resolves ~40% of cases when combined with suprapubic pressure."},
+  {q:"Suprapubic pressure in shoulder dystocia should be directed:",opts:["Straight down on the fundus","Laterally onto the posterior aspect of the anterior shoulder toward the fetal face","Upward to push the shoulder above the inlet","Circumferentially around the fundus"],ans:1,focus:"Suprapubic pressure technique",exp:"Suprapubic pressure is applied <strong>laterally downward</strong> onto the posterior aspect of the anterior shoulder, adducting it toward the fetal face to reduce the shoulder-to-shoulder diameter. <strong>Not fundal pressure</strong> — fundal pressure worsens impaction. Use a rocking motion."},
+  {q:"Excessive lateral traction on the head during shoulder dystocia causes:",opts:["Clavicle fracture","Erb's palsy (C5-C6 brachial plexus injury)","Hypoxic-ischaemic encephalopathy","Uterine rupture"],ans:1,focus:"Erb's palsy — mechanism and prevention",exp:"<strong>Erb's palsy</strong> (C5-C6) results from excessive lateral traction stretching the brachial plexus. Classic posture: arm adducted, internally rotated, elbow extended. This is why <strong>axial traction only</strong> is allowed — never lateral. ~10% have permanent injury."}
+];
+NOTES_MCQ.preeclampsia=[
+  {q:"Preeclampsia is defined as new hypertension after 20 weeks with:",opts:["Headache and visual disturbance","Proteinuria or end-organ dysfunction","Facial and hand oedema","BP >140 on a single reading"],ans:1,focus:"Diagnostic criteria for preeclampsia",exp:"<strong>Preeclampsia</strong> = new hypertension (≥140/90) after 20 weeks + <strong>proteinuria OR end-organ dysfunction</strong> (renal, hepatic, neurological, haematological, uteroplacental). Oedema alone is not diagnostic. BP must be on two readings ≥4 hours apart unless severe."},
+  {q:"First-line treatment for severe hypertension (≥160/110) in pregnancy:",opts:["Methyldopa","Atenolol","Labetalol IV or oral nifedipine","Ramipril"],ans:2,focus:"Antihypertensives safe in pregnancy",exp:"<strong>Labetalol IV</strong> or <strong>oral nifedipine</strong> for acute severe hypertension. ACE inhibitors (ramipril) are <strong>absolutely contraindicated</strong> — cause fetal renal agenesis and oligohydramnios. Atenolol causes fetal growth restriction. Methyldopa is safe but too slow for acute control."},
+  {q:"Magnesium sulphate is given in eclampsia to:",opts:["Lower blood pressure urgently","Prevent and treat seizures","Accelerate fetal lung maturity","Reverse coagulopathy"],ans:1,focus:"Role and mechanism of magnesium sulphate",exp:"<strong>MgSO₄</strong> prevents and treats eclamptic seizures — it is <strong>not antihypertensive</strong>. Blocks NMDA receptors and reduces cerebral vasospasm. Loading: 4g IV over 5–15 min. Maintenance: 1g/hr. Toxicity signs: loss of patellar reflexes → respiratory depression → cardiac arrest. Antidote: <strong>calcium gluconate</strong>."},
+  {q:"HELLP syndrome is characterised by:",opts:["Haemolysis, Elevated Liver enzymes, Low Platelets","Hypertension, Encephalopathy, Liver failure, Low Pressure","Haematuria, Elevated LDH, Low Protein","Haemolysis, Elevated LDH, Low Pulse"],ans:0,focus:"HELLP syndrome — definition and features",exp:"<strong>HELLP</strong>: Haemolysis + Elevated Liver enzymes + Low Platelets. Severe variant of preeclampsia. Key labs: schistocytes on film, AST/ALT >70 IU/L, platelets <100×10⁹/L. Can occur without hypertension or proteinuria. Only definitive treatment is delivery."},
+  {q:"The only definitive treatment for preeclampsia is:",opts:["Magnesium sulphate","Corticosteroids","Delivery","Antihypertensive therapy"],ans:2,focus:"Delivery as the only cure",exp:"<strong>Delivery</strong> is the only cure — the placenta is the cause. All other treatments are supportive. Decision timing: ≥37 weeks → deliver. <37 weeks → balance prematurity vs maternal risk. Severe disease or HELLP → deliver regardless of gestation. Corticosteroids given for lung maturity if <34 weeks."}
+];
+
+
+NOTES_MCQ.ectopic=[
+  {q:"A woman presents with 7 weeks amenorrhoea, left iliac fossa pain, and light vaginal bleeding. Urine βhCG is positive. First investigation:",opts:["Transvaginal ultrasound","Diagnostic laparoscopy","Serum progesterone","CT abdomen"],ans:0,focus:"Ectopic pregnancy investigation sequence",exp:"<strong>Transvaginal ultrasound (TVUS)</strong> is first-line. It can identify an intrauterine pregnancy, an adnexal mass, and free fluid. Laparoscopy is diagnostic and therapeutic but not first-line without imaging. The goal of TVUS is to locate the pregnancy — an empty uterus with a positive hCG and adnexal mass = ectopic until proven otherwise."},
+  {q:"The discriminatory zone in ectopic pregnancy refers to:",opts:["βhCG level above which TVUS should always detect an IUP","The zone of uterine pain on examination","Serum progesterone threshold","Gestational age at which ectopic is most common"],ans:0,focus:"Discriminatory zone concept",exp:"The <strong>discriminatory zone</strong> is the βhCG level above which a normal intrauterine pregnancy should be visible on TVUS — typically <strong>1500–2000 IU/L</strong>. If βhCG exceeds this and TVUS shows an empty uterus → ectopic or failed IUP. Below this threshold, a normal early IUP may not yet be visible."},
+  {q:"A haemodynamically unstable patient with suspected ruptured ectopic pregnancy. Correct management:",opts:["Serial βhCG measurements","Methotrexate IM","Emergency laparoscopy or laparotomy","Transvaginal ultrasound to confirm diagnosis first"],ans:2,focus:"Ruptured ectopic — immediate surgical management",exp:"Haemodynamic instability from ruptured ectopic = <strong>immediate surgical intervention</strong>. No time for serial bloods or imaging. Two large-bore IVs, blood products, call theatre. Laparoscopy is preferred if skill available; laparotomy if unstable. Methotrexate is only for unruptured, stable, haemodynamically normal patients."},
+  {q:"Methotrexate for ectopic pregnancy is contraindicated in:",opts:["βhCG of 800 IU/L","Adnexal mass of 25mm","Fetal cardiac activity present on USS","Previous PID"],ans:2,focus:"Methotrexate contraindications",exp:"<strong>Fetal cardiac activity</strong> is an absolute contraindication to methotrexate. Other contraindications: βhCG >5000, mass >35mm, haemodynamic instability, immunodeficiency, liver/renal disease, breastfeeding. The presence of cardiac activity indicates a more advanced ectopic with higher risk of failure from medical management."},
+  {q:"Which βhCG pattern is most reassuring for a viable intrauterine pregnancy?",opts:["Plateau over 48 hours","Rise of 15% over 48 hours","Rise of ≥66% over 48 hours","Any positive result on serial testing"],ans:2,focus:"Serial βhCG interpretation",exp:"In a viable IUP, βhCG should rise by <strong>≥66% every 48 hours</strong> in early pregnancy. A rise &lt;66% suggests failing IUP or ectopic. A plateau or fall suggests non-viable pregnancy. Note: a falling hCG does not always mean safe — ectopics can have falling hCG and still rupture."}
+];
+NOTES_MCQ.placenta=[
+  {q:"A woman at 32 weeks presents with painless, bright red vaginal bleeding. She has had two previous caesarean sections. Most likely diagnosis:",opts:["Placental abruption","Placenta praevia","Show","Vasa praevia"],ans:1,focus:"Placenta praevia — classic presentation",exp:"<strong>Placenta praevia</strong> = painless, bright red bleeding in the third trimester. Previous uterine surgery is a major risk factor. Placental abruption causes painful, dark bleeding with a tender woody uterus. Vasa praevia presents at rupture of membranes. The painless nature and previous CS scars make praevia the diagnosis here."},
+  {q:"In suspected placenta praevia, vaginal examination is:",opts:["Helpful to assess cervical dilation","Contraindicated — can precipitate catastrophic haemorrhage","Indicated only if the patient is haemodynamically stable","Replaced by rectal examination"],ans:1,focus:"Never perform VE in placenta praevia",exp:"<strong>Never perform a vaginal examination</strong> in placenta praevia. The examining finger can disrupt the placenta overlying the cervical os and cause massive, uncontrollable haemorrhage. Diagnosis is by ultrasound — ideally transvaginal (paradoxically safer than transabdominal for posterior praevia). This is an absolute rule."},
+  {q:"A placenta praevia is classified as major when:",opts:["Placental edge within 20mm of internal os","Placenta reaches but does not cover the os","Placenta covers the internal os","Any placenta in the lower segment"],ans:2,focus:"Classification of placenta praevia",exp:"<strong>Major praevia</strong>: placenta covers the internal os. <strong>Minor praevia</strong>: placental edge within 20mm of the os but not covering it. Major praevia mandates caesarean section. Minor praevia may allow vaginal birth depending on the exact distance — decision made on case-by-case basis with senior input."},
+  {q:"The primary risk of placenta praevia accreta in a patient with two prior CS scars is:",opts:["Preterm labour","Abnormal placental attachment requiring hysterectomy","Postpartum depression","Cord prolapse"],ans:1,focus:"Placenta accreta spectrum",exp:"Prior CS scars create uterine scarring. When placenta praevia overlies a CS scar, trophoblast can invade abnormally deeply — <strong>placenta accreta spectrum (PAS)</strong>. Accreta: invades myometrium. Increta: through myometrium. Percreta: through serosa. PAS often requires <strong>caesarean hysterectomy</strong> — plan delivery at a centre with multidisciplinary haematology, urology, and interventional radiology support."},
+  {q:"Antepartum haemorrhage due to placenta praevia at 34 weeks, mother stable, baby well. Correct management:",opts:["Emergency caesarean section","Expectant management with steroids, crossmatch, and senior review","Induce labour to expedite delivery","Methotrexate to reduce placental vascularity"],ans:1,focus:"Expectant management of placenta praevia",exp:"At 34 weeks with a stable mother and fetus, <strong>expectant management</strong> is appropriate. Give <strong>corticosteroids</strong> for fetal lung maturity, crossmatch blood, admit for monitoring, senior obstetric review. Aim to reach 36–37 weeks before planned caesarean if no further bleeds. Emergency CS only if haemodynamic compromise, fetal compromise, or uncontrolled haemorrhage."}
+];
+NOTES_MCQ.gdm=[
+  {q:"The diagnostic test for gestational diabetes mellitus (GDM) is:",opts:["Random blood glucose >11.1","Fasting glucose on two occasions","75g oral glucose tolerance test (OGTT) at 24–28 weeks","HbA1c >48 mmol/mol"],ans:2,focus:"GDM diagnosis — OGTT",exp:"The <strong>75g OGTT at 24–28 weeks</strong> is the gold standard for GDM diagnosis. GDM is diagnosed if: fasting glucose ≥5.6 mmol/L OR 2-hour glucose ≥7.8 mmol/L (NICE thresholds). HbA1c is unreliable in pregnancy due to increased red cell turnover. Random glucose and fasting alone are insufficient."},
+  {q:"Which fetal complication is most directly caused by maternal hyperglycaemia in GDM?",opts:["Intrauterine growth restriction","Macrosomia","Neural tube defect","Renal agenesis"],ans:1,focus:"Macrosomia — mechanism in GDM",exp:"Maternal glucose crosses the placenta; fetal insulin does not. Fetal hyperglycaemia → <strong>fetal hyperinsulinaemia</strong> → excess anabolic drive → <strong>macrosomia</strong> (birthweight >4kg or >90th centile). Macrosomia increases risk of shoulder dystocia, operative delivery, and birth trauma. IUGR occurs in pre-existing diabetes with vascular disease, not typically GDM."},
+  {q:"A woman with GDM fails dietary management. First pharmacological step:",opts:["Insulin","Metformin","Glibenclamide","Acarbose"],ans:1,focus:"GDM pharmacological management",exp:"<strong>Metformin</strong> is first-line pharmacological treatment when diet and exercise fail. It crosses the placenta (which has been studied — no demonstrated harm) and is effective. If metformin is insufficient or not tolerated, <strong>insulin</strong> is added. Glibenclamide is second-line in some guidelines. Acarbose is rarely used in pregnancy."},
+  {q:"The most important neonatal complication to monitor for immediately after delivery in GDM:",opts:["Jaundice","Hypoglycaemia","Polycythaemia","Respiratory distress syndrome"],ans:1,focus:"Neonatal hypoglycaemia in GDM",exp:"<strong>Neonatal hypoglycaemia</strong> is the priority. In utero, the fetus was exposed to high glucose → high insulin. At birth, the glucose supply stops abruptly but insulin levels remain high → hypoglycaemia within minutes to hours. Monitor blood glucose within 1–2 hours of birth. Feed early. Thresholds vary by unit — typically BG <2.0–2.6 mmol/L requires intervention."},
+  {q:"A woman who had GDM should be tested postpartum with:",opts:["Urine dipstick at 6-week check","75g OGTT at 6–13 weeks postpartum","Annual HbA1c for 5 years only","No follow-up needed if delivery glucose was normal"],ans:1,focus:"Postpartum GDM follow-up",exp:"Women with GDM have a <strong>50% lifetime risk of developing type 2 diabetes</strong>. NICE recommends a <strong>75g OGTT at 6–13 weeks postpartum</strong> to rule out persistent diabetes, then annual HbA1c indefinitely. Many women who appear normal at discharge are in fact glucose-impaired. Lifelong surveillance is essential — this is not a condition that ends at delivery."}
+];
+const NOTES={};
+NOTES.pph=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Obstetrics · Emergency · Note 01</div>
+  <div class="n-title">Postpartum<br>Haemorrhage</div>
+  <div class="n-oneliner">The moment you think it might be PPH — it already is. Act immediately.</div>
+  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">4 Ts framework</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+
+<div class="n-visual">
+  <div class="nv-hdr">
+    <span class="nv-title">The 4 Ts — bar width = incidence</span>
+    <span class="nv-sub">Assess all four simultaneously, never one by one</span>
+  </div>
+  <div class="nv-body">
+    <svg viewBox="0 0 760 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="320" height="190" rx="2" fill="#c8452a"/>
+      <text x="160" y="46" font-family="Syne,sans-serif" font-size="28" fill="white" text-anchor="middle" font-weight="800">TONE</text>
+      <rect x="30" y="56" width="260" height="20" rx="10" fill="rgba(255,255,255,.18)"/>
+      <text x="160" y="70" font-family="JetBrains Mono,monospace" font-size="10" fill="white" text-anchor="middle" font-weight="700">70% of all PPH</text>
+      <text x="160" y="104" font-family="JetBrains Mono,monospace" font-size="12" fill="rgba(255,255,255,.82)" text-anchor="middle">Uterine atony</text>
+      <text x="160" y="124" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.58)" text-anchor="middle">Soft, boggy, non-contracting uterus</text>
+      <text x="160" y="158" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.35)" text-anchor="middle">Feel the fundus first. Always.</text>
+      <rect x="328" y="22" width="188" height="168" rx="2" fill="#8a2818"/>
+      <text x="422" y="58" font-family="Syne,sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="800">TRAUMA</text>
+      <text x="422" y="78" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(255,255,255,.6)" text-anchor="middle">20%</text>
+      <text x="422" y="108" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(255,255,255,.8)" text-anchor="middle">Lacerations</text>
+      <text x="422" y="126" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.6)" text-anchor="middle">Uterine rupture</text>
+      <text x="422" y="166" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Uterus firm → still bleeding</text>
+      <rect x="524" y="48" width="116" height="142" rx="2" fill="#5a1810"/>
+      <text x="582" y="84" font-family="Syne,sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="800">TISSUE</text>
+      <text x="582" y="104" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(255,255,255,.6)" text-anchor="middle">9%</text>
+      <text x="582" y="132" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.72)" text-anchor="middle">Retained</text>
+      <text x="582" y="148" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.72)" text-anchor="middle">placenta</text>
+      <rect x="648" y="78" width="112" height="112" rx="2" fill="#1a1510" stroke="#c8452a" stroke-width="1.5"/>
+      <text x="704" y="108" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800">THROMBIN</text>
+      <text x="704" y="128" font-family="JetBrains Mono,monospace" font-size="12" fill="rgba(200,69,42,.9)" text-anchor="middle">1%</text>
+      <text x="704" y="152" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.45)" text-anchor="middle">DIC · HELLP</text>
+      <text x="704" y="168" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.32)" text-anchor="middle">No clot at IV</text>
+    </svg>
+  </div>
+</div>
+
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">Blood loss &gt;500 mL after vaginal delivery or &gt;1000 mL after caesarean. But the number is not the point.</div>
+    <div class="n-opener-body">
+      By the time you have measured 500 mL, she may have lost considerably more — <strong>estimation of blood loss is notoriously inaccurate, often half the actual volume.</strong> The real diagnosis is made clinically: tachycardia, a boggy uterus, ongoing visible bleeding. PPH is the leading cause of maternal mortality worldwide — and most deaths occur not from ignorance of the condition, but from hesitation in acting on it.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">Why blood pressure is a dangerously late sign</span><div class="shead-l"></div></div>
+
+  <div class="mech">
+    <div class="mech-label">The physiology behind the compensation</div>
+    <p>Pregnancy increases circulating blood volume by <strong>40–50%.</strong> This is protective for the fetus — but it means a postpartum woman has enormous compensatory reserve before her blood pressure falls. <strong>By the time BP drops, she has already lost ≥30% of her total circulating volume.</strong> Tachycardia is the first and most important warning sign. Never wait for BP to confirm what the heart rate is already telling you.</p>
+  </div>
+
+  <div class="box">
+    <div class="box-hdr"><div class="box-dot"></div><div class="box-label">Shock Index — use this, not BP alone</div></div>
+    <div class="box-body">
+      <strong>Heart rate ÷ Systolic BP.</strong> Normal is &lt;0.9. If &gt;1.0 → treat as major haemorrhage immediately, regardless of the BP number in isolation. A "normal" BP reading with ongoing bleeding and a rising heart rate is not reassurance — it is a countdown to decompensation.
+    </div>
+  </div>
+
+  <div class="nb">The 4 Ts framework is not a sequential checklist — it is a simultaneous assessment. While you are calling for help, you are already palpating the fundus. While blood is being drawn, you are starting uterotonics. Everything happens at the same time.</div>
+
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">Management ladder — escalate without hesitation</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">1</div>
+      <div class="pt-b">
+        <span class="pt-title">Call for help before you finish your assessment</span>
+        <div class="pt-body">Senior obstetrician, anaesthetist, theatre team. Two large-bore IVs simultaneously. FBC + coagulation screen + group and crossmatch — all at the same moment. Assign one person to document timing. Never manage PPH alone.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">2</div>
+      <div class="pt-b">
+        <span class="pt-title">Uterotonics — first line for atony (70% of cases)</span>
+        <div class="pt-body"><span class="drug">Oxytocin</span> 10 IU slow IV — never as a fast bolus (causes profound hypotension). Escalate to <span class="drug">Ergometrine</span> (avoid if hypertensive or cardiac disease) → <span class="drug">Carboprost</span> (contraindicated in asthma, give IM) → <span class="drug">Misoprostol</span> 800–1000 mcg PR as adjunct. Run through the uterotonic ladder fully before declaring failure.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">3</div>
+      <div class="pt-b">
+        <span class="pt-title">Tranexamic acid 1g IV — within 3 hours, no delay</span>
+        <div class="pt-body">The WOMAN trial demonstrated clear mortality reduction with tranexamic acid in PPH. Give within 3 hours of delivery — beyond this, evidence of benefit diminishes. If bleeding continues at 30 minutes, a second 1g dose should be given. This is one of the most evidence-backed interventions in obstetric emergency care.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">4</div>
+      <div class="pt-b">
+        <span class="pt-title">Bimanual uterine compression — buys time</span>
+        <div class="pt-body">One fist inside the vaginal fornix, one hand compressing the uterus from the abdomen. You are physically squeezing the open sinusoids shut between your hands. This is a temporising measure only — it buys time while uterotonics take effect. Do not mistake it for definitive treatment.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">5</div>
+      <div class="pt-b">
+        <span class="pt-title">Surgical escalation — each step is a decision, not a drift</span>
+        <div class="pt-body">Intrauterine balloon tamponade → B-Lynch compression suture → Uterine artery ligation → Interventional radiology embolisation → Hysterectomy. Do not drift between steps. Each one requires an active decision. Delay at any point costs blood volume you cannot afford to lose.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REAL IMAGE: uterine atony / management -->
+  <div class="img-block">
+    <div class="img-block-hdr">
+      <span class="img-block-title">Bimanual uterine compression — the technique</span>
+      <span class="img-block-label">Step 4 in practice</span>
+    </div>
+    <div class="img-block-body">
+      <div class="img-block-fig">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Uterine_bimanual_compression.jpg/640px-Uterine_bimanual_compression.jpg" alt="Bimanual uterine compression technique" onerror="this.parentElement.parentElement.style.display='none'">
+      </div>
+      <div class="img-block-text">
+        <h4>What you're actually doing</h4>
+        <ul>
+          <li><strong>Vaginal fist:</strong> Placed in the anterior fornix, pushing the uterus up</li>
+          <li><strong>Abdominal hand:</strong> Cups the posterior uterine wall from outside</li>
+          <li><strong>Compression:</strong> Squeeze both hands together — you're closing open sinusoids mechanically</li>
+          <li><strong>Hold firmly:</strong> Maintain until the uterus firms up or uterotonics take effect</li>
+          <li>This is <strong>not definitive treatment</strong> — it buys minutes, not hours</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <div class="warn-ico">⚠</div>
+    <div>
+      <div class="warn-lbl">Never do this</div>
+      <p><strong>No fundal pressure</strong> to expel the placenta or stop bleeding. It can invert the uterus — a catastrophic complication that is harder to manage than the original PPH. Fundal massage is correct. Fundal pressure downward is not.</p>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">iii</span><span class="shead-t">The 4 Ts in detail — what each one looks like clinically</span><div class="shead-l"></div></div>
+
+  <div class="twocol">
+    <div class="tcc shade">
+      <div class="tcc-lbl">Tone — 70%</div>
+      <div class="tcc-title">Atony</div>
+      <p class="tcc-body">The uterus is soft and boggy on palpation. It should feel firm and contracted — like a hard ball in the abdomen. If it doesn't, <strong>massage the fundus while starting oxytocin simultaneously.</strong> The physiology: 500–800 mL/min flows through the placental bed. The only thing stopping haemorrhage is the uterus contracting around those open vessels. When it fails — that blood flows freely.</p>
+    </div>
+    <div class="tcc">
+      <div class="tcc-lbl">Trauma — 20%</div>
+      <div class="tcc-title">Lacerations / Rupture</div>
+      <p class="tcc-body">The uterus is well-contracted but bleeding continues. Systematically inspect: cervix, vaginal walls, perineum, periurethral area. Use good lighting and an assistant to retract. <strong>Cervical lacerations are commonly missed</strong> — use ring forceps to systematically walk around the cervix. Uterine rupture presents with acute maternal collapse, fetal distress, and a palpable defect on bimanual.</p>
+    </div>
+    <div class="tcc">
+      <div class="tcc-lbl">Tissue — 9%</div>
+      <div class="tcc-title">Retained placenta / clot</div>
+      <p class="tcc-body">Is the placenta complete? Inspect membranes and placental cotyledons carefully — a missing cotyledon means retained tissue. A retained placenta that does not deliver within 30 minutes requires manual removal under anaesthesia. <strong>Retained clot also prevents the uterus from contracting</strong> — ensure the uterus is emptied before declaring atony treatment failure.</p>
+    </div>
+    <div class="tcc shade">
+      <div class="tcc-lbl">Thrombin — 1%</div>
+      <div class="tcc-title">Coagulopathy / DIC</div>
+      <p class="tcc-body">Look at the IV site — is blood clotting normally? No visible clot formation = coagulopathy until proven otherwise. This can be the cause (pre-existing or antepartum — abruption, IUFD, amniotic fluid embolism) or the consequence of massive haemorrhage consuming clotting factors. <strong>Fresh frozen plasma, cryoprecipitate, and platelets in a 1:1:1 ratio</strong> with packed red cells in massive transfusion.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">PPH most often follows <em>completely normal deliveries.</em></div>
+    <div class="ins-body">The high-risk patient is not always the complicated one. The grand multipara who just delivered her fifth baby quickly and easily — her exhausted uterus simply does not contract. The long labour with oxytocin augmentation. The woman who was fine five minutes ago. <strong>Never lower your vigilance after a straightforward delivery.</strong> Feel the uterus every 15 minutes postpartum. The moment it is soft and boggy — the clock has already started, and you are already behind.</div>
+  </div>
+
+  <div class="nfoot"><span class="ntag">Obstetrics</span><span class="ntag">Emergency</span><span class="ntag">4 Ts</span><span class="ntag">WOMAN trial</span><span class="ntag">Atony</span><span class="ntag">Shock Index</span><span class="ntime">⏱ 5 min</span></div>
+
+<div class="note-end-cta" onclick="showVentPopup()">
+  <div class="note-end-cta-tag">// End of note</div>
+  <div class="note-end-cta-title">Are you ventilating?</div>
+  <div class="note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="note-end-cta-arrow">&#8599;</div>
+</div>
+</div>`;
+NOTES.shoulder=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Obstetrics · Emergency Drill · Note 06</div>
+  <div class="n-title">Shoulder<br>Dystocia</div>
+  <div class="n-oneliner">The head delivers. The shoulders don't follow. You have five minutes. HELPERR must be in your hands before you ever enter a delivery room.</div>
+  <div class="n-badges"><span class="nbadge">Emergency drill</span><span class="nbadge">HELPERR</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+
+<div class="n-visual">
+  <div class="nv-hdr">
+    <span class="nv-title">HELPERR — every step in this exact order</span>
+    <span class="nv-sub">Do not skip · Do not pull · Traction = Erb's palsy</span>
+  </div>
+  <div class="nv-body">
+    <svg viewBox="0 0 760 294" fill="none" xmlns="http://www.w3.org/2000/svg">
+      ${[
+        ['H','Help','Call for help immediately — announce "shoulder dystocia" out loud to the room','#c8452a'],
+        ['E','Evaluate for episiotomy','Only if needed for manual access to the shoulder — not routine','#982016'],
+        ['L','Legs — McRoberts manoeuvre','Hyperflexion of thighs onto abdomen — resolves 40–50% of cases alone','#741610'],
+        ['P','Pressure — suprapubic only','Downward &amp; lateral on posterior aspect of anterior shoulder. Never fundal pressure.','#541008'],
+        ['E','Enter — rotational manoeuvres','Rubin II + Woods screw — adduct shoulder, reduce bisacromial diameter','#3a0a06'],
+        ['R','Remove the posterior arm','Sweep posterior arm across fetal chest, deliver hand first','#2a1010'],
+        ['R','Roll — all fours (Gaskin)','Hands and knees position — gravity may alone free the impacted shoulder','#1a1510'],
+      ].map(([l,w,d,c],i) => `
+        <rect x="0" y="${i*42}" width="760" height="40" rx="1" fill="${c}" ${c==='#1a1510'?'stroke="#c8452a" stroke-width="1"':''}/>
+        <text x="18" y="${i*42+27}" font-family="Instrument Serif,serif" font-size="22" fill="rgba(255,255,255,0.14)" font-style="italic" font-weight="bold">${l}</text>
+        <text x="52" y="${i*42+16}" font-family="Syne,sans-serif" font-size="13" fill="white" font-weight="700">${w}</text>
+        <text x="52" y="${i*42+30}" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,0.48)">${d}</text>
+        <text x="748" y="${i*42+24}" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,0.14)" text-anchor="end">${i+1}</text>
+      `).join('')}
+    </svg>
+  </div>
+</div>
+
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">The anterior shoulder is impacted behind the symphysis pubis. This is a mechanical problem — and traction makes it worse.</div>
+    <div class="n-opener-body">
+      After the fetal head delivers, the bisacromial diameter — the distance across the fetal shoulders — is too wide to pass through the pelvic outlet at its current angle and position. The anterior shoulder catches on the underside of the maternal symphysis pubis and cannot descend further. <strong>The instinct is to apply more traction. This is exactly the wrong response.</strong> Downward traction on the fetal head when the shoulder is impacted stretches the brachial plexus (C5–C6 nerve roots) — and this is how Erb's palsy is caused. Every single manoeuvre in HELPERR works by changing the geometry of the pelvis or the orientation of the fetal shoulders. Not by force. By geometry.
+    </div>
+  </div>
+
+  <!-- REAL IMAGE: HELPERR / shoulder dystocia -->
+  <div class="img-block" style="margin-bottom:36px;">
+    <div class="img-block-hdr">
+      <span class="img-block-title">Shoulder dystocia — the impaction explained</span>
+      <span class="img-block-label">Why traction fails</span>
+    </div>
+    <div class="img-block-single">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Shoulder_dystocia.jpg/640px-Shoulder_dystocia.jpg" alt="Shoulder dystocia impaction diagram" onerror="this.style.display='none'">
+      <div class="img-caption">ANTERIOR SHOULDER IMPACTED BEHIND SYMPHYSIS PUBIS — the mechanical problem HELPERR solves</div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">McRoberts — why it should be first and why it works</span><div class="shead-l"></div></div>
+
+  <div class="mech">
+    <div class="mech-label">The biomechanics</div>
+    <p>Hyperflexing both maternal thighs sharply onto the abdomen does two things simultaneously: it <strong>flattens the lumbar lordosis</strong>, which straightens the sacrum relative to the lumbar spine, and it <strong>rotates the symphysis pubis superiorly</strong> — effectively lifting it up and over the impacted shoulder. This increases the functional AP diameter of the pelvic outlet. The net effect: what was stuck has room to pass. McRoberts alone resolves 40–50% of shoulder dystocia cases, and combined with suprapubic pressure, the figure rises to over 50–60%.</p>
+  </div>
+
+  <!-- REAL IMAGE: McRoberts -->
+  <div class="img-block">
+    <div class="img-block-hdr">
+      <span class="img-block-title">McRoberts manoeuvre in practice</span>
+      <span class="img-block-label">First-line · Resolves ~50% of cases</span>
+    </div>
+    <div class="img-block-body">
+      <div class="img-block-fig">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/McRoberts_maneuver.jpg/480px-McRoberts_maneuver.jpg" alt="McRoberts maneuver" onerror="this.src='https://www.aafp.org/content/dam/AAFP/images/journals/afp/2004/0401/1707fig1.jpg';this.onerror=null;">
+      </div>
+      <div class="img-block-text">
+        <h4>How to perform McRoberts correctly</h4>
+        <ul>
+          <li><strong>Two assistants needed</strong> — one on each leg</li>
+          <li>Flex both thighs <strong>sharply</strong> onto the abdomen — this is more extreme than you think</li>
+          <li>Hold at the back of the thigh, not the foot (foot-hold is less effective and causes ankle pain)</li>
+          <li>Simultaneously, a third person applies <strong>suprapubic pressure</strong> — downward and laterally toward the fetal face</li>
+          <li><strong>Never fundal pressure</strong> — wedges shoulder deeper, risks uterine rupture</li>
+          <li>Call the time — if no delivery in 30 seconds, move to Enter</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">If McRoberts fails — Enter: rotational manoeuvres</span><div class="shead-l"></div></div>
+
+  <div class="nb">Rotational manoeuvres work by adducting the shoulder — reducing the bisacromial diameter so it fits through the pelvis in the oblique diameter (which is wider than the AP diameter). You are solving a geometry problem, not a strength problem.</div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">E1</div>
+      <div class="pt-b">
+        <span class="pt-title">Rubin II — push the anterior shoulder forward</span>
+        <div class="pt-body">Reach vaginally and apply pressure to the <strong>posterior aspect of the anterior shoulder</strong>, pushing it toward the fetal chest. This adducts the shoulder — reducing the bisacromial diameter — and rotates it obliquely into the wider oblique pelvic diameter. This is the most consistently effective internal manoeuvre.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">E2</div>
+      <div class="pt-b">
+        <span class="pt-title">Woods screw — rotate from the posterior shoulder</span>
+        <div class="pt-body">Apply pressure to the <strong>anterior aspect of the posterior shoulder</strong>, rotating it in the same direction as Rubin II. When combined (Rubin II + Woods = the corkscrew manoeuvre), both shoulders rotate together around the long axis of the fetus like a screw — this is the most powerful rotational combination available.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">R1</div>
+      <div class="pt-b">
+        <span class="pt-title">Remove the posterior arm — highest success rate of all manoeuvres</span>
+        <div class="pt-body">Reach posteriorly into the sacral hollow, locate the posterior arm, sweep it across the fetal chest, and deliver the hand and forearm first. This effectively converts a two-shoulder delivery into a one-shoulder delivery — the bisacromial diameter collapses. Studies show posterior arm delivery has the highest success rate (~86%) of any individual manoeuvre.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REAL IMAGE: rotational manoeuvres -->
+  <div class="img-block">
+    <div class="img-block-hdr">
+      <span class="img-block-title">HELPERR mnemonic — the full algorithm visualised</span>
+      <span class="img-block-label">Know this before your first delivery</span>
+    </div>
+    <div class="img-block-single">
+      <img src="https://i.pinimg.com/originals/36/4d/a2/364da2b2e3e2e3c3e3c3e3c3e3c3e3c3.jpg" alt="HELPERR shoulder dystocia algorithm" onerror="this.src='https://www.aafp.org/content/dam/AAFP/images/journals/afp/2004/0401/1707fig2.jpg';this.onerror=null;this.style.display='none'">
+      <div class="img-caption">HELPERR ALGORITHM — ADVANCED LIFE SUPPORT IN OBSTETRICS (ALSO) COURSE</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <div class="warn-ico">⚠</div>
+    <div>
+      <div class="warn-lbl">This is how Erb's palsy happens — document everything</div>
+      <p><strong>Excessive lateral traction on the fetal head</strong> stretches the brachial plexus (C5–C6). The result: the classic waiter's tip posture — arm hanging by the side, internally rotated, elbow extended, wrist flexed. Over 90% resolve within one year, but 5–8% are permanent. If shoulder dystocia occurs, document: time of impaction, time of delivery, every manoeuvre used, direction and estimate of traction applied. This documentation matters legally and clinically.</p>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">iii</span><span class="shead-t">After delivery — what to anticipate</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">1</div>
+      <div class="pt-b">
+        <span class="pt-title">PPH risk doubles — be ready before the placenta delivers</span>
+        <div class="pt-body">Prolonged second stage, uterine exhaustion from the emergency, and lacerations from internal manoeuvres all combine to dramatically increase PPH risk. Actively manage the third stage with <span class="drug">Oxytocin</span>. Inspect every centimetre of the perineum, vagina, and cervix carefully. Have blood products available before they are needed.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">2</div>
+      <div class="pt-b">
+        <span class="pt-title">Neonatal assessment — cord blood gas mandatory</span>
+        <div class="pt-body">Hypoxic brain injury begins after 5–7 minutes of impaction. Cord blood gas (arterial and venous) must be taken immediately. The neonatal team should be in the room for any high-risk delivery and must be called immediately when shoulder dystocia is announced. Document the head-to-body delivery interval — this is the key medicolegal and clinical data point.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">3</div>
+      <div class="pt-b">
+        <span class="pt-title">Debrief the team and document in full</span>
+        <div class="pt-body">Shoulder dystocia is one of the highest-risk events for litigation in obstetrics. Document everything: time of diagnosis, every manoeuvre, who performed it, time of delivery, neonatal condition, blood loss. A contemporaneous, detailed record is both good clinical practice and the best medico-legal protection available.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">The mistake is not failing to recall HELPERR. <em>It's pulling while recalling it.</em></div>
+    <div class="ins-body">In the panic of shoulder dystocia, instinct is traction — more traction, frantic traction. <strong>The first and hardest clinical skill is to stop your hands.</strong> Announce "shoulder dystocia" loud and clearly. Call for help. Then HELPERR, in order, calmly and deliberately. McRoberts alone resolves half of all cases. The problem is geometry, not force. You cannot pull your way out of this. But you can rotate your way out of it every time — if you stop pulling long enough to try.</div>
+  </div>
+
+  <div class="nfoot"><span class="ntag">Shoulder Dystocia</span><span class="ntag">HELPERR</span><span class="ntag">McRoberts</span><span class="ntag">Erb's palsy</span><span class="ntag">Rubin II</span><span class="ntag">Woods screw</span><span class="ntime">⏱ 5 min</span></div>
+
+<div class="note-end-cta" onclick="showVentPopup()">
+  <div class="note-end-cta-tag">// End of note</div>
+  <div class="note-end-cta-title">Are you ventilating?</div>
+  <div class="note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="note-end-cta-arrow">&#8599;</div>
+</div>
+</div>`;
+NOTES.preeclampsia=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Obstetrics · Antenatal · Note 02</div>
+  <div class="n-title">Preeclampsia</div>
+  <div class="n-oneliner">Not a blood pressure problem. A disease of the placenta that happens to cause hypertension — and that distinction changes everything.</div>
+  <div class="n-badges"><span class="nbadge">Antenatal</span><span class="nbadge">HELLP</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+
+<div class="n-visual">
+  <div class="nv-hdr">
+    <span class="nv-title">Pathophysiology cascade — everything from defective placentation</span>
+    <span class="nv-sub">Understanding this is the whole note</span>
+  </div>
+  <div class="nv-body">
+    <svg viewBox="0 0 760 268" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="230" y="0" width="300" height="46" rx="2" fill="#2a6b6e"/>
+      <text x="380" y="20" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="700">Abnormal placentation</text>
+      <text x="380" y="38" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,0.58)" text-anchor="middle">Defective trophoblast invasion · spiral arteries stay narrow</text>
+      <text x="380" y="58" font-family="Syne,sans-serif" font-size="14" fill="rgba(245,242,235,0.22)" text-anchor="middle">↓</text>
+      <rect x="190" y="64" width="380" height="44" rx="2" fill="#3a5a6e"/>
+      <text x="380" y="84" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="700">↓ Uteroplacental perfusion</text>
+      <text x="380" y="100" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,0.53)" text-anchor="middle">Placental ischaemia · oxidative stress · antiangiogenic factors released</text>
+      <text x="380" y="120" font-family="Syne,sans-serif" font-size="14" fill="rgba(245,242,235,0.22)" text-anchor="middle">↓</text>
+      <rect x="130" y="126" width="500" height="44" rx="2" fill="#7a3060"/>
+      <text x="380" y="146" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="700">↑ sFlt-1 · ↓ PlGF circulate systemically</text>
+      <text x="380" y="162" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,0.53)" text-anchor="middle">Binds and neutralises VEGF → endothelial injury throughout maternal body</text>
+      <text x="380" y="182" font-family="Syne,sans-serif" font-size="14" fill="rgba(245,242,235,0.22)" text-anchor="middle">↓</text>
+      <rect x="40" y="188" width="680" height="52" rx="2" fill="#c8452a"/>
+      <text x="380" y="212" font-family="Syne,sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="800">Systemic endothelial dysfunction</text>
+      <text x="380" y="230" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,0.7)" text-anchor="middle">Vasoconstriction · Proteinuria · Oedema · Organ failure · HELLP · Eclampsia</text>
+      <line x1="380" y1="240" x2="96" y2="256" stroke="rgba(245,242,235,0.12)" stroke-width="1"/>
+      <line x1="380" y1="240" x2="280" y2="256" stroke="rgba(245,242,235,0.12)" stroke-width="1"/>
+      <line x1="380" y1="240" x2="480" y2="256" stroke="rgba(245,242,235,0.12)" stroke-width="1"/>
+      <line x1="380" y1="240" x2="664" y2="256" stroke="rgba(245,242,235,0.12)" stroke-width="1"/>
+      <text x="96" y="268" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(245,242,235,0.35)" text-anchor="middle">HTN</text>
+      <text x="280" y="268" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(245,242,235,0.35)" text-anchor="middle">Proteinuria</text>
+      <text x="480" y="268" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(245,242,235,0.35)" text-anchor="middle">HELLP / Eclampsia</text>
+      <text x="664" y="268" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(245,242,235,0.35)" text-anchor="middle">Fetal growth ↓</text>
+    </svg>
+  </div>
+</div>
+
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">HTN ≥140/90 after 20 weeks, plus proteinuria or end-organ damage. But the definition tells you nothing about what to do.</div>
+    <div class="n-opener-body">
+      Preeclampsia begins weeks before any clinical sign appears — in the placenta, at the time of implantation. Defective trophoblast invasion means the spiral arteries fail to properly dilate. The placenta becomes ischaemic, releases antiangiogenic factors (primarily sFlt-1), and those factors circulate throughout the maternal body, damaging endothelial cells everywhere. <strong>The hypertension is a symptom of endothelial injury. The endothelial dysfunction is the disease.</strong> This distinction is not academic — it determines every management decision. You cannot cure preeclampsia by lowering blood pressure. You can only cure it by removing the placenta.
+    </div>
+  </div>
+
+  <!-- IMAGE: preeclampsia pathophysiology -->
+  <div class="img-block">
+    <div class="img-block-hdr">
+      <span class="img-block-title">Preeclampsia — the placental origin</span>
+      <span class="img-block-label">Normal vs defective placentation</span>
+    </div>
+    <div class="img-block-single">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Preeclampsia_-_Pathophysiology.jpg/640px-Preeclampsia_-_Pathophysiology.jpg" alt="Preeclampsia pathophysiology" onerror="this.style.display='none'">
+      <div class="img-caption">NORMAL: SPIRAL ARTERIES DILATE → HIGH FLOW, LOW RESISTANCE · PREECLAMPSIA: ARTERIES STAY NARROW → ISCHAEMIA → sFlt-1 RELEASE</div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">Diagnosis — know every threshold</span><div class="shead-l"></div></div>
+
+  <div class="box">
+    <div class="box-hdr"><div class="box-dot"></div><div class="box-label">Diagnostic criteria — all of these must be known</div></div>
+    <div class="box-body">
+      <strong>Hypertension:</strong> ≥140/90 mmHg on two readings at least 4 hours apart after 20 weeks gestation.<br><br>
+      <strong>Plus ONE of:</strong>
+      <ul>
+        <li>Proteinuria ≥300 mg/24h, or protein:creatinine ratio ≥30 mg/mmol, or dipstick ≥2+</li>
+        <li>Thrombocytopaenia &lt;100 × 10⁹/L</li>
+        <li>Renal impairment: creatinine &gt;90 μmol/L or doubling of baseline</li>
+        <li>Liver involvement: LFTs twice normal or severe RUQ/epigastric pain</li>
+        <li>New-onset headache unresponsive to medication, or visual symptoms</li>
+        <li>Pulmonary oedema</li>
+      </ul>
+      <br><strong>Critical point:</strong> Severe features can develop without proteinuria. The absence of protein in the urine does NOT exclude preeclampsia or its severe complications.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">Severe features — any one changes management immediately</span><div class="shead-l"></div></div>
+
+  <div class="nb">The moment any severe feature is present, the clinical situation has escalated. Expedite delivery — do not wait for more features to accumulate. That is how patients deteriorate catastrophically.</div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">CNS</div>
+      <div class="pt-b">
+        <span class="pt-title">Persistent headache + visual disturbance — eclampsia is imminent</span>
+        <div class="pt-body">Headache not responding to paracetamol, visual changes (scotomata, blurring, photopsia), or altered consciousness. Start <span class="drug">MgSO₄</span> now — do not wait for a seizure to occur. A seizure in a woman with preeclampsia means eclampsia, and it carries 1–2% maternal mortality.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">LFT</div>
+      <div class="pt-b">
+        <span class="pt-title">Epigastric / RUQ pain → suspect HELLP</span>
+        <div class="pt-body">Liver capsule distension from haematoma or oedema. Check LFTs, platelets, and blood film urgently. HELLP (Haemolysis, Elevated Liver enzymes, Low Platelets) can occur without significant hypertension and can deteriorate rapidly to hepatic rupture — a surgical emergency with very high mortality.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">PLT</div>
+      <div class="pt-b">
+        <span class="pt-title">Platelets &lt;100 × 10⁹/L — and watch the trend</span>
+        <div class="pt-body">Monitor the trend, not just the single value. Platelets &lt;50 × 10⁹/L → epidural contraindicated. Platelets &lt;20 × 10⁹/L → risk of spontaneous intracranial haemorrhage. Transfuse proactively. In HELLP, haemolysis + elevated LFTs + low platelets is the triad — any two should trigger the third investigation.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">Cr</div>
+      <div class="pt-b">
+        <span class="pt-title">Creatinine &gt;90 μmol/L or rising — this is AKI in pregnancy</span>
+        <div class="pt-body">GFR increases by 40–50% in normal pregnancy, so baseline creatinine is lower than in non-pregnant women (typically 50–70 μmol/L). A value of 90 μmol/L that would be normal in a non-pregnant person is already significantly elevated in pregnancy. Watch the trend carefully — a rising creatinine indicates worsening endothelial damage in the renal vasculature.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">iii</span><span class="shead-t">Management — the goal at every step</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">1</div>
+      <div class="pt-b">
+        <span class="pt-title">Antihypertensives when BP ≥150/100 — target 135/85</span>
+        <div class="pt-body">First-line oral: <span class="drug">Labetalol</span> 200mg or modified-release <span class="drug">Nifedipine</span> 10mg. IV options: <span class="drug">Labetalol</span> infusion or <span class="drug">Hydralazine</span> boluses. Avoid <span class="drug">ACE inhibitors</span> and <span class="drug">ARBs</span> — fetotoxic. The target is 135/85 — not lower. Reducing BP too aggressively impairs uteroplacental perfusion and worsens fetal outcome. <strong>You are preventing maternal stroke. You are not treating the disease.</strong></div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">2</div>
+      <div class="pt-b">
+        <span class="pt-title">Magnesium sulphate — any severe feature → give it</span>
+        <div class="pt-body">Loading dose: 4g IV over 15–20 minutes. Maintenance: 1g/hr infusion. Monitor three things continuously: <strong>reflexes</strong> (loss of patellar reflex at 7–10 mmol/L precedes respiratory depression), <strong>urine output</strong> (&gt;25 mL/hr — magnesium is renally cleared), <strong>respiratory rate</strong> (&gt;12/min). Antidote: <span class="drug">Calcium gluconate</span> 10 mL of 10% IV over 3 minutes — keep it drawn up at the bedside.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">3</div>
+      <div class="pt-b">
+        <span class="pt-title">Corticosteroids — &lt;34 weeks with delivery anticipated</span>
+        <div class="pt-body"><span class="drug">Betamethasone</span> 12mg IM, two doses 24 hours apart — promotes fetal lung surfactant production. Reduces neonatal RDS, IVH, and necrotising enterocolitis significantly. Do not delay delivery for steroid course completion if the maternal clinical picture is deteriorating — maternal safety takes priority.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">4</div>
+      <div class="pt-b">
+        <span class="pt-title">Delivery — the only cure. Timing depends on gestation and severity.</span>
+        <div class="pt-body">≥37 weeks: deliver. Severe features at any gestation: expedite delivery. 34–36 weeks: individualise based on maternal severity vs fetal maturity — discussion with senior. &lt;34 weeks without severe features: close monitoring may allow conservative management with daily assessment. Route depends on cervical favourability — most preeclamptic women do not require caesarean section.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">Antihypertensives buy time. <em>Delivery cures.</em></div>
+    <div class="ins-body">Every student memorises the antihypertensive protocol and thinks they understand preeclampsia. They don't — not yet. <strong>The placenta is the source. Until it is delivered, the sFlt-1 continues to circulate, and the endothelium continues to be damaged.</strong> The moment the placenta delivers, the antiangiogenic signal stops. The endothelium begins to heal. The blood pressure — over hours to days — normalises on its own without any further intervention. Understand this, and every management decision becomes obvious: antihypertensives are a bridge to delivery, not a treatment. And delivery is not a last resort. It is the therapy.</div>
+  </div>
+
+  <div class="nfoot"><span class="ntag">Preeclampsia</span><span class="ntag">HELLP</span><span class="ntag">MgSO₄</span><span class="ntag">sFlt-1</span><span class="ntag">Severe features</span><span class="ntag">Delivery</span><span class="ntime">⏱ 5 min</span></div>
+
+<div class="note-end-cta" onclick="showVentPopup()">
+  <div class="note-end-cta-tag">// End of note</div>
+  <div class="note-end-cta-title">Are you ventilating?</div>
+  <div class="note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="note-end-cta-arrow">&#8599;</div>
+</div>
+</div>`;
+
+function stub(id) {
+  const data = {
+    ectopic: { title: 'Ectopic Pregnancy', sub: 'Ectopic until proven otherwise. The triad, risk factors, the discriminatory zone, and what a negative urine hCG does and does not rule out.' },
+    placenta: { title: 'Placenta Praevia', sub: 'Painless bright red bleeding in the third trimester. Why placental position determines everything — including why you never perform a vaginal examination.' },
+    gdm: { title: 'Gestational Diabetes', sub: 'The OGTT thresholds, why hyperglycaemia in pregnancy endangers both mother and baby, and why macrosomia is not just a big baby problem.' }
+  };
+  const d = data[id] || { title: 'Note', sub: '' };
+  return `<div class="n-hero"><div class="nhero-glow"></div><div class="n-rule"></div><div class="n-tag">OB/GYN · In progress</div>
+<div class="n-title">${d.title}</div><div class="n-oneliner">${d.sub}</div>
+<div class="n-badges"><span class="nbadge">Coming soon</span><span class="nbadge">EN / AR</span></div></div>
+<div class="nbody"><div class="n-opener"><div class="n-opener-kicker">In progress</div>
+<div class="n-opener-hl">This note is being built to the same standard.</div>
+<div class="n-opener-body">${d.sub} Every note on Vent earns its place before going live.</div></div>
+<div class="insight"><div class="ins-kicker">Vent promise</div><div class="ins-hl">We'd rather give you nothing <em>than something half-built.</em></div>
+<div class="ins-body">The whole premise is understanding, not information. If we can't build it to that standard, it doesn't ship.</div></div>
+<div class="nfoot"><span class="ntag">${d.title}</span><span class="ntag">Coming soon</span><span class="ntime">⏱ In progress</span></div></div>`;
+}
+
+/* REVEAL */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:.08, rootMargin:'0px 0px -24px 0px'});
+document.querySelectorAll('.reveal').forEach((el,i) => {
+  const p = el.closest('.notes-grid');
+  if(p) { const idx = Array.from(p.children).indexOf(el); if(idx>-1) el.style.transitionDelay = idx*.08+'s'; }
   obs.observe(el);
 });
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3600);}
-function notifyMe(btn,specialty){btn.textContent='✓ Noted';btn.disabled=true;showToast("we'll tell you when "+specialty+" drops.");}
-function validEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);}
-document.getElementById('sb').addEventListener('click',async()=>{
-  const email=document.getElementById('ei').value.trim();
-  const errEl=document.getElementById('cerr');
-  const btn=document.getElementById('sb');
-  errEl.classList.remove('show');
-  if(!validEmail(email)){errEl.textContent='Please enter a valid email address.';errEl.classList.add('show');document.getElementById('ei').focus();return;}
-  btn.disabled=true;btn.textContent='Submitting...';
-  // Replace with: await fetch('https://formspree.io/f/YOUR_ID',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,year:document.getElementById('yr').value})});
-  await new Promise(r=>setTimeout(r,800));
-  document.getElementById('fc').innerHTML='<div style="padding:48px 0;"><div style="font-family:\'Instrument Serif\',serif;font-size:52px;color:#e85d3f;font-style:italic;line-height:1;margin-bottom:20px;">You\'re in.</div><p style="color:rgba(245,242,235,.65);font-size:16px;line-height:1.75;">We\'ll reach out when Vent opens.<br>Until then — breathe.</p></div>';
+document.querySelectorAll('.filt').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filt').forEach(b => b.classList.remove('on'));
+    this.classList.add('on');
+  });
 });
+
+
 </script>
 </body>
 </html>
