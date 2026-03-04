@@ -17,29 +17,15 @@ html{scroll-behavior:smooth;}
 body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9997;opacity:.5;}
 
-/* ── LANGUAGE ── */
 /* In EN mode: show .en, hide .ar */
 /* In AR mode: show .ar, hide .en */
-.ar { display: none !important; }
-.en { display: block; }
-
-body.ar-mode .ar { display: block !important; }
-body.ar-mode .en { display: none !important; }
-body.ar-mode .note-modal, body.ar-mode .note-page { direction: rtl; }
-body.ar-mode .ar { font-family: 'Noto Naskh Arabic', serif; font-size: 17px; line-height: 2.1; }
 
 /* inline elements */
-span.ar { display: none !important; }
-body.ar-mode span.ar { display: inline !important; }
-body.ar-mode span.en { display: none !important; }
+span
+
 span.en { display: inline; }
 
 .drug { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: rgba(200,69,42,.09); border: 1px solid rgba(200,69,42,.22); padding: 1px 7px; border-radius: 3px; color: var(--accent); direction: ltr; display: inline-block; }
-
-/* LANG TOGGLE */
-.lang-toggle { display: flex; gap: 2px; background: rgba(245,242,235,.08); border: 1px solid rgba(245,242,235,.15); border-radius: 100px; padding: 3px; }
-.lbtn { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1px; color: rgba(245,242,235,.4); padding: 7px 16px; border-radius: 100px; border: none; background: none; cursor: pointer; transition: all .2s; }
-.lbtn.on { background: var(--accent); color: white; }
 
 /* OVERLAY */
 .overlay { position: fixed; inset: 0; background: rgba(8,5,3,.93); backdrop-filter: blur(18px); z-index: 10000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .35s; padding: 20px; }
@@ -135,21 +121,6 @@ span.en { display: inline; }
 .box-body ul li strong { color: var(--ink); }
 
 /* IMAGE BLOCK — real images */
-.img-block { margin: 32px 0; background: var(--ink); overflow: hidden; }
-.img-block-hdr { padding: 13px 22px; border-bottom: 1px solid rgba(245,242,235,.07); display: flex; justify-content: space-between; align-items: center; }
-.img-block-title { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; color: rgba(245,242,235,.38); text-transform: uppercase; }
-.img-block-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); }
-.img-block-body { display: flex; gap: 0; }
-.img-block-fig { flex: 1; min-width: 0; }
-.img-block-fig img { width: 100%; height: 260px; object-fit: cover; display: block; filter: brightness(.9) contrast(1.05); }
-.img-block-text { flex: 1; min-width: 200px; padding: 28px 28px; display: flex; flex-direction: column; justify-content: center; }
-.img-block-text h4 { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: rgba(245,242,235,.9); margin-bottom: 14px; }
-.img-block-text ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.img-block-text ul li { font-size: 13px; color: rgba(245,242,235,.58); line-height: 1.65; padding-left: 16px; position: relative; }
-.img-block-text ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 10px; top: 2px; }
-.img-block-text ul li strong { color: rgba(245,242,235,.88); }
-.img-block-single img { width: 100%; max-height: 340px; object-fit: cover; display: block; filter: brightness(.88) contrast(1.08); }
-.img-block-single .img-caption { padding: 12px 22px; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: rgba(245,242,235,.25); letter-spacing: 1px; }
 
 /* MECH */
 .mech { background: var(--ink); padding: 26px 28px; margin: 20px 0; border-left: 3px solid var(--accent); }
@@ -255,7 +226,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
   .nbody{padding:40px 28px 60px;} .n-hero{padding:48px 28px 40px;}
   .nv-hdr,.nv-body{padding-left:28px;padding-right:28px;}
   .insight{margin-left:-28px;margin-right:-28px;padding:40px 28px;}
-  .img-block-body{flex-direction:column;} .twocol{grid-template-columns:1fr;}
+   .twocol{grid-template-columns:1fr;}
   .pnav{padding:16px 24px;}
 }
 @media(max-width:640px){
@@ -264,7 +235,6 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
   .nv-hdr,.nv-body{padding-left:20px;padding-right:20px;}
   .insight{margin-left:-20px;margin-right:-20px;padding:32px 20px;}
 }
-
 
 /* ══════════════════════════════════════
    MCQ ROOM
@@ -395,10 +365,6 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
     <div class="mbar">
       <div class="mbar-l"><div class="mpulse"></div><span class="mbc">OB/GYN &mdash; VENT</span></div>
       <div class="mbar-r">
-        <div class="lang-toggle">
-          <button class="lbtn on" id="btn-en" onclick="setLang('en')">EN</button>
-          <button class="lbtn" id="btn-ar" onclick="setLang('ar')">AR</button>
-        </div>
         <button class="mclose" onclick="closeModal()">&#10005;</button>
       </div>
     </div>
@@ -411,8 +377,6 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 <div id="vent-popup" class="vent-popup">
   <div class="vent-popup-inner" id="vent-popup-inner">
     <div class="vent-popup-glow"></div>
-
-    <!-- FIRST TIME -->
     <div class="vp-first">
       <div class="vent-popup-tag">// End of note</div>
       <div class="vent-popup-title">Are you<br><em>ventilating?</em></div>
@@ -422,8 +386,6 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
         <button class="vent-no" onclick="dismissVentPopup()">Not now</button>
       </div>
     </div>
-
-    <!-- RETURNING -->
     <div class="vp-fresh">
       <div class="vent-popup-tag">// You&#39;ve been here before</div>
       <div class="vp-score-pill">
@@ -431,7 +393,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
         <span class="vp-score-pill-lbl">last score</span>
       </div>
       <div class="vp-fresh-title">Back for<br><em>another round?</em></div>
-      <div class="vp-fresh-sub">Pick up with the same questions reset, or wipe and start completely fresh.</div>
+      <div class="vp-fresh-sub">Same questions reset, or wipe and go completely fresh.</div>
       <div class="vp-fresh-btns">
         <button class="vp-btn-retry" onclick="startRetryMCQ()">&#8635; Same questions</button>
         <button class="vp-btn-fresh" onclick="startFreshMCQ()">&#10022; Fresh start &rarr;</button>
@@ -440,7 +402,6 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
   </div>
 </div>
 <div id="vent-backdrop" class="vent-backdrop" onclick="dismissVentPopup()"></div>
-
 
 <div id="main-page">
 <nav>
@@ -460,7 +421,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
   <div class="shero-stats">
     <div><div class="sv">15</div><div class="sl">Notes</div></div>
     <div><div class="sv">OB/GYN</div><div class="sl">Separated</div></div>
-    <div><div class="sv">EN/AR</div><div class="sl">Bilingual</div></div>
+    
   </div>
 </section>
 
@@ -592,33 +553,34 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 </section>
 </div>
 
-
-
 <script>
 let currentNote = null;
-let lang = 'en';
-
-function setLang(l) {
-  lang = l;
-  document.body.classList.toggle('ar-mode', l === 'ar');
-  ['btn-en','btn-en2'].forEach(id => { const el = document.getElementById(id); if(el) el.classList.toggle('on', l==='en'); });
-  ['btn-ar','btn-ar2'].forEach(id => { const el = document.getElementById(id); if(el) el.classList.toggle('on', l==='ar'); });
-}
-
 
 const mcqState={};
 
 function openNote(id){
-  currentNote=id;
-  const html=NOTES[id]?NOTES[id]():stub(id);
-  document.getElementById('mcontent').innerHTML=html;
+  const isReopen = currentNote === id;
+  currentNote = id;
+  // Rebuild note content only if switching notes
+  if(!isReopen){
+    document.getElementById('mcontent').innerHTML = NOTES[id] ? NOTES[id]() : stub(id);
+  }
   document.getElementById('overlay').classList.add('open');
-  document.body.style.overflow='hidden';
-  document.getElementById('modal').scrollTop=0;
-  setLang('en');
-  // show note, hide mcq
-  document.getElementById('page-note-ob').style.display='block';
-  document.getElementById('page-mcq-ob').style.display='none';
+  document.body.style.overflow = 'hidden';
+  document.getElementById('modal').scrollTop = 0;
+  // If mid-quiz on this note, restore MCQ view; otherwise show note
+  const state = mcqState[id];
+  const mcqs  = NOTES_MCQ[id];
+  const midQuiz = state && mcqs && state.answers.some(a=>a!==null) &&
+                  state.answers.filter(a=>a!==null).length < mcqs.length;
+  if(midQuiz){
+    document.getElementById('page-note-ob').style.display = 'none';
+    document.getElementById('page-mcq-ob').style.display  = 'block';
+    document.getElementById('mcq-inner-ob').innerHTML = renderQuestion(id);
+  } else {
+    document.getElementById('page-note-ob').style.display = 'block';
+    document.getElementById('page-mcq-ob').style.display  = 'none';
+  }
 }
 function closeModal(){
   document.getElementById('overlay').classList.remove('open');
@@ -631,7 +593,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 function showVentPopup(){
   const inner = document.getElementById('vent-popup-inner');
   const state = mcqState[currentNote];
-  const mcqs = NOTES_MCQ[currentNote];
+  const mcqs  = NOTES_MCQ[currentNote];
   const total = mcqs ? mcqs.length : 5;
   const completed = state && state.answers && state.answers.filter(a=>a!==null).length === total;
   if(completed){
@@ -650,7 +612,7 @@ function dismissVentPopup(){
 }
 function startFreshMCQ(){
   dismissVentPopup();
-  if(!NOTES_MCQ[currentNote]||NOTES_MCQ[currentNote].length===0){return;}
+  if(!NOTES_MCQ[currentNote]||NOTES_MCQ[currentNote].length===0)return;
   mcqState[currentNote]={current:0,answers:Array(NOTES_MCQ[currentNote].length).fill(null)};
   document.getElementById('page-note-ob').style.display='none';
   document.getElementById('page-mcq-ob').style.display='block';
@@ -659,7 +621,7 @@ function startFreshMCQ(){
 }
 function startRetryMCQ(){
   dismissVentPopup();
-  if(!NOTES_MCQ[currentNote]||NOTES_MCQ[currentNote].length===0){return;}
+  if(!NOTES_MCQ[currentNote]||NOTES_MCQ[currentNote].length===0)return;
   mcqState[currentNote]={current:0,answers:Array(NOTES_MCQ[currentNote].length).fill(null)};
   document.getElementById('page-note-ob').style.display='none';
   document.getElementById('page-mcq-ob').style.display='block';
@@ -771,7 +733,7 @@ NOTES.miscarriage=()=>`
   <div class="n-tag">Obstetrics · Early Pregnancy · OB 08</div>
   <div class="n-title">Miscarriage</div>
   <div class="n-oneliner">Pregnancy loss before 24 weeks. The types, what ultrasound tells you, and why management is a shared decision — not a protocol.</div>
-  <div class="n-badges"><span class="nbadge">Early Pregnancy</span><span class="nbadge">Expectant · Medical · Surgical</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Early Pregnancy</span><span class="nbadge">Expectant · Medical · Surgical</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -911,7 +873,7 @@ NOTES.cordprolapse=()=>`
   <div class="n-tag">Obstetrics · Emergency · OB 09</div>
   <div class="n-title">Cord<br>Prolapse</div>
   <div class="n-oneliner">The cord delivers before the baby. Every second of cord compression is fetal hypoxia. Position before anything else.</div>
-  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">Category 1 CS</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">Category 1 CS</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -1041,7 +1003,7 @@ NOTES.endometriosis=()=>`
   <div class="n-tag">Gynaecology · GYN 03</div>
   <div class="n-title">Endometriosis</div>
   <div class="n-oneliner">Endometrium-like tissue outside the uterus. It takes an average of 7–10 years to diagnose — and pain severity tells you almost nothing about disease extent.</div>
-  <div class="n-badges"><span class="nbadge">Gynaecology</span><span class="nbadge">Chronic Pelvic Pain</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Gynaecology</span><span class="nbadge">Chronic Pelvic Pain</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -1164,7 +1126,7 @@ NOTES.pcos=()=>`
   <div class="n-tag">Gynaecology · Endocrine · GYN 04</div>
   <div class="n-title">PCOS</div>
   <div class="n-oneliner">The most common endocrine disorder in women of reproductive age. The cycle problem is the presentation. The metabolic risk is the disease.</div>
-  <div class="n-badges"><span class="nbadge">Endocrine</span><span class="nbadge">Rotterdam Criteria</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Endocrine</span><span class="nbadge">Rotterdam Criteria</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -1280,7 +1242,7 @@ NOTES.fibroids=()=>`
   <div class="n-tag">Gynaecology · GYN 05</div>
   <div class="n-title">Uterine<br>Fibroids</div>
   <div class="n-oneliner">Benign smooth muscle tumours. Location matters more than size — and the management ladder runs from the IUS to hysterectomy.</div>
-  <div class="n-badges"><span class="nbadge">Gynaecology</span><span class="nbadge">HMB</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Gynaecology</span><span class="nbadge">HMB</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -1397,7 +1359,7 @@ NOTES.pid=()=>`
   <div class="n-tag">Gynaecology · Infectious · GYN 06</div>
   <div class="n-title">Pelvic<br>Inflammatory<br>Disease</div>
   <div class="n-oneliner">Ascending infection of the upper genital tract. Chlamydia leads, but the sequelae — infertility, ectopic, chronic pain — outlast the infection by years.</div>
-  <div class="n-badges"><span class="nbadge">Infectious</span><span class="nbadge">STI</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Infectious</span><span class="nbadge">STI</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -1526,7 +1488,7 @@ NOTES.pretermlabour=()=>`
   <div class="n-tag">Obstetrics · Emergency · OB 07</div>
   <div class="n-title">Preterm<br>Labour</div>
   <div class="n-oneliner">Labour before 37 weeks. The steroids come before the tocolysis — and the magnesium at 28 weeks is not about seizures.</div>
-  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">Neuroprotection</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">Neuroprotection</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -1708,7 +1670,7 @@ NOTES.ovarycyst=()=>`
   <div class="n-tag">Gynaecology · GYN 01</div>
   <div class="n-title">Ovarian<br>Cysts</div>
   <div class="n-oneliner">Not all cysts are equal. Functional vs pathological, the IOTA simple rules, and when a cyst stops being a cyst and becomes a surgical emergency.</div>
-  <div class="n-badges"><span class="nbadge">Gynaecology</span><span class="nbadge">IOTA Rules</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Gynaecology</span><span class="nbadge">IOTA Rules</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -1874,7 +1836,7 @@ NOTES.cervicalcancer=()=>`
   <div class="n-tag">Gynaecology · Oncology · GYN 02</div>
   <div class="n-title">Cervical<br>Cancer</div>
   <div class="n-oneliner">HPV drives almost every case. Understand the progression from infection to invasion — and why the vaccine does not replace the smear.</div>
-  <div class="n-badges"><span class="nbadge">Oncology</span><span class="nbadge">Screening</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Oncology</span><span class="nbadge">Screening</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -2049,7 +2011,6 @@ NOTES_MCQ.preeclampsia=[
   {q:"The only definitive treatment for preeclampsia is:",opts:["Magnesium sulphate","Corticosteroids","Delivery","Antihypertensive therapy"],ans:2,focus:"Delivery as the only cure",exp:"<strong>Delivery</strong> is the only cure — the placenta is the cause. All other treatments are supportive. Decision timing: ≥37 weeks → deliver. <37 weeks → balance prematurity vs maternal risk. Severe disease or HELLP → deliver regardless of gestation. Corticosteroids given for lung maturity if <34 weeks."}
 ];
 
-
 NOTES_MCQ.ectopic=[
   {q:"A woman presents with 7 weeks amenorrhoea, left iliac fossa pain, and light vaginal bleeding. Urine βhCG is positive. First investigation:",opts:["Transvaginal ultrasound","Diagnostic laparoscopy","Serum progesterone","CT abdomen"],ans:0,focus:"Ectopic pregnancy investigation sequence",exp:"<strong>Transvaginal ultrasound (TVUS)</strong> is first-line. It can identify an intrauterine pregnancy, an adnexal mass, and free fluid. Laparoscopy is diagnostic and therapeutic but not first-line without imaging. The goal of TVUS is to locate the pregnancy — an empty uterus with a positive hCG and adnexal mass = ectopic until proven otherwise."},
   {q:"The discriminatory zone in ectopic pregnancy refers to:",opts:["βhCG level above which TVUS should always detect an IUP","The zone of uterine pain on examination","Serum progesterone threshold","Gestational age at which ectopic is most common"],ans:0,focus:"Discriminatory zone concept",exp:"The <strong>discriminatory zone</strong> is the βhCG level above which a normal intrauterine pregnancy should be visible on TVUS — typically <strong>1500–2000 IU/L</strong>. If βhCG exceeds this and TVUS shows an empty uterus → ectopic or failed IUP. Below this threshold, a normal early IUP may not yet be visible."},
@@ -2141,7 +2102,7 @@ NOTES.pph=()=>`
   <div class="n-tag">Obstetrics · Emergency · Note 01</div>
   <div class="n-title">Postpartum<br>Haemorrhage</div>
   <div class="n-oneliner">The moment you think it might be PPH — it already is. Act immediately.</div>
-  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">4 Ts framework</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">4 Ts framework</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -2244,28 +2205,7 @@ NOTES.pph=()=>`
   </div>
 
   <!-- REAL IMAGE: uterine atony / management -->
-  <div class="img-block">
-    <div class="img-block-hdr">
-      <span class="img-block-title">Bimanual uterine compression — the technique</span>
-      <span class="img-block-label">Step 4 in practice</span>
-    </div>
-    <div class="img-block-body">
-      <div class="img-block-fig">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Uterine_bimanual_compression.jpg/640px-Uterine_bimanual_compression.jpg" alt="Bimanual uterine compression technique" onerror="this.parentElement.parentElement.style.display='none'">
-      </div>
-      <div class="img-block-text">
-        <h4>What you're actually doing</h4>
-        <ul>
-          <li><strong>Vaginal fist:</strong> Placed in the anterior fornix, pushing the uterus up</li>
-          <li><strong>Abdominal hand:</strong> Cups the posterior uterine wall from outside</li>
-          <li><strong>Compression:</strong> Squeeze both hands together — you're closing open sinusoids mechanically</li>
-          <li><strong>Hold firmly:</strong> Maintain until the uterus firms up or uterotonics take effect</li>
-          <li>This is <strong>not definitive treatment</strong> — it buys minutes, not hours</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
+  
   <div class="warn">
     <div class="warn-ico">⚠</div>
     <div>
@@ -2321,7 +2261,7 @@ NOTES.shoulder=()=>`
   <div class="n-tag">Obstetrics · Emergency Drill · Note 06</div>
   <div class="n-title">Shoulder<br>Dystocia</div>
   <div class="n-oneliner">The head delivers. The shoulders don't follow. You have five minutes. HELPERR must be in your hands before you ever enter a delivery room.</div>
-  <div class="n-badges"><span class="nbadge">Emergency drill</span><span class="nbadge">HELPERR</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Emergency drill</span><span class="nbadge">HELPERR</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -2360,17 +2300,7 @@ NOTES.shoulder=()=>`
   </div>
 
   <!-- REAL IMAGE: HELPERR / shoulder dystocia -->
-  <div class="img-block" style="margin-bottom:36px;">
-    <div class="img-block-hdr">
-      <span class="img-block-title">Shoulder dystocia — the impaction explained</span>
-      <span class="img-block-label">Why traction fails</span>
-    </div>
-    <div class="img-block-single">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Shoulder_dystocia.jpg/640px-Shoulder_dystocia.jpg" alt="Shoulder dystocia impaction diagram" onerror="this.style.display='none'">
-      <div class="img-caption">ANTERIOR SHOULDER IMPACTED BEHIND SYMPHYSIS PUBIS — the mechanical problem HELPERR solves</div>
-    </div>
-  </div>
-
+  
   <div class="shead"><span class="shead-n">i</span><span class="shead-t">McRoberts — why it should be first and why it works</span><div class="shead-l"></div></div>
 
   <div class="mech">
@@ -2379,29 +2309,7 @@ NOTES.shoulder=()=>`
   </div>
 
   <!-- REAL IMAGE: McRoberts -->
-  <div class="img-block">
-    <div class="img-block-hdr">
-      <span class="img-block-title">McRoberts manoeuvre in practice</span>
-      <span class="img-block-label">First-line · Resolves ~50% of cases</span>
-    </div>
-    <div class="img-block-body">
-      <div class="img-block-fig">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/McRoberts_maneuver.jpg/480px-McRoberts_maneuver.jpg" alt="McRoberts maneuver" onerror="this.src='https://www.aafp.org/content/dam/AAFP/images/journals/afp/2004/0401/1707fig1.jpg';this.onerror=null;">
-      </div>
-      <div class="img-block-text">
-        <h4>How to perform McRoberts correctly</h4>
-        <ul>
-          <li><strong>Two assistants needed</strong> — one on each leg</li>
-          <li>Flex both thighs <strong>sharply</strong> onto the abdomen — this is more extreme than you think</li>
-          <li>Hold at the back of the thigh, not the foot (foot-hold is less effective and causes ankle pain)</li>
-          <li>Simultaneously, a third person applies <strong>suprapubic pressure</strong> — downward and laterally toward the fetal face</li>
-          <li><strong>Never fundal pressure</strong> — wedges shoulder deeper, risks uterine rupture</li>
-          <li>Call the time — if no delivery in 30 seconds, move to Enter</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
+  
   <div class="shead"><span class="shead-n">ii</span><span class="shead-t">If McRoberts fails — Enter: rotational manoeuvres</span><div class="shead-l"></div></div>
 
   <div class="nb">Rotational manoeuvres work by adducting the shoulder — reducing the bisacromial diameter so it fits through the pelvis in the oblique diameter (which is wider than the AP diameter). You are solving a geometry problem, not a strength problem.</div>
@@ -2431,17 +2339,7 @@ NOTES.shoulder=()=>`
   </div>
 
   <!-- REAL IMAGE: rotational manoeuvres -->
-  <div class="img-block">
-    <div class="img-block-hdr">
-      <span class="img-block-title">HELPERR mnemonic — the full algorithm visualised</span>
-      <span class="img-block-label">Know this before your first delivery</span>
-    </div>
-    <div class="img-block-single">
-      <img src="https://i.pinimg.com/originals/36/4d/a2/364da2b2e3e2e3c3e3c3e3c3e3c3e3c3.jpg" alt="HELPERR shoulder dystocia algorithm" onerror="this.src='https://www.aafp.org/content/dam/AAFP/images/journals/afp/2004/0401/1707fig2.jpg';this.onerror=null;this.style.display='none'">
-      <div class="img-caption">HELPERR ALGORITHM — ADVANCED LIFE SUPPORT IN OBSTETRICS (ALSO) COURSE</div>
-    </div>
-  </div>
-
+  
   <div class="warn">
     <div class="warn-ico">⚠</div>
     <div>
@@ -2498,7 +2396,7 @@ NOTES.preeclampsia=()=>`
   <div class="n-tag">Obstetrics · Antenatal · Note 02</div>
   <div class="n-title">Preeclampsia</div>
   <div class="n-oneliner">Not a blood pressure problem. A disease of the placenta that happens to cause hypertension — and that distinction changes everything.</div>
-  <div class="n-badges"><span class="nbadge">Antenatal</span><span class="nbadge">HELLP</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Antenatal</span><span class="nbadge">HELLP</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -2545,17 +2443,7 @@ NOTES.preeclampsia=()=>`
   </div>
 
   <!-- IMAGE: preeclampsia pathophysiology -->
-  <div class="img-block">
-    <div class="img-block-hdr">
-      <span class="img-block-title">Preeclampsia — the placental origin</span>
-      <span class="img-block-label">Normal vs defective placentation</span>
-    </div>
-    <div class="img-block-single">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Preeclampsia_-_Pathophysiology.jpg/640px-Preeclampsia_-_Pathophysiology.jpg" alt="Preeclampsia pathophysiology" onerror="this.style.display='none'">
-      <div class="img-caption">NORMAL: SPIRAL ARTERIES DILATE → HIGH FLOW, LOW RESISTANCE · PREECLAMPSIA: ARTERIES STAY NARROW → ISCHAEMIA → sFlt-1 RELEASE</div>
-    </div>
-  </div>
-
+  
   <div class="shead"><span class="shead-n">i</span><span class="shead-t">Diagnosis — know every threshold</span><div class="shead-l"></div></div>
 
   <div class="box">
@@ -2666,7 +2554,7 @@ NOTES.ectopic=()=>`
   <div class="n-tag">Gynaecology · Emergency · Note 03</div>
   <div class="n-title">Ectopic<br>Pregnancy</div>
   <div class="n-oneliner">Ectopic until proven otherwise. The triad is classic. But the classic presentation is the exception — not the rule.</div>
-  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">Pregnancy of Unknown Location</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">Pregnancy of Unknown Location</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -2833,7 +2721,7 @@ NOTES.placenta=()=>`
   <div class="n-tag">Obstetrics · Antenatal · Note 04</div>
   <div class="n-title">Placenta<br>Praevia</div>
   <div class="n-oneliner">Painless bright red bleeding in the third trimester. Placental position determines everything — including why you never reach for a speculum.</div>
-  <div class="n-badges"><span class="nbadge">Antepartum Haemorrhage</span><span class="nbadge">Accreta Spectrum</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Antepartum Haemorrhage</span><span class="nbadge">Accreta Spectrum</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -2985,7 +2873,7 @@ NOTES.gdm=()=>`
   <div class="n-tag">Obstetrics · Antenatal · Note 05</div>
   <div class="n-title">Gestational<br>Diabetes</div>
   <div class="n-oneliner">Not just a big baby problem. GDM reconfigures fetal metabolism — and the consequences extend far beyond birthweight.</div>
-  <div class="n-badges"><span class="nbadge">Antenatal</span><span class="nbadge">Macrosomia</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+  <div class="n-badges"><span class="nbadge">Antenatal</span><span class="nbadge">Macrosomia</span><span class="nbadge">⏱ 5 min</span></div>
 </div>
 
 <div class="n-visual">
@@ -3169,7 +3057,6 @@ document.querySelectorAll('.filt').forEach(btn => {
     this.classList.add('on');
   });
 });
-
 
 </script>
 </body>
