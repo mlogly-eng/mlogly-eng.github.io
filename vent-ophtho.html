@@ -80,6 +80,14 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:24px 6
 .modal-bar-right{display:flex;align-items:center;gap:10px;}
 .mclose{width:30px;height:30px;background:rgba(255,255,255,.07);border:none;border-radius:50%;color:rgba(255,255,255,.5);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
 .mclose:hover{background:var(--accent);color:white;}
+.mfullscreen{width:30px;height:30px;background:rgba(255,255,255,.07);border:none;border-radius:50%;color:rgba(255,255,255,.5);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;position:relative;}
+.mfullscreen:hover{background:rgba(255,255,255,.15);color:white;}
+.mfullscreen-tooltip{position:absolute;bottom:-28px;right:0;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;color:rgba(245,242,235,.45);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;}
+.mfullscreen:hover .mfullscreen-tooltip{opacity:1;}
+/* Fullscreen modal state */
+.overlay.fullscreen{padding:0;background:rgba(10,7,4,1);}
+.overlay.fullscreen .note-modal{max-width:100%;width:100%;height:100vh;border-radius:0;box-shadow:none;}
+.note-modal{border-radius:0 0 0 0;}
 
 /* ── NOTE CONTENT STYLES (OB/GYN system) ── */
 
@@ -341,6 +349,11 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:24px 6
     <div class="modal-bar">
       <div class="modal-bar-left"><div class="mpulse"></div><span class="mbc">OPHTHALMOLOGY &mdash; VENT</span></div>
       <div class="modal-bar-right">
+        <button class="mfullscreen" id="fullscreen-btn" onclick="toggleFullscreen()" title="Toggle fullscreen">
+          <svg id="fs-icon-expand" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M1 5V1h4M9 1h4v4M13 9v4H9M5 13H1V9"/></svg>
+          <svg id="fs-icon-shrink" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="display:none"><path d="M5 1v4H1M9 5V1h4M9 13v-4h4M1 9h4v4"/></svg>
+          <span class="mfullscreen-tooltip" id="fs-tooltip">Fullscreen</span>
+        </button>
         <button class="mclose" onclick="closeModal()">&#10005;</button>
       </div>
     </div>
@@ -512,9 +525,25 @@ function openNote(id){
   document.getElementById('modal').scrollTop=0;
   dismissVentPopup();
 }
-function closeModal(){document.getElementById('overlay').classList.remove('open');document.body.style.overflow='';dismissVentPopup();}
+function closeModal(){document.getElementById('overlay').classList.remove('open','fullscreen');document.body.style.overflow='';dismissVentPopup();isFullscreen=false;document.getElementById('fs-icon-expand').style.display='';document.getElementById('fs-icon-shrink').style.display='none';document.getElementById('fs-tooltip').textContent='Fullscreen';}
 function closeBg(e){if(e.target===document.getElementById('overlay'))closeModal();}
+let isFullscreen=false;
+function toggleFullscreen(){
+  const overlay=document.getElementById('overlay');
+  isFullscreen=!isFullscreen;
+  overlay.classList.toggle('fullscreen',isFullscreen);
+  document.getElementById('fs-icon-expand').style.display=isFullscreen?'none':'';
+  document.getElementById('fs-icon-shrink').style.display=isFullscreen?'':'none';
+  document.getElementById('fs-tooltip').textContent=isFullscreen?'Exit fullscreen':'Fullscreen';
+  // Try native fullscreen API as well
+  if(isFullscreen&&document.documentElement.requestFullscreen){
+    document.documentElement.requestFullscreen().catch(()=>{});
+  } else if(!isFullscreen&&document.fullscreenElement){
+    document.exitFullscreen().catch(()=>{});
+  }
+}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&isFullscreen){isFullscreen=false;document.getElementById('overlay').classList.remove('fullscreen');document.getElementById('fs-icon-expand').style.display='';document.getElementById('fs-icon-shrink').style.display='none';document.getElementById('fs-tooltip').textContent='Fullscreen';}});
 
 function showVentPopup(){
   const inner=document.getElementById('vent-popup-inner');
