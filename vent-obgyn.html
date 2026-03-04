@@ -214,6 +214,10 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .ns-h2 em { font-style: italic; color: var(--accent); }
 .ns-sub { font-size: 14px; color: var(--ink3); line-height: 1.7; max-width: 460px; margin-bottom: 24px; }
 .ns-filters { display: flex; gap: 8px; }
+.ns-discipline-tag { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.ns-discipline-tag::before { content: ''; display: inline-block; width: 24px; height: 2px; background: var(--accent); }
+.ns-discipline-tag--gyn { color: #2a6b9e; }
+.ns-discipline-tag--gyn::before { background: #2a6b9e; }
 .filt { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink4); background: none; border: 1px solid var(--border); padding: 7px 16px; border-radius: 100px; cursor: pointer; transition: all .2s; letter-spacing: .5px; }
 .filt.on, .filt:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 
@@ -416,68 +420,97 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
   <div class="shero-glow"></div>
   <div class="shero-kick">Clinical Notes</div>
   <h1 class="shero-h1">Obstetrics &amp;<br><em>Gynaecology</em></h1>
-  <p class="shero-desc">Six conditions. Built to make you understand — not memorise. The mechanism, the clinical framing, and the insight your textbook left out.</p>
+  <p class="shero-desc">Nine conditions across obstetrics and gynaecology. Built to make you understand — not memorise. The mechanism, the clinical framing, and the insight your textbook left out.</p>
   <div class="shero-stats">
-    <div><div class="sv">6</div><div class="sl">Notes</div></div>
+    <div><div class="sv">9</div><div class="sl">Notes</div></div>
+    <div><div class="sv">OB/GYN</div><div class="sl">Separated</div></div>
     <div><div class="sv">EN/AR</div><div class="sl">Bilingual</div></div>
-    <div><div class="sv">4 min</div><div class="sl">Per note</div></div>
   </div>
 </section>
 
 <section class="notes-sec">
+
+  <!-- ── OBSTETRICS ── -->
   <div class="ns-hdr reveal">
-    <h2 class="ns-h2">All <em>OB/GYN</em> notes</h2>
-    <p class="ns-sub">Open in overlay or expand to full page. Toggle EN/AR in any note.</p>
-    <div class="ns-filters">
-      <button class="filt on">All</button>
-      <button class="filt">Emergency</button>
-      <button class="filt">Antenatal</button>
-    </div>
+    <div class="ns-discipline-tag">Obstetrics</div>
+    <h2 class="ns-h2"><em>Obstetrics</em> notes</h2>
+    <p class="ns-sub">Pregnancy, labour, and the puerperium. Six conditions where timing and mechanism determine outcome.</p>
   </div>
   <div class="notes-grid">
     <div class="nc reveal" onclick="openNote('pph')">
-      <div class="nc-type">Emergency</div><div class="nc-num">Note 01</div>
+      <div class="nc-type">Emergency · OB</div><div class="nc-num">OB 01</div>
       <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
       <div class="nc-title">Postpartum Haemorrhage</div>
       <p class="nc-preview">The leading cause of maternal mortality. The 4 Ts, why BP is a late sign, and how to escalate without hesitation.</p>
       <div class="nc-foot"><div class="nc-meta">4 Ts · Atony · Emergency</div><div class="nc-arr">↗</div></div>
     </div>
     <div class="nc reveal" onclick="openNote('preeclampsia')">
-      <div class="nc-type">Antenatal</div><div class="nc-num">Note 02</div>
+      <div class="nc-type">Antenatal · OB</div><div class="nc-num">OB 02</div>
       <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
       <div class="nc-title">Preeclampsia</div>
       <p class="nc-preview">Not a blood pressure problem. A disease of the placenta that raises BP. The distinction changes how you manage it entirely.</p>
       <div class="nc-foot"><div class="nc-meta">HTN · HELLP · Magnesium</div><div class="nc-arr">↗</div></div>
     </div>
     <div class="nc reveal" onclick="openNote('ectopic')">
-      <div class="nc-type">Emergency</div><div class="nc-num">Note 03</div>
+      <div class="nc-type">Emergency · OB</div><div class="nc-num">OB 03</div>
       <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
       <div class="nc-title">Ectopic Pregnancy</div>
       <p class="nc-preview">Ectopic until proven otherwise. What the triad is, the discriminatory zone, and what negative urine hCG actually rules out.</p>
       <div class="nc-foot"><div class="nc-meta">hCG · Rupture · Ultrasound</div><div class="nc-arr">↗</div></div>
     </div>
     <div class="nc reveal" onclick="openNote('placenta')">
-      <div class="nc-type">Antenatal</div><div class="nc-num">Note 04</div>
-      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd"></div></div>
+      <div class="nc-type">Antenatal · OB</div><div class="nc-num">OB 04</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
       <div class="nc-title">Placenta Praevia</div>
       <p class="nc-preview">Painless bright red bleeding in the third trimester. Why placental position determines route of delivery — and why you never do a VE.</p>
-      <div class="nc-foot"><div class="nc-meta">Bleeding · Caesarean</div><div class="nc-arr">↗</div></div>
+      <div class="nc-foot"><div class="nc-meta">APH · Accreta · Caesarean</div><div class="nc-arr">↗</div></div>
     </div>
     <div class="nc reveal" onclick="openNote('gdm')">
-      <div class="nc-type">Antenatal</div><div class="nc-num">Note 05</div>
-      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd"></div></div>
+      <div class="nc-type">Antenatal · OB</div><div class="nc-num">OB 05</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
       <div class="nc-title">Gestational Diabetes</div>
       <p class="nc-preview">Why hyperglycaemia in pregnancy endangers both mother and baby. The OGTT, thresholds, and why macrosomia is not just a big baby.</p>
       <div class="nc-foot"><div class="nc-meta">OGTT · Macrosomia · Insulin</div><div class="nc-arr">↗</div></div>
     </div>
     <div class="nc reveal" onclick="openNote('shoulder')">
-      <div class="nc-type">Emergency</div><div class="nc-num">Note 06</div>
+      <div class="nc-type">Emergency · OB</div><div class="nc-num">OB 06</div>
       <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
       <div class="nc-title">Shoulder Dystocia</div>
       <p class="nc-preview">The head delivers. The shoulders don't follow. Five minutes. HELPERR must be automatic — not recalled under pressure.</p>
       <div class="nc-foot"><div class="nc-meta">HELPERR · McRoberts · Drill</div><div class="nc-arr">↗</div></div>
     </div>
+    <div class="nc reveal" onclick="openNote('pretermlabour')">
+      <div class="nc-type">Emergency · OB</div><div class="nc-num">OB 07</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Preterm Labour</div>
+      <p class="nc-preview">Labour before 37 weeks. Why you give steroids before tocolysis, and why magnesium at 28 weeks is not about seizures.</p>
+      <div class="nc-foot"><div class="nc-meta">Tocolysis · Steroids · Neuroprotection</div><div class="nc-arr">↗</div></div>
+    </div>
   </div>
+
+  <!-- ── GYNAECOLOGY ── -->
+  <div class="ns-hdr reveal" style="margin-top:80px;">
+    <div class="ns-discipline-tag ns-discipline-tag--gyn">Gynaecology</div>
+    <h2 class="ns-h2"><em>Gynaecology</em> notes</h2>
+    <p class="ns-sub">The non-pregnant pelvis. Pathology, presentations, and the clinical reasoning that separates urgent from watchful waiting.</p>
+  </div>
+  <div class="notes-grid">
+    <div class="nc reveal" onclick="openNote('ovarycyst')">
+      <div class="nc-type">Gynaecology · GYN</div><div class="nc-num">GYN 01</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Ovarian Cysts</div>
+      <p class="nc-preview">Not all cysts are equal. Functional vs pathological, the IOTA rules, and when a cyst stops being a cyst and becomes a torsion.</p>
+      <div class="nc-foot"><div class="nc-meta">IOTA · Torsion · CA-125</div><div class="nc-arr">↗</div></div>
+    </div>
+    <div class="nc reveal" onclick="openNote('cervicalcancer')">
+      <div class="nc-type">Oncology · GYN</div><div class="nc-num">GYN 02</div>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Cervical Cancer</div>
+      <p class="nc-preview">HPV drives almost every case. The screening programme, the CIN progression model, and why the vaccine does not replace the smear.</p>
+      <div class="nc-foot"><div class="nc-meta">HPV · CIN · Colposcopy</div><div class="nc-arr">↗</div></div>
+    </div>
+  </div>
+
 </section>
 </div>
 
@@ -630,7 +663,517 @@ function retryMCQ(noteId){
   document.getElementById('mcq-inner-ob').innerHTML=renderQuestion(noteId);
 }
 
+const NOTES={};
 const NOTES_MCQ={};
+
+NOTES.pretermlabour=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Obstetrics · Emergency · OB 07</div>
+  <div class="n-title">Preterm<br>Labour</div>
+  <div class="n-oneliner">Labour before 37 weeks. The steroids come before the tocolysis — and the magnesium at 28 weeks is not about seizures.</div>
+  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">Neuroprotection</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+
+<div class="n-visual">
+  <div class="nv-hdr">
+    <span class="nv-title">Preterm birth — by gestational age band and survival</span>
+    <span class="nv-sub">Every week gained changes the outcome significantly</span>
+  </div>
+  <div class="nv-body" style="padding:0;">
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--border);">
+
+      <div style="background:#1a1510;border:1px solid rgba(200,69,42,.4);padding:22px 14px;display:flex;flex-direction:column;gap:5px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(200,69,42,.7);text-transform:uppercase;">&lt;24 wks</div>
+        <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:800;color:white;line-height:1.1;">Periviable</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.42);line-height:1.5;margin-top:4px;">Parental counselling essential</div>
+        <div style="margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.08);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(200,69,42,.9);font-weight:700;">~20%</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.3);">survival</div>
+        </div>
+      </div>
+
+      <div style="background:#5a1810;padding:22px 14px;display:flex;flex-direction:column;gap:5px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">24–28 wks</div>
+        <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:800;color:white;line-height:1.1;">Extremely<br>Preterm</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.42);line-height:1.5;margin-top:4px;">MgSO₄ neuroprotection</div>
+        <div style="margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.08);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(255,200,80,.9);font-weight:700;">50–80%</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.3);">survival</div>
+        </div>
+      </div>
+
+      <div style="background:#8a2818;padding:22px 14px;display:flex;flex-direction:column;gap:5px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">28–34 wks</div>
+        <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:800;color:white;line-height:1.1;">Very<br>Preterm</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.42);line-height:1.5;margin-top:4px;">Steroids · Tocolysis</div>
+        <div style="margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.08);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(180,220,120,.9);font-weight:700;">&gt;90%</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.3);">survival</div>
+        </div>
+      </div>
+
+      <div style="background:#c8452a;padding:22px 14px;display:flex;flex-direction:column;gap:5px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase;">34–37 wks</div>
+        <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:800;color:white;line-height:1.1;">Late<br>Preterm</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.6);line-height:1.5;margin-top:4px;">Steroids if &lt;34+6</div>
+        <div style="margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.12);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:white;font-weight:700;">&gt;98%</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.45);">survival</div>
+        </div>
+      </div>
+
+      <div style="background:#2a5a3e;padding:22px 14px;display:flex;flex-direction:column;gap:5px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;">37+ wks</div>
+        <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:800;color:white;line-height:1.1;">Term</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.42);line-height:1.5;margin-top:4px;">Goal of management</div>
+        <div style="margin-top:auto;padding-top:12px;border-top:1px solid rgba(255,255,255,.08);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(160,220,160,.9);font-weight:700;">~99.5%</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.3);">survival</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">Regular painful contractions with cervical change before 37 completed weeks. Every additional day in utero is worth fighting for.</div>
+    <div class="n-opener-body">
+      Preterm birth complicates 7–10% of pregnancies and is the leading cause of neonatal morbidity and mortality in the developed world. The clinical challenge is not diagnosing labour when it is advanced — it is identifying it early enough for interventions to make a difference. <strong>The three interventions that change neonatal outcome are corticosteroids, magnesium sulphate for neuroprotection, and in-utero transfer to an appropriate-level unit.</strong> Tocolysis does not improve survival — it buys the 48 hours needed for steroids to work and time to transfer. Understanding this hierarchy is everything.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">Diagnosis — confirming true labour from threatened</span><div class="shead-l"></div></div>
+
+  <div class="mech">
+    <div class="mech-label">The clinical trap</div>
+    <p>Up to 50% of women presenting with threatened preterm labour will not deliver within 7 days. Treating everyone hospitalises half unnecessarily. <strong>Two tools sharpen the diagnosis: fetal fibronectin (fFN) and cervical length on transvaginal ultrasound.</strong> A negative fFN swab (&lt;10 ng/mL) in a woman &lt;34 weeks with intact membranes has a &gt;95% negative predictive value for delivery within 7 days — the most clinically useful result is negative, because it safely avoids unnecessary intervention. A cervical length &gt;15mm by TVUS makes imminent delivery unlikely.</p>
+  </div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">Dx</div>
+      <div class="pt-b">
+        <span class="pt-title">Confirmed preterm labour — what you need</span>
+        <div class="pt-body">Gestational age confirmed (ultrasound dating if uncertain). Regular painful contractions (≥4 in 20 min) plus cervical change (dilation ≥2cm or effacement &gt;80%) OR positive fFN plus short cervix &lt;15mm. Speculum examination to rule out PPROM (pooling of liquor, ferning, pH). CTG for fetal wellbeing. <strong>Do not perform digital examination until PPROM is excluded.</strong></div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">GA</div>
+      <div class="pt-b">
+        <span class="pt-title">Know the gestational age precisely — it determines everything</span>
+        <div class="pt-body">The management at 23+5 is entirely different from 28+0 or 33+6. Viability threshold at most UK centres is 22+0–23+0 weeks (individualised, parental discussion essential). Confirm dates from first-trimester ultrasound crown-rump length — not LMP alone. If there is any uncertainty, ultrasound biometry is required before resuscitation decisions are made.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">The three interventions that change neonatal outcome</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">1</div>
+      <div class="pt-b">
+        <span class="pt-title">Corticosteroids — give immediately at &lt;34+6 weeks</span>
+        <div class="pt-body"><span class="drug">Betamethasone</span> 12mg IM, two doses 24 hours apart. Promotes fetal lung surfactant production, reducing RDS by ~50%. Also reduces IVH, necrotising enterocolitis, and overall neonatal mortality. <strong>This is the most impactful intervention available.</strong> Give immediately on admission — do not wait to see if labour progresses. A single partial course (even one dose) provides significant benefit. Consider one rescue course if prior course was &gt;7 days ago and gestation is still &lt;34+6.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">2</div>
+      <div class="pt-b">
+        <span class="pt-title">Magnesium sulphate for neuroprotection — &lt;30 weeks, delivery expected within 24 hours</span>
+        <div class="pt-body"><span class="drug">Magnesium sulphate</span> 4g IV loading dose over 15–20 minutes, then 1g/hr. This is not seizure prophylaxis — <strong>it is cerebral neuroprotection.</strong> Meta-analyses show a 30% reduction in cerebral palsy with antenatal MgSO₄ at &lt;30 weeks. The mechanism: magnesium stabilises oligodendrocyte precursors and reduces periventricular white matter injury. This is one of the most evidence-backed interventions in neonatal neurology. Give it.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">3</div>
+      <div class="pt-b">
+        <span class="pt-title">In-utero transfer — the best neonatal transport is the uterus</span>
+        <div class="pt-body">A baby born at a unit without the appropriate level of neonatal care has worse outcomes than a baby transferred in utero to the right unit. <strong>If delivery is not imminent, call the neonatal network and arrange transfer before delivery.</strong> Level 3 NICU for &lt;27 weeks or &lt;800g. Level 2 for 27–31 weeks. Do not transfer a woman in advanced active labour — the risk outweighs the benefit.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">iii</span><span class="shead-t">Tocolysis — buying time, not preventing birth</span><div class="shead-l"></div></div>
+
+  <div class="nb">Tocolytics do not improve perinatal outcome directly. They delay delivery by 24–48 hours — enough time for steroids to work and transfer to occur. They are a bridge, not a treatment. Use them with this framing.</div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">T1</div>
+      <div class="pt-b">
+        <span class="pt-title">Nifedipine — first-line tocolytic in most units</span>
+        <div class="pt-body"><span class="drug">Nifedipine</span> 20mg oral loading dose, then 10–20mg every 4–6 hours. Calcium channel blocker — relaxes uterine smooth muscle. Better neonatal outcomes and fewer maternal side effects than betamimetics. Avoid if maternal cardiac disease. Monitor BP. Most commonly used first-line agent in UK practice.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">T2</div>
+      <div class="pt-b">
+        <span class="pt-title">Atosiban — oxytocin receptor antagonist, fewer systemic effects</span>
+        <div class="pt-body"><span class="drug">Atosiban</span> IV infusion — oxytocin receptor antagonist. Similar efficacy to nifedipine but fewer maternal cardiovascular side effects. More expensive. Preferred when maternal cardiac disease or hypotension is a concern. Licensed specifically for preterm labour — most evidence-based tocolytic for 24–33 weeks.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">T3</div>
+      <div class="pt-b">
+        <span class="pt-title">When NOT to tocolyse</span>
+        <div class="pt-body">Do not give tocolytics if: advanced labour (cervix &gt;4–5cm), PPROM with signs of chorioamnionitis (fever, uterine tenderness, fetal tachycardia, offensive liquor), fetal compromise on CTG, placental abruption, or maternal haemodynamic instability. <strong>Tocolysis in the presence of chorioamnionitis risks maternal sepsis and fetal death.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="box-hdr"><div class="box-dot"></div><div class="box-label">PPROM — preterm prelabour rupture of membranes — different rules</div></div>
+    <div class="box-body">
+      PPROM (&lt;37 weeks, membranes ruptured, not in labour) requires a different approach. Give: <strong>erythromycin</strong> 250mg QDS for 10 days (reduces infection and delays delivery — ORACLE trial). Steroids if &lt;34+6. Do not give co-amoxiclav — associated with necrotising enterocolitis (ORACLE trial). Monitor for chorioamnionitis twice daily (temperature, WBC, CRP, CTG, liquor colour). Deliver at 34–37 weeks or earlier if infection develops. Tocolysis in PPROM is controversial and not routinely recommended.
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">You are not trying to stop labour. <em>You are trying to buy 48 hours.</em></div>
+    <div class="ins-body">The most common error in preterm labour management is giving tocolytics as the primary treatment and treating steroids as secondary. <strong>Get it the right way round.</strong> The tocolytic is the instrument. Steroids are the goal. The moment a woman is confirmed to be in preterm labour at &lt;34+6 weeks, the corticosteroid goes up — immediately, without waiting to see whether the tocolytic works. Then you transfer. Then you monitor. The neonatal outcome will be determined by whether the lungs were matured and the brain was protected — not by whether the labour was briefly suppressed.</div>
+  </div>
+
+  <div class="nfoot"><span class="ntag">Preterm Labour</span><span class="ntag">Betamethasone</span><span class="ntag">MgSO₄ Neuroprotection</span><span class="ntag">fFN</span><span class="ntag">Tocolysis</span><span class="ntag">PPROM</span><span class="ntime">⏱ 5 min</span></div>
+
+<div class="note-end-cta" onclick="showVentPopup()">
+  <div class="note-end-cta-tag">// End of note</div>
+  <div class="note-end-cta-title">Are you ventilating?</div>
+  <div class="note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="note-end-cta-arrow">&#8599;</div>
+</div>
+</div>`;
+
+NOTES.ovarycyst=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Gynaecology · GYN 01</div>
+  <div class="n-title">Ovarian<br>Cysts</div>
+  <div class="n-oneliner">Not all cysts are equal. Functional vs pathological, the IOTA simple rules, and when a cyst stops being a cyst and becomes a surgical emergency.</div>
+  <div class="n-badges"><span class="nbadge">Gynaecology</span><span class="nbadge">IOTA Rules</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+
+<div class="n-visual">
+  <div class="nv-hdr">
+    <span class="nv-title">Ovarian cyst classification — functional to malignant</span>
+    <span class="nv-sub">Ultrasound morphology determines the pathway</span>
+  </div>
+  <div class="nv-body" style="padding:0;">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);">
+
+      <div style="background:#2a5a3e;padding:26px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:2px;">Type 1</div>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:white;">Functional</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.52);line-height:1.6;margin-top:4px;">Follicular<br>Corpus luteum</div>
+        <div style="margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.1);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(160,220,160,.9);font-weight:700;">Resolves spontaneously</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.35);margin-top:3px;">Re-scan 6–8 weeks</div>
+        </div>
+      </div>
+
+      <div style="background:#3a5a6e;padding:26px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:2px;">Type 2</div>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:white;">Benign</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.52);line-height:1.6;margin-top:4px;">Dermoid<br>Endometrioma<br>Cystadenoma</div>
+        <div style="margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.1);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(160,200,220,.9);font-weight:700;">Manage by size</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.35);margin-top:3px;">and symptoms</div>
+        </div>
+      </div>
+
+      <div style="background:#7a3060;padding:26px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:2px;">Type 3</div>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:white;">Borderline</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.52);line-height:1.6;margin-top:4px;">Low malignant<br>potential<br>CA-125 + HE4</div>
+        <div style="margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.1);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(220,160,220,.9);font-weight:700;">Surgical excision</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.35);margin-top:3px;">Specialist MDT</div>
+        </div>
+      </div>
+
+      <div style="background:#c8452a;padding:26px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:2px;">Type 4</div>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:white;">Malignant</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.65);line-height:1.6;margin-top:4px;">Ovarian carcinoma<br>IOTA M-features</div>
+        <div style="margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.15);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:white;font-weight:700;">Urgent 2WW referral</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.5);margin-top:3px;">Gyn oncology</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">A fluid-filled sac arising from the ovary. The clinical question is never "does it exist" — it is "what is it, and what will it do?"</div>
+    <div class="n-opener-body">
+      Ovarian cysts are extraordinarily common — up to 20% of premenopausal women have one at any given ultrasound. The vast majority are functional, benign, and self-resolving. The clinical challenge is stratifying the minority that are not. <strong>The pathway from incidental finding to urgent referral should be driven by ultrasound morphology, not size alone.</strong> A 3cm cyst with solid components and blood flow is more concerning than a 10cm simple unilocular cyst. Understanding the IOTA simple rules gives you the framework to make that distinction confidently.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">The IOTA simple rules — ultrasound risk stratification</span><div class="shead-l"></div></div>
+
+  <div class="nb">The International Ovarian Tumour Analysis (IOTA) simple rules use ultrasound features to classify cysts as benign (B-features), malignant (M-features), or inconclusive. They perform as well as expert subjective assessment and are validated for use by non-experts.</div>
+
+  <div class="twocol">
+    <div class="tcc">
+      <div class="tcc-lbl">B-features — reassuring findings</div>
+      <div class="tcc-title">Likely benign</div>
+      <div class="tcc-body">
+        Unilocular cyst (single compartment, no solid areas)<br>
+        Solid components present but all &lt;7mm<br>
+        Acoustic shadowing (suggests dermoid/calcification)<br>
+        Smooth multilocular cyst &lt;100mm<br>
+        No blood flow on Doppler<br>
+        <strong>5 B-features, no M-features → likely benign</strong>
+      </div>
+    </div>
+    <div class="tcc shade">
+      <div class="tcc-lbl">M-features — concerning findings</div>
+      <div class="tcc-title">Likely malignant</div>
+      <div class="tcc-body">
+        Irregular solid tumour<br>
+        Ascites present<br>
+        ≥4 papillary projections<br>
+        Irregular multilocular solid tumour &gt;100mm<br>
+        Very strong blood flow (Doppler colour score 4)<br>
+        <strong>1+ M-features, no B-features → likely malignant → urgent referral</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="box-hdr"><div class="box-dot"></div><div class="box-label">CA-125 — useful but not diagnostic</div></div>
+    <div class="box-body">
+      CA-125 is raised in ovarian cancer — but also in endometriosis, PID, fibroids, pregnancy, liver disease, and pleural effusion. <strong>In premenopausal women, CA-125 has poor specificity for malignancy</strong> — do not use it in isolation. The RMI (Risk of Malignancy Index = menopausal status × ultrasound score × CA-125) is validated for risk stratification in postmenopausal women. In premenopausal women, a raised CA-125 with B-features on USS is not a straightforward referral — clinical context is required. HE4 (human epididymis protein 4) combined with CA-125 (the ROMA score) improves specificity.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">Specific cyst types — each with a distinct character</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">D</div>
+      <div class="pt-b">
+        <span class="pt-title">Dermoid cyst (mature cystic teratoma) — the most common benign cyst in women under 30</span>
+        <div class="pt-body">Contains elements of all three germ layers — hair, teeth, sebum, neural tissue. USS: echogenic component with acoustic shadowing, "tip of the iceberg" sign. Bilateral in 10–15%. Torsion risk is high due to weight and mobility. <strong>Surgical removal recommended for symptomatic cysts or those &gt;5–6cm</strong> due to torsion risk. Laparoscopic cystectomy is standard. Chemical peritonitis if ruptured — spillage of sebaceous material causes intense inflammation.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">E</div>
+      <div class="pt-b">
+        <span class="pt-title">Endometrioma ("chocolate cyst") — endometriosis in the ovary</span>
+        <div class="pt-body">Ground-glass echogenicity on USS — uniform low-level internal echoes from old haemorrhagic fluid. Associated with endometriosis elsewhere. Bilateral in 30%. Key concern: <strong>surgical removal damages ovarian reserve</strong> (excision removes normal ovarian cortex). Decision to operate must weigh pain, fertility goals, and risk. In women planning IVF, endometrioma excision does not consistently improve IVF outcomes and may reduce them. CA-125 is usually elevated — not indicative of malignancy in this context.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">F</div>
+      <div class="pt-b">
+        <span class="pt-title">Functional cysts — follicular and corpus luteum</span>
+        <div class="pt-body">Follicular: smooth, unilocular, thin-walled, &lt;3cm typically. Arises from a non-ovulating dominant follicle. Resolves within 1–2 cycles. Corpus luteum: thick irregular wall, internal echoes, peripheral blood flow ("ring of fire" on Doppler). Can cause acute pain if haemorrhage occurs. <strong>Both resolve spontaneously</strong> — no intervention required. Re-scan in 6–8 weeks. The COCP does not accelerate resolution of existing cysts.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">iii</span><span class="shead-t">Ovarian torsion — the emergency</span><div class="shead-l"></div></div>
+
+  <div class="mech">
+    <div class="mech-label">Why torsion is a time-critical surgical emergency</div>
+    <p>Ovarian torsion occurs when the ovary (usually with a cyst acting as a fulcrum) rotates around its vascular pedicle. The ovarian artery and vein are occluded. <strong>Initially venous congestion causes oedema and pain; if arterial supply is then compromised, ischaemia progresses to infarction within hours.</strong> The ovary cannot be saved beyond 24–36 hours of complete torsion. The clinical lesson: any woman with sudden-onset severe unilateral pelvic pain and an ovarian cyst should be treated as torsion until laparoscopy proves otherwise.</p>
+  </div>
+
+  <div class="warn">
+    <div class="warn-ico">⚠</div>
+    <div>
+      <div class="warn-lbl">Doppler flow does not exclude torsion</div>
+      <p><strong>The presence of blood flow on Doppler does not rule out ovarian torsion.</strong> Partial torsion or intermittent torsion can maintain Doppler flow even with significant ischaemia. A woman with the clinical picture of torsion (sudden severe unilateral pelvic pain, nausea, vomiting, ovarian cyst on USS) should proceed to diagnostic laparoscopy regardless of Doppler findings. The ovary — if viable — is untwisted in situ. Salpingo-oophorectomy is reserved for clearly infarcted ovaries.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">Size misleads. <em>Morphology decides.</em></div>
+    <div class="ins-body">The instinct when you see a large ovarian cyst is alarm. The instinct when you see a small one is reassurance. Both instincts are frequently wrong. <strong>A 12cm unilocular thin-walled anechoic cyst with no solid areas and no Doppler flow in a 28-year-old is almost certainly a serous cystadenoma and can be watched.</strong> A 3cm cyst with a papillary projection, internal vascularity, and ascites in a 62-year-old is a gynaecological oncology referral today. Learn the IOTA simple rules. Apply them. Stop leading with size and start leading with morphology — because the features are what determine the biology, and the biology is what determines what you do.</div>
+  </div>
+
+  <div class="nfoot"><span class="ntag">Ovarian Cyst</span><span class="ntag">IOTA Simple Rules</span><span class="ntag">Dermoid</span><span class="ntag">Endometrioma</span><span class="ntag">Torsion</span><span class="ntag">CA-125</span><span class="ntime">⏱ 5 min</span></div>
+
+<div class="note-end-cta" onclick="showVentPopup()">
+  <div class="note-end-cta-tag">// End of note</div>
+  <div class="note-end-cta-title">Are you ventilating?</div>
+  <div class="note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="note-end-cta-arrow">&#8599;</div>
+</div>
+</div>`;
+
+NOTES.cervicalcancer=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Gynaecology · Oncology · GYN 02</div>
+  <div class="n-title">Cervical<br>Cancer</div>
+  <div class="n-oneliner">HPV drives almost every case. Understand the progression from infection to invasion — and why the vaccine does not replace the smear.</div>
+  <div class="n-badges"><span class="nbadge">Oncology</span><span class="nbadge">Screening</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+
+<div class="n-visual">
+  <div class="nv-hdr">
+    <span class="nv-title">HPV → CIN → Invasive carcinoma — the progression model</span>
+    <span class="nv-sub">Most infections clear. A minority persist and progress.</span>
+  </div>
+  <div class="nv-body" style="padding:0;">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);">
+
+      <div style="background:#2a5a3e;padding:28px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:4px;">Stage 1</div>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:white;line-height:1.1;">HPV<br>Infection</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.55);margin-top:4px;line-height:1.6;">High-risk types<br>16, 18, 31, 33…</div>
+        <div style="margin-top:auto;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(160,220,160,.9);font-weight:700;">90% clear</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.38);">within 2 years</div>
+        </div>
+      </div>
+
+      <div style="background:#3a5a6e;padding:28px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:4px;">Stage 2</div>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:white;line-height:1.1;">CIN 1</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.55);margin-top:4px;line-height:1.6;">Mild dysplasia<br>Lower ⅓ epithelium</div>
+        <div style="margin-top:auto;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(160,200,220,.9);font-weight:700;">60% regress</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.38);">Monitor only</div>
+        </div>
+      </div>
+
+      <div style="background:#7a3060;padding:28px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:4px;">Stage 3</div>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:white;line-height:1.1;">CIN 2 / 3</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.55);margin-top:4px;line-height:1.6;">Moderate–severe<br>Full thickness (CIN3)</div>
+        <div style="margin-top:auto;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(220,160,220,.9);font-weight:700;">Treat — LLETZ</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.38);">Years to progress</div>
+        </div>
+      </div>
+
+      <div style="background:#c8452a;padding:28px 20px;display:flex;flex-direction:column;gap:6px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:4px;">Stage 4</div>
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:white;line-height:1.1;">Invasive<br>Carcinoma</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.65);margin-top:4px;line-height:1.6;">FIGO Stage 1A–4B<br>Squamous 75%</div>
+        <div style="margin-top:auto;padding-top:16px;border-top:1px solid rgba(255,255,255,.15);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:white;font-weight:700;">Urgent referral</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.5);">Surgery · CRT</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">A malignancy of the cervix, arising from persistent high-risk HPV infection causing dysplastic progression through a detectable pre-invasive stage.</div>
+    <div class="n-opener-body">
+      Cervical cancer is the fourth most common cancer in women worldwide — and almost entirely preventable. Over 99% of cases are caused by persistent infection with high-risk human papillomavirus, predominantly HPV 16 and 18. The key biological feature that makes this cancer uniquely preventable is its slow, detectable pre-invasive phase: progression from HPV infection to CIN to invasion takes years to decades. <strong>Cervical screening identifies the pre-invasive stage before invasion occurs.</strong> Vaccination prevents the initial infection. Together, they are the most complete cancer prevention strategy in medicine — but only if both are implemented. Vaccination does not protect against all oncogenic HPV strains. Screening remains essential for vaccinated women.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">HPV and the transformation zone — where it all starts</span><div class="shead-l"></div></div>
+
+  <div class="mech">
+    <div class="mech-label">Why the transformation zone is vulnerable</div>
+    <p>The cervix contains a junction between two cell types: columnar epithelium of the endocervical canal and squamous epithelium of the ectocervix. The area where these meet — the <strong>squamocolumnar junction (SCJ)</strong> — is where metaplasia occurs and where HPV preferentially infects. This metaplastic zone is called the transformation zone. <strong>HPV infects basal stem cells in the transformation zone, integrates its E6 and E7 oncoproteins into host DNA, and these proteins inactivate p53 and Rb — the tumour suppressor proteins.</strong> The result is uncontrolled cell proliferation. This is the molecular mechanism of every CIN lesion and every cervical cancer.</p>
+  </div>
+
+  <div class="twocol">
+    <div class="tcc">
+      <div class="tcc-lbl">High-risk HPV types</div>
+      <div class="tcc-title">The oncogenic strains</div>
+      <div class="tcc-body"><strong>HPV 16:</strong> most strongly associated with squamous cell carcinoma and adenocarcinoma. Accounts for ~50% of cervical cancers. <strong>HPV 18:</strong> strongly associated with adenocarcinoma. Together, 16 and 18 cause 70% of all cervical cancers. The 9-valent vaccine (Gardasil 9) covers strains 16, 18, 31, 33, 45, 52, 58 — protecting against ~90% of cervical cancer-causing types.</div>
+    </div>
+    <div class="tcc shade">
+      <div class="tcc-lbl">The UK screening programme</div>
+      <div class="tcc-title">Primary HPV testing</div>
+      <div class="tcc-body">Cervical smears in England are now primary HPV testing. If <strong>HPV negative</strong>: routine recall (every 3–5 years). If <strong>HPV positive</strong>: reflex cytology. If cytology normal → 12-month recall. If cytology abnormal → colposcopy. If HPV positive with inadequate cytology → colposcopy. The switch to primary HPV testing increased the sensitivity of screening significantly.</div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">CIN — the pre-invasive lesion</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">CIN1</div>
+      <div class="pt-b">
+        <span class="pt-title">Mild dysplasia — lower third of epithelium involved</span>
+        <div class="pt-body">Cytologically: koilocytes (HPV-infected cells with perinuclear halos), mild nuclear enlargement. Natural history: 60% regress spontaneously within 2 years. <strong>Management: observation only, no treatment.</strong> Colposcopy surveillance at 12 months. Treating CIN1 would mean treating a majority that would resolve anyway — with the associated risks of LLETZ (preterm birth, cervical stenosis).</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">CIN2/3</div>
+      <div class="pt-b">
+        <span class="pt-title">Moderate to severe dysplasia — treat to prevent invasion</span>
+        <div class="pt-body">CIN2: middle two-thirds involved. CIN3: full-thickness dysplasia (carcinoma in situ). Without treatment, 30–50% of CIN3 progresses to invasion within 10 years. <strong>Treatment: LLETZ (Large Loop Excision of the Transformation Zone)</strong> under local anaesthetic. Removes the transformation zone with a diathermy loop wire. Cure rate ~95%. Follow-up: HPV test at 6 months post-treatment — if negative, return to routine screening.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">iii</span><span class="shead-t">Invasive cervical cancer — presentation and staging</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">Sx</div>
+      <div class="pt-b">
+        <span class="pt-title">Symptoms — and why early disease is often silent</span>
+        <div class="pt-body">Early invasive disease (stage 1A) is typically asymptomatic — detected only by screening. <strong>Symptoms of clinically apparent disease:</strong> postcoital bleeding (most classic), intermenstrual bleeding, post-menopausal bleeding, offensive vaginal discharge, pelvic pain (late — suggests parametrial involvement). Any woman with unexplained PCB should have a speculum examination regardless of recent normal smear — a normal smear does not exclude cancer.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">St</div>
+      <div class="pt-b">
+        <span class="pt-title">FIGO staging — clinical, not surgical</span>
+        <div class="pt-body"><strong>Stage 1:</strong> confined to cervix. 1A: microinvasion (diagnosed on cone biopsy only). 1B: clinically visible or &gt;5mm invasion. <strong>Stage 2:</strong> beyond cervix but not to pelvic wall or lower third vagina. 2B: parametrial involvement. <strong>Stage 3:</strong> to pelvic wall or lower vagina, or hydronephrosis. <strong>Stage 4:</strong> bladder/rectum or distant. <strong>Stage 1A–1B1</strong>: surgery (radical hysterectomy + pelvic lymph node dissection). <strong>Stage 1B2 and above</strong>: concurrent chemoradiotherapy (cisplatin-based).</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">Rx</div>
+      <div class="pt-b">
+        <span class="pt-title">Fertility-sparing options — trachelectomy for early disease in young women</span>
+        <div class="pt-body">In stage 1A–1B1 with tumour &lt;2cm, <strong>radical trachelectomy</strong> (removal of the cervix with preservation of the uterus) allows future pregnancy in selected young women. Pregnancy rates of ~50–70% post-trachelectomy. Preterm birth risk is elevated. This is a specialist decision — must be offered and discussed at a gynaecological oncology MDT. The option should be raised before any fertility-ablating treatment is initiated.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <div class="warn-ico">⚠</div>
+    <div>
+      <div class="warn-lbl">LLETZ and preterm birth — a real and underappreciated risk</div>
+      <p><strong>LLETZ increases the risk of preterm birth</strong> in subsequent pregnancies — by approximately 70% compared to untreated women. The risk is proportional to the depth of excision (&gt;10mm significantly increases risk). This does not mean LLETZ should be withheld for CIN2/3 — the risk of not treating is greater. But it means: <strong>avoid over-treating CIN1</strong> (which regresses in the majority), counsel women about preterm risk before LLETZ, and ensure they are managed as high-risk in future pregnancies with cervical length surveillance.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">The vaccine changed what is possible. <em>The smear is still what prevents the death.</em></div>
+    <div class="ins-body">There is a tempting but dangerous inference that vaccination makes screening unnecessary. It does not. <strong>Gardasil 9 covers ~90% of cancer-causing HPV types — not 100%.</strong> Vaccinated women can still acquire HPV 31, 33, 45, and others not in the vaccine. They can still develop CIN. They still need screening. The vaccine and the smear are not alternatives — they are sequential layers of the same prevention strategy. A vaccinated woman who stops attending screening because she believes she is protected is at real risk. Understanding the complementarity of both interventions is the clinical reasoning that prevents harm — not just knowing that both exist.</div>
+  </div>
+
+  <div class="nfoot"><span class="ntag">Cervical Cancer</span><span class="ntag">HPV 16/18</span><span class="ntag">CIN</span><span class="ntag">LLETZ</span><span class="ntag">Colposcopy</span><span class="ntag">FIGO Staging</span><span class="ntag">Trachelectomy</span><span class="ntime">⏱ 5 min</span></div>
+
+<div class="note-end-cta" onclick="showVentPopup()">
+  <div class="note-end-cta-tag">// End of note</div>
+  <div class="note-end-cta-title">Are you ventilating?</div>
+  <div class="note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="note-end-cta-arrow">&#8599;</div>
+</div>
+</div>`;
+
 NOTES_MCQ.pph=[
   {q:"A woman delivers vaginally and loses 1200ml. The uterus is soft and boggy. What is the most likely cause?",opts:["Retained placenta","Uterine atony","Genital tract trauma","Coagulopathy"],ans:1,focus:"4 Ts — Tone as most common cause",exp:"<strong>Uterine atony</strong> causes 70–80% of PPH. A soft boggy uterus that fails to contract is the classic sign. The 4 Ts: <strong>Tone</strong> (most common), Trauma, Tissue, Thrombin. First steps: bimanual massage + oxytocin immediately."},
   {q:"First-line uterotonic for PPH prevention and treatment is:",opts:["Ergometrine","Carboprost","Tranexamic acid","Oxytocin"],ans:3,focus:"Uterotonic drug hierarchy",exp:"<strong>Oxytocin</strong> is first-line for both prevention (active management of third stage) and PPH treatment. Ergometrine is second-line (contraindicated in hypertension). Carboprost (PGF2α) when both fail. Tranexamic acid is an antifibrinolytic — not a uterotonic, give within 3 hours."},
@@ -675,7 +1218,27 @@ NOTES_MCQ.gdm=[
   {q:"The most important neonatal complication to monitor for immediately after delivery in GDM:",opts:["Jaundice","Hypoglycaemia","Polycythaemia","Respiratory distress syndrome"],ans:1,focus:"Neonatal hypoglycaemia in GDM",exp:"<strong>Neonatal hypoglycaemia</strong> is the priority. In utero, the fetus was exposed to high glucose → high insulin. At birth, the glucose supply stops abruptly but insulin levels remain high → hypoglycaemia within minutes to hours. Monitor blood glucose within 1–2 hours of birth. Feed early. Thresholds vary by unit — typically BG <2.0–2.6 mmol/L requires intervention."},
   {q:"A woman who had GDM should be tested postpartum with:",opts:["Urine dipstick at 6-week check","75g OGTT at 6–13 weeks postpartum","Annual HbA1c for 5 years only","No follow-up needed if delivery glucose was normal"],ans:1,focus:"Postpartum GDM follow-up",exp:"Women with GDM have a <strong>50% lifetime risk of developing type 2 diabetes</strong>. NICE recommends a <strong>75g OGTT at 6–13 weeks postpartum</strong> to rule out persistent diabetes, then annual HbA1c indefinitely. Many women who appear normal at discharge are in fact glucose-impaired. Lifelong surveillance is essential — this is not a condition that ends at delivery."}
 ];
-const NOTES={};
+NOTES_MCQ.pretermlabour=[
+  {q:"A woman at 29 weeks presents in confirmed preterm labour. What is the single most important intervention to improve neonatal outcome?",opts:["Start tocolysis immediately","Give corticosteroids immediately","Transfer to a tertiary NICU","Perform an emergency caesarean section"],ans:1,focus:"Corticosteroids — priority over tocolysis",exp:"<strong>Corticosteroids (betamethasone 12mg IM ×2)</strong> are the most impactful intervention. They reduce RDS, IVH, NEC, and neonatal mortality. Tocolysis is used to buy time for steroids and transfer — it does not improve outcome directly. Give steroids first, then tocolyse. Transfer is important but steroids take priority."},
+  {q:"Magnesium sulphate given to a woman in preterm labour at 28 weeks is primarily indicated for:",opts:["Seizure prophylaxis","Tocolysis — to delay delivery","Neonatal neuroprotection against cerebral palsy","Fetal lung maturation"],ans:2,focus:"MgSO₄ for neuroprotection — not seizures in preterm labour",exp:"In <strong>preterm labour &lt;30 weeks</strong>, MgSO₄ is given for <strong>neonatal neuroprotection</strong> — reducing the risk of cerebral palsy by ~30%. It stabilises oligodendrocyte precursors and reduces periventricular white matter injury. This is distinct from its use in preeclampsia (seizure prevention). Fetal lung maturation = betamethasone."},
+  {q:"Fetal fibronectin (fFN) is most clinically useful when the result is:",opts:["Positive — confirms preterm labour","Negative — rules out delivery within 7 days","Elevated above 200 ng/mL — mandates delivery","Any result — it guides tocolytic choice"],ans:1,focus:"fFN — clinical utility of negative result",exp:"The most clinically useful result of fFN is <strong>negative (&lt;10 ng/mL)</strong>. A negative result has &gt;95% negative predictive value for delivery within 7 days — safely avoids unnecessary hospitalisation, tocolysis, and steroids. A positive result has poor positive predictive value (many positive results do not deliver within 7 days) — it prompts action but doesn't confirm imminent delivery."},
+  {q:"A woman at 31 weeks with PPROM should receive which antibiotic?",opts:["Co-amoxiclav (Augmentin)","Erythromycin","Metronidazole","Amoxicillin alone"],ans:1,focus:"PPROM antibiotics — erythromycin, not co-amoxiclav",exp:"<strong>Erythromycin</strong> 250mg QDS for 10 days (ORACLE trial). It delays delivery and reduces maternal and neonatal infection. <strong>Co-amoxiclav is contraindicated</strong> in PPROM — the ORACLE trial showed significantly increased risk of <strong>necrotising enterocolitis</strong> in neonates exposed to co-amoxiclav. This is a critical distinction that comes up in exams and in practice."},
+  {q:"Tocolysis is contraindicated in which of the following situations?",opts:["Cervix 2cm dilated at 30 weeks","Singleton pregnancy at 27 weeks with intact membranes","PPROM with maternal fever and uterine tenderness","Fetal fibronectin positive at 29 weeks"],ans:2,focus:"Tocolysis contraindications — chorioamnionitis",exp:"<strong>Signs of chorioamnionitis</strong> (maternal fever, uterine tenderness, fetal tachycardia, offensive liquor) are an absolute contraindication to tocolysis. Continuing pregnancy risks maternal sepsis and fetal death. Deliver promptly with appropriate antibiotics and senior involvement. Tocolysis in chorioamnionitis is harmful, not helpful."}
+];
+NOTES_MCQ.ovarycyst=[
+  {q:"A 26-year-old is found to have a 4cm unilocular, thin-walled, anechoic ovarian cyst on USS. CA-125 is normal. Most appropriate management:",opts:["Urgent 2-week-wait referral","Laparoscopic cystectomy","Repeat USS in 6–8 weeks","Commence COCP to resolve the cyst"],ans:2,focus:"Simple unilocular cyst — conservative management",exp:"A <strong>simple unilocular anechoic cyst</strong> with no concerning features (no solid areas, no Doppler flow, no septations) in a premenopausal woman is almost certainly benign and functional. <strong>Repeat USS in 6–8 weeks</strong> is appropriate to confirm resolution. COCP does not accelerate resolution of existing cysts. Surgery is not indicated without symptoms or concerning features."},
+  {q:"According to the IOTA simple rules, which finding is classified as an M-feature (likely malignant)?",opts:["Unilocular cyst","Acoustic shadowing","Ascites","Smooth thin-walled multilocular cyst &lt;100mm"],ans:2,focus:"IOTA M-features — malignant risk stratification",exp:"<strong>Ascites</strong> is an IOTA M-feature (along with irregular solid tumour, ≥4 papillary projections, irregular multilocular solid &gt;100mm, and very strong Doppler flow). Acoustic shadowing and unilocular cysts are B-features (benign). Any M-feature present with no B-features = likely malignant → urgent referral. B-features only = likely benign."},
+  {q:"A 24-year-old with sudden severe right iliac fossa pain and vomiting has a 6cm right ovarian dermoid on USS. Doppler shows preserved flow. Most likely diagnosis:",opts:["Appendicitis","Ruptured ovarian cyst","Ovarian torsion","Pelvic inflammatory disease"],ans:2,focus:"Ovarian torsion — Doppler does not exclude it",exp:"<strong>Ovarian torsion</strong> — the classic presentation: sudden severe unilateral pelvic pain, nausea/vomiting, ovarian cyst acting as a fulcrum. <strong>Preserved Doppler flow does NOT exclude torsion</strong> — partial torsion maintains flow. Proceed to diagnostic laparoscopy regardless of Doppler. Dermoid cysts have high torsion risk (weight + mobility). Early untwisting in situ can save the ovary."},
+  {q:"An endometrioma is best described on ultrasound as:",opts:["Unilocular anechoic cyst with thin walls","Ground-glass echogenicity with uniform low-level internal echoes","Complex cyst with multiple solid papillary projections","Hyperechoic cyst with posterior acoustic shadowing"],ans:1,focus:"Endometrioma — USS appearance",exp:"<strong>Endometrioma</strong> has characteristic <strong>ground-glass echogenicity</strong> — uniform low-level internal echoes from old haemorrhagic fluid. This is essentially pathognomonic. Acoustic shadowing = dermoid. Papillary projections = concerning for malignancy. Anechoic = functional/serous cystadenoma. CA-125 is often elevated in endometrioma — this does not indicate malignancy in this context."},
+  {q:"In a woman planning IVF who has a 4cm endometrioma, the best advice regarding surgical removal prior to IVF is:",opts:["Always remove — improves IVF success rates","Remove only if symptomatic — surgery may reduce ovarian reserve without improving IVF outcomes","Always leave — surgery is too risky","Remove if &gt;3cm to prevent torsion"],ans:1,focus:"Endometrioma and IVF — surgical decision",exp:"Surgical removal of endometriomas <strong>does not consistently improve IVF outcomes</strong> and may reduce them by damaging ovarian reserve — the excision inevitably removes some normal ovarian cortex. Current evidence supports <strong>expectant management</strong> unless the cyst is symptomatic, rapidly enlarging, or causing access problems for egg collection. This is a nuanced shared decision — refer to specialist for individualised advice."}
+];
+NOTES_MCQ.cervicalcancer=[
+  {q:"The primary mechanism by which high-risk HPV causes cervical carcinoma is:",opts:["Direct invasion of cervical stroma","Integration of E6/E7 oncoproteins inactivating p53 and Rb","Stimulation of oestrogen receptors","Inhibition of cervical mucus production"],ans:1,focus:"HPV oncogenesis — E6/E7 mechanism",exp:"HPV <strong>E6 and E7 oncoproteins</strong> are the molecular drivers of carcinogenesis. E6 binds and degrades <strong>p53</strong> (tumour suppressor). E7 inactivates <strong>Rb</strong> (retinoblastoma protein — cell cycle brake). Loss of both controls leads to unregulated proliferation. This is why persistent high-risk HPV infection (not transient) drives malignant transformation — integration into host DNA is required."},
+  {q:"A 32-year-old has a cervical smear showing HPV positive with normal cytology. Correct management:",opts:["Immediate colposcopy referral","Repeat HPV test and cytology in 12 months","Treat with topical imiquimod","Reassure — no follow-up needed for 5 years"],ans:1,focus:"HPV positive, normal cytology — management pathway",exp:"In the UK primary HPV testing programme: <strong>HPV positive + normal cytology → repeat in 12 months</strong>. If still HPV positive at 12 months → colposcopy. If HPV negative at 12 months → return to routine recall. Only abnormal cytology (with HPV positive) triggers immediate colposcopy. This pathway is designed to avoid overreferring women whose HPV will clear spontaneously."},
+  {q:"CIN 3 differs from CIN 1 in that:",opts:["It always presents with symptoms","Full-thickness epithelial dysplasia is present and treatment is mandatory","It is caused by low-risk HPV types","It has the same rate of spontaneous regression"],ans:1,focus:"CIN grading — clinical significance of CIN3",exp:"<strong>CIN 3 (carcinoma in situ)</strong>: full-thickness dysplasia of the squamous epithelium without basement membrane breach. <strong>30–50% progress to invasion within 10 years without treatment.</strong> Treatment (LLETZ) is mandatory. CIN 1: mild dysplasia, 60% regress — treat with observation only. CIN 3 is asymptomatic and screen-detected. Low-risk HPV causes warts, not CIN/cancer."},
+  {q:"The most classic presenting symptom of early invasive cervical cancer is:",opts:["Pelvic pain","Postcoital bleeding","Urinary frequency","Vaginal discharge only"],ans:1,focus:"Cervical cancer symptoms — postcoital bleeding",exp:"<strong>Postcoital bleeding (PCB)</strong> is the hallmark symptom of cervical cancer — bleeding after sexual intercourse caused by a friable, vascular tumour on the cervix. Any woman with unexplained PCB requires a <strong>speculum examination regardless of recent normal smear</strong> — a normal smear does not exclude invasive cancer. Pelvic pain = late disease (parametrial involvement). Early disease is often asymptomatic."},
+  {q:"A 28-year-old with stage 1B1 cervical cancer (&lt;2cm) wishes to preserve fertility. The appropriate surgical option is:",opts:["Radical hysterectomy","Simple trachelectomy","Radical trachelectomy with pelvic lymph node dissection","Cone biopsy alone"],ans:2,focus:"Trachelectomy — fertility-sparing surgery for early cervical cancer",exp:"<strong>Radical trachelectomy</strong> (removal of the cervix, parametrium, and upper vagina with uterine preservation) is the fertility-sparing option for stage 1A2–1B1 with tumour &lt;2cm. Pelvic lymph node dissection or sentinel node biopsy is performed simultaneously. Post-operative pregnancy rates ~50–70%, with increased preterm birth risk. Must be discussed at MDT before any treatment begins — once a radical hysterectomy is performed, fertility cannot be restored."}
+];
 NOTES.pph=()=>`
 <div class="n-hero">
   <div class="nhero-glow"></div>
