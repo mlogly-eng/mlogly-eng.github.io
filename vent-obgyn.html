@@ -409,7 +409,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
     <span class="logo-name">Vent</span>
   </a>
   <a href="vent-home.html" class="nav-back">← Home</a>
-  <a href="index.html#waitlist" class="nav-pill">Join waitlist</a>
+  <a href="vent-home.html#waitlist" class="nav-pill">Join waitlist</a>
 </nav>
 
 <section class="shero">
@@ -527,6 +527,7 @@ function dismissVentPopup(){
 }
 function startMCQ(){
   dismissVentPopup();
+  if(!NOTES_MCQ[currentNote]||NOTES_MCQ[currentNote].length===0){return;}
   if(!mcqState[currentNote]){
     mcqState[currentNote]={current:0,answers:Array(NOTES_MCQ[currentNote].length).fill(null)};
   }
@@ -653,6 +654,27 @@ NOTES_MCQ.preeclampsia=[
 ];
 
 
+NOTES_MCQ.ectopic=[
+  {q:"A woman presents with 7 weeks amenorrhoea, left iliac fossa pain, and light vaginal bleeding. Urine βhCG is positive. First investigation:",opts:["Transvaginal ultrasound","Diagnostic laparoscopy","Serum progesterone","CT abdomen"],ans:0,focus:"Ectopic pregnancy investigation sequence",exp:"<strong>Transvaginal ultrasound (TVUS)</strong> is first-line. It can identify an intrauterine pregnancy, an adnexal mass, and free fluid. Laparoscopy is diagnostic and therapeutic but not first-line without imaging. The goal of TVUS is to locate the pregnancy — an empty uterus with a positive hCG and adnexal mass = ectopic until proven otherwise."},
+  {q:"The discriminatory zone in ectopic pregnancy refers to:",opts:["βhCG level above which TVUS should always detect an IUP","The zone of uterine pain on examination","Serum progesterone threshold","Gestational age at which ectopic is most common"],ans:0,focus:"Discriminatory zone concept",exp:"The <strong>discriminatory zone</strong> is the βhCG level above which a normal intrauterine pregnancy should be visible on TVUS — typically <strong>1500–2000 IU/L</strong>. If βhCG exceeds this and TVUS shows an empty uterus → ectopic or failed IUP. Below this threshold, a normal early IUP may not yet be visible."},
+  {q:"A haemodynamically unstable patient with suspected ruptured ectopic pregnancy. Correct management:",opts:["Serial βhCG measurements","Methotrexate IM","Emergency laparoscopy or laparotomy","Transvaginal ultrasound to confirm diagnosis first"],ans:2,focus:"Ruptured ectopic — immediate surgical management",exp:"Haemodynamic instability from ruptured ectopic = <strong>immediate surgical intervention</strong>. No time for serial bloods or imaging. Two large-bore IVs, blood products, call theatre. Laparoscopy is preferred if skill available; laparotomy if unstable. Methotrexate is only for unruptured, stable, haemodynamically normal patients."},
+  {q:"Methotrexate for ectopic pregnancy is contraindicated in:",opts:["βhCG of 800 IU/L","Adnexal mass of 25mm","Fetal cardiac activity present on USS","Previous PID"],ans:2,focus:"Methotrexate contraindications",exp:"<strong>Fetal cardiac activity</strong> is an absolute contraindication to methotrexate. Other contraindications: βhCG >5000, mass >35mm, haemodynamic instability, immunodeficiency, liver/renal disease, breastfeeding. The presence of cardiac activity indicates a more advanced ectopic with higher risk of failure from medical management."},
+  {q:"Which βhCG pattern is most reassuring for a viable intrauterine pregnancy?",opts:["Plateau over 48 hours","Rise of 15% over 48 hours","Rise of ≥66% over 48 hours","Any positive result on serial testing"],ans:2,focus:"Serial βhCG interpretation",exp:"In a viable IUP, βhCG should rise by <strong>≥66% every 48 hours</strong> in early pregnancy. A rise &lt;66% suggests failing IUP or ectopic. A plateau or fall suggests non-viable pregnancy. Note: a falling hCG does not always mean safe — ectopics can have falling hCG and still rupture."}
+];
+NOTES_MCQ.placenta=[
+  {q:"A woman at 32 weeks presents with painless, bright red vaginal bleeding. She has had two previous caesarean sections. Most likely diagnosis:",opts:["Placental abruption","Placenta praevia","Show","Vasa praevia"],ans:1,focus:"Placenta praevia — classic presentation",exp:"<strong>Placenta praevia</strong> = painless, bright red bleeding in the third trimester. Previous uterine surgery is a major risk factor. Placental abruption causes painful, dark bleeding with a tender woody uterus. Vasa praevia presents at rupture of membranes. The painless nature and previous CS scars make praevia the diagnosis here."},
+  {q:"In suspected placenta praevia, vaginal examination is:",opts:["Helpful to assess cervical dilation","Contraindicated — can precipitate catastrophic haemorrhage","Indicated only if the patient is haemodynamically stable","Replaced by rectal examination"],ans:1,focus:"Never perform VE in placenta praevia",exp:"<strong>Never perform a vaginal examination</strong> in placenta praevia. The examining finger can disrupt the placenta overlying the cervical os and cause massive, uncontrollable haemorrhage. Diagnosis is by ultrasound — ideally transvaginal (paradoxically safer than transabdominal for posterior praevia). This is an absolute rule."},
+  {q:"A placenta praevia is classified as major when:",opts:["Placental edge within 20mm of internal os","Placenta reaches but does not cover the os","Placenta covers the internal os","Any placenta in the lower segment"],ans:2,focus:"Classification of placenta praevia",exp:"<strong>Major praevia</strong>: placenta covers the internal os. <strong>Minor praevia</strong>: placental edge within 20mm of the os but not covering it. Major praevia mandates caesarean section. Minor praevia may allow vaginal birth depending on the exact distance — decision made on case-by-case basis with senior input."},
+  {q:"The primary risk of placenta praevia accreta in a patient with two prior CS scars is:",opts:["Preterm labour","Abnormal placental attachment requiring hysterectomy","Postpartum depression","Cord prolapse"],ans:1,focus:"Placenta accreta spectrum",exp:"Prior CS scars create uterine scarring. When placenta praevia overlies a CS scar, trophoblast can invade abnormally deeply — <strong>placenta accreta spectrum (PAS)</strong>. Accreta: invades myometrium. Increta: through myometrium. Percreta: through serosa. PAS often requires <strong>caesarean hysterectomy</strong> — plan delivery at a centre with multidisciplinary haematology, urology, and interventional radiology support."},
+  {q:"Antepartum haemorrhage due to placenta praevia at 34 weeks, mother stable, baby well. Correct management:",opts:["Emergency caesarean section","Expectant management with steroids, crossmatch, and senior review","Induce labour to expedite delivery","Methotrexate to reduce placental vascularity"],ans:1,focus:"Expectant management of placenta praevia",exp:"At 34 weeks with a stable mother and fetus, <strong>expectant management</strong> is appropriate. Give <strong>corticosteroids</strong> for fetal lung maturity, crossmatch blood, admit for monitoring, senior obstetric review. Aim to reach 36–37 weeks before planned caesarean if no further bleeds. Emergency CS only if haemodynamic compromise, fetal compromise, or uncontrolled haemorrhage."}
+];
+NOTES_MCQ.gdm=[
+  {q:"The diagnostic test for gestational diabetes mellitus (GDM) is:",opts:["Random blood glucose >11.1","Fasting glucose on two occasions","75g oral glucose tolerance test (OGTT) at 24–28 weeks","HbA1c >48 mmol/mol"],ans:2,focus:"GDM diagnosis — OGTT",exp:"The <strong>75g OGTT at 24–28 weeks</strong> is the gold standard for GDM diagnosis. GDM is diagnosed if: fasting glucose ≥5.6 mmol/L OR 2-hour glucose ≥7.8 mmol/L (NICE thresholds). HbA1c is unreliable in pregnancy due to increased red cell turnover. Random glucose and fasting alone are insufficient."},
+  {q:"Which fetal complication is most directly caused by maternal hyperglycaemia in GDM?",opts:["Intrauterine growth restriction","Macrosomia","Neural tube defect","Renal agenesis"],ans:1,focus:"Macrosomia — mechanism in GDM",exp:"Maternal glucose crosses the placenta; fetal insulin does not. Fetal hyperglycaemia → <strong>fetal hyperinsulinaemia</strong> → excess anabolic drive → <strong>macrosomia</strong> (birthweight >4kg or >90th centile). Macrosomia increases risk of shoulder dystocia, operative delivery, and birth trauma. IUGR occurs in pre-existing diabetes with vascular disease, not typically GDM."},
+  {q:"A woman with GDM fails dietary management. First pharmacological step:",opts:["Insulin","Metformin","Glibenclamide","Acarbose"],ans:1,focus:"GDM pharmacological management",exp:"<strong>Metformin</strong> is first-line pharmacological treatment when diet and exercise fail. It crosses the placenta (which has been studied — no demonstrated harm) and is effective. If metformin is insufficient or not tolerated, <strong>insulin</strong> is added. Glibenclamide is second-line in some guidelines. Acarbose is rarely used in pregnancy."},
+  {q:"The most important neonatal complication to monitor for immediately after delivery in GDM:",opts:["Jaundice","Hypoglycaemia","Polycythaemia","Respiratory distress syndrome"],ans:1,focus:"Neonatal hypoglycaemia in GDM",exp:"<strong>Neonatal hypoglycaemia</strong> is the priority. In utero, the fetus was exposed to high glucose → high insulin. At birth, the glucose supply stops abruptly but insulin levels remain high → hypoglycaemia within minutes to hours. Monitor blood glucose within 1–2 hours of birth. Feed early. Thresholds vary by unit — typically BG <2.0–2.6 mmol/L requires intervention."},
+  {q:"A woman who had GDM should be tested postpartum with:",opts:["Urine dipstick at 6-week check","75g OGTT at 6–13 weeks postpartum","Annual HbA1c for 5 years only","No follow-up needed if delivery glucose was normal"],ans:1,focus:"Postpartum GDM follow-up",exp:"Women with GDM have a <strong>50% lifetime risk of developing type 2 diabetes</strong>. NICE recommends a <strong>75g OGTT at 6–13 weeks postpartum</strong> to rule out persistent diabetes, then annual HbA1c indefinitely. Many women who appear normal at discharge are in fact glucose-impaired. Lifelong surveillance is essential — this is not a condition that ends at delivery."}
+];
 const NOTES={};
 NOTES.pph=()=>`
 <div class="n-hero">
@@ -1179,23 +1201,500 @@ NOTES.preeclampsia=()=>`
 </div>
 </div>`;
 
-function stub(id) {
-  const data = {
-    ectopic: { title: 'Ectopic Pregnancy', sub: 'Ectopic until proven otherwise. The triad, risk factors, the discriminatory zone, and what a negative urine hCG does and does not rule out.' },
-    placenta: { title: 'Placenta Praevia', sub: 'Painless bright red bleeding in the third trimester. Why placental position determines everything — including why you never perform a vaginal examination.' },
-    gdm: { title: 'Gestational Diabetes', sub: 'The OGTT thresholds, why hyperglycaemia in pregnancy endangers both mother and baby, and why macrosomia is not just a big baby problem.' }
-  };
-  const d = data[id] || { title: 'Note', sub: '' };
-  return `<div class="n-hero"><div class="nhero-glow"></div><div class="n-rule"></div><div class="n-tag">OB/GYN · In progress</div>
-<div class="n-title">${d.title}</div><div class="n-oneliner">${d.sub}</div>
-<div class="n-badges"><span class="nbadge">Coming soon</span><span class="nbadge">EN / AR</span></div></div>
-<div class="nbody"><div class="n-opener"><div class="n-opener-kicker">In progress</div>
-<div class="n-opener-hl">This note is being built to the same standard.</div>
-<div class="n-opener-body">${d.sub} Every note on Vent earns its place before going live.</div></div>
-<div class="insight"><div class="ins-kicker">Vent promise</div><div class="ins-hl">We'd rather give you nothing <em>than something half-built.</em></div>
-<div class="ins-body">The whole premise is understanding, not information. If we can't build it to that standard, it doesn't ship.</div></div>
-<div class="nfoot"><span class="ntag">${d.title}</span><span class="ntag">Coming soon</span><span class="ntime">⏱ In progress</span></div></div>`;
-}
+NOTES.ectopic=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Gynaecology · Emergency · Note 03</div>
+  <div class="n-title">Ectopic<br>Pregnancy</div>
+  <div class="n-oneliner">Ectopic until proven otherwise. The triad is classic. But the classic presentation is the exception — not the rule.</div>
+  <div class="n-badges"><span class="nbadge">Emergency</span><span class="nbadge">Pregnancy of Unknown Location</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+
+<div class="n-visual">
+  <div class="nv-hdr">
+    <span class="nv-title">Sites of ectopic implantation — incidence by location</span>
+    <span class="nv-sub">97% occur in the fallopian tube</span>
+  </div>
+  <div class="nv-body">
+    <svg viewBox="0 0 760 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="290" height="200" rx="2" fill="#c8452a"/>
+      <text x="145" y="44" font-family="Syne,sans-serif" font-size="24" fill="white" text-anchor="middle" font-weight="800">AMPULLA</text>
+      <text x="145" y="68" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(255,255,255,.75)" text-anchor="middle">70% of tubal ectopics</text>
+      <text x="145" y="108" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.58)" text-anchor="middle">Most common site</text>
+      <text x="145" y="128" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.45)" text-anchor="middle">Widest tubal segment</text>
+      <text x="145" y="172" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.3)" text-anchor="middle">Rupture risk: moderate</text>
+      <rect x="298" y="18" width="178" height="164" rx="2" fill="#8a2818"/>
+      <text x="387" y="56" font-family="Syne,sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="800">ISTHMUS</text>
+      <text x="387" y="78" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(255,255,255,.65)" text-anchor="middle">12%</text>
+      <text x="387" y="112" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.72)" text-anchor="middle">Narrow lumen</text>
+      <text x="387" y="160" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Ruptures early</text>
+      <rect x="484" y="38" width="132" height="144" rx="2" fill="#5a1810"/>
+      <text x="550" y="76" font-family="Syne,sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="800">FIMBRIAL</text>
+      <text x="550" y="98" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(255,255,255,.6)" text-anchor="middle">11%</text>
+      <text x="550" y="138" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.4)" text-anchor="middle">May abort</text>
+      <rect x="624" y="62" width="136" height="120" rx="2" fill="#1a1510" stroke="#c8452a" stroke-width="1.5"/>
+      <text x="692" y="96" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">OTHER</text>
+      <text x="692" y="116" font-family="JetBrains Mono,monospace" font-size="12" fill="rgba(200,69,42,.9)" text-anchor="middle">3%</text>
+      <text x="692" y="142" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.45)" text-anchor="middle">Ovarian · Cervical</text>
+      <text x="692" y="158" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.32)" text-anchor="middle">Interstitial · Scar</text>
+    </svg>
+  </div>
+</div>
+
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">Implantation outside the uterine cavity. Most often in the fallopian tube. Always life-threatening until proven otherwise.</div>
+    <div class="n-opener-body">
+      The classic triad — amenorrhoea, pelvic pain, vaginal bleeding — appears in fewer than half of all cases. <strong>The most dangerous ectopics are the ones that do not look like ectopics.</strong> Many women present only with pain. Some present only with a positive pregnancy test and vague discomfort. Some present in haemorrhagic shock as their first symptom. This is why the clinical rule is not "the triad confirms ectopic" — it is <strong>"positive pregnancy test plus any symptoms in a woman of reproductive age = ectopic until the uterus contains a live pregnancy on ultrasound."</strong> A pregnancy of unknown location is an ectopic until you can prove otherwise.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">Why ectopics happen — the mechanism of tubal implantation</span><div class="shead-l"></div></div>
+
+  <div class="mech">
+    <div class="mech-label">The physiology of failure</div>
+    <p>Fertilisation occurs in the ampullary segment of the fallopian tube. The embryo is then swept toward the uterus by cilial action and muscular peristalsis over 3–4 days. Any factor that slows or obstructs this transport — damaged cilia, tubal scarring from previous infection, prior surgery, or intrinsic tubal abnormality — allows the embryo to implant in the tube before it reaches the uterine cavity. <strong>The trophoblast invades the tubal wall, which has no decidualised endometrium and no capacity to accommodate a growing pregnancy.</strong> Rupture is not a complication. It is the inevitable end-point of tubal ectopic pregnancy if untreated.</p>
+  </div>
+
+  <div class="twocol">
+    <div class="tcc">
+      <div class="tcc-lbl">High-risk features</div>
+      <div class="tcc-title">Who is at risk</div>
+      <div class="tcc-body">Previous ectopic (10× risk of recurrence). PID or chlamydial infection (tubal scarring). Previous tubal surgery. IUD in situ (not causative, but if pregnancy occurs, increases ectopic proportion). Assisted reproduction (IVF). Endometriosis. <strong>Previous CS does not increase tubal ectopic risk</strong> — but does create scar ectopic risk.</div>
+    </div>
+    <div class="tcc shade">
+      <div class="tcc-lbl">The deceptive cases</div>
+      <div class="tcc-title">When ectopic hides</div>
+      <div class="tcc-body">Interstitial ectopic: implants in the cornual portion of the tube, within the myometrium. Presents later (8–12 weeks), can rupture catastrophically. Scar ectopic: implants in a previous CS scar. Associated with placenta accreta. Cervical ectopic: painless bleeding, often mistaken for miscarriage. <strong>Each has a specific management approach — location changes everything.</strong></div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">Investigation — the sequence matters</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">1</div>
+      <div class="pt-b">
+        <span class="pt-title">Urine βhCG first — but a negative result does not rule out ectopic</span>
+        <div class="pt-body">A positive urine βhCG in a woman with pain confirms a pregnancy exists somewhere. A <strong>negative urine hCG makes ectopic extremely unlikely</strong> — but not impossible in very early pregnancy (&lt;4 weeks). If clinical suspicion is high and urine is negative, send serum βhCG. Do not be falsely reassured.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">2</div>
+      <div class="pt-b">
+        <span class="pt-title">Transvaginal ultrasound — the key investigation</span>
+        <div class="pt-body">TVUS is first-line imaging. The goal is to answer one question: <strong>is there an intrauterine pregnancy?</strong> A confirmed IUP effectively excludes ectopic (heterotopic is rare: 1 in 10,000–30,000 spontaneous conceptions). Positive findings for ectopic: adnexal mass, free fluid in the pouch of Douglas, empty uterus with positive hCG. The absence of an adnexal mass does not exclude ectopic.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">3</div>
+      <div class="pt-b">
+        <span class="pt-title">The discriminatory zone — above this level, a normal IUP should be visible</span>
+        <div class="pt-body">Typically <strong>1500–2000 IU/L</strong>. If serum βhCG exceeds this threshold and TVUS shows an empty uterus with no adnexal mass → this is a pregnancy of unknown location (PUL), managed as ectopic until proven otherwise. Below the discriminatory zone, a normal IUP may not yet be visible — serial hCG measurement guides the next step.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">4</div>
+      <div class="pt-b">
+        <span class="pt-title">Serial βhCG — interpreting the trend, not the number</span>
+        <div class="pt-body">In a healthy IUP, βhCG doubles every <strong>48–72 hours</strong> (minimum 66% rise). A rise &lt;66% over 48 hours suggests failing IUP or ectopic. A plateau suggests ectopic. A falling hCG does not confirm safety — ectopic pregnancies can rupture with a falling or low hCG. <strong>Trend matters more than any single value.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="box-hdr"><div class="box-dot"></div><div class="box-label">The pregnancy of unknown location (PUL) — the safest working diagnosis</div></div>
+    <div class="box-body">
+      When serum βhCG is positive, TVUS shows neither a definite IUP nor a definite ectopic, treat as PUL. This is not uncertainty — it is the correct clinical category. PUL mandates: <strong>serial βhCG every 48 hours</strong>, close follow-up, clear safety-net advice (return immediately if pain or dizziness), and repeat TVUS when hCG rises above the discriminatory zone. Never discharge a PUL without a clear follow-up plan in place.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">iii</span><span class="shead-t">Management — determined by stability, not by preference</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">A</div>
+      <div class="pt-b">
+        <span class="pt-title">Haemodynamically unstable → immediate surgery. No time for imaging.</span>
+        <div class="pt-body">Two large-bore IVs. Crossmatch. Call theatre immediately. Laparoscopy is preferred if surgical skill is available; laparotomy if the patient is in profound shock or laparoscopy is unavailable. <strong>Do not perform TVUS to confirm the diagnosis before operating on a haemodynamically unstable patient.</strong> The clinical picture is already the diagnosis. Every minute of delay costs blood volume.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">B</div>
+      <div class="pt-b">
+        <span class="pt-title">Methotrexate — for stable, unruptured ectopic meeting strict criteria</span>
+        <div class="pt-body"><span class="drug">Methotrexate</span> 50mg/m² IM, single dose. Works by inhibiting trophoblast division. <strong>Strict criteria must be met:</strong> haemodynamically stable, unruptured ectopic confirmed, no fetal cardiac activity, βhCG &lt;5000 IU/L, adnexal mass &lt;35mm, no immunosuppression, normal renal/hepatic function, not breastfeeding. Follow up βhCG on days 4 and 7 — expect a &gt;15% fall. If not, second dose or surgery.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">C</div>
+      <div class="pt-b">
+        <span class="pt-title">Surgical — salpingectomy vs salpingotomy</span>
+        <div class="pt-body">Laparoscopic <strong>salpingectomy</strong> (removal of the affected tube) is standard for most tubal ectopics — lower re-ectopic rate than salpingotomy. <strong>Salpingotomy</strong> (incising the tube and removing the ectopic, preserving the tube) is considered only when the contralateral tube is absent or damaged and future fertility is paramount. After salpingotomy, serial βhCG must be followed to ensure complete clearance — persistent trophoblast occurs in 5–10%.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">D</div>
+      <div class="pt-b">
+        <span class="pt-title">Expectant management — only for very low-risk, declining hCG</span>
+        <div class="pt-body">A small subset of ectopics resolve spontaneously — typically those with βhCG &lt;1000 IU/L and a clearly falling trend. Expectant management requires very close monitoring, patient reliability for follow-up, and immediate access to emergency care. This is the exception, not the default. Any uncertainty → intervene.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <div class="warn-ico">⚠</div>
+    <div>
+      <div class="warn-lbl">Anti-D immunoglobulin — do not forget</div>
+      <p><strong>All Rhesus-negative women with ectopic pregnancy require anti-D immunoglobulin</strong> (250 IU IM if &lt;20 weeks). Surgical management, miscarriage, or significant bleeding can cause fetomaternal haemorrhage and sensitise the mother. A sensitised Rh-negative mother risks haemolytic disease in future Rh-positive pregnancies. This is simple, cheap, and prevents lifelong harm — there is no excuse for missing it.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">The tube doesn't rupture because you missed the diagnosis. <em>It ruptures because you waited for certainty.</em></div>
+    <div class="ins-body">The trap in ectopic is the desire to confirm before you act. <strong>The discriminatory zone, the serial hCG, the repeat scan — all of these are tools for the stable patient.</strong> For the patient who is pale, tachycardic, and clutching her abdomen, they are distractions. A haemodynamically unstable woman with a positive pregnancy test and pelvic pain has a ruptured ectopic until proven otherwise. Resuscitate with both hands and call theatre with your voice. Diagnosis comes second. The surgery is both the confirmation and the cure.</div>
+  </div>
+
+  <div class="nfoot"><span class="ntag">Ectopic Pregnancy</span><span class="ntag">Discriminatory Zone</span><span class="ntag">βhCG</span><span class="ntag">Salpingectomy</span><span class="ntag">Methotrexate</span><span class="ntag">PUL</span><span class="ntime">⏱ 5 min</span></div>
+
+<div class="note-end-cta" onclick="showVentPopup()">
+  <div class="note-end-cta-tag">// End of note</div>
+  <div class="note-end-cta-title">Are you ventilating?</div>
+  <div class="note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="note-end-cta-arrow">&#8599;</div>
+</div>
+</div>`;
+
+NOTES.placenta=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Obstetrics · Antenatal · Note 04</div>
+  <div class="n-title">Placenta<br>Praevia</div>
+  <div class="n-oneliner">Painless bright red bleeding in the third trimester. Placental position determines everything — including why you never reach for a speculum.</div>
+  <div class="n-badges"><span class="nbadge">Antepartum Haemorrhage</span><span class="nbadge">Accreta Spectrum</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+
+<div class="n-visual">
+  <div class="nv-hdr">
+    <span class="nv-title">Classification by relationship to the internal cervical os</span>
+    <span class="nv-sub">Position determines risk, management, and mode of delivery</span>
+  </div>
+  <div class="nv-body">
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="186" height="180" rx="2" fill="#2a5a3e"/>
+      <text x="93" y="40" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">NORMAL</text>
+      <text x="93" y="62" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.58)" text-anchor="middle">Fundal / Anterior</text>
+      <text x="93" y="96" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(255,255,255,.75)" text-anchor="middle">Edge &gt;20mm</text>
+      <text x="93" y="114" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.5)" text-anchor="middle">from internal os</text>
+      <text x="93" y="158" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.3)" text-anchor="middle">Vaginal birth safe</text>
+      <rect x="194" y="14" width="178" height="166" rx="2" fill="#5a7a3e"/>
+      <text x="283" y="50" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">MINOR</text>
+      <text x="283" y="72" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.6)" text-anchor="middle">Praevia</text>
+      <text x="283" y="104" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(255,255,255,.82)" text-anchor="middle">Edge 0–20mm</text>
+      <text x="283" y="122" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle">from internal os</text>
+      <text x="283" y="162" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.35)" text-anchor="middle">Individualised — senior</text>
+      <rect x="380" y="0" width="380" height="180" rx="2" fill="#c8452a"/>
+      <text x="570" y="36" font-family="Syne,sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="800">MAJOR PRAEVIA</text>
+      <text x="570" y="58" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(255,255,255,.7)" text-anchor="middle">Placenta COVERS the internal os</text>
+      <text x="570" y="96" font-family="JetBrains Mono,monospace" font-size="13" fill="white" text-anchor="middle" font-weight="700">Caesarean mandatory</text>
+      <text x="570" y="118" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.62)" text-anchor="middle">No vaginal examination · Ever</text>
+      <text x="570" y="156" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.35)" text-anchor="middle">Accreta risk ↑ with uterine scars</text>
+    </svg>
+  </div>
+</div>
+
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">The placenta lies over or adjacent to the internal cervical os. The bleeding is painless, bright red, and arrives without warning.</div>
+    <div class="n-opener-body">
+      Placenta praevia complicates approximately 0.5% of pregnancies. The classic presentation is <strong>painless antepartum haemorrhage in the third trimester</strong> — bright red blood, often at rest, with no uterine tenderness and a normally presenting fetus. The absence of pain is the differentiating feature from placental abruption, where a tense, tender uterus and dark blood are characteristic. But the clinical importance of praevia is not simply the bleeding itself. <strong>It is what happens when you reach inside to investigate it.</strong> A vaginal examination in an undiagnosed praevia can convert a manageable bleed into an uncontrollable haemorrhage.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">Why it bleeds — the mechanism</span><div class="shead-l"></div></div>
+
+  <div class="mech">
+    <div class="mech-label">Why the lower segment causes bleeding</div>
+    <p>In the third trimester, the lower uterine segment progressively forms and thins. When a placenta overlying the internal os is subjected to this effacement and stretching, placental attachment at the leading edge is disrupted. The maternal sinusoids in the decidua basalis are torn open. <strong>Because this is maternal blood from low-pressure sinusoids, bleeding can initially be modest — but further effacement or any disturbance of the cervix (including digital examination) can catastrophically escalate it.</strong> The blood escapes per vaginum because the route to the external environment is open — unlike abruption, where blood is concealed behind the placenta.</p>
+  </div>
+
+  <div class="box">
+    <div class="box-hdr"><div class="box-dot"></div><div class="box-label">The absolute rule — no vaginal examination</div></div>
+    <div class="box-body">
+      <strong>Never perform a digital vaginal examination in a woman with antepartum haemorrhage until placenta praevia has been excluded by ultrasound.</strong> The examining finger can disrupt placental tissue overlying the os and precipitate catastrophic, potentially uncontrollable haemorrhage. This is not a relative contraindication. It is absolute. Speculum examination to assess bleeding source is generally acceptable if praevia is suspected but not confirmed — but digital examination is never acceptable until ultrasound has cleared the diagnosis.
+    </div>
+  </div>
+
+  <div class="twocol">
+    <div class="tcc">
+      <div class="tcc-lbl">Placenta praevia vs abruption</div>
+      <div class="tcc-title">The two diagnoses to separate</div>
+      <div class="tcc-body"><strong>Praevia:</strong> painless, bright red, soft non-tender uterus, normal CTG initially, no coagulopathy early. <strong>Abruption:</strong> painful, often dark blood, tender woody uterus, fetal distress, may develop DIC. These can overlap — a woman with praevia can have contractions; a woman with abruption can have surprisingly little pain. <strong>Ultrasound is the arbiter.</strong></div>
+    </div>
+    <div class="tcc shade">
+      <div class="tcc-lbl">Risk factors to know</div>
+      <div class="tcc-title">Who is at risk</div>
+      <div class="tcc-body">Previous CS (most important — scar creates abnormal attachment zone). Previous uterine surgery. Multiparity. Previous praevia. Multiple pregnancy (large placental area). Smoking (abnormal placentation). Assisted reproduction. <strong>Each previous CS scar multiplies the risk of placenta accreta spectrum when praevia coexists.</strong></div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">Placenta accreta spectrum — the complication that changes everything</span><div class="shead-l"></div></div>
+
+  <div class="nb">When placenta praevia overlies a previous CS scar, trophoblast can invade abnormally deeply into the uterine wall. This is placenta accreta spectrum (PAS) — and it carries a risk of life-threatening haemorrhage at delivery.</div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">Ac</div>
+      <div class="pt-b">
+        <span class="pt-title">Accreta — invasion into the myometrium</span>
+        <div class="pt-body">The most common form. Trophoblast invades the myometrium but does not penetrate through it. Manual removal of the placenta is impossible without haemorrhage. Risk: approximately 1 in 2500 pregnancies overall, but rises dramatically with previous CS scars — up to 50–67% with praevia and 3+ previous CS scars.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">Inc</div>
+      <div class="pt-b">
+        <span class="pt-title">Increta — invasion through the myometrium</span>
+        <div class="pt-body">Trophoblast penetrates through the full thickness of the myometrium. Placental removal is not possible without hysterectomy in most cases. This stage requires planned delivery at a tertiary centre with multidisciplinary team involvement — haematology, urology, and interventional radiology.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">Per</div>
+      <div class="pt-b">
+        <span class="pt-title">Percreta — invasion through the serosa and into adjacent organs</span>
+        <div class="pt-body">The most severe form. Trophoblast breaches the uterine serosa and can invade the bladder or bowel. The most common lethal complication of PAS. <strong>Caesarean hysterectomy is virtually always required.</strong> Preoperative planning: cystoscopy, ureteric stents, cell salvage, haematology crossmatch, ICU availability. This is a multidisciplinary emergency from the moment of diagnosis.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">iii</span><span class="shead-t">Management — stable vs unstable</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">1</div>
+      <div class="pt-b">
+        <span class="pt-title">Haemodynamically unstable → resuscitate and deliver immediately</span>
+        <div class="pt-body">Two large-bore IVs, group and crossmatch, FBC and coagulation. Activate major haemorrhage protocol if significant. Call senior obstetrician and anaesthetist immediately. Caesarean section regardless of gestation if haemorrhage is uncontrolled. Do not delay for fetal maturity. Maternal life takes priority.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">2</div>
+      <div class="pt-b">
+        <span class="pt-title">Stable with preterm pregnancy → corticosteroids, admit, plan</span>
+        <div class="pt-body"><span class="drug">Betamethasone</span> 12mg IM ×2 doses 24 hours apart if &lt;34 weeks. Admit for monitoring. Crossmatch blood held. Senior obstetric and anaesthetic review. Aim for planned delivery at 36–37 weeks (major praevia) or 37–38 weeks (minor praevia) — earlier if further bleeds, PAS suspected, or clinical deterioration. Do not wait for haemorrhage to deliver.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">3</div>
+      <div class="pt-b">
+        <span class="pt-title">Route of delivery — caesarean for major praevia, always</span>
+        <div class="pt-body">Major praevia: caesarean section is mandatory. Minor praevia: route depends on placental edge distance from os at term, cervical favourability, and senior assessment — vaginal birth may be possible if edge is &gt;20mm at term. <strong>In PAS, planned caesarean hysterectomy at a specialist centre is the standard of care — do not attempt vaginal delivery or manual placental removal.</strong></div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">4</div>
+      <div class="pt-b">
+        <span class="pt-title">Anti-D — mandatory for Rh-negative women with APH</span>
+        <div class="pt-body">All Rh-negative women with antepartum haemorrhage require <span class="drug">anti-D immunoglobulin</span> — 500 IU if ≥20 weeks gestation. Even a small fetomaternal haemorrhage from a praevia bleed is sufficient for sensitisation. A Kleihauer–Betke test quantifies the degree of fetomaternal haemorrhage and determines whether additional anti-D doses are required.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">The bleeding stops on its own — until the day it doesn't. <em>Plan for that day before it arrives.</em></div>
+    <div class="ins-body">The treacherous feature of placenta praevia is that the initial bleeds are often self-limiting. The sinusoids clot, the woman stabilises, the junior team breathes out. <strong>This is not reassurance. This is the warning the placenta is giving you.</strong> Each bleed predicts a higher-risk subsequent bleed. The woman who presented at 30 weeks with a sentinel bleed and was managed conservatively is the same woman who will exsanguinate at 34 weeks if you haven't prepared a plan. Know the blood group. Know where the crossmatch is. Know the theatre is booked. Know which centre is managing her if PAS is suspected. The management of placenta praevia is a plan, not a response.</div>
+  </div>
+
+  <div class="nfoot"><span class="ntag">Placenta Praevia</span><span class="ntag">Antepartum Haemorrhage</span><span class="ntag">Accreta Spectrum</span><span class="ntag">No VE</span><span class="ntag">Caesarean</span><span class="ntag">Anti-D</span><span class="ntime">⏱ 5 min</span></div>
+
+<div class="note-end-cta" onclick="showVentPopup()">
+  <div class="note-end-cta-tag">// End of note</div>
+  <div class="note-end-cta-title">Are you ventilating?</div>
+  <div class="note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="note-end-cta-arrow">&#8599;</div>
+</div>
+</div>`;
+
+NOTES.gdm=()=>`
+<div class="n-hero">
+  <div class="nhero-glow"></div>
+  <div class="n-rule"></div>
+  <div class="n-tag">Obstetrics · Antenatal · Note 05</div>
+  <div class="n-title">Gestational<br>Diabetes</div>
+  <div class="n-oneliner">Not just a big baby problem. GDM reconfigures fetal metabolism — and the consequences extend far beyond birthweight.</div>
+  <div class="n-badges"><span class="nbadge">Antenatal</span><span class="nbadge">Macrosomia</span><span class="nbadge">EN / AR</span><span class="nbadge">⏱ 5 min</span></div>
+</div>
+
+<div class="n-visual">
+  <div class="nv-hdr">
+    <span class="nv-title">The Pedersen hypothesis — why fetal consequences exceed maternal ones</span>
+    <span class="nv-sub">Glucose crosses the placenta. Insulin does not.</span>
+  </div>
+  <div class="nv-body">
+    <svg viewBox="0 0 760 188" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Mother box -->
+      <rect x="0" y="20" width="220" height="148" rx="2" fill="#3a5a6e"/>
+      <text x="110" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">MOTHER</text>
+      <text x="110" y="74" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.6)" text-anchor="middle">↑ Insulin resistance</text>
+      <text x="110" y="94" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.6)" text-anchor="middle">↑ Blood glucose</text>
+      <text x="110" y="114" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.5)" text-anchor="middle">Pancreatic β-cell</text>
+      <text x="110" y="130" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.5)" text-anchor="middle">strain</text>
+      <text x="110" y="158" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.28)" text-anchor="middle">50% → T2DM lifetime</text>
+      <!-- Arrow glucose -->
+      <rect x="228" y="80" width="70" height="28" rx="14" fill="#c8452a"/>
+      <text x="263" y="99" font-family="JetBrains Mono,monospace" font-size="10" fill="white" text-anchor="middle" font-weight="700">Glucose →</text>
+      <!-- Arrow no insulin -->
+      <rect x="228" y="116" width="70" height="28" rx="14" fill="#2a2520"/>
+      <text x="263" y="130" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.4)" text-anchor="middle">Insulin</text>
+      <text x="263" y="142" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(200,69,42,.8)" text-anchor="middle">✗ blocked</text>
+      <!-- Fetus box -->
+      <rect x="306" y="0" width="454" height="188" rx="2" fill="#c8452a"/>
+      <text x="533" y="32" font-family="Syne,sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="800">FETUS</text>
+      <text x="533" y="56" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.65)" text-anchor="middle">↑ Fetal glucose → ↑ Fetal insulin (hyperinsulinaemia)</text>
+      <text x="533" y="88" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="700">Macrosomia · Organomegaly</text>
+      <text x="533" y="108" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.65)" text-anchor="middle">Shoulder dystocia · Birth trauma · Operative delivery</text>
+      <text x="533" y="136" font-family="Syne,sans-serif" font-size="12" fill="rgba(255,255,255,.85)" text-anchor="middle">Neonatal hypoglycaemia at birth</text>
+      <text x="533" y="156" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle">Insulin stays high · glucose supply stops abruptly</text>
+      <text x="533" y="178" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.3)" text-anchor="middle">↑ childhood obesity · T2DM risk</text>
+    </svg>
+  </div>
+</div>
+
+<div class="nbody">
+  <div class="n-opener">
+    <div class="n-opener-kicker">What is it</div>
+    <div class="n-opener-hl">Glucose intolerance first detected in pregnancy. The pathology is insulin resistance — the consequence is a fetus swimming in glucose it cannot regulate.</div>
+    <div class="n-opener-body">
+      Pregnancy is physiologically insulin-resistant. Human placental lactogen, progesterone, and cortisol all antagonise insulin signalling — this is normal and ensures glucose availability for the growing fetus. In GDM, this physiological resistance overwhelms pancreatic β-cell reserve. Glucose rises. It crosses the placenta freely. <strong>Fetal insulin does not cross back.</strong> The fetus, flooded with glucose, responds by secreting its own insulin in excess. Hyperinsulinaemia drives anabolic growth — macrosomia, hepatomegaly, cardiomegaly. At birth, the glucose supply stops instantly; the high insulin does not. The result is neonatal hypoglycaemia, sometimes within minutes of delivery. This is the Pedersen hypothesis, described in 1952, and it remains the mechanistic foundation for everything we do in GDM management.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">i</span><span class="shead-t">Diagnosis — the OGTT, and why HbA1c fails in pregnancy</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">1</div>
+      <div class="pt-b">
+        <span class="pt-title">Screen at 24–28 weeks with the 75g OGTT — the gold standard</span>
+        <div class="pt-body">Offer to all women with risk factors: BMI &gt;30, previous GDM, previous macrosomic baby (&gt;4.5kg), first-degree relative with T2DM, South Asian / Black / Middle Eastern ethnicity. The OGTT involves fasting overnight, a 75g glucose drink, then blood samples at 0 and 2 hours. <strong>NICE thresholds: fasting glucose ≥5.6 mmol/L OR 2-hour glucose ≥7.8 mmol/L = GDM.</strong></div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">2</div>
+      <div class="pt-b">
+        <span class="pt-title">Why HbA1c is unreliable in pregnancy</span>
+        <div class="pt-body">Pregnancy increases red cell turnover — erythrocytes are replaced faster, so HbA1c reflects a shorter period of glucose exposure than usual. The result: HbA1c systematically <strong>underestimates</strong> prevailing glucose levels in pregnancy. An HbA1c that appears reassuring may mask significant hyperglycaemia. HbA1c can be used at booking to screen for pre-existing undiagnosed type 2 diabetes (threshold: ≥48 mmol/mol), but it should never replace the OGTT for GDM diagnosis.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">3</div>
+      <div class="pt-b">
+        <span class="pt-title">Early testing — who gets the OGTT at booking instead of 24–28 weeks</span>
+        <div class="pt-body">Women with previous GDM should be offered early OGTT (or early self-monitoring of blood glucose) from the first antenatal appointment — not at 24–28 weeks. If early OGTT is normal, repeat at 24–28 weeks. Women with previous GDM who had normal glucose postpartum should not be assumed clear — GDM recurs in up to 50% of subsequent pregnancies.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <div class="box-hdr"><div class="box-dot"></div><div class="box-label">Glucose targets during pregnancy — tighter than outside pregnancy</div></div>
+    <div class="box-body">
+      <strong>NICE targets (self-monitoring):</strong>
+      <ul>
+        <li><strong>Fasting:</strong> 5.3 mmol/L or below</li>
+        <li><strong>1 hour post-meal:</strong> 7.8 mmol/L or below</li>
+        <li><strong>2 hours post-meal:</strong> 6.4 mmol/L or below</li>
+      </ul>
+      These are tighter than standard diabetic targets because even modest hyperglycaemia drives fetal hyperinsulinaemia. The clinical goal is to prevent macrosomia, shoulder dystocia, and neonatal hypoglycaemia — not merely to avoid ketoacidosis.
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">ii</span><span class="shead-t">Management — diet first, then escalate</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">1</div>
+      <div class="pt-b">
+        <span class="pt-title">Diet and lifestyle — first-line and effective in ~70% of women</span>
+        <div class="pt-body">Low glycaemic index diet. Regular moderate exercise. Distribute carbohydrates evenly across the day — avoid large single carbohydrate loads. Self-monitoring of blood glucose 4×/day (fasting and 1-hour post-meals). Most women with GDM achieve glucose targets with diet alone and do not require pharmacological treatment. Those who do not within 1–2 weeks need escalation.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">2</div>
+      <div class="pt-b">
+        <span class="pt-title">Metformin — first pharmacological step if diet fails</span>
+        <div class="pt-body"><span class="drug">Metformin</span> reduces hepatic glucose output and improves insulin sensitivity. It crosses the placenta — but long-term follow-up studies show no harm to offspring. First-line when diet is insufficient. Common side effects are gastrointestinal (nausea, diarrhoea) — start low and titrate. <strong>Metformin alone is insufficient for fasting hyperglycaemia &gt;7 mmol/L</strong> — these women need insulin from the outset.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">3</div>
+      <div class="pt-b">
+        <span class="pt-title">Insulin — when metformin is insufficient or not tolerated</span>
+        <div class="pt-body"><span class="drug">Isophane insulin</span> (NPH) at night for fasting hyperglycaemia. Short-acting insulin with meals for post-prandial hyperglycaemia. Does not cross the placenta. Requires dose adjustment throughout pregnancy as insulin resistance progressively increases with gestation. Women must receive structured education on hypoglycaemia recognition and management before commencing insulin.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">4</div>
+      <div class="pt-b">
+        <span class="pt-title">Timing of delivery — do not prolong beyond 40+6</span>
+        <div class="pt-body">Diet-controlled GDM: offer induction at 40+6 (no later than 41 weeks — stillbirth risk rises). Metformin or insulin-controlled: offer induction at 38–39 weeks. Poorly controlled or macrosomic fetus: earlier. <strong>GDM women are not low-risk postdates pregnancies</strong> — placental function may be compromised by sustained hyperglycaemia and waiting for spontaneous labour increases risk.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shead"><span class="shead-n">iii</span><span class="shead-t">Neonatal and long-term consequences — the note doesn't end at delivery</span><div class="shead-l"></div></div>
+
+  <div class="points">
+    <div class="point">
+      <div class="pt-n">N1</div>
+      <div class="pt-b">
+        <span class="pt-title">Neonatal hypoglycaemia — anticipate in every GDM baby</span>
+        <div class="pt-body">Fetal hyperinsulinaemia persists after birth for hours. Blood glucose should be checked within 1–2 hours of birth and before each feed for the first 24 hours. <strong>Threshold for intervention varies by unit but typically &lt;2.0–2.6 mmol/L.</strong> Early feeding is the first intervention. Persistent hypoglycaemia may require IV dextrose admission to neonatal unit. This is not a complication to watch for — it is an expectation to prepare for.</div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">N2</div>
+      <div class="pt-b">
+        <span class="pt-title">Macrosomia and shoulder dystocia risk</span>
+        <div class="pt-body">Poorly controlled GDM drives excess fetal growth — particularly deposition of fat in the shoulders and trunk (not evenly proportionate). This creates the obstetric risk: the head may deliver easily through a normal pelvis while the shoulders are disproportionately large. Estimated fetal weight on serial growth ultrasounds guides timing of delivery. <strong>A baby estimated at ≥4.5kg warrants senior discussion about mode of delivery.</strong></div>
+      </div>
+    </div>
+    <div class="point">
+      <div class="pt-n">M1</div>
+      <div class="pt-b">
+        <span class="pt-title">Maternal postpartum — 50% lifetime risk of type 2 diabetes</span>
+        <div class="pt-body"><strong>75g OGTT at 6–13 weeks postpartum</strong> to rule out persistent diabetes. If normal, annual HbA1c indefinitely. GDM is not a condition that ends at delivery — it is a metabolic stress test that reveals lifetime susceptibility. The postpartum period is the window to intervene: lifestyle modification, weight management, and regular surveillance can prevent or delay progression to type 2 diabetes significantly.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <div class="warn-ico">⚠</div>
+    <div>
+      <div class="warn-lbl">Stop metformin and insulin immediately after delivery</div>
+      <p><strong>GDM-related insulin resistance resolves within hours of delivering the placenta.</strong> Continuing insulin or metformin postpartum risks significant maternal hypoglycaemia. Stop pharmacological treatment at delivery for GDM (not for pre-existing diabetes — this is a critical distinction). If the woman had pre-existing undiagnosed T2DM discovered at booking, she needs ongoing pharmacological management and specialist diabetes review postpartum.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="ins-kicker">The resident insight</div>
+    <div class="ins-hl">You are not managing a glucose number. <em>You are managing a fetus who is eating everything its mother eats.</em></div>
+    <div class="ins-body">The reason GDM targets are tighter than non-pregnant targets, the reason we deliver earlier than term, the reason we check the baby's glucose within the first hour of life — none of it makes sense if you are just thinking about maternal hyperglycaemia. <strong>It all makes sense when you remember that every gram of glucose the mother eats arrives in the fetus within minutes, with no insulin to regulate it on the other side.</strong> The fetus compensates with its own insulin, and that insulin drives everything: macrosomia, organomegaly, the shoulder that gets stuck, the baby that drops its glucose on the postnatal ward. Treat the glucose target and you are protecting a fetus, not just treating a number. That distinction changes how seriously you take a fasting glucose of 5.8.</div>
+  </div>
+
+  <div class="nfoot"><span class="ntag">GDM</span><span class="ntag">OGTT</span><span class="ntag">Macrosomia</span><span class="ntag">Neonatal Hypoglycaemia</span><span class="ntag">Metformin</span><span class="ntag">Insulin</span><span class="ntag">Pedersen Hypothesis</span><span class="ntime">⏱ 5 min</span></div>
+
+<div class="note-end-cta" onclick="showVentPopup()">
+  <div class="note-end-cta-tag">// End of note</div>
+  <div class="note-end-cta-title">Are you ventilating?</div>
+  <div class="note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="note-end-cta-arrow">&#8599;</div>
+</div>
+</div>`;
 
 /* REVEAL */
 const obs = new IntersectionObserver(entries => {
