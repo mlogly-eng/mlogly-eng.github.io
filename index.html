@@ -55,11 +55,9 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:28px 6
 .hbp-logo{filter:drop-shadow(0 0 48px rgba(200,69,42,.28));}
 .hbp-name{font-family:'Syne',sans-serif;font-size:72px;font-weight:800;letter-spacing:20px;color:rgba(245,242,235,.9);}
 .hbp-sub{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;color:rgba(245,242,235,.22);text-transform:uppercase;}
-.hbp-stats{display:flex;align-items:center;gap:32px;margin-top:16px;padding:24px 40px;border:1px solid rgba(245,242,235,.07);}
-.hbp-stat{display:flex;flex-direction:column;align-items:center;gap:6px;}
-.hbp-stat-n{font-family:'Instrument Serif',serif;font-size:28px;font-style:italic;color:var(--accent2);}
-.hbp-stat-l{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(245,242,235,.25);text-transform:uppercase;}
-.hbp-divider{width:1px;height:40px;background:rgba(245,242,235,.08);}
+.hbp-manifesto{display:flex;flex-direction:column;gap:10px;margin-top:28px;padding-top:28px;border-top:1px solid rgba(245,242,235,.07);}
+.hbp-m-line{font-family:'Syne',sans-serif;font-size:13px;font-weight:500;color:rgba(245,242,235,.32);letter-spacing:.3px;}
+.hbp-m-accent{color:rgba(200,69,42,.75);}
 /* SPECIALTIES */
 .specs{padding:120px 64px;max-width:1360px;margin:0 auto;}
 .sec-kick{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;color:var(--ink4);text-transform:uppercase;margin-bottom:16px;}
@@ -379,6 +377,7 @@ footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:
 .qbe-mode{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(245,242,235,.32);display:flex;align-items:center;gap:10px;}
 .qbe-mode-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0;}
 .qbe-mode-dot.exam{background:#4db87a;}
+.qbe-mode-dot.breathe{background:#6b9fd4;}
 @media(max-width:1024px){.qbank-entry{padding:60px 24px;}.qbank-entry-in{grid-template-columns:1fr;gap:40px;}.qbe-right{padding:28px;}}
 </style>
 </head>
@@ -404,15 +403,13 @@ footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:
 
 <section class="hero">
   <div class="hero-l">
-    <div class="hero-kick">2026 — Built by a final-year student</div>
+    <div class="hero-kick">2026 — Early access</div>
     <h1 class="hero-hl">Finally,<br><em>breathe.</em></h1>
-    <p class="hero-body">Medical school gives you <strong>10,000 pages</strong> when you need ten minutes. Vent gives you the framework — built by someone still in the chaos — so you can finally understand, not just memorise.</p>
+    <p class="hero-body">Medical school gives you <strong>10,000 pages</strong> when you need ten minutes. Vent gives you the framework — so you can finally understand, not just memorise.</p>
     <div class="hero-ctas">
       <a href="#specialties" class="btn-p">Browse notes</a>
       <a href="#story" class="btn-g">Read the story →</a>
     </div>
-    </div>
-  </div>
   </div>
   <div class="hero-r">
     <div class="particle" style="left:20%;animation-duration:6s;animation-delay:0s;"></div>
@@ -438,14 +435,10 @@ footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:
       </div>
       <div class="hbp-name">VENT</div>
       <div class="hbp-sub">ventilate · vent · breathe</div>
-      <div class="hbp-stats">
-        <div class="hbp-stat"><div class="hbp-stat-n">33</div><div class="hbp-stat-l">Notes live</div></div>
-        <div class="hbp-divider"></div>
-        <div class="hbp-stat"><div class="hbp-stat-n">165+</div><div class="hbp-stat-l">MCQs</div></div>
-        <div class="hbp-divider"></div>
-        <div class="hbp-stat"><div class="hbp-stat-n">2</div><div class="hbp-stat-l">Specialties</div></div>
-        <div class="hbp-divider"></div>
-        
+      <div class="hbp-manifesto">
+        <div class="hbp-m-line">Clinical notes that teach.</div>
+        <div class="hbp-m-line">Questions that test what matters.</div>
+        <div class="hbp-m-line hbp-m-accent">Built to make you understand.</div>
       </div>
     </div>
   </div>
@@ -470,10 +463,10 @@ footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:
     <a href="vent-obgyn.html" class="sc reveal">
       <div class="sc-icon">🩺</div><div class="sc-num">02 — OB/GYN</div>
       <div class="sc-title">Obstetrics &amp; Gynaecology</div>
-      <p class="sc-desc">PPH, preeclampsia, ectopic pregnancy, placenta praevia, gestational diabetes, shoulder dystocia. The emergencies and the antenatal essentials.</p>
+      <p class="sc-desc">PPH, preeclampsia, ectopic pregnancy, placenta praevia, gestational diabetes, shoulder dystocia — and 21 more. Every OB/GYN condition you need to know, cold.</p>
       <div class="sc-foot" style="flex-direction:column;align-items:flex-start;gap:8px;">
-        <div class="breathing-badge"><span class="breathing-dot"></span>Test yourself — 5 MCQs per note</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;"><div class="sc-meta">6 notes · 5 MCQs each · Live</div><div class="sc-arr">↗</div></div>
+        <div class="breathing-badge"><span class="breathing-dot"></span>Test yourself — MCQs per note</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;"><div class="sc-meta">27 notes · Live</div><div class="sc-arr">↗</div></div>
       </div>
     </a>
     <div class="sc soon reveal">
@@ -509,15 +502,12 @@ footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:
     <div class="qbe-left">
       <div class="qbe-tag">// Q-Bank</div>
       <h2 class="qbe-hl">Test yourself.<br><em>No notes allowed.</em></h2>
-      <p class="qbe-body">Pure recall. Choose a specialty, set your mode, pick your count. 165+ clinical questions written from the notes — so they test exactly what matters.</p>
+      <p class="qbe-body">Pure recall. Choose a specialty, set your mode, pick your count. Clinical questions written from the notes — so they test exactly what matters. Growing towards 1,000+.</p>
       <a href="vent-qbank.html" class="qbe-btn">Enter Q-Bank <span>↗</span></a>
     </div>
     <div class="qbe-right">
-      <div class="qbe-stat"><div class="qbe-stat-n">165+</div><div class="qbe-stat-l">Questions</div></div>
+      <div class="qbe-stat"><div class="qbe-stat-n">1,000+</div><div class="qbe-stat-l">Questions — the goal</div></div>
       <div class="qbe-divider"></div>
-      <div class="qbe-stat"><div class="qbe-stat-n">2</div><div class="qbe-stat-l">Systems</div></div>
-      <div class="qbe-divider"></div>
-      <div class="qbe-stat"><div class="qbe-stat-n">2</div><div class="qbe-stat-l">Modes</div></div>
       <div class="qbe-modes">
         <div class="qbe-mode"><span class="qbe-mode-dot"></span>Normal — feedback after each</div>
         <div class="qbe-mode"><span class="qbe-mode-dot exam"></span>Exam — results at the end</div>
@@ -556,7 +546,7 @@ footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:
   <div class="w-rows">
     <div class="wr reveal"><div class="wrn">1</div><div class="wrm"><h3>Concept-driven visual notes</h3><p>Every condition with integrated diagrams that teach, not just label. The visual is the explanation.</p></div><div class="wrx"><div class="wrxl">Format</div><div class="wrxv">Premium SVG diagrams built into the text flow. Not appended — integrated.</div></div></div>
     <div class="wr reveal"><div class="wrn">2</div><div class="wrm"><h3>Clinical reasoning frameworks</h3><p>Here's how to think through it when the patient is in front of you at 3am, not just the facts.</p></div><div class="wrx"><div class="wrxl">The differentiator</div><div class="wrxv">Every note ends with "what everyone gets wrong" — the insight no textbook includes.</div></div></div>
-    <div class="wr reveal"><div class="wrn">3</div><div class="wrm"><h3>A full Q-Bank — standalone, not an afterthought</h3><p>165+ clinical questions across specialties. Choose your system, set your mode, pick your count. Pure recall — no notes, no hints.</p></div><div class="wrx"><div class="wrxl">Two modes</div><div class="wrxv">Normal: per-question feedback with explanations for every option — right and wrong. Exam: no feedback until the end. Full breakdown at results.</div></div></div>
+    <div class="wr reveal"><div class="wrn">3</div><div class="wrm"><h3>A full Q-Bank — standalone, not an afterthought</h3><p>Clinical questions across specialties, growing towards 1,000+. Choose your system, set your mode, pick your count. Pure recall — no notes, no hints.</p></div><div class="wrx"><div class="wrxl">Two modes</div><div class="wrxv">Normal: per-question feedback with explanations for every option — right and wrong. Exam: no feedback until the end. Full breakdown at results.</div></div></div>
     <div class="wr reveal"><div class="wrn">4</div><div class="wrm"><h3>Test yourself — built in, not bolted on</h3><p>5 clinical MCQs at the end of every note. Not a separate app. Not later. Right there, in the same breath.</p></div><div class="wrx"><div class="wrxl">How it works</div><div class="wrxv">Finish reading. One tap. The questions are written from the note — so they test exactly what you just learned. Immediate results. Explanations for every answer.</div></div></div>
   </div>
 </section>
