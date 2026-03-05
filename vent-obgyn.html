@@ -474,10 +474,16 @@ nav {
   display: flex; justify-content: space-between; align-items: center;
   z-index: 10;
   border-bottom: 1px solid rgba(255,255,255,.05);
+  gap: 0;
 }
 .mbar-l {
-  display: flex; align-items: center; gap: 14px;
+  display: flex; align-items: center; gap: 14px; flex: 1;
 }
+.mbar-center{display:flex;align-items:center;gap:10px;opacity:0;pointer-events:none;transition:opacity .3s ease;flex-shrink:0;}
+.mbar-center.visible{opacity:1;pointer-events:auto;}
+.mnav-btn{background:none;border:none;color:rgba(255,255,255,.35);font-size:14px;cursor:pointer;padding:4px 10px;transition:color .15s;line-height:1;}
+.mnav-btn:hover{color:rgba(255,255,255,.9);}
+.mnav-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.2);text-transform:uppercase;min-width:100px;text-align:center;}
 .mpulse {
   width: 7px; height: 7px;
   background: var(--accent);
@@ -497,7 +503,7 @@ nav {
   text-transform: uppercase;
 }
 .mbar-r {
-  display: flex; align-items: center; gap: 6px;
+  display: flex; align-items: center; gap: 6px; flex: 1; justify-content: flex-end;
 }
 .mclose, .mfull {
   width: 34px; height: 34px;
@@ -545,29 +551,29 @@ nav {
   display: flex; align-items: center; gap: 7px;
   padding: 0 14px;
   height: 30px;
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(200,69,42,.08);
+  border: 1px solid rgba(200,69,42,.35);
   border-radius: 100px;
   cursor: pointer;
   transition: all .25s;
   flex-shrink: 0;
 }
 .breathe-toggle-btn:hover {
-  background: rgba(255,255,255,.1);
-  border-color: rgba(255,255,255,.2);
+  background: rgba(200,69,42,.15);
+  border-color: rgba(200,69,42,.55);
 }
 .breathe-toggle-btn.breathe-on {
-  background: rgba(200,69,42,.15);
-  border-color: rgba(200,69,42,.45);
+  background: rgba(42,160,80,.12);
+  border-color: rgba(42,160,80,.45);
 }
 .breathe-btn-dot {
   width: 6px; height: 6px; border-radius: 50%;
-  background: rgba(255,255,255,.25);
+  background: #c8452a;
   transition: background .25s;
   flex-shrink: 0;
 }
 .breathe-toggle-btn.breathe-on .breathe-btn-dot {
-  background: #c8452a;
+  background: #2aa050;
   animation: breathe-dot-pulse 2s ease-in-out infinite;
 }
 @keyframes breathe-dot-pulse {
@@ -578,11 +584,11 @@ nav {
   font-family: 'JetBrains Mono', monospace;
   font-size: 9px; letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(255,255,255,.35);
+  color: rgba(200,69,42,.8);
   transition: color .25s;
 }
 .breathe-toggle-btn.breathe-on .breathe-btn-label {
-  color: rgba(200,69,42,.9);
+  color: rgba(42,160,80,.9);
 }
 
 /* ── BREATHE TIMER (inside modal, sticky bottom-right) ── */
@@ -1274,6 +1280,7 @@ mark.vent-hl:hover { filter: brightness(.82) saturate(1.8); }
   padding: 18px 44px;
   display: flex; justify-content: space-between; align-items: center;
   border-bottom: 1px solid rgba(255,255,255,.05);
+  position: sticky; top: 0; z-index: 10;
 }
 .mcq-room-label {
   font-family:'JetBrains Mono',monospace;
@@ -1684,6 +1691,11 @@ mark.vent-hl:hover { filter: brightness(.82) saturate(1.8); }
       <div class="mbar-l">
         <div class="mpulse"></div>
         <span class="mbc" id="mbar-title">OB/GYN &mdash; VENT</span>
+      </div>
+      <div class="mbar-center" id="mbar-note-nav">
+        <button class="mnav-btn" id="btn-prev-note" onclick="prevNote()" title="Previous note">&#8592;</button>
+        <span class="mnav-label" id="mnav-label"></span>
+        <button class="mnav-btn" id="btn-next-note" onclick="nextNote()" title="Next note">&#8594;</button>
       </div>
       <div class="mbar-r" id="mbar-note-tools">
         <!-- Font size -->
@@ -2244,6 +2256,22 @@ let breatheOn = false;
 let breatheStart = null;
 let breatheInterval = null;
 
+const NOTE_ORDER=['pph','preeclampsia','ectopic','placenta','gdm','shoulder','pretermlabour','miscarriage','cordprolapse','abruption','iol','obstetriccholestasis','ovarycyst','cervicalcancer','endometriosis','pcos','fibroids','pid','menopause','vulvalconditions','ovariancancer','subfertility','endometrialcancer','urinaryincontinence','contraception','sexuallytransmitted','acutegynae'];
+const NOTE_NAMES_NAV={pph:'PPH',preeclampsia:'Preeclampsia',ectopic:'Ectopic',placenta:'Placenta Praevia',gdm:'GDM',shoulder:'Shoulder Dystocia',pretermlabour:'Preterm Labour',miscarriage:'Miscarriage',cordprolapse:'Cord Prolapse',abruption:'Abruption',iol:'IOL',obstetriccholestasis:'Obstetric Cholestasis',ovarycyst:'Ovarian Cysts',cervicalcancer:'Cervical Cancer',endometriosis:'Endometriosis',pcos:'PCOS',fibroids:'Fibroids',pid:'PID',menopause:'Menopause',vulvalconditions:'Vulval',ovariancancer:'Ovarian Ca.',subfertility:'Subfertility',endometrialcancer:'Endometrial Ca.',urinaryincontinence:'Urinary Incont.',contraception:'Contraception',sexuallytransmitted:'STIs',acutegynae:'Acute Gynae'};
+function updateNavLabel(){
+  const idx=NOTE_ORDER.indexOf(currentNote);
+  const label=document.getElementById('mnav-label');
+  if(label) label.textContent=(idx+1)+' / '+NOTE_ORDER.length+' · '+(NOTE_NAMES_NAV[currentNote]||currentNote);
+  const prev=document.getElementById('btn-prev-note');
+  const next=document.getElementById('btn-next-note');
+  if(prev) prev.style.opacity=idx===0?'0.25':'1';
+  if(next) next.style.opacity=idx===NOTE_ORDER.length-1?'0.25':'1';
+}
+function prevNote(){ const idx=NOTE_ORDER.indexOf(currentNote); if(idx>0) openNote(NOTE_ORDER[idx-1]); }
+function nextNote(){ const idx=NOTE_ORDER.indexOf(currentNote); if(idx<NOTE_ORDER.length-1) openNote(NOTE_ORDER[idx+1]); }
+function showNoteNav(){ const n=document.getElementById('mbar-note-nav'); if(n) n.classList.add('visible'); }
+function hideNoteNav(){ const n=document.getElementById('mbar-note-nav'); if(n) n.classList.remove('visible'); }
+
 function toggleBreathe() {
   if (!breatheOn) startBreathe();
   else stopBreathe();
@@ -2258,6 +2286,7 @@ function startBreathe() {
   // Show timer
   const timerEl = document.getElementById('breathe-timer-wrap');
   if (timerEl) timerEl.classList.add('visible');
+  showNoteNav(); updateNavLabel();
   breatheInterval = setInterval(updateBreatheTimer, 1000);
   updateBreatheTimer();
 }
@@ -2271,6 +2300,7 @@ function stopBreathe() {
   document.getElementById('breathe-btn-label').textContent = 'Breathe';
   const timerEl = document.getElementById('breathe-timer-wrap');
   if (timerEl) timerEl.classList.remove('visible');
+  hideNoteNav();
 
   const elapsed = Math.floor((Date.now() - breatheStart) / 1000);
   if (elapsed < 5) return; // don't record very short sessions
@@ -2405,6 +2435,15 @@ function openNote(id){
   document.getElementById('mbar-note-tools').style.visibility='visible';
   // Load saved highlights
   loadHighlights(id);
+  dismissVentPopup();
+  // Restore breathe state if it was on before switching notes
+  if(breatheOn){
+    document.getElementById('modal').classList.add('focus-mode');
+    document.getElementById('btn-breathe').classList.add('breathe-on');
+    document.getElementById('breathe-btn-label').textContent='Breathing';
+    const t=document.getElementById('breathe-timer-wrap'); if(t) t.classList.add('visible');
+    showNoteNav(); updateNavLabel();
+  }
 }
 
 // Load font size once on page ready
@@ -2463,7 +2502,7 @@ function renderQuestion(noteId){
   for(let i=0;i<total;i++) dots+=`<div class="mcq-dot ${i<qi?'done':i===qi?'current':''}"></div>`;
   return `<div class="mcq-room-header">
     <span class="mcq-room-label">// Test yourself</span>
-    <span class="mcq-room-note-title">${qi+1} of ${total}</span>
+    <div style="display:flex;align-items:center;gap:16px;"><span class="mcq-room-note-title">${qi+1} of ${total}</span><button onclick="backToNote()" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(255,255,255,.3);background:none;border:1px solid rgba(255,255,255,.1);padding:5px 12px;cursor:pointer;transition:all .2s;" onmouseover="this.style.color='rgba(255,255,255,.7)';this.style.borderColor='rgba(255,255,255,.3)';" onmouseout="this.style.color='rgba(255,255,255,.3)';this.style.borderColor='rgba(255,255,255,.1)';">&#8592; Note</button></div>
   </div>
   <div class="mcq-progress-strip"><div class="mcq-progress-fill" style="width:${pct}%"></div></div>
   <div class="mcq-body">
@@ -2510,7 +2549,7 @@ function showResults(noteId){
   const gc=pct>=80?'#4db87a':pct>=60?'#c8a040':'#e05a5a';
   const gl=pct===100?'Perfect score.':pct>=80?'Well ventilated.':pct>=60?'Getting there.':'Back to the note.';
   const gs=pct===100?'Every concept landed.':pct>=80?'Solid. Review what you missed.':pct>=60?'Good base. Some gaps to close.':"That's okay. Read the note again, then retry.";
-  let html=`<div class="mcq-room-header"><span class="mcq-room-label">// Results</span><span class="mcq-room-note-title">${correct}/${mcqs.length} correct</span></div>
+  let html=`<div class="mcq-room-header"><span class="mcq-room-label">// Results</span><div style="display:flex;align-items:center;gap:16px;"><span class="mcq-room-note-title">${correct}/${mcqs.length} correct</span><button onclick="backToNote()" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(255,255,255,.3);background:none;border:1px solid rgba(255,255,255,.1);padding:5px 12px;cursor:pointer;transition:all .2s;" onmouseover="this.style.color='rgba(255,255,255,.7)';this.style.borderColor='rgba(255,255,255,.3)';" onmouseout="this.style.color='rgba(255,255,255,.3)';this.style.borderColor='rgba(255,255,255,.1)';">&#8592; Note</button></div></div>
   <div class="mcq-progress-strip"><div class="mcq-progress-fill" style="width:${pct}%"></div></div>
   <div class="res-hero">
     <div class="res-circle" style="border-color:${gc}">
