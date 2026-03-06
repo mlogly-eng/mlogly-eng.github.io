@@ -234,21 +234,21 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:24px 6
 .note-modal.breathe-active .n-hero-new {
   opacity: .12;
   filter: blur(.4px);
-  transition: opacity 1.6s cubic-bezier(.4,0,.2,1), filter 1.6s cubic-bezier(.4,0,.2,1);
+  transition: opacity 0.45s cubic-bezier(.4,0,.2,1), filter 0.45s cubic-bezier(.4,0,.2,1);
 }
 .note-modal.breathe-active .n-section.b-was { opacity: .28; filter: blur(.2px); }
 .note-modal.breathe-active .n-section.b-active,
 .note-modal.breathe-active .n-hero-new.b-active { opacity: 1; filter: blur(0); }
-.note-modal.breathe-active .n-anchor { opacity: .07; pointer-events: none; transition: opacity 1.6s ease; }
+.note-modal.breathe-active .n-anchor { opacity: .07; pointer-events: none; transition: opacity 0.45s ease; }
 .note-modal.breathe-active.b-at-last .n-anchor { opacity: 1; pointer-events: auto; }
-.note-modal.breathe-active .n-note-end-cta { opacity: .07; pointer-events: none; transition: opacity 1.6s ease; }
+.note-modal.breathe-active .n-note-end-cta { opacity: .07; pointer-events: none; transition: opacity 0.45s ease; }
 
 /* ── Key highlight on hold ── */
 .b-key {
   border-radius: 2px; padding: 1px 3px;
-  transition: background 2.2s cubic-bezier(.25,0,.15,1),
-              color 2.2s cubic-bezier(.25,0,.15,1),
-              box-shadow 2.2s cubic-bezier(.25,0,.15,1);
+  transition: background 0.7s cubic-bezier(.25,0,.15,1),
+              color 0.7s cubic-bezier(.25,0,.15,1),
+              box-shadow 0.7s cubic-bezier(.25,0,.15,1);
 }
 .note-modal.breathe-active .n-section.b-active .b-key {
   background: rgba(200,69,42,.16); color: #f0ece3;
@@ -264,10 +264,10 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:24px 6
   background: rgba(200,69,42,.15) !important;
   color: rgba(200,69,42,.85) !important;
   border-color: rgba(200,69,42,.3) !important;
-  transition: all 2s cubic-bezier(.25,0,.15,1) 0.4s;
+  transition: all 0.6s cubic-bezier(.25,0,.15,1) 0.1s;
 }
 .note-modal.breathe-active .n-section:not(.b-active) .n-mech-dot {
-  transition: all 1.8s cubic-bezier(.25,0,.15,1) 0s;
+  transition: all 0.5s cubic-bezier(.25,0,.15,1) 0s;
 }
 
 /* ── Reading progress bar (inside modal) ── */
@@ -382,37 +382,40 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:24px 6
 
 /* ── Next-note prompt ── */
 .b-next-bar {
-  display: none; flex-direction: column; gap: 14px;
-  margin-top: 32px; padding: 24px 32px;
-  background: var(--n-dark); border-top: 2px solid #c8452a;
-  border: 1px solid rgba(200,69,42,.2); border-top: 2px solid #c8452a;
-  position: relative;
+  display: none; flex-direction: row; align-items: center; justify-content: center;
+  padding: 14px 20px; gap: 16px;
+  background: rgba(12,9,6,.96);
+  border: 1px solid rgba(200,69,42,.18);
+  border-radius: 12px;
+  position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 10500;
+  box-shadow: 0 12px 48px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.03) inset;
+  backdrop-filter: blur(12px);
+  min-width: 320px; max-width: 480px; width: auto;
 }
-.b-next-bar::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,#c8452a,transparent); }
+.b-next-bar::before { display: none; }
 .b-next-bar.visible { display: flex; }
-.b-next-body { margin-bottom: 4px; }
+.b-next-body { display:flex; align-items:center; gap:10px; flex:1; min-width:0; }
 .b-next-tag {
-  font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 3px;
-  color: rgba(200,69,42,.65); text-transform: uppercase; margin-bottom: 6px;
+  font-family: 'JetBrains Mono', monospace; font-size: 7px; letter-spacing: 2.5px;
+  color: rgba(200,69,42,.5); text-transform: uppercase; flex-shrink:0;
 }
 .b-next-title {
-  font-family: 'Instrument Serif', serif; font-size: 17px; font-style: italic;
-  color: rgba(250,247,240,.85);
+  font-family: 'Instrument Serif', serif; font-size: 15px; font-style: italic;
+  color: rgba(250,247,240,.75); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
-.b-next-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
+.b-next-actions { display: flex; gap: 8px; align-items: center; flex-shrink:0; }
 .b-next-btn {
-  padding: 7px 14px; border-radius: 100px;
-  font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 1.5px;
-  text-transform: uppercase; cursor: pointer; transition: all .2s;
+  padding: 6px 13px; border-radius: 100px;
+  font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 1.5px;
+  text-transform: uppercase; cursor: pointer; transition: all .2s; white-space:nowrap;
 }
 .b-next-go { background: #c8452a; border: none; color: white; }
 .b-next-go:hover { background: #e05a3a; }
-.b-next-stay { background: none; border: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.3); }
+.b-next-stay { background: none; border: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.28); }
 .b-next-stay:hover { border-color: rgba(255,255,255,.25); color: rgba(255,255,255,.6); }
-.b-next-stop { background: none; border: none; color: rgba(255,255,255,.18); font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; padding: 7px 10px; transition: color .2s; }
+.b-next-stop { background: none; border: none; color: rgba(255,255,255,.18); font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; padding: 6px 8px; transition: color .2s; }
 .b-next-stop:hover { color: rgba(255,255,255,.45); }
-.b-next-oneliner { font-family: 'Instrument Serif', serif; font-size: 13px; font-style: italic; color: rgba(245,242,235,.45); margin-bottom: 5px; line-height: 1.4; display: none; }
-.b-next-oneliner.show { display: block; }
+.b-next-oneliner { display:none; }
 .b-next-oneliner em { color: #c8452a; font-style: normal; }
 
 
@@ -447,7 +450,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:24px 6
 .prefs-save { margin-top: 24px; width: 100%; padding: 13px; background: #c8452a; border: none; color: white; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: background .2s; }
 .prefs-save:hover { background: #e05a3a; }
 
-/* ── History button in mbar ── */
+/* ── Ventilation Log button in mbar ── */
 .b-hist-btn {
   display: flex; align-items: center; gap: 6px;
   height: 30px; padding: 0 12px;
@@ -455,119 +458,191 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:24px 6
   border-radius: 6px; color: rgba(255,255,255,.35);
   font-family: 'JetBrains Mono', monospace; font-size: 9px;
   letter-spacing: 1.5px; text-transform: uppercase;
-  cursor: pointer; transition: all .2s; flex-shrink: 0;
+  cursor: pointer; transition: all .2s; flex-shrink: 0; position: relative;
 }
 .b-hist-btn:hover { background: rgba(255,255,255,.09); color: rgba(255,255,255,.75); }
+.b-hist-btn .b-log-badge {
+  position: absolute; top: -4px; right: -4px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #c8452a; border: 1.5px solid #0f0d0b;
+  font-size: 8px; font-weight: 700; color: white;
+  display: none; align-items: center; justify-content: center; line-height: 1;
+}
+.b-hist-btn .b-log-badge.show { display: flex; }
 
-/* ── History panel overlay ── */
+/* ── Ventilation Log overlay ── */
 .b-hist-overlay {
   position: fixed; inset: 0;
-  background: rgba(8,5,3,.7); backdrop-filter: blur(8px);
+  background: rgba(4,2,1,.75); backdrop-filter: blur(10px);
   z-index: 200000; display: flex; align-items: stretch; justify-content: flex-end;
   opacity: 0; pointer-events: none; transition: opacity .3s ease;
 }
 .b-hist-overlay.open { opacity: 1; pointer-events: all; }
 .b-hist-panel {
-  width: 340px; max-width: 100vw;
-  background: #0f0d0b; border-left: 1px solid rgba(255,255,255,.07);
+  width: 380px; max-width: 100vw;
+  background: #0d0b09; border-left: 1px solid rgba(255,255,255,.06);
   display: flex; flex-direction: column;
-  transform: translateX(32px);
-  transition: transform .4s cubic-bezier(.16,1,.3,1);
+  transform: translateX(40px);
+  transition: transform .42s cubic-bezier(.16,1,.3,1);
 }
 .b-hist-overlay.open .b-hist-panel { transform: translateX(0); }
-.b-hist-hdr {
-  padding: 28px 24px 20px;
-  border-bottom: 1px solid rgba(255,255,255,.05); flex-shrink: 0;
+
+/* panel header */
+.vl-hdr { padding: 24px 22px 0; flex-shrink: 0; }
+.vl-hdr-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 18px; }
+.vl-hdr-left {}
+.vl-tag { font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 3px; color: rgba(200,69,42,.6); text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+.vl-tag::before { content:''; width:12px; height:1px; background:rgba(200,69,42,.5); }
+.vl-title { font-family: 'Instrument Serif', serif; font-size: 21px; font-style: italic; color: rgba(255,255,255,.88); line-height: 1.1; }
+.vl-title em { font-style: normal; color: #c8452a; }
+.b-hist-close { width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.3); font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; flex-shrink: 0; margin-top: 2px; }
+.b-hist-close:hover { background: #c8452a; border-color: #c8452a; color: white; }
+
+/* stats row */
+.vl-stats { display: flex; gap: 0; border-top: 1px solid rgba(255,255,255,.05); margin-top: 16px; }
+.vl-stat { flex: 1; padding: 12px 0 12px 14px; border-right: 1px solid rgba(255,255,255,.04); }
+.vl-stat:last-child { border-right: none; }
+.vl-stat-val { font-family: 'Instrument Serif', serif; font-size: 22px; font-style: italic; color: rgba(255,255,255,.82); line-height: 1; margin-bottom: 3px; }
+.vl-stat-lbl { font-family: 'JetBrains Mono', monospace; font-size: 7.5px; letter-spacing: 1.5px; color: rgba(255,255,255,.16); text-transform: uppercase; }
+
+/* streak */
+.vl-streak { padding: 14px 22px 16px; border-top: 1px solid rgba(255,255,255,.04); flex-shrink: 0; }
+.vl-streak-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.vl-streak-lbl { font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 1px; color: rgba(200,69,42,.45); }
+.vl-streak-sub { font-family: 'JetBrains Mono', monospace; font-size: 7.5px; color: rgba(255,255,255,.14); }
+.vl-heatmap { display: flex; gap: 4px; }
+.vl-hm-col { display: flex; flex-direction: column; gap: 4px; }
+.vl-hm-cell {
+  width: 14px; height: 14px; border-radius: 3px;
+  background: rgba(255,255,255,.05);
+  transition: background .2s;
+  cursor: default;
+  position: relative;
 }
-.b-hist-hdr-top {
-  display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;
-}
-.b-hist-hdr-tag {
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
-  letter-spacing: 3px; color: #c8452a; text-transform: uppercase;
-}
-.b-hist-close {
-  width: 26px; height: 26px; border-radius: 50%;
-  background: rgba(255,255,255,.05); border: none;
-  color: rgba(255,255,255,.3); font-size: 12px;
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
-  transition: all .2s;
-}
-.b-hist-close:hover { background: #c8452a; color: white; }
-.b-hist-totals { display: flex; gap: 24px; }
-.b-ht-val {
-  font-family: 'Instrument Serif', serif; font-size: 26px; font-style: italic;
-  color: rgba(255,255,255,.82); line-height: 1; margin-bottom: 4px;
-}
-.b-ht-lbl {
-  font-family: 'JetBrains Mono', monospace; font-size: 8px;
-  letter-spacing: 2px; color: rgba(255,255,255,.18); text-transform: uppercase;
-}
-.b-hist-streak {
-  padding: 12px 24px;
-  background: rgba(200,69,42,.04); border-bottom: 1px solid rgba(255,255,255,.03);
-  display: flex; align-items: center; gap: 10px; flex-shrink: 0;
-}
-.b-hs-dots { display: flex; gap: 5px; }
-.b-hs-dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: rgba(200,69,42,.12);
-}
-.b-hs-dot.lit { background: #c8452a; }
-.b-hs-lbl {
-  font-family: 'JetBrains Mono', monospace; font-size: 8px;
-  letter-spacing: 1px; color: rgba(200,69,42,.45);
-}
-.b-hist-burnout {
-  display: none; padding: 10px 24px;
-  background: rgba(200,150,40,.05); border-bottom: 1px solid rgba(200,150,40,.08); flex-shrink: 0;
-}
-.b-hist-burnout.show { display: block; }
-.b-hist-burnout p { font-size: 11px; color: rgba(200,150,40,.6); line-height: 1.55; }
-.b-hist-burnout strong { color: rgba(200,150,40,.88); }
-.b-hist-list {
-  flex: 1; overflow-y: auto; padding: 0;
-  scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.06) transparent;
-}
-.b-hist-list::-webkit-scrollbar { width: 3px; }
-.b-hist-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,.06); }
-.b-hist-empty {
-  padding: 56px 24px; text-align: center;
-  font-family: 'Instrument Serif', serif; font-size: 18px; font-style: italic;
-  color: rgba(255,255,255,.1); line-height: 1.5;
-}
-.b-hist-item {
-  padding: 14px 24px; border-bottom: 1px solid rgba(255,255,255,.04);
-  display: flex; align-items: flex-start; gap: 12px; transition: background .18s;
-}
-.b-hist-item:hover { background: rgba(255,255,255,.02); }
-.b-hi-icon {
-  width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0; margin-top: 2px;
-  background: rgba(200,69,42,.08); border: 1px solid rgba(200,69,42,.15);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 12px;
-}
-.b-hi-body { flex: 1; min-width: 0; }
-.b-hi-topic {
-  font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 600;
-  color: rgba(255,255,255,.65); margin-bottom: 3px;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.b-hi-meta {
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
-  letter-spacing: .5px; color: rgba(255,255,255,.2);
-}
-.b-hi-feel { font-size: 13px; flex-shrink: 0; margin-top: 2px; opacity: .6; }
-.b-hist-footer {
-  padding: 14px 24px; border-top: 1px solid rgba(255,255,255,.04); flex-shrink: 0;
-}
-.b-hist-clear {
-  background: none; border: none; padding: 0;
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
-  letter-spacing: 1px; text-transform: uppercase;
-  color: rgba(255,255,255,.12); cursor: pointer; transition: color .2s;
-}
-.b-hist-clear:hover { color: rgba(200,69,42,.5); }
+.vl-hm-cell.l1 { background: rgba(200,69,42,.2); }
+.vl-hm-cell.l2 { background: rgba(200,69,42,.4); }
+.vl-hm-cell.l3 { background: rgba(200,69,42,.65); }
+.vl-hm-cell.l4 { background: #c8452a; box-shadow: 0 0 4px rgba(200,69,42,.4); }
+.vl-hm-cell.today { outline: 1.5px solid rgba(200,69,42,.7); outline-offset: 1px; }
+.vl-hm-month-row { display: flex; gap: 4px; margin-bottom: 6px; }
+.vl-hm-month-lbl { font-family: 'JetBrains Mono', monospace; font-size: 7px; color: rgba(255,255,255,.18); letter-spacing: .5px; width: 14px; text-align: center; white-space: nowrap; overflow: visible; }
+.vl-hm-daylbl { font-family: 'JetBrains Mono', monospace; font-size: 7px; color: rgba(255,255,255,.15); letter-spacing: .3px; margin-right: 4px; display: flex; flex-direction: column; gap: 3px; padding-top: 1px; }
+.vl-hm-daylbl span { height: 14px; display: flex; align-items: center; }
+.vl-hm-wrap { display: flex; align-items: flex-start; overflow-x: auto; scrollbar-width: none; }
+.vl-hm-wrap::-webkit-scrollbar { display: none; }
+.vl-hm-legend { display: flex; align-items: center; gap: 5px; margin-top: 8px; justify-content: flex-end; }
+.vl-hm-leg-lbl { font-family: 'JetBrains Mono', monospace; font-size: 7px; color: rgba(255,255,255,.15); }
+.vl-hm-leg-cell { width: 12px; height: 12px; border-radius: 2px; }
+
+/* tabs */
+.vl-tabs { display: flex; border-bottom: 1px solid rgba(255,255,255,.05); flex-shrink: 0; padding: 0 22px; gap: 0; }
+.vl-tab { padding: 10px 0; margin-right: 18px; font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.22); cursor: pointer; border: none; background: none; border-bottom: 1.5px solid transparent; margin-bottom: -1px; transition: all .2s; position: relative; }
+.vl-tab:hover { color: rgba(255,255,255,.5); }
+.vl-tab.active { color: rgba(255,255,255,.82); border-bottom-color: #c8452a; }
+.vl-tab .vl-tab-count { display: inline-flex; align-items: center; justify-content: center; min-width: 15px; height: 15px; padding: 0 3px; background: rgba(200,69,42,.15); border-radius: 100px; font-size: 7.5px; color: rgba(200,69,42,.8); margin-left: 5px; vertical-align: middle; }
+
+/* tab bodies */
+.vl-body { flex: 1; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.05) transparent; }
+.vl-body::-webkit-scrollbar { width: 2px; }
+.vl-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,.06); }
+.vl-pane { display: none; }
+.vl-pane.active { display: block; }
+
+/* empty state */
+.vl-empty { padding: 48px 22px; text-align: center; }
+.vl-empty-icon { font-size: 26px; margin-bottom: 10px; opacity: .2; }
+.vl-empty-text { font-family: 'Instrument Serif', serif; font-size: 15px; font-style: italic; color: rgba(255,255,255,.16); line-height: 1.6; }
+
+/* TODAY TAB */
+.vl-today-note { padding: 12px 22px; border-bottom: 1px solid rgba(255,255,255,.04); display: flex; align-items: center; gap: 11px; transition: background .15s; }
+.vl-today-note:hover { background: rgba(255,255,255,.02); }
+.vl-tn-check { width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0; border: 1.5px solid rgba(200,69,42,.5); background: rgba(200,69,42,.07); display: flex; align-items: center; justify-content: center; }
+.vl-tn-check svg { display: block; }
+.vl-tn-body { flex: 1; min-width: 0; }
+.vl-tn-name { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 600; color: rgba(255,255,255,.72); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.vl-tn-meta { font-family: 'JetBrains Mono', monospace; font-size: 8.5px; color: rgba(255,255,255,.2); letter-spacing: .3px; }
+.vl-tn-time { font-family: 'JetBrains Mono', monospace; font-size: 8.5px; color: rgba(255,255,255,.16); flex-shrink: 0; }
+
+/* MISSED QUESTIONS TAB */
+.vl-mq-card { padding: 14px 22px; border-bottom: 1px solid rgba(255,255,255,.04); }
+.vl-mq-note { font-family: 'JetBrains Mono', monospace; font-size: 7.5px; letter-spacing: 2px; color: rgba(200,69,42,.5); text-transform: uppercase; margin-bottom: 6px; }
+.vl-mq-q { font-size: 13px; color: rgba(244,240,232,.78); line-height: 1.55; margin-bottom: 8px; }
+.vl-mq-ans { padding: 10px 12px; background: rgba(200,69,42,.05); border-left: 2px solid rgba(200,69,42,.3); border-radius: 0 3px 3px 0; display: none; }
+.vl-mq-ans.open { display: block; }
+.vl-mq-ans-lbl { font-family: 'JetBrains Mono', monospace; font-size: 7px; letter-spacing: 2px; color: rgba(200,69,42,.5); text-transform: uppercase; margin-bottom: 5px; }
+.vl-mq-ans-text { font-size: 12px; color: rgba(244,240,232,.72); line-height: 1.6; }
+.vl-mq-ans-text strong { color: rgba(244,240,232,.92); }
+.vl-mq-ans-exp { margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,.06); font-size: 11px; color: rgba(255,255,255,.3); line-height: 1.55; }
+.vl-mq-actions { display: flex; gap: 8px; margin-top: 8px; align-items: center; }
+.vl-mq-reveal { background: none; border: 1px solid rgba(255,255,255,.08); border-radius: 100px; padding: 4px 10px; font-family: 'JetBrains Mono', monospace; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.28); cursor: pointer; transition: all .2s; }
+.vl-mq-reveal:hover { border-color: rgba(200,69,42,.4); color: rgba(200,69,42,.7); }
+.vl-mq-dismiss { background: none; border: none; padding: 4px 8px; font-family: 'JetBrains Mono', monospace; font-size: 7.5px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.14); cursor: pointer; transition: color .2s; }
+.vl-mq-dismiss:hover { color: rgba(255,255,255,.4); }
+.vl-mq-clear-all { padding: 12px 22px; border-top: 1px solid rgba(255,255,255,.04); flex-shrink: 0; background: none; border-left: none; border-right: none; border-bottom: none; width: 100%; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.1); cursor: pointer; transition: color .2s; }
+.vl-mq-clear-all:hover { color: rgba(200,69,42,.45); }
+
+/* TOPICS TAB */
+.vl-topics-header { padding: 16px 22px 8px; }
+.vl-topics-summary { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
+.vl-ts-pill { font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 1px; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; }
+.vl-ts-pill.strong { background: rgba(42,160,80,.12); color: rgba(42,160,80,.8); border: 1px solid rgba(42,160,80,.2); }
+.vl-ts-pill.mid { background: rgba(200,150,40,.1); color: rgba(200,150,40,.8); border: 1px solid rgba(200,150,40,.2); }
+.vl-ts-pill.weak { background: rgba(200,69,42,.1); color: rgba(200,69,42,.75); border: 1px solid rgba(200,69,42,.2); }
+.vl-tier-section { margin-bottom: 4px; }
+.vl-tier-hdr { padding: 10px 22px 6px; display: flex; align-items: center; gap: 10px; }
+.vl-tier-label { font-family: 'JetBrains Mono', monospace; font-size: 7.5px; letter-spacing: 2px; text-transform: uppercase; }
+.vl-tier-label.strong { color: rgba(42,160,80,.6); }
+.vl-tier-label.mid { color: rgba(200,150,40,.6); }
+.vl-tier-label.weak { color: rgba(200,69,42,.55); }
+.vl-tier-line { flex: 1; height: 1px; background: rgba(255,255,255,.04); }
+.vl-topic-row { display: flex; align-items: center; gap: 10px; padding: 9px 22px; border-bottom: 1px solid rgba(255,255,255,.03); cursor: default; transition: background .12s; }
+.vl-topic-row:last-child { border-bottom: none; }
+.vl-topic-row:hover { background: rgba(255,255,255,.02); }
+.vl-topic-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.vl-topic-dot.strong { background: rgba(42,160,80,.7); }
+.vl-topic-dot.mid { background: rgba(200,150,40,.7); }
+.vl-topic-dot.weak { background: rgba(200,69,42,.6); }
+.vl-topic-name { font-family: 'Syne', sans-serif; font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,.62); flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.vl-topic-bar-wrap { width: 72px; height: 4px; background: rgba(255,255,255,.06); border-radius: 2px; flex-shrink: 0; }
+.vl-topic-bar { height: 100%; border-radius: 2px; transition: width .6s cubic-bezier(.16,1,.3,1); }
+.vl-topic-bar.strong { background: rgba(42,160,80,.75); }
+.vl-topic-bar.mid { background: rgba(200,150,40,.75); }
+.vl-topic-bar.weak { background: rgba(200,69,42,.65); }
+.vl-topic-pct { font-family: 'JetBrains Mono', monospace; font-size: 9px; width: 28px; text-align: right; flex-shrink: 0; }
+.vl-topic-pct.strong { color: rgba(42,160,80,.75); }
+.vl-topic-pct.mid { color: rgba(200,150,40,.75); }
+.vl-topic-pct.weak { color: rgba(200,69,42,.65); }
+.vl-topic-sessions { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: rgba(255,255,255,.12); flex-shrink: 0; }
+.vl-strength-empty { padding: 48px 22px; text-align: center; font-family: 'Instrument Serif', serif; font-size: 15px; font-style: italic; color: rgba(255,255,255,.15); line-height: 1.6; }
+
+/* ALL SESSIONS TAB */
+.vl-sess-item { padding: 11px 22px; border-bottom: 1px solid rgba(255,255,255,.04); display: flex; align-items: flex-start; gap: 10px; transition: background .15s; }
+.vl-sess-item:hover { background: rgba(255,255,255,.02); }
+.vl-sess-icon { width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0; margin-top: 1px; background: rgba(200,69,42,.07); border: 1px solid rgba(200,69,42,.13); display: flex; align-items: center; justify-content: center; }
+.vl-sess-body { flex: 1; min-width: 0; }
+.vl-sess-topic { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 600; color: rgba(255,255,255,.6); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.vl-sess-meta { font-family: 'JetBrains Mono', monospace; font-size: 8.5px; color: rgba(255,255,255,.18); letter-spacing: .3px; }
+.vl-sess-when { font-family: 'JetBrains Mono', monospace; font-size: 8.5px; color: rgba(255,255,255,.15); flex-shrink: 0; }
+
+/* footer */
+.vl-footer { padding: 11px 22px; border-top: 1px solid rgba(255,255,255,.04); flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; }
+.vl-footer-clear { background: none; border: none; padding: 0; font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.1); cursor: pointer; transition: color .2s; }
+.vl-footer-clear:hover { color: rgba(200,69,42,.45); }
+
+/* burnout */
+.vl-burnout { display: none; margin: 0; padding: 9px 22px; background: rgba(200,150,40,.04); border-bottom: 1px solid rgba(200,150,40,.06); }
+.vl-burnout.show { display: block; }
+.vl-burnout p { font-size: 11px; color: rgba(200,150,40,.55); line-height: 1.55; }
+.vl-burnout strong { color: rgba(200,150,40,.8); }
+
+/* legacy aliases needed by existing JS */
+.b-hist-totals { display:none; }
+.b-ht-val, .b-ht-lbl { display:none; }
+.b-hs-dots, .b-hs-lbl { display:none; }
+.b-hist-burnout { display:none!important; }
+.b-hist-list { display:none!important; }
+.b-hist-footer { display:none!important; }
+.b-hist-hdr { display:none!important; }
 
 
 
@@ -585,51 +660,157 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:24px 6
 }
 .b-kbd-hint.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-/* ── Session history & summary ── same as before ── */
-.breathe-summary {
-  position: fixed; bottom: 40px; right: 40px;
-  background: #1a1510; border: 1px solid rgba(200,69,42,.25); border-radius: 6px;
-  padding: 26px 28px; z-index: 99999; max-width: 300px;
-  box-shadow: 0 32px 64px rgba(0,0,0,.6);
-  opacity: 0; pointer-events: none;
-  transform: translateY(16px) scale(.96);
-  transition: opacity .4s cubic-bezier(.16,1,.3,1), transform .4s cubic-bezier(.16,1,.3,1);
+/* ── VENTILATION SUMMARY OVERLAY ── */
+.vs-overlay{
+  position:fixed;inset:0;z-index:99998;
+  background:rgba(8,5,3,.72);
+  backdrop-filter:blur(18px) saturate(0.4);
+  -webkit-backdrop-filter:blur(18px) saturate(0.4);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .35s ease;padding:20px;
 }
-.breathe-summary.show { opacity: 1; pointer-events: all; transform: translateY(0) scale(1); }
-.breathe-summary-tag {
-  font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 3px;
-  color: #c8452a; text-transform: uppercase; margin-bottom: 12px;
-  display: flex; align-items: center; gap: 8px;
+.vs-overlay.show{opacity:1;pointer-events:all;}
+.vs-panel{
+  background:linear-gradient(160deg,#16110c 0%,#110d09 60%,#0e0a07 100%);
+  border:1px solid rgba(200,69,42,.14);
+  border-top:2px solid #c8452a;
+  border-radius:8px;
+  width:100%;max-width:520px;
+  position:relative;
+  box-shadow:0 48px 96px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.03) inset;
+  transform:translateY(20px) scale(.97);
+  transition:transform .4s cubic-bezier(.16,1,.3,1), opacity .35s ease;
+  overflow:hidden;
 }
-.breathe-summary-tag::before { content:''; width:16px; height:1px; background:#c8452a; }
-.breathe-summary-title { font-family:'Instrument Serif',serif; font-size:20px; color:#f4f0e8; line-height:1.15; margin-bottom:4px; }
-.breathe-summary-time { font-family:'JetBrains Mono',monospace; font-size:28px; font-weight:500; color:#c8452a; letter-spacing:2px; margin-bottom:2px; line-height:1; }
-.breathe-summary-note { font-size:12px; color:rgba(244,240,232,.3); line-height:1.6; margin-bottom:14px; }
-/* feeling */
-.bs-feeling { display:flex; align-items:center; gap:6px; margin-bottom:14px; flex-wrap:wrap; }
-.bs-feel-lbl { font-family:'JetBrains Mono',monospace; font-size:8px; letter-spacing:1.5px; color:rgba(255,255,255,.2); text-transform:uppercase; }
-.bs-feel-opt { padding:4px 11px; border-radius:100px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.04); cursor:pointer; font-family:'Syne',sans-serif; font-size:11px; font-weight:600; color:rgba(255,255,255,.4); transition:all .2s; }
-.bs-feel-opt:hover { border-color:rgba(200,69,42,.35); color:rgba(255,255,255,.75); }
-.bs-feel-opt.picked { background:rgba(200,69,42,.12); border-color:rgba(200,69,42,.45); color:rgba(255,255,255,.88); }
-/* burnout */
-.bs-burnout { display:none; padding:8px 10px; margin-bottom:10px; background:rgba(200,150,40,.07); border:1px solid rgba(200,150,40,.18); border-left:2px solid rgba(200,150,40,.5); font-size:11px; color:rgba(200,150,40,.72); line-height:1.55; }
-.bs-burnout.show { display:block; }
-.bs-burnout strong { color:rgba(200,150,40,.9); }
-/* history rows */
-.breathe-summary-history { border-top:1px solid rgba(255,255,255,.06); padding-top:12px; margin-bottom:14px; }
-.breathe-summary-history-label { font-family:'JetBrains Mono',monospace; font-size:8px; letter-spacing:2px; color:rgba(255,255,255,.18); text-transform:uppercase; margin-bottom:8px; }
-.breathe-history-row { display:flex; justify-content:space-between; align-items:center; padding:4px 0; border-bottom:1px solid rgba(255,255,255,.04); font-family:'JetBrains Mono',monospace; font-size:10px; }
-.breathe-history-row:last-child { border-bottom:none; }
-.breathe-history-date { color:rgba(255,255,255,.25); }
-.breathe-history-dur { color:rgba(255,255,255,.5); }
-/* actions */
-.bs-actions { display:flex; gap:8px; align-items:center; }
-.bs-share { flex:1; display:flex; align-items:center; justify-content:center; gap:6px; padding:8px 12px; border-radius:100px; border:1px solid rgba(200,69,42,.28); background:rgba(200,69,42,.07); color:rgba(200,69,42,.8); font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; transition:all .2s; }
-.bs-share:hover { background:rgba(200,69,42,.14); border-color:rgba(200,69,42,.5); }
-.bs-share.copied { color:rgba(255,255,255,.4); border-color:rgba(255,255,255,.1); background:rgba(255,255,255,.04); }
-.breathe-summary-dismiss { background:none; border:1px solid rgba(255,255,255,.08); color:rgba(255,255,255,.25); padding:8px 14px; border-radius:100px; font-family:'Syne',sans-serif; font-size:11px; font-weight:600; cursor:pointer; transition:all .2s; }
-.breathe-summary-dismiss:hover { border-color:rgba(255,255,255,.22); color:rgba(255,255,255,.55); }
-
+.vs-overlay.show .vs-panel{transform:translateY(0) scale(1);}
+/* ambient glow behind panel */
+.vs-panel::before{
+  content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);
+  width:320px;height:120px;
+  background:radial-gradient(ellipse,rgba(200,69,42,.12) 0%,transparent 70%);
+  pointer-events:none;
+}
+/* close button */
+.vs-close-btn{position:absolute;top:16px;right:16px;background:none;border:1px solid rgba(255,255,255,.08);border-radius:4px;color:rgba(255,255,255,.25);width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;transition:all .2s;z-index:2;}
+.vs-close-btn:hover{border-color:rgba(200,69,42,.4);color:rgba(200,69,42,.7);}
+/* confirm dialog */
+.vs-confirm{display:none;position:absolute;inset:0;background:rgba(8,5,3,.92);backdrop-filter:blur(8px);border-radius:8px;z-index:10;align-items:center;justify-content:center;flex-direction:column;gap:16px;padding:32px;}
+.vs-confirm.show{display:flex;}
+.vs-confirm-q{font-family:'Instrument Serif',serif;font-size:20px;font-style:italic;color:#f0ece2;text-align:center;line-height:1.3;}
+.vs-confirm-sub{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.28);letter-spacing:.5px;text-align:center;}
+.vs-confirm-btns{display:flex;gap:10px;margin-top:8px;}
+.vs-confirm-yes{padding:10px 22px;background:rgba(200,69,42,.15);border:1px solid rgba(200,69,42,.4);border-radius:4px;color:rgba(200,69,42,.9);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.vs-confirm-yes:hover{background:rgba(200,69,42,.25);}
+.vs-confirm-no{padding:10px 22px;background:none;border:1px solid rgba(255,255,255,.1);border-radius:4px;color:rgba(255,255,255,.45);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.vs-confirm-no:hover{border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.7);}
+/* header */
+.vs-header{padding:24px 26px 18px;border-bottom:1px solid rgba(255,255,255,.04);}
+.vs-tag{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:3px;color:rgba(200,69,42,.5);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.vs-tag::before{content:'';width:14px;height:1px;background:rgba(200,69,42,.4);}
+.vs-title{font-family:'Instrument Serif',serif;font-size:26px;font-style:italic;color:#f0ece2;margin-bottom:6px;line-height:1.1;}
+.vs-title em{font-style:normal;color:#c8452a;}
+.vs-meta{font-family:'JetBrains Mono',monospace;font-size:8.5px;color:rgba(255,255,255,.18);letter-spacing:.5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.vs-meta-dot{width:3px;height:3px;border-radius:50%;background:rgba(200,69,42,.3);}
+.vs-meta-note{color:rgba(200,69,42,.55);}
+/* progress pips */
+.vs-progress{display:flex;gap:6px;padding:14px 26px;border-bottom:1px solid rgba(255,255,255,.04);}
+.vs-pip{width:28px;height:2px;border-radius:2px;background:rgba(255,255,255,.08);transition:background .3s;}
+.vs-pip.active{background:rgba(200,69,42,.6);}
+.vs-pip.done{background:rgba(200,69,42,.28);}
+/* single question card */
+.vs-q-area{padding:26px 26px 20px;}
+.vs-q-num{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2.5px;color:rgba(200,69,42,.4);text-transform:uppercase;margin-bottom:14px;}
+.vs-q-text{font-family:'Syne',sans-serif;font-size:17px;color:rgba(244,240,232,.9);line-height:1.6;font-weight:500;}
+/* answer area */
+.vs-answer-area{
+  margin:0 26px;padding:16px 18px;
+  background:rgba(200,69,42,.06);
+  border:1px solid rgba(200,69,42,.14);
+  border-radius:5px;
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .4s cubic-bezier(.16,1,.3,1), opacity .3s ease, padding .4s;
+  padding-top:0;padding-bottom:0;
+}
+.vs-answer-area.open{max-height:420px;opacity:1;padding:16px 18px;overflow-y:auto;}
+.vs-ans-lbl{font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:2.5px;color:rgba(200,69,42,.5);text-transform:uppercase;margin-bottom:8px;}
+/* answer list items */
+.vs-ans-list{display:flex;flex-direction:column;gap:6px;}
+.vs-ans-item{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:rgba(244,240,232,.88);line-height:1.5;}
+.vs-ans-n{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(200,69,42,.7);min-width:16px;padding-top:2px;font-weight:700;}
+.vs-ans-prose{font-size:13px;color:rgba(244,240,232,.7);line-height:1.6;display:block;margin-top:6px;}
+.vs-ans-text{font-size:14px;color:rgba(244,240,232,.9);line-height:1.65;}
+.vs-ans-text strong{color:#f4f0e8;}
+.vs-ans-exp{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.06);font-size:11px;color:rgba(255,255,255,.3);line-height:1.6;font-family:'JetBrains Mono',monospace;}
+/* footer controls */
+.vs-controls{padding:18px 26px;display:flex;gap:8px;align-items:center;border-top:1px solid rgba(255,255,255,.04);margin-top:18px;}
+.vs-btn-reveal{
+  flex:1;padding:11px 16px;
+  background:rgba(200,69,42,.1);border:1px solid rgba(200,69,42,.3);
+  border-radius:4px;color:rgba(244,240,232,.8);
+  font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;
+  cursor:pointer;transition:all .2s;
+}
+.vs-btn-reveal:hover{background:rgba(200,69,42,.18);border-color:rgba(200,69,42,.55);}
+.vs-btn-reveal:disabled{opacity:.35;cursor:default;pointer-events:none;}
+.vs-btn-next{
+  padding:11px 20px;
+  background:#c8452a;border:none;border-radius:4px;color:white;
+  font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;
+  cursor:pointer;transition:all .2s;
+}
+.vs-btn-next:hover{background:#e05a3a;}
+.vs-btn-next:disabled{opacity:.35;cursor:default;pointer-events:none;}
+.vs-btn-skip{
+  padding:11px 12px;
+  background:none;border:1px solid rgba(255,255,255,.07);border-radius:4px;
+  color:rgba(255,255,255,.25);
+  font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1px;text-transform:uppercase;
+  cursor:pointer;transition:all .2s;
+}
+.vs-btn-skip:hover{border-color:rgba(255,255,255,.18);color:rgba(255,255,255,.5);}
+/* intro screen */
+.vs-intro{display:none;padding:36px 26px;text-align:center;}
+.vs-intro.show{display:block;}
+.vs-intro-icon{font-size:28px;margin-bottom:18px;}
+.vs-intro-h{font-family:'Instrument Serif',serif;font-size:22px;font-style:italic;color:#f0ece2;margin-bottom:8px;line-height:1.3;}
+.vs-intro-h em{color:#c8452a;font-style:normal;}
+.vs-intro-sub{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.3);letter-spacing:.5px;margin-bottom:28px;line-height:1.7;}
+.vs-intro-btns{display:flex;flex-direction:column;gap:10px;}
+.vs-intro-primary{padding:13px;background:#c8452a;border:none;border-radius:4px;color:white;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.vs-intro-primary:hover{background:#e05a3a;}
+.vs-intro-secondary{padding:13px;background:none;border:1px solid rgba(255,255,255,.09);border-radius:4px;color:rgba(255,255,255,.35);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.vs-intro-secondary:hover{border-color:rgba(255,255,255,.22);color:rgba(255,255,255,.65);}
+/* finish screen */
+.vs-finish{display:none;padding:32px 26px;text-align:center;}
+.vs-finish.show{display:block;}
+.vs-finish-icon{font-size:28px;margin-bottom:16px;}
+.vs-finish-h{font-family:'Instrument Serif',serif;font-size:24px;font-style:italic;color:#f0ece2;margin-bottom:8px;}
+.vs-finish-h em{color:#c8452a;font-style:normal;}
+.vs-finish-sub{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.28);letter-spacing:.5px;line-height:1.6;margin-bottom:28px;}
+.vs-finish-btns{display:flex;flex-direction:column;gap:8px;}
+.vs-finish-primary{
+  padding:13px;background:#c8452a;border:none;border-radius:4px;
+  color:white;font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;
+}
+.vs-finish-primary:hover{background:#e05a3a;}
+.vs-finish-secondary{
+  padding:13px;background:none;border:1px solid rgba(255,255,255,.09);border-radius:4px;
+  color:rgba(255,255,255,.35);font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;
+}
+.vs-finish-secondary:hover{border-color:rgba(255,255,255,.22);color:rgba(255,255,255,.65);}
+/* self-eval row (shown on finish screen per question) */
+.vs-eval-row{display:flex;gap:6px;margin-top:10px;}
+.vs-self-lbl{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:2px;color:rgba(255,255,255,.18);text-transform:uppercase;margin-bottom:8px;padding:0 26px;}
+.vs-mark-btn{flex:1;padding:9px 4px;border-radius:3px;background:none;
+  font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.8px;
+  text-transform:uppercase;cursor:pointer;transition:all .2s;text-align:center;border:1px solid;}
+.vs-mark-btn.got{border-color:rgba(42,160,80,.2);color:rgba(42,160,80,.45);}
+.vs-mark-btn.got:hover,.vs-mark-btn.got.sel{background:rgba(42,160,80,.08);border-color:rgba(42,160,80,.5);color:rgba(42,160,80,.9);}
+.vs-mark-btn.missed{border-color:rgba(200,69,42,.2);color:rgba(200,69,42,.4);}
+.vs-mark-btn.missed:hover,.vs-mark-btn.missed.sel{background:rgba(200,69,42,.08);border-color:rgba(200,69,42,.5);color:rgba(200,69,42,.9);}
 .hl-popup{position:fixed;background:#1a1510;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 10px;display:flex;align-items:center;gap:6px;z-index:99999;opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .18s,transform .18s;box-shadow:0 8px 24px rgba(0,0,0,.5);}
 .hl-popup.show{opacity:1;pointer-events:all;transform:translateY(0);}
 .hl-pop-swatch{width:20px;height:20px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .15s,border-color .15s;flex-shrink:0;}
@@ -776,7 +957,6 @@ mark.vent-hl:hover{filter:brightness(.82) saturate(1.8);}
 .note-modal.focus-mode .n-diff-card.this .n-diff-card-tag{color:rgba(134,239,172,.72);}
 .note-modal.focus-mode .n-diff-card-key{color:#bab2a2;}
 .note-modal.focus-mode .n-diff-card-key strong{color:#e0dbd0;}
-/* b-key highlight must win over focus-mode color rules */
 .note-modal.breathe-active .n-section.b-active .b-key{background:rgba(200,69,42,.18)!important;color:#f4f0e8!important;box-shadow:0 0 0 1px rgba(200,69,42,.28);transition-delay:0.6s;}
 .note-modal.breathe-active .n-section:not(.b-active) .b-key{background:transparent!important;color:inherit!important;box-shadow:none;transition-delay:0s;}
 .note-modal.focus-mode .n-flag-item.critical{background:rgba(200,69,42,.08);border-color:rgba(200,69,42,.2);}
@@ -1164,9 +1344,10 @@ mark.vent-hl:hover{filter:brightness(.82) saturate(1.8);}
         </button>
         <div class="mbar-divider"></div>
         <!-- Breathe history -->
-        <button class="b-hist-btn" id="b-hist-btn" onclick="bOpenHistory()" title="Breathe history">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.2"/><path d="M6 3.5V6l1.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          History
+        <button class="b-hist-btn" id="b-hist-btn" onclick="bOpenHistory()" title="Ventilation log">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1.5" y="1.5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 4.5h4M4 6h4M4 7.5h2" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
+          Log
+          <span class="b-log-badge" id="b-log-badge"></span>
         </button>
         <div class="mbar-divider"></div>
         <button class="b-prefs-trigger" id="btn-prefs" onclick="openPrefs()" title="Adjust breathing rhythm">
@@ -1204,6 +1385,7 @@ mark.vent-hl:hover{filter:brightness(.82) saturate(1.8);}
         </div>
         <div class="b-phase-label" id="b-phase-label">inhale</div>
       </div>
+
     </div>
     <div id="page-mcq" style="display:none;"><div id="mcq-inner"></div></div>
   </div>
@@ -1254,18 +1436,6 @@ mark.vent-hl:hover{filter:brightness(.82) saturate(1.8);}
   </button>
 </div>
 
-<!-- BREATHE NEXT-NOTE PROMPT -->
-<div class="b-next-bar" id="b-next-bar">
-  <div class="b-next-body">
-    <div class="b-next-tag">// You've reached the end</div>
-    <div class="b-next-title" id="b-next-title">Next note</div>
-  </div>
-  <div class="b-next-actions">
-    <button class="b-next-btn b-next-go" onclick="bGoNextNote()">Continue →</button>
-    <button class="b-next-btn b-next-stay" onclick="bDismissNextNote()">Linger here</button>
-    <button class="b-next-stop" onclick="bStop(true)">Done</button>
-  </div>
-</div>
 
 <!-- BREATHE PREFS PANEL -->
 <div class="prefs-overlay" id="prefs-overlay" onclick="if(event.target===this)closePrefs()">
@@ -1315,57 +1485,157 @@ mark.vent-hl:hover{filter:brightness(.82) saturate(1.8);}
   </div>
 </div>
 
-<!-- BREATHE HISTORY PANEL -->
+<!-- VENTILATION LOG PANEL -->
 <div class="b-hist-overlay" id="b-hist-overlay" onclick="bCloseHistory(event)">
   <div class="b-hist-panel">
-    <div class="b-hist-hdr">
-      <div class="b-hist-hdr-top">
-        <div class="b-hist-hdr-tag">// Breathe history</div>
+
+    <!-- Header -->
+    <div class="vl-hdr">
+      <div class="vl-hdr-top">
+        <div class="vl-hdr-left">
+          <div class="vl-tag">// Vent</div>
+          <div class="vl-title">Ventilation <em>Log</em></div>
+        </div>
         <button class="b-hist-close" onclick="bCloseHistory()">&#10005;</button>
       </div>
-      <div class="b-hist-totals">
-        <div><div class="b-ht-val" id="b-ht-time">—</div><div class="b-ht-lbl">Total breathed</div></div>
-        <div><div class="b-ht-val" id="b-ht-count">0</div><div class="b-ht-lbl">Sessions</div></div>
+      <div class="vl-stats">
+        <div class="vl-stat">
+          <div class="vl-stat-val" id="vl-stat-time">—</div>
+          <div class="vl-stat-lbl">Breathed</div>
+        </div>
+        <div class="vl-stat">
+          <div class="vl-stat-val" id="vl-stat-today">0</div>
+          <div class="vl-stat-lbl">Today</div>
+        </div>
+        <div class="vl-stat">
+          <div class="vl-stat-val" id="vl-stat-total">0</div>
+          <div class="vl-stat-lbl">All time</div>
+        </div>
       </div>
     </div>
-    <div class="b-hist-streak">
-      <div class="b-hs-dots" id="b-hs-dots"></div>
-      <div class="b-hs-lbl" id="b-hs-lbl">No sessions this week</div>
+
+    <!-- Heatmap -->
+    <div class="vl-streak">
+      <div class="vl-streak-meta">
+        <div class="vl-streak-lbl" id="vl-streak-lbl">—</div>
+        <div class="vl-streak-sub" id="vl-streak-sub">16 weeks</div>
+      </div>
+      <div class="vl-hm-wrap">
+        <div class="vl-hm-daylbl">
+          <span></span><span>M</span><span></span><span>W</span><span></span><span>F</span><span></span>
+        </div>
+        <div>
+          <div class="vl-hm-month-row" id="vl-hm-months"></div>
+          <div class="vl-heatmap" id="vl-heatmap"></div>
+        </div>
+      </div>
+      <div class="vl-hm-legend">
+        <div class="vl-hm-leg-lbl">Less</div>
+        <div class="vl-hm-leg-cell" style="background:rgba(255,255,255,.05)"></div>
+        <div class="vl-hm-leg-cell" style="background:rgba(200,69,42,.2)"></div>
+        <div class="vl-hm-leg-cell" style="background:rgba(200,69,42,.4)"></div>
+        <div class="vl-hm-leg-cell" style="background:rgba(200,69,42,.65)"></div>
+        <div class="vl-hm-leg-cell" style="background:#c8452a"></div>
+        <div class="vl-hm-leg-lbl">More</div>
+      </div>
     </div>
-    <div class="b-hist-burnout" id="b-hist-burnout">
-      <p>3+ sessions today. <strong>Your brain needs consolidation time.</strong> Come back tomorrow.</p>
+
+    <!-- Burnout -->
+    <div class="vl-burnout" id="vl-burnout">
+      <p>3+ sessions today. <strong>Let it consolidate.</strong> Rest is part of learning.</p>
     </div>
-    <div class="b-hist-list" id="b-hist-list">
-      <div class="b-hist-empty">No sessions yet.<br>Start breathing.</div>
+
+    <!-- Tabs -->
+    <div class="vl-tabs">
+      <button class="vl-tab active" id="vl-tab-today" onclick="vlSwitchTab('today')">
+        Today <span class="vl-tab-count" id="vl-today-count">0</span>
+      </button>
+      <button class="vl-tab" id="vl-tab-missed" onclick="vlSwitchTab('missed')">
+        Missed <span class="vl-tab-count" id="vl-missed-count">0</span>
+      </button>
+      <button class="vl-tab" id="vl-tab-all" onclick="vlSwitchTab('all')">
+        All
+      </button>
+      <button class="vl-tab" id="vl-tab-strength" onclick="vlSwitchTab('strength')">
+        Topics
+      </button>
     </div>
-    <div class="b-hist-footer">
-      <button class="b-hist-clear" onclick="bClearHistory()">Clear all history</button>
+
+    <!-- Tab bodies -->
+    <div class="vl-body">
+      <div class="vl-pane active" id="vl-pane-today"></div>
+      <div class="vl-pane" id="vl-pane-missed"></div>
+      <div class="vl-pane" id="vl-pane-all"></div>
+      <div class="vl-pane" id="vl-pane-strength"></div>
     </div>
+
+    <!-- Footer -->
+    <div class="vl-footer">
+      <button class="vl-footer-clear" onclick="bClearHistory()">Clear all data</button>
+    </div>
+
+    <!-- legacy elements kept for JS compat (hidden) -->
+    <div id="b-ht-time" style="display:none"></div>
+    <div id="b-ht-count" style="display:none"></div>
+    <div id="b-hs-dots" style="display:none"></div>
+    <div id="b-hs-lbl" style="display:none"></div>
+    <div id="b-hist-burnout" style="display:none"></div>
+    <div id="b-hist-list" style="display:none"></div>
   </div>
 </div>
 
 <!-- BREATHE SUMMARY -->
-<div class="breathe-summary" id="breathe-summary">
-  <div class="breathe-summary-tag">// Session complete</div>
-  <div class="breathe-summary-title" id="bs-title">Good <em>breathing.</em></div>
-  <div class="breathe-summary-time" id="bs-time">00:00</div>
-  <div class="breathe-summary-note" id="bs-note"></div>
-  <div class="bs-burnout" id="bs-burnout"><strong>You've breathed a lot today.</strong> Rest is part of learning.</div>
-  <div class="bs-feeling">
-    <span class="bs-feel-lbl">Felt</span>
-    <button class="bs-feel-opt" onclick="bPickFeeling(this,'rushed')">😤 Rushed</button>
-    <button class="bs-feel-opt" onclick="bPickFeeling(this,'good')">🌬 Good</button>
-    <button class="bs-feel-opt" onclick="bPickFeeling(this,'slow')">😌 Slow</button>
-  </div>
-  <div class="breathe-summary-history" id="bs-history-wrap">
-    <div class="breathe-summary-history-label">Previous sessions</div>
-    <div id="bs-history-list"></div>
-  </div>
-  <div class="bs-actions">
-    <button class="bs-share" id="bs-share-btn" onclick="bShareSession()">↗ Share</button>
-    <button class="breathe-summary-dismiss" onclick="dismissBreatheSummary()">Done</button>
+<div class="vs-overlay" id="breathe-summary">
+  <div class="vs-panel" id="vs-panel">
+    <button class="vs-close-btn" onclick="vsConfirmClose()" title="Close">✕</button>
+    <div class="vs-confirm" id="vs-confirm">
+      <div class="vs-confirm-q">Leave the recall check?</div>
+      <div class="vs-confirm-sub">Your progress matters — gaps stay hidden if you skip.</div>
+      <div class="vs-confirm-btns">
+        <button class="vs-confirm-yes" onclick="vsDoClose()">Yes, exit</button>
+        <button class="vs-confirm-no" onclick="vsCancelClose()">Keep going</button>
+      </div>
+    </div>
+    <div class="vs-header">
+      <div class="vs-tag">// Ventilation Check</div>
+      <div class="vs-title" id="vs-title">Test your <em>recall.</em></div>
+      <div class="vs-meta" id="vs-meta"></div>
+    </div>
+    <div class="vs-progress" id="vs-progress"></div>
+    <div class="vs-intro" id="vs-intro">
+      <div class="vs-intro-icon">🌬</div>
+      <div class="vs-intro-h">You just <em>ventilated.</em></div>
+      <div class="vs-intro-sub" id="vs-intro-sub"></div>
+      <div class="vs-intro-btns">
+        <button class="vs-intro-primary" onclick="vsStartQuestions()">Test my recall →</button>
+        <button class="vs-intro-secondary" onclick="vsBackToNotes()">Back to notes</button>
+      </div>
+    </div>
+    <div id="vs-question-view" style="display:none">
+      <div class="vs-q-area">
+        <div class="vs-q-num" id="vs-q-num">Question 1 of 3</div>
+        <div class="vs-q-text" id="vs-q-text"></div>
+      </div>
+      <div class="vs-answer-area" id="vs-answer-area">
+        <div class="vs-ans-lbl">Answer</div>
+        <div class="vs-ans-text" id="vs-ans-text"></div>
+        <div class="vs-ans-exp" id="vs-ans-exp"></div>
+      </div>
+      <div class="vs-self-lbl" id="vs-self-lbl" style="display:none">Did you get it?</div>
+      <div class="vs-controls" id="vs-controls"></div>
+    </div>
+    <div class="vs-finish" id="vs-finish">
+      <div class="vs-finish-icon">🌬</div>
+      <div class="vs-finish-h" id="vs-finish-h">Well <em>ventilated.</em></div>
+      <div class="vs-finish-sub" id="vs-finish-sub"></div>
+      <div class="vs-finish-btns">
+        <button class="vs-finish-primary" onclick="vsKeepVentilating()">Keep ventilating →</button>
+        <button class="vs-finish-secondary" onclick="vsBackToNotes()">Back to notes</button>
+      </div>
+    </div>
   </div>
 </div>
+
 
 <!-- NAV -->
 <nav>
@@ -1722,33 +1992,277 @@ loadPrefs();
 // ── Session history ──
 function bLoadHistory(){ try{ return JSON.parse(localStorage.getItem('vent-breathe-history')||'[]'); }catch(e){ return []; } }
 function bSaveHistory(arr){ try{ localStorage.setItem('vent-breathe-history',JSON.stringify(arr)); }catch(e){} }
-function bAddSession(sess){ const arr=bLoadHistory(); arr.unshift(sess); if(arr.length>60)arr.pop(); bSaveHistory(arr); }
+function bAddSession(sess){ const arr=bLoadHistory(); arr.unshift(sess); if(arr.length>120)arr.pop(); bSaveHistory(arr); }
 function bGetTodaySessions(){ const t=new Date().toDateString(); return bLoadHistory().filter(s=>new Date(s.date).toDateString()===t); }
 function bFmtDur(s){ if(s<60)return s+'s'; const m=Math.floor(s/60),r=s%60; return r?m+'m '+r+'s':m+'m'; }
 function bFmtTotal(s){ const h=Math.floor(s/3600),m=Math.floor((s%3600)/60); return h>0?h+'h '+m+'m':(m||0)+' min'; }
 function bTimeAgo(d){ const diff=Date.now()-new Date(d).getTime(),mi=Math.floor(diff/60000),h=Math.floor(mi/60),dy=Math.floor(h/24); if(dy>0)return dy===1?'Yesterday':dy+'d ago'; if(h>0)return h+'h ago'; if(mi>0)return mi+'m ago'; return 'Just now'; }
 function bFmtDate(d){ return new Date(d).toLocaleDateString('en-GB',{day:'numeric',month:'short'})+' '+new Date(d).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}); }
 
-// ── History panel ──
-function bOpenHistory(){ bRenderHistory(); document.getElementById('b-hist-overlay').classList.add('open'); }
-function bCloseHistory(e){ if(e && e.target !== document.getElementById('b-hist-overlay')) return; document.getElementById('b-hist-overlay').classList.remove('open'); }
-function bRenderHistory(){
-  const sessions=bLoadHistory();
-  const totalSec=sessions.reduce((a,s)=>a+(s.duration||0),0);
-  document.getElementById('b-ht-time').textContent=bFmtTotal(totalSec);
-  document.getElementById('b-ht-count').textContent=sessions.length;
-  const dotsEl=document.getElementById('b-hs-dots'); dotsEl.innerHTML='';
-  for(let i=6;i>=0;i--){ const d=new Date(); d.setDate(d.getDate()-i); const has=sessions.some(s=>new Date(s.date).toDateString()===d.toDateString()); const dot=document.createElement('div'); dot.className='b-hs-dot'+(has?' lit':''); dotsEl.appendChild(dot); }
-  const now=Date.now(),wk=7*24*3600*1000; const wkSess=sessions.filter(s=>(now-new Date(s.date).getTime())<wk);
-  const activeDays=[...new Set(wkSess.map(s=>new Date(s.date).toDateString()))].length;
-  document.getElementById('b-hs-lbl').textContent=activeDays===0?'No sessions this week':activeDays===1?'1 active day this week':activeDays+' active days this week';
-  document.getElementById('b-hist-burnout').classList.toggle('show',bGetTodaySessions().length>=3);
-  const listEl=document.getElementById('b-hist-list');
-  if(!sessions.length){ listEl.innerHTML='<div class="b-hist-empty">No sessions yet.<br>Start breathing.</div>'; return; }
-  const fe={rushed:'😤',good:'🌬',slow:'😌'};
-  listEl.innerHTML=sessions.map(s=>`<div class="b-hist-item"><div class="b-hi-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 11 C2 11 3 8 5 8 C6.5 8 6.5 9.5 8 9.5 C9.5 9.5 9.5 8 11 8 C13 8 14 11 14 11" stroke="rgba(200,69,42,.7)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M4 13 C4 13 5 11 8 11 C11 11 12 13 12 13" stroke="rgba(200,69,42,.4)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M5 7 C5 7 5.5 5 8 5 C10.5 5 11 7 11 7" stroke="rgba(200,69,42,.4)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><div class="b-hi-body"><div class="b-hi-topic">${s.topic||'Unknown'}</div><div class="b-hi-meta">${bFmtDur(s.duration||0)} &nbsp;·&nbsp; ${s.sections||0} sections &nbsp;·&nbsp; ${bTimeAgo(s.date)}</div></div><div class="b-hi-feel">${fe[s.feeling]||''}</div></div>`).join('');
+// ── Missed questions storage ──
+function vlLoadMissed(){ try{ return JSON.parse(localStorage.getItem('vent-missed-q')||'[]'); }catch(e){ return []; } }
+function vlSaveMissed(arr){ try{ localStorage.setItem('vent-missed-q',JSON.stringify(arr.slice(0,80))); }catch(e){} }
+function vlAddMissed(noteId, noteName, questions){
+  // questions: [{q, a, exp}]
+  const arr=vlLoadMissed();
+  const now=new Date().toISOString();
+  questions.forEach(item=>{
+    // avoid exact duplicates
+    if(!arr.some(x=>x.q===item.q && x.noteId===noteId)){
+      arr.unshift({id:Date.now()+Math.random(), noteId, noteName, q:item.q, a:item.a, exp:item.exp||'', date:now});
+    }
+  });
+  vlSaveMissed(arr);
+  vlUpdateBadge();
 }
-function bClearHistory(){ if(!confirm('Clear all breathe history?')) return; localStorage.removeItem('vent-breathe-history'); bRenderHistory(); }
+function vlDismissMissed(id){
+  const arr=vlLoadMissed().filter(x=>x.id!==id);
+  vlSaveMissed(arr);
+  vlUpdateBadge();
+  // re-render missed pane if open
+  const _vpm=document.getElementById('vl-pane-missed'); if(_vpm && _vpm.classList.contains('active')) vlRenderMissed();
+}
+function vlClearMissed(){
+  localStorage.removeItem('vent-missed-q');
+  vlUpdateBadge();
+  vlRenderMissed();
+}
+function vlUpdateBadge(){
+  const n=vlLoadMissed().length;
+  const badge=document.getElementById('b-log-badge');
+  if(badge){ badge.textContent=n>9?'9+':n; badge.classList.toggle('show',n>0); }
+}
+
+// ── Ventilation Log panel ──
+let vlCurrentTab='today';
+function bOpenHistory(){ vlRender(); document.getElementById('b-hist-overlay').classList.add('open'); }
+function bCloseHistory(e){ if(e && e.target!==document.getElementById('b-hist-overlay')) return; document.getElementById('b-hist-overlay').classList.remove('open'); }
+
+function vlSwitchTab(tab){
+  ['today','missed','all','strength'].forEach(t=>{
+    const btn=document.getElementById('vl-tab-'+t);
+    const pane=document.getElementById('vl-pane-'+t);
+    if(btn) btn.classList.toggle('active',t===tab);
+    if(pane) pane.classList.toggle('active',t===tab);
+  });
+  if(tab==='strength') vlRenderStrength();
+}
+
+
+function vlRenderStrength(){
+  const el=document.getElementById('vl-pane-strength');
+  if(!el) return;
+  let scores={};
+  try{ scores=JSON.parse(localStorage.getItem('vent-topic-scores')||'{}'); }catch(e){}
+  const entries=Object.values(scores).filter(s=>(s.got||0)+(s.missed||0)>0);
+  if(!entries.length){
+    el.innerHTML=`<div class="vl-strength-empty">Complete a recall session first.<br>Your topic breakdown will appear here.</div>`;
+    return;
+  }
+  entries.forEach(e=>{ e.total=(e.got||0)+(e.missed||0); e.pct=Math.round((e.got||0)/e.total*100); });
+  const strong=entries.filter(e=>e.pct>=75).sort((a,b)=>b.pct-a.pct);
+  const mid=entries.filter(e=>e.pct>=50&&e.pct<75).sort((a,b)=>b.pct-a.pct);
+  const weak=entries.filter(e=>e.pct<50).sort((a,b)=>a.pct-b.pct);
+
+  const pill=(n,t,cls)=>n?`<div class="vl-ts-pill ${cls}">${n} ${t}</div>`:'';
+  const summary=`<div class="vl-topics-header"><div class="vl-topics-summary">
+    ${pill(weak.length,'needs work','weak')}
+    ${pill(mid.length,'in progress','mid')}
+    ${pill(strong.length,'strong','strong')}
+  </div></div>`;
+
+  function renderRow(e){
+    const tier=e.pct>=75?'strong':e.pct>=50?'mid':'weak';
+    return `<div class="vl-topic-row">
+      <div class="vl-topic-dot ${tier}"></div>
+      <div class="vl-topic-name">${e.noteName||e.noteId}</div>
+      <div class="vl-topic-bar-wrap"><div class="vl-topic-bar ${tier}" style="width:${e.pct}%"></div></div>
+      <div class="vl-topic-pct ${tier}">${e.pct}%</div>
+      <div class="vl-topic-sessions">${e.sessions||1}×</div>
+    </div>`;
+  }
+  function renderTier(arr,label,cls){
+    if(!arr.length) return '';
+    return `<div class="vl-tier-section">
+      <div class="vl-tier-hdr"><div class="vl-tier-label ${cls}">${label}</div><div class="vl-tier-line"></div></div>
+      ${arr.map(renderRow).join('')}
+    </div>`;
+  }
+
+  el.innerHTML = summary
+    + renderTier(weak,'Needs work','weak')
+    + renderTier(mid,'Getting there','mid')
+    + renderTier(strong,'Solid recall','strong');
+}
+function vlRenderHeatmap(sessions){
+  const heatEl=document.getElementById('vl-heatmap');
+  const monthEl=document.getElementById('vl-hm-months');
+  if(!heatEl||!monthEl) return;
+
+  const WEEKS=12;
+  const today=new Date();
+  today.setHours(23,59,59,999);
+
+  // Build a map: dateStr → session count
+  const countMap={};
+  sessions.forEach(s=>{
+    if(!s.date) return;
+    const d=new Date(s.date);
+    const key=d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+    countMap[key]=(countMap[key]||0)+1;
+  });
+
+  // Find the Sunday that starts our grid (WEEKS*7 days ago, snapped to Sunday)
+  const startDate=new Date(today);
+  startDate.setDate(startDate.getDate() - (WEEKS*7 - 1));
+  // Snap back to Sunday
+  startDate.setDate(startDate.getDate() - startDate.getDay());
+
+  // Build columns (each column = one week, Sun→Sat)
+  const cols=[];
+  const monthPositions={}; // weekIdx → month label
+  for(let w=0;w<WEEKS;w++){
+    const col=[];
+    for(let d=0;d<7;d++){
+      const date=new Date(startDate);
+      date.setDate(startDate.getDate() + w*7 + d);
+      const key=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+      const count=countMap[key]||0;
+      const isToday=date.toDateString()===new Date().toDateString();
+      const isFuture=date>today;
+      col.push({date,count,isToday,isFuture,key});
+      // Track month label for first week that contains 1st of month
+      if(date.getDate()===1||(w===0&&d===0)){
+        const mLabel=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][date.getMonth()];
+        if(!Object.values(monthPositions).includes(mLabel)) monthPositions[w]=mLabel;
+      }
+    }
+    cols.push(col);
+  }
+
+  // Render month labels row
+  monthEl.innerHTML=cols.map((col,w)=>{
+    const lbl=monthPositions[w]||'';
+    return `<div class="vl-hm-month-lbl" style="width:14px">${lbl}</div>`;
+  }).join('');
+
+  // Render heatmap columns
+  heatEl.innerHTML=cols.map(col=>{
+    const cells=col.map(({count,isToday,isFuture})=>{
+      if(isFuture) return `<div class="vl-hm-cell" style="opacity:.3"></div>`;
+      const lvl=count===0?'':count===1?'l1':count===2?'l2':count===3?'l3':'l4';
+      return `<div class="vl-hm-cell ${lvl}${isToday?' today':''}"></div>`;
+    }).join('');
+    return `<div class="vl-hm-col">${cells}</div>`;
+  }).join('');
+}
+
+function vlRender(){
+  const sessions=bLoadHistory();
+  const todaySess=bGetTodaySessions();
+  const totalSec=sessions.reduce((a,s)=>a+(s.duration||0),0);
+  // stats
+  document.getElementById('vl-stat-time').textContent=bFmtTotal(totalSec);
+  document.getElementById('vl-stat-today').textContent=todaySess.length;
+  document.getElementById('vl-stat-total').textContent=sessions.length;
+  // Heatmap (16 weeks)
+  vlRenderHeatmap(sessions);
+  // Streak count
+  let streak=0, checkStreak=true;
+  for(let i=0;i<30;i++){
+    const d=new Date(); d.setDate(d.getDate()-i);
+    const has=sessions.some(s=>new Date(s.date).toDateString()===d.toDateString());
+    if(i===0&&!has){ checkStreak=false; }
+    if(checkStreak){ if(has) streak++; else break; }
+  }
+  const streakLbl=streak>=2?streak+' day streak 🔥':todaySess.length>0?'Active today':'Start your streak';
+  document.getElementById('vl-streak-lbl').textContent=streakLbl;
+  const _vb=document.getElementById('vl-burnout'); if(_vb) _vb.classList.toggle('show',todaySess.length>=3);
+  // tab counts
+  const missed=vlLoadMissed();
+  document.getElementById('vl-today-count').textContent=todaySess.length;
+  document.getElementById('vl-missed-count').textContent=missed.length;
+  // panes
+  vlRenderToday(todaySess);
+  vlRenderMissed();
+  vlRenderAll(sessions);
+  vlUpdateBadge();
+}
+
+function vlRenderToday(todaySess){
+  const el=document.getElementById('vl-pane-today');
+  if(!todaySess.length){
+    el.innerHTML=`<div class="vl-empty"><div class="vl-empty-icon">🌬</div><div class="vl-empty-text">Nothing breathed today yet.<br>Open a note and start.</div></div>`;
+    return;
+  }
+  const checkSvg=`<svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5.5l2.5 2.5 3.5-4" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  el.innerHTML=todaySess.map(s=>`
+    <div class="vl-today-note">
+      <div class="vl-tn-check">${checkSvg}</div>
+      <div class="vl-tn-body">
+        <div class="vl-tn-name">${s.topic||'Unknown'}</div>
+        <div class="vl-tn-meta">${bFmtDur(s.duration||0)} &nbsp;·&nbsp; ${s.sections||0} sections</div>
+      </div>
+      <div class="vl-tn-time">${bTimeAgo(s.date)}</div>
+    </div>`).join('');
+}
+
+function vlRenderMissed(){
+  const el=document.getElementById('vl-pane-missed');
+  const missed=vlLoadMissed();
+  if(!missed.length){
+    el.innerHTML=`<div class="vl-empty"><div class="vl-empty-icon">✓</div><div class="vl-empty-text">No missed questions.<br>Looking strong.</div></div>`;
+    return;
+  }
+  el.innerHTML=missed.map((m,i)=>`
+    <div class="vl-mq-card" id="vl-mq-${m.id}">
+      <div class="vl-mq-note">${m.noteName||m.noteId}</div>
+      <div class="vl-mq-q">${m.q}</div>
+      <div class="vl-mq-ans" id="vl-mqans-${m.id}">
+        <div class="vl-mq-ans-lbl">Answer</div>
+        <div class="vl-mq-ans-text">${m.a}</div>
+        ${m.exp?`<div class="vl-mq-ans-exp">${m.exp}</div>`:''}
+      </div>
+      <div class="vl-mq-actions">
+        <button class="vl-mq-reveal" id="vl-mqbtn-${m.id}" onclick="vlRevealMQ('${m.id}')">Reveal answer</button>
+        <button class="vl-mq-dismiss" onclick="vlDismissMissed(${m.id})">Got it ×</button>
+      </div>
+    </div>`).join('')
+  + `<button class="vl-mq-clear-all" onclick="vlClearMissed()">Clear all missed questions</button>`;
+}
+
+function vlRevealMQ(id){
+  const ans=document.getElementById('vl-mqans-'+id);
+  const btn=document.getElementById('vl-mqbtn-'+id);
+  if(ans){ ans.classList.add('open'); }
+  if(btn){ btn.style.display='none'; }
+}
+
+function vlRenderAll(sessions){
+  const el=document.getElementById('vl-pane-all');
+  if(!sessions.length){
+    el.innerHTML=`<div class="vl-empty"><div class="vl-empty-icon">🌬</div><div class="vl-empty-text">No sessions yet.<br>Start breathing.</div></div>`;
+    return;
+  }
+  const waveSvg=`<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 11 C2 11 3 8 5 8 C6.5 8 6.5 9.5 8 9.5 C9.5 9.5 9.5 8 11 8 C13 8 14 11 14 11" stroke="rgba(200,69,42,.7)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M4 13 C4 13 5 11 8 11 C11 11 12 13 12 13" stroke="rgba(200,69,42,.4)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M5 7 C5 7 5.5 5 8 5 C10.5 5 11 7 11 7" stroke="rgba(200,69,42,.4)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`;
+  el.innerHTML=sessions.map(s=>`
+    <div class="vl-sess-item">
+      <div class="vl-sess-icon">${waveSvg}</div>
+      <div class="vl-sess-body">
+        <div class="vl-sess-topic">${s.topic||'Unknown'}</div>
+        <div class="vl-sess-meta">${bFmtDur(s.duration||0)} &nbsp;·&nbsp; ${s.sections||0} sections</div>
+      </div>
+      <div class="vl-sess-when">${bTimeAgo(s.date)}</div>
+    </div>`).join('');
+}
+
+function bClearHistory(){
+  if(!confirm('Clear all ventilation data?')) return;
+  localStorage.removeItem('vent-breathe-history');
+  localStorage.removeItem('vent-missed-q');
+  vlUpdateBadge();
+  vlRender();
+}
 
 // ── Breathe state ──
 let breatheOn=false, bStart=null, bPaused=false, bCurIdx=0, bCyclesDone=0, bPhase='inhale';
@@ -1757,7 +2271,7 @@ const BCIRC=263.9;
 
 function bPhaseDur(p){ if(p==='inhale')return PREFS.inhale*1000; if(p==='hold')return PREFS.hold*1000; return PREFS.exhale*1000; }
 
-function toggleBreathe(){ if(!breatheOn) bStart_(); else bStop(true); }
+function toggleBreathe(){ if(!breatheOn){ vsResetSession(); bStart_(); } else bStop(true); }
 
 function bStart_(){
   const _heroEl=document.querySelector('#mcontent .n-hero-new');
@@ -1768,7 +2282,7 @@ function bStart_(){
   breatheOn=true; bStart=Date.now(); bPaused=false;
   bCurIdx=0; bCyclesDone=0; bAtLast=false; bNextShown=false; bSessionSections=0;
   document.getElementById('modal').classList.add('focus-mode');
-  setTimeout(()=>{ document.getElementById('modal').classList.add('breathe-active'); }, 700);
+  document.getElementById('modal').classList.add('breathe-active');
   document.getElementById('btn-breathe').classList.add('breathe-on');
   document.getElementById('breathe-btn-label').textContent='Breathing';
   document.getElementById('b-ring-wrap').classList.add('visible');
@@ -1779,8 +2293,7 @@ function bStart_(){
   const spine=document.getElementById('b-spine'); spine.innerHTML='';
   bSections.forEach((_,i)=>{ const d=document.createElement('div'); d.className='b-sdot'; d.onclick=()=>{ if(breatheOn) bJumpTo(i); }; spine.appendChild(d); });
   bActivate(0); bStartPhase('inhale');
-  const hint=document.getElementById('b-kbd-hint'); hint.classList.add('visible');
-  setTimeout(()=>hint.classList.remove('visible'),4000);
+  const hint=document.getElementById('b-kbd-hint'); if(hint){ hint.classList.add('visible'); setTimeout(()=>hint.classList.remove('visible'),4000); }
 }
 
 function bStop(showSummary=false){
@@ -1796,41 +2309,45 @@ function bStop(showSummary=false){
   document.getElementById('b-nav').classList.remove('visible');
   document.getElementById('b-spine').classList.remove('visible');
   document.getElementById('b-next-bar').classList.remove('visible');
-  document.getElementById('b-kbd-hint').classList.remove('visible');
+  const _kh=document.getElementById('b-kbd-hint'); if(_kh) _kh.classList.remove('visible');
   hideNoteNav();
   bSections.forEach(s=>s.classList.remove('b-active','b-was','b-hold'));
   bAtLast=false; bNextShown=false;
-  if(bStart && elapsed>0){
-    const sess={ id:Date.now(), topic:NOTE_NAMES[currentNote]||currentNote, duration:elapsed, sections:bSessionSections, feeling:null, date:new Date().toISOString() };
+  const _bStart=bStart;
+  bStart=null;
+  if(_bStart && elapsed>0){
+    const sess={ id:Date.now(), noteId:currentNote, topic:NOTE_NAMES[currentNote]||currentNote, duration:elapsed, sections:bSessionSections, feeling:null, date:new Date().toISOString() };
     bAddSession(sess);
     if(showSummary) setTimeout(()=>bShowSummary(sess),600);
   }
-  bStart=null;
 }
 
 function bActivate(idx){
+  if(idx<0||idx>=bSections.length) return;
   bSections.forEach((s,i)=>{ s.classList.remove('b-active','b-was','b-hold'); if(i<idx) s.classList.add('b-was'); });
   bSections[idx].classList.add('b-active');
   const modal=document.getElementById('modal');
-  const mbar=modal.querySelector('.mbar');
-  const mbarH=mbar?mbar.offsetHeight:58;
-  const el=bSections[idx];
-  const modalRect=modal.getBoundingClientRect();
-  const elRect=el.getBoundingClientRect();
-  const elH=el.offsetHeight;
-  const availH=modal.clientHeight-mbarH;
-  const margin=32;
-  const elTopInModal=elRect.top-modalRect.top-mbarH;
-  let scrollTop;
-  if(elH<=availH-margin*2) scrollTop=modal.scrollTop+elTopInModal-Math.floor((availH-elH)/2);
-  else scrollTop=modal.scrollTop+elTopInModal-margin;
-  modal.scrollTo({top:Math.max(0,scrollTop),behavior:'smooth'});
+  if(modal){
+    const mbar=modal.querySelector('.mbar');
+    const mbarH=mbar?mbar.offsetHeight:58;
+    const el=bSections[idx];
+    const modalRect=modal.getBoundingClientRect();
+    const elRect=el.getBoundingClientRect();
+    const elH=el.offsetHeight;
+    const availH=modal.clientHeight-mbarH;
+    const margin=32;
+    const elTopInModal=elRect.top-modalRect.top-mbarH;
+    let scrollTop;
+    if(elH<=availH-margin*2) scrollTop=modal.scrollTop+elTopInModal-Math.floor((availH-elH)/2);
+    else scrollTop=modal.scrollTop+elTopInModal-margin;
+    modal.scrollTo({top:Math.max(0,scrollTop),behavior:'smooth'});
+    modal.classList.toggle('b-at-last',(idx===bTotal-1));
+  }
   document.querySelectorAll('#b-spine .b-sdot').forEach((d,i)=>{ d.className='b-sdot'+(i<idx?' b-done':i===idx?' b-active':''); });
-  const pct=bTotal>1?(idx/(bTotal-1))*100:100;
-  document.getElementById('b-reading-fill').style.width=pct+'%';
+  const fill=document.getElementById('b-reading-fill');
+  if(fill) fill.style.width=(bTotal>1?(idx/(bTotal-1))*100:100)+'%';
   bCyclesDone=0; bSessionSections=Math.max(bSessionSections,idx+1);
   bAtLast=(idx===bTotal-1);
-  document.getElementById('modal').classList.toggle('b-at-last',bAtLast);
 }
 
 function bJumpTo(idx){ clearTimeout(bPhTimer); cancelAnimationFrame(bRafId); bCurIdx=idx; bActivate(idx); bStartPhase('inhale'); }
@@ -1841,42 +2358,48 @@ function bAdvance(){ if(bCurIdx+1>=bTotal){ bOnLast(); return; } bCurIdx++; bAct
 
 function bOnLast(){
   bAtLast=true; bCyclesDone=0; bStartPhase('inhale');
-  // Move bar into mcontent, right after n-anchor (in-flow, not fixed)
   const bar=document.getElementById('b-next-bar');
-  const anchor=document.querySelector('#mcontent .n-anchor');
-  const endCta=document.querySelector('#mcontent .n-note-end-cta');
-  if(anchor && bar.parentNode!==anchor.parentNode) {
-    if(endCta) endCta.parentNode.insertBefore(bar, endCta.nextSibling);
-    else anchor.parentNode.appendChild(bar);
-  }
+  if(!bar) return;
   const idx=NOTE_ORDER.indexOf(currentNote);
   const nextId=idx<NOTE_ORDER.length-1?NOTE_ORDER[idx+1]:null;
   const nextName=nextId?(NOTE_NAMES[nextId]||nextId):null;
   const goBtn=bar.querySelector('.b-next-go');
+  const titleEl=document.getElementById('b-next-title');
   if(nextName){
-    document.getElementById('b-next-title').textContent=nextName;
+    if(titleEl) titleEl.textContent=nextName;
     if(goBtn){ goBtn.textContent='Continue →'; goBtn.style.display=''; }
   } else {
-    document.getElementById('b-next-title').textContent='Last note — well done.';
+    if(titleEl) titleEl.textContent='Last note — well done.';
     if(goBtn) goBtn.style.display='none';
   }
+  bar.dataset.nextId=nextId||'';
   bar.classList.add('visible');
   bNextShown=true;
-  document.getElementById('b-nav').classList.remove('visible');
-  bar.dataset.nextId=nextId||'';
-  // Scroll to reveal anchor + bar
+  const navEl=document.getElementById('b-nav');
+  if(navEl) navEl.classList.remove('visible');
+  // Scroll so the sticky bar is visible — scroll to bottom of content
   setTimeout(()=>{
     const modal=document.getElementById('modal');
-    const mbar=modal.querySelector('.mbar');
-    const mbarH=mbar?mbar.offsetHeight:58;
-    const anchorRect=(anchor||bar).getBoundingClientRect();
-    const modalRect=modal.getBoundingClientRect();
-    const scrollTo=modal.scrollTop+(anchorRect.top-modalRect.top)-mbarH-24;
-    modal.scrollTo({top:Math.max(0,scrollTo),behavior:'smooth'});
+    if(modal) modal.scrollTo({top:modal.scrollHeight,behavior:'smooth'});
   },100);
 }
 
-function bGoNextNote(){ const nextId=document.getElementById('b-next-bar').dataset.nextId; document.getElementById('b-next-bar').classList.remove('visible'); bStop(false); if(nextId) openNote(nextId); if(nextId) setTimeout(()=>bStart_(),400); }
+function bGoNextNote(){
+  const nextId=document.getElementById('b-next-bar').dataset.nextId;
+  document.getElementById('b-next-bar').classList.remove('visible');
+  // Save this note's cards into session BEFORE stopping
+  if(bStart){
+    const elapsed=Math.round((Date.now()-bStart)/1000);
+    const noteId=currentNote;
+    const noteName=NOTE_NAMES[noteId]||noteId;
+    const mcqs=(NOTES_MCQ[noteId]||[]);
+    const noteCards=vsPickCards(mcqs,noteId,noteName);
+    vsSessionNotes.push({noteId,noteName,cards:noteCards});
+  }
+  bStop(false); // stop without showing summary
+  if(nextId) openNote(nextId);
+  if(nextId) setTimeout(()=>bStart_(),400); // continue session, no reset
+}
 function bDismissNextNote(){
   document.getElementById('b-next-bar').classList.remove('visible');
   document.getElementById('b-nav').classList.add('visible');
@@ -1919,21 +2442,313 @@ function bTogglePause(){
   else{ lbl.textContent='⏸'; bStartPhase(bPhase); }
 }
 
+// ── Ventilation Summary ──
+let vsCurrentSess=null, vsCards=[], vsCurIdx=0, vsMarks=[], vsAnswerShown=false;
+let vsSessionNotes=[]; // accumulates all notes studied in one breathing session
+
 function bShowSummary(sess){
-  const all=bLoadHistory(); const today=bGetTodaySessions();
-  document.getElementById('bs-title').innerHTML='Good <em>breathing.</em>';
-  document.getElementById('bs-time').textContent=bFmtDur(sess.duration);
-  document.getElementById('bs-note').textContent='You focused on: '+(NOTE_NAMES[sess.topic]||sess.topic||currentNote);
-  document.getElementById('bs-burnout').classList.toggle('show',today.length>=3);
-  document.querySelectorAll('.bs-feel-opt').forEach(b=>b.classList.remove('picked'));
-  const shareBtn=document.getElementById('bs-share-btn'); if(shareBtn){shareBtn.classList.remove('copied');shareBtn.textContent='↗ Share';}
-  const prev=all.slice(1,4); const histWrap=document.getElementById('bs-history-wrap'); const histList=document.getElementById('bs-history-list');
-  if(prev.length===0){histWrap.style.display='none';}else{histWrap.style.display=''; histList.innerHTML=prev.map(s=>`<div class="breathe-history-row"><span class="breathe-history-date">${bFmtDate(s.date)}</span><span class="breathe-history-dur">${bFmtDur(s.duration||0)}</span></div>`).join('');}
+  vsCurrentSess=sess;
+  const noteId=sess.noteId||sess.topic;
+  const noteName=NOTE_NAMES[noteId]||sess.topic||noteId;
+  const mcqs=(NOTES_MCQ[noteId]||[]);
+  const noteCards=vsPickCards(mcqs,noteId,noteName);
+  vsSessionNotes.push({noteId,noteName,cards:noteCards});
+  // Flatten all session note cards and shuffle randomly
+  let allCards=[];
+  vsSessionNotes.forEach(n=>allCards=allCards.concat(n.cards));
+  for(let i=allCards.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[allCards[i],allCards[j]]=[allCards[j],allCards[i]];}
+  vsCards=allCards;
+  vsCurIdx=0; vsMarks=vsCards.map(()=>null); vsAnswerShown=false;
+  const dur=bFmtDur(sess.duration||0);
+  const noteCount=vsSessionNotes.length;
+  document.getElementById('vs-title').innerHTML='Test your <em>recall.</em>';
+  document.getElementById('vs-meta').innerHTML=
+    noteCount>1
+      ? `<span class="vs-meta-note">${noteCount} notes studied</span><span class="vs-meta-dot"></span>${vsCards.length} questions`
+      : `<span class="vs-meta-note">${noteName}</span><span class="vs-meta-dot"></span>${dur}<span class="vs-meta-dot"></span>${sess.sections||0} sections`;
+  // Show intro screen first — let user choose to test or go back
+  document.getElementById('vs-finish').classList.remove('show');
+  document.getElementById('vs-question-view').style.display='none';
+  // Update intro sub text
+  const introSub=document.getElementById('vs-intro-sub');
+  if(introSub) introSub.textContent=vsCards.length+' questions across '+vsSessionNotes.length+(vsSessionNotes.length===1?' note':' notes')+' — one at a time, randomised.';
+  document.getElementById('vs-intro').classList.add('show');
+  document.getElementById('vs-progress').style.display='none';
   document.getElementById('breathe-summary').classList.add('show');
 }
-function dismissBreatheSummary(){ document.getElementById('breathe-summary').classList.remove('show'); }
-function bPickFeeling(btn,val){ document.querySelectorAll('.bs-feel-opt').forEach(b=>b.classList.remove('picked')); btn.classList.add('picked'); const arr=bLoadHistory(); if(arr.length){arr[0].feeling=val;bSaveHistory(arr);} if(val==='rushed') setTimeout(()=>{dismissBreatheSummary();openPrefs();},900); }
-function bShareSession(){ const arr=bLoadHistory(); const sess=arr[0]; if(!sess)return; const text='Just breathed through "'+sess.topic+'" — '+bFmtDur(sess.duration)+', '+sess.sections+' sections 🌬\n\nVENT — study like you breathe.'; const btn=document.getElementById('bs-share-btn'); if(navigator.share){navigator.share({text,url:window.location.href}).catch(()=>{});}else{navigator.clipboard.writeText(text).then(()=>{if(btn){btn.classList.add('copied');btn.textContent='✓ Copied';setTimeout(()=>{btn.classList.remove('copied');btn.textContent='↗ Share';},2500);}}).catch(()=>{prompt('Copy to share:',text);});} }
+
+function vsStartQuestions(){
+  document.getElementById('vs-intro').classList.remove('show');
+  document.getElementById('vs-question-view').style.display='';
+  document.getElementById('vs-progress').style.display='';
+  vsRenderProgress();
+  vsShowQuestion(0);
+}
+
+function vsResetSession(){
+  vsSessionNotes=[];
+  // Clear rotation tracking so fresh session gets varied questions
+  Object.keys(vsNoteSeenMap).forEach(k=>{ if(vsNoteSeenMap[k]) vsNoteSeenMap[k].clear(); });
+  const intro=document.getElementById('vs-intro');
+  if(intro) intro.classList.remove('show');
+}
+
+// Track which MCQ indices have been used per note for rotation
+const vsNoteSeenMap={}; // { noteId: Set of used indices }
+
+function vsPickCards(mcqs,noteId,noteName){
+  if(!mcqs||!mcqs.length) return [
+    {noteId,noteName,q:'What is the key concept from this note?',a:'Review the key section.',exp:''},
+    {noteId,noteName,q:'What is the classic exam presentation for this topic?',a:'Review the classic pattern section.',exp:''},
+    {noteId,noteName,q:'What is the most important clinical trap here?',a:'Review the trap zone section.',exp:''}
+  ];
+
+  // Rotation logic: track seen questions per note
+  if(!vsNoteSeenMap[noteId]) vsNoteSeenMap[noteId]=new Set();
+  const seen=vsNoteSeenMap[noteId];
+
+  // If we've used ≥ all MCQs (or ≥ 4 cycles worth), reset
+  if(seen.size>=mcqs.length) seen.clear();
+
+  // Get unseen questions
+  const unseen=mcqs.map((m,i)=>i).filter(i=>!seen.has(i));
+
+  // Classify unseen questions
+  function classify(m){
+    const t=(m.focus||m.q).toLowerCase();
+    if(/mechanism|pathophysi|why does|receptor|enzyme|cascade|pharmacol|inhibit/.test(t)) return 'hard';
+    if(/definition|what is|first.line|most common|classic|enumerate|name the|list the/.test(t)) return 'easy';
+    return 'medium';
+  }
+  const sh=a=>[...a].sort(()=>Math.random()-.5);
+  const buckets={easy:[],medium:[],hard:[]};
+  unseen.forEach(i=>buckets[classify(mcqs[i])].push(i));
+  const eS=sh(buckets.easy),mS=sh(buckets.medium),hS=sh(buckets.hard),aS=sh(unseen);
+  const picked=[];
+  const take=pool=>{for(const i of pool){if(!picked.includes(i)&&picked.length<3){picked.push(i);return;}}};
+  take(eS);take(mS);take(hS);
+  if(picked.length<3) for(const i of aS){if(!picked.includes(i)&&picked.length<3) picked.push(i);}
+
+  // Mark as seen
+  picked.forEach(i=>seen.add(i));
+
+  return picked.map(i=>({
+    noteId,noteName,
+    q:vsMakeQuestion(mcqs[i]),
+    a:mcqs[i].opts[mcqs[i].ans],
+    exp:mcqs[i].exp?mcqs[i].exp.replace(/<[^>]+>/g,''):'',
+    rawA:mcqs[i].opts[mcqs[i].ans]
+  }));
+}
+
+function vsMakeQuestion(m){
+  // Use the full MCQ question — the scenario IS the context
+  const q=(m.q||'').trim();
+  return q.endsWith('?')?q:q+'?';
+}
+
+function vsRenderProgress(){
+  const el=document.getElementById('vs-progress');
+  el.innerHTML=vsCards.map((_,i)=>`<div class="vs-pip ${i<vsCurIdx?'done':i===vsCurIdx?'active':''}" id="vs-pip-${i}"></div>`).join('');
+}
+
+function vsUpdatePips(){
+  vsCards.forEach((_,i)=>{
+    const p=document.getElementById('vs-pip-'+i);
+    if(p) p.className='vs-pip '+(i<vsCurIdx?'done':i===vsCurIdx?'active':'');
+  });
+}
+
+function vsFormatAnswer(c){
+  // Strip all HTML tags from exp
+  const stripHtml=s=>(s||'').replace(/<[^>]+>/g,' ').replace(/\s{2,}/g,' ').trim();
+  const exp=stripHtml(c.exp);
+  const ans=(c.a||'').trim();
+
+  if(!exp && !ans) return '<span style="opacity:.35;font-style:italic">No answer recorded.</span>';
+
+  // exp contains the full clinical explanation — it's the real answer
+  // Try to extract list items from it
+
+  // Strategy 1: explicit numbered list "1. X 2. Y" or "(1) X (2) Y"
+  const numMatch=exp.match(/(?:(?:^|\.\s+|\:\s+)(?:\d+[.)]\s+|\(\d+\)\s*))(.+?)(?=(?:\s+\d+[.)]\s|\s+\(\d+\))|$)/gs);
+  if(numMatch && numMatch.length>=2){
+    const items=numMatch.map(s=>s.replace(/^[\s\d.)(:]+/,'').trim()).filter(s=>s.length>3);
+    if(items.length>=2){
+      return renderList(ans,items,'numbered');
+    }
+  }
+
+  // Strategy 2: colon then items (e.g. "The 4 Ts: Tone, Trauma, Tissue, Thrombin")
+  const colonIdx=exp.indexOf(':');
+  if(colonIdx>0 && colonIdx<80){
+    const before=exp.slice(0,colonIdx).trim();
+    const after=exp.slice(colonIdx+1).trim();
+    // Comma-separated short items
+    const commas=after.split(/,\s+/);
+    if(commas.length>=3 && commas.every(s=>s.split(' ').length<=6)){
+      return renderList(before+':',commas,'comma');
+    }
+  }
+
+  // Strategy 3: sentences separated by full stops that each contain a distinct point
+  // Only if exp is long enough and has 3+ sentences
+  const sentences=exp.split(/(?<=\.)\s+/).map(s=>s.trim()).filter(s=>s.length>10&&s.length<200);
+  if(sentences.length>=3 && exp.length>150){
+    return renderList(ans,sentences,'sentences');
+  }
+
+  // Fallback: show exp as clean prose with answer headline
+  const headline=ans&&ans.length<100?
+    `<div style="font-weight:600;color:#f4f0e8;margin-bottom:8px;font-size:14px;">${ans}</div>`:'';
+  return `${headline}<div style="font-size:13px;color:rgba(244,240,232,.82);line-height:1.7;">${exp}</div>`;
+
+  function renderList(headline,items,type){
+    const hl=headline&&headline.length<100?
+      `<div style="font-weight:600;color:#f4f0e8;margin-bottom:10px;font-size:14px;">${headline}</div>`:'';
+    const rows=items.map((it,i)=>{
+      const num=type==='numbered'||type==='sentences'?
+        `<span class="vs-ans-n">${i+1}</span>`:
+        `<span class="vs-ans-n">·</span>`;
+      return `<div class="vs-ans-item">${num}<span>${it.replace(/\.$/,'')}</span></div>`;
+    }).join('');
+    return `${hl}<div class="vs-ans-list">${rows}</div>`;
+  }
+}
+
+function vsShowQuestion(idx){
+  vsCurIdx=idx; vsAnswerShown=false;
+  const c=vsCards[idx];
+  document.getElementById('vs-q-num').textContent=`${idx+1} / ${vsCards.length}`;
+  document.getElementById('vs-q-text').textContent=c.q;
+  const aa=document.getElementById('vs-answer-area');
+  aa.classList.remove('open');
+  document.getElementById('vs-ans-text').innerHTML=vsFormatAnswer(c);
+  document.getElementById('vs-ans-exp').style.display='none';
+  document.getElementById('vs-self-lbl').style.display='none';
+  vsUpdatePips();
+  vsRenderControls();
+}
+
+function vsRenderControls(){
+  const el=document.getElementById('vs-controls');
+  const isLast=(vsCurIdx===vsCards.length-1);
+  if(!vsAnswerShown){
+    el.innerHTML=`<button class="vs-btn-reveal" onclick="vsReveal()">Reveal answer</button>`;
+  } else {
+    // After reveal: mark got/missed + next
+    const markHtml=`
+      <div class="vs-eval-row" style="flex:1;display:flex;gap:6px;">
+        <button class="vs-mark-btn got ${vsMarks[vsCurIdx]==='got'?'sel':''}" onclick="vsMark('got')">✓ Got it</button>
+        <button class="vs-mark-btn missed ${vsMarks[vsCurIdx]==='missed'?'sel':''}" onclick="vsMark('missed')">✗ Missed</button>
+      </div>
+      <button class="vs-btn-next" onclick="${isLast?'vsFinish()':'vsNext()'}">${isLast?'Finish':'Next →'}</button>`;
+    el.innerHTML=markHtml;
+  }
+}
+
+function vsReveal(){
+  vsAnswerShown=true;
+  document.getElementById('vs-answer-area').classList.add('open');
+  document.getElementById('vs-self-lbl').style.display='block';
+  vsRenderControls();
+}
+
+function vsMark(result){
+  vsMarks[vsCurIdx]=result;
+  // update button sel state
+  document.querySelectorAll('.vs-mark-btn').forEach(b=>{
+    b.classList.toggle('sel', b.classList.contains(result));
+  });
+}
+
+function vsNext(){
+  if(vsCurIdx<vsCards.length-1) vsShowQuestion(vsCurIdx+1);
+}
+
+function vsFinish(){
+  const noteId=vsCurrentSess?.noteId||vsCurrentSess?.topic;
+  const noteName=(typeof VS_NOTE_NAMES!=='undefined'?VS_NOTE_NAMES[noteId]:null)
+    ||(typeof NOTE_NAMES_NAV!=='undefined'?NOTE_NAMES_NAV[noteId]:null)
+    ||(typeof NOTE_NAMES!=='undefined'?NOTE_NAMES[noteId]:null)
+    ||vsCurrentSess?.topic||noteId;
+  const missedCards=vsCards.filter((_,i)=>vsMarks[i]==='missed');
+  const gotCards=vsCards.filter((_,i)=>vsMarks[i]==='got');
+  if(missedCards.length) vlAddMissed(noteId,noteName,missedCards.map(c=>({q:c.q,a:c.a,exp:c.exp})));
+  vlUpdateBadge();
+
+  // Track per-topic performance for the log
+  vsTrackTopicScore(vsCards, vsMarks);
+
+  const got=gotCards.length;
+  const total=vsCards.length;
+  const msgs=[
+    {h:'Well <em>ventilated.</em>',s:'Every answer landed. Your memory is holding.'},
+    {h:'Getting <em>there.</em>',s:'Some gaps — the missed questions are saved in your Log.'},
+    {h:'Back to the <em>note.</em>',s:'Missed questions saved. Read once more, then retry.'}
+  ];
+  const msg=got===total?msgs[0]:got>=total/2?msgs[1]:msgs[2];
+  document.getElementById('vs-finish-h').innerHTML=msg.h;
+  document.getElementById('vs-finish-sub').textContent=`${got} of ${total} recalled · ${missedCards.length?missedCards.length+' saved to your Log':'Nothing missed'}`;
+  document.getElementById('vs-question-view').style.display='none';
+  document.getElementById('vs-finish').classList.add('show');
+}
+
+function vsTrackTopicScore(cards, marks){
+  try{
+    const raw=localStorage.getItem('vent-topic-scores');
+    const scores=raw?JSON.parse(raw):{};
+    // Group by noteId
+    const byNote={};
+    cards.forEach((c,i)=>{
+      if(!byNote[c.noteId]) byNote[c.noteId]={noteId:c.noteId,noteName:c.noteName,got:0,missed:0};
+      if(marks[i]==='got') byNote[c.noteId].got++;
+      else if(marks[i]==='missed') byNote[c.noteId].missed++;
+    });
+    Object.values(byNote).forEach(({noteId,noteName,got,missed})=>{
+      if(!scores[noteId]) scores[noteId]={noteId,noteName,got:0,missed:0,sessions:0};
+      scores[noteId].got+=got;
+      scores[noteId].missed+=missed;
+      scores[noteId].sessions+=1;
+      scores[noteId].noteName=noteName; // keep fresh
+    });
+    localStorage.setItem('vent-topic-scores',JSON.stringify(scores));
+  }catch(e){}
+}
+
+function vsKeepVentilating(){
+  document.getElementById('breathe-summary').classList.remove('show');
+  // Don't reset session — user continues studying. Restart breathing mode on current note.
+  setTimeout(()=>{ if(!breatheOn) bStart_(); }, 300);
+}
+
+function vsConfirmClose(){
+  document.getElementById('vs-confirm').classList.add('show');
+}
+function vsCancelClose(){
+  document.getElementById('vs-confirm').classList.remove('show');
+}
+function vsDoClose(){
+  document.getElementById('vs-confirm').classList.remove('show');
+  document.getElementById('breathe-summary').classList.remove('show');
+  vsResetSession();
+}
+
+function vsBackToNotes(){
+  const overlay=document.getElementById('breathe-summary');
+  overlay.classList.remove('show');
+  vsResetSession(); // clear session on done
+  // smooth: just close summary — modal is still behind it
+}
+
+function dismissBreatheSummary(){
+  document.getElementById('breathe-summary').classList.remove('show');
+  vlUpdateBadge();
+}
+function bPickFeeling(btn,val){}
+function bShareSession(){ const arr=bLoadHistory();const sess=arr[0];if(!sess)return;const text='Just breathed through "'+(NOTE_NAMES[sess.topic]||sess.topic)+'" — '+bFmtDur(sess.duration)+', '+sess.sections+' sections 🌬\n\nVENT — study like you breathe.';if(navigator.share){navigator.share({text,url:window.location.href}).catch(()=>{});}else{navigator.clipboard.writeText(text).catch(()=>{prompt('Copy to share:',text);});} }
+
+document.addEventListener('DOMContentLoaded',()=>vlUpdateBadge());
 
 document.addEventListener('keydown',e=>{
   if(!breatheOn)return;
@@ -3430,5 +4245,17 @@ NOTES.pharmacology = () => `<div class="n-page"><div class="n-hero-new">
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.pharmacology=[{q:"Asthmatic POAG patient prescribed timolol develops worsening wheeze. Mechanism?",opts:["Preservative allergy","Systemic beta-2 blockade via nasolacrimal absorption → bronchospasm","Coincidental COPD","Drop technique"],ans:1,focus:"Timolol — systemic absorption, asthma CI",exp:"Timolol absorbed via NLD → nasal mucosa → systemic circulation, bypassing first-pass. Beta-2 blockade causes bronchospasm. Contraindicated in asthma/COPD. Switch to prostaglandin analogue."},{q:"First-line glaucoma drop and its mechanism?",opts:["Timolol — reduce aqueous production","Prostaglandin analogue (latanoprost) — increase uveoscleral outflow","Dorzolamide — inhibit carbonic anhydrase","Brimonidine — alpha-2 agonist"],ans:1,focus:"Prostaglandins — first-line",exp:"Prostaglandin analogues (latanoprost): most effective single agent, 25–35% IOP reduction. FP receptor → uveoscleral outflow. Once-daily evening. No respiratory/cardiac CI."},{q:"GP prescribes topical dexamethasone for red eye. Patient returns 2 weeks later with corneal dendrites and worsening vision. What happened?",opts:["Steroid-induced glaucoma","HSV keratitis reactivated by steroid immunosuppression","Allergic reaction to preservative","Bacterial superinfection"],ans:1,focus:"Steroids + HSV = disaster",exp:"Topical steroids reactivate HSV → dendritic (or geographic) ulcer. Can lead to corneal perforation. Never prescribe steroids for undiagnosed red eye. Slit lamp + fluorescein first. Treatment: stop steroid, topical aciclovir."},{q:"Which drug is contraindicated in infants due to apnoea risk?",opts:["Latanoprost","Timolol","Brimonidine (alpha-2 agonist)","Dorzolamide"],ans:2,focus:"Brimonidine — CI in infants",exp:"Brimonidine (alpha-2 agonist) causes CNS depression and apnoea in infants and young children. Absolute contraindication. Used in adults for glaucoma (reduces production + increases uveoscleral drainage)."},{q:"A patient with wet AMD is offered intravitreal injections. Which drug class and key complication?",opts:["Intravitreal steroids — cataract","Anti-VEGF (ranibizumab/aflibercept) — endophthalmitis","Topical CAI — metallic taste","Alpha-2 agonist — allergy"],ans:1,focus:"Anti-VEGF for wet AMD",exp:"Anti-VEGF (ranibizumab, bevacizumab, aflibercept) for wet AMD, DMO, CRVO. Intravitreal injection. Key SE: endophthalmitis (rare but serious), RPE tear, subconjunctival haemorrhage. Dry AMD: no proven treatment (AREDS supplements only)."}];
 </script>
+<!-- BREATHING NEXT NOTE POPUP - outside modal to avoid transform stacking context -->
+<div class="b-next-bar" id="b-next-bar">
+  <div class="b-next-body">
+    <div class="b-next-tag">// You've reached the end</div>
+    <div class="b-next-title" id="b-next-title">Next note</div>
+  </div>
+  <div class="b-next-actions">
+    <button class="b-next-btn b-next-go" onclick="bGoNextNote()">Continue →</button>
+    <button class="b-next-btn b-next-stay" onclick="bDismissNextNote()">Linger here</button>
+    <button class="b-next-stop" onclick="bStop(true)">Done</button>
+  </div>
+</div>
 </body>
 </html>
