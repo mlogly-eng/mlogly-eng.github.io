@@ -3540,6 +3540,8 @@ function bStop(showSummary=false){
     const noteNames={pph:'Postpartum Haemorrhage',preeclampsia:'Pre-eclampsia',ectopic:'Ectopic Pregnancy',placenta:'Placenta Praevia',gdm:'Gestational Diabetes',shoulder:'Shoulder Dystocia',pretermlabour:'Preterm Labour',miscarriage:'Miscarriage',cordprolapse:'Cord Prolapse',abruption:'Placental Abruption',iol:'Induction of Labour',obstetriccholestasis:'Obstetric Cholestasis',ovarycyst:'Ovarian Cysts',cervicalcancer:'Cervical Cancer',endometriosis:'Endometriosis',pcos:'PCOS',fibroids:'Uterine Fibroids',pid:'Pelvic Inflammatory Disease',menopause:'Menopause',vulvalconditions:'Vulval Conditions',ovariancancer:'Ovarian Cancer',subfertility:'Subfertility',endometrialcancer:'Endometrial Cancer',urinaryincontinence:'Urinary Incontinence',contraception:'Contraception',sexuallytransmitted:'STIs',acutegynae:'Acute Gynaecology'};
     const sess={ id:Date.now(), noteId:currentNote, topic:noteNames[currentNote]||currentNote, duration:elapsed, sections:bSessionSections, feeling:null, date:new Date().toISOString() };
     bAddSession(sess);
+    // Save breathe session to Supabase
+    if(typeof saveBreatheSession === 'function') saveBreatheSession(currentNote);
     if(showSummary) setTimeout(()=>bShowSummary(sess), 600);
   }
 }
@@ -4094,6 +4096,8 @@ function stub(id){return `<div class="n-hero"><div class="n-tag">${id}</div><div
 
 function openNote(id){
   currentNote=id;
+  // Save progress to Supabase
+  if(typeof saveNoteProgress === 'function') saveNoteProgress(id);
   const html=NOTES[id]?NOTES[id]():stub(id);
   document.getElementById('mcontent').innerHTML=html;
   // Auto-tag key content for breathe mode highlight
@@ -6357,5 +6361,77 @@ NOTES_MCQ.acutegynae=[
     <button class="b-next-stop" onclick="bStop(true)">Done</button>
   </div>
 </div>
+
+<!-- Supabase Progress Tracking -->
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+const supabase = createClient('https://vwotkstjgzwjjutzjjph.supabase.co', 'sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj')
+
+// Get current user
+async function getUser() {
+  const { data: { user } } = await supabase.auth.getUser()
+  return user
+}
+
+// Save or update progress when a note is opened
+window.saveNoteProgress = async function(noteId) {
+  const user = await getUser()
+  if (!user) return
+
+  const { data: existing } = await supabase
+    .from('progress')
+    .select('*')
+    .eq('user_id', user.id)
+    .eq('note_id', noteId)
+    .single()
+
+  if (existing) {
+    await supabase
+      .from('progress')
+      .update({ last_opened: new Date().toISOString() })
+      .eq('user_id', user.id)
+      .eq('note_id', noteId)
+  } else {
+    await supabase
+      .from('progress')
+      .insert({
+        user_id: user.id,
+        note_id: noteId,
+        last_opened: new Date().toISOString(),
+        breathe_sessions: 0,
+        mcq_score: 0
+      })
+  }
+}
+
+// Save breathe session
+window.saveBreatheSession = async function(noteId) {
+  const user = await getUser()
+  if (!user) return
+
+  const { data: existing } = await supabase
+    .from('progress')
+    .select('*')
+    .eq('user_id', user.id)
+    .eq('note_id', noteId)
+    .single()
+
+  if (existing) {
+    await supabase
+      .from('progress')
+      .update({ breathe_sessions: (existing.breathe_sessions || 0) + 1 })
+      .eq('user_id', user.id)
+      .eq('note_id', noteId)
+  }
+}
+
+// Show user email in nav if logged in
+const user = await getUser()
+if (user) {
+  const loginBtn = document.querySelector('.nav-login-btn')
+  if (loginBtn) loginBtn.textContent = user.email.split('@')[0]
+}
+</script>
 </body>
 </html>

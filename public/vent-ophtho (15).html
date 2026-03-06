@@ -2444,6 +2444,8 @@ function bStop(showSummary=false){
   if(_bStart && elapsed>0){
     const sess={ id:Date.now(), noteId:currentNote, topic:NOTE_NAMES[currentNote]||currentNote, duration:elapsed, sections:bSessionSections, feeling:null, date:new Date().toISOString() };
     bAddSession(sess);
+    // Save breathe session to Supabase
+    if(typeof saveBreatheSession === 'function') saveBreatheSession(currentNote);
     if(showSummary) setTimeout(()=>bShowSummary(sess),600);
   }
 }
@@ -2890,6 +2892,8 @@ let currentNote=null, isFullscreen=false;
 
 function openNote(id){
   currentNote=id;
+  // Save progress to Supabase
+  if(typeof saveNoteProgress === 'function') saveNoteProgress(id);
   document.getElementById('mcontent').innerHTML=NOTES[id]?NOTES[id]():'<div class="n-page"><p style="color:var(--ink3);font-size:15px;">Coming soon.</p></div>';
   // Auto-tag key content for breathe mode highlight
   document.querySelectorAll('#mcontent .n-mech-cause, #mcontent .n-section-title, #mcontent .n-pearl-num, #mcontent .n-exam-statement').forEach(el=>{
@@ -4400,5 +4404,77 @@ NOTES_MCQ.pharmacology=[{q:"Asthmatic POAG patient prescribed timolol develops w
     <button class="b-next-stop" onclick="bStop(true)">Done</button>
   </div>
 </div>
+
+<!-- Supabase Progress Tracking -->
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+const supabase = createClient('https://vwotkstjgzwjjutzjjph.supabase.co', 'sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj')
+
+// Get current user
+async function getUser() {
+  const { data: { user } } = await supabase.auth.getUser()
+  return user
+}
+
+// Save or update progress when a note is opened
+window.saveNoteProgress = async function(noteId) {
+  const user = await getUser()
+  if (!user) return
+
+  const { data: existing } = await supabase
+    .from('progress')
+    .select('*')
+    .eq('user_id', user.id)
+    .eq('note_id', noteId)
+    .single()
+
+  if (existing) {
+    await supabase
+      .from('progress')
+      .update({ last_opened: new Date().toISOString() })
+      .eq('user_id', user.id)
+      .eq('note_id', noteId)
+  } else {
+    await supabase
+      .from('progress')
+      .insert({
+        user_id: user.id,
+        note_id: noteId,
+        last_opened: new Date().toISOString(),
+        breathe_sessions: 0,
+        mcq_score: 0
+      })
+  }
+}
+
+// Save breathe session
+window.saveBreatheSession = async function(noteId) {
+  const user = await getUser()
+  if (!user) return
+
+  const { data: existing } = await supabase
+    .from('progress')
+    .select('*')
+    .eq('user_id', user.id)
+    .eq('note_id', noteId)
+    .single()
+
+  if (existing) {
+    await supabase
+      .from('progress')
+      .update({ breathe_sessions: (existing.breathe_sessions || 0) + 1 })
+      .eq('user_id', user.id)
+      .eq('note_id', noteId)
+  }
+}
+
+// Show user email in nav if logged in
+const user = await getUser()
+if (user) {
+  const loginBtn = document.querySelector('.nav-login-btn')
+  if (loginBtn) loginBtn.textContent = user.email.split('@')[0]
+}
+</script>
 </body>
 </html>
