@@ -471,81 +471,101 @@ nav {
 .mbar {
   position: sticky; top: 0;
   background: var(--ink);
-  padding: 14px 32px;
-  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 20px;
+  height: 48px;
+  display: flex; align-items: center; justify-content: space-between;
   z-index: 10;
   border-bottom: 1px solid rgba(255,255,255,.05);
-  gap: 0;
+  gap: 12px;
 }
+/* Left: brand pulse + title */
 .mbar-l {
-  display: flex; align-items: center; gap: 14px; flex: 1;
+  display: flex; align-items: center; gap: 10px;
+  flex-shrink: 0; min-width: 0;
 }
-.mbar-center{display:flex;align-items:center;gap:10px;opacity:0;pointer-events:none;transition:opacity .3s ease;flex-shrink:0;}
-.mbar-center.visible{opacity:1;pointer-events:auto;}
-.mnav-btn{background:none;border:none;color:rgba(255,255,255,.35);font-size:14px;cursor:pointer;padding:4px 10px;transition:color .15s;line-height:1;}
-.mnav-btn:hover{color:rgba(255,255,255,.9);}
-.mnav-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.2);text-transform:uppercase;min-width:100px;text-align:center;}
 .mpulse {
-  width: 7px; height: 7px;
+  width: 6px; height: 6px; border-radius: 50%;
   background: var(--accent);
-  border-radius: 50%;
   animation: heartbeat 2.2s ease infinite;
   flex-shrink: 0;
 }
 @keyframes heartbeat {
-  0%,100%{ transform: scale(1); opacity:1; }
-  40%{ transform: scale(1.5); opacity:.6; }
-  60%{ transform: scale(1.2); opacity:.8; }
+  0%,100%{ transform:scale(1); opacity:1; }
+  40%{ transform:scale(1.5); opacity:.6; }
+  60%{ transform:scale(1.2); opacity:.8; }
 }
 .mbc {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 9px; letter-spacing: 2.5px;
-  color: rgba(250,247,240,.22);
+  font-size: 8.5px; letter-spacing: 2px;
+  color: rgba(250,247,240,.2);
   text-transform: uppercase;
+  white-space: nowrap;
 }
-.mbar-r {
-  display: flex; align-items: center; gap: 6px; flex: 1; justify-content: flex-end;
-}
-.mclose, .mfull {
-  width: 34px; height: 34px;
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 50%;
-  color: rgba(255,255,255,.35);
-  font-size: 14px;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: all .2s;
-}
-.mclose:hover { background: var(--accent); border-color: var(--accent); color: white; }
-.mfull:hover { background: rgba(255,255,255,.12); color: white; }
-
-/* ── MODAL TOOLBAR ── */
-.mtool-btn {
-  width: 30px; height: 30px;
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 6px;
-  color: rgba(255,255,255,.4);
-  font-size: 12px;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: all .2s;
+/* Center: note nav */
+.mbar-center {
+  display: flex; align-items: center; gap: 6px;
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s ease;
   flex-shrink: 0;
 }
-.mtool-btn:hover { background: rgba(255,255,255,.12); color: white; }
+.mbar-center.visible { opacity: 1; pointer-events: auto; }
+.mnav-btn {
+  background: none; border: none;
+  color: rgba(255,255,255,.3); font-size: 13px;
+  cursor: pointer; padding: 4px 8px;
+  transition: color .15s; line-height: 1;
+  border-radius: 4px;
+}
+.mnav-btn:hover { color: rgba(255,255,255,.9); }
+.mnav-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px; letter-spacing: 1.5px;
+  color: rgba(255,255,255,.2); text-transform: uppercase;
+  min-width: 90px; text-align: center;
+}
+/* Right: tools */
+.mbar-r {
+  display: flex; align-items: center; gap: 4px;
+  flex-shrink: 0;
+}
+/* Divider */
+.mbar-divider {
+  width: 1px; height: 16px;
+  background: rgba(255,255,255,.07);
+  margin: 0 3px; flex-shrink: 0;
+}
+/* Icon-only tool buttons */
+.mtool-btn {
+  width: 28px; height: 28px;
+  background: none; border: none;
+  border-radius: 5px;
+  color: rgba(255,255,255,.35);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, color .15s;
+  flex-shrink: 0;
+}
+.mtool-btn:hover { background: rgba(255,255,255,.08); color: rgba(255,255,255,.8); }
 .font-size-display {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 9px; letter-spacing: 1px;
-  color: rgba(255,255,255,.25);
-  min-width: 30px; text-align: center;
+  font-size: 8.5px; letter-spacing: .5px;
+  color: rgba(255,255,255,.2);
+  min-width: 28px; text-align: center;
   user-select: none;
 }
-.mbar-divider {
-  width: 1px; height: 18px;
-  background: rgba(255,255,255,.07);
-  margin: 0 4px; flex-shrink: 0;
+/* Close & fullscreen — icon only, no border */
+.mclose, .mfull {
+  width: 28px; height: 28px;
+  background: none; border: none;
+  border-radius: 5px;
+  color: rgba(255,255,255,.3);
+  font-size: 13px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, color .15s;
 }
+.mclose:hover { background: rgba(200,69,42,.2); color: #c8452a; }
+.mfull:hover { background: rgba(255,255,255,.08); color: white; }
 
 
 /* ══════════════════════════════════════════════════
@@ -555,32 +575,90 @@ nav {
 /* ── Toggle button ── */
 .breathe-toggle-btn {
   display: flex; align-items: center; gap: 7px;
-  padding: 0 14px; height: 30px;
-  background: rgba(200,69,42,.08);
-  border: 1px solid rgba(200,69,42,.35);
+  padding: 0 12px; height: 28px;
+  background: rgba(200,69,42,.07);
+  border: 1px solid rgba(200,69,42,.28);
   border-radius: 100px; cursor: pointer;
-  transition: all .25s; flex-shrink: 0;
+  transition: background .5s ease, border-color .5s ease, opacity .2s;
+  flex-shrink: 0; position: relative; overflow: hidden;
 }
-.breathe-toggle-btn:hover { background: rgba(200,69,42,.15); border-color: rgba(200,69,42,.55); }
-.breathe-toggle-btn.breathe-on {
-  background: rgba(42,160,80,.12);
-  border-color: rgba(42,160,80,.45);
+.breathe-toggle-btn:not(.b-locked):not(.b-unlocking):hover {
+  background: rgba(200,69,42,.14); border-color: rgba(200,69,42,.5);
 }
+/* Dot — red always */
 .breathe-btn-dot {
   width: 6px; height: 6px; border-radius: 50%;
-  background: #c8452a; transition: background .25s; flex-shrink: 0;
+  background: #c8452a;
+  flex-shrink: 0; position: relative; z-index: 1;
+  transition: background .7s ease;
+}
+/* Ready to breathe — dot pulses red outward */
+.breathe-toggle-btn.b-ready .breathe-btn-dot {
+  animation: b-pulse-red 1.6s ease-in-out infinite;
+}
+@keyframes b-pulse-red {
+  0%,100% { box-shadow: 0 0 0 0 rgba(200,69,42,.6); transform: scale(1); }
+  50%     { box-shadow: 0 0 0 5px rgba(200,69,42,.0); transform: scale(1.3); }
+}
+/* Active breathing — green */
+.breathe-toggle-btn.breathe-on {
+  background: rgba(42,160,80,.1);
+  border-color: rgba(42,160,80,.4);
 }
 .breathe-toggle-btn.breathe-on .breathe-btn-dot {
   background: #2aa050;
-  animation: breathe-dot-pulse 2s ease-in-out infinite;
+  animation: b-pulse-green 2s ease-in-out infinite;
 }
-@keyframes breathe-dot-pulse { 0%,100%{transform:scale(1);opacity:.8;} 50%{transform:scale(1.5);opacity:1;} }
+@keyframes b-pulse-green {
+  0%,100% { transform:scale(1); opacity:.85; }
+  50%     { transform:scale(1.5); opacity:1; }
+}
 .breathe-btn-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
-  color: rgba(200,69,42,.8); transition: color .25s;
+  font-size: 8.5px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(200,69,42,.75);
+  transition: color .5s ease; position: relative; z-index: 1;
 }
 .breathe-toggle-btn.breathe-on .breathe-btn-label { color: rgba(42,160,80,.9); }
+
+/* Locked */
+.breathe-toggle-btn.b-locked {
+  opacity: .28; cursor: not-allowed; pointer-events: none;
+}
+/* Scrolling — fill goes red → blue */
+.breathe-toggle-btn.b-unlocking {
+  border-color: rgba(200,69,42,.4);
+  pointer-events: none;
+}
+/* Fill bar: starts red, transitions to blue as it fills */
+.breathe-btn-fill {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  background: linear-gradient(90deg, rgba(200,69,42,.25) 0%, rgba(0,180,255,.45) 100%);
+  border-radius: 100px;
+  width: 0%; transition: width .25s ease;
+  pointer-events: none;
+}
+/* On unlock — drain fill back, leave blue tint briefly */
+.breathe-toggle-btn.b-just-unlocked {
+  border-color: rgba(0,180,255,.8);
+  background: rgba(0,180,255,.12);
+  animation: b-unlock-burst .8s ease forwards;
+}
+.breathe-toggle-btn.b-just-unlocked .breathe-btn-dot {
+  background: #00b4ff;
+  animation: b-burst-dot .8s ease forwards;
+}
+@keyframes b-unlock-burst {
+  0%   { box-shadow: 0 0 0 0 rgba(0,180,255,.8); }
+  40%  { box-shadow: 0 0 0 10px rgba(0,180,255,.25); }
+  100% { box-shadow: 0 0 0 18px rgba(0,180,255,.0);
+         background: rgba(200,69,42,.07); border-color: rgba(200,69,42,.28); }
+}
+@keyframes b-burst-dot {
+  0%   { background: #00b4ff; transform: scale(2.2); box-shadow: 0 0 0 6px rgba(0,180,255,.3); }
+  50%  { background: #00b4ff; transform: scale(1.1); box-shadow: 0 0 0 10px rgba(0,180,255,.0); }
+  100% { background: #c8452a; transform: scale(1); box-shadow: none; }
+}
 
 /* ── Section dimming ── */
 .note-modal.breathe-active .n-section,
@@ -813,7 +891,7 @@ nav {
   letter-spacing: 1.5px; text-transform: uppercase;
   cursor: pointer; transition: all .2s; flex-shrink: 0; position: relative;
 }
-.b-hist-btn:hover { background: rgba(255,255,255,.09); color: rgba(255,255,255,.75); }
+.b-hist-btn:hover { background: rgba(255,255,255,.08); color: rgba(255,255,255,.8); }
 .b-hist-btn .b-log-badge {
   position: absolute; top: -4px; right: -4px;
   width: 14px; height: 14px; border-radius: 50%;
@@ -2212,7 +2290,8 @@ mark.vent-hl:hover { filter: brightness(.82) saturate(1.8); }
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="2" stroke="currentColor" stroke-width="1.2"/><path d="M6.5 1v1.2M6.5 10.8V12M12 6.5h-1.2M2.2 6.5H1M10.3 2.7l-.85.85M3.55 9.45l-.85.85M10.3 10.3l-.85-.85M3.55 3.55l-.85-.85" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
         </button>
         <!-- Breathe mode -->
-        <button class="breathe-toggle-btn" id="btn-breathe" onclick="toggleBreathe()" title="Breathe mode">
+        <button class="breathe-toggle-btn b-locked" id="btn-breathe" onclick="toggleBreathe()" title="Read through the note to unlock breathing mode">
+          <span class="breathe-btn-fill" id="breathe-btn-fill"></span>
           <span class="breathe-btn-dot" id="breathe-btn-dot"></span>
           <span class="breathe-btn-label" id="breathe-btn-label">Breathe</span>
         </button>
@@ -3316,7 +3395,77 @@ const BCIRC = 263.9;
 function bPhaseDur(p){ if(p==='inhale')return PREFS.inhale*1000; if(p==='hold')return PREFS.hold*1000; return PREFS.exhale*1000; }
 
 // ── Toggle ──
+// ── Scroll-unlock system ──
+let bScrollUnlocked = false;
+let bScrollProgress = 0;
+let bScrollHandler = null;
+
+function bReadKey(noteId){ return 'vent-read-v1-'+noteId; }
+
+function bCheckReadMemory(noteId){
+  try{ return !!localStorage.getItem(bReadKey(noteId)); }catch(e){ return false; }
+}
+
+function bMarkNoteRead(noteId){
+  try{ localStorage.setItem(bReadKey(noteId),'1'); }catch(e){}
+}
+
+function bAttachScrollTracker(){
+  const modal = document.getElementById('modal');
+  if(!modal) return;
+  if(bScrollHandler) modal.removeEventListener('scroll', bScrollHandler);
+  bScrollHandler = function(){
+    if(bScrollUnlocked) return;
+    const scrolled = modal.scrollTop;
+    const total = modal.scrollHeight - modal.clientHeight;
+    if(total <= 0) return;
+    const pct = Math.min(scrolled / total, 1);
+    bScrollProgress = pct;
+    bUpdateScrollLock(pct);
+    if(pct >= 0.92){
+      bScrollUnlocked = true;
+      bMarkNoteRead(currentNote);
+      bUnlockBreathe();
+    }
+  };
+  modal.addEventListener('scroll', bScrollHandler, {passive:true});
+}
+
+function bUpdateScrollLock(pct){
+  const btn = document.getElementById('btn-breathe');
+  const fill = document.getElementById('breathe-btn-fill');
+  const lbl = document.getElementById('breathe-btn-label');
+  if(!btn || bScrollUnlocked || breatheOn) return;
+  if(fill) fill.style.width = (pct * 100) + '%';
+  if(pct > 0.04){
+    btn.classList.add('b-unlocking');
+    btn.classList.remove('b-locked');
+    if(lbl && lbl.textContent !== 'Keep reading\u2026') lbl.textContent = 'Keep reading\u2026';
+    btn.title = 'Keep reading to unlock';
+  }
+}
+
+function bUnlockBreathe(silent){
+  const btn = document.getElementById('btn-breathe');
+  const fill = document.getElementById('breathe-btn-fill');
+  const lbl = document.getElementById('breathe-btn-label');
+  if(!btn) return;
+  btn.classList.remove('b-locked','b-unlocking');
+  btn.style.pointerEvents = '';
+  if(fill){ fill.style.width='100%'; setTimeout(()=>{ fill.style.transition='width .5s ease'; fill.style.width='0%'; },350); }
+  if(lbl) lbl.textContent = 'Breathe';
+  btn.title = 'Breathing mode';
+  if(!silent){
+    btn.classList.add('b-just-unlocked','b-ready');
+    setTimeout(()=>{ btn.classList.remove('b-just-unlocked'); }, 750);
+  } else {
+    btn.classList.add('b-ready');
+  }
+}
+
+
 function toggleBreathe(){
+  if(!bScrollUnlocked && !breatheOn) return; // still locked
   if(!breatheOn){ vsResetSession(); bStart_(); }
   else bStop(true);
 }
@@ -3336,6 +3485,7 @@ function bStart_(){
   document.getElementById('modal').classList.add('breathe-active');
   document.getElementById('btn-breathe').classList.add('breathe-on');
   document.getElementById('breathe-btn-label').textContent = 'Breathing';
+  document.getElementById('btn-breathe').classList.remove('b-ready');
   document.getElementById('b-ring-wrap').classList.add('visible');
   document.getElementById('b-reading-bar').style.display = 'block';
   document.getElementById('b-nav').classList.add('visible');
@@ -3369,6 +3519,7 @@ function bStop(showSummary=false){
   setTimeout(()=>{ document.getElementById('modal').classList.remove('focus-mode'); }, 400);
   document.getElementById('btn-breathe').classList.remove('breathe-on');
   document.getElementById('breathe-btn-label').textContent = 'Breathe';
+  if(bScrollUnlocked){ document.getElementById('btn-breathe').classList.add('b-ready'); }
   document.getElementById('b-ring-wrap').classList.remove('visible');
   document.getElementById('b-reading-bar').style.display = 'none';
   document.getElementById('b-reading-fill').style.width = '0%';
@@ -3956,6 +4107,23 @@ function openNote(id){
   document.getElementById('overlay').classList.add('open');
   document.body.style.overflow='hidden';
   document.getElementById('modal').scrollTop=0;
+  // Check if user has already read this note before
+  const alreadyRead = bCheckReadMemory(id);
+  bScrollUnlocked = alreadyRead;
+  bScrollProgress = alreadyRead ? 1 : 0;
+  const _bb = document.getElementById('btn-breathe');
+  const _bl = document.getElementById('breathe-btn-label');
+  const _bf = document.getElementById('breathe-btn-fill');
+  if(_bb){ _bb.classList.remove('b-locked','b-unlocking','b-just-unlocked','b-ready'); }
+  if(_bf){ _bf.style.transition='none'; _bf.style.width='0%'; }
+  if(alreadyRead){
+    if(_bb){ _bb.style.pointerEvents=''; _bb.classList.add('b-ready'); }
+    if(_bl) _bl.textContent='Breathe';
+  } else {
+    if(_bb){ _bb.classList.add('b-locked'); _bb.style.pointerEvents=''; }
+    if(_bl) _bl.textContent='Breathe';
+  }
+  bAttachScrollTracker();
   setLang('en');
   document.getElementById('page-note-ob').style.display='block';
   document.getElementById('page-mcq-ob').style.display='none';
