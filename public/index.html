@@ -20,7 +20,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:28px 6
 .nav-links{display:flex;gap:40px;}
 .nav-links a{font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);text-decoration:none;transition:color .2s;}
 .nav-links a:hover{color:var(--ink);}
-.{background:var(--ink);color:var(--bg);padding:11px 26px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border-radius:100px;transition:all .2s;}
+.nav-pill{background:var(--ink);color:var(--bg);padding:11px 26px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border-radius:100px;transition:all .2s;}
 .nav-pill:hover{background:var(--accent);}
 .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
 .nav-hamburger span{display:block;width:24px;height:2px;background:var(--ink);border-radius:2px;transition:all .3s;}
@@ -417,18 +417,18 @@ footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:
 <div class="toast" id="toast"></div>
 
 <nav>
-  <a href="/index.html" class="logo">
+  <a href="/" class="logo">
     <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" stroke="#1a1510" stroke-width="1.5"/><path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M10 30 Q22 36 34 30" stroke="#1a1510" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="22" cy="10" r="2.5" fill="#c8452a"/><path d="M14 22 Q10 26 10 30" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity="0.4"/><path d="M30 22 Q34 26 34 30" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity="0.4"/></svg>
     <span class="logo-name">Vent</span>
   </a>
-  <div class="nav-links"><a href="#specialties">Specialties</a><a href="#story">Our story</a><a href="/vent-qbank.html">Q-Bank</a><a href="#waitlist">Early access</a></div>
-  <button onclick="signInWithGoogle()" class="nav-pill" style="border:none;cursor:pointer;">Sign in with Google</button><a href="#waitlist" class="nav-pill">Join waitlist</a>
+  <div class="nav-links"><a href="#specialties">Specialties</a><a href="#story">Our story</a><a href="/qbank">Q-Bank</a><a href="#waitlist">Early access</a></div>
+  <a href="#waitlist" class="nav-pill">Join waitlist</a>
   <button class="nav-hamburger" id="hbg" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="nav-drawer" id="drawer">
   <a href="#specialties" class="drawer-link">Specialties</a>
   <a href="#story" class="drawer-link">Our story</a>
-  <a href="/vent-qbank.html" class="drawer-link">Q-Bank</a>
+  <a href="/qbank" class="drawer-link">Q-Bank</a>
   <a href="#waitlist" class="drawer-link drawer-pill">Join waitlist</a>
 </div>
 
@@ -482,7 +482,7 @@ footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:
     <p class="sec-desc">Every note built to the same standard — integrated visuals, clinical reasoning frameworks, and the insight no textbook gives you. Built to the same standard throughout.</p>
   </div>
   <div class="spec-grid">
-    <a href="/vent-ophtho.html" class="sc reveal">
+    <a href="/ophtho" class="sc reveal">
       <div class="sc-icon">👁</div><div class="sc-num">01 — Ophthalmology</div>
       <div class="sc-title">Eye &amp; Vision</div>
       <p class="sc-desc">Lens anatomy, cataracts and their types, corneal infections, retinal anatomy, diabetic retinopathy, hypertensive retinopathy. The eye conditions every doctor must know.</p>
@@ -491,7 +491,7 @@ footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:
         <div style="display:flex;justify-content:space-between;align-items:center;width:100%;"><div class="sc-meta">6 notes · 5 MCQs each · Live</div><div class="sc-arr">↗</div></div>
       </div>
     </a>
-    <a href="/vent-obgyn.html" class="sc reveal">
+    <a href="/obgyn" class="sc reveal">
       <div class="sc-icon">🩺</div><div class="sc-num">02 — OB/GYN</div>
       <div class="sc-title">Obstetrics &amp; Gynaecology</div>
       <p class="sc-desc">PPH, preeclampsia, ectopic pregnancy, placenta praevia, gestational diabetes, shoulder dystocia — and 21 more. Every OB/GYN condition you need to know, cold.</p>
@@ -534,7 +534,7 @@ footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:
       <div class="qbe-tag">// Q-Bank</div>
       <h2 class="qbe-hl">Test yourself.<br><em>No notes allowed.</em></h2>
       <p class="qbe-body">Pure recall. Choose a specialty, set your mode, pick your count. Clinical questions written from the notes — so they test exactly what matters. Growing towards 1,000+.</p>
-      <a href="/vent-qbank.html" class="qbe-btn">Enter Q-Bank <span>↗</span></a>
+      <a href="/qbank" class="qbe-btn">Enter Q-Bank <span>↗</span></a>
     </div>
     <div class="qbe-right">
       <div class="qbe-stat"><div class="qbe-stat-n">1,000+</div><div class="qbe-stat-l">Questions — the goal</div></div>
@@ -927,31 +927,6 @@ function qbNewSession() {
   qbExit();
   openQBLauncher();
 }
-// Supabase setup
-const SUPABASE_URL = 'https://vwotkstjgzwjjutzjjph.supabase.co'
-const SUPABASE_KEY = 'sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj'
-
-async function signInWithGoogle() {
-  const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm')
-  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
-  const { error } = await supabase.auth.signInWithOAuth({
-    provider: 'google',
-    options: {
-      redirectTo: 'https://ventmed.netlify.app'
-    }
-  })
-  if (error) console.error(error)
-}
-
-async function checkUser() {
-  const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm')
-  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
-  const { data: { user } } = await supabase.auth.getUser()
-  if (user) {
-    document.querySelector('button[onclick="signInWithGoogle()"]').textContent = user.email
-  }
-}
-
-checkUser()</script>
+</script>
 </body>
 </html>
