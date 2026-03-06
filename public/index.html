@@ -20,7 +20,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:28px 6
 .nav-links{display:flex;gap:40px;}
 .nav-links a{font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);text-decoration:none;transition:color .2s;}
 .nav-links a:hover{color:var(--ink);}
-.nav-pill{background:var(--ink);color:var(--bg);padding:11px 26px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border-radius:100px;transition:all .2s;}
+.{background:var(--ink);color:var(--bg);padding:11px 26px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border-radius:100px;transition:all .2s;}
 .nav-pill:hover{background:var(--accent);}
 .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
 .nav-hamburger span{display:block;width:24px;height:2px;background:var(--ink);border-radius:2px;transition:all .3s;}
@@ -422,7 +422,7 @@ footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:
     <span class="logo-name">Vent</span>
   </a>
   <div class="nav-links"><a href="#specialties">Specialties</a><a href="#story">Our story</a><a href="/vent-qbank.html">Q-Bank</a><a href="#waitlist">Early access</a></div>
-  <a href="#waitlist" class="nav-pill">Join waitlist</a>
+  <button onclick="signInWithGoogle()" class="nav-pill" style="border:none;cursor:pointer;">Sign in with Google</button><a href="#waitlist" class="nav-pill">Join waitlist</a>
   <button class="nav-hamburger" id="hbg" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="nav-drawer" id="drawer">
@@ -927,6 +927,31 @@ function qbNewSession() {
   qbExit();
   openQBLauncher();
 }
-</script>
+// Supabase setup
+const SUPABASE_URL = 'https://vwotkstjgzwjjutzjjph.supabase.co'
+const SUPABASE_KEY = 'sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj'
+
+async function signInWithGoogle() {
+  const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm')
+  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: 'https://ventmed.netlify.app/index.html'
+    }
+  })
+  if (error) console.error(error)
+}
+
+async function checkUser() {
+  const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm')
+  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+  const { data: { user } } = await supabase.auth.getUser()
+  if (user) {
+    document.querySelector('button[onclick="signInWithGoogle()"]').textContent = user.email
+  }
+}
+
+checkUser()</script>
 </body>
 </html>
