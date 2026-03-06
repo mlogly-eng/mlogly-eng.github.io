@@ -937,7 +937,7 @@ async function signInWithGoogle() {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: 'https://ventmed.netlify.app/index.html'
+      redirectTo: 'https://ventmed.netlify.app'
     }
   })
   if (error) console.error(error)
