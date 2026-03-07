@@ -2,7 +2,7 @@
 // ── Inject n-anchor enhanced styles ──
 (function(){
   const s=document.createElement('style');
-  s.textContent=`.n-anchor{margin:0;padding:32px 32px 0;border-top:none!important;}.n-anchor-card{background:none;border:none;padding:0;margin:0;}.n-anchor-text{font-family:'Instrument Serif',Georgia,serif!important;font-size:clamp(19px,2.2vw,27px)!important;line-height:1.5!important;color:rgba(245,242,235,0.88)!important;letter-spacing:0.2px;font-style:italic;font-weight:400!important;display:block!important;}.n-anchor-text em{font-style:italic!important;color:rgba(245,242,235,0.98)!important;}.n-anchor-label{display:none!important;}.n-anchor-ornament{display:none!important;}`;
+  s.textContent=`.n-anchor{margin:0;padding:0 32px;border-top:none!important;}.n-anchor-card{background:linear-gradient(150deg,rgba(200,69,42,0.05) 0%,rgba(210,140,80,0.03) 60%,rgba(200,69,42,0.04) 100%);border:1px solid rgba(200,69,42,0.14);border-left:3px solid rgba(200,69,42,0.4);border-radius:6px;padding:32px 40px 30px 34px;margin:0;position:relative;backdrop-filter:blur(2px);}.n-anchor-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(200,69,42,0.4),rgba(200,69,42,0.1),transparent);border-radius:6px 6px 0 0;}.n-anchor-label{font-family:Syne,sans-serif;font-size:8.5px;font-weight:700;letter-spacing:3.5px;color:rgba(200,69,42,0.55);text-transform:uppercase;display:block;margin-bottom:16px;}.n-anchor-text{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(17px,2vw,24px);line-height:1.65;color:rgba(20,15,10,0.78);letter-spacing:0.15px;font-weight:400;display:block;}.n-anchor-text em{font-style:italic;color:rgba(20,15,10,0.92);}.n-anchor-ornament{display:none;}`;
   document.head.appendChild(s);
 })();
 const revealObs = new IntersectionObserver(entries => {
@@ -2867,6 +2867,34 @@ NOTES.orbit = () => `<div class="n-page"><div class="n-hero-new">
     <div class="n-snap-cell"><div class="n-snap-label">Most common proptosis</div><div class="n-snap-text">Adults: thyroid eye disease. Unilateral proptosis, no obvious cause → CT orbit today.</div></div>
     <div class="n-snap-cell"><div class="n-snap-label">TED threats</div><div class="n-snap-text">Dysthyroid optic neuropathy (DON) and corneal exposure are sight-threatening.</div></div>
   </div>
+</div>
+<div class="n-section">
+<div class="n-viz-block">
+  <div class="n-viz-label-row"><span class="n-viz-title">Orbital pathology — key distinctions</span><span class="n-viz-sub">Preseptal vs orbital — the septum is the boundary</span></div>
+  <svg viewBox="0 0 760 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="0" y="0" width="244" height="160" rx="2" fill="#1a2a3a"/>
+    <text x="122" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">PRESEPTAL</text>
+    <text x="122" y="56" font-family="Syne,sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="800">Lid swelling only</text>
+    <text x="122" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Normal EOM · normal VA</text>
+    <text x="122" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">No proptosis</text>
+    <text x="122" y="108" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Anterior to orbital septum</text>
+    <text x="122" y="148" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Oral co-amoxiclav</text>
+    <rect x="258" y="0" width="244" height="160" rx="2" fill="#c8452a"/>
+    <text x="380" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">ORBITAL CELLULITIS</text>
+    <text x="380" y="56" font-family="Syne,sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="800">Emergency</text>
+    <text x="380" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Proptosis · restricted painful EOM</text>
+    <text x="380" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">VA reduction · fever</text>
+    <text x="380" y="108" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Post-septal · from ethmoid sinusitis</text>
+    <text x="380" y="148" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">IV co-amoxiclav + urgent CT</text>
+    <rect x="516" y="0" width="244" height="160" rx="2" fill="#2a2a4a"/>
+    <text x="638" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">THYROID EYE DISEASE</text>
+    <text x="638" y="56" font-family="Syne,sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="800">TED / Graves'</text>
+    <text x="638" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Proptosis · lid retraction · diplopia</text>
+    <text x="638" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">DON: RAPD + colour loss at apex</text>
+    <text x="638" y="108" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">EOM enlargement on CT</text>
+    <text x="638" y="148" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">IV methylprednisolone if DON</text>
+  </svg>
+</div>
 </div>
 <div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Orbital vs Preseptal Cellulitis</span><span class="n-section-tag">the septum is everything</span></div>
