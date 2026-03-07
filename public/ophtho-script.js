@@ -2,7 +2,7 @@
 // ── Inject n-anchor enhanced styles ──
 (function(){
   const s=document.createElement('style');
-  s.textContent=`.n-anchor{margin:0;padding:0 32px;border-top:none!important;}.n-anchor-card{background:rgba(252,245,235,0.9);border:1px solid rgba(200,120,60,0.18);border-left:3px solid rgba(200,100,42,0.45);border-radius:6px;padding:32px 40px 30px 34px;margin:0;position:relative;}.n-anchor-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(200,69,42,0.5),rgba(200,69,42,0.15),transparent);border-radius:6px 6px 0 0;}.n-anchor-label{font-family:Syne,sans-serif;font-size:8.5px;font-weight:700;letter-spacing:3.5px;color:rgba(200,69,42,0.7)!important;text-transform:uppercase;display:block;margin-bottom:16px;}.n-anchor-text{font-family:'Instrument Serif',Georgia,serif!important;font-size:clamp(17px,2vw,24px)!important;line-height:1.65!important;color:rgba(15,10,8,0.82)!important;letter-spacing:0.15px;font-weight:400!important;display:block!important;}.n-anchor-text em{font-style:italic!important;color:rgba(15,10,8,0.92)!important;}.n-anchor-ornament{display:none!important;}.n-compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(15,10,8,0.12);border-radius:6px;overflow:hidden;margin:4px 0;}.n-compare-col{padding:0;}.n-compare-col:first-child{border-right:1px solid rgba(15,10,8,0.1);}.n-compare-head{font-family:Syne,sans-serif;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:16px 20px 14px;border-bottom:1px solid rgba(15,10,8,0.1);color:rgba(15,10,8,0.85);background:rgba(15,10,8,0.03);}.n-compare-row{display:grid;grid-template-columns:90px 1fr;gap:0;border-bottom:1px solid rgba(15,10,8,0.07);padding:0;}.n-compare-row:last-child{border-bottom:none;}.n-compare-label{font-family:Syne,sans-serif;font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(15,10,8,0.35);padding:12px 12px 12px 20px;border-right:1px solid rgba(15,10,8,0.07);display:flex;align-items:center;}.n-compare-row span:last-child{font-family:JetBrains Mono,monospace;font-size:11px;color:rgba(15,10,8,0.75);padding:12px 16px;line-height:1.5;}.n-compare-row span:last-child strong{color:rgba(15,10,8,0.92);font-weight:700;}`;
+  s.textContent=`.n-anchor{margin:0;padding:32px 32px 0;border-top:none!important;}.n-anchor-card{background:none;border:none;padding:0;margin:0;}.n-anchor-text{font-family:'Instrument Serif',Georgia,serif!important;font-size:clamp(19px,2.2vw,27px)!important;line-height:1.5!important;color:rgba(245,242,235,0.88)!important;letter-spacing:0.2px;font-style:italic;font-weight:400!important;display:block!important;}.n-anchor-text em{font-style:italic!important;color:rgba(245,242,235,0.98)!important;}.n-anchor-label{display:none!important;}.n-anchor-ornament{display:none!important;}`;
   document.head.appendChild(s);
 })();
 const revealObs = new IntersectionObserver(entries => {
@@ -2048,22 +2048,16 @@ NOTES.eyelids = () => `<div class="n-page"><div class="n-hero-new">
 </div>
 <div class="n-section">
   <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Chalazion vs Hordeolum</span><span class="n-section-tag">tender = infected</span></div>
-  <div class="n-compare-grid">
-    <div class="n-compare-col" style="background:rgba(15,10,8,0.02);">
-      <div class="n-compare-head">Chalazion</div>
-      <div class="n-compare-row"><span class="n-compare-label">What</span><span>Meibomian lipogranuloma — chronic <strong>sterile</strong> inflammation</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Tender?</span><span><strong>No.</strong> Firm nodule in tarsal plate. Non-inflamed.</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Cause</span><span>Blocked duct → retained lipid → granulomatous response</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Rx</span><span>Warm compresses → steroid injection → I&amp;C if &gt;4 weeks</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Red flag</span><span><strong>Same site recurrence = biopsy.</strong> Sebaceous carcinoma masquerades here.</span></div>
+  <div class="n-diff-grid">
+    <div class="n-diff-card this">
+      <div class="n-diff-card-tag">Chalazion</div>
+      <div class="n-diff-card-name">Meibomian lipogranuloma — sterile, chronic</div>
+      <div class="n-diff-card-key"><strong>Non-tender.</strong> Firm nodule in the tarsal plate. No inflammation. Blocked Meibomian duct → retained lipid → granulomatous response. Rx: warm compresses → intralesional steroid injection → I&amp;C if persistent &gt;4 weeks. <strong>Red flag: same-site recurrence = biopsy immediately.</strong> Sebaceous gland carcinoma masquerades as chalazion.</div>
     </div>
-    <div class="n-compare-col" style="background:rgba(200,69,42,0.04);">
-      <div class="n-compare-head" style="color:#c8452a;">Hordeolum (Stye)</div>
-      <div class="n-compare-row"><span class="n-compare-label">What</span><span>Staphylococcal abscess — acute <strong>bacterial</strong> infection</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Tender?</span><span><strong>Yes.</strong> Acutely painful, red, pointing. Hot lid.</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Cause</span><span>Staph aureus. External = Zeis/Moll. Internal = Meibomian.</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Rx</span><span>Warm compresses + topical abx. Systemic if cellulitis.</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Red flag</span><span><strong>Fever + proptosis + restricted EOM</strong> = orbital cellulitis. IV abx now.</span></div>
+    <div class="n-diff-card that">
+      <div class="n-diff-card-tag">Hordeolum (Stye)</div>
+      <div class="n-diff-card-name">Staphylococcal abscess — infected, acute</div>
+      <div class="n-diff-card-key"><strong>Tender, red, hot, pointing.</strong> Acute bacterial infection — Staph aureus. External (glands of Zeis/Moll, lash base) or internal (Meibomian gland). Rx: warm compresses + topical antibiotics. Systemic flucloxacillin if preseptal cellulitis. <strong>Red flag: fever + proptosis + restricted EOM = orbital cellulitis → IV antibiotics now.</strong></div>
     </div>
   </div>
 
@@ -2263,24 +2257,16 @@ NOTES.conjunctiva = () => `<div class="n-page"><div class="n-hero-new">
 </div>
 <div class="n-section">
   <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Episcleritis vs Scleritis</span><span class="n-section-tag">this distinction matters enormously</span></div>
-  <div class="n-compare-grid">
-    <div class="n-compare-col" style="background:rgba(15,10,8,0.02);">
-      <div class="n-compare-head">Episcleritis</div>
-      <div class="n-compare-row"><span class="n-compare-label">Pain</span><span>Mild discomfort or <strong>none.</strong> Dull ache at most.</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Colour</span><span>Bright red, sectoral. <strong>Blanches with phenylephrine.</strong></span></div>
-      <div class="n-compare-row"><span class="n-compare-label">VA</span><span><strong>Normal.</strong> No threat to vision.</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Systemic</span><span>Usually idiopathic. Mild assoc: IBD, RA.</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Rx</span><span>Topical NSAIDs or lubricants. Self-limiting weeks.</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Urgency</span><span>Routine — no emergency referral needed.</span></div>
+  <div class="n-diff-grid">
+    <div class="n-diff-card this">
+      <div class="n-diff-card-tag">Episcleritis</div>
+      <div class="n-diff-card-name">Superficial · self-limiting · benign</div>
+      <div class="n-diff-card-key">Mild discomfort or none. Bright red, sectoral. <strong>Blanches with phenylephrine</strong> — the key test. VA normal, no systemic threat. Usually idiopathic; mild association with IBD, RA. Rx: topical NSAIDs or lubricants. Resolves spontaneously in weeks. <strong>Routine — no emergency referral.</strong></div>
     </div>
-    <div class="n-compare-col" style="background:rgba(200,69,42,0.04);">
-      <div class="n-compare-head" style="color:#c8452a;">Scleritis</div>
-      <div class="n-compare-row"><span class="n-compare-label">Pain</span><span><strong>Severe boring pain. Wakes from sleep.</strong> Radiates jaw/temple.</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Colour</span><span>Deep violaceous. <strong>Does NOT blanch</strong> with phenylephrine.</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">VA</span><span>Can be <strong>reduced.</strong> Posterior → exudative RD.</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Systemic</span><span><strong>RA · GPA · SLE · IBD</strong> — full workup mandatory.</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Rx</span><span>Oral NSAIDs → steroids → DMARDs. Topicals insufficient.</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Urgency</span><span><strong>Urgent.</strong> Scleral thinning → perforation if untreated.</span></div>
+    <div class="n-diff-card that">
+      <div class="n-diff-card-tag">Scleritis</div>
+      <div class="n-diff-card-name">Deep · severe · sight-threatening</div>
+      <div class="n-diff-card-key"><strong>Severe boring pain waking from sleep.</strong> Radiates to jaw and temple. Deep violaceous colour — <strong>does NOT blanch</strong> with phenylephrine. VA can be reduced. Posterior scleritis → exudative RD. Associated: <strong>RA · GPA · SLE · IBD</strong> — full systemic workup mandatory. Rx: oral NSAIDs → steroids → DMARDs. Scleral thinning → globe perforation if untreated. <strong>Urgent ophthalmology.</strong></div>
     </div>
   </div>
 
