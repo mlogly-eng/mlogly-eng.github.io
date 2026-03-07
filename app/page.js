@@ -43,7 +43,7 @@ document.getElementById('sb').addEventListener('click',async()=>{
   errEl.classList.remove('show');
   if(!validEmail(email)){errEl.textContent='Please enter a valid email address.';errEl.classList.add('show');document.getElementById('ei').focus();return;}
   btn.disabled=true;btn.textContent='Submitting...';
-  await fetch("https://vwotkstjgzwjjutzjjph.supabase.co/rest/v1/waitlist", {method:"POST", headers:{"Content-Type":"application/json","apikey":"sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj","Authorization":"Bearer sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj"}, body: JSON.stringify({email, year: document.getElementById("yr").value})});
+  const _wr = await fetch("https://vwotkstjgzwjjutzjjph.supabase.co/rest/v1/waitlist", {method:"POST", headers:{"Content-Type":"application/json","apikey":"sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj","Authorization":"Bearer sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj"}, body: JSON.stringify({email, year: document.getElementById("yr").value})}); console.log("waitlist status", _wr.status);
   await new Promise(r=>setTimeout(r,800));
   document.getElementById('fc').innerHTML='<div style="padding:48px 0;"><div style="font-family:\'Instrument Serif\',serif;font-size:52px;color:#e85d3f;font-style:italic;line-height:1;margin-bottom:20px;">You\'re in.</div><p style="color:rgba(245,242,235,.65);font-size:16px;line-height:1.75;">We\'ll reach out when Vent opens.<br>Until then — breathe.</p></div>';
 });
@@ -492,7 +492,7 @@ function qbNewSession() {
       <input type="email" class="c-field" placeholder="your@email.com" id="ei" autocomplete="email">
       <select class="c-field" id="yr"><option value="" disabled selected>What year are you in?</option><option value="MS1">MS1</option><option value="MS2">MS2</option><option value="MS3">MS3</option><option value="MS4">MS4</option><option value="Resident">Resident</option><option value="Other">Other</option></select>
       <p class="c-err" id="cerr">Please enter a valid email address.</p>
-      <button class="c-btn" id="sb">Join the waitlist →</button>
+      <button class="c-btn" id="sb" onclick="handleWaitlist()">Join the waitlist →</button>
       <p class="c-note">// no spam. no filler. just vent.</p>
     </div>
   </div>
@@ -561,7 +561,7 @@ document.getElementById('sb').addEventListener('click',async()=>{
   errEl.classList.remove('show');
   if(!validEmail(email)){errEl.textContent='Please enter a valid email address.';errEl.classList.add('show');document.getElementById('ei').focus();return;}
   btn.disabled=true;btn.textContent='Submitting...';
-  await fetch("https://vwotkstjgzwjjutzjjph.supabase.co/rest/v1/waitlist", {method:"POST", headers:{"Content-Type":"application/json","apikey":"sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj","Authorization":"Bearer sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj"}, body: JSON.stringify({email, year: document.getElementById("yr").value})});
+  const _wr = await fetch("https://vwotkstjgzwjjutzjjph.supabase.co/rest/v1/waitlist", {method:"POST", headers:{"Content-Type":"application/json","apikey":"sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj","Authorization":"Bearer sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj"}, body: JSON.stringify({email, year: document.getElementById("yr").value})}); console.log("waitlist status", _wr.status);
   await new Promise(r=>setTimeout(r,800));
   document.getElementById('fc').innerHTML='<div style="padding:48px 0;"><div style="font-family:\'Instrument Serif\',serif;font-size:52px;color:#e85d3f;font-style:italic;line-height:1;margin-bottom:20px;">You\'re in.</div><p style="color:rgba(245,242,235,.65);font-size:16px;line-height:1.75;">We\'ll reach out when Vent opens.<br>Until then — breathe.</p></div>';
 });
