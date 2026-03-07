@@ -1,6 +1,6 @@
 (function(){
   const s=document.createElement('style');
-  s.textContent=`.n-anchor{text-align:center;padding:48px 32px 40px;margin:0;border-top:1px solid rgba(10,10,10,0.12);position:relative;background:transparent;}.n-anchor::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:60px;height:1px;background:linear-gradient(90deg,transparent,rgba(10,10,10,0.25),transparent);}.n-anchor-text{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(20px,2.5vw,30px);line-height:1.55;color:rgba(10,10,10,0.82);letter-spacing:0.2px;font-weight:400;display:block;text-align:center;}.n-anchor-text em{font-style:italic;color:rgba(10,10,10,0.95);}.n-anchor-ornament{font-family:'Instrument Serif',serif;font-size:13px;color:rgba(10,10,10,0.28);letter-spacing:6px;margin-bottom:18px;display:block;text-align:center;}`;
+  s.textContent=`.n-anchor{margin:0 0 0 0;padding:0 32px 0;}.n-anchor-card{background:linear-gradient(135deg,rgba(200,69,42,0.07) 0%,rgba(180,120,60,0.05) 100%);border:1px solid rgba(200,69,42,0.18);border-left:3px solid rgba(200,69,42,0.55);border-radius:4px;padding:28px 36px 28px 32px;margin:0;position:relative;}.n-anchor-label{font-family:Syne,sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:rgba(200,69,42,0.7);text-transform:uppercase;display:block;margin-bottom:14px;}.n-anchor-text{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(18px,2.2vw,26px);line-height:1.6;color:rgba(10,10,10,0.85);letter-spacing:0.1px;font-weight:400;display:block;}.n-anchor-text em{font-style:italic;color:rgba(10,10,10,0.95);font-weight:400;}.n-anchor-ornament{display:none;}`;
   document.head.appendChild(s);
 })();
 
@@ -1567,7 +1567,7 @@ NOTES.pph=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Give TXA early and universally.</strong> It does not cause pathological clotting at therapeutic doses. Waiting for coagulopathy to develop is waiting too long.</div></div>
 </div>
   </div>
-</div><div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">The uterus is either <em>soft</em> or it isn't —<br>everything else follows from that one finding.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+</div><div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">The uterus is either <em>soft</em> or it isn't —<br>everything else follows from that one finding.</div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -1587,39 +1587,34 @@ NOTES.preeclampsia=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TRIGGER</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Abnormal
-Placentation</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Shallow trophoblast invasion</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Spiral arteries not remodelled</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TRIGGER</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Abnormal</tspan><tspan x="72" dy="16">Placentation</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Shallow trophoblast invasion</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Spiral arteries not remodelled</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Happens at 8–18 wks</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MECHANISM</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Placental
-Ischaemia</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Releases sFlt-1 · sEng</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Anti-angiogenic factors</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MECHANISM</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Placental</tspan><tspan x="227" dy="16">Ischaemia</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Releases sFlt-1 · sEng</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Anti-angiogenic factors</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Systemic endothelial damage</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a5a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">BP SIGN</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">≥140/90
-after 20wks</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">+ proteinuria or</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">end-organ dysfunction</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">BP SIGN</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">≥140/90</tspan><tspan x="382" dy="16">after 20wks</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">+ proteinuria or</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">end-organ dysfunction</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Symptom, not the cause</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SEVERE</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">HELLP /
-Eclampsia</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Haemolysis · ↑LFTs</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Low platelets · seizures</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SEVERE</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">HELLP /</tspan><tspan x="537" dy="16">Eclampsia</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Haemolysis · ↑LFTs</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Low platelets · seizures</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Deliver if ≥34 wks</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TREATMENT</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Deliver
-the Placenta</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Only cure</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">MgSO₄ if seizure risk</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TREATMENT</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Deliver</tspan><tspan x="690" dy="16">the Placenta</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Only cure</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">MgSO₄ if seizure risk</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Labetalol/nifedipine BP</text>
     </svg>
   </div>
@@ -1683,7 +1678,7 @@ the Placenta</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Fluid overload kills in PET.</strong> Pulmonary oedema is a leading cause of maternal death. Restrict fluids to 80 mL/hr total unless haemorrhaging.</div></div>
 </div>
   </div>
-</div><div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">The BP is the <em>symptom.</em><br>The placenta is the <em>disease.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+</div><div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">The BP is the <em>symptom.</em><br>The placenta is the <em>disease.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -1703,39 +1698,34 @@ NOTES.ectopic=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MOST COMMON</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Ampullary
-Tube (70%)</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Fertilised egg stuck</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">in widest tube segment</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MOST COMMON</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Ampullary</tspan><tspan x="72" dy="16">Tube (70%)</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Fertilised egg stuck</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">in widest tube segment</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Pain before rupture</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">HIGH RISK</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Isthmic
-Tube (12%)</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Narrow lumen</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Ruptures earlier</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">HIGH RISK</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Isthmic</tspan><tspan x="227" dy="16">Tube (12%)</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Narrow lumen</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Ruptures earlier</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Sudden catastrophic bleed</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">RARE / DANGEROUS</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Cornual /
-Interstitial</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Surrounded by myometrium</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Ruptures late — massive bleed</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">RARE / DANGEROUS</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Cornual /</tspan><tspan x="382" dy="16">Interstitial</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Surrounded by myometrium</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Ruptures late — massive bleed</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Often missed on USS</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MANAGEMENT</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">By Stability
-+ βhCG</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Unstable → theatre</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stable: MTX or wait</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MANAGEMENT</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">By Stability</tspan><tspan x="537" dy="16">+ βhCG</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Unstable → theatre</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Stable: MTX or wait</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Serial βhCG until zero</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">EMERGENCY</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Ruptured
-Ectopic</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Haemoperitoneum</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Collapse + shoulder tip</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">EMERGENCY</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Ruptured</tspan><tspan x="690" dy="16">Ectopic</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Haemoperitoneum</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Collapse + shoulder tip</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Immediate laparotomy</text>
     </svg>
   </div>
@@ -1797,7 +1787,7 @@ Ectopic</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Rupture can occur at any hCG level.</strong> Low hCG ≠ early and safe. If the tube is already compromised, it can rupture before hCG rises.</div></div>
 </div>
   </div>
-</div><div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Positive test + pain + empty uterus —<br>it's <em>ectopic</em> until you prove otherwise.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+</div><div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Positive test + pain + empty uterus —<br>it's <em>ectopic</em> until you prove otherwise.</div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -1817,39 +1807,34 @@ NOTES.placenta=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">GRADE I</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Low-lying
-Placenta</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Edge within 2 cm of os</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Does not reach os</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">GRADE I</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Low-lying</tspan><tspan x="72" dy="16">Placenta</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Edge within 2 cm of os</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Does not reach os</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">May deliver vaginally</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">GRADE II</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Marginal
-Praevia</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Reaches but does</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">not cover the os</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">GRADE II</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Marginal</tspan><tspan x="227" dy="16">Praevia</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Reaches but does</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">not cover the os</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Borderline — reassess</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a5a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">GRADE III</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Partial
-Praevia</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Partially covers</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">internal os</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">GRADE III</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Partial</tspan><tspan x="382" dy="16">Praevia</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Partially covers</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">internal os</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">LSCS required</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">GRADE IV</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Complete
-Praevia</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Entirely covers os</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Painless APH</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">GRADE IV</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">Complete</tspan><tspan x="537" dy="16">Praevia</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Entirely covers os</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Painless APH</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Elective LSCS 37–38wk</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DANGER</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Accreta
-Spectrum</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Abnormal invasion</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Morbidly adherent</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">DANGER</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Accreta</tspan><tspan x="690" dy="16">Spectrum</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Abnormal invasion</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Morbidly adherent</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Hysterectomy risk</text>
     </svg>
   </div>
@@ -1910,7 +1895,7 @@ Spectrum</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Give anti-D after any APH event</strong> — including small warning bleeds. Sensitisation can occur even with small feto-maternal haemorrhage.</div></div>
 </div>
   </div>
-</div><div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text"><em>Painless. Bright red. Third trimester.</em><br>Scan before you touch.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+</div><div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text"><em>Painless. Bright red. Third trimester.</em><br>Scan before you touch.</div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -1930,39 +1915,34 @@ NOTES.gdm=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MECHANISM</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">HPL Blocks
-Insulin</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Placental hormones</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">antagonise insulin</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MECHANISM</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">HPL Blocks</tspan><tspan x="72" dy="16">Insulin</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Placental hormones</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">antagonise insulin</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Peaks at 26–28 wks</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a4a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DIAGNOSIS</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">OGTT
-75g Glucose</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Fasting ≥5.6 mmol/L</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">2hr ≥7.8 mmol/L</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">DIAGNOSIS</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">OGTT</tspan><tspan x="227" dy="16">75g Glucose</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Fasting ≥5.6 mmol/L</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">2hr ≥7.8 mmol/L</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Offered at 24–28 wks</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">FETAL EFFECT</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Macrosomia
->4.5 kg</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Fetal hyperinsulinaemia</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Excess fat deposition</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">FETAL EFFECT</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Macrosomia</tspan><tspan x="382" dy="16">>4.5 kg</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Fetal hyperinsulinaemia</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Excess fat deposition</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Shoulder dystocia risk</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MANAGEMENT</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Diet → Metf
-→ Insulin</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Target fasting <5.3</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">1hr post-meal <7.8</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MANAGEMENT</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">Diet → Metf</tspan><tspan x="537" dy="16">→ Insulin</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Target fasting <5.3</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">1hr post-meal <7.8</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Deliver by 40+6</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">NEONATAL</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Hypo-
-glycaemia</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Baby loses placental</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">glucose abruptly</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">NEONATAL</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Hypo-</tspan><tspan x="690" dy="16">glycaemia</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Baby loses placental</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">glucose abruptly</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Feed within 30 min</text>
     </svg>
   </div>
@@ -2032,7 +2012,7 @@ glycaemia</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Diet-controlled GDM still requires induction by 40+6</strong> at the latest. Waiting for spontaneous labour increases stillbirth risk. GDM women are not standard low-risk.</div></div>
 </div>
   </div>
-</div><div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">You are not managing a glucose number.<br>You are managing a fetus that eats <em>everything its mother eats.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+</div><div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">You are not managing a glucose number.<br>You are managing a fetus that eats <em>everything its mother eats.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2052,39 +2032,34 @@ NOTES.shoulder=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">H</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Call for
-Help</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Senior midwife</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Obs · Paeds · Anaes</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">H</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Call for</tspan><tspan x="72" dy="16">Help</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Senior midwife</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Obs · Paeds · Anaes</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Don't delay anything</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a2a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">E + L</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Episiotomy
-+ Legs</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">McRoberts: legs back</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Hyper-flex on abdomen</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">E + L</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Episiotomy</tspan><tspan x="227" dy="16">+ Legs</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">McRoberts: legs back</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Hyper-flex on abdomen</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">50% resolve with this</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">P</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Suprapubic
-Pressure</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Downward + lateral</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Dislodge ant shoulder</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">P</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Suprapubic</tspan><tspan x="382" dy="16">Pressure</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Downward + lateral</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Dislodge ant shoulder</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">NOT fundal pressure</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">E + R</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Enter +
-Rotate</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Rubin II · Woods screw</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Reverse Woods (Barnum)</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">E + R</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">Enter +</tspan><tspan x="537" dy="16">Rotate</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Rubin II · Woods screw</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Reverse Woods (Barnum)</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Internal manoeuvres</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">R</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Remove
-Post Arm</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Sweep arm across</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">chest to deliver</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">R</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Remove</tspan><tspan x="690" dy="16">Post Arm</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Sweep arm across</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">chest to deliver</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Last: Zavanelli / CS</text>
     </svg>
   </div>
@@ -2127,7 +2102,7 @@ Post Arm</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Episiotomy relieves soft tissue, not bony impaction.</strong> It buys room for your hands. It does not free the shoulder. McRoberts' first.</div></div>
 </div>
   </div>
-</div><div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">McRoberts. Suprapubic pressure.<br><em>Help. Immediately.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+</div><div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">McRoberts. Suprapubic pressure.<br><em>Help. Immediately.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2147,39 +2122,34 @@ NOTES.miscarriage=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">THREATENED</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Bleeding +
-Closed Os</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Viable fetus on USS</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Outcome uncertain</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">THREATENED</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Bleeding +</tspan><tspan x="72" dy="16">Closed Os</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Viable fetus on USS</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Outcome uncertain</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Rest · repeat scan</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a4a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">INEVITABLE</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Bleeding +
-Open Os</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Products at os</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Passing imminently</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">INEVITABLE</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Bleeding +</tspan><tspan x="227" dy="16">Open Os</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Products at os</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Passing imminently</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Expect or expedite</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">INCOMPLETE</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Partial
-Expulsion</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Tissue retained</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Os open or closed</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">INCOMPLETE</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Partial</tspan><tspan x="382" dy="16">Expulsion</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Tissue retained</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Os open or closed</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Medical or surgical</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MISSED</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Silent /
-Anembryonic</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">No cardiac activity</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Empty sac (blighted ovum)</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MISSED</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">Silent /</tspan><tspan x="537" dy="16">Anembryonic</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">No cardiac activity</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Empty sac (blighted ovum)</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Expectant/medical/ERPC</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SEPTIC</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Infected
-Retained POC</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Fever · offensive PV</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Uterine tenderness</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SEPTIC</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Infected</tspan><tspan x="690" dy="16">Retained POC</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Fever · offensive PV</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Uterine tenderness</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">IV abx + urgent ERPC</text>
     </svg>
   </div>
@@ -2242,7 +2212,7 @@ Retained POC</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Safety-net is essential.</strong> What happens if bleeding is heavy at home? EPAU must be accessible 24/7. Discharge without a safety plan is unsafe.</div></div>
 </div>
   </div>
-</div><div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Most early losses are chromosomal.<br>That's not her fault — <em>and she needs to hear that.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+</div><div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Most early losses are chromosomal.<br>That's not her fault — <em>and she needs to hear that.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2262,39 +2232,35 @@ NOTES.cordprolapse=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">RECOGNISE</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Cord felt
-or Seen</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">After ROM — fetal HR</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">drops with contraction</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">RECOGNISE</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Cord felt</tspan><tspan x="72" dy="16">or Seen</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">After ROM — fetal HR</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">drops with contraction</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Feel on VE — act now</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">IMMEDIATELY</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Fingers In
-Part Up</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Elevate presenting part</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Relieve compression</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">IMMEDIATELY</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Fingers In</tspan><tspan x="227" dy="16">Part Up</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Elevate presenting part</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Relieve compression</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Do not remove hand</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">POSITION</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">All-Fours
-or Trendelenburg</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Keep gravity working</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">for you not against</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">POSITION</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">All-Fours</tspan><tspan x="382" dy="16">or Trendelenburg</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Keep gravity working</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">for you not against</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Left lateral if alone</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">CALL</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">999 / Crash
-Call</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Senior obs · anaes</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Neonatal team</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">CALL</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">999 / Crash</tspan><tspan x="537" dy="16">Call</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Senior obs · anaes</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Neonatal team</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Category 1 CS target</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DELIVER</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">DELIVER</text>
       <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">CS within
 <30 min</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Bladder fill if delay</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Tocolysis if needed</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Bladder fill if delay</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Tocolysis if needed</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Good outcomes if fast</text>
     </svg>
   </div>
@@ -2352,7 +2318,7 @@ Call</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Category 1 CS is the default for cord prolapse unless vaginal delivery is imminent.</strong> Footling breech does not make vaginal delivery safer — it makes cord compression more likely.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Fingers in. Presenting part up.<br><em>Don't let go until delivery.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Fingers in. Presenting part up.<br><em>Don't let go until delivery.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2372,39 +2338,34 @@ NOTES.endometriosis=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SUPERFICIAL</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Peritoneal
-Deposits</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Powder burns · red lesions</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Bladder · bowel surface</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SUPERFICIAL</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Peritoneal</tspan><tspan x="72" dy="16">Deposits</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Powder burns · red lesions</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Bladder · bowel surface</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Dysmenorrhoea</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">OVARIAN</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Endo-
-metrioma</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">'Chocolate cyst'</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Bilateral in 30%</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">OVARIAN</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Endo-</tspan><tspan x="227" dy="16">metrioma</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">'Chocolate cyst'</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Bilateral in 30%</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Reduces ovarian reserve</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#5a2a3a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DEEP</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">DIE —
-USL / POD</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Uterosacral ligaments</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Pouch of Douglas</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">DEEP</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">DIE —</tspan><tspan x="382" dy="16">USL / POD</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Uterosacral ligaments</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pouch of Douglas</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Severe dyspareunia</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#3a2a5a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">EXTRA-PELVIC</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Bowel /
-Bladder</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Cyclical rectal bleed</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Haematuria in cycle</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">EXTRA-PELVIC</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">Bowel /</tspan><tspan x="537" dy="16">Bladder</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Cyclical rectal bleed</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Haematuria in cycle</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Rare — but missed</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">STAGING</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">rASRM
-I → IV</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">I=minimal · IV=severe</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stage ≠ symptom severity</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">STAGING</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">rASRM</tspan><tspan x="690" dy="16">I → IV</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">I=minimal · IV=severe</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Stage ≠ symptom severity</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Lap is gold standard</text>
     </svg>
   </div>
@@ -2462,7 +2423,7 @@ I → IV</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Hysterectomy alone does not cure endometriosis.</strong> Disease outside the uterus — on bowel, peritoneum, bladder — is unaffected. BSO reduces oestrogen drive and improves outcomes, but excision of deposits at the time of surgery is required for lasting relief.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Seven years of pain before a diagnosis.<br>The first step is <em>taking the symptoms seriously.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Seven years of pain before a diagnosis.<br>The first step is <em>taking the symptoms seriously.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2482,39 +2443,34 @@ NOTES.pcos=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">CRITERION 1</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Oligo /
-Anovulation</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Cycles >35 days</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">or <8/year</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">CRITERION 1</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Oligo /</tspan><tspan x="72" dy="16">Anovulation</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Cycles >35 days</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">or <8/year</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Leading cause subfertility</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">CRITERION 2</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Hyper-
-androgenism</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Clinical: acne · hirsutism</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Biochemical: ↑testosterone</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">CRITERION 2</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Hyper-</tspan><tspan x="227" dy="16">androgenism</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Clinical: acne · hirsutism</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Biochemical: ↑testosterone</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Exclude CAH · tumour</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a1a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">CRITERION 3</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">PCO
-Morphology</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">≥20 follicles per ovary</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">or volume >10 mL</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">CRITERION 3</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">PCO</tspan><tspan x="382" dy="16">Morphology</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">≥20 follicles per ovary</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">or volume >10 mL</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">USS — not diagnostic alone</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">METABOLIC</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Insulin
-Resistance</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">70% regardless of BMI</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">↑T2DM · dyslipidaemia</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">METABOLIC</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">Insulin</tspan><tspan x="537" dy="16">Resistance</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">70% regardless of BMI</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">↑T2DM · dyslipidaemia</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Screen with fasting gluc</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">LONG-TERM</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Endometrial
-Cancer Risk</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Unopposed oestrogen</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">from anovulation</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">LONG-TERM</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Endometrial</tspan><tspan x="690" dy="16">Cancer Risk</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Unopposed oestrogen</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">from anovulation</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Provoke bleed if >3 mo</text>
     </svg>
   </div>
@@ -2579,7 +2535,7 @@ Cancer Risk</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Metformin alone is insufficient for ovulation induction.</strong> It improves insulin sensitivity and cycle regularity but does not reliably induce ovulation. First-line is letrozole; metformin is an adjunct, not a replacement.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">PCOS is not just about the ovaries.<br>It's a <em>metabolic condition</em> that happens to affect reproduction.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">PCOS is not just about the ovaries.<br>It's a <em>metabolic condition</em> that happens to affect reproduction.</div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2599,39 +2555,34 @@ NOTES.fibroids=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SUBMUCOSAL</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Type 0–2
-SM</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Distorts cavity</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">HMB · subfertility</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SUBMUCOSAL</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Type 0–2</tspan><tspan x="72" dy="16">SM</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Distorts cavity</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">HMB · subfertility</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Hysteroscopic resection</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">INTRAMURAL</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Type 3–4
-IM</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Within myometrium</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Bulk symptoms · HMB</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">INTRAMURAL</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Type 3–4</tspan><tspan x="227" dy="16">IM</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Within myometrium</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Bulk symptoms · HMB</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">GnRH · UAE · myomectomy</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SUBSEROSAL</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Type 5–7
-SS</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Outside uterus</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Pressure on bladder/bowel</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SUBSEROSAL</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Type 5–7</tspan><tspan x="382" dy="16">SS</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Outside uterus</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pressure on bladder/bowel</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Often asymptomatic</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">PEDUNCULATED</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Type 7
-Ped</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">On stalk — can torse</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Mimics ovarian mass</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">PEDUNCULATED</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">Type 7</tspan><tspan x="537" dy="16">Ped</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">On stalk — can torse</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Mimics ovarian mass</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Torsion = acute pain</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">IN PREGNANCY</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Red
-Degeneration</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Rapid growth → infarct</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Acute pain at 20 wks</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">IN PREGNANCY</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Red</tspan><tspan x="690" dy="16">Degeneration</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Rapid growth → infarct</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Acute pain at 20 wks</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Analgesia · self-limiting</text>
     </svg>
   </div>
@@ -2690,7 +2641,7 @@ Degeneration</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Myomectomy removes existing fibroids but does not prevent recurrence.</strong> Up to 25% of women require further intervention within 10 years. Women who want definitive treatment and have completed their family should be counselled about hysterectomy.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Location matters more than size.<br>A 5 mm <em>submucosal</em> fibroid causes more harm than a 5 cm subserosal one.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Location matters more than size.<br>A 5 mm <em>submucosal</em> fibroid causes more harm than a 5 cm subserosal one.</div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2710,39 +2661,34 @@ NOTES.pid=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">ORGANISMS</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Chlamydia
-+ Gonorrhoea</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Most common STI cause</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Anaerobes also involved</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">ORGANISMS</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Chlamydia</tspan><tspan x="72" dy="16">+ Gonorrhoea</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Most common STI cause</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Anaerobes also involved</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Often polymicrobial</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">ASCENT</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Cervix →
-Uterus → Tubes</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Endometritis first</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Then salpingitis</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">ASCENT</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Cervix →</tspan><tspan x="227" dy="16">Uterus → Tubes</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Endometritis first</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Then salpingitis</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Cervical motion tender</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DIAGNOSIS</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Clinical
-+ Swabs</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Adnexal · CMT tender</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">No single test confirms</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">DIAGNOSIS</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Clinical</tspan><tspan x="382" dy="16">+ Swabs</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Adnexal · CMT tender</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">No single test confirms</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Treat if suspected</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TREATMENT</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Ceftriaxone
-+ Doxy + Met</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">BASHH guidelines</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">14-day course</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TREATMENT</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">Ceftriaxone</tspan><tspan x="537" dy="16">+ Doxy + Met</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">BASHH guidelines</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">14-day course</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Review IUCD if present</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">COMPLICATION</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">TOA /
-Infertility</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">TOA: IV abx or drain</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">3 episodes → 50% infertile</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">COMPLICATION</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">TOA /</tspan><tspan x="690" dy="16">Infertility</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">TOA: IV abx or drain</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">3 episodes → 50% infertile</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Ectopic risk ×6–10</text>
     </svg>
   </div>
@@ -2801,7 +2747,7 @@ Infertility</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>IUCD removal is not mandatory in mild-to-moderate PID.</strong> If the woman wishes to retain the device and responds to antibiotics, it can stay in situ. Remove only if there is no improvement within 72 hours or if the infection is severe.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Treat first. The swab result<br>confirms what you <em>already suspected</em>.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Treat first. The swab result<br>confirms what you <em>already suspected</em>.</div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2821,39 +2767,36 @@ NOTES.pretermlabour=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">ASSESS</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">TVU Cervix
-+ fFN</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Cervix <25mm = high risk</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">fFN neg → reassure</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">ASSESS</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">TVU Cervix</tspan><tspan x="72" dy="16">+ fFN</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Cervix <25mm = high risk</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">fFN neg → reassure</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Both together best</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DELAY</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Tocolysis
-48 hrs</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Nifedipine first-line</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Atosiban if needed</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">DELAY</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Tocolysis</tspan><tspan x="227" dy="16">48 hrs</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Nifedipine first-line</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Atosiban if needed</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Time for steroids only</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a1a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">PROTECT</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Antenatal
-Steroids</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Betamethasone 2 doses</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle"><34 wks — lung maturity</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">PROTECT</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Antenatal</tspan><tspan x="382" dy="16">Steroids</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Betamethasone 2 doses</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle"><34 wks — lung maturity</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Give within 24 hrs</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">NEUROPROTECT</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">NEUROPROTECT</text>
       <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">MgSO₄
 <30 wks</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Reduces cerebral palsy</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">4g IV loading dose</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Reduces cerebral palsy</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">4g IV loading dose</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Not a tocolytic here</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DELIVER</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">DELIVER</text>
       <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800"><34 wks:
 Tertiary Unit</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">In-utero transfer</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Neonatal team on standby</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">In-utero transfer</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Neonatal team on standby</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Survival 90%+ at 28wk</text>
     </svg>
   </div>
@@ -2911,7 +2854,7 @@ Tertiary Unit</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Confirmed preterm labour requires inpatient management.</strong> Fetal fibronectin negativity can support outpatient monitoring of threatened preterm labour — but once labour is confirmed on clinical or USS criteria, admission and treatment are mandatory.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Every week in utero<br>is a week the NICU <em>doesn't have to be.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Every week in utero<br>is a week the NICU <em>doesn't have to be.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2931,39 +2874,34 @@ NOTES.ovarycyst=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">FUNCTIONAL</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Follicular /
-Corpus Luteal</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Simple unilocular</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle"><5cm — likely resolve</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">FUNCTIONAL</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Follicular /</tspan><tspan x="72" dy="16">Corpus Luteal</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Simple unilocular</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle"><5cm — likely resolve</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Rescan in 6–12 wks</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">BENIGN</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Dermoid /
-Cystadenoma</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Dermoid: teeth/fat on USS</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Mucinous: very large</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">BENIGN</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Dermoid /</tspan><tspan x="227" dy="16">Cystadenoma</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Dermoid: teeth/fat on USS</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Mucinous: very large</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Laparoscopic cystectomy</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">ENDOMETRIOMA</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">'Chocolate
-Cyst'</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Ground-glass appearance</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Associated with endo</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">ENDOMETRIOMA</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">'Chocolate</tspan><tspan x="382" dy="16">Cyst'</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Ground-glass appearance</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Associated with endo</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Medical or surgical</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">RMI SCORE</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">U × M ×
-CA-125</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">RMI >200 = high risk</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Refer to cancer MDT</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">RMI SCORE</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">U × M ×</tspan><tspan x="537" dy="16">CA-125</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">RMI >200 = high risk</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Refer to cancer MDT</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">U=USS · M=menopausal</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TORSION</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Time is
-Ovary</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Sudden onset pain</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">USS may show blood flow</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TORSION</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Time is</tspan><tspan x="690" dy="16">Ovary</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Sudden onset pain</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">USS may show blood flow</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Laparoscopy within hrs</text>
     </svg>
   </div>
@@ -3022,7 +2960,7 @@ Ovary</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>CA-125 alone is insufficient — use the Risk of Malignancy Index (RMI) which combines USS score, menopausal status, and CA-125.</strong> CA-125 can be elevated in benign conditions and is normal in up to 50% of early ovarian cancers.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Sudden onset pain + ovarian cyst =<br><em>torsion until you've looked inside.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Sudden onset pain + ovarian cyst =<br><em>torsion until you've looked inside.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -3042,39 +2980,34 @@ NOTES.cervicalcancer=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">CAUSE</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">HPV 16
-and 18</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">High-risk HPV 70%</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Transmitted sexually</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">CAUSE</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">HPV 16</tspan><tspan x="72" dy="16">and 18</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">High-risk HPV 70%</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Transmitted sexually</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Vaccination at 12–13</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">PRE-CANCER</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">CIN I–III
-(Dysplasia)</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">CIN III = severe dysplasia</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Not yet invasive</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">PRE-CANCER</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">CIN I–III</tspan><tspan x="227" dy="16">(Dysplasia)</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">CIN III = severe dysplasia</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Not yet invasive</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Detected on smear</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SCREENING</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">HPV Primary
-Screening</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">3-yearly 25–49</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">5-yearly 50–64</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SCREENING</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">HPV Primary</tspan><tspan x="382" dy="16">Screening</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">3-yearly 25–49</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">5-yearly 50–64</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Colposcopy if HPV+</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SYMPTOMS</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">PCB /
-IMB / DC</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Postcoital bleed</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Intermenstrual bleed</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SYMPTOMS</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">PCB /</tspan><tspan x="537" dy="16">IMB / DC</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Postcoital bleed</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Intermenstrual bleed</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Refer urgently if PCB</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">STAGING</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">FIGO
-I → IV</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stage IB1: confined</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stage IV: spread beyond</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">STAGING</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">FIGO</tspan><tspan x="690" dy="16">I → IV</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Stage IB1: confined</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Stage IV: spread beyond</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">MRI for staging</text>
     </svg>
   </div>
@@ -3139,7 +3072,7 @@ I → IV</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Stage IA1–IB1 can be managed with radical trachelectomy in women who wish to preserve fertility.</strong> Radical hysterectomy is the standard, but fertility-sparing surgery is an established option in selected cases at specialist centres.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">A vaccine. A smear programme.<br>This cancer is almost <em>entirely preventable.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">A vaccine. A smear programme.<br>This cancer is almost <em>entirely preventable.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -3159,39 +3092,34 @@ NOTES.abruption=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TYPE 1</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Revealed
-Abruption</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Visible PV bleeding</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Placenta edge bleeds out</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TYPE 1</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Revealed</tspan><tspan x="72" dy="16">Abruption</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Visible PV bleeding</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Placenta edge bleeds out</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Easier to quantify</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TYPE 2</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Concealed
-Abruption</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Blood trapped behind</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Placenta — no PV loss</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TYPE 2</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Concealed</tspan><tspan x="227" dy="16">Abruption</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Blood trapped behind</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Placenta — no PV loss</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Worst — missed easily</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#5a2a3a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SIGNS</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Woody Hard
-Uterus</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Constant pain (not colicky)</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Uterus tense between ctx</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SIGNS</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Woody Hard</tspan><tspan x="382" dy="16">Uterus</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Constant pain (not colicky)</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Uterus tense between ctx</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Opposite of praevia</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">FETAL</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">CTG
-Decelerations</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Hypoxia from separation</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stillbirth if large</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">FETAL</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">CTG</tspan><tspan x="537" dy="16">Decelerations</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Hypoxia from separation</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Stillbirth if large</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Deliver immediately</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MATERNAL</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">DIC /
-Hypovolaemia</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Clotting cascade fails</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Clotting screen + XM</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MATERNAL</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">DIC /</tspan><tspan x="690" dy="16">Hypovolaemia</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Clotting cascade fails</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Clotting screen + XM</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Massive haemorrhage protocol</text>
     </svg>
   </div>
@@ -3235,7 +3163,7 @@ Hypovolaemia</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Abruption causes consumptive coagulopathy — DIC.</strong> Management requires cryoprecipitate (for fibrinogen), platelets, and FFP in a 1:1:1 ratio alongside red cells. Fibrinogen &lt;2 g/L is a critical threshold — replace it specifically.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">No visible blood<br>doesn't mean <em>no bleeding.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">No visible blood<br>doesn't mean <em>no bleeding.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -3255,39 +3183,34 @@ NOTES.iol=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">ASSESS</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Bishop
-Score</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">≥8 = favourable</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle"><6 = needs ripening</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">ASSESS</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Bishop</tspan><tspan x="72" dy="16">Score</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">≥8 = favourable</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle"><6 = needs ripening</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">5 features 0–3 each</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">RIPEN</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Dinoprostone
-PGE₂ Gel</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Softens + dilates cervix</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Repeat after 6 hrs</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">RIPEN</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Dinoprostone</tspan><tspan x="227" dy="16">PGE₂ Gel</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Softens + dilates cervix</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Repeat after 6 hrs</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Monitor CTG after</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">BALLOON</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Cook /
-Foley</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Mechanical ripening</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Alternative to PGE₂</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">BALLOON</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Cook /</tspan><tspan x="382" dy="16">Foley</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Mechanical ripening</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Alternative to PGE₂</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Lower hyperstim risk</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">AMNIOTOMY</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">ARM +
-Syntocinon</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Once cervix favourable</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Synto titrated carefully</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">AMNIOTOMY</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">ARM +</tspan><tspan x="537" dy="16">Syntocinon</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Once cervix favourable</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Synto titrated carefully</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Continuous CTG req'd</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">COMPLICATION</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Hyper-
-stimulation</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">>5 ctx in 10 min</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Tocolyse + stop Synto</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">COMPLICATION</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Hyper-</tspan><tspan x="690" dy="16">stimulation</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">>5 ctx in 10 min</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Tocolyse + stop Synto</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Category 1 CS if CTG bad</text>
     </svg>
   </div>
@@ -3351,7 +3274,7 @@ stimulation</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Hyperstimulation (contractions &gt;5 in 10 minutes or contractions lasting &gt;2 minutes) requires immediate action:</strong> stop oxytocin, left lateral position, tocolysis if fetal compromise present. It is a clinical emergency, not a monitoring footnote.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Induction is a process, not an event.<br>The cervix decides <em>how long it takes.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Induction is a process, not an event.<br>The cervix decides <em>how long it takes.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -3371,39 +3294,34 @@ NOTES.menopause=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">VASOMOTOR</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Hot Flushes
-+ Sweats</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">GnRH neuron disinhibition</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Hypothalamic dysregulation</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">VASOMOTOR</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Hot Flushes</tspan><tspan x="72" dy="16">+ Sweats</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">GnRH neuron disinhibition</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Hypothalamic dysregulation</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">HRT most effective</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">UROGENITAL</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">GSM /
-Atrophy</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">↓oestrogen → thin mucosa</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Dryness · dyspareunia · UTI</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">UROGENITAL</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">GSM /</tspan><tspan x="227" dy="16">Atrophy</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">↓oestrogen → thin mucosa</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Dryness · dyspareunia · UTI</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Topical oestrogen safe</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a1a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SKELETAL</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Osteo-
-porosis</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Rapid bone loss 1–3 yrs</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">post-menopause</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SKELETAL</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Osteo-</tspan><tspan x="382" dy="16">porosis</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Rapid bone loss 1–3 yrs</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">post-menopause</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">DEXA if early / POI</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">CARDIOVASC</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">CV Risk
-Rises</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Oestrogen cardioprotective</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Lost after menopause</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">CARDIOVASC</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">CV Risk</tspan><tspan x="537" dy="16">Rises</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Oestrogen cardioprotective</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Lost after menopause</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">HRT <60 may protect</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">HRT</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Oestrogen
-± Progest</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Systemic if uterus present</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Add progestogen always</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">HRT</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Oestrogen</tspan><tspan x="690" dy="16">± Progest</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Systemic if uterus present</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Add progestogen always</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Discuss risks at 1 yr</text>
     </svg>
   </div>
@@ -3461,7 +3379,7 @@ Rises</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>There is no arbitrary age limit for HRT.</strong> The decision to continue is based on individual benefit-risk assessment. For women with severe symptoms or osteoporosis, the benefits often continue to outweigh risks well beyond 60. Annual review — not automatic cessation — is appropriate.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Menopause is not a disease.<br>But undertreated oestrogen deficiency <em>causes one.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Menopause is not a disease.<br>But undertreated oestrogen deficiency <em>causes one.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -3481,42 +3399,37 @@ NOTES.vulvalconditions=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">LICHEN
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">LICHEN
 SCLEROSUS</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">White
-Atrophic</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Figure-of-8 pattern</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">'Cigarette paper' skin</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">White</tspan><tspan x="72" dy="16">Atrophic</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Figure-of-8 pattern</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">'Cigarette paper' skin</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Clobetasol · lifelong</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">LICHEN
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">LICHEN
 PLANUS</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Erosive
-Red/Purple</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Wickham's striae</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Affects vagina too</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Erosive</tspan><tspan x="227" dy="16">Red/Purple</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Wickham's striae</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Affects vagina too</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Steroids · immunosup</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">VIN</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Vulval
-Intraepithelial</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Pre-malignant lesion</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">HPV or differentiated</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">VIN</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Vulval</tspan><tspan x="382" dy="16">Intraepithelial</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pre-malignant lesion</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">HPV or differentiated</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Refer to colposcopy</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">BARTHOLIN'S</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Cyst /
-Abscess</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">4 o'clock position</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Tender fluctuant swelling</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">BARTHOLIN'S</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">Cyst /</tspan><tspan x="537" dy="16">Abscess</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">4 o'clock position</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Tender fluctuant swelling</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Word catheter / marsup</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">VULVAL
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">VULVAL
 CANCER</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Squamous
-Cell Ca</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Arises on lichen scl.</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Warty / nodular ulcer</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Squamous</tspan><tspan x="690" dy="16">Cell Ca</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Arises on lichen scl.</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Warty / nodular ulcer</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">4–5% lifetime LS risk</text>
     </svg>
   </div>
@@ -3561,7 +3474,7 @@ Cell Ca</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Topical oestrogen has no role in lichen sclerosus.</strong> First-line is clobetasol propionate 0.05% applied using the 3-month tapering regimen. Topical oestrogen treats vulvovaginal atrophy — a completely different condition.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">White skin. Itch. Figure-of-8.<br>Biopsy what you're not sure about. <em>Every time.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">White skin. Itch. Figure-of-8.<br>Biopsy what you're not sure about. <em>Every time.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -3581,39 +3494,34 @@ NOTES.ovariancancer=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">HISTOLOGY</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">HGSC
-70% of cases</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">High-grade serous</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Most aggressive subtype</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">HISTOLOGY</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">HGSC</tspan><tspan x="72" dy="16">70% of cases</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">High-grade serous</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Most aggressive subtype</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">TP53 mutation universal</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SYMPTOMS</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Bloating
-Satiety · IBS</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Vague — hence late Dx</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Persistent ≥12×/month</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SYMPTOMS</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Bloating</tspan><tspan x="227" dy="16">Satiety · IBS</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Vague — hence late Dx</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Persistent ≥12×/month</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Pelvic/abdo mass</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">INVESTIGATE</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">CA-125
-+ USS</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">RMI to risk-stratify</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">CT chest/abdo/pelvis</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">INVESTIGATE</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">CA-125</tspan><tspan x="382" dy="16">+ USS</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">RMI to risk-stratify</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">CT chest/abdo/pelvis</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Refer if RMI >200</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">STAGING</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">FIGO
-I – IV</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stage I: confined ovary</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stage III: peritoneal</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">STAGING</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">FIGO</tspan><tspan x="537" dy="16">I – IV</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Stage I: confined ovary</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Stage III: peritoneal</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">75% diagnosed stage III+</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TREATMENT</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Debulk
-+ Carbo/Tax</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Optimal debulking key</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">BRCA: PARP inhibitors</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TREATMENT</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Debulk</tspan><tspan x="690" dy="16">+ Carbo/Tax</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Optimal debulking key</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">BRCA: PARP inhibitors</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">5yr survival <30% stIII</text>
     </svg>
   </div>
@@ -3669,7 +3577,7 @@ I – IV</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Ascites with an ovarian mass is ovarian cancer until proven otherwise.</strong> Direct urgent referral without waiting for CA-125 or USS is indicated. Do not attribute ascites to a benign cyst.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Persistent bloating in a woman over 50<br>is not IBS until you've done a <em>CA-125 and an ultrasound.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Persistent bloating in a woman over 50<br>is not IBS until you've done a <em>CA-125 and an ultrasound.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -3689,43 +3597,38 @@ NOTES.subfertility=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MALE FACTOR
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MALE FACTOR
 ~30%</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Semen
-Analysis</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Count · motility · morph</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Azoospermia → genetics</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Semen</tspan><tspan x="72" dy="16">Analysis</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Count · motility · morph</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Azoospermia → genetics</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Repeat if abnormal</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">OVULATORY
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">OVULATORY
 ~25%</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">LH · FSH
-Day 21 Prog</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">PCOS most common</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Hyperprolactinaemia</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">LH · FSH</tspan><tspan x="227" dy="16">Day 21 Prog</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">PCOS most common</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Hyperprolactinaemia</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Clomifene / letrozole</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TUBAL
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TUBAL
 ~20%</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">HyCoSy /
-Laparoscopy</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Post-PID · endo</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Chlamydia serology first</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">HyCoSy /</tspan><tspan x="382" dy="16">Laparoscopy</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Post-PID · endo</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Chlamydia serology first</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">IVF if bilateral block</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">UNEXPLAINED
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">UNEXPLAINED
 ~25%</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">All Tests
-Normal</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Empirical treatment</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">IUI then IVF</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">All Tests</tspan><tspan x="537" dy="16">Normal</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Empirical treatment</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">IUI then IVF</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Age determines urgency</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">IVF</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Stimulate
-Retrieve Transfer</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">NHS: ≤3 cycles if eligible</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Success: 40% at <35</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">IVF</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Stimulate</tspan><tspan x="690" dy="16">Retrieve Transfer</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">NHS: ≤3 cycles if eligible</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Success: 40% at <35</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Multiple pregnancy risk</text>
     </svg>
   </div>
@@ -3784,7 +3687,7 @@ Retrieve Transfer</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>IVF is the end of the pathway, not the first response to unexplained subfertility.</strong> After completing investigation, expectant management for up to 2 years (in women under 35 with no identified cause) is appropriate. Ovulation induction and IUI precede IVF in most pathways.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Never investigate one partner<br><em>without investigating both.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Never investigate one partner<br><em>without investigating both.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -3955,39 +3858,34 @@ NOTES.obstetriccholestasis=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MECHANISM</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">↓Bile Acid
-Excretion</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Oestrogen impairs</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">hepatic bile transport</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MECHANISM</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">↓Bile Acid</tspan><tspan x="72" dy="16">Excretion</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Oestrogen impairs</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">hepatic bile transport</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Genetic susceptibility</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SYMPTOMS</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Palmar /
-Plantar Itch</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Worse at night</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">No rash (scratch marks only)</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SYMPTOMS</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Palmar /</tspan><tspan x="227" dy="16">Plantar Itch</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Worse at night</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">No rash (scratch marks only)</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">LFTs + bile acids</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a1a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DIAGNOSIS</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Bile Acids
->10 µmol/L</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Mild <40 / Severe ≥40</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">ALT often elevated</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">DIAGNOSIS</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Bile Acids</tspan><tspan x="382" dy="16">>10 µmol/L</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Mild <40 / Severe ≥40</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">ALT often elevated</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Exclude other liver Dx</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TREATMENT</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">UDCA
-+ Monitor</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Ursodeoxycholic acid</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Weekly bile acids + LFT</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TREATMENT</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">UDCA</tspan><tspan x="537" dy="16">+ Monitor</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Ursodeoxycholic acid</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Weekly bile acids + LFT</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Relieves symptoms</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DELIVER</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">≥40 µmol/L
-→ 35–37 wks</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Sudden stillbirth risk</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Mechanism not fully known</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">DELIVER</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">≥40 µmol/L</tspan><tspan x="690" dy="16">→ 35–37 wks</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Sudden stillbirth risk</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Mechanism not fully known</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Mild: offer IOL 38–40</text>
     </svg>
   </div>
@@ -4048,7 +3946,7 @@ Plantar Itch</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>UDCA reduces maternal symptoms and improves biochemistry but has not been shown to definitively reduce stillbirth risk.</strong> The PITCHES trial (2019) found no significant reduction in composite adverse outcomes with UDCA versus placebo. Delivery timing remains the primary intervention for fetal safety.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">The mother itches.<br>The danger is entirely <em>to the baby.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">The mother itches.<br>The danger is entirely <em>to the baby.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -4069,41 +3967,36 @@ NOTES.endometrialcancer=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TYPE I
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TYPE I
 80%</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Endometrioid
-Low Grade</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Oestrogen-driven</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Obesity · PCOS · tamoxifen</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Endometrioid</tspan><tspan x="72" dy="16">Low Grade</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Oestrogen-driven</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Obesity · PCOS · tamoxifen</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Good prognosis</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TYPE II
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TYPE II
 20%</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Serous /
-Clear Cell</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Oestrogen-independent</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Aggressive — p53 mut</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Serous /</tspan><tspan x="227" dy="16">Clear Cell</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Oestrogen-independent</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Aggressive — p53 mut</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Disproportionate deaths</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SYMPTOM</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">PMB —
-Refer in 2wks</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">90% present with PMB</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Premenopause: IMB / HMB</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SYMPTOM</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">PMB —</tspan><tspan x="382" dy="16">Refer in 2wks</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">90% present with PMB</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Premenopause: IMB / HMB</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Alarm symptom = early Dx</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DIAGNOSE</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">TVS + Pipelle
-or Hysteroscopy</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">ET >4mm = investigate</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Pipelle 70% sensitivity</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">DIAGNOSE</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">TVS + Pipelle</tspan><tspan x="537" dy="16">or Hysteroscopy</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">ET >4mm = investigate</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pipelle 70% sensitivity</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Hysteroscopy gold std</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TREATMENT</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">TAH + BSO
-± Lymph nodes</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stage I: surgery curative</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stage III+: adjuvant RT</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TREATMENT</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">TAH + BSO</tspan><tspan x="690" dy="16">± Lymph nodes</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Stage I: surgery curative</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Stage III+: adjuvant RT</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">5yr survival 75–80%</text>
     </svg>
   </div>
@@ -4165,7 +4058,7 @@ or Hysteroscopy</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Grade and stage are independent variables.</strong> A grade 1 tumour with deep myometrial invasion (>50%) is stage IB and has a higher recurrence risk. Lymphovascular space invasion (LVSI) is an additional independent prognostic factor that determines adjuvant treatment — not just grade and stage alone.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Postmenopausal bleeding<br><em>is cancer until you prove otherwise.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Postmenopausal bleeding<br><em>is cancer until you prove otherwise.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -4186,39 +4079,34 @@ NOTES.urinaryincontinence=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">STRESS UI</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Sphincter
-Weakness</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Leak on cough/sneeze</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Childbirth · prolapse</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">STRESS UI</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Sphincter</tspan><tspan x="72" dy="16">Weakness</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Leak on cough/sneeze</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Childbirth · prolapse</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">PFMT first-line</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">URGENCY UI</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Overactive
-Bladder</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Can't defer void</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Detrusor overactivity</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">URGENCY UI</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Overactive</tspan><tspan x="227" dy="16">Bladder</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Can't defer void</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Detrusor overactivity</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Bladder training first</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MIXED UI</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Both
-Components</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Treat dominant first</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Then reassess</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MIXED UI</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Both</tspan><tspan x="382" dy="16">Components</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Treat dominant first</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Then reassess</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Very common post-meno</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MEDICAL</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Antimuscar
-/ β3 agonist</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Oxybutynin · solifenacin</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Mirabegron (β3-agonist)</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MEDICAL</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">Antimuscar</tspan><tspan x="537" dy="16">/ β3 agonist</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Oxybutynin · solifenacin</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Mirabegron (β3-agonist)</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Only after lifestyle fail</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SURGICAL</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">TVT / TOT
-or Botox</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stress: mid-urethral tape</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Urgency: botox or SNM</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SURGICAL</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">TVT / TOT</tspan><tspan x="690" dy="16">or Botox</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Stress: mid-urethral tape</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Urgency: botox or SNM</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Conservative always first</text>
     </svg>
   </div>
@@ -4272,7 +4160,7 @@ or Botox</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Conservative treatment (supervised PFMT) achieves ~70% improvement and should always precede surgery.</strong> Surgery before a proper trial of PFMT is not appropriate. Pelvic floor physiotherapy outcomes are significantly better with supervised training versus unsupervised exercises — which is what most women are given.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">The mechanism determines the treatment.<br><em>Stress and urgency are different diseases.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">The mechanism determines the treatment.<br><em>Stress and urgency are different diseases.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -4293,41 +4181,36 @@ NOTES.contraception=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MOST
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MOST
 EFFECTIVE</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">IUD / IUS
-Implant</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Pearl index <1</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">No user error</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">IUD / IUS</tspan><tspan x="72" dy="16">Implant</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pearl index <1</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">No user error</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">LARC — first-line offer</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">VERY
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">VERY
 EFFECTIVE</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Injectable
-DMPA</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Pearl index <1</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Every 12 weeks</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Injectable</tspan><tspan x="227" dy="16">DMPA</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pearl index <1</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Every 12 weeks</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Amenorrhoea common</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">EFFECTIVE</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">COCP /
-POP</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Pearl index 0.1–0.3</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">User-dependent</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">EFFECTIVE</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">COCP /</tspan><tspan x="382" dy="16">POP</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pearl index 0.1–0.3</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">User-dependent</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Miss 1: follow rules</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">BARRIER</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Condoms
-Diaphragm</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Condom: only STI protect</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Pearl index 2–18</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">BARRIER</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">Condoms</tspan><tspan x="537" dy="16">Diaphragm</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Condom: only STI protect</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pearl index 2–18</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Correct use essential</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">EMERGENCY</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">EC pill
-or Cu-IUD</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Cu-IUD most effective</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">≤120 hrs for UPA/LNG</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">EMERGENCY</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">EC pill</tspan><tspan x="690" dy="16">or Cu-IUD</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Cu-IUD most effective</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">≤120 hrs for UPA/LNG</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Cu-IUD also ongoing</text>
     </svg>
   </div>
@@ -4389,7 +4272,7 @@ or Cu-IUD</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Levonorgestrel loses effectiveness significantly after 72 hours.</strong> Its efficacy is ~95% within 24h, ~85% at 25–48h, ~58% at 49–72h. Ulipristal acetate maintains effectiveness for the full 120 hours and is significantly more effective on days 3–5. If presenting between 72–120 hours, ulipristal is the appropriate oral EC — or copper IUD.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">The most effective methods<br><em>are the least frequently offered.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">The most effective methods<br><em>are the least frequently offered.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -4410,39 +4293,34 @@ NOTES.sexuallytransmitted=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">CHLAMYDIA</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Silent
-Infection</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Often asymptomatic</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">NAAT urine or swab</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">CHLAMYDIA</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Silent</tspan><tspan x="72" dy="16">Infection</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Often asymptomatic</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">NAAT urine or swab</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Azithromycin 1g stat</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">GONORRHOEA</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Increasing
-Resistance</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">NAAT + culture both</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Urethral/cervical DC</text>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">GONORRHOEA</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Increasing</tspan><tspan x="227" dy="16">Resistance</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">NAAT + culture both</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Urethral/cervical DC</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Ceftriaxone 1g IM</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SYPHILIS</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">3 Stages
-+ Latent</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Painless ulcer → rash</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">TPHA · VDRL · RPR</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SYPHILIS</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">3 Stages</tspan><tspan x="382" dy="16">+ Latent</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Painless ulcer → rash</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">TPHA · VDRL · RPR</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Benzylpenicillin IM</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">HERPES</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">HSV-1 / 2
-Lifelong</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Primary: severe ulcers</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Recurrence: triggers</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">HERPES</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">HSV-1 / 2</tspan><tspan x="537" dy="16">Lifelong</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Primary: severe ulcers</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Recurrence: triggers</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Aciclovir 5 days</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">BV / TRICH</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Not STI /
-STI</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">BV: Gardnerella · fishy</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Trich: protozoan · frothy</text>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">BV / TRICH</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Not STI /</tspan><tspan x="690" dy="16">STI</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">BV: Gardnerella · fishy</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Trich: protozoan · frothy</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Both: metronidazole</text>
     </svg>
   </div>
@@ -4487,7 +4365,7 @@ STI</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Herpes is transmitted during asymptomatic viral shedding.</strong> The majority of HSV transmission occurs when the source partner has no symptoms and no visible lesions. Suppressive antiviral therapy reduces (but does not eliminate) transmission risk. Condom use further reduces — but does not eliminate — transmission.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Partner notification<br><em>is part of the prescription.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Partner notification<br><em>is part of the prescription.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -4508,41 +4386,36 @@ NOTES.acutegynae=()=>`<div class="n-page"><div class="n-hero-new">
     </div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TORSION</text>
-      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Sudden
-Unilateral Pain</text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Ovary twists on pedicle</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">USS may show blood flow</text>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TORSION</text>
+      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Sudden</tspan><tspan x="72" dy="16">Unilateral Pain</tspan></text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Ovary twists on pedicle</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">USS may show blood flow</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Untwist even if dead</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">RUPTURED
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">RUPTURED
 ECTOPIC</text>
-      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Haemo-
-peritoneum</text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Shoulder tip · shock</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">βhCG positive + empty ut</text>
+      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Haemo-</tspan><tspan x="227" dy="16">peritoneum</tspan></text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Shoulder tip · shock</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">βhCG positive + empty ut</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Laparotomy not laparoscopy</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TOA</text>
-      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Tubo-ovarian
-Abscess</text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">PID + mass + fever</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">CT or USS for size</text>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TOA</text>
+      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Tubo-ovarian</tspan><tspan x="382" dy="16">Abscess</tspan></text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">PID + mass + fever</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">CT or USS for size</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">IV abx or drain</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">BARTHOLIN'S</text>
-      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Abscess
-4 o'clock</text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Hot tender swelling</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Labium majus</text>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">BARTHOLIN'S</text>
+      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">Abscess</tspan><tspan x="537" dy="16">4 o'clock</tspan></text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Hot tender swelling</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Labium majus</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Word catheter / marsup</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">HAEMO-
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">HAEMO-
 PERITONEUM</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Ruptured
-Cyst</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Corpus luteal most common</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Haemodynamic instability</text>
+      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Ruptured</tspan><tspan x="690" dy="16">Cyst</tspan></text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Corpus luteal most common</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Haemodynamic instability</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Conservative or theatre</text>
     </svg>
   </div>
@@ -4599,7 +4472,7 @@ Cyst</text>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Untwist first, observe for colour change, then decide.</strong> Studies show up to 90% of visually compromised ovaries recover normal function after detorsion. Immediate oophorectomy based on visual appearance results in unnecessary loss of ovarian tissue and reproductive potential. Conserve unless truly necrotic and non-viable after adequate observation post-detorsion.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Untwist it.<br><em>Even if it looks dead.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Untwist it.<br><em>Even if it looks dead.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
