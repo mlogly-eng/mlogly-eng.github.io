@@ -5,6 +5,18 @@ import './home.css'
 
 export default function Home() {
   useEffect(() => {
+    // Waitlist handler
+    window.handleWaitlist = async function() {
+      const email = document.getElementById("ei").value.trim();
+      const year = document.getElementById("yr").value;
+      const errEl = document.getElementById("cerr");
+      const btn = document.getElementById("sb");
+      errEl.classList.remove("show");
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){errEl.textContent="Please enter a valid email address.";errEl.classList.add("show");return;}
+      btn.disabled=true;btn.textContent="Submitting...";
+      await fetch("/api/waitlist",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email,year})});
+      document.getElementById("fc").innerHTML="<div style=padding:48px><div style=font-size:52px;color:#e85d3f>Youre in.</div><p>Well reach out when Vent opens.</p></div>";
+    };
     // All existing JavaScript
     if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
   const dot=document.getElementById('cdot'),ring=document.getElementById('cring');
