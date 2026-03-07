@@ -2,7 +2,7 @@
 // ── Inject n-anchor enhanced styles ──
 (function(){
   const s=document.createElement('style');
-  s.textContent=`.n-anchor{margin:0;padding:0 32px;border-top:none!important;}.n-anchor-card{background:linear-gradient(150deg,rgba(200,69,42,0.13) 0%,rgba(160,80,30,0.08) 60%,rgba(200,69,42,0.11) 100%);border:1px solid rgba(200,69,42,0.25);border-left:3px solid rgba(200,69,42,0.55);border-radius:6px;padding:32px 40px 30px 34px;margin:0;position:relative;}.n-anchor-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(200,69,42,0.5),rgba(200,69,42,0.15),transparent);border-radius:6px 6px 0 0;}.n-anchor-label{font-family:Syne,sans-serif;font-size:8.5px;font-weight:700;letter-spacing:3.5px;color:rgba(200,69,42,0.7)!important;text-transform:uppercase;display:block;margin-bottom:16px;}.n-anchor-text{font-family:'Instrument Serif',Georgia,serif!important;font-size:clamp(17px,2vw,24px)!important;line-height:1.65!important;color:rgba(245,242,235,0.92)!important;letter-spacing:0.15px;font-weight:400!important;display:block!important;}.n-anchor-text em{font-style:italic!important;color:rgba(245,242,235,1)!important;}.n-anchor-ornament{display:none!important;}.n-compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(15,10,8,0.12);border-radius:6px;overflow:hidden;margin:4px 0;}.n-compare-col{padding:0;}.n-compare-col:first-child{border-right:1px solid rgba(15,10,8,0.1);}.n-compare-head{font-family:Syne,sans-serif;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:16px 20px 14px;border-bottom:1px solid rgba(15,10,8,0.1);color:rgba(15,10,8,0.85);background:rgba(15,10,8,0.03);}.n-compare-row{display:grid;grid-template-columns:90px 1fr;gap:0;border-bottom:1px solid rgba(15,10,8,0.07);padding:0;}.n-compare-row:last-child{border-bottom:none;}.n-compare-label{font-family:Syne,sans-serif;font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(15,10,8,0.35);padding:12px 12px 12px 20px;border-right:1px solid rgba(15,10,8,0.07);display:flex;align-items:center;}.n-compare-row span:last-child{font-family:JetBrains Mono,monospace;font-size:11px;color:rgba(15,10,8,0.75);padding:12px 16px;line-height:1.5;}.n-compare-row span:last-child strong{color:rgba(15,10,8,0.92);font-weight:700;}`;
+  s.textContent=`.n-anchor{margin:0;padding:0 32px;border-top:none!important;}.n-anchor-card{background:linear-gradient(150deg,rgba(200,69,42,0.13) 0%,rgba(160,80,30,0.08) 60%,rgba(200,69,42,0.11) 100%);border:1px solid rgba(200,69,42,0.25);border-left:3px solid rgba(200,69,42,0.55);border-radius:6px;padding:32px 40px 30px 34px;margin:0;position:relative;}.n-anchor-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(200,69,42,0.5),rgba(200,69,42,0.15),transparent);border-radius:6px 6px 0 0;}.n-anchor-label{font-family:Syne,sans-serif;font-size:8.5px;font-weight:700;letter-spacing:3.5px;color:rgba(200,69,42,0.7)!important;text-transform:uppercase;display:block;margin-bottom:16px;}.n-anchor-text{font-family:'Instrument Serif',Georgia,serif!important;font-size:clamp(17px,2vw,24px)!important;line-height:1.65!important;color:rgba(15,10,8,0.82)!important;letter-spacing:0.15px;font-weight:400!important;display:block!important;}.n-anchor-text em{font-style:italic!important;color:rgba(15,10,8,0.92)!important;}.n-anchor-ornament{display:none!important;}.n-compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(15,10,8,0.12);border-radius:6px;overflow:hidden;margin:4px 0;}.n-compare-col{padding:0;}.n-compare-col:first-child{border-right:1px solid rgba(15,10,8,0.1);}.n-compare-head{font-family:Syne,sans-serif;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:16px 20px 14px;border-bottom:1px solid rgba(15,10,8,0.1);color:rgba(15,10,8,0.85);background:rgba(15,10,8,0.03);}.n-compare-row{display:grid;grid-template-columns:90px 1fr;gap:0;border-bottom:1px solid rgba(15,10,8,0.07);padding:0;}.n-compare-row:last-child{border-bottom:none;}.n-compare-label{font-family:Syne,sans-serif;font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(15,10,8,0.35);padding:12px 12px 12px 20px;border-right:1px solid rgba(15,10,8,0.07);display:flex;align-items:center;}.n-compare-row span:last-child{font-family:JetBrains Mono,monospace;font-size:11px;color:rgba(15,10,8,0.75);padding:12px 16px;line-height:1.5;}.n-compare-row span:last-child strong{color:rgba(15,10,8,0.92);font-weight:700;}`;
   document.head.appendChild(s);
 })();
 const revealObs = new IntersectionObserver(entries => {
@@ -2049,7 +2049,7 @@ NOTES.eyelids = () => `<div class="n-page"><div class="n-hero-new">
 <div class="n-section">
   <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Chalazion vs Hordeolum</span><span class="n-section-tag">tender = infected</span></div>
   <div class="n-compare-grid">
-    <div class="n-compare-col">
+    <div class="n-compare-col" style="background:rgba(15,10,8,0.02);">
       <div class="n-compare-head">Chalazion</div>
       <div class="n-compare-row"><span class="n-compare-label">What</span><span>Meibomian lipogranuloma — chronic <strong>sterile</strong> inflammation</span></div>
       <div class="n-compare-row"><span class="n-compare-label">Tender?</span><span><strong>No.</strong> Firm nodule in tarsal plate. Non-inflamed.</span></div>
@@ -2057,7 +2057,7 @@ NOTES.eyelids = () => `<div class="n-page"><div class="n-hero-new">
       <div class="n-compare-row"><span class="n-compare-label">Rx</span><span>Warm compresses → steroid injection → I&amp;C if &gt;4 weeks</span></div>
       <div class="n-compare-row"><span class="n-compare-label">Red flag</span><span><strong>Same site recurrence = biopsy.</strong> Sebaceous carcinoma masquerades here.</span></div>
     </div>
-    <div class="n-compare-col">
+    <div class="n-compare-col" style="background:rgba(200,69,42,0.04);">
       <div class="n-compare-head" style="color:#c8452a;">Hordeolum (Stye)</div>
       <div class="n-compare-row"><span class="n-compare-label">What</span><span>Staphylococcal abscess — acute <strong>bacterial</strong> infection</span></div>
       <div class="n-compare-row"><span class="n-compare-label">Tender?</span><span><strong>Yes.</strong> Acutely painful, red, pointing. Hot lid.</span></div>
@@ -2264,7 +2264,7 @@ NOTES.conjunctiva = () => `<div class="n-page"><div class="n-hero-new">
 <div class="n-section">
   <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Episcleritis vs Scleritis</span><span class="n-section-tag">this distinction matters enormously</span></div>
   <div class="n-compare-grid">
-    <div class="n-compare-col">
+    <div class="n-compare-col" style="background:rgba(15,10,8,0.02);">
       <div class="n-compare-head">Episcleritis</div>
       <div class="n-compare-row"><span class="n-compare-label">Pain</span><span>Mild discomfort or <strong>none.</strong> Dull ache at most.</span></div>
       <div class="n-compare-row"><span class="n-compare-label">Colour</span><span>Bright red, sectoral. <strong>Blanches with phenylephrine.</strong></span></div>
@@ -2273,7 +2273,7 @@ NOTES.conjunctiva = () => `<div class="n-page"><div class="n-hero-new">
       <div class="n-compare-row"><span class="n-compare-label">Rx</span><span>Topical NSAIDs or lubricants. Self-limiting weeks.</span></div>
       <div class="n-compare-row"><span class="n-compare-label">Urgency</span><span>Routine — no emergency referral needed.</span></div>
     </div>
-    <div class="n-compare-col">
+    <div class="n-compare-col" style="background:rgba(200,69,42,0.04);">
       <div class="n-compare-head" style="color:#c8452a;">Scleritis</div>
       <div class="n-compare-row"><span class="n-compare-label">Pain</span><span><strong>Severe boring pain. Wakes from sleep.</strong> Radiates jaw/temple.</span></div>
       <div class="n-compare-row"><span class="n-compare-label">Colour</span><span>Deep violaceous. <strong>Does NOT blanch</strong> with phenylephrine.</span></div>
