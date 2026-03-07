@@ -1,3 +1,9 @@
+(function(){
+  const s=document.createElement('style');
+  s.textContent=`.n-anchor{text-align:center;padding:48px 32px 40px;margin:0;border-top:1px solid rgba(10,10,10,0.12);position:relative;background:transparent;}.n-anchor::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:60px;height:1px;background:linear-gradient(90deg,transparent,rgba(10,10,10,0.25),transparent);}.n-anchor-text{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(20px,2.5vw,30px);line-height:1.55;color:rgba(10,10,10,0.82);letter-spacing:0.2px;font-weight:400;display:block;text-align:center;}.n-anchor-text em{font-style:italic;color:rgba(10,10,10,0.95);}.n-anchor-ornament{font-family:'Instrument Serif',serif;font-size:13px;color:rgba(10,10,10,0.28);letter-spacing:6px;margin-bottom:18px;display:block;text-align:center;}`;
+  document.head.appendChild(s);
+})();
+
 // REVEAL ANIMATION
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -1561,7 +1567,7 @@ NOTES.pph=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Give TXA early and universally.</strong> It does not cause pathological clotting at therapeutic doses. Waiting for coagulopathy to develop is waiting too long.</div></div>
 </div>
   </div>
-</div><div class="n-anchor"><div class="n-anchor-text">The uterus is either <em>soft</em> or it isn't —<br>everything else follows from that one finding.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+</div><div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">The uterus is either <em>soft</em> or it isn't —<br>everything else follows from that one finding.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -1574,6 +1580,50 @@ NOTES.preeclampsia=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text"><strong>New-onset hypertension ≥140/90</strong> after 20 weeks + proteinuria or end-organ dysfunction. Severe: ≥160/110 or any end-organ feature.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">2–8% of pregnancies. Risk factors: nulliparity, prior PET, BMI &gt;35, <strong>multiples, CKD, APS, diabetes</strong>. Aspirin from 12 weeks reduces risk.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Leading cause of maternal and fetal morbidity. Eclampsia (seizures), HELLP, abruption, and fetal growth restriction are all on this spectrum.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">The Mechanism</span><span class="n-section-tag">placenta first</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Pre-eclampsia — from placenta to end-organ</span>
+      <span class="n-viz-sub">All roads lead back to abnormal placentation</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TRIGGER</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Abnormal
+Placentation</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Shallow trophoblast invasion</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Spiral arteries not remodelled</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Happens at 8–18 wks</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MECHANISM</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Placental
+Ischaemia</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Releases sFlt-1 · sEng</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Anti-angiogenic factors</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Systemic endothelial damage</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a5a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">BP SIGN</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">≥140/90
+after 20wks</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">+ proteinuria or</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">end-organ dysfunction</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Symptom, not the cause</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SEVERE</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">HELLP /
+Eclampsia</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Haemolysis · ↑LFTs</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Low platelets · seizures</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Deliver if ≥34 wks</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TREATMENT</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Deliver
+the Placenta</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Only cure</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">MgSO₄ if seizure risk</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Labetalol/nifedipine BP</text>
+    </svg>
+  </div>
+
   <div class="n-mech-chain">
     <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Failed trophoblast invasion</div><div class="n-mech-text">Normally, trophoblast remodels spiral arteries into wide, low-resistance vessels. In PET, <strong>remodelling fails</strong> → high-resistance uteroplacental blood flow → placental ischaemia.</div></div></div>
     <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Placental factors released</div><div class="n-mech-text">Ischaemic placenta releases sFlt-1 and other anti-angiogenic factors into maternal circulation → <strong>endothelial dysfunction throughout the body</strong>.</div></div></div>
@@ -1633,7 +1683,7 @@ NOTES.preeclampsia=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Fluid overload kills in PET.</strong> Pulmonary oedema is a leading cause of maternal death. Restrict fluids to 80 mL/hr total unless haemorrhaging.</div></div>
 </div>
   </div>
-</div><div class="n-anchor"><div class="n-anchor-text">The BP is the <em>symptom.</em><br>The placenta is the <em>disease.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+</div><div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">The BP is the <em>symptom.</em><br>The placenta is the <em>disease.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -1646,6 +1696,50 @@ NOTES.ectopic=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Implantation outside the uterine cavity. <strong>95% in the fallopian tube.</strong> Other sites: ovary, cervix, cornual, abdominal — all rarer, all dangerous.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">1 in 90 pregnancies. Risk: <strong>previous ectopic, PID, tubal surgery, IVF, IUCD in situ</strong>. IVF increases risk of heterotopic pregnancy.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Leading cause of maternal death in the first trimester. Rupture → haemoperitoneum → cardiovascular collapse within minutes.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">The Triad</span><span class="n-section-tag">classic but unreliable</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Ectopic pregnancy — site, risk, and action</span>
+      <span class="n-viz-sub">95% tubal — but any positive test + pain = ectopic until proven otherwise</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MOST COMMON</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Ampullary
+Tube (70%)</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Fertilised egg stuck</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">in widest tube segment</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Pain before rupture</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">HIGH RISK</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Isthmic
+Tube (12%)</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Narrow lumen</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Ruptures earlier</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Sudden catastrophic bleed</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">RARE / DANGEROUS</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Cornual /
+Interstitial</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Surrounded by myometrium</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Ruptures late — massive bleed</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Often missed on USS</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MANAGEMENT</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">By Stability
++ βhCG</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Unstable → theatre</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stable: MTX or wait</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Serial βhCG until zero</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">EMERGENCY</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Ruptured
+Ectopic</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Haemoperitoneum</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Collapse + shoulder tip</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Immediate laparotomy</text>
+    </svg>
+  </div>
+
   <div class="n-mech-chain">
     <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Amenorrhoea</div><div class="n-mech-text">History of missed period + positive pregnancy test. The trophoblast produces hCG regardless of implantation site. <strong>A positive test in a woman with pain = ectopic until proven otherwise.</strong></div></div></div>
     <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Abdominal pain</div><div class="n-mech-text">Unilateral initially as the tube distends. Becomes generalised with rupture → haemoperitoneum → <strong>peritonism, shoulder tip pain</strong> (diaphragmatic irritation from blood). Pain does not always precede rupture.</div></div></div>
@@ -1703,7 +1797,7 @@ NOTES.ectopic=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Rupture can occur at any hCG level.</strong> Low hCG ≠ early and safe. If the tube is already compromised, it can rupture before hCG rises.</div></div>
 </div>
   </div>
-</div><div class="n-anchor"><div class="n-anchor-text">Positive test + pain + empty uterus —<br>it's <em>ectopic</em> until you prove otherwise.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+</div><div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Positive test + pain + empty uterus —<br>it's <em>ectopic</em> until you prove otherwise.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -1716,6 +1810,50 @@ NOTES.placenta=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Placenta implanted in the lower uterine segment, <strong>partially or completely covering the internal cervical os.</strong> Major praevia = covers the os entirely.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Prior LSCS or uterine surgery (greatest risk), multiparity, advanced maternal age, previous praevia, <strong>IVF</strong>. Smoking.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Causes antepartum haemorrhage, placenta accreta spectrum, and is an absolute contraindication to vaginal delivery. Un-anticipated praevia at LSCS can be catastrophic.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">The Mechanism</span><span class="n-section-tag">why it bleeds</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Placenta praevia — grade and consequence</span>
+      <span class="n-viz-sub">Location relative to the os determines everything</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">GRADE I</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Low-lying
+Placenta</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Edge within 2 cm of os</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Does not reach os</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">May deliver vaginally</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">GRADE II</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Marginal
+Praevia</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Reaches but does</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">not cover the os</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Borderline — reassess</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a5a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">GRADE III</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Partial
+Praevia</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Partially covers</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">internal os</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">LSCS required</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">GRADE IV</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Complete
+Praevia</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Entirely covers os</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Painless APH</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Elective LSCS 37–38wk</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DANGER</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Accreta
+Spectrum</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Abnormal invasion</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Morbidly adherent</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Hysterectomy risk</text>
+    </svg>
+  </div>
+
   <div class="n-mech-chain">
     <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Lower segment development</div><div class="n-mech-text">From 28 weeks, the lower uterine segment develops and elongates. A placenta implanted here is <strong>sheared away from its attachment</strong> as the segment stretches and the os dilates.</div></div></div>
     <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Painless haemorrhage</div><div class="n-mech-text">Unlike abruption (painful, dark, concealed), praevia causes <strong>painless, bright red haemorrhage</strong>. It is maternal — not fetal. The first bleed is usually a warning bleed, not catastrophic.</div></div></div>
@@ -1772,7 +1910,7 @@ NOTES.placenta=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Give anti-D after any APH event</strong> — including small warning bleeds. Sensitisation can occur even with small feto-maternal haemorrhage.</div></div>
 </div>
   </div>
-</div><div class="n-anchor"><div class="n-anchor-text"><em>Painless. Bright red. Third trimester.</em><br>Scan before you touch.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+</div><div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text"><em>Painless. Bright red. Third trimester.</em><br>Scan before you touch.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -1785,6 +1923,50 @@ NOTES.gdm=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Insulin resistance that overwhelms β-cell reserve in pregnancy. Human placental lactogen, progesterone, and cortisol all antagonise insulin signalling.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">BMI &gt;30, previous GDM, macrosomic baby (&gt;4.5kg), first-degree relative with T2DM, <strong>South Asian / Black / Middle Eastern</strong> ethnicity.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">The fetus swims in maternal glucose it cannot regulate itself. The consequences: macrosomia, shoulder dystocia, neonatal hypoglycaemia, stillbirth.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">The Mechanism</span><span class="n-section-tag">Pedersen hypothesis</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">GDM — from insulin resistance to fetal consequence</span>
+      <span class="n-viz-sub">Pedersen hypothesis: maternal glucose crosses the placenta freely</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MECHANISM</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">HPL Blocks
+Insulin</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Placental hormones</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">antagonise insulin</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Peaks at 26–28 wks</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a4a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DIAGNOSIS</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">OGTT
+75g Glucose</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Fasting ≥5.6 mmol/L</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">2hr ≥7.8 mmol/L</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Offered at 24–28 wks</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">FETAL EFFECT</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Macrosomia
+>4.5 kg</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Fetal hyperinsulinaemia</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Excess fat deposition</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Shoulder dystocia risk</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MANAGEMENT</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Diet → Metf
+→ Insulin</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Target fasting <5.3</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">1hr post-meal <7.8</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Deliver by 40+6</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">NEONATAL</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Hypo-
+glycaemia</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Baby loses placental</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">glucose abruptly</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Feed within 30 min</text>
+    </svg>
+  </div>
+
   <div class="n-mech-chain">
     <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Physiological insulin resistance</div><div class="n-mech-text">Pregnancy is physiologically insulin-resistant by design — ensures glucose availability for the fetus. In GDM, this overwhelms β-cell reserve. <strong>Maternal glucose rises.</strong></div></div></div>
     <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Fetal hyperglycaemia</div><div class="n-mech-text">Glucose crosses the placenta freely. <strong>Maternal insulin does not cross.</strong> The fetus, flooded with glucose, secretes its own insulin in excess — fetal hyperinsulinaemia.</div></div></div>
@@ -1850,7 +2032,7 @@ NOTES.gdm=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Diet-controlled GDM still requires induction by 40+6</strong> at the latest. Waiting for spontaneous labour increases stillbirth risk. GDM women are not standard low-risk.</div></div>
 </div>
   </div>
-</div><div class="n-anchor"><div class="n-anchor-text">You are not managing a glucose number.<br>You are managing a fetus that eats <em>everything its mother eats.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+</div><div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">You are not managing a glucose number.<br>You are managing a fetus that eats <em>everything its mother eats.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -1863,6 +2045,50 @@ NOTES.shoulder=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Failure of the shoulders to deliver with normal downward traction following delivery of the head. The anterior shoulder is impacted behind the pubic symphysis.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Macrosomia, previous shoulder dystocia, diabetes, prolonged second stage, operative vaginal delivery. <strong>50% occur with no risk factors at all.</strong></div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Five minutes to deliver or permanent brachial plexus injury, hypoxic brain damage, or fetal death. HELPERR must be automatic.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">HELPERR Drill</span><span class="n-section-tag">in order, no hesitation</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Shoulder dystocia — HELPERR in order</span>
+      <span class="n-viz-sub">The head is out. You have minutes. Do not pull.</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">H</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Call for
+Help</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Senior midwife</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Obs · Paeds · Anaes</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Don't delay anything</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a2a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">E + L</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Episiotomy
++ Legs</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">McRoberts: legs back</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Hyper-flex on abdomen</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">50% resolve with this</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">P</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Suprapubic
+Pressure</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Downward + lateral</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Dislodge ant shoulder</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">NOT fundal pressure</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">E + R</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Enter +
+Rotate</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Rubin II · Woods screw</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Reverse Woods (Barnum)</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Internal manoeuvres</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">R</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Remove
+Post Arm</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Sweep arm across</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">chest to deliver</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Last: Zavanelli / CS</text>
+    </svg>
+  </div>
+
   <div class="n-mech-chain">
     <div class="n-mech-step"><div class="n-mech-dot d1">H</div><div class="n-mech-body"><div class="n-mech-cause">Call for Help</div><div class="n-mech-text">Senior obstetrician, extra midwives, paediatrician, anaesthetist. State clearly: <strong>"Shoulder dystocia — call the team now."</strong> Note the time. Document every step.</div></div></div>
     <div class="n-mech-step"><div class="n-mech-dot d2">E</div><div class="n-mech-body"><div class="n-mech-cause">Evaluate for Episiotomy</div><div class="n-mech-text">Episiotomy does not release a bony impaction — it creates soft tissue space for manoeuvres. <strong>Only cut if you need room for internal manoeuvres.</strong> Do not cut routinely.</div></div></div>
@@ -1901,7 +2127,7 @@ NOTES.shoulder=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Episiotomy relieves soft tissue, not bony impaction.</strong> It buys room for your hands. It does not free the shoulder. McRoberts' first.</div></div>
 </div>
   </div>
-</div><div class="n-anchor"><div class="n-anchor-text">McRoberts. Suprapubic pressure.<br><em>Help. Immediately.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+</div><div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">McRoberts. Suprapubic pressure.<br><em>Help. Immediately.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -1914,6 +2140,50 @@ NOTES.miscarriage=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Loss of pregnancy before 24 weeks. Early (before 12 weeks) accounts for 75%. Most caused by chromosomal abnormality — not maternal behaviour.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">15–20% of recognised pregnancies. Risk rises steeply with maternal age. Three consecutive losses (recurrent miscarriage) = 1% of couples.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Significant psychological impact. Missed diagnoses (incomplete, septic miscarriage) carry serious morbidity. Recurrent loss requires systematic investigation.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classification</span><span class="n-section-tag">the types matter for management</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Early pregnancy loss — types and management pathways</span>
+      <span class="n-viz-sub">Classification drives management — always scan first</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">THREATENED</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Bleeding +
+Closed Os</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Viable fetus on USS</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Outcome uncertain</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Rest · repeat scan</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a4a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">INEVITABLE</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Bleeding +
+Open Os</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Products at os</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Passing imminently</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Expect or expedite</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">INCOMPLETE</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Partial
+Expulsion</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Tissue retained</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Os open or closed</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Medical or surgical</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MISSED</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Silent /
+Anembryonic</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">No cardiac activity</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Empty sac (blighted ovum)</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Expectant/medical/ERPC</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SEPTIC</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Infected
+Retained POC</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Fever · offensive PV</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Uterine tenderness</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">IV abx + urgent ERPC</text>
+    </svg>
+  </div>
+
   <div class="n-diag-steps">
     <div class="n-diag-row"><div class="n-diag-label ">Threatened</div><div class="n-diag-content">Bleeding + closed os + fetal heart seen on USS. <strong>Pregnancy remains viable.</strong> No intervention changes outcome — reassure and rescan.</div></div>
     <div class="n-diag-row"><div class="n-diag-label ">Missed (silent)</div><div class="n-diag-content">No fetal heart. Products retained. Empty sac (&gt;25mm) or CRL &gt;7mm without cardiac activity. Often asymptomatic — found on USS.</div></div>
@@ -1972,7 +2242,7 @@ NOTES.miscarriage=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Safety-net is essential.</strong> What happens if bleeding is heavy at home? EPAU must be accessible 24/7. Discharge without a safety plan is unsafe.</div></div>
 </div>
   </div>
-</div><div class="n-anchor"><div class="n-anchor-text">Most early losses are chromosomal.<br>That's not her fault — <em>and she needs to hear that.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+</div><div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Most early losses are chromosomal.<br>That's not her fault — <em>and she needs to hear that.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -1985,6 +2255,50 @@ NOTES.cordprolapse=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Umbilical cord descends below the presenting part after membrane rupture. Every contraction compresses the cord → fetal hypoxia.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Malpresentation (breech, transverse lie), preterm, polyhydramnios, artificial rupture of membranes with high presenting part, <strong>multiparous, cord presentation</strong>.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Perinatal mortality without immediate intervention is very high. Intact cord + immediate action → good outcomes. Every minute of compression matters.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Cord prolapse — every action in parallel</span>
+      <span class="n-viz-sub">Fingers in. Part up. Don't let go. Call theatre.</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">RECOGNISE</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Cord felt
+or Seen</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">After ROM — fetal HR</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">drops with contraction</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Feel on VE — act now</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">IMMEDIATELY</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Fingers In
+Part Up</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Elevate presenting part</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Relieve compression</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Do not remove hand</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">POSITION</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">All-Fours
+or Trendelenburg</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Keep gravity working</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">for you not against</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Left lateral if alone</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">CALL</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">999 / Crash
+Call</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Senior obs · anaes</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Neonatal team</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Category 1 CS target</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DELIVER</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">CS within
+<30 min</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Bladder fill if delay</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Tocolysis if needed</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Good outcomes if fast</text>
+    </svg>
+  </div>
+
   <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Cord felt on VE or visible at vulva after membrane rupture → <em>cord prolapse</em> → call emergency team + manual elevation immediately.</div></div>
   <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Do not pull on the cord or allow it to dry out.</strong> Handling causes vasospasm. If cord is outside, cover with a warm moist pad. Do not clamp or cut. Keep it warm and do not manipulate.</div></div>
 </div><div class="n-section">
@@ -2038,7 +2352,7 @@ NOTES.cordprolapse=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Category 1 CS is the default for cord prolapse unless vaginal delivery is imminent.</strong> Footling breech does not make vaginal delivery safer — it makes cord compression more likely.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">Fingers in. Presenting part up.<br><em>Don't let go until delivery.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Fingers in. Presenting part up.<br><em>Don't let go until delivery.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2051,6 +2365,50 @@ NOTES.endometriosis=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Endometrial-like tissue implants outside the uterine cavity, responding to oestrogen — causing inflammation, fibrosis, and pain with every cycle.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">10% of women of reproductive age. Average <strong>diagnostic delay: 7–8 years.</strong> Common sites: ovaries (endometriomas), pouch of Douglas, uterosacral ligaments.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Causes chronic pelvic pain, dysmenorrhoea, dyspareunia, and is a major cause of subfertility. The disease persists and progresses until the menopause.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Endometriosis — sites, symptoms, and staging</span>
+      <span class="n-viz-sub">Oestrogen-dependent · chronic · average 7–8 year delay to diagnosis</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SUPERFICIAL</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Peritoneal
+Deposits</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Powder burns · red lesions</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Bladder · bowel surface</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Dysmenorrhoea</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">OVARIAN</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Endo-
+metrioma</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">'Chocolate cyst'</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Bilateral in 30%</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Reduces ovarian reserve</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#5a2a3a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DEEP</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">DIE —
+USL / POD</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Uterosacral ligaments</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Pouch of Douglas</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Severe dyspareunia</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#3a2a5a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">EXTRA-PELVIC</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Bowel /
+Bladder</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Cyclical rectal bleed</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Haematuria in cycle</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Rare — but missed</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">STAGING</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">rASRM
+I → IV</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">I=minimal · IV=severe</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stage ≠ symptom severity</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Lap is gold standard</text>
+    </svg>
+  </div>
+
   <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Dysmenorrhoea + dyspareunia + subfertility in a woman of reproductive age → think <em>endometriosis</em> → laparoscopy is the only definitive diagnosis.</div></div>
   <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Normal USS does not exclude endometriosis.</strong> Peritoneal deposits are invisible on ultrasound. USS only detects endometriomas. Clinical diagnosis is valid and appropriate for starting empirical medical treatment.</div></div>
 </div><div class="n-section">
@@ -2104,7 +2462,7 @@ NOTES.endometriosis=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Hysterectomy alone does not cure endometriosis.</strong> Disease outside the uterus — on bowel, peritoneum, bladder — is unaffected. BSO reduces oestrogen drive and improves outcomes, but excision of deposits at the time of surgery is required for lasting relief.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">Seven years of pain before a diagnosis.<br>The first step is <em>taking the symptoms seriously.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Seven years of pain before a diagnosis.<br>The first step is <em>taking the symptoms seriously.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2117,6 +2475,50 @@ NOTES.pcos=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">A syndrome of hyperandrogenism + ovulatory dysfunction, often with polycystic ovarian morphology on USS. Defined by <strong>2 of 3 Rotterdam criteria</strong>.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">5–10% of women of reproductive age. Strong hereditary component. Insulin resistance in 70%, regardless of BMI.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Leading cause of anovulatory subfertility. Long-term risks: T2DM, endometrial cancer, metabolic syndrome, cardiovascular disease.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Rotterdam Criteria</span><span class="n-section-tag">2 of 3</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">PCOS — Rotterdam criteria and long-term consequences</span>
+      <span class="n-viz-sub">2 of 3 criteria · 5–10% of women · insulin resistance in 70%</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">CRITERION 1</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Oligo /
+Anovulation</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Cycles >35 days</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">or <8/year</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Leading cause subfertility</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">CRITERION 2</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Hyper-
+androgenism</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Clinical: acne · hirsutism</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Biochemical: ↑testosterone</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Exclude CAH · tumour</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a1a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">CRITERION 3</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">PCO
+Morphology</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">≥20 follicles per ovary</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">or volume >10 mL</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">USS — not diagnostic alone</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">METABOLIC</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Insulin
+Resistance</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">70% regardless of BMI</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">↑T2DM · dyslipidaemia</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Screen with fasting gluc</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">LONG-TERM</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Endometrial
+Cancer Risk</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Unopposed oestrogen</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">from anovulation</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Provoke bleed if >3 mo</text>
+    </svg>
+  </div>
+
   <div class="n-diag-steps">
     <div class="n-diag-row"><div class="n-diag-label ">Criterion 1</div><div class="n-diag-content"><strong>Oligomenorrhoea / anovulation</strong> — cycles &gt;35 days or fewer than 8 cycles/year. Confirmed by mid-luteal progesterone &lt;10 nmol/L.</div></div>
     <div class="n-diag-row"><div class="n-diag-label ">Criterion 2</div><div class="n-diag-content"><strong>Clinical or biochemical hyperandrogenism</strong> — acne, hirsutism, male-pattern baldness. Biochemical: elevated free testosterone or DHEA-S.</div></div>
@@ -2177,7 +2579,7 @@ NOTES.pcos=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Metformin alone is insufficient for ovulation induction.</strong> It improves insulin sensitivity and cycle regularity but does not reliably induce ovulation. First-line is letrozole; metformin is an adjunct, not a replacement.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">PCOS is not just about the ovaries.<br>It's a <em>metabolic condition</em> that happens to affect reproduction.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">PCOS is not just about the ovaries.<br>It's a <em>metabolic condition</em> that happens to affect reproduction.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2190,6 +2592,50 @@ NOTES.fibroids=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Benign smooth muscle tumours of the myometrium. Oestrogen-dependent — grow during reproductive years, regress after menopause.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">20–50% of women over 30. Three times more common and more symptomatic in <strong>Black women</strong>. Family history, nulliparity, obesity, early menarche.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Cause HMB, pressure symptoms, subfertility (submucosal type), pregnancy complications. Most are asymptomatic and found incidentally.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Types and Symptoms</span><span class="n-section-tag">location drives symptoms</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Uterine fibroids — location drives symptoms</span>
+      <span class="n-viz-sub">Submucosal = bleeding · intramural = bulk · subserosal = pressure</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SUBMUCOSAL</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Type 0–2
+SM</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Distorts cavity</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">HMB · subfertility</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Hysteroscopic resection</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">INTRAMURAL</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Type 3–4
+IM</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Within myometrium</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Bulk symptoms · HMB</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">GnRH · UAE · myomectomy</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SUBSEROSAL</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Type 5–7
+SS</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Outside uterus</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Pressure on bladder/bowel</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Often asymptomatic</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">PEDUNCULATED</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Type 7
+Ped</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">On stalk — can torse</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Mimics ovarian mass</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Torsion = acute pain</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">IN PREGNANCY</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Red
+Degeneration</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Rapid growth → infarct</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Acute pain at 20 wks</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Analgesia · self-limiting</text>
+    </svg>
+  </div>
+
   <div class="n-diag-steps">
     <div class="n-diag-row"><div class="n-diag-label err">Submucosal</div><div class="n-diag-content">Distorts the endometrial cavity. <strong>Most symptomatic: HMB, subfertility, recurrent miscarriage.</strong> Even small submucosal fibroids cause significant bleeding.</div></div>
     <div class="n-diag-row"><div class="n-diag-label ">Intramural</div><div class="n-diag-content">Within the myometrium. Can enlarge significantly. Causes HMB, dysmenorrhoea, pressure symptoms. Most common type.</div></div>
@@ -2244,7 +2690,7 @@ NOTES.fibroids=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Myomectomy removes existing fibroids but does not prevent recurrence.</strong> Up to 25% of women require further intervention within 10 years. Women who want definitive treatment and have completed their family should be counselled about hysterectomy.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">Location matters more than size.<br>A 5 mm <em>submucosal</em> fibroid causes more harm than a 5 cm subserosal one.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Location matters more than size.<br>A 5 mm <em>submucosal</em> fibroid causes more harm than a 5 cm subserosal one.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2257,6 +2703,50 @@ NOTES.pid=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Ascending infection from the lower genital tract to the uterus, fallopian tubes, and ovaries. Most commonly STI-associated — <em>Chlamydia, Gonorrhoea,</em> anaerobes.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Sexually active women &lt;25. Multiple partners, new partner, no barrier contraception. Preceding instrumentation (IUCD insertion, ERPC, hysteroscopy) increases risk.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Tubal damage → ectopic pregnancy risk × 6–10. Infertility after 3 episodes = 50%. Tubo-ovarian abscess = surgical emergency.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">PID — ascending infection and its consequences</span>
+      <span class="n-viz-sub">Treat empirically — swab results confirm, they don't trigger treatment</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">ORGANISMS</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Chlamydia
++ Gonorrhoea</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Most common STI cause</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Anaerobes also involved</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Often polymicrobial</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">ASCENT</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Cervix →
+Uterus → Tubes</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Endometritis first</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Then salpingitis</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Cervical motion tender</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DIAGNOSIS</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Clinical
++ Swabs</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Adnexal · CMT tender</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">No single test confirms</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Treat if suspected</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TREATMENT</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Ceftriaxone
++ Doxy + Met</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">BASHH guidelines</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">14-day course</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Review IUCD if present</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">COMPLICATION</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">TOA /
+Infertility</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">TOA: IV abx or drain</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">3 episodes → 50% infertile</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Ectopic risk ×6–10</text>
+    </svg>
+  </div>
+
   <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Lower abdominal pain + cervical motion tenderness + adnexal tenderness in a sexually active woman → think <em>PID</em> → treat empirically, do not wait for swab results.</div></div>
   <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Negative swabs do not exclude PID.</strong> Chlamydia PCR sensitivity is ~90% — 10% of cases are missed. If clinical picture fits, treat. Delayed treatment increases tubal damage risk.</div></div>
 </div><div class="n-section">
@@ -2311,7 +2801,7 @@ NOTES.pid=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>IUCD removal is not mandatory in mild-to-moderate PID.</strong> If the woman wishes to retain the device and responds to antibiotics, it can stay in situ. Remove only if there is no improvement within 72 hours or if the infection is severe.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">Treat first. The swab result<br>confirms what you <em>already suspected</em>.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Treat first. The swab result<br>confirms what you <em>already suspected</em>.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2324,6 +2814,50 @@ NOTES.pretermlabour=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Regular uterine contractions causing progressive cervical change before 37 weeks. Threatening preterm labour: contractions but no cervical change yet.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Previous preterm birth (strongest risk factor), infection/inflammation, multiple pregnancy, <strong>short cervix (&lt;25mm at 20–24 weeks)</strong>, social deprivation.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Leading cause of neonatal mortality and morbidity. Prematurity = underdeveloped lungs (RDS), brain (IVH), gut (NEC). Every week in utero matters.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Preterm labour — assess, delay, and protect the baby</span>
+      <span class="n-viz-sub">Every week in utero is a week the NICU doesn't have to be</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">ASSESS</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">TVU Cervix
++ fFN</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Cervix <25mm = high risk</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">fFN neg → reassure</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Both together best</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DELAY</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Tocolysis
+48 hrs</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Nifedipine first-line</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Atosiban if needed</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Time for steroids only</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a1a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">PROTECT</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Antenatal
+Steroids</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Betamethasone 2 doses</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle"><34 wks — lung maturity</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Give within 24 hrs</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">NEUROPROTECT</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">MgSO₄
+<30 wks</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Reduces cerebral palsy</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">4g IV loading dose</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Not a tocolytic here</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DELIVER</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800"><34 wks:
+Tertiary Unit</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">In-utero transfer</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Neonatal team on standby</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Survival 90%+ at 28wk</text>
+    </svg>
+  </div>
+
   <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Contractions + cervical change before 37 weeks → think <em>preterm labour</em> → fFN or cervical length, steroids, MgSO₄ (if &lt;30 weeks), tocolysis, transfer.</div></div>
   <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Fetal fibronectin (fFN) is most useful when negative.</strong> A negative fFN has &gt;95% negative predictive value for delivery within 7 days — it is the most useful test to rule out preterm labour and safely discharge patients.</div></div>
 </div><div class="n-section">
@@ -2377,7 +2911,7 @@ NOTES.pretermlabour=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Confirmed preterm labour requires inpatient management.</strong> Fetal fibronectin negativity can support outpatient monitoring of threatened preterm labour — but once labour is confirmed on clinical or USS criteria, admission and treatment are mandatory.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">Every week in utero<br>is a week the NICU <em>doesn't have to be.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Every week in utero<br>is a week the NICU <em>doesn't have to be.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2390,6 +2924,50 @@ NOTES.ovarycyst=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">A fluid-filled structure on or in the ovary. Can be functional (follicular, corpus luteal) or pathological (dermoid, endometrioma, mucinous, serous cystadenoma, malignant).</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Very common. Functional cysts: any woman of reproductive age. Dermoids: peak 20–40. Malignant: risk rises sharply after 50. BRCA1/2: significantly elevated risk.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Ovarian torsion is a surgical emergency. Malignancy must not be missed. Cyst rupture and haemorrhage can mimic ectopic pregnancy.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Risk of Malignancy Index (RMI)</span><span class="n-section-tag">the key number</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Ovarian cyst — type, RMI, and management</span>
+      <span class="n-viz-sub">The challenge is separating benign from malignant — RMI does this</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">FUNCTIONAL</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Follicular /
+Corpus Luteal</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Simple unilocular</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle"><5cm — likely resolve</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Rescan in 6–12 wks</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">BENIGN</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Dermoid /
+Cystadenoma</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Dermoid: teeth/fat on USS</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Mucinous: very large</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Laparoscopic cystectomy</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">ENDOMETRIOMA</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">'Chocolate
+Cyst'</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Ground-glass appearance</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Associated with endo</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Medical or surgical</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">RMI SCORE</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">U × M ×
+CA-125</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">RMI >200 = high risk</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Refer to cancer MDT</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">U=USS · M=menopausal</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TORSION</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Time is
+Ovary</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Sudden onset pain</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">USS may show blood flow</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Laparoscopy within hrs</text>
+    </svg>
+  </div>
+
   <div class="n-diag-steps">
     <div class="n-diag-row"><div class="n-diag-label ">RMI formula</div><div class="n-diag-content"><strong>RMI = USS score × menopausal status × CA-125</strong>. USS features scored 0/1/3 based on number of malignant features.</div></div>
     <div class="n-diag-row"><div class="n-diag-label ">USS features</div><div class="n-diag-content">Multilocularity, solid elements, bilateral, ascites, intraperitoneal metastases — each adds to USS score.</div></div>
@@ -2444,7 +3022,7 @@ NOTES.ovarycyst=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>CA-125 alone is insufficient — use the Risk of Malignancy Index (RMI) which combines USS score, menopausal status, and CA-125.</strong> CA-125 can be elevated in benign conditions and is normal in up to 50% of early ovarian cancers.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">Sudden onset pain + ovarian cyst =<br><em>torsion until you've looked inside.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Sudden onset pain + ovarian cyst =<br><em>torsion until you've looked inside.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2457,6 +3035,50 @@ NOTES.cervicalcancer=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Malignancy of the cervix, predominantly <strong>squamous cell carcinoma (75%)</strong> or adenocarcinoma. HPV 16 and 18 drive 70% of cases.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Peak incidence 30–45. Risk: early sexual debut, multiple partners, HPV high-risk subtypes, smoking, immunosuppression, non-attendance at screening.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Screening detects pre-cancer (CIN). Vaccination prevents it. But when invasive — prognosis depends critically on stage at diagnosis.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Pathogenesis</span><span class="n-section-tag">HPV to cancer</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Cervical cancer — HPV to invasion</span>
+      <span class="n-viz-sub">A vaccine and a smear programme have made this almost entirely preventable</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">CAUSE</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">HPV 16
+and 18</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">High-risk HPV 70%</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Transmitted sexually</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Vaccination at 12–13</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">PRE-CANCER</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">CIN I–III
+(Dysplasia)</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">CIN III = severe dysplasia</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Not yet invasive</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Detected on smear</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SCREENING</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">HPV Primary
+Screening</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">3-yearly 25–49</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">5-yearly 50–64</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Colposcopy if HPV+</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SYMPTOMS</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">PCB /
+IMB / DC</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Postcoital bleed</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Intermenstrual bleed</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Refer urgently if PCB</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">STAGING</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">FIGO
+I → IV</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stage IB1: confined</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stage IV: spread beyond</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">MRI for staging</text>
+    </svg>
+  </div>
+
   <div class="n-mech-chain">
     <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">HPV infection</div><div class="n-mech-text">High-risk HPV (16, 18, 31, 33) infects the transformation zone. Usually cleared by immune system. <strong>Persistent infection = risk of transformation.</strong></div></div></div>
     <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">CIN (cervical intraepithelial neoplasia)</div><div class="n-mech-text">Pre-invasive changes. CIN1 (mild dysplasia), CIN2, CIN3 (severe dysplasia/carcinoma in situ). <strong>CIN3 left untreated → invasive cancer in ~30%</strong> over 10 years.</div></div></div>
@@ -2517,7 +3139,7 @@ NOTES.cervicalcancer=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Stage IA1–IB1 can be managed with radical trachelectomy in women who wish to preserve fertility.</strong> Radical hysterectomy is the standard, but fertility-sparing surgery is an established option in selected cases at specialist centres.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">A vaccine. A smear programme.<br>This cancer is almost <em>entirely preventable.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">A vaccine. A smear programme.<br>This cancer is almost <em>entirely preventable.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2530,6 +3152,50 @@ NOTES.abruption=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Premature separation of the placenta from the uterine wall before delivery. Bleeding can be revealed (visible), concealed (trapped behind placenta), or mixed.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text"><strong>Hypertension</strong> (greatest risk), smoking, cocaine use, previous abruption, abdominal trauma, polyhydramnios, multiparity, chorioamnionitis.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Causes fetal hypoxia, fetal death, and DIC in the mother. Concealed abruption is the most dangerous — the size of the bleed is invisible.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Placental abruption — revealed, concealed, and consequences</span>
+      <span class="n-viz-sub">20% have no visible bleeding — the board loves this</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TYPE 1</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Revealed
+Abruption</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Visible PV bleeding</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Placenta edge bleeds out</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Easier to quantify</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TYPE 2</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Concealed
+Abruption</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Blood trapped behind</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Placenta — no PV loss</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Worst — missed easily</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#5a2a3a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SIGNS</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Woody Hard
+Uterus</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Constant pain (not colicky)</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Uterus tense between ctx</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Opposite of praevia</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">FETAL</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">CTG
+Decelerations</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Hypoxia from separation</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stillbirth if large</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Deliver immediately</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MATERNAL</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">DIC /
+Hypovolaemia</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Clotting cascade fails</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Clotting screen + XM</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Massive haemorrhage protocol</text>
+    </svg>
+  </div>
+
   <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Painful PV bleeding in the third trimester with a hard, woody uterus → think <em>abruption</em> → FHR monitoring immediately, bloods for DIC, IV access.</div></div>
   <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>20% of abruptions are concealed — no visible bleeding.</strong> The uterus is hard and tender, the mother is in pain, but there's no blood. Don't be falsely reassured by absence of PV bleeding.</div></div>
 </div><div class="n-section">
@@ -2569,7 +3235,7 @@ NOTES.abruption=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Abruption causes consumptive coagulopathy — DIC.</strong> Management requires cryoprecipitate (for fibrinogen), platelets, and FFP in a 1:1:1 ratio alongside red cells. Fibrinogen &lt;2 g/L is a critical threshold — replace it specifically.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">No visible blood<br>doesn't mean <em>no bleeding.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">No visible blood<br>doesn't mean <em>no bleeding.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2582,6 +3248,50 @@ NOTES.iol=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Artificial initiation of uterine contractions leading to delivery. Indications: post-dates, medical complication, IUFD, maternal choice, PPROM.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why we do it</div><div class="n-snap-text"><strong>Post-dates (41–42 weeks): stillbirth risk rises.</strong> NICE recommends offering IOL at 41 weeks. GDM, PET, IUGR, cholestasis — all may shorten the ideal gestation.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Done wrong: uterine hyperstimulation → fetal hypoxia. Done right: reduces stillbirth and avoids emergency caesarean.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Bishop Score</span><span class="n-section-tag">readiness for induction</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Induction of labour — Bishop score to delivery</span>
+      <span class="n-viz-sub">The cervix decides how long it takes — Bishop score tells you where you start</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">ASSESS</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Bishop
+Score</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">≥8 = favourable</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle"><6 = needs ripening</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">5 features 0–3 each</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">RIPEN</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Dinoprostone
+PGE₂ Gel</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Softens + dilates cervix</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Repeat after 6 hrs</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Monitor CTG after</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">BALLOON</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Cook /
+Foley</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Mechanical ripening</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Alternative to PGE₂</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Lower hyperstim risk</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">AMNIOTOMY</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">ARM +
+Syntocinon</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Once cervix favourable</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Synto titrated carefully</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Continuous CTG req'd</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">COMPLICATION</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Hyper-
+stimulation</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">>5 ctx in 10 min</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Tocolyse + stop Synto</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Category 1 CS if CTG bad</text>
+    </svg>
+  </div>
+
   <div class="n-diag-steps">
     <div class="n-diag-row"><div class="n-diag-label ">Dilatation</div><div class="n-diag-content">0=0cm, 1=1-2cm, 2=3-4cm, 3=≥5cm</div></div>
     <div class="n-diag-row"><div class="n-diag-label ">Effacement</div><div class="n-diag-content">0=0-30%, 1=40-50%, 2=60-70%, 3=≥80%</div></div>
@@ -2641,7 +3351,7 @@ NOTES.iol=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Hyperstimulation (contractions &gt;5 in 10 minutes or contractions lasting &gt;2 minutes) requires immediate action:</strong> stop oxytocin, left lateral position, tocolysis if fetal compromise present. It is a clinical emergency, not a monitoring footnote.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">Induction is a process, not an event.<br>The cervix decides <em>how long it takes.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Induction is a process, not an event.<br>The cervix decides <em>how long it takes.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2654,6 +3364,50 @@ NOTES.menopause=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Permanent cessation of menstruation due to loss of ovarian follicular activity. Average age 51 in UK. <strong>Premature ovarian insufficiency (POI): before age 40.</strong></div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Every woman who lives long enough. Earlier in: smokers, chemotherapy/radiotherapy, bilateral oophorectomy, family history of early menopause.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Oestrogen withdrawal causes vasomotor symptoms, urogenital atrophy, osteoporosis, cardiovascular risk. HRT is highly effective when started early.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Menopause — oestrogen withdrawal and its consequences</span>
+      <span class="n-viz-sub">Menopause is not a disease — but undertreated oestrogen deficiency causes one</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">VASOMOTOR</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Hot Flushes
++ Sweats</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">GnRH neuron disinhibition</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Hypothalamic dysregulation</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">HRT most effective</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">UROGENITAL</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">GSM /
+Atrophy</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">↓oestrogen → thin mucosa</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Dryness · dyspareunia · UTI</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Topical oestrogen safe</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a1a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SKELETAL</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Osteo-
+porosis</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Rapid bone loss 1–3 yrs</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">post-menopause</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">DEXA if early / POI</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">CARDIOVASC</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">CV Risk
+Rises</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Oestrogen cardioprotective</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Lost after menopause</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">HRT <60 may protect</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">HRT</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Oestrogen
+± Progest</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Systemic if uterus present</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Add progestogen always</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Discuss risks at 1 yr</text>
+    </svg>
+  </div>
+
   <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Hot flushes + amenorrhoea + elevated FSH in a woman over 45 → think <em>menopause</em> → clinical diagnosis, no blood tests required. Under 45 → FSH to confirm.</div></div>
   <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>FSH and LH are NOT needed to diagnose menopause in women over 45.</strong> NICE 2015: clinical diagnosis is sufficient. Blood tests are only required for women under 45 (where alternative diagnoses must be excluded) and for POI (&lt;40).</div></div>
 </div><div class="n-section">
@@ -2707,7 +3461,7 @@ NOTES.menopause=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>There is no arbitrary age limit for HRT.</strong> The decision to continue is based on individual benefit-risk assessment. For women with severe symptoms or osteoporosis, the benefits often continue to outweigh risks well beyond 60. Annual review — not automatic cessation — is appropriate.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">Menopause is not a disease.<br>But undertreated oestrogen deficiency <em>causes one.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Menopause is not a disease.<br>But undertreated oestrogen deficiency <em>causes one.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2720,6 +3474,53 @@ NOTES.vulvalconditions=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">A group of distinct vulval pathologies: <strong>lichen sclerosus (autoimmune atrophy), VIN (pre-cancer), Bartholin's cyst/abscess</strong>. Each requires different management.</div></div><div class="n-snap-cell"><div class="n-snap-label">Lichen sclerosus</div><div class="n-snap-text">White, atrophic, wrinkled skin ('cigarette paper'). Intense pruritus. Affects labia and peri-anal skin. Autoimmune — associated with thyroid disease and vitiligo.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Untreated lichen sclerosus → architectural distortion, phimosis of the clitoris, fused labia. 4–5% risk of squamous cell carcinoma of the vulva.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Vulval conditions — white, red, and ulcerated</span>
+      <span class="n-viz-sub">Biopsy what you are not sure about. Every time.</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">LICHEN
+SCLEROSUS</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">White
+Atrophic</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Figure-of-8 pattern</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">'Cigarette paper' skin</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Clobetasol · lifelong</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">LICHEN
+PLANUS</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Erosive
+Red/Purple</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Wickham's striae</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Affects vagina too</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Steroids · immunosup</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">VIN</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Vulval
+Intraepithelial</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Pre-malignant lesion</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">HPV or differentiated</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Refer to colposcopy</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">BARTHOLIN'S</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Cyst /
+Abscess</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">4 o'clock position</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Tender fluctuant swelling</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Word catheter / marsup</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">VULVAL
+CANCER</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Squamous
+Cell Ca</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Arises on lichen scl.</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Warty / nodular ulcer</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">4–5% lifetime LS risk</text>
+    </svg>
+  </div>
+
   <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">White atrophic vulval skin + severe pruritus + figure-of-8 distribution (vulva + peri-anal) → think <em>lichen sclerosus</em> → potent topical steroid (clobetasol propionate).</div></div>
   <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Lichen sclerosus is not a sexually transmitted infection.</strong> Patients are often wrongly told this. It is autoimmune. Sexual partners do not need treatment. Reassurance and correct diagnosis matter enormously for this group.</div></div>
 </div><div class="n-section">
@@ -2760,7 +3561,7 @@ NOTES.vulvalconditions=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Topical oestrogen has no role in lichen sclerosus.</strong> First-line is clobetasol propionate 0.05% applied using the 3-month tapering regimen. Topical oestrogen treats vulvovaginal atrophy — a completely different condition.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">White skin. Itch. Figure-of-8.<br>Biopsy what you're not sure about. <em>Every time.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">White skin. Itch. Figure-of-8.<br>Biopsy what you're not sure about. <em>Every time.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2773,6 +3574,50 @@ NOTES.ovariancancer=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Malignancy of the ovary. <strong>High-grade serous carcinoma (HGSC)</strong> is most common and most aggressive — 70% of cases. Also: clear cell, endometrioid, mucinous, low-grade serous.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Lifetime risk 1.7%. Risk: BRCA1/2 (40–60%), Lynch syndrome, nulliparity, endometriosis, HRT &gt;10 years. <strong>COCP reduces risk by 50% across 5 years of use.</strong></div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">5-year survival for Stage III–IV = &lt;30%. Most present at advanced stage. Debulking surgery + chemotherapy are the mainstays — but stage determines prognosis entirely.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Ovarian cancer — the silent killer</span>
+      <span class="n-viz-sub">Persistent bloating in a woman >50 is not IBS until you've ruled this out</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">HISTOLOGY</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">HGSC
+70% of cases</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">High-grade serous</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Most aggressive subtype</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">TP53 mutation universal</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SYMPTOMS</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Bloating
+Satiety · IBS</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Vague — hence late Dx</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Persistent ≥12×/month</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Pelvic/abdo mass</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">INVESTIGATE</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">CA-125
++ USS</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">RMI to risk-stratify</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">CT chest/abdo/pelvis</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Refer if RMI >200</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">STAGING</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">FIGO
+I – IV</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stage I: confined ovary</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stage III: peritoneal</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">75% diagnosed stage III+</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TREATMENT</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Debulk
++ Carbo/Tax</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Optimal debulking key</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">BRCA: PARP inhibitors</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">5yr survival <30% stIII</text>
+    </svg>
+  </div>
+
   <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Persistent bloating + early satiety + pelvic/abdominal mass in a postmenopausal woman → think <em>ovarian cancer</em> → USS + CA-125 → calculate RMI.</div></div>
   <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>The symptoms of ovarian cancer are non-specific and mimic IBS.</strong> Persistent bloating, change in bowel habit, and urinary frequency in a woman over 50 warrant USS — not a GI referral. NICE NG12: test CA-125 if any of these symptoms occur &gt;12 times/month.</div></div>
 </div><div class="n-section">
@@ -2824,7 +3669,7 @@ NOTES.ovariancancer=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Ascites with an ovarian mass is ovarian cancer until proven otherwise.</strong> Direct urgent referral without waiting for CA-125 or USS is indicated. Do not attribute ascites to a benign cyst.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">Persistent bloating in a woman over 50<br>is not IBS until you've done a <em>CA-125 and an ultrasound.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Persistent bloating in a woman over 50<br>is not IBS until you've done a <em>CA-125 and an ultrasound.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2837,6 +3682,54 @@ NOTES.subfertility=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Failure to conceive after 12 months of regular unprotected intercourse (or 6 months if woman &gt;35 or known risk factor). 1 in 7 couples affected.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Equal male and female causes. <strong>Male factor: ~30%</strong>. Female ovulatory: ~25%. Tubal: ~20%. Unexplained: ~25%. Both: ~10%. Never investigate one partner without the other.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Investigation is time-sensitive (especially with age). Many causes are treatable — ovulatory dysfunction responds well to induction. Tubal disease may require IVF.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Initial Investigation</span><span class="n-section-tag">at first consultation — both partners</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Subfertility — equal cause investigation</span>
+      <span class="n-viz-sub">Never investigate one partner without investigating both</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MALE FACTOR
+~30%</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Semen
+Analysis</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Count · motility · morph</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Azoospermia → genetics</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Repeat if abnormal</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">OVULATORY
+~25%</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">LH · FSH
+Day 21 Prog</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">PCOS most common</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Hyperprolactinaemia</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Clomifene / letrozole</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TUBAL
+~20%</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">HyCoSy /
+Laparoscopy</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Post-PID · endo</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Chlamydia serology first</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">IVF if bilateral block</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">UNEXPLAINED
+~25%</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">All Tests
+Normal</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Empirical treatment</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">IUI then IVF</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Age determines urgency</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">IVF</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Stimulate
+Retrieve Transfer</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">NHS: ≤3 cycles if eligible</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Success: 40% at <35</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Multiple pregnancy risk</text>
+    </svg>
+  </div>
+
   <div class="n-diag-steps">
     <div class="n-diag-row"><div class="n-diag-label ">Semen analysis</div><div class="n-diag-content"><strong>First test. Always.</strong> WHO criteria: volume &gt;1.5 mL, sperm count &gt;16 million/mL, motility &gt;42%, morphology &gt;4% (strict criteria). Two analyses if abnormal.</div></div>
     <div class="n-diag-row"><div class="n-diag-label ">Ovulation</div><div class="n-diag-content">Mid-luteal progesterone: &gt;30 nmol/L confirms ovulation in a 28-day cycle (taken day 21). FSH, LH, AMH (ovarian reserve), prolactin, TFT.</div></div>
@@ -2891,7 +3784,7 @@ NOTES.subfertility=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>IVF is the end of the pathway, not the first response to unexplained subfertility.</strong> After completing investigation, expectant management for up to 2 years (in women under 35 with no identified cause) is appropriate. Ovulation induction and IUI precede IVF in most pathways.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">Never investigate one partner<br><em>without investigating both.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Never investigate one partner<br><em>without investigating both.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -3055,6 +3948,50 @@ NOTES.obstetriccholestasis=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Abnormal liver function with elevated bile acids in pregnancy, causing intense pruritus. Resolves after delivery. <strong>Bile acids &gt;40 µmol/L</strong> are associated with fetal risk.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">~0.7% of pregnancies in UK. Higher in South Asian and Scandinavian women. <strong>Recurs in 45–70% of subsequent pregnancies.</strong> Family history in first-degree relatives.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">The risk is entirely fetal: sudden unexplained stillbirth. The mother feels terrible but is not in danger. Fetal risk correlates with bile acid level — mild ICP has low risk, severe ICP is a different disease.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Obstetric cholestasis — bile acids and fetal risk</span>
+      <span class="n-viz-sub">The mother itches. The danger is entirely to the baby.</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MECHANISM</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">↓Bile Acid
+Excretion</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Oestrogen impairs</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">hepatic bile transport</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Genetic susceptibility</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SYMPTOMS</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Palmar /
+Plantar Itch</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Worse at night</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">No rash (scratch marks only)</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">LFTs + bile acids</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a1a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DIAGNOSIS</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Bile Acids
+>10 µmol/L</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Mild <40 / Severe ≥40</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">ALT often elevated</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Exclude other liver Dx</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TREATMENT</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">UDCA
++ Monitor</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Ursodeoxycholic acid</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Weekly bile acids + LFT</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Relieves symptoms</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DELIVER</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">≥40 µmol/L
+→ 35–37 wks</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Sudden stillbirth risk</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Mechanism not fully known</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Mild: offer IOL 38–40</text>
+    </svg>
+  </div>
+
   <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Third trimester + intense pruritus (especially palms and soles) + no rash + abnormal LFTs → think <em>obstetric cholestasis</em> → fasting bile acids, LFTs. Do not reassure without investigating.</div></div>
   <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>PUPPP (pruritic urticarial papules of pregnancy) has a rash. OC does not.</strong> If there is no rash but pruritus is severe — especially on palms and soles — investigate for OC regardless of LFT results on first test. Bile acids can be elevated before LFTs become abnormal.</div></div>
 </div><div class="n-section">
@@ -3111,7 +4048,7 @@ NOTES.obstetriccholestasis=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>UDCA reduces maternal symptoms and improves biochemistry but has not been shown to definitively reduce stillbirth risk.</strong> The PITCHES trial (2019) found no significant reduction in composite adverse outcomes with UDCA versus placebo. Delivery timing remains the primary intervention for fetal safety.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">The mother itches.<br>The danger is entirely <em>to the baby.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">The mother itches.<br>The danger is entirely <em>to the baby.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -3125,6 +4062,52 @@ NOTES.endometrialcancer=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Malignancy of the uterine endometrium. Type I (endometrioid, oestrogen-driven, good prognosis) accounts for 80%. Type II (serous, clear cell, oestrogen-independent, aggressive) accounts for 20% but causes disproportionate deaths.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Peak age 55–65. Risk factors: <strong>obesity (most important), nulliparity, late menopause, PCOS, tamoxifen use, unopposed oestrogen, Lynch syndrome.</strong> Combined OCP is protective.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">~9,700 new cases/year in UK. Most (90%) present with <strong>postmenopausal bleeding</strong> — which is why the majority are caught at stage I. The alarm symptom that makes this the most curable gynaecological cancer.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Endometrial cancer — oestrogen, endometrium, and alarm symptoms</span>
+      <span class="n-viz-sub">Postmenopausal bleeding is cancer until you prove otherwise</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TYPE I
+80%</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Endometrioid
+Low Grade</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Oestrogen-driven</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Obesity · PCOS · tamoxifen</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Good prognosis</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TYPE II
+20%</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Serous /
+Clear Cell</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Oestrogen-independent</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Aggressive — p53 mut</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Disproportionate deaths</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SYMPTOM</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">PMB —
+Refer in 2wks</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">90% present with PMB</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Premenopause: IMB / HMB</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Alarm symptom = early Dx</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DIAGNOSE</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">TVS + Pipelle
+or Hysteroscopy</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">ET >4mm = investigate</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Pipelle 70% sensitivity</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Hysteroscopy gold std</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TREATMENT</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">TAH + BSO
+± Lymph nodes</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stage I: surgery curative</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stage III+: adjuvant RT</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">5yr survival 75–80%</text>
+    </svg>
+  </div>
+
   <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Postmenopausal woman + any vaginal bleeding → think <em>endometrial cancer until proven otherwise</em> → urgent 2-week-wait (2WW) referral. Even a single episode. Even on HRT — investigate all unexpected bleeding.</div></div>
   <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Premenopausal women can also get endometrial cancer.</strong> Persistent intermenstrual bleeding or HMB that fails to respond to treatment, especially in women with obesity or PCOS, should prompt investigation. The 2WW pathway is for postmenopausal bleeding — but do not miss the younger cases.</div></div>
 </div><div class="n-section">
@@ -3182,7 +4165,7 @@ NOTES.endometrialcancer=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Grade and stage are independent variables.</strong> A grade 1 tumour with deep myometrial invasion (>50%) is stage IB and has a higher recurrence risk. Lymphovascular space invasion (LVSI) is an additional independent prognostic factor that determines adjuvant treatment — not just grade and stage alone.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">Postmenopausal bleeding<br><em>is cancer until you prove otherwise.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Postmenopausal bleeding<br><em>is cancer until you prove otherwise.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -3196,6 +4179,50 @@ NOTES.urinaryincontinence=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Involuntary leakage of urine. Three main types: <strong>stress UI</strong> (leakage on exertion/cough/sneeze), <strong>urgency UI</strong> (overactive bladder — unable to defer), and <strong>mixed UI</strong> (both). Mechanism, not severity, determines treatment.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Affects ~1 in 3 women. Stress UI peaks post-childbirth; urgency UI peaks after menopause. <strong>Most women do not volunteer the symptom — always ask.</strong> Under-reported and under-treated.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Major impact on quality of life, social function, and mental health. Highly treatable with conservative measures. Surgery before conservative treatment is almost always the wrong sequence.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Urinary incontinence — mechanism determines treatment</span>
+      <span class="n-viz-sub">Stress and urgency are different diseases with different treatments</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">STRESS UI</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Sphincter
+Weakness</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Leak on cough/sneeze</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Childbirth · prolapse</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">PFMT first-line</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">URGENCY UI</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Overactive
+Bladder</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Can't defer void</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Detrusor overactivity</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Bladder training first</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MIXED UI</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Both
+Components</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Treat dominant first</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Then reassess</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Very common post-meno</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MEDICAL</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Antimuscar
+/ β3 agonist</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Oxybutynin · solifenacin</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Mirabegron (β3-agonist)</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Only after lifestyle fail</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SURGICAL</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">TVT / TOT
+or Botox</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Stress: mid-urethral tape</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Urgency: botox or SNM</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Conservative always first</text>
+    </svg>
+  </div>
+
   <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Leakage on coughing/sneezing/exercise → <em>stress UI</em> → pelvic floor muscle training first. Sudden urge + can't make it to the toilet → <em>urgency UI</em> → bladder training + anticholinergics. Both → mixed UI → address predominant symptom first.</div></div>
   <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Urodynamics are not required before treating uncomplicated stress or urgency UI.</strong> NICE: offer PFMT for stress UI and bladder training for urgency UI before urodynamics. Urodynamics are required before surgical treatment — not before conservative management.</div></div>
 </div><div class="n-section">
@@ -3245,7 +4272,7 @@ NOTES.urinaryincontinence=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Conservative treatment (supervised PFMT) achieves ~70% improvement and should always precede surgery.</strong> Surgery before a proper trial of PFMT is not appropriate. Pelvic floor physiotherapy outcomes are significantly better with supervised training versus unsupervised exercises — which is what most women are given.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">The mechanism determines the treatment.<br><em>Stress and urgency are different diseases.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">The mechanism determines the treatment.<br><em>Stress and urgency are different diseases.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -3259,6 +4286,52 @@ NOTES.contraception=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Prevention of pregnancy. Effectiveness measured by <strong>Pearl index</strong> (pregnancies per 100 woman-years with perfect use). UKMEC categories 1–4 classify medical eligibility for each method.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who needs counselling</div><div class="n-snap-text">Any woman of reproductive age. Contraception fails most often due to <strong>non-compliance and incorrect use</strong> — not method failure. LARC (long-acting reversible contraception) eliminates user error.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">LARC methods have Pearl index &lt;1 and are the most cost-effective NHS interventions. Yet the most effective methods are the least frequently offered. Method choice should match the woman's life, health, and priorities — not default to the pill.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Efficacy Hierarchy</span><span class="n-section-tag">Pearl index — lower is better</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Contraception — efficacy hierarchy</span>
+      <span class="n-viz-sub">Pearl index: pregnancies per 100 woman-years with perfect use</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MOST
+EFFECTIVE</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">IUD / IUS
+Implant</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Pearl index <1</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">No user error</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">LARC — first-line offer</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">VERY
+EFFECTIVE</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Injectable
+DMPA</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Pearl index <1</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Every 12 weeks</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Amenorrhoea common</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">EFFECTIVE</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">COCP /
+POP</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Pearl index 0.1–0.3</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">User-dependent</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Miss 1: follow rules</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">BARRIER</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Condoms
+Diaphragm</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Condom: only STI protect</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Pearl index 2–18</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Correct use essential</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">EMERGENCY</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">EC pill
+or Cu-IUD</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Cu-IUD most effective</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">≤120 hrs for UPA/LNG</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Cu-IUD also ongoing</text>
+    </svg>
+  </div>
+
   <div class="n-diff-grid">
     <div class="n-diff-card this"><div class="n-diff-card-tag">Most effective — LARC</div><div class="n-diff-card-name">IUS / IUD / Implant / Injectable</div><div class="n-diff-card-key">Pearl index <strong>&lt;1</strong>. No user action required after insertion. Implant/IUS/IUD: &gt;99% effective. Depo-Provera injectable: 99.8% with perfect use. LARC should be default offer.</div></div>
     <div class="n-diff-card that"><div class="n-diff-card-tag">User-dependent</div><div class="n-diff-card-name">COCP / POP / Barrier</div><div class="n-diff-card-key">COCP: <strong>Pearl index 0.3 (perfect) / 9 (typical)</strong>. POP: 0.3/9. Male condom: 2/18. Effectiveness drops substantially with typical use. Correct and consistent use is the challenge.</div></div>
@@ -3316,7 +4389,7 @@ NOTES.contraception=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Levonorgestrel loses effectiveness significantly after 72 hours.</strong> Its efficacy is ~95% within 24h, ~85% at 25–48h, ~58% at 49–72h. Ulipristal acetate maintains effectiveness for the full 120 hours and is significantly more effective on days 3–5. If presenting between 72–120 hours, ulipristal is the appropriate oral EC — or copper IUD.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">The most effective methods<br><em>are the least frequently offered.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">The most effective methods<br><em>are the least frequently offered.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -3330,6 +4403,50 @@ NOTES.sexuallytransmitted=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What matters</div><div class="n-snap-text">Chlamydia, gonorrhoea, syphilis, herpes, trichomonas, BV. Each has a distinct presentation, specific test, and treatment. <strong>Asymptomatic infection is the norm, not the exception</strong> — most STIs are found by screening, not symptoms.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Peak incidence: 16–25 year olds. New STI diagnoses rising in UK. Co-infection is common — test for all STIs when one is found. <strong>Never treat one STI without a full STI screen.</strong></div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Untreated STIs cause PID, infertility, ectopic pregnancy, chronic pelvic pain, neonatal disease, and cancer (HPV→cervical, HBV/HCV→liver). Partner notification is integral to management — not optional.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">High-Yield STI Summaries</span><span class="n-section-tag">one disease, one key fact</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">STIs — one disease, one key fact</span>
+      <span class="n-viz-sub">Asymptomatic infection is the norm — the prescription includes partner notification</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">CHLAMYDIA</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Silent
+Infection</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Often asymptomatic</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">NAAT urine or swab</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Azithromycin 1g stat</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">GONORRHOEA</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Increasing
+Resistance</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">NAAT + culture both</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Urethral/cervical DC</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Ceftriaxone 1g IM</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SYPHILIS</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">3 Stages
++ Latent</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Painless ulcer → rash</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">TPHA · VDRL · RPR</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Benzylpenicillin IM</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">HERPES</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">HSV-1 / 2
+Lifelong</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Primary: severe ulcers</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Recurrence: triggers</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Aciclovir 5 days</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">BV / TRICH</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Not STI /
+STI</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">BV: Gardnerella · fishy</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Trich: protozoan · frothy</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Both: metronidazole</text>
+    </svg>
+  </div>
+
   <div class="n-diag-steps">
     <div class="n-diag-row"><div class="n-diag-label gold">Chlamydia</div><div class="n-diag-content"><em>C. trachomatis.</em> <strong>Most common bacterial STI in UK.</strong> Usually asymptomatic. Symptoms: mucopurulent discharge, IMB, dysuria, pelvic pain. Test: NAAT (vulvovaginal swab or urine). Treatment: <strong>doxycycline 100mg BD × 7 days</strong> (first-line) or azithromycin 1g stat + 500mg daily × 2 days. Sequelae: PID, infertility, ectopic.</div></div>
     <div class="n-diag-row"><div class="n-diag-label gold">Gonorrhoea</div><div class="n-diag-content"><em>N. gonorrhoeae.</em> Purulent discharge, dysuria. Often co-infects with chlamydia. Test: NAAT (endocervical swab). <strong>Treatment: ceftriaxone 1g IM stat</strong> — oral agents no longer recommended due to resistance. Resistance patterns: always follow current BASHH guidelines. Contact trace all partners.</div></div>
@@ -3370,7 +4487,7 @@ NOTES.sexuallytransmitted=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Herpes is transmitted during asymptomatic viral shedding.</strong> The majority of HSV transmission occurs when the source partner has no symptoms and no visible lesions. Suppressive antiviral therapy reduces (but does not eliminate) transmission risk. Condom use further reduces — but does not eliminate — transmission.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">Partner notification<br><em>is part of the prescription.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Partner notification<br><em>is part of the prescription.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -3384,6 +4501,52 @@ NOTES.acutegynae=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What it covers</div><div class="n-snap-text">Ovarian torsion, tubo-ovarian abscess (TOA), Bartholin's abscess, acute vulval haematoma, Mittelschmerz, haemoperitoneum from ruptured cyst. <strong>All present with acute pelvic pain — the diagnosis determines urgency.</strong></div></div><div class="n-snap-cell"><div class="n-snap-label">What you must not miss</div><div class="n-snap-text"><strong>Torsion and ruptured ectopic are surgical emergencies.</strong> Torsion: every hour of delay risks ovarian infarction. Ectopic: haemodynamic compromise requires immediate theatre. Both can present with a negative pregnancy test.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Ovarian torsion is the only gynaecological emergency where the organ can be saved by prompt surgery. Delayed diagnosis = oophorectomy. The window is narrow. A high index of suspicion is the only protective factor.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Ovarian Torsion</span><span class="n-section-tag">time is ovary</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Acute gynaecology — time-critical diagnoses</span>
+      <span class="n-viz-sub">Torsion and ruptured ectopic — hours, not days</span>
+    </div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
+      <text x="72" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TORSION</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Sudden
+Unilateral Pain</text>
+      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Ovary twists on pedicle</text>
+      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">USS may show blood flow</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Untwist even if dead</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="227" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">RUPTURED
+ECTOPIC</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Haemo-
+peritoneum</text>
+      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Shoulder tip · shock</text>
+      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">βhCG positive + empty ut</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Laparotomy not laparoscopy</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
+      <text x="382" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">TOA</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Tubo-ovarian
+Abscess</text>
+      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">PID + mass + fever</text>
+      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">CT or USS for size</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">IV abx or drain</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
+      <text x="537" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">BARTHOLIN'S</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Abscess
+4 o'clock</text>
+      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Hot tender swelling</text>
+      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Labium majus</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Word catheter / marsup</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
+      <text x="690" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">HAEMO-
+PERITONEUM</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Ruptured
+Cyst</text>
+      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Corpus luteal most common</text>
+      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Haemodynamic instability</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Conservative or theatre</text>
+    </svg>
+  </div>
+
   <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Sudden-onset severe unilateral pelvic pain (often with nausea/vomiting) in a woman of reproductive age + adnexal mass on USS → think <em>ovarian torsion</em> → urgent surgical review. Do not wait for Doppler to be absent.</div></div>
   <div class="n-diag-steps">
     <div class="n-diag-row"><div class="n-diag-label gold">Clinical features</div><div class="n-diag-content">Sudden severe unilateral pain, worse on movement. Often intermittent (partial torsion). Nausea and vomiting in ~70%. Low-grade fever if necrosis. Adnexal tenderness on bimanual. No pathognomonic signs.</div></div>
@@ -3436,7 +4599,7 @@ NOTES.acutegynae=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Untwist first, observe for colour change, then decide.</strong> Studies show up to 90% of visually compromised ovaries recover normal function after detorsion. Immediate oophorectomy based on visual appearance results in unnecessary loss of ovarian tissue and reproductive potential. Conserve unless truly necrotic and non-viable after adequate observation post-detorsion.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-text">Untwist it.<br><em>Even if it looks dead.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-ornament">✦ · ✦</div><div class="n-anchor-text">Untwist it.<br><em>Even if it looks dead.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
