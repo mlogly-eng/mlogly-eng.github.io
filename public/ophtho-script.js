@@ -138,7 +138,7 @@ function loadFontSize(){
 
 // ══ BREATHE MODE ══
 // breatheOn and nav/prefs state
-const NOTE_ORDER_OPHTHO=['intro','eyelids','lacrimal','conjunctiva','lens','cataract','cornea','uveitis','refraction','glaucoma','retina','retdetach','dr','hr','vascular','orbit','opticnerve','tumours','pharmacology'];
+const NOTE_ORDER_OPHTHO=['intro','eyelids','lacrimal','conjunctiva','lens','cataract','cornea','uveitis','refraction','glaucoma','retina','retdetach','rd','dr','hr','vascular','rvo','amd','redeye','orbit','opticnerve','on','tumours','strabismus','pharmacology'];
 const NOTE_NAMES={'intro':'Intro to Ophthalmology','eyelids':'Eyelids','lacrimal':'Lacrimal Apparatus','conjunctiva':'Conjunctiva','lens':'The Lens','cataract':'Cataracts','cornea':'Corneal Infections','uveitis':'Uveitis','refraction':'Refraction','glaucoma':'Glaucoma','retina':'The Retina','retdetach':'Retinal Detachment','dr':'Diabetic Retinopathy','hr':'Hypertensive Retinopathy','vascular':'Vascular Retinopathy','orbit':'The Orbit','opticnerve':'Optic Neuropathy','tumours':'Ocular Tumours','pharmacology':'Ocular Pharmacology'};
 // Alias so breathe engine (which uses NOTE_ORDER) works
 const NOTE_ORDER = NOTE_ORDER_OPHTHO;
@@ -1208,6 +1208,34 @@ NOTES.lens = () => `<div class="n-page"><div class="n-hero-new">
   </div>
 </div>
 <div class="n-section">
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Lens anatomy</span><span class="n-viz-sub">Zones and their significance</span></div>
+    <svg viewBox="0 0 760 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="244" height="170" rx="2" fill="#1a2a3a"/>
+      <text x="122" y="30" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">ANTERIOR</text>
+      <text x="122" y="58" font-family="Syne,sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="800">Epithelium</text>
+      <text x="122" y="80" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Single layer of cells</text>
+      <text x="122" y="98" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Mitotically active</text>
+      <text x="122" y="140" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Damage → PSC cataract</text>
+      <text x="122" y="158" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Steroids · radiation</text>
+      <rect x="258" y="0" width="244" height="170" rx="2" fill="#c8452a"/>
+      <text x="380" y="30" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">CORE</text>
+      <text x="380" y="58" font-family="Syne,sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="800">Nucleus</text>
+      <text x="380" y="80" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Embryonic fibres — compacted</text>
+      <text x="380" y="98" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Hardest, most dense zone</text>
+      <text x="380" y="140" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Nuclear sclerosis → brown opacity</text>
+      <text x="380" y="158" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Most common cataract type</text>
+      <rect x="516" y="0" width="244" height="170" rx="2" fill="#2a4a2a"/>
+      <text x="638" y="30" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">PERIPHERAL</text>
+      <text x="638" y="58" font-family="Syne,sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="800">Cortex</text>
+      <text x="638" y="80" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Newer fibres — hydrated</text>
+      <text x="638" y="98" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Softer, more peripheral</text>
+      <text x="638" y="140" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Cortical cataract → spoke-wheel</text>
+      <text x="638" y="158" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Diabetes · ageing</text>
+    </svg>
+  </div>
+</div>
+<div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">The Three Layers</span><span class="n-section-tag">capsule to nucleus</span></div>
   <div class="n-mech-chain">
     <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Capsule — outermost elastic membrane</div><div class="n-mech-text">Collagen IV-rich elastic membrane encasing the entire lens. <strong>Anterior capsule is thicker than posterior.</strong> In cataract surgery, the posterior capsule is deliberately preserved to hold the intraocular lens in the capsular bag. Rupture = vitreous prolapse, IOL cannot be placed in the bag.</div></div></div>
@@ -1266,7 +1294,7 @@ NOTES.lens = () => `<div class="n-page"><div class="n-hero-new">
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>No blood supply. No nerves. No inflammation.</em><br>Only silent, progressive opacity.</div></div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>No blood supply. No nerves. No inflammation.</em><br>Only silent, progressive opacity.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()">
   <div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div>
   <div class="n-note-end-cta-arrow">&#8599;</div>
@@ -1289,6 +1317,34 @@ NOTES.cataract = () => `<div class="n-page"><div class="n-hero-new">
     <div class="n-snap-cell"><div class="n-snap-label">The type matters</div><div class="n-snap-text">Nuclear, cortical, and posterior subcapsular cataracts have different causes, symptoms, and slit-lamp appearances. <strong>The location tells you the cause.</strong></div></div>
     <div class="n-snap-cell"><div class="n-snap-label">Who gets them</div><div class="n-snap-text">Ageing (most common), corticosteroids, diabetes, UV exposure, trauma, congenital (TORCH, galactosaemia). Always ask about <strong>inhalers, skin creams, and oral steroids.</strong></div></div>
     <div class="n-snap-cell"><div class="n-snap-label">When to operate</div><div class="n-snap-text">When the cataract causes <strong>functional impairment</strong> affecting daily life. There is no VA threshold. The decision is shared with the patient.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Cataract types by location</span><span class="n-viz-sub">Location predicts cause</span></div>
+    <svg viewBox="0 0 760 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="244" height="170" rx="2" fill="#c8452a"/>
+      <text x="122" y="30" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">NUCLEAR</text>
+      <text x="122" y="60" font-family="Syne,sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="800">Nuclear Sclerosis</text>
+      <text x="122" y="82" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Central amber/brown opacity</text>
+      <text x="122" y="100" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Myopic shift — near vision</text>
+      <text x="122" y="120" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">temporarily improved</text>
+      <text x="122" y="150" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Ageing · UV exposure</text>
+      <rect x="258" y="0" width="244" height="170" rx="2" fill="#2a4a6e"/>
+      <text x="380" y="30" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">CORTICAL</text>
+      <text x="380" y="60" font-family="Syne,sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="800">Cortical</text>
+      <text x="380" y="82" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Spoke-wheel pattern</text>
+      <text x="380" y="100" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">from periphery inward</text>
+      <text x="380" y="120" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Glare · contrast loss</text>
+      <text x="380" y="150" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Diabetes · ageing</text>
+      <rect x="516" y="0" width="244" height="170" rx="2" fill="#3a2a5a"/>
+      <text x="638" y="30" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">POSTERIOR</text>
+      <text x="638" y="60" font-family="Syne,sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="800">PSC</text>
+      <text x="638" y="82" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Posterior subscapsular</text>
+      <text x="638" y="100" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Granular plaque at back</text>
+      <text x="638" y="120" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Worse in bright light / reading</text>
+      <text x="638" y="150" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Steroids · diabetes · trauma</text>
+    </svg>
   </div>
 </div>
 <div class="n-section">
@@ -1342,7 +1398,7 @@ NOTES.cataract = () => `<div class="n-page"><div class="n-hero-new">
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>Nuclear. Cortical. PSC.</em><br>The location tells you the cause. The cause tells you the patient.</div></div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>Nuclear. Cortical. PSC.</em><br>The location tells you the cause. The cause tells you the patient.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()">
   <div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div>
   <div class="n-note-end-cta-arrow">&#8599;</div>
@@ -1365,6 +1421,43 @@ NOTES.cornea = () => `<div class="n-page"><div class="n-hero-new">
     <div class="n-snap-cell"><div class="n-snap-label">The rule</div><div class="n-snap-text">Painful red eye + photophobia + white corneal opacity = corneal ulcer. <strong>Same-day referral. No steroids without a confident slit lamp diagnosis.</strong></div></div>
     <div class="n-snap-cell"><div class="n-snap-label">Why urgent</div><div class="n-snap-text">The cornea is avascular and immune-privileged. Infection causes rapid stromal destruction. <strong>Hours matter.</strong> A day's delay risks permanent scarring and vision loss.</div></div>
     <div class="n-snap-cell"><div class="n-snap-label">History = organism</div><div class="n-snap-text">Contact lens wearer → bacterial/Acanthamoeba. Agricultural trauma → fungal. Recurrent painful episodes with stress → HSV. <strong>The history tells you the organism before you examine.</strong></div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Corneal layers — anterior to posterior</span><span class="n-viz-sub">Each layer has distinct pathology</span></div>
+    <svg viewBox="0 0 760 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="140" height="160" rx="2" fill="#1a3a2a"/>
+      <text x="70" y="30" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SUPERFICIAL</text>
+      <text x="70" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Epithelium</text>
+      <text x="70" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">5–7 cell layers</text>
+      <text x="70" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Regenerates in 24–48h</text>
+      <text x="70" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Dendrite → HSV</text>
+      <rect x="152" y="0" width="140" height="160" rx="2" fill="#2a3a1a"/>
+      <text x="222" y="30" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">LAYER 2</text>
+      <text x="222" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Bowman's</text>
+      <text x="222" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Acellular — no regen</text>
+      <text x="222" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Scar if breached</text>
+      <text x="222" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Breach → opacity</text>
+      <rect x="304" y="0" width="152" height="160" rx="2" fill="#c8452a"/>
+      <text x="380" y="30" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">BULK — 90%</text>
+      <text x="380" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Stroma</text>
+      <text x="380" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">500μm collagen fibrils</text>
+      <text x="380" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Regular = transparent</text>
+      <text x="380" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Keratoconus · ulcers</text>
+      <rect x="468" y="0" width="140" height="160" rx="2" fill="#1a2a4a"/>
+      <text x="538" y="30" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">LAYER 5</text>
+      <text x="538" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Descemet's</text>
+      <text x="538" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">BM of endothelium</text>
+      <text x="538" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Thickens with age</text>
+      <text x="538" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Haab's striae → congenital glaucoma</text>
+      <rect x="620" y="0" width="140" height="160" rx="2" fill="#3a1a2a"/>
+      <text x="690" y="30" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DEEPEST</text>
+      <text x="690" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Endothelium</text>
+      <text x="690" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Single cell pump layer</text>
+      <text x="690" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">No regeneration</text>
+      <text x="690" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Failure → bullous keratopathy</text>
+    </svg>
   </div>
 </div>
 <div class="n-section">
@@ -1439,7 +1532,7 @@ NOTES.cornea = () => `<div class="n-page"><div class="n-hero-new">
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>Painful red eye. White corneal spot.</em><br>Same-day referral. No steroids until you know the organism.</div></div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>Painful red eye. White corneal spot.</em><br>Same-day referral. No steroids until you know the organism.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()">
   <div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div>
   <div class="n-note-end-cta-arrow">&#8599;</div>
@@ -1462,6 +1555,43 @@ NOTES.retina = () => `<div class="n-page"><div class="n-hero-new">
     <div class="n-snap-cell"><div class="n-snap-label">What it is</div><div class="n-snap-text">Inner layer of the eye — neural tissue derived from the brain. Converts light into electrical signals. <strong>10 layers, two blood supplies, one blind spot.</strong></div></div>
     <div class="n-snap-cell"><div class="n-snap-label">Two blood supplies</div><div class="n-snap-text">Inner retina: central retinal artery. Outer retina (photoreceptors): choriocapillaris via RPE. <strong>Photoreceptors have no direct blood supply — they depend entirely on the RPE.</strong></div></div>
     <div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Every fundoscopy finding — haemorrhages, exudates, cotton wool spots, papilloedema — makes anatomical sense only when you know which retinal layer is affected and why.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Retinal layers — light travels inward</span><span class="n-viz-sub">From vitreous to choroid</span></div>
+    <svg viewBox="0 0 760 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="140" height="160" rx="2" fill="#1a1a3a"/>
+      <text x="70" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">INNERMOST</text>
+      <text x="70" y="54" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800">Nerve Fibre</text>
+      <text x="70" y="70" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Layer (NFL)</text>
+      <text x="70" y="90" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Ganglion axons</text>
+      <text x="70" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Cotton wool spots here</text>
+      <rect x="152" y="0" width="140" height="160" rx="2" fill="#2a1a4a"/>
+      <text x="222" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">INNER</text>
+      <text x="222" y="54" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800">Inner Nuclear</text>
+      <text x="222" y="70" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Layer (INL)</text>
+      <text x="222" y="90" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Bipolar · amacrine cells</text>
+      <text x="222" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Dot haemorrhages</text>
+      <rect x="304" y="0" width="152" height="160" rx="2" fill="#c8452a"/>
+      <text x="380" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">OUTER</text>
+      <text x="380" y="54" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800">Outer Plexiform</text>
+      <text x="380" y="70" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Layer (OPL)</text>
+      <text x="380" y="90" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Photoreceptor synapses</text>
+      <text x="380" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Hard exudates deposit here</text>
+      <rect x="468" y="0" width="140" height="160" rx="2" fill="#1a3a1a"/>
+      <text x="538" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">RECEPTORS</text>
+      <text x="538" y="54" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800">Photoreceptors</text>
+      <text x="538" y="70" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Rods · Cones</text>
+      <text x="538" y="90" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Light transduction</text>
+      <text x="538" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">AMD · RP · detachment</text>
+      <rect x="620" y="0" width="140" height="160" rx="2" fill="#3a2a1a"/>
+      <text x="690" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DEEPEST</text>
+      <text x="690" y="54" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800">RPE</text>
+      <text x="690" y="70" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Retinal pigment</text>
+      <text x="690" y="90" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">epithelium</text>
+      <text x="690" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Drusen beneath → AMD</text>
+    </svg>
   </div>
 </div>
 <div class="n-section">
@@ -1522,7 +1652,7 @@ NOTES.retina = () => `<div class="n-page"><div class="n-hero-new">
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>The retina is brain tissue.</em><br>Every layer has a name, a function, and a disease.</div></div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>The retina is brain tissue.</em><br>Every layer has a name, a function, and a disease.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()">
   <div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div>
   <div class="n-note-end-cta-arrow">&#8599;</div>
@@ -1545,6 +1675,37 @@ NOTES.dr = () => `<div class="n-page"><div class="n-hero-new">
     <div class="n-snap-cell"><div class="n-snap-label">The mechanism</div><div class="n-snap-text">Chronic hyperglycaemia → pericyte loss → capillary weakness → microaneurysms, haemorrhages, exudates. Later: retinal ischaemia → VEGF → neovascularisation.</div></div>
     <div class="n-snap-cell"><div class="n-snap-label">NPDR vs PDR</div><div class="n-snap-text">NPDR = changes confined within the retina. PDR = new vessels on the retinal surface or disc. <strong>Neovascularisation = proliferative = high risk of vitreous haemorrhage and tractional detachment.</strong></div></div>
     <div class="n-snap-cell"><div class="n-snap-label">Maculopathy</div><div class="n-snap-text">Diabetic macular oedema can occur at any DR stage — even mild NPDR. Most common cause of visual loss in DR. <strong>Screened separately from overall DR staging.</strong></div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Diabetic retinopathy staging</span><span class="n-viz-sub">NPDR to PDR</span></div>
+    <svg viewBox="0 0 760 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="180" height="160" rx="2" fill="#2a3a2a"/>
+      <text x="90" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">STAGE 1</text>
+      <text x="90" y="54" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Mild NPDR</text>
+      <text x="90" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Microaneurysms only</text>
+      <text x="90" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Annual screening</text>
+      <text x="90" y="140" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Glycaemic control</text>
+      <rect x="192" y="0" width="180" height="160" rx="2" fill="#2a4a2a"/>
+      <text x="282" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">STAGE 2</text>
+      <text x="282" y="54" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Moderate NPDR</text>
+      <text x="282" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">+ haemorrhages</text>
+      <text x="282" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">+ hard exudates</text>
+      <text x="282" y="140" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">6-monthly review</text>
+      <rect x="384" y="0" width="180" height="160" rx="2" fill="#6a3a1a"/>
+      <text x="474" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">STAGE 3</text>
+      <text x="474" y="54" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Severe NPDR</text>
+      <text x="474" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">4:2:1 rule</text>
+      <text x="474" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">IRMA · venous beading</text>
+      <text x="474" y="140" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Urgent ophthalmology</text>
+      <rect x="576" y="0" width="184" height="160" rx="2" fill="#c8452a"/>
+      <text x="668" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">STAGE 4</text>
+      <text x="668" y="54" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">PDR</text>
+      <text x="668" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Neovascularisation</text>
+      <text x="668" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">NVD · NVE</text>
+      <text x="668" y="140" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">PRP · anti-VEGF · urgent</text>
+    </svg>
   </div>
 </div>
 <div class="n-section">
@@ -1601,7 +1762,7 @@ NOTES.dr = () => `<div class="n-page"><div class="n-hero-new">
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>DR is asymptomatic until it's devastating.</em><br>Screen every diabetic. Every year.</div></div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>DR is asymptomatic until it's devastating.</em><br>Screen every diabetic. Every year.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()">
   <div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div>
   <div class="n-note-end-cta-arrow">&#8599;</div>
@@ -1624,6 +1785,37 @@ NOTES.hr = () => `<div class="n-page"><div class="n-hero-new">
     <div class="n-snap-cell"><div class="n-snap-label">The rule</div><div class="n-snap-text">Grades I–II = chronic changes from years of elevated pressure. Grades III–IV = acute severe hypertension happening now. <strong>Grade IV = papilloedema = malignant HTN = admit immediately.</strong></div></div>
     <div class="n-snap-cell"><div class="n-snap-label">AV nipping vs haemorrhages</div><div class="n-snap-text">AV nipping tells you about the past — years of arteriolar sclerosis. Flame haemorrhages tell you about right now — acute severe pressure. Both can coexist on the same fundus.</div></div>
     <div class="n-snap-cell"><div class="n-snap-label">Treatment urgency</div><div class="n-snap-text">Grade III: same-day BP reduction. Grade IV: immediate admission, IV antihypertensives. <strong>No more than 25% BP reduction in first hour</strong> — rapid reduction causes cerebral ischaemia.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Hypertensive retinopathy grading</span><span class="n-viz-sub">Keith-Wagener-Barker classification</span></div>
+    <svg viewBox="0 0 760 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="180" height="160" rx="2" fill="#2a3a2a"/>
+      <text x="90" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">GRADE I</text>
+      <text x="90" y="54" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Mild</text>
+      <text x="90" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Arterial narrowing</text>
+      <text x="90" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Increased light reflex</text>
+      <text x="90" y="140" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Asymptomatic</text>
+      <rect x="192" y="0" width="180" height="160" rx="2" fill="#3a4a1a"/>
+      <text x="282" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">GRADE II</text>
+      <text x="282" y="54" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Moderate</text>
+      <text x="282" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">AV nipping</text>
+      <text x="282" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Silver/copper wiring</text>
+      <text x="282" y="140" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">BRVO risk</text>
+      <rect x="384" y="0" width="180" height="160" rx="2" fill="#6a3a1a"/>
+      <text x="474" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">GRADE III</text>
+      <text x="474" y="54" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Severe</text>
+      <text x="474" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Flame haemorrhages</text>
+      <text x="474" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Cotton wool spots</text>
+      <text x="474" y="140" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Accelerated HTN</text>
+      <rect x="576" y="0" width="184" height="160" rx="2" fill="#c8452a"/>
+      <text x="668" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">GRADE IV</text>
+      <text x="668" y="54" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Malignant</text>
+      <text x="668" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Papilloedema</text>
+      <text x="668" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">+ all Grade III signs</text>
+      <text x="668" y="140" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Emergency admission</text>
+    </svg>
   </div>
 </div>
 <div class="n-section">
@@ -1684,7 +1876,7 @@ NOTES.hr = () => `<div class="n-page"><div class="n-hero-new">
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>The fundus is a timeline.</em><br>AV nipping = years. Flame haemorrhages = today.</div></div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>The fundus is a timeline.</em><br>AV nipping = years. Flame haemorrhages = today.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()">
   <div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div>
   <div class="n-note-end-cta-arrow">&#8599;</div>
@@ -1794,7 +1986,7 @@ NOTES.intro = () => `<div class="n-page"><div class="n-hero-new">
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>VA first. Always. Everything else follows.</em><br>Four dichotomies: painful/painless · sudden/gradual · unilateral/bilateral · red/white.<br>RAPD = optic nerve. Absent red reflex in child = same-day referral.</div></div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>VA first. Always. Everything else follows.</em><br>Four dichotomies: painful/painless · sudden/gradual · unilateral/bilateral · red/white.<br>RAPD = optic nerve. Absent red reflex in child = same-day referral.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.intro=[{q:"A 45-year-old has sudden painless visual loss in a white quiet eye. Most appropriate action?",opts:["Reassure — painless white eye is benign","Lubricating drops, review 1 week","Urgent same-day fundoscopy","Refer optician"],ans:2,focus:"Painless sudden loss = posterior emergency",exp:"Sudden painless loss in a white eye = posterior segment emergency. CRAO, vitreous haemorrhage, retinal detachment all present this way. Same-day fundoscopy mandatory."},{q:"First step in a formal ophthalmic examination?",opts:["Fundoscopy","Slit lamp","IOP measurement","Visual acuity"],ans:3,focus:"VA first",exp:"VA is the vital sign of the eye — documented first in every encounter."},{q:"Bilateral sudden visual loss. Highest priority systemic cause?",opts:["Unilateral RD","Bilateral POAG","Raised ICP — papilloedema","Bilateral corneal disease"],ans:2,focus:"Bilateral = systemic",exp:"Bilateral disc swelling = papilloedema = raised ICP. Never treat as purely local."},{q:"Which best indicates posterior segment pathology?",opts:["Presence of pain","Redness","White quiet eye + sudden loss","Gradual onset"],ans:2,focus:"White eye + sudden loss",exp:"White quiet eye with sudden loss = CRAO, RD, vitreous haemorrhage. Anterior disease causes red eye."},{q:"Swinging torch: left pupil dilates when light shines into it. Meaning?",opts:["Normal","Left RAPD — optic nerve/severe retinal disease","Bilateral Horner","Pharmacological mydriasis"],ans:1,focus:"RAPD — afferent defect",exp:"RAPD (Marcus Gunn) — affected pupil paradoxically dilates. Causes: optic neuritis, AION, severe RD, optic nerve compression."}];
 
@@ -1914,7 +2106,7 @@ NOTES.eyelids = () => `<div class="n-page"><div class="n-hero-new">
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>The pupil localises the cause of ptosis.</em><br>Dilated = aneurysm. Miosis = Horner. Normal = myasthenia or aponeurotic.<br>Tender lid lump = infected. Same-site recurrence = biopsy.</div></div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>The pupil localises the cause of ptosis.</em><br>Dilated = aneurysm. Miosis = Horner. Normal = myasthenia or aponeurotic.<br>Tender lid lump = infected. Same-site recurrence = biopsy.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.eyelids=[{q:"Firm non-tender upper lid nodule for 6 weeks. First-line management?",opts:["Flucloxacillin","Warm compresses + massage","Urgent excision","Topical steroids"],ans:1,focus:"Chalazion management",exp:"Chalazion = blocked meibomian gland lipogranuloma. First-line: warm compresses + massage. Persistent: steroid injection or I&C. Recurrent in same spot → biopsy."},{q:"Complete right ptosis, eye down-and-out, pupil 7mm fixed. Immediate investigation?",opts:["TFTs","Ice test","Emergency CT/MR angiography","Anti-AChR antibodies"],ans:2,focus:"CN III + pupil = aneurysm",exp:"Complete CN III with pupil involvement = PComm aneurysm until proven otherwise. Pupillary fibres on outer surface compressed by extrinsic pressure first."},{q:"Lower lid sags away from globe. Watery eye despite no increased tearing. Diagnosis?",opts:["Entropion reflex tearing","Ectropion — disrupted tear drainage","NLDO","Dry eye"],ans:1,focus:"Ectropion — paradoxical epiphora",exp:"Ectropion: lower lid everts → punctum displaced → impaired drainage → epiphora. Paradoxically watery despite drainage problem not excess production."},{q:"Ptosis worsening through the day + normal pupil + improves with ice. Diagnosis?",opts:["Aponeurotic ptosis","Myasthenia gravis","Horner syndrome","CN III ischaemic"],ans:1,focus:"Myasthenia — fatigable ptosis",exp:"Fatigable ptosis in MG: ACh depletes with repetitive use. Ice test improves it (cold enhances ACh). Normal pupil. Anti-AChR antibodies."},{q:"Horner syndrome — how does ptosis differ from CN III?",opts:["Horner = complete; CN III = partial","Horner = partial ptosis + miosis; CN III = complete ptosis + mydriasis","Both cause complete ptosis","Horner has no pupil change"],ans:1,focus:"Horner vs CN III pupils",exp:"Horner: sympathetic loss → partial ptosis (Müller's muscle) + miosis. CN III: levator palsy → complete ptosis + fixed dilated pupil. Pupil size is the key."}];
 
@@ -2016,7 +2208,7 @@ NOTES.lacrimal = () => `<div class="n-page"><div class="n-hero-new">
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>Watery eye ≠ too many tears.</em><br>Three layers, three failure modes. Drainage has anatomy — obstruction has surgery.<br>Sjögren = screen for lymphoma.</div></div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>Watery eye ≠ too many tears.</em><br>Three layers, three failure modes. Drainage has anatomy — obstruction has surgery.<br>Sjögren = screen for lymphoma.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.lacrimal=[{q:"RA patient, bilateral gritty burning watery eyes. Schirmer's 3mm/5min. Diagnosis?",opts:["NLDO","Aqueous-deficient dry eye — secondary Sjögren","Evaporative dry eye","Allergic conjunctivitis"],ans:1,focus:"Sjögren — aqueous-deficient",exp:"Secondary Sjögren in RA. Schirmer <5mm/5min = aqueous deficiency. Anti-Ro/La antibodies. Watering = reflex hypersecretion."},{q:"Pressing medial canthus produces mucopus from punctum. Diagnosis and treatment?",opts:["Acute dacryocystitis — IV antibiotics","Chronic dacryocystitis NLDO — DCR","Dry eye — artificial tears","Conjunctivitis — chloramphenicol"],ans:1,focus:"Chronic dacryocystitis — regurgitation test",exp:"Chronic dacryocystitis: persistent epiphora + mucopurulent regurgitation on sac pressure = NLDO. Treatment: dacryocystorhinostomy."},{q:"Contraindicated in acute dacryocystitis?",opts:["Oral flucloxacillin","Warm compresses","Probing and syringing","Ophthalmology referral"],ans:2,focus:"No probing in acute dacryocystitis",exp:"Probing risks false passage and spreading infection. Treat with antibiotics first. DCR is elective."},{q:"Which layer of tear film is produced by goblet cells?",opts:["Lipid — MGD","Aqueous — lacrimal gland","Mucin — goblet cells","Aqueous — Sjögren"],ans:2,focus:"Tear film layers",exp:"Mucin (innermost) from goblet cells allows tears to spread over corneal epithelium. Destroyed in SJS, ocular pemphigoid, trachoma."},{q:"Which investigation measures aqueous tear production?",opts:["TBUT","Schirmer's test","Rose Bengal staining","Meibography"],ans:1,focus:"Schirmer's test",exp:"Schirmer's: filter paper in lower fornix; <5mm/5min = aqueous deficiency. TBUT = lipid function. Rose Bengal = damaged epithelium."}];
 
@@ -2121,7 +2313,7 @@ NOTES.conjunctiva = () => `<div class="n-page"><div class="n-hero-new">
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>Red eye safety screen: VA + pupil + photophobia before discharge.</em><br>Pre-auricular node = viral. Hyperacute purulent = gonococcal emergency.<br>Blanches with phenylephrine = episcleritis. Does not blanch = scleritis.</div></div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>Red eye safety screen: VA + pupil + photophobia before discharge.</em><br>Pre-auricular node = viral. Hyperacute purulent = gonococcal emergency.<br>Blanches with phenylephrine = episcleritis. Does not blanch = scleritis.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.conjunctiva=[{q:"20-year-old with bilateral itching, ropy discharge. First-line?",opts:["Chloramphenicol","Dexamethasone","Topical azelastine","Oral cetirizine only"],ans:2,focus:"Allergic conjunctivitis — antihistamine",exp:"Allergic: itching is hallmark. First-line: topical antihistamine (azelastine) or mast cell stabiliser. Steroids contraindicated in primary care."},{q:"Neonate day 3, profuse pus reforming immediately. Organism and management?",opts:["Chlamydia — oral erythromycin","Staph — topical chloramphenicol","N. gonorrhoeae — IV ceftriaxone + same-day referral","HSV — topical aciclovir"],ans:2,focus:"Gonococcal ophthalmia neonatorum",exp:"Gonococcal ophthalmia (day 1–4): hyperacute. Only organism perforating intact cornea. IV ceftriaxone. Notifiable."},{q:"Sectoral red eye, mild discomfort, blanches with phenylephrine. Diagnosis?",opts:["Scleritis — NSAIDs","Episcleritis — lubricants/NSAIDs","Bacterial conjunctivitis","Uveitis"],ans:1,focus:"Episcleritis — phenylephrine blanching",exp:"Episcleritis: superficial vessels blanch with phenylephrine. Mild discomfort. Self-limiting. Compare: scleritis vessels don't blanch, deep boring pain, systemic association."},{q:"RA patient, deep boring nocturnal eye pain, globe tender, red eye not blanching. Diagnosis?",opts:["Conjunctivitis","Episcleritis","Scleritis — NSAIDs, ophthalmology","Acute glaucoma"],ans:2,focus:"Scleritis — RA, no blanching",exp:"Scleritis: deep boring pain, globe tenderness, no blanching, RA/GPA/SLE association. Treatment: oral NSAIDs → steroids → immunosuppression."},{q:"Watery red eye + pre-auricular node + URTI + VA 6/6 + no photophobia. Key public health advice?",opts:["Return to work tomorrow","Strict hygiene, avoid contact 14 days","No infectious precautions","Oral azithromycin"],ans:1,focus:"Viral conjunctivitis — contagious",exp:"Adenoviral EKC: highly contagious. Strict handwashing, no shared towels, avoid swimming, 14-day contact restriction. Self-limiting."}];
 
@@ -2229,7 +2421,7 @@ NOTES.uveitis = () => `<div class="n-page"><div class="n-hero-new">
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>KP type predicts aetiology. Mutton-fat = granulomatous = systemic search.</em><br>HLA-B27: unilateral, acute, recurrent. Dilate early to prevent synechiae.<br>Always exclude syphilis. Always exclude infection before steroids.</div></div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>KP type predicts aetiology. Mutton-fat = granulomatous = systemic search.</em><br>HLA-B27: unilateral, acute, recurrent. Dilate early to prevent synechiae.<br>Always exclude syphilis. Always exclude infection before steroids.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.uveitis=[{q:"Young man with inflammatory back pain + recurrent unilateral red eye + photophobia. Slit lamp: KPs + AC cells. Systemic suspect?",opts:["Crohn's — gastro","Ankylosing spondylitis — HLA-B27","Sarcoidosis — ACE","RA — RF"],ans:1,focus:"HLA-B27 — AS association",exp:"HLA-B27-associated anterior uveitis with IBP suggests AS. 90% of AS is HLA-B27 positive. Uveitis is most common extra-articular manifestation."},{q:"Why prescribe mydriatics in anterior uveitis?",opts:["Lower IOP","Prevent/break posterior synechiae + relieve ciliary spasm","Improve drainage","Prevent secondary glaucoma by constriction"],ans:1,focus:"Mydriatics — dual purpose",exp:"Mydriatics: (1) relieve ciliary spasm pain; (2) prevent/break posterior synechiae. Omitting risks iris-lens adhesion → secondary glaucoma."},{q:"Large greasy yellowish deposits on corneal endothelium. Most important investigation?",opts:["MRI spine","CXR + serum ACE — exclude sarcoid/TB","Corneal scrape","HSV serology"],ans:1,focus:"Mutton-fat KPs — granulomatous",exp:"Mutton-fat KPs = macrophage aggregates = granulomatous uveitis. Causes: sarcoidosis, TB, VKH. Investigate: CXR, serum ACE, tuberculin test."},{q:"HIV+ patient, painless progressive VL. Fundoscopy: yellow-white areas + haemorrhage, 'pizza pie' pattern. Diagnosis?",opts:["Toxoplasma","CMV retinitis","Behçet's","Acute retinal necrosis"],ans:1,focus:"CMV retinitis",exp:"CMV retinitis in immunocompromise (CD4 <50): 'pizza pie' fundus — yellow-white necrosis + intraretinal haemorrhage. Treat: ganciclovir/valganciclovir + ART."},{q:"Anterior uveitis → fixed irregular small pupil. What occurred and treatment?",opts:["Pharmacological mydriasis","Posterior synechiae — intensive topical steroids + mydriatics","Acute angle-closure","Optic nerve compression"],ans:1,focus:"Posterior synechiae",exp:"Posterior synechiae: iris adheres to anterior lens capsule from fibrin → irregular fixed small pupil. Treatment: intensive topical steroids + mydriatics (atropine 1%). Untreated total synechiae → iris bombé → secondary closure."}];
 
@@ -2241,6 +2433,27 @@ NOTES.glaucoma = () => `<div class="n-page"><div class="n-hero-new">
     <div class="n-snap-cell"><div class="n-snap-label">Definition</div><div class="n-snap-text">Optic neuropathy → progressive retinal ganglion cell death → characteristic disc cupping → irreversible VF loss. <strong>Raised IOP is a risk factor, not the definition.</strong> NTG exists.</div></div>
     <div class="n-snap-cell"><div class="n-snap-label">POAG — the silent thief</div><div class="n-snap-text">Chronic, painless, bilateral. Peripheral field loss first. <strong>&gt;30% ganglion cells dead before any symptom.</strong> Most common cause of irreversible blindness worldwide.</div></div>
     <div class="n-snap-cell"><div class="n-snap-label">Acute angle-closure</div><div class="n-snap-text">IOP 40–70 mmHg within hours. Severe pain, nausea/vomiting, halos, fixed <strong>mid-dilated oval pupil</strong>. Misdiagnosed as migraine. Permanent vision loss within hours.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Open-angle vs Angle-closure glaucoma</span><span class="n-viz-sub">Mechanism determines management</span></div>
+    <svg viewBox="0 0 760 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="370" height="160" rx="2" fill="#1a2a3a"/>
+      <text x="185" y="28" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">CHRONIC — SILENT</text>
+      <text x="185" y="56" font-family="Syne,sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="800">Open-Angle</text>
+      <text x="185" y="80" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Trabecular meshwork dysfunction</text>
+      <text x="185" y="96" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Gradual IOP rise · peripheral VF loss first</text>
+      <text x="185" y="112" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Painless · asymptomatic until late</text>
+      <text x="185" y="145" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Prostaglandin drops · laser · trabeculectomy</text>
+      <rect x="390" y="0" width="370" height="160" rx="2" fill="#c8452a"/>
+      <text x="575" y="28" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">ACUTE — EMERGENCY</text>
+      <text x="575" y="56" font-family="Syne,sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="800">Angle-Closure</text>
+      <text x="575" y="80" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Iris occludes angle → aqueous trapped</text>
+      <text x="575" y="96" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Sudden IOP &gt;50 · pain · vomiting · haloes</text>
+      <text x="575" y="112" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Fixed mid-dilated pupil · corneal haze</text>
+      <text x="575" y="145" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">IV acetazolamide · pilocarpine · laser iridotomy</text>
+    </svg>
   </div>
 </div>
 <div class="n-section">
@@ -2329,7 +2542,7 @@ NOTES.glaucoma = () => `<div class="n-page"><div class="n-hero-new">
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>Fixed. Mid-dilated. Oval. Red eye. Vomiting.</em><br>Not migraine. Acute angle-closure. Every minute matters.</div></div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>Fixed. Mid-dilated. Oval. Red eye. Vomiting.</em><br>Not migraine. Acute angle-closure. Every minute matters.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.glaucoma=[{q:"68-year-old asthmatic with POAG started timolol. Now has worsening breathlessness. Action?",opts:["Switch to preservative-free timolol","Stop timolol — systemic beta-2 blockade via NLD absorption. Switch to prostaglandin","Coincidental COPD — continue","Change instillation technique"],ans:1,focus:"Timolol — asthma contraindication",exp:"Timolol absorbed via nasolacrimal duct → beta-2 blockade → bronchospasm. Contraindicated in asthma/COPD. Switch to prostaglandin analogue (latanoprost)."},{q:"Sudden headache + nausea + halos + red eye + fixed mid-dilated oval pupil + hazy cornea. Diagnosis?",opts:["Migraine — discharge with analgesia","Uveitis — steroids","Acute angle-closure — IV acetazolamide","Conjunctivitis — chloramphenicol"],ans:2,focus:"Acute angle-closure — mid-dilated oval",exp:"Acute angle-closure: IOP 40–70mmHg → corneal oedema, pain, nausea, red eye, fixed mid-dilated OVAL pupil. IV acetazolamide 500mg, pilocarpine, beta-blocker. Definitive: LPI."},{q:"After right acute closure, what for the left eye?",opts:["Observe","Pilocarpine drops only","Prophylactic Nd:YAG peripheral iridotomy","Systemic acetazolamide both eyes"],ans:2,focus:"Fellow eye prophylactic LPI",exp:"Fellow eye has same narrow anatomy → 50% lifetime closure risk without treatment. Prophylactic LPI creates alternative aqueous route, bypassing pupil block."},{q:"POAG patient IOP 18mmHg but progressive disc cupping + VF loss. Diagnosis?",opts:["Ocular hypertension","Normal-tension glaucoma","Pseudoexfoliation glaucoma","Steroid-induced"],ans:1,focus:"Normal-tension glaucoma",exp:"NTG: optic neuropathy + VF loss despite normal IOP. Mechanism: vascular insufficiency. Associations: Raynaud's, migraine, nocturnal hypotension."},{q:"Why are POAG patients often symptom-free until late?",opts:["Central loss first — notice blurring","Peripheral loss first; >30% ganglion cells die before symptoms; fellow eye compensates","Uniform constriction from outset","Altitudinal loss sparing central"],ans:1,focus:"POAG — peripheral first, central late",exp:"POAG: peripheral VF loss (arcuate, nasal step) first. Central acuity preserved until very late. Fellow eye compensates. >30% ganglion cells dead before detectable defects."}];
 
@@ -2427,7 +2640,7 @@ NOTES.refraction = () => `<div class="n-page"><div class="n-hero-new">
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>Myopia: long eye, concave lens. Hyperopia: short eye, convex lens.</em><br>High myopia = annual fundus check. Hyperopia in children = squint screen.<br>LASIK reshapes cornea — it cannot fix the lens.</div></div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>Myopia: long eye, concave lens. Hyperopia: short eye, convex lens.</em><br>High myopia = annual fundus check. Hyperopia in children = squint screen.<br>LASIK reshapes cornea — it cannot fix the lens.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.refraction=[{q:"6-year-old, right convergent squint. Cycloplegic refraction: +4.50D bilateral. Mechanism?",opts:["Myopia → divergence — minus lenses","Hyperopia → excess accommodation → convergence — plus lenses","Astigmatism — cylinder","Presbyopia — readers"],ans:1,focus:"Hyperopia → accommodative esotropia",exp:"Accommodative esotropia: hyperopia → excessive accommodation → convergence via AC/A → esotropia. Correct with full cycloplegic refraction. Squint may resolve with specs if purely accommodative."},{q:"48-year-old emmetrope holds books at arm's length. Cause?",opts:["Myopia — concave lens","Hyperopia — convex","Presbyopia — reading glasses (plus lens)","Astigmatism — cylinder"],ans:2,focus:"Presbyopia",exp:"Presbyopia: lens inelasticity after 40. Universal. Corrected with plus reading glasses. Myope may read without glasses by removing distance correction."},{q:"Key contraindication before LASIK?",opts:["Myopia >-3D","Keratoconus — LASIK causes ectasia","Age under 21","Previous viral conjunctivitis"],ans:1,focus:"Keratoconus — absolute CI to LASIK",exp:"Keratoconus is absolute CI to LASIK. Removing stroma from already thinning cornea → catastrophic ectasia. Screen with topography pre-operatively."},{q:"Patient with -10D myopia wants refractive surgery. Why unsuitable for LASIK?",opts:["LASIK is ideal for high myopia","Would leave unsafe residual bed — phakic IOL preferred","PRK always preferred","LASIK can't correct astigmatism"],ans:1,focus:"High myopia — phakic IOL",exp:"High myopia (>-8D): LASIK ablates too much stroma → residual bed <250μm → ectasia risk. Phakic IOL placed in posterior chamber. No stroma removed, reversible."},{q:"Which refractive error carries increased RD risk?",opts:["Hyperopia — convergence traction","Myopia — elongated globe → stretched retina → lattice → tears","Astigmatism","Presbyopia"],ans:1,focus:"Myopia and RD risk",exp:"High myopia: elongated axial length stretches retina thin → lattice degeneration → tears → detachment. Risk significant above -6D."}];
 
@@ -2440,6 +2653,34 @@ NOTES.retdetach = () => `<div class="n-page"><div class="n-hero-new">
     <div class="n-snap-cell"><div class="n-snap-label">What happens</div><div class="n-snap-text">Neurosensory retina separates from RPE → photoreceptors lose choroidal O₂/nutrients → irreversible damage within hours to days.</div></div>
     <div class="n-snap-cell"><div class="n-snap-label">Warning sequence</div><div class="n-snap-text">Flashes (vitreous traction on retina) → floaters (pigment cells or haemorrhage) → dark curtain from periphery. <strong>10–15% of symptomatic PVDs have a concurrent retinal tear.</strong></div></div>
     <div class="n-snap-cell"><div class="n-snap-label">The urgency rule</div><div class="n-snap-text"><strong>Macula-on (VA 6/6) = same-day surgery.</strong> Every hour risks the fovea detaching. Macula-off = still urgent but prognosis for central vision is guarded.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Three types of retinal detachment</span><span class="n-viz-sub">Mechanism determines treatment</span></div>
+    <svg viewBox="0 0 760 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="244" height="160" rx="2" fill="#c8452a"/>
+      <text x="122" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MOST COMMON</text>
+      <text x="122" y="54" font-family="Syne,sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="800">Rhegmatogenous</text>
+      <text x="122" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Retinal break → fluid entry</text>
+      <text x="122" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">PVD + lattice degeneration</text>
+      <text x="122" y="110" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Flashes · floaters · curtain</text>
+      <text x="122" y="148" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">PPV · scleral buckle · pneumatic</text>
+      <rect x="258" y="0" width="244" height="160" rx="2" fill="#2a3a5a"/>
+      <text x="380" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">DIABETIC</text>
+      <text x="380" y="54" font-family="Syne,sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="800">Tractional</text>
+      <text x="380" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Fibrovascular membranes</text>
+      <text x="380" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Pull retina off RPE</text>
+      <text x="380" y="110" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">No retinal break · PDR cause</text>
+      <text x="380" y="148" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Vitrectomy to remove membranes</text>
+      <rect x="516" y="0" width="244" height="160" rx="2" fill="#2a4a2a"/>
+      <text x="638" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SECONDARY</text>
+      <text x="638" y="54" font-family="Syne,sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="800">Exudative</text>
+      <text x="638" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Fluid without a break</text>
+      <text x="638" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Shifting fluid sign</text>
+      <text x="638" y="110" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Tumour · scleritis · VKH</text>
+      <text x="638" y="148" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Treat the cause — no surgery</text>
+    </svg>
   </div>
 </div>
 <div class="n-section">
@@ -2509,7 +2750,7 @@ NOTES.retdetach = () => `<div class="n-page"><div class="n-hero-new">
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>Flashes. Floaters. Curtain. Tobacco dust.</em><br>Same-day exam. Macula-on = same-day surgery. No exceptions.</div></div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>Flashes. Floaters. Curtain. Tobacco dust.</em><br>Same-day exam. Macula-on = same-day surgery. No exceptions.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.retdetach=[{q:"55-year-old myope, sudden new floaters + photopsia. VA 6/6. Immediate management?",opts:["Reassure — PVD in myopes is common, review 6 weeks","Same-day dilated fundal exam","Lubricating drops","Urgent MRI orbit"],ans:1,focus:"New PVD — same-day exam",exp:"New floaters + flashes = same-day dilated fundal exam. 10–15% of symptomatic PVDs have concurrent retinal tear. Normal VA does NOT exclude RD."},{q:"RD with VA 6/6. What does this indicate and surgical urgency?",opts:["Exudative — less urgent","Macula still on — same-day emergency surgery","Small — monitor 48 hours","Normal VA = surgery not required"],ans:1,focus:"Macula-on = same-day surgery",exp:"VA 6/6 with RD = macula still attached. This is the critical window. Same-day surgery preserves post-operative 6/6. Delay risks macular detachment and permanent central loss."},{q:"Diabetic with PDR has RD. Type and treatment?",opts:["Exudative — anti-VEGF","Tractional — fibrovascular membranes, no break; vitrectomy","Rhegmatogenous — pneumatic retinopexy","Exudative — fluid shifts with gravity"],ans:1,focus:"Tractional RD in PDR",exp:"Tractional RD in PDR: fibrovascular membranes contract, pull retina. No retinal break. Concave configuration. Treatment: pars plana vitrectomy to remove membranes."},{q:"Which is NOT a risk factor for rhegmatogenous RD?",opts:["High myopia","Lattice degeneration","Previous cataract surgery","Hyperopia"],ans:3,focus:"RD risk factors",exp:"Hyperopia is NOT a risk factor. Risk factors: high myopia, lattice degeneration, aphakia/pseudophakia, family history, fellow-eye RD, trauma."},{q:"Pathognomonic floater of uncomplicated PVD?",opts:["Multiple dark dots throughout VF","Single large ring-shaped floater (Weiss ring)","Curtain from below","Zigzag shimmering lights"],ans:1,focus:"Weiss ring — PVD",exp:"Weiss ring: annular floater from vitreopapillary attachment detaching. Pathognomonic of PVD. Zigzag lights = migraine scintillating scotoma, not retinal."}];
 
@@ -2523,6 +2764,27 @@ NOTES.vascular = () => `<div class="n-page"><div class="n-hero-new">
     <div class="n-snap-cell"><div class="n-snap-label">The four entities</div><div class="n-snap-text">CRAO (artery central), CRVO (vein central), BRVO (vein branch), BRAO (artery branch). Arterial = white retina, cherry red spot. Venous = flame haemorrhages, dilated tortuous veins.</div></div>
     <div class="n-snap-cell"><div class="n-snap-label">CRAO emergency window</div><div class="n-snap-text">Retinal ischaemia is irreversible within 90–100 minutes. <strong>Same urgency as cerebral stroke — urgent vascular investigation.</strong></div></div>
     <div class="n-snap-cell"><div class="n-snap-label">CRVO complication</div><div class="n-snap-text">Ischaemic CRVO → VEGF production → rubeosis iridis → neovascular glaucoma. <strong>100-day glaucoma rule.</strong></div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Retinal vascular occlusions</span><span class="n-viz-sub">Artery vs vein — the key distinction</span></div>
+    <svg viewBox="0 0 760 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="370" height="160" rx="2" fill="#c8452a"/>
+      <text x="185" y="28" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">ARTERIAL — ISCHAEMIA</text>
+      <text x="185" y="56" font-family="Syne,sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="800">CRAO</text>
+      <text x="185" y="80" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Pale retina + cherry red spot at fovea</text>
+      <text x="185" y="96" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Profound painless monocular VL</text>
+      <text x="185" y="112" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">RAPD · attenuated arterioles</text>
+      <text x="185" y="145" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Stroke equivalent — carotid · echo · AF workup</text>
+      <rect x="390" y="0" width="370" height="160" rx="2" fill="#2a3a5a"/>
+      <text x="575" y="28" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">VENOUS — HAEMORRHAGE</text>
+      <text x="575" y="56" font-family="Syne,sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="800">CRVO</text>
+      <text x="575" y="80" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">All 4 quadrant flame haemorrhages</text>
+      <text x="575" y="96" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Dilated tortuous veins · disc oedema</text>
+      <text x="575" y="112" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Blood and thunder fundus</text>
+      <text x="575" y="145" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">HTN · glaucoma · anti-VEGF for CMO</text>
+    </svg>
   </div>
 </div>
 <div class="n-section">
@@ -2597,7 +2859,7 @@ NOTES.vascular = () => `<div class="n-page"><div class="n-hero-new">
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>Cherry red spot. Thunderstorm fundus. Curtain descending.</em><br>Every vascular occlusion needs an embolic source search today.</div></div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>Cherry red spot. Thunderstorm fundus. Curtain descending.</em><br>Every vascular occlusion needs an embolic source search today.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.vascular=[{q:"A 68-year-old with atrial fibrillation has sudden painless profound monocular VL. VA: perception of light. Fundoscopy: pale white retina with cherry red spot at fovea. Diagnosis and most urgent systemic investigation?",opts:["CRVO — anti-VEGF injection","CRAO — urgent carotid Doppler, echo, ESR, cardiac monitoring","Ischaemic CRVO — panretinal photocoagulation","Posterior circulation stroke — MRI brain"],ans:1,focus:"CRAO — cherry red spot + embolic workup",exp:"CRAO: end-artery embolus. Cherry red spot = thin fovea letting choroidal circulation show through against pale ischaemic surrounding retina. Urgent embolic workup: carotid Doppler, echocardiography, 24h cardiac monitoring (AF), ESR/CRP (GCA). RAPD present."},{q:"Fundoscopy shows flame haemorrhages in all four quadrants, dilated tortuous veins, and a swollen disc. What is the diagnosis?",opts:["Proliferative diabetic retinopathy","CRVO — central retinal vein occlusion","BRVO — branch vein occlusion","Hypertensive retinopathy grade III"],ans:1,focus:"CRVO — all 4 quadrant haemorrhages",exp:"CRVO: 'blood and thunder' fundus — flame haemorrhages all 4 quadrants, dilated tortuous veins, disc oedema. Compare with DR (dot/blot haemorrhages, microaneurysms, no venous tortuosity) and BRVO (one sector wedge pattern)."},{q:"A patient with ischaemic CRVO is monitored monthly. At 10 weeks, new vessels are seen on the iris surface. What is the diagnosis and immediate management?",opts:["Normal collateral vessel formation — continue monitoring","Rubeosis iridis — urgent panretinal photocoagulation + anti-VEGF","Posterior synechiae — topical steroids","Iris naevus — photograph and monitor"],ans:1,focus:"Rubeosis — 100-day glaucoma",exp:"Rubeosis iridis: retinal ischaemia → VEGF → iris neovascularisation → neovascular glaucoma ('100-day glaucoma'). Emergency: PRP to reduce retinal VEGF production + intravitreal anti-VEGF. Without treatment → closed angle → intractable pain + blindness."},{q:"A 45-year-old woman describes episodes of a 'curtain descending' over her right eye lasting 5 minutes, then fully resolving, 3 times this week. Diagnosis and management?",opts:["Bilateral posterior circulation TIA — aspirin + statin","Amaurosis fugax — same-day TIA clinic, carotid Doppler, echo, cardiac monitoring","Migraine with aura — triptans","Acute angle-closure — topical pilocarpine"],ans:1,focus:"Amaurosis fugax — monocular TIA",exp:"Amaurosis fugax: monocular transient VL from carotid territory embolism. 'Curtain' descending and lifting = CRA territory. Same-day TIA pathway. Carotid Doppler: stenosis >70% → carotid endarterectomy. Distinguish from binocular transient VL = posterior circulation TIA."},{q:"Which finding on fundoscopy distinguishes BRVO from CRVO?",opts:["Dilated tortuous veins","Flame haemorrhages confined to one sector in a wedge pattern, apex at an AV crossing","Disc oedema","Cotton wool spots"],ans:1,focus:"BRVO vs CRVO — distribution",exp:"BRVO: haemorrhages confined to one sector (wedge-shaped, apex at AV crossing where atherosclerotic arteriole compresses vein). Superotemporal most common. CRVO: all 4 quadrant haemorrhages, dilated veins everywhere, disc oedema."}];
 
@@ -2653,7 +2915,7 @@ NOTES.orbit = () => `<div class="n-page"><div class="n-hero-new">
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>Pain on eye movement. Proptosis. VA loss.</em><br>Not preseptal. Orbital cellulitis until proven otherwise.</div></div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>Pain on eye movement. Proptosis. VA loss.</em><br>Not preseptal. Orbital cellulitis until proven otherwise.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.orbit=[{q:"9-year-old, 3 days sinusitis → right proptosis, restricted painful EOM, 38.9°C. Diagnosis?",opts:["Preseptal — oral co-amoxiclav","Orbital cellulitis — IV antibiotics + urgent CT + ophtho + ENT","Chalazion — warm compresses","Allergic — antihistamine"],ans:1,focus:"Orbital cellulitis — emergency",exp:"Orbital cellulitis: postseptal — proptosis + restricted painful EOM + fever. From ethmoid sinusitis. Emergency: IV co-amoxiclav + urgent CT sinuses/orbit to exclude subperiosteal abscess."},{q:"Features distinguishing orbital from preseptal cellulitis?",opts:["Orbital = bilateral; preseptal = unilateral","Orbital: proptosis + restricted painful EOM + VA reduction; preseptal: lid swelling only","Orbital only from trauma; preseptal from sinusitis","No clinical distinction"],ans:1,focus:"Orbital vs preseptal features",exp:"The orbital septum is the anatomical boundary. Preseptal: lid swelling/erythema, normal EOM/VA. Orbital: proptosis, painful restricted EOM, possible VA loss, fever."},{q:"Graves' patient, new diplopia + left RAPD. CT: enlarged EOM at orbital apex. Emergency management?",opts:["Orbital cellulitis — IV antibiotics","Dysthyroid optic neuropathy — IV methylprednisolone","Acute angle-closure — acetazolamide","Cavernous sinus thrombosis — anticoagulation"],ans:1,focus:"DON — emergency",exp:"DON: EOM enlargement compresses optic nerve at apex → RAPD, colour desaturation, VF defect. Emergency: high-dose IV methylprednisolone. If inadequate response: orbital decompression."},{q:"12-year-old after facial blow, can't look up, vomiting, bradycardia, white quiet eye. Diagnosis?",opts:["Contusion — analgesia","White-eyed blow-out — urgent surgery within 24–48h","Orbital cellulitis — IV antibiotics","Retinal detachment"],ans:1,focus:"White-eyed blow-out — paediatric emergency",exp:"White-eyed blow-out (trapdoor): pliable floor springs back trapping inferior rectus. Eye deceptively calm. Restricted upgaze + oculocardiac reflex. Urgent surgery within 24–48h before ischaemic fibrosis."},{q:"TED with proptosis + lagophthalmos. Immediate sight-threatening complication?",opts:["Secondary glaucoma","Corneal exposure keratopathy — lubricants, lid taping, tarsorrhaphy if severe","DON — IV methylprednisolone","Disc cupping"],ans:1,focus:"Corneal exposure in TED",exp:"Lagophthalmos + proptosis → corneal drying → ulceration → perforation. Frequent preservative-free lubricants, moisture chambers, tape lids at night, tarsorrhaphy if insufficient."}];
 
@@ -2666,6 +2928,34 @@ NOTES.opticnerve = () => `<div class="n-page"><div class="n-hero-new">
     <div class="n-snap-cell"><div class="n-snap-label">The diagnostic triad</div><div class="n-snap-text">Reduced VA + RAPD + colour desaturation (red desaturation) = optic nerve disease until proven otherwise. All three can occur with a normal-looking disc.</div></div>
     <div class="n-snap-cell"><div class="n-snap-label">Optic neuritis</div><div class="n-snap-text">Painful subacute VL. Young adult, female. Colour desaturation. RAPD. Fundus often normal. <strong>25% are the first demyelinating event in MS.</strong> MRI brain essential.</div></div>
     <div class="n-snap-cell"><div class="n-snap-label">GCA — act immediately</div><div class="n-snap-text">Elderly + sudden profound VL + jaw claudication + scalp tenderness + raised ESR/CRP. Pale chalk-white disc. <strong>IV methylprednisolone now. Never wait for biopsy.</strong></div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Optic neuropathy — key distinctions</span><span class="n-viz-sub">Age, pain, disc appearance, inflammatory markers</span></div>
+    <svg viewBox="0 0 760 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="244" height="160" rx="2" fill="#2a3a5a"/>
+      <text x="122" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">YOUNG ADULT</text>
+      <text x="122" y="54" font-family="Syne,sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="800">Optic Neuritis</text>
+      <text x="122" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Pain on eye movement</text>
+      <text x="122" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Colour desaturation · RAPD</text>
+      <text x="122" y="108" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Normal or swollen disc</text>
+      <text x="122" y="148" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">25% → MS · MRI essential</text>
+      <rect x="258" y="0" width="244" height="160" rx="2" fill="#3a3a2a"/>
+      <text x="380" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MIDDLE-AGED</text>
+      <text x="380" y="54" font-family="Syne,sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="800">NA-AION</text>
+      <text x="380" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Painless on waking</text>
+      <text x="380" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Inferior altitudinal VF defect</text>
+      <text x="380" y="108" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Hyperaemic swollen disc</text>
+      <text x="380" y="148" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Normal ESR · manage CVS risk</text>
+      <rect x="516" y="0" width="244" height="160" rx="2" fill="#c8452a"/>
+      <text x="638" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">ELDERLY — EMERGENCY</text>
+      <text x="638" y="54" font-family="Syne,sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="800">GCA / AION</text>
+      <text x="638" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Jaw claudication · scalp tender</text>
+      <text x="638" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Pale chalk-white disc</text>
+      <text x="638" y="108" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">ESR &gt;50 · CRP elevated</text>
+      <text x="638" y="148" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">IV methylprednisolone NOW</text>
+    </svg>
   </div>
 </div>
 <div class="n-section">
@@ -2741,7 +3031,7 @@ NOTES.opticnerve = () => `<div class="n-page"><div class="n-hero-new">
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>Colour desaturation. RAPD. Pain on movement.</em><br>In the elderly: exclude GCA before anything else.</div></div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>Colour desaturation. RAPD. Pain on movement.</em><br>In the elderly: exclude GCA before anything else.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.opticnerve=[{q:"29-year-old, subacute VL right eye over 3 days, pain on EOM, colour desaturation, RAPD. Normal fundus. Diagnosis?",opts:["Acute angle-closure","Retrobulbar optic neuritis","CRAO","AION"],ans:1,focus:"Optic neuritis — retrobulbar, normal fundus",exp:"Retrobulbar optic neuritis: inflammation behind the globe → normal disc. Subacute painful VL + colour desaturation + RAPD. Classic: 'patient sees nothing, doctor sees nothing.' MRI brain essential — 25% first MS presentation."},{q:"Uhthoff's phenomenon — what and what does it indicate?",opts:["Ischaemic supply instability","Demyelination — heat impairs conduction in demyelinated axons","IOP rise with heat","Corneal oedema from temperature"],ans:1,focus:"Uhthoff's — demyelination",exp:"Uhthoff's: pathognomonic of demyelination. Raised temperature reduces safety factor for conduction in demyelinated axons → transient VA worsening with exercise/heat. Supports MS-related optic neuritis."},{q:"74-year-old, sudden painless monocular VL + jaw pain + scalp tenderness + ESR 112. Most urgent action?",opts:["Biopsy — start steroids after confirmation","Immediate IV methylprednisolone 1g","Oral prednisolone 1mg/kg","CT head before steroids"],ans:1,focus:"GCA — immediate steroids",exp:"GCA causing arteritic AION. IV methylprednisolone 1g immediately. TAB positive for 2 weeks on steroids. Fellow eye 20–40% risk within days if untreated."},{q:"What does RAPD indicate and how is it detected?",opts:["Bilateral optic nerve disease","Unilateral afferent defect — affected pupil paradoxically dilates on swinging torch","CN III damage","Horner — cocaine test"],ans:1,focus:"RAPD — swinging torch",exp:"RAPD: unilateral optic nerve/severe retinal disease reduces afferent input. Affected pupil paradoxically dilates when torch swings to it. Objective, cannot be faked."},{q:"50-year-old, HTN + DM, wakes with inferior altitudinal VF defect + swollen hyperaemic disc. Normal ESR/CRP. Diagnosis?",opts:["Arteritic AION — IV methylprednisolone","Non-arteritic AION — manage vascular risk","Optic neuritis — MRI + steroids","CRVO — anti-VEGF"],ans:1,focus:"Non-arteritic AION",exp:"NA-AION: painless sudden inferior altitudinal VF, swollen hyperaemic disc, vascular risk factors (HTN, DM), normal inflammatory markers. No proven treatment. Manage cardiovascular risk. 15–20% fellow eye involvement."}];
 
@@ -2837,7 +3127,7 @@ NOTES.tumours = () => `<div class="n-page"><div class="n-hero-new">
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>Leukocoria in a child = retinoblastoma until proven otherwise. Never biopsy.</em><br>Uveal melanoma → liver surveillance. Choroidal mets > primary melanoma in frequency.<br>Madarosis + lid lesion = malignancy. Recurrent chalazion = biopsy.</div></div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>Leukocoria in a child = retinoblastoma until proven otherwise. Never biopsy.</em><br>Uveal melanoma → liver surveillance. Choroidal mets > primary melanoma in frequency.<br>Madarosis + lid lesion = malignancy. Recurrent chalazion = biopsy.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.tumours=[{q:"2-year-old with absent red reflex and white glow in photographs. Management?",opts:["Reassure — likely artefact","Same-day ophthalmology — exclude retinoblastoma","Optician at 3 months","Review in 2 weeks"],ans:1,focus:"Leukocoria — same-day",exp:"Leukocoria = same-day ophthalmology referral. Retinoblastoma must be excluded urgently. Absent red reflex is never normal."},{q:"Which retinoblastoma type is most likely bilateral?",opts:["Non-hereditary — two somatic hits","Hereditary — germline first hit, one somatic hit needed","X-linked","Mitochondrial"],ans:1,focus:"Hereditary retinoblastoma — bilateral",exp:"Hereditary (40%): germline RB1 → every cell has first hit → only one more hit needed → bilateral, multifocal, earlier onset."},{q:"Pigmented choroidal mass, mushroom shape on B-scan. Standard treatment for medium tumour?",opts:["Photodynamic therapy","Plaque brachytherapy","Intravitreal anti-VEGF","Systemic chemotherapy"],ans:1,focus:"Uveal melanoma — brachytherapy",exp:"Uveal melanoma: mushroom shape (breaks Bruch's membrane), high internal reflectivity. Standard: plaque brachytherapy. All: lifelong liver surveillance — metastases almost exclusively hepatic."},{q:"Lower lid lesion, pearly rolled edge, central ulceration, loss of adjacent lashes. Diagnosis?",opts:["Chalazion — warm compresses","BCC — Mohs surgery","Viral papilloma — reassure","Sebaceous cyst — excise"],ans:1,focus:"BCC — madarosis + pearly edge",exp:"BCC: most common eyelid malignancy. Pearly rolled edge, central ulceration (rodent ulcer), madarosis from follicular infiltration. Mohs micrographic surgery."},{q:"60-year-old, 'chalazion' recurring in same upper lid site after two I&C procedures. Action?",opts:["Third I&C with wider approach","Biopsy — exclude sebaceous gland carcinoma","Oral doxycycline","Allergy testing"],ans:1,focus:"Recurrent chalazion — sebaceous carcinoma",exp:"Sebaceous carcinoma masquerades as recurrent chalazion in same location. Most aggressive eyelid malignancy. Biopsy any chalazion recurring in same spot after adequate treatment."}];
 
@@ -2952,6 +3242,258 @@ NOTES.pharmacology = () => `<div class="n-page"><div class="n-hero-new">
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>Eye drops have systemic effects — always take a drop history.</em><br>Prostaglandins first-line. Timolol CI: asthma. Brimonidine CI: infants.<br>Never steroids for undiagnosed red eye. GCA: treat before biopsy.</div></div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>Eye drops have systemic effects — always take a drop history.</em><br>Prostaglandins first-line. Timolol CI: asthma. Brimonidine CI: infants.<br>Never steroids for undiagnosed red eye. GCA: treat before biopsy.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.pharmacology=[{q:"Asthmatic POAG patient prescribed timolol develops worsening wheeze. Mechanism?",opts:["Preservative allergy","Systemic beta-2 blockade via nasolacrimal absorption → bronchospasm","Coincidental COPD","Drop technique"],ans:1,focus:"Timolol — systemic absorption, asthma CI",exp:"Timolol absorbed via NLD → nasal mucosa → systemic circulation, bypassing first-pass. Beta-2 blockade causes bronchospasm. Contraindicated in asthma/COPD. Switch to prostaglandin analogue."},{q:"First-line glaucoma drop and its mechanism?",opts:["Timolol — reduce aqueous production","Prostaglandin analogue (latanoprost) — increase uveoscleral outflow","Dorzolamide — inhibit carbonic anhydrase","Brimonidine — alpha-2 agonist"],ans:1,focus:"Prostaglandins — first-line",exp:"Prostaglandin analogues (latanoprost): most effective single agent, 25–35% IOP reduction. FP receptor → uveoscleral outflow. Once-daily evening. No respiratory/cardiac CI."},{q:"GP prescribes topical dexamethasone for red eye. Patient returns 2 weeks later with corneal dendrites and worsening vision. What happened?",opts:["Steroid-induced glaucoma","HSV keratitis reactivated by steroid immunosuppression","Allergic reaction to preservative","Bacterial superinfection"],ans:1,focus:"Steroids + HSV = disaster",exp:"Topical steroids reactivate HSV → dendritic (or geographic) ulcer. Can lead to corneal perforation. Never prescribe steroids for undiagnosed red eye. Slit lamp + fluorescein first. Treatment: stop steroid, topical aciclovir."},{q:"Which drug is contraindicated in infants due to apnoea risk?",opts:["Latanoprost","Timolol","Brimonidine (alpha-2 agonist)","Dorzolamide"],ans:2,focus:"Brimonidine — CI in infants",exp:"Brimonidine (alpha-2 agonist) causes CNS depression and apnoea in infants and young children. Absolute contraindication. Used in adults for glaucoma (reduces production + increases uveoscleral drainage)."},{q:"A patient with wet AMD is offered intravitreal injections. Which drug class and key complication?",opts:["Intravitreal steroids — cataract","Anti-VEGF (ranibizumab/aflibercept) — endophthalmitis","Topical CAI — metallic taste","Alpha-2 agonist — allergy"],ans:1,focus:"Anti-VEGF for wet AMD",exp:"Anti-VEGF (ranibizumab, bevacizumab, aflibercept) for wet AMD, DMO, CRVO. Intravitreal injection. Key SE: endophthalmitis (rare but serious), RPE tear, subconjunctival haemorrhage. Dry AMD: no proven treatment (AREDS supplements only)."}];
+
+// ── AMD ──
+NOTES.amd = () => `<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">Ophthalmology · Retinal Disease · Note 12</div>
+  <div class="n-hero-title">Age-Related Macular<br><em>Degeneration</em></div>
+  <div class="n-hero-sub">Dry AMD · Wet AMD · Geographic Atrophy · Leading cause of blindness in the over-50s</div>
+  <div class="n-snapshot">
+    <div class="n-snap-cell"><div class="n-snap-label">The distinction that matters</div><div class="n-snap-text">Dry AMD = slow photoreceptor loss from drusen and RPE atrophy. Wet AMD = choroidal neovascularisation — leaks, scars, destroys central vision rapidly. <strong>Wet = treatable. Dry = not.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Where it hits</div><div class="n-snap-text">AMD destroys the macula — the central 5° of vision. Peripheral vision is preserved. Patients lose reading, faces, fine detail — but never go completely blind from AMD alone.</div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Risk factors</div><div class="n-snap-text">Age (strongest), smoking (strongest modifiable), family history, female sex, cardiovascular risk factors. Smoking doubles the risk. <strong>Stopping smoking is the single most impactful intervention.</strong></div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Dry vs Wet AMD — The Core Distinction</span><span class="n-section-tag">mechanism drives management</span></div>
+  <div class="n-diff-grid">
+    <div class="n-diff-card this">
+      <div class="n-diff-card-tag">Slow — 90% of cases</div>
+      <div class="n-diff-card-name">Dry AMD</div>
+      <div class="n-diff-card-key">Drusen accumulation → RPE dysfunction → photoreceptor loss. <strong>Gradual central vision loss over years.</strong> No leakage. No treatment reverses it.</div>
+      <div class="n-diag-steps" style="margin-top:16px;">
+        <div class="n-diag-row"><div class="n-diag-label">Fundoscopy</div><div class="n-diag-content">Drusen (yellow deposits under RPE), RPE pigmentary changes, geographic atrophy</div></div>
+        <div class="n-diag-row"><div class="n-diag-label gold">Tx</div><div class="n-diag-content">No proven treatment. AREDS2 supplements (ACSF + zinc) slow progression in intermediate AMD. Low vision aids. Stop smoking.</div></div>
+        <div class="n-diag-row"><div class="n-diag-label err">Risk</div><div class="n-diag-content">10–15% convert to wet AMD. Patients should monitor with Amsler grid and report new metamorphopsia immediately.</div></div>
+      </div>
+    </div>
+    <div class="n-diff-card that">
+      <div class="n-diff-card-tag">Fast — 10% of cases, 90% of severe loss</div>
+      <div class="n-diff-card-name">Wet AMD (nAMD)</div>
+      <div class="n-diff-card-key">Choroidal neovascularisation (CNV) → subretinal fluid + haemorrhage → rapid central vision loss. <strong>Treatable with anti-VEGF.</strong> Time-critical.</div>
+      <div class="n-diag-steps" style="margin-top:16px;">
+        <div class="n-diag-row"><div class="n-diag-label">Symptoms</div><div class="n-diag-content">Rapid central visual loss, metamorphopsia (distortion), central scotoma. New-onset distortion = wet AMD until proven otherwise.</div></div>
+        <div class="n-diag-row"><div class="n-diag-label gold">Tx</div><div class="n-diag-content"><strong>Intravitreal anti-VEGF</strong> (ranibizumab, aflibercept, bevacizumab). Monthly injections initially, then as-needed. Preserves — and can improve — vision if started promptly.</div></div>
+        <div class="n-diag-row"><div class="n-diag-label err">Urgency</div><div class="n-diag-content">Refer to medical retina within <strong>1 week</strong> of symptom onset. Every week of delay = permanent photoreceptor loss.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Mechanism — From Drusen to Blindness</span><span class="n-section-tag">5 steps</span></div>
+  <div class="n-mech-chain">
+    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Drusen formation — the earliest sign</div><div class="n-mech-text">Lipid-protein deposits accumulate beneath the RPE (Bruch's membrane). <strong>Hard drusen</strong>: small, discrete, benign. <strong>Soft drusen</strong>: larger, confluent — high risk of progression. Soft drusen = the warning sign on screening.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">RPE dysfunction — complement-driven inflammation</div><div class="n-mech-text">Drusen trigger complement activation and chronic low-grade inflammation → RPE cell dysfunction and death. The CFH gene (complement factor H) is the strongest genetic risk factor — variants impair complement regulation at the RPE.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Geographic atrophy — end-stage dry AMD</div><div class="n-mech-text">Progressive RPE cell death leaves areas of bare Bruch's membrane with overlying photoreceptor loss. <strong>Geographic atrophy</strong>: well-demarcated areas of RPE and photoreceptor loss. Gradual central scotoma. Currently no approved treatment, though emerging complement inhibitors show promise.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d4">04</div><div class="n-mech-body"><div class="n-mech-cause">Choroidal neovascularisation — the wet switch</div><div class="n-mech-text">RPE dysfunction upregulates VEGF → new vessels grow from choroid through Bruch's membrane into subretinal space. These vessels are <strong>leaky and fragile</strong> → subretinal fluid, haemorrhage, lipid exudation. This is wet AMD — the conversion that causes rapid vision loss.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d5">05</div><div class="n-mech-body"><div class="n-mech-cause">Disciform scar — untreated end point</div><div class="n-mech-text">Untreated CNV → fibrovascular scarring under the fovea → <strong>dense central scotoma.</strong> Anti-VEGF prevents this. The scar, once formed, cannot be reversed — which is why speed of treatment is everything in wet AMD.</div></div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Investigation</span><span class="n-section-tag">OCT is the key</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">OCT</div><div class="n-diag-content"><strong>Gold standard.</strong> Shows subretinal fluid, intraretinal fluid, CNV membrane, drusen, RPE elevation. Guides anti-VEGF treatment decisions. Non-invasive.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Amsler Grid</div><div class="n-diag-content">Home monitoring tool. Metamorphopsia (wavy lines) = wet conversion. Patients with dry AMD should check weekly. New distortion = urgent same-week review.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">FFA / ICGA</div><div class="n-diag-content">Fluorescein/indocyanine green angiography characterises CNV type. Less used now OCT-A (angiography) available non-invasively.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Visual Acuity</div><div class="n-diag-content">Central vision loss. Snellen — but early AMD may have preserved VA despite significant structural change on OCT. Do not use VA alone to assess severity.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Elderly patient + sudden central visual distortion (metamorphopsia) + straight lines appear wavy → <em>wet AMD until proven otherwise</em> → urgent same-week referral to medical retina for OCT and anti-VEGF.</div></div>
+  <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text">Patients often present late because they've been covering one eye without realising. <strong>Always test each eye separately in elderly patients with visual complaints.</strong> Bilateral AMD is common — the better eye masks the worse one.</div></div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-pearl-list">
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Metamorphopsia (distortion) = wet AMD until proven otherwise.</strong> Blurred vision is non-specific. Distortion — straight lines appearing wavy or bent — is the hallmark of subretinal fluid from CNV.<span class="n-pearl-exam">Exam classic: elderly patient, sudden onset, wavy lines on Amsler grid.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Dry AMD never causes sudden vision loss.</strong> Any sudden or rapid deterioration in a known dry AMD patient = wet conversion. Urgent OCT required.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Anti-VEGF preserves, not restores.</strong> The goal of treatment is to prevent further loss. Some patients gain vision with early treatment, but established photoreceptor loss is permanent. Start early.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>AMD never causes complete blindness alone</strong> — peripheral vision is preserved. Patients lose central vision (reading, faces) but retain navigational vision.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-trap-list">
+    <div class="n-trap">
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Dry AMD is harmless — no action needed beyond annual review.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Dry AMD converts to wet in 10–15% of cases.</strong> Patients need Amsler grid home monitoring and clear instructions to present immediately with new distortion. Intermediate dry AMD warrants AREDS2 supplements.</div></div>
+    </div>
+    <div class="n-trap">
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Anti-VEGF cures wet AMD — once vision is stable, treatment can stop permanently.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Anti-VEGF controls wet AMD — it does not cure it.</strong> Most patients require ongoing injections (treat-and-extend or PRN protocols). Stopping completely risks reactivation and vision loss.</div></div>
+    </div>
+  </div>
+</div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>Distortion means wet. Wet means urgent.</em><br>Anti-VEGF preserves vision. But only if started before the scar forms.</div></div>
+<div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+NOTES_MCQ.amd = [
+  {q:"An 72-year-old woman notices straight lines appearing wavy when reading. VA is 6/12. What is the most likely diagnosis and next step?",opts:["Dry AMD — annual review","Wet AMD — urgent same-week referral for OCT and anti-VEGF","Macular hole — elective vitrectomy","Central serous retinopathy — observe"],ans:1,focus:"Wet AMD — metamorphopsia = urgent",exp:"<strong>Metamorphopsia (wavy distortion) = wet AMD until proven otherwise.</strong> New subretinal fluid from CNV distorts the photoreceptors. Requires urgent referral for OCT and anti-VEGF within 1 week. Every week of delay risks permanent central scotoma from disciform scarring."},
+  {q:"Which AMD finding on fundoscopy carries the highest risk of progression to wet AMD?",opts:["Hard drusen","Soft confluent drusen","RPE hyperpigmentation alone","Normal fundus in patient over 70"],ans:1,focus:"Soft drusen — high-risk feature",exp:"<strong>Soft confluent drusen</strong> are large, poorly defined deposits with indistinct edges that may coalesce. They indicate significant RPE dysfunction and carry the highest risk of wet conversion. Hard drusen (small, discrete) are low risk."},
+  {q:"First-line treatment for wet AMD (neovascular AMD) is:",opts:["Photodynamic therapy","Pan-retinal photocoagulation","Intravitreal anti-VEGF (ranibizumab/aflibercept)","AREDS2 supplements"],ans:2,focus:"Wet AMD — anti-VEGF first-line",exp:"<strong>Intravitreal anti-VEGF</strong> (ranibizumab, aflibercept, bevacizumab) is first-line for wet AMD. Anti-VEGF blocks the VEGF driving CNV growth and leakage. PDT is now second-line. AREDS2 supplements are for dry AMD only."},
+  {q:"AREDS2 supplements are indicated for which stage of AMD?",opts:["Early dry AMD (small drusen only)","Intermediate or advanced dry AMD","All stages of AMD","Wet AMD post-anti-VEGF"],ans:1,focus:"AREDS2 — intermediate dry AMD",exp:"<strong>AREDS2 supplements</strong> (vitamins C, E, lutein, zeaxanthin, zinc) slow progression in <strong>intermediate AMD</strong> (medium drusen or one large drusen) or advanced AMD in one eye. They have no proven benefit in early AMD or wet AMD."},
+  {q:"A patient with known dry AMD suddenly loses central vision acutely over 48 hours. What has occurred?",opts:["Geographic atrophy — expected progression","Wet AMD conversion — urgent OCT and anti-VEGF","Vitreous haemorrhage — B-scan USS","Central retinal artery occlusion — emergency"],ans:1,focus:"Acute loss in dry AMD = wet conversion",exp:"<strong>Dry AMD causes gradual, slow central vision loss.</strong> Any sudden or rapid deterioration = wet AMD conversion until proven otherwise. Urgent OCT to confirm subretinal fluid/CNV and same-week anti-VEGF injection. Do not reassure and observe."}
+];
+
+// ── RED EYE ──
+NOTES.redeye = () => `<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">Ophthalmology · Clinical · Note 14</div>
+  <div class="n-hero-title">The Red<br><em>Eye</em></div>
+  <div class="n-hero-sub">Conjunctivitis · Uveitis · Acute Angle-Closure · Scleritis · Episcleritis · Subconjunctival Haemorrhage</div>
+  <div class="n-snapshot">
+    <div class="n-snap-cell"><div class="n-snap-label">The one question</div><div class="n-snap-text">Is the vision affected? Normal VA + no photophobia + no corneal changes = likely benign (conjunctivitis, episcleritis, subconjunctival haemorrhage). <strong>Reduced VA or severe pain = refer urgently.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">The dangerous red eye</div><div class="n-snap-text">Acute angle-closure glaucoma: red + painful + fixed mid-dilated pupil + haloes + vomiting. IOP >50mmHg. Emergency. IV acetazolamide + pilocarpine + mannitol.</div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Ciliary flush</div><div class="n-snap-text">Circumlimbal redness (deepest at the limbus) = intraocular pathology — uveitis, angle-closure, keratitis. Peripheral redness = conjunctivitis. <strong>Where the redness is tells you where the problem is.</strong></div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Diagnosis by Pattern</span><span class="n-section-tag">the key features</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label">Conjunctivitis</div><div class="n-diag-content">Bilateral, discharge (purulent = bacterial, watery = viral), gritty sensation, normal VA, normal pupil, no photophobia. Peripheral redness. Self-limiting. Chloramphenicol if bacterial.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Episcleritis</div><div class="n-diag-content">Sectoral redness, mild discomfort, normal VA, normal IOP, blanches with phenylephrine. Benign. Associated with IBD, RA, SLE. Lubricants ± topical NSAIDs.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Scleritis</div><div class="n-diag-content"><strong>Severe boring pain</strong>, photophobia, does not blanch with phenylephrine, deep red/purple hue, tender on palpation. Associated with RA, GPA. Systemic NSAIDs. Posterior scleritis can be painless — USS shows T-sign.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Anterior Uveitis</div><div class="n-diag-content">Ciliary flush, photophobia, <strong>small irregular pupil</strong> (posterior synechiae), keratic precipitates on corneal endothelium, reduced VA. Associated with HLA-B27, sarcoidosis, TB. Topical steroids + cycloplegics.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Acute Angle-Closure</div><div class="n-diag-content"><strong>Fixed mid-dilated oval pupil</strong>, corneal haze, severe pain, nausea/vomiting, haloes around lights. IOP >50mmHg. Emergency: IV acetazolamide 500mg, pilocarpine 2%, IV mannitol, laser iridotomy.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Subconjunctival Haem.</div><div class="n-diag-content">Bright red patch, sharply demarcated, asymptomatic, normal VA. Alarming appearance, benign cause (Valsalva, coughing, hypertension). No treatment. Resolves in 2 weeks. Check BP if recurrent.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Keratitis</div><div class="n-diag-content">Ciliary flush, photophobia, foreign body sensation, corneal opacity/ulcer on slit-lamp. Contact lens wearers: <em>Acanthamoeba/Pseudomonas</em>. Urgent: stop lenses, corneal scrape, intensive topical antibiotics.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">The Dangerous Red Eye — Angle-Closure</span><span class="n-section-tag">emergency protocol</span></div>
+  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Sudden painful red eye + fixed mid-dilated pupil + corneal haze + nausea/vomiting + haloes around lights → <em>acute angle-closure glaucoma</em> → emergency treatment immediately.</div></div>
+  <div class="n-algo-steps">
+    <div class="n-algo-step s-first"><div class="n-algo-num">01</div><div class="n-algo-body"><div class="n-algo-action">IV acetazolamide 500mg</div><div class="n-algo-detail">Carbonic anhydrase inhibitor — reduces aqueous production rapidly</div></div></div>
+    <div class="n-algo-step"><div class="n-algo-num">02</div><div class="n-algo-body"><div class="n-algo-action">Pilocarpine 2% topical</div><div class="n-algo-detail">Constricts pupil — opens angle. Give to both eyes (prophylactic to fellow eye)</div></div></div>
+    <div class="n-algo-step"><div class="n-algo-num">03</div><div class="n-algo-body"><div class="n-algo-action">IV mannitol if IOP remains high</div><div class="n-algo-detail">Osmotic agent — reduces vitreous volume</div></div></div>
+    <div class="n-algo-step s-severe"><div class="n-algo-num">04</div><div class="n-algo-body"><div class="n-algo-action">Laser peripheral iridotomy</div><div class="n-algo-detail">Definitive treatment — creates drainage bypass. Also treat fellow eye prophylactically</div></div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Pupil as Diagnostic Tool</span><span class="n-section-tag">look at the pupil first</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label">Small, irregular</div><div class="n-diag-content">Anterior uveitis — posterior synechiae bind iris to lens. Photophobia prominent.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Fixed, mid-dilated</div><div class="n-diag-content">Acute angle-closure glaucoma — sphincter ischaemia from raised IOP. Emergency.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Normal, reactive</div><div class="n-diag-content">Conjunctivitis, episcleritis, subconjunctival haemorrhage — external/benign pathology.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">RAPD present</div><div class="n-diag-content">Optic nerve or retinal pathology — CRAO, optic neuritis, severe glaucoma. Urgent referral.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-pearl-list">
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Episcleritis blanches with phenylephrine. Scleritis does not.</strong> This is the clinical test that distinguishes them. Scleritis has deep, boring pain and is associated with systemic vasculitis.<span class="n-pearl-exam">Exam: sectoral redness — is it epi or sclera? Blanching = episcleritis.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Contact lens + red eye = Acanthamoeba/Pseudomonas until proven otherwise.</strong> Stop lenses immediately. Corneal scrape for culture. Intensive topical treatment. Never prescribe steroids to a contact lens wearer with keratitis.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Subconjunctival haemorrhage looks alarming but is benign.</strong> Patients are terrified. Reassure. Check BP. No treatment needed. However — recurrent SCH = check coagulation and anticoagulant use.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Angle-closure is classically triggered by dim light or mydriatic drops.</strong> Pupil dilation narrows the angle. Warn patients with shallow anterior chambers (hyperopes, Asians, elderly) before dilating.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-trap-list">
+    <div class="n-trap">
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Red eye + discharge = conjunctivitis. Prescribe chloramphenicol.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Always check VA and pupil before diagnosing conjunctivitis.</strong> Reduced VA, abnormal pupil, ciliary flush, or severe pain = refer urgently. Uveitis and keratitis can present with discharge.</div></div>
+    </div>
+    <div class="n-trap">
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Patient has red eye with nausea and vomiting — likely gastroenteritis.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Nausea and vomiting with red eye = acute angle-closure glaucoma until proven otherwise.</strong> The GI symptoms are from vagal stimulation by severe pain and acutely raised IOP. Always examine the eye.</div></div>
+    </div>
+  </div>
+</div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>Where is the redness? What is the pupil doing? Is the vision affected?</em><br>Three questions. They give you the diagnosis.</div></div>
+<div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+NOTES_MCQ.redeye = [
+  {q:"A 68-year-old presents with a sudden painful red eye, haloes around lights, nausea, and vomiting. On examination the pupil is fixed and mid-dilated. IOP is 58mmHg. Diagnosis?",opts:["Anterior uveitis — topical steroids","Acute angle-closure glaucoma — emergency treatment","Conjunctivitis — chloramphenicol","Scleritis — oral NSAIDs"],ans:1,focus:"Acute angle-closure — fixed mid-dilated pupil",exp:"<strong>Acute angle-closure glaucoma:</strong> sudden painful red eye + fixed mid-dilated oval pupil + corneal haze + nausea/vomiting + IOP >40mmHg. Emergency: IV acetazolamide 500mg, topical pilocarpine 2%, IV mannitol, urgent laser iridotomy."},
+  {q:"A patient has a sectoral red eye with mild discomfort. The redness blanches completely with topical phenylephrine. Diagnosis?",opts:["Scleritis — oral NSAIDs urgently","Episcleritis — lubricants ± topical NSAIDs","Anterior uveitis — topical steroids","Conjunctivitis — chloramphenicol"],ans:1,focus:"Episcleritis — blanches with phenylephrine",exp:"<strong>Episcleritis blanches with phenylephrine.</strong> Scleritis does not — it has deep, boring pain, does not blanch, and is associated with systemic vasculitis. Episcleritis is benign, associated with IBD/RA/SLE, treated with lubricants and topical NSAIDs."},
+  {q:"A contact lens wearer presents with a painful red eye and photophobia. Slit-lamp shows a corneal ulcer. Most important immediate step?",opts:["Topical steroids to reduce inflammation","Stop contact lens wear immediately + corneal scrape + intensive topical antibiotics","Chloramphenicol drops for 1 week","Reassure and review in 2 weeks"],ans:1,focus:"Contact lens keratitis — emergency",exp:"<strong>Contact lens keratitis is an emergency.</strong> Stop lenses immediately. Corneal scrape for culture (Acanthamoeba, Pseudomonas). Intensive topical antibiotics (ciprofloxacin or ofloxacin hourly). Never give steroids to a contact lens wearer with keratitis — can worsen Acanthamoeba catastrophically."},
+  {q:"Anterior uveitis classically presents with which pupil finding?",opts:["Fixed mid-dilated pupil","Small irregular pupil with posterior synechiae","Dilated unreactive pupil","Normal reactive pupil"],ans:1,focus:"Anterior uveitis — small irregular pupil",exp:"<strong>Anterior uveitis:</strong> ciliary flush + photophobia + <strong>small irregular pupil</strong> (posterior synechiae — iris adhesions to anterior lens surface) + keratic precipitates on corneal endothelium. Contrast with angle-closure (fixed mid-dilated) and conjunctivitis (normal pupil)."},
+  {q:"A patient presents alarmed by a bright red patch covering part of their white of the eye. Vision is normal, there is no pain, and the patch is sharply demarcated. Management?",opts:["Urgent referral — possible scleritis","Topical antibiotics for 1 week","Reassure — subconjunctival haemorrhage, check BP, no treatment needed","Topical steroids"],ans:2,focus:"Subconjunctival haemorrhage — benign",exp:"<strong>Subconjunctival haemorrhage</strong> — bright red, sharply demarcated, asymptomatic, normal VA. Alarming appearance, benign cause (Valsalva, coughing, hypertension). Resolves spontaneously in 2 weeks. No treatment needed. Check BP. If recurrent, check coagulation screen and anticoagulant use."}
+];
+
+// ── STRABISMUS ──
+NOTES.strabismus = () => `<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">Ophthalmology · Paediatric · Note 17</div>
+  <div class="n-hero-title">Strabismus &amp;<br><em>Amblyopia</em></div>
+  <div class="n-hero-sub">Esotropia · Exotropia · Amblyopia · Cover Test · Critical Period · Patching</div>
+  <div class="n-snapshot">
+    <div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Strabismus causes amblyopia — the brain suppresses the misaligned eye to avoid diplopia. <strong>If untreated before the critical period (age 7–8), amblyopia becomes permanent.</strong> This is the reason early detection matters.</div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">The cover test</div><div class="n-snap-text">Cover the fixing eye — if the other eye moves to take up fixation, strabismus is present. <strong>Movement on cover = manifest squint (tropia). Movement on uncover = latent squint (phoria).</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Pseudostrabismus</div><div class="n-snap-text">Wide epicanthal folds in young children make eyes appear crossed. Cover test is normal — no movement. Common cause of false-positive referrals. Reassure parents.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Types of Strabismus</span><span class="n-section-tag">direction and cause</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">Esotropia</div><div class="n-diag-content">Eye turns <strong>inward</strong>. Most common in children. Accommodative esotropia: hyperopia causes excess accommodation → convergence → esotropia. Corrects with glasses. Non-accommodative: surgical correction.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Exotropia</div><div class="n-diag-content">Eye turns <strong>outward</strong>. Often intermittent initially — worse when tired or daydreaming. Prisms, occlusion, or surgery depending on severity and control.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Hypertropia</div><div class="n-diag-content">Eye turns <strong>upward</strong>. Consider CN IV palsy (superior oblique weakness — head tilt to compensate), Brown syndrome, thyroid eye disease.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Paralytic Strabismus</div><div class="n-diag-content">Sudden-onset diplopia + restricted EOM in an adult = CN III, IV, or VI palsy. CN III + dilated pupil = posterior communicating artery aneurysm until proven otherwise. <strong>Emergency MR angiography.</strong></div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Amblyopia — The Consequence of Untreated Strabismus</span><span class="n-section-tag">the critical period</span></div>
+  <div class="n-mech-chain">
+    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Misalignment → diplopia in the developing brain</div><div class="n-mech-text">The brain receives two conflicting images. In adults this causes diplopia. In children, the brain has a solution — it suppresses the image from the deviating eye. <strong>This suppression is the beginning of amblyopia.</strong></div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Cortical suppression — visual cortex rewires</div><div class="n-mech-text">The visual cortex actively suppresses input from the deviating eye. Neurons dedicated to that eye are taken over by the dominant eye. <strong>This is not a problem with the eye itself — the retina and optic nerve are normal. The problem is cortical.</strong></div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Critical period — the closing window</div><div class="n-mech-text">The visual cortex remains plastic (modifiable) until approximately <strong>age 7–8 years</strong>. Treatment during this window can reverse amblyopia by forcing the brain to use the suppressed eye. After the critical period, cortical reorganisation is irreversible.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d4">04</div><div class="n-mech-body"><div class="n-mech-cause">Treatment — patching forces use of the amblyopic eye</div><div class="n-mech-text">Cover the dominant eye with a patch → brain is forced to process input from the amblyopic eye → cortical connections strengthen → VA improves. Must correct any refractive error first (glasses). <strong>Compliance is the biggest challenge.</strong></div></div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">The Cover Test — Perform It Correctly</span><span class="n-section-tag">the key examination</span></div>
+  <div class="n-algo-steps">
+    <div class="n-algo-step s-first"><div class="n-algo-num">01</div><div class="n-algo-body"><div class="n-algo-action">Cover one eye, watch the other</div><div class="n-algo-detail">Cover the right eye — watch the left. If the left eye moves to fixate = left eye was deviated = manifest strabismus (tropia)</div></div></div>
+    <div class="n-algo-step"><div class="n-algo-num">02</div><div class="n-algo-body"><div class="n-algo-action">Uncover — watch for movement</div><div class="n-algo-detail">Remove cover, watch the uncovered eye. If it moves to re-align = latent strabismus (phoria) — only present when binocular fusion is disrupted</div></div></div>
+    <div class="n-algo-step"><div class="n-algo-num">03</div><div class="n-algo-body"><div class="n-algo-action">Repeat covering the other eye</div><div class="n-algo-detail">Cover the left, watch the right. Asymmetric findings suggest unilateral amblyopia or paralytic strabismus</div></div></div>
+    <div class="n-algo-step s-severe"><div class="n-algo-num">04</div><div class="n-algo-body"><div class="n-algo-action">No movement on either cover = orthotropic</div><div class="n-algo-detail">But check for pseudostrabismus — wide epicanthal folds, normal cover test. Reassure parents.</div></div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Child + inward-turning eye + hyperopia on refraction → <em>accommodative esotropia</em> → correct the refractive error with glasses first. Many cases resolve fully. Residual deviation after optical correction = surgery.</div></div>
+  <div class="n-distractor-box"><div class="n-distractor-label">The dangerous distractor</div><div class="n-distractor-text"><strong>White reflex (leukocoria) in a child with apparent strabismus = retinoblastoma until proven otherwise.</strong> Always examine the red reflex before diagnosing benign strabismus. Absent or white red reflex = urgent paediatric ophthalmology.</div></div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-pearl-list">
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Amblyopia is a cortical problem, not an ocular one.</strong> The eye is structurally normal. VA loss is from cortical suppression. This is why patching the good eye — not treating the bad eye — works.<span class="n-pearl-exam">Exam classic: why does patching the good eye treat amblyopia?</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>After age 7–8, amblyopia treatment is largely ineffective.</strong> The critical period has closed. This is why vision screening in children at 4–5 years exists — to detect amblyopia while still treatable.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>New-onset diplopia in an adult with restricted EOM = CN palsy until proven otherwise.</strong> CN III + pupil involvement = posterior communicating artery aneurysm = emergency MR angiography. Never delay this.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Head tilt + vertical diplopia = CN IV palsy (superior oblique).</strong> The patient tilts head to compensate for the extorted eye. Bielschowsky head tilt test confirms it.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-trap-list">
+    <div class="n-trap">
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Child with crossing eyes — wide nasal bridge, parents reassured it's normal.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Always perform a cover test.</strong> Wide epicanthal folds cause pseudostrabismus — apparent crossing with normal cover test. But real esotropia looks identical to parents. The cover test is the only way to distinguish them. Never reassure without examining.</div></div>
+    </div>
+    <div class="n-trap">
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Amblyopia — the child is old enough to cooperate with treatment now (age 10). Start patching.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>The critical period closes at approximately age 7–8.</strong> Patching after this age has minimal benefit. Early detection — at preschool vision screening — is the only way to treat amblyopia effectively.</div></div>
+    </div>
+  </div>
+</div>
+<div class="n-anchor"><div class="n-anchor-text" style="font-family:'Instrument Serif',serif;font-size:clamp(18px,2.2vw,26px);line-height:1.4;font-style:italic;color:rgba(245,242,235,0.85);letter-spacing:0.2px;"><em>The brain suppresses what it cannot fuse. And after age eight, that suppression is permanent.</em><br>Detect early. Patch early. The window closes.</div></div>
+<div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+NOTES_MCQ.strabismus = [
+  {q:"A 3-year-old is referred with apparent crossing of the eyes. Cover test shows no movement of either eye on covering or uncovering. The most likely diagnosis is:",opts:["Esotropia — refer to orthoptics","Exotropia — prism therapy","Pseudostrabismus — wide epicanthal folds, reassure","Amblyopia — start patching"],ans:2,focus:"Pseudostrabismus — normal cover test",exp:"<strong>Pseudostrabismus:</strong> wide epicanthal folds make eyes appear crossed, but the cover test is completely normal — no movement on covering or uncovering. The corneal light reflexes are symmetric. Reassure parents. Review at 6 months. <strong>Never reassure without performing the cover test.</strong>"},
+  {q:"A 5-year-old has a right esotropia. Refraction shows +4.00D hyperopia. First-line treatment is:",opts:["Patch the left (good) eye immediately","Correct the hyperopia with glasses first","Surgical correction of the esotropia","Botulinum toxin injection"],ans:1,focus:"Accommodative esotropia — glasses first",exp:"<strong>Accommodative esotropia</strong> is caused by hyperopia — excess accommodation drives convergence. First-line: <strong>correct the refractive error with glasses.</strong> Many cases resolve fully with optical correction alone. Patching for any associated amblyopia. Residual esotropia after full optical correction = surgery."},
+  {q:"Why does patching the good eye treat amblyopia?",opts:["It strengthens the extraocular muscles of the amblyopic eye","It forces the visual cortex to process input from the suppressed eye, rebuilding cortical connections","It corrects the refractive error in the amblyopic eye","It reduces diplopia by blocking the dominant eye's image"],ans:1,focus:"Amblyopia — cortical mechanism of patching",exp:"Amblyopia is a <strong>cortical problem</strong> — the visual cortex has suppressed the deviating eye's input. Patching the good eye forces the brain to use the amblyopic eye, <strong>rebuilding cortical neural connections</strong> during the critical period. The eye itself is structurally normal — VA loss is entirely due to cortical suppression."},
+  {q:"After what age is amblyopia treatment largely ineffective?",opts:["Age 3–4","Age 5–6","Age 7–8","Age 10–12"],ans:2,focus:"Amblyopia — critical period",exp:"The visual cortex remains plastic until approximately <strong>age 7–8 years</strong>. Patching during this critical period can reverse cortical suppression and improve VA. After the critical period closes, cortical reorganisation is irreversible and amblyopia treatment has minimal benefit. This is why preschool vision screening (age 4–5) is essential."},
+  {q:"A 45-year-old develops sudden-onset diplopia with a right ptosis and the right eye deviated down and out. The right pupil is 7mm and unreactive. Immediate next step?",opts:["Refer to orthoptics for prism therapy","Urgent MR angiography — posterior communicating artery aneurysm","MRI brain for demyelination","Ice test for myasthenia gravis"],ans:1,focus:"CN III + pupil = aneurysm emergency",exp:"<strong>Complete CN III palsy with pupil involvement = posterior communicating artery aneurysm until proven otherwise.</strong> The oculomotor nerve's pupillary fibres run on the outer surface and are compressed first by external pressure (aneurysm). <strong>Emergency MR angiography.</strong> Ischaemic CN III (diabetes, hypertension) typically spares the pupil."}
+];
+
+// Fix ID aliases so HTML references work
+NOTES.rd = NOTES.retdetach;
+NOTES_MCQ.rd = NOTES_MCQ.retdetach;
+NOTES.rvo = NOTES.vascular;
+NOTES_MCQ.rvo = NOTES_MCQ.vascular;
+NOTES.on = NOTES.opticnerve;
+NOTES_MCQ.on = NOTES_MCQ.opticnerve;
