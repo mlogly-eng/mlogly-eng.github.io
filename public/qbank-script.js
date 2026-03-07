@@ -1895,6 +1895,3 @@ function resumeSession() {
     renderQ();
   }
 }
-</script>
-</body>
-</html>
