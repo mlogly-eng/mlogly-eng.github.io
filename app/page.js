@@ -14,7 +14,7 @@ export default function Home() {
       errEl.classList.remove("show");
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){errEl.textContent="Please enter a valid email address.";errEl.classList.add("show");return;}
       btn.disabled=true;btn.textContent="Submitting...";
-      await fetch("/api/waitlist",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email,year})});
+      await fetch("/.netlify/functions/waitlist",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email,year})});
       document.getElementById("fc").innerHTML="<div style=padding:48px><div style=font-size:52px;color:#e85d3f>Youre in.</div><p>Well reach out when Vent opens.</p></div>";
     };
     // All existing JavaScript
@@ -55,7 +55,7 @@ document.getElementById('sb').addEventListener('click',async()=>{
   errEl.classList.remove('show');
   if(!validEmail(email)){errEl.textContent='Please enter a valid email address.';errEl.classList.add('show');document.getElementById('ei').focus();return;}
   btn.disabled=true;btn.textContent='Submitting...';
-  const _wr = await fetch("/api/waitlist", {method:"POST", headers:{"Content-Type":"application/json","apikey":"sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj","Authorization":"Bearer sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj"}, body: JSON.stringify({email, year: document.getElementById("yr").value})}); console.log("waitlist status", _wr.status);
+  const _wr = await fetch("/.netlify/functions/waitlist", {method:"POST", headers:{"Content-Type":"application/json","apikey":"sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj","Authorization":"Bearer sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj"}, body: JSON.stringify({email, year: document.getElementById("yr").value})}); console.log("waitlist status", _wr.status);
   await new Promise(r=>setTimeout(r,800));
   document.getElementById('fc').innerHTML='<div style="padding:48px 0;"><div style="font-family:\'Instrument Serif\',serif;font-size:52px;color:#e85d3f;font-style:italic;line-height:1;margin-bottom:20px;">You\'re in.</div><p style="color:rgba(245,242,235,.65);font-size:16px;line-height:1.75;">We\'ll reach out when Vent opens.<br>Until then — breathe.</p></div>';
 });
@@ -573,7 +573,7 @@ document.getElementById('sb').addEventListener('click',async()=>{
   errEl.classList.remove('show');
   if(!validEmail(email)){errEl.textContent='Please enter a valid email address.';errEl.classList.add('show');document.getElementById('ei').focus();return;}
   btn.disabled=true;btn.textContent='Submitting...';
-  const _wr = await fetch("/api/waitlist", {method:"POST", headers:{"Content-Type":"application/json","apikey":"sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj","Authorization":"Bearer sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj"}, body: JSON.stringify({email, year: document.getElementById("yr").value})}); console.log("waitlist status", _wr.status);
+  const _wr = await fetch("/.netlify/functions/waitlist", {method:"POST", headers:{"Content-Type":"application/json","apikey":"sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj","Authorization":"Bearer sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj"}, body: JSON.stringify({email, year: document.getElementById("yr").value})}); console.log("waitlist status", _wr.status);
   await new Promise(r=>setTimeout(r,800));
   document.getElementById('fc').innerHTML='<div style="padding:48px 0;"><div style="font-family:\'Instrument Serif\',serif;font-size:52px;color:#e85d3f;font-style:italic;line-height:1;margin-bottom:20px;">You\'re in.</div><p style="color:rgba(245,242,235,.65);font-size:16px;line-height:1.75;">We\'ll reach out when Vent opens.<br>Until then — breathe.</p></div>';
 });

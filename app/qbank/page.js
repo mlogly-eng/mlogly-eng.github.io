@@ -15,7 +15,7 @@ export default function QBank() {
   }, [])
 
   return (
-    <>
+  
       <nav>
         <a href="/" className="logo">
           <svg width="34" height="34" viewBox="0 0 44 44" fill="none">
