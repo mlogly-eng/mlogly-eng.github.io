@@ -145,7 +145,7 @@ function loadFontSize(){
 // ══ BREATHE MODE ══
 // breatheOn and nav/prefs state
 const NOTE_ORDER_OPHTHO=['intro','eyelids','lacrimal','conjunctiva','lens','cataract','cornea','uveitis','refraction','glaucoma','retina','retdetach','rd','dr','hr','vascular','rvo','amd','redeye','orbit','opticnerve','on','tumours','strabismus','pharmacology'];
-const NOTE_NAMES={'intro':'Intro to Ophthalmology','eyelids':'Eyelids','lacrimal':'Lacrimal Apparatus','conjunctiva':'Conjunctiva','lens':'The Lens','cataract':'Cataracts','cornea':'Corneal Infections','uveitis':'Uveitis','refraction':'Refraction','glaucoma':'Glaucoma','retina':'The Retina','retdetach':'Retinal Detachment','dr':'Diabetic Retinopathy','hr':'Hypertensive Retinopathy','vascular':'Vascular Retinopathy','orbit':'The Orbit','opticnerve':'Optic Neuropathy','tumours':'Ocular Tumours','pharmacology':'Ocular Pharmacology'};
+const NOTE_NAMES={'intro':'Intro to Ophthalmology','eyelids':'Eyelids','lacrimal':'Lacrimal Apparatus','conjunctiva':'Conjunctiva','lens':'The Lens','cataract':'Cataracts','cornea':'Corneal Infections','uveitis':'Uveitis','refraction':'Refraction','glaucoma':'Glaucoma','retina':'The Retina','retdetach':'Retinal Detachment','rd':'Retinal Detachment','dr':'Diabetic Retinopathy','hr':'Hypertensive Retinopathy','vascular':'Vascular Retinopathy','rvo':'Vascular Retinopathy','amd':'Age-Related Macular Degeneration','redeye':'The Red Eye','orbit':'The Orbit','opticnerve':'Optic Neuropathy','on':'Optic Neuropathy','tumours':'Ocular Tumours','strabismus':'Strabismus & Amblyopia','pharmacology':'Ocular Pharmacology'};
 // Alias so breathe engine (which uses NOTE_ORDER) works
 const NOTE_ORDER = NOTE_ORDER_OPHTHO;
 const NOTE_NAMES_NAV = NOTE_NAMES;
@@ -2066,7 +2066,6 @@ NOTES.eyelids = () => `<div class="n-page"><div class="n-hero-new">
       <div style="display:grid;grid-template-columns:88px 1fr;"><span style="font-family:Syne,sans-serif;font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(245,242,235,0.35);padding:11px 10px 11px 18px;border-right:1px solid rgba(245,242,235,0.06);display:flex;align-items:center;">Red flag</span><span style="font-family:JetBrains Mono,monospace;font-size:11px;color:rgba(245,242,235,0.8);padding:11px 16px;line-height:1.5;"><strong>Fever + proptosis + restricted EOM</strong> = orbital cellulitis. IV abx now.</span></div>
     </div>
   </div>
-  </div>
 </div>
 <div class="n-section">
   <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Lid Malposition — Entropion & Ectropion</span><span class="n-section-tag">both damage the cornea</span></div>
@@ -2283,7 +2282,6 @@ NOTES.conjunctiva = () => `<div class="n-page"><div class="n-hero-new">
       <div style="display:grid;grid-template-columns:88px 1fr;"><span style="font-family:Syne,sans-serif;font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(245,242,235,0.35);padding:11px 10px 11px 18px;border-right:1px solid rgba(245,242,235,0.06);display:flex;align-items:center;">Urgency</span><span style="font-family:JetBrains Mono,monospace;font-size:11px;color:rgba(245,242,235,0.8);padding:11px 16px;line-height:1.5;"><strong>Urgent.</strong> Scleral thinning → perforation if untreated.</span></div>
     </div>
   </div>
-</div>
 </div>
 <div class="n-section">
   <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Subconjunctival Haemorrhage</span><span class="n-section-tag">alarming to the patient, usually benign</span></div>
