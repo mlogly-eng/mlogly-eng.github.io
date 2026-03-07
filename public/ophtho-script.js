@@ -1704,47 +1704,97 @@ NOTES.intro = () => `<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-title">Intro to<br><em>Ophthalmology</em></div>
   <div class="n-hero-sub">Anatomy · History · Examination · The framework everything else hangs from</div>
   <div class="n-snapshot">
-    <div class="n-snap-cell"><div class="n-snap-label">Three compartments</div><div class="n-snap-text">Anterior segment (cornea → lens), posterior segment (vitreous → retina), adnexa (lids, orbit, lacrimal). Disease location predicts symptoms.</div></div>
-    <div class="n-snap-cell"><div class="n-snap-label">The history</div><div class="n-snap-text">Painful vs painless. Sudden vs gradual. Unilateral vs bilateral. Red vs white. <strong>These four dichotomies narrow the diagnosis before you examine.</strong></div></div>
-    <div class="n-snap-cell"><div class="n-snap-label">Examination order</div><div class="n-snap-text">VA → pupils → fields → EOM → anterior → fundus. <strong>Never skip VA — it is the vital sign of the eye.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Three compartments</div><div class="n-snap-text">Anterior segment (cornea → lens), posterior segment (vitreous → retina), adnexa (lids, orbit, lacrimal). <strong>Disease location predicts symptoms.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">History first</div><div class="n-snap-text">Painful vs painless. Sudden vs gradual. Unilateral vs bilateral. Red vs white. <strong>These four dichotomies narrow the diagnosis before the slit lamp.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Examination order</div><div class="n-snap-text">VA → pupils → fields → EOM → anterior segment → fundus. <strong>Never skip VA — it is the vital sign of the eye.</strong></div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">The Four Dichotomies</span><span class="n-section-tag">history before exam</span></div>
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Anatomy — Three Compartments</span><span class="n-section-tag">location determines symptom</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Globe anatomy by compartment</span><span class="n-viz-sub">Know where the disease is — know what you'll find</span></div>
+    <svg viewBox="0 0 760 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="244" height="170" rx="2" fill="#c8452a"/>
+      <text x="122" y="30" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">ANTERIOR</text>
+      <text x="122" y="58" font-family="Syne,sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="800">Cornea → Lens</text>
+      <text x="122" y="82" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Cornea · Iris · Ciliary body</text>
+      <text x="122" y="100" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Aqueous humour · Lens</text>
+      <text x="122" y="128" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.42)" text-anchor="middle">Symptoms: pain · redness</text>
+      <text x="122" y="146" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.42)" text-anchor="middle">photophobia · haloes</text>
+      <rect x="258" y="0" width="244" height="170" rx="2" fill="#2a4a6e"/>
+      <text x="380" y="30" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">POSTERIOR</text>
+      <text x="380" y="58" font-family="Syne,sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="800">Vitreous → Retina</text>
+      <text x="380" y="82" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Vitreous · Retina · Choroid</text>
+      <text x="380" y="100" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Macula · Optic disc</text>
+      <text x="380" y="128" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.42)" text-anchor="middle">Symptoms: painless loss</text>
+      <text x="380" y="146" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.42)" text-anchor="middle">floaters · flashes · curtain</text>
+      <rect x="516" y="0" width="244" height="170" rx="2" fill="#3a4a3a"/>
+      <text x="638" y="30" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">ADNEXA</text>
+      <text x="638" y="58" font-family="Syne,sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="800">Orbit + Lids</text>
+      <text x="638" y="82" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Eyelids · Lacrimal · Orbit</text>
+      <text x="638" y="100" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Extraocular muscles · ON</text>
+      <text x="638" y="128" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.42)" text-anchor="middle">Symptoms: diplopia · ptosis</text>
+      <text x="638" y="146" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.42)" text-anchor="middle">watering · proptosis</text>
+    </svg>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">The Four History Dichotomies</span><span class="n-section-tag">diagnose before you examine</span></div>
   <div class="n-diag-steps">
-    <div class="n-diag-row"><div class="n-diag-label">Painful vs Painless</div><div class="n-diag-content">Painful red eye: acute glaucoma, keratitis, uveitis, scleritis. Painless loss: retinal detachment, CRAO, AMD, vitreous haemorrhage. <strong>Painless white eye with sudden loss = posterior emergency.</strong></div></div>
-    <div class="n-diag-row"><div class="n-diag-label">Sudden vs Gradual</div><div class="n-diag-content">Sudden: vascular (CRAO/CRVO), detachment, acute glaucoma. Gradual: cataract, AMD, chronic glaucoma, DR. Sudden = emergency.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label">Unilateral vs Bilateral</div><div class="n-diag-content">Unilateral: local ocular disease. Bilateral: systemic disease (DR, hypertensive retinopathy, papilloedema). <strong>Bilateral = systemic until proven otherwise.</strong></div></div>
-    <div class="n-diag-row"><div class="n-diag-label gold">Red vs White</div><div class="n-diag-content">Red: conjunctivitis, keratitis, uveitis, acute glaucoma. White with loss: retinal disease, cataract, optic nerve. A white eye with sudden loss is often more serious than a red one.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Painful vs Painless</div><div class="n-diag-content"><strong>Painful red eye:</strong> acute glaucoma, keratitis, uveitis, scleritis, corneal ulcer. <strong>Painless vision loss:</strong> retinal detachment, CRAO/CRVO, AMD, vitreous haemorrhage, optic neuritis (dull ache with movement, not sharp pain). Painless + sudden + white eye = posterior emergency.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Sudden vs Gradual</div><div class="n-diag-content"><strong>Sudden:</strong> vascular (CRAO/CRVO), retinal detachment, vitreous haemorrhage, acute angle-closure glaucoma. <strong>Gradual:</strong> cataract, chronic glaucoma, AMD, diabetic retinopathy, refractive error. Sudden = emergency until proven otherwise.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Unilateral vs Bilateral</div><div class="n-diag-content"><strong>Unilateral:</strong> vascular, structural, local pathology. <strong>Bilateral:</strong> systemic disease (DM, HTN, autoimmune), toxic, hereditary, cortical lesions (both visual fields affected — homonymous). Bilateral simultaneous sudden loss suggests cortical or toxic cause.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Red vs White Eye</div><div class="n-diag-content"><strong>Red eye</strong> = anterior segment pathology in most cases (conjunctivitis, keratitis, uveitis, glaucoma). <strong>White (quiet) eye with vision loss</strong> = posterior emergency — retinal detachment, CRAO, optic neuritis, vitreous haemorrhage (may appear red). White eye + pain = scleritis.</div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
-  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Painless sudden visual loss in a white quiet eye → think <em>posterior segment emergency</em> → urgent fundoscopy. CRAO, vitreous haemorrhage, or retinal detachment until proven otherwise.</div></div>
-  <div class="n-distractor-box"><div class="n-distractor-label">The dangerous distractor</div><div class="n-distractor-text">Absence of redness reassures both patient and doctor. <strong>Central retinal artery occlusion, retinal detachment, and vitreous haemorrhage are all painless, silent, and white.</strong></div></div>
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">The Ophthalmic Examination — In Order</span><span class="n-section-tag">VA is the vital sign</span></div>
+  <div class="n-mech-chain">
+    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Visual Acuity — always first</div><div class="n-mech-text">Snellen chart at 6m. Document each eye separately. With correction. <strong>If VA is reduced — everything else follows from this.</strong> Counting fingers, hand movements, light perception if Snellen not possible. Pinhole improves refractive error, not pathology.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Pupils — RAPD is critical</div><div class="n-mech-text">Size, shape, reactivity. <strong>Relative Afferent Pupillary Defect (RAPD)</strong> = swinging torch test — the affected pupil dilates instead of constricting when light shines in. RAPD = optic nerve or significant retinal disease on that side. Absent in cataract.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Visual Fields — confrontation first</div><div class="n-mech-text">Confrontation at bedside. Formal automated perimetry (Humphrey) for glaucoma, neuro-ophthalmology. Field defect pattern localises the lesion: monocular = eye/ON, bitemporal = chiasm, homonymous = post-chiasmal.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d4">04</div><div class="n-mech-body"><div class="n-mech-cause">Anterior segment — slit lamp</div><div class="n-mech-text">Cornea (ulcer, KPs, oedema), anterior chamber (depth, cells, flare, hypopyon), iris (synechiae, rubeosis), lens (cataract, dislocation). <strong>IOP before dilating</strong> if glaucoma suspected.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d1">05</div><div class="n-mech-body"><div class="n-mech-cause">Fundus — dilated exam</div><div class="n-mech-text">Optic disc (C:D ratio, pallor, swelling), macula (drusen, pigment change, haemorrhage), vessels (A:V nicking, neovascularisation), periphery (detachment, breaks). Direct ophthalmoscope for disc; indirect for periphery.</div></div></div>
+  </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Key Clinical Signs & What They Mean</span><span class="n-section-tag">pattern recognition</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label err">RAPD</div><div class="n-diag-content">Relative afferent pupillary defect. Affected pupil dilates on direct illumination (swinging torch). Indicates optic nerve disease or severe retinal disease. <strong>Absent in cataract</strong> — if RAPD present with apparent cataract, look harder for posterior pathology.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Ciliary Flush</div><div class="n-diag-content">Ring of injection around the limbus (corneal margin). Suggests anterior segment inflammation — keratitis, uveitis, acute glaucoma. Contrasts with peripheral conjunctival injection of simple conjunctivitis. <strong>Limbal injection = refer.</strong></div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Pinhole Test</div><div class="n-diag-content">Pinhole improves VA if reduced by refractive error. <strong>Does not improve VA caused by pathology</strong> (cataract, macular disease, optic nerve). Improved pinhole VA = refractive cause. Unchanged = pathological cause.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Red Reflex</div><div class="n-diag-content">Orange-red glow from fundus on ophthalmoscopy. <strong>Absent or white (leukocoria)</strong> = cataract, retinoblastoma, vitreous haemorrhage, retinal detachment. Absent red reflex in a child = same-day referral.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">the foundations that everything else builds on</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Always test VA first.</strong> Medicolegally indefensible to assess an eye without documenting acuity.<span class="n-pearl-exam">Exam: first step in any ophthalmic examination?</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>RAPD = relative afferent pupillary defect.</strong> Swinging torch test — affected pupil paradoxically dilates. Indicates optic nerve or severe retinal disease.</div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Bilateral disc swelling = papilloedema = raised ICP until proven otherwise.</strong> Never treat bilateral disc swelling as a local ocular problem.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>VA is the vital sign of the eye.</strong> Document it before every other examination step. A normal VA in the context of an apparently serious complaint should prompt careful reconsideration.<span class="n-pearl-exam">Exam: patient with painful red eye — first thing to document?</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>RAPD = optic nerve or significant retinal disease.</strong> Not present in cataract, refractive error, or amblyopia. If a cataract patient has RAPD, there is pathology behind the lens.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Painless, sudden, unilateral vision loss in a quiet eye = posterior emergency.</strong> Retinal detachment, CRAO, vitreous haemorrhage, optic neuritis. Do not reassure and discharge.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Bitemporal hemianopia = chiasmal lesion until proven otherwise.</strong> Pituitary adenoma compresses the crossing nasal fibres. MRI pituitary + endocrine screen.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Homonymous hemianopia = post-chiasmal lesion.</strong> Same side field loss in both eyes — stroke, tumour, AVM. The patient may not realise the deficit is bilateral.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Absent red reflex in a child = same-day ophthalmology referral.</strong> Retinoblastoma, dense cataract, vitreous haemorrhage. Do not delay.</div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">foundations matter</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
-      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">A pain-free white eye is always benign.</div></div>
-      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>The most dangerous posterior emergencies are painless.</strong> CRAO, retinal detachment, vitreous haemorrhage. Pain is helpful but its absence does not exclude emergency.</div></div>
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Painful red eye — examine the anterior segment first.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Check VA first. Always.</strong> A VA of 6/6 vs 6/60 changes everything about urgency and management.</div></div>
     </div>
     <div class="n-trap">
-      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Skip VA if the patient says their vision is fine.</div></div>
-      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>VA must be documented in every encounter.</strong> Patients normalise visual loss. VA is your legal baseline.</div></div>
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Dense cataract → RAPD present → must be the cataract affecting the pupil.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Cataracts do not cause RAPD.</strong> RAPD with cataract = co-existing optic nerve or retinal disease. Investigate before surgery.</div></div>
+    </div>
+    <div class="n-trap">
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Patient lost vision in one eye, other eye fine — not an emergency if painless.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Painless sudden unilateral loss = emergency.</strong> CRAO, retinal detachment, and optic neuritis are all painless and all time-critical.</div></div>
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>Painful or painless. Sudden or gradual.</em><br>Two questions that halve the differential before you touch the patient.</div></div>
+<div class="n-anchor"><div class="n-anchor-text"><em>VA first. Always. Everything else follows.</em><br>Four dichotomies: painful/painless · sudden/gradual · unilateral/bilateral · red/white.<br>RAPD = optic nerve. Absent red reflex in child = same-day referral.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.intro=[{q:"A 45-year-old has sudden painless visual loss in a white quiet eye. Most appropriate action?",opts:["Reassure — painless white eye is benign","Lubricating drops, review 1 week","Urgent same-day fundoscopy","Refer optician"],ans:2,focus:"Painless sudden loss = posterior emergency",exp:"Sudden painless loss in a white eye = posterior segment emergency. CRAO, vitreous haemorrhage, retinal detachment all present this way. Same-day fundoscopy mandatory."},{q:"First step in a formal ophthalmic examination?",opts:["Fundoscopy","Slit lamp","IOP measurement","Visual acuity"],ans:3,focus:"VA first",exp:"VA is the vital sign of the eye — documented first in every encounter."},{q:"Bilateral sudden visual loss. Highest priority systemic cause?",opts:["Unilateral RD","Bilateral POAG","Raised ICP — papilloedema","Bilateral corneal disease"],ans:2,focus:"Bilateral = systemic",exp:"Bilateral disc swelling = papilloedema = raised ICP. Never treat as purely local."},{q:"Which best indicates posterior segment pathology?",opts:["Presence of pain","Redness","White quiet eye + sudden loss","Gradual onset"],ans:2,focus:"White eye + sudden loss",exp:"White quiet eye with sudden loss = CRAO, RD, vitreous haemorrhage. Anterior disease causes red eye."},{q:"Swinging torch: left pupil dilates when light shines into it. Meaning?",opts:["Normal","Left RAPD — optic nerve/severe retinal disease","Bilateral Horner","Pharmacological mydriasis"],ans:1,focus:"RAPD — afferent defect",exp:"RAPD (Marcus Gunn) — affected pupil paradoxically dilates. Causes: optic neuritis, AION, severe RD, optic nerve compression."}];
 
@@ -1874,46 +1924,99 @@ NOTES.lacrimal = () => `<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-title">Lacrimal<br><em>Apparatus</em></div>
   <div class="n-hero-sub">Tear film · Dry eye · Dacryocystitis · NLDO · The watery eye paradox</div>
   <div class="n-snapshot">
-    <div class="n-snap-cell"><div class="n-snap-label">Tear film layers</div><div class="n-snap-text">Lipid (meibomian) → aqueous (lacrimal gland) → mucin (goblet cells). Each layer can fail independently.</div></div>
-    <div class="n-snap-cell"><div class="n-snap-label">Drainage path</div><div class="n-snap-text">Tears → puncta → canaliculi → lacrimal sac → NLD → inferior meatus. <strong>Blockage anywhere = epiphora.</strong></div></div>
-    <div class="n-snap-cell"><div class="n-snap-label">The paradox</div><div class="n-snap-text">Dry eye (reflex tearing) and NLDO (blocked drainage) both cause a <em>watery eye</em>. Opposite causes, identical symptom.</div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Tear film layers</div><div class="n-snap-text">Lipid (Meibomian) → aqueous (lacrimal gland) → mucin (goblet cells). <strong>Each layer can fail independently — and each gives a different dry eye subtype.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Drainage path</div><div class="n-snap-text">Tears → puncta → canaliculi → lacrimal sac → nasolacrimal duct → inferior meatus. <strong>Obstruction anywhere = epiphora.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">The paradox</div><div class="n-snap-text">Dry eye (reflex tearing) and NLDO (blocked drainage) both cause a <em>watery eye.</em> Opposite causes, same symptom — the history and Schirmer's separate them.</div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Dry Eye — Three Failure Modes</span><span class="n-section-tag">lipid · aqueous · mucin</span></div>
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">The Tear Film — Three Layers, Three Failure Modes</span><span class="n-section-tag">know which layer is failing</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Tear film structure and failure modes</span><span class="n-viz-sub">From superficial to deep</span></div>
+    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="244" height="180" rx="2" fill="#c8452a"/>
+      <text x="122" y="32" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">SUPERFICIAL</text>
+      <text x="122" y="62" font-family="Syne,sans-serif" font-size="17" fill="white" text-anchor="middle" font-weight="800">LIPID</text>
+      <text x="122" y="86" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Meibomian glands</text>
+      <text x="122" y="108" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Prevents evaporation</text>
+      <text x="122" y="140" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Failure → evaporative dry eye</text>
+      <text x="122" y="158" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">MGD · rosacea · blepharitis</text>
+      <rect x="258" y="0" width="244" height="180" rx="2" fill="#2a4a6e"/>
+      <text x="380" y="32" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">MIDDLE</text>
+      <text x="380" y="62" font-family="Syne,sans-serif" font-size="17" fill="white" text-anchor="middle" font-weight="800">AQUEOUS</text>
+      <text x="380" y="86" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Lacrimal gland</text>
+      <text x="380" y="108" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">90% of tear volume</text>
+      <text x="380" y="140" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Failure → aqueous-deficient dry eye</text>
+      <text x="380" y="158" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Sjögren · post-radiation</text>
+      <rect x="516" y="0" width="244" height="180" rx="2" fill="#3a5a38"/>
+      <text x="638" y="32" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">DEEP</text>
+      <text x="638" y="62" font-family="Syne,sans-serif" font-size="17" fill="white" text-anchor="middle" font-weight="800">MUCIN</text>
+      <text x="638" y="86" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Goblet cells (conjunctiva)</text>
+      <text x="638" y="108" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Anchors aqueous to cornea</text>
+      <text x="638" y="140" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Failure → poor wetting, filamentary</text>
+      <text x="638" y="158" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Vit A deficiency · cicatricial conjunctivitis</text>
+    </svg>
+  </div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label err">Evaporative (MGD)</div><div class="n-diag-content">Most common dry eye type. Meibomian gland dysfunction → lipid deficiency → rapid tear breakup. <strong>TBUT &lt;10 seconds.</strong> Posterior blepharitis, rosacea. Warm compresses + expression + oral doxycycline 100mg OD for 3 months.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Aqueous-deficient (Sjögren)</div><div class="n-diag-content">Primary Sjögren or secondary (RA, SLE, systemic sclerosis). Anti-Ro/La antibodies. Schirmer's test &lt;5mm in 5 min (wetting of filter paper). Preservative-free tears, punctal plugs, topical ciclosporin. Dry mouth + dry eyes = Sjögren until proven otherwise.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Mucin-deficient</div><div class="n-diag-content">Goblet cell loss — vitamin A deficiency (Bitot's spots, keratomalacia — leading cause of preventable blindness worldwide), cicatricial conjunctivitis (Stevens-Johnson, trachoma, pemphigoid). Filamentary keratitis. Treat underlying cause.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">The Watery Eye — Drainage Path & NLDO</span><span class="n-section-tag">epiphora ≠ excess tears</span></div>
   <div class="n-mech-chain">
-    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Lipid deficiency — evaporative (most common)</div><div class="n-mech-text">MGD, posterior blepharitis, rosacea. Rapid tear break-up time. <strong>Warm compresses + scrubs. Oral doxycycline for severe MGD.</strong></div></div></div>
-    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Aqueous deficiency — Sjögren syndrome</div><div class="n-mech-text">Primary or secondary (RA, SLE). Anti-Ro/La antibodies. Schirmer's &lt;5mm/5min. <strong>Preservative-free artificial tears, punctal plugs, ciclosporin drops.</strong></div></div></div>
-    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Mucin deficiency — goblet cell destruction</div><div class="n-mech-text"><strong>Stevens-Johnson syndrome, ocular pemphigoid, trachoma</strong> destroy goblet cells. Tears can't spread over epithelium → dry patches despite normal aqueous.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Anatomy of drainage</div><div class="n-mech-text">Tears drain via <strong>upper and lower puncta</strong> → canaliculi → common canaliculus → lacrimal sac → nasolacrimal duct → inferior meatus. The pump action requires orbicularis oculi function (blink). CN VII palsy → pump failure → epiphora.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">NLDO — Nasolacrimal Duct Obstruction</div><div class="n-mech-text">Most common cause of epiphora. Congenital (80% resolve spontaneously by age 1 — try massage first, probe at 12 months). Adult: age-related fibrosis, trauma, tumour. <strong>Syringe and probe to confirm, dacryocystorhinostomy (DCR) definitive.</strong></div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Dacryocystitis</div><div class="n-mech-text">Infection of lacrimal sac — almost always from NLDO. <strong>Tender, red swelling medial to medial canthus</strong> (below medial canthal tendon — distinguishes from DCR abscess above). Staph aureus. Acute: oral/IV antibiotics, warm compresses, incise if pointing. Elective DCR after resolution.</div></div></div>
+  </div>
+  <div class="n-exam-box"><div class="n-exam-if">The paradox — exam favourite</div><div class="n-exam-statement">A watery eye does NOT mean overproduction. <em>Dry eye causes reflex hypersecretion.</em> NLDO blocks drainage. Ectropion misroutes tears. Same symptom — three completely different mechanisms. The Schirmer's test and syringe test separate them.</div></div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Sjögren Syndrome — Systemic Picture</span><span class="n-section-tag">the eyes are often the first clue</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label">Primary Sjögren</div><div class="n-diag-content">Autoimmune destruction of exocrine glands — lacrimal + salivary. Female:male 9:1. Middle-aged. Keratoconjunctivitis sicca (dry eyes) + xerostomia (dry mouth). Anti-Ro (SS-A) + anti-La (SS-B) antibodies. ANA positive.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Secondary Sjögren</div><div class="n-diag-content">Associated with RA (most common), SLE, systemic sclerosis, primary biliary cirrhosis. Screen all patients with connective tissue disease for dry eye symptoms.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Complications</div><div class="n-diag-content">Corneal ulceration from chronic dry eye. <strong>5% lifetime risk of B-cell lymphoma</strong> (MALT type, parotid). Monitor. Peripheral neuropathy, renal tubular acidosis in severe cases.</div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
-  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Elderly patient + watery eye + pressing medial canthus expresses mucopurulent material through punctum → think <em>chronic dacryocystitis with NLDO</em> → refer for DCR.</div></div>
-  <div class="n-distractor-box"><div class="n-distractor-label">The diagnostic test</div><div class="n-distractor-text"><strong>Regurgitation of mucopus on sac pressure</strong> confirms lacrimal sac obstruction. Distinguishes sac obstruction from canalicular causes of epiphora.</div></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Investigations & Treatment Ladder</span><span class="n-section-tag">test, then treat by severity</span></div>
+  <div class="n-mech-chain">
+    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Schirmer's test</div><div class="n-mech-text">Filter paper in inferior fornix for 5 min. &lt;5mm = severe aqueous deficiency. 5–10mm = moderate. Used to diagnose and monitor.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Tear breakup time (TBUT)</div><div class="n-mech-text">Fluorescein instilled, time to first dark spot on slit lamp. <strong>&lt;10 seconds = abnormal.</strong> Mainly assesses lipid layer stability — best test for MGD/evaporative dry eye.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Treatment ladder</div><div class="n-mech-text">Mild: preservative-free artificial tears. Moderate: punctal plugs (block drainage, conserve tears) + lid hygiene. Severe: topical ciclosporin (Restasis), oral doxycycline, autologous serum drops. Surgical: permanent punctal occlusion, moisture chamber glasses.</div></div></div>
+  </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam favourites</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Both dry eye and NLDO cause watering.</strong> Opposite mechanisms.<span class="n-pearl-exam">Exam: name two causes of a persistently watery eye.</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Sjögren = aqueous-deficient dry eye.</strong> Anti-Ro/La. Schirmer &lt;5mm/5min. Screen for RA, SLE, PBC.</div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Never probe an acutely infected lacrimal sac.</strong> Treat infection first. DCR is elective after resolution.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Watery eye ≠ too many tears.</strong> Dry eye (reflex), NLDO (blocked drainage), ectropion (misdirection) all cause epiphora. Schirmer's + syringe test to differentiate.<span class="n-pearl-exam">Exam: patient with watery eye and dry mouth — what autoantibodies?</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Congenital NLDO — massage first.</strong> 80% resolve spontaneously by 12 months. Massage the lacrimal sac 2–3x daily. Probe only if persistent beyond 12 months.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Dacryocystitis swelling is below the medial canthal tendon.</strong> Orbital cellulitis swelling is above or surrounding. This anatomical distinction guides urgency and treatment.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Sjögren + dry eyes = screen for lymphoma.</strong> 5% lifetime risk of MALT lymphoma, usually parotid. Any new parotid swelling in a Sjögren patient needs investigation.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Vitamin A deficiency = mucin-deficient dry eye + night blindness.</strong> Bitot's spots (foamy white conjunctival patches) → keratomalacia → corneal perforation. Leading cause of preventable childhood blindness globally.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Punctal plugs conserve tears by blocking drainage</strong> — the opposite of what you'd expect. Used for moderate-severe aqueous deficient dry eye when drops alone are insufficient.</div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for these</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
-      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Watery eye = excess production → artificial tears.</div></div>
-      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Epiphora can be excess production or impaired drainage.</strong> NLDO needs DCR — artificial tears are irrelevant for a blocked duct.</div></div>
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Patient complains of watery eyes → dry eye unlikely.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Dry eye causes reflex hypersecretion</strong> — watering is a classic dry eye complaint. Schirmer's test before assuming NLDO.</div></div>
     </div>
     <div class="n-trap">
-      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Probe and syringe acutely infected dacryocystitis.</div></div>
-      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Probing risks false passage + spreading infection.</strong> Antibiotics first, DCR electively after.</div></div>
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Congenital NLDO at 6 months → probe now.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Massage first, probe at 12 months if unresolved.</strong> 80% resolve spontaneously — avoid unnecessary procedures.</div></div>
+    </div>
+    <div class="n-trap">
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Sjögren is just dry eyes and dry mouth — a nuisance condition.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>5% lymphoma risk, peripheral neuropathy, renal tubular acidosis.</strong> Sjögren is a serious systemic autoimmune disease.</div></div>
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>Watery eye. Two causes, opposite mechanisms.</em><br>Too much production, or too little drainage.</div></div>
+<div class="n-anchor"><div class="n-anchor-text"><em>Watery eye ≠ too many tears.</em><br>Three layers, three failure modes. Drainage has anatomy — obstruction has surgery.<br>Sjögren = screen for lymphoma.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.lacrimal=[{q:"RA patient, bilateral gritty burning watery eyes. Schirmer's 3mm/5min. Diagnosis?",opts:["NLDO","Aqueous-deficient dry eye — secondary Sjögren","Evaporative dry eye","Allergic conjunctivitis"],ans:1,focus:"Sjögren — aqueous-deficient",exp:"Secondary Sjögren in RA. Schirmer <5mm/5min = aqueous deficiency. Anti-Ro/La antibodies. Watering = reflex hypersecretion."},{q:"Pressing medial canthus produces mucopus from punctum. Diagnosis and treatment?",opts:["Acute dacryocystitis — IV antibiotics","Chronic dacryocystitis NLDO — DCR","Dry eye — artificial tears","Conjunctivitis — chloramphenicol"],ans:1,focus:"Chronic dacryocystitis — regurgitation test",exp:"Chronic dacryocystitis: persistent epiphora + mucopurulent regurgitation on sac pressure = NLDO. Treatment: dacryocystorhinostomy."},{q:"Contraindicated in acute dacryocystitis?",opts:["Oral flucloxacillin","Warm compresses","Probing and syringing","Ophthalmology referral"],ans:2,focus:"No probing in acute dacryocystitis",exp:"Probing risks false passage and spreading infection. Treat with antibiotics first. DCR is elective."},{q:"Which layer of tear film is produced by goblet cells?",opts:["Lipid — MGD","Aqueous — lacrimal gland","Mucin — goblet cells","Aqueous — Sjögren"],ans:2,focus:"Tear film layers",exp:"Mucin (innermost) from goblet cells allows tears to spread over corneal epithelium. Destroyed in SJS, ocular pemphigoid, trachoma."},{q:"Which investigation measures aqueous tear production?",opts:["TBUT","Schirmer's test","Rose Bengal staining","Meibography"],ans:1,focus:"Schirmer's test",exp:"Schirmer's: filter paper in lower fornix; <5mm/5min = aqueous deficiency. TBUT = lipid function. Rose Bengal = damaged epithelium."}];
 
@@ -1921,55 +2024,104 @@ NOTES_MCQ.lacrimal=[{q:"RA patient, bilateral gritty burning watery eyes. Schirm
 NOTES.conjunctiva = () => `<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-eyebrow">Ophthalmology · Anterior Segment · Note 04</div>
   <div class="n-hero-title">Con<em>junctiva</em></div>
-  <div class="n-hero-sub">Bacterial · Viral · Allergic · Episcleritis vs Scleritis · The Red Eye Safety Screen</div>
+  <div class="n-hero-sub">Bacterial · Viral · Allergic · Episcleritis · Scleritis · The Red Eye Safety Screen</div>
   <div class="n-snapshot">
-    <div class="n-snap-cell"><div class="n-snap-label">Red eye differential</div><div class="n-snap-text">Conjunctivitis, keratitis, uveitis, acute glaucoma, episcleritis, scleritis. <strong>Discriminators: pain, photophobia, VA loss, pupil.</strong></div></div>
-    <div class="n-snap-cell"><div class="n-snap-label">Discharge</div><div class="n-snap-text">Mucopurulent (bacterial). Watery (viral). Stringy/ropy (allergic). None (episcleritis).</div></div>
-    <div class="n-snap-cell"><div class="n-snap-label">Safety rule</div><div class="n-snap-text">Red eye + photophobia + reduced VA + irregular pupil = NOT conjunctivitis. <strong>Refer immediately.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Red eye differential</div><div class="n-snap-text">Conjunctivitis, keratitis, uveitis, acute glaucoma, episcleritis, scleritis. <strong>Discriminators: pain, photophobia, VA change, pupil.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Discharge type</div><div class="n-snap-text">Mucopurulent = bacterial. Watery = viral. Stringy/ropy = allergic. No discharge = episcleritis/scleritis.</div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Safety rule</div><div class="n-snap-text">Red eye + photophobia + VA loss + irregular pupil = <strong>NOT conjunctivitis. Refer immediately.</strong></div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Conjunctivitis — Three Types</span><span class="n-section-tag">history gives the diagnosis</span></div>
-  <div class="n-mech-chain">
-    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Bacterial — mucopurulent, sticky lashes</div><div class="n-mech-text"><em>Staphylococcus, H. influenzae, N. gonorrhoeae</em> (hyperacute — profuse pus, same-day emergency, perforates cornea). <strong>Topical chloramphenicol. Gonococcal: IV ceftriaxone.</strong></div></div></div>
-    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Viral — watery, follicles, pre-auricular node</div><div class="n-mech-text">Adenovirus. Highly contagious. <strong>Strict hygiene 14 days. No antibiotics. Self-limiting.</strong></div></div></div>
-    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Allergic — itching is the hallmark</div><div class="n-mech-text">Bilateral, seasonal, ropy discharge. <strong>Topical antihistamines or mast cell stabilisers. No steroids in primary care.</strong></div></div></div>
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">The Red Eye Safety Screen</span><span class="n-section-tag">never miss these</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Red eye: safe vs refer</span><span class="n-viz-sub">These features should never be attributed to simple conjunctivitis</span></div>
+    <svg viewBox="0 0 760 155" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="370" height="155" rx="2" fill="#2a4a2a"/>
+      <text x="185" y="28" font-family="Syne,sans-serif" font-size="12" fill="rgba(255,255,255,.6)" text-anchor="middle" font-weight="700" letter-spacing="2">SAFE — CONJUNCTIVITIS</text>
+      <text x="185" y="58" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.82)" text-anchor="middle">Normal VA ✓</text>
+      <text x="185" y="78" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.82)" text-anchor="middle">No photophobia ✓</text>
+      <text x="185" y="98" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.82)" text-anchor="middle">Normal round pupil ✓</text>
+      <text x="185" y="118" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.82)" text-anchor="middle">Discharge present ✓</text>
+      <text x="185" y="142" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Treat empirically · safety-net · review if not improving</text>
+      <rect x="390" y="0" width="370" height="155" rx="2" fill="#c8452a"/>
+      <text x="575" y="28" font-family="Syne,sans-serif" font-size="12" fill="rgba(255,255,255,.6)" text-anchor="middle" font-weight="700" letter-spacing="2">REFER — NOT SAFE</text>
+      <text x="575" y="58" font-family="JetBrains Mono,monospace" font-size="10" fill="white" text-anchor="middle">Reduced VA ✗</text>
+      <text x="575" y="78" font-family="JetBrains Mono,monospace" font-size="10" fill="white" text-anchor="middle">Photophobia ✗</text>
+      <text x="575" y="98" font-family="JetBrains Mono,monospace" font-size="10" fill="white" text-anchor="middle">Irregular/fixed pupil ✗</text>
+      <text x="575" y="118" font-family="JetBrains Mono,monospace" font-size="10" fill="white" text-anchor="middle">Ciliary flush ✗</text>
+      <text x="575" y="142" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle">Keratitis · uveitis · glaucoma · scleritis</text>
+    </svg>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Episcleritis vs Scleritis</span><span class="n-section-tag">phenylephrine tells the depth</span></div>
-  <div class="n-diff-grid">
-    <div class="n-diff-card this"><div class="n-diff-card-tag">Episcleritis</div><div class="n-diff-card-name">Superficial, sectoral, mild</div><div class="n-diff-card-key">Vessels blanch with phenylephrine 2.5%. Mild discomfort. Idiopathic or IBD/RA. Self-limiting. Lubricants or NSAIDs.</div></div>
-    <div class="n-diff-card that"><div class="n-diff-card-tag">Scleritis</div><div class="n-diff-card-name">Deep boring pain, globe tender</div><div class="n-diff-card-key"><strong>Vessels do NOT blanch.</strong> Severe pain worse at night. RA, GPA, SLE. NSAIDs → steroids → immunosuppression.</div></div>
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Conjunctivitis — Three Types</span><span class="n-section-tag">the history gives the diagnosis</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label err">Bacterial</div><div class="n-diag-content"><strong>Mucopurulent discharge, sticky lashes on waking.</strong> Organisms: Staph aureus, H. influenzae, S. pneumoniae. Topical chloramphenicol. <strong>Gonococcal (hyperacute):</strong> profuse purulent discharge, same-day emergency — N. gonorrhoeae can perforate the cornea within 24 hours. IV ceftriaxone + contact tracing. Neonatal (ophthalmia neonatorum): chlamydia (most common) or gonococcal — notifiable, treat immediately.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Viral</div><div class="n-diag-content">Adenoviral — watery discharge, follicles on conjunctiva, <strong>pre-auricular lymph node</strong> (pathognomonic). Highly contagious — strict hand hygiene, no sharing towels, stay away from swimming pools for 14 days. No antibiotics. Self-limiting in 2–3 weeks. Epidemic keratoconjunctivitis: adenovirus 8/19 — subepithelial infiltrates, photophobia, vision affected.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Allergic</div><div class="n-diag-content"><strong>Bilateral, itching, stringy/ropy discharge, papillae</strong> (not follicles). Seasonal (pollen) or perennial (dust mite, pet). Associations: atopy, asthma, eczema. Topical antihistamine (olopatadine), mast cell stabilisers (sodium cromoglicate). Avoid rubbing — histamine release worsens symptoms. <strong>Vernal keratoconjunctivitis:</strong> young males, cobblestone papillae on upper tarsal plate, shield ulcer on cornea — sight-threatening.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Chlamydial</div><div class="n-diag-content">Chronic follicular conjunctivitis. Large follicles, inferior tarsal conjunctiva. Pannus (corneal vascularisation). STI — genital chlamydia. <strong>Trachoma</strong> (C. trachomatis serotypes A–C): leading infectious cause of blindness globally. Entropion + trichiasis + corneal scarring. WHO SAFE strategy.</div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
-  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Red eye + profuse purulent discharge reforming within minutes → think <em>gonococcal conjunctivitis</em> → same-day emergency. Corneal perforation risk.</div></div>
-  <div class="n-distractor-box"><div class="n-distractor-label">Hyperacute = gonococcal</div><div class="n-distractor-text"><em>N. gonorrhoeae</em> is the only organism that perforates an intact cornea (collagenases). Pus reforms within minutes. IV ceftriaxone + same-day referral.</div></div>
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Episcleritis vs Scleritis</span><span class="n-section-tag">this distinction matters enormously</span></div>
+  <div class="n-compare-grid">
+    <div class="n-compare-col">
+      <div class="n-compare-head">Episcleritis</div>
+      <div class="n-compare-row"><span class="n-compare-label">Pain</span><span>Mild discomfort or none</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Appearance</span><span>Sectoral or diffuse redness, vessels blanch with phenylephrine</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Systemic</span><span>Usually idiopathic. Minor association with IBD, RA</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">VA</span><span>Normal</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Treatment</span><span>Topical NSAIDs or artificial tears. Resolves in weeks</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Urgency</span><span>Routine ophthalmology</span></div>
+    </div>
+    <div class="n-compare-col">
+      <div class="n-compare-head" style="color:#c8452a">Scleritis</div>
+      <div class="n-compare-row"><span class="n-compare-label">Pain</span><span><strong>Severe, boring, wakes from sleep,</strong> radiates to jaw/temple</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Appearance</span><span>Deep violaceous hue, vessels do NOT blanch with phenylephrine</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Systemic</span><span><strong>RA (most common), GPA, SLE, IBD, relapsing polychondritis</strong></span></div>
+      <div class="n-compare-row"><span class="n-compare-label">VA</span><span>Can be reduced (posterior scleritis)</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Treatment</span><span>Oral NSAIDs, oral steroids, DMARDs for underlying disease</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Urgency</span><span><strong>Urgent</strong> — can cause scleral thinning, perforation</span></div>
+    </div>
+  </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Subconjunctival Haemorrhage</span><span class="n-section-tag">alarming to the patient, usually benign</span></div>
+  <div class="n-exam-box"><div class="n-exam-if">The pattern</div><div class="n-exam-statement">Bright red, sharply demarcated area of blood under conjunctiva. No pain. No discharge. Normal VA. Alarming to look at — almost always benign and self-resolving in 2 weeks.</div></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label">Benign causes</div><div class="n-diag-content">Valsalva (coughing, sneezing, straining), trauma, contact lens wear, idiopathic. Reassure, lubricants, resolves spontaneously.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">When to investigate</div><div class="n-diag-content">Recurrent SCH → check BP and clotting (anticoagulants, thrombocytopenia). Bilateral spontaneous SCH in elderly → consider haematological malignancy. Traumatic → exclude ruptured globe (dark red 360° haemorrhage + low IOP).</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam favourites</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Itching = allergic. Sticky on waking = bacterial. Watery + URTI = viral.</strong><span class="n-pearl-exam">Exam: single symptom distinguishing allergic conjunctivitis?</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Blanches with phenylephrine = episcleritis. Does not blanch = scleritis.</strong></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Neonatal: gonococcal day 1–4 (hyperacute), chlamydial day 5–14.</strong> Both notifiable. Chlamydial = oral erythromycin (prevents pneumonia).</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Pre-auricular lymph node = viral conjunctivitis.</strong> Adenovirus. No antibiotics. Highly contagious. Strict hygiene is the only treatment.<span class="n-pearl-exam">Exam: watery discharge + pre-auricular node — what organism?</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Gonococcal conjunctivitis is a same-day emergency.</strong> Hyperacute, profuse purulent discharge. N. gonorrhoeae penetrates intact corneal epithelium — can perforate within 24 hours.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Vessels blanch with phenylephrine = episcleritis.</strong> Deep violaceous colour that does NOT blanch = scleritis. This single clinical test separates a benign from a sight- and globe-threatening condition.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Scleritis + RA = vasculitis.</strong> Scleritis in RA indicates active systemic vasculitis. Refer urgently, treat the underlying disease aggressively with DMARDs or biologics.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Vernal KJC = cobblestone papillae + shield ulcer.</strong> Young atopic male. Upper tarsal plate papillae look like cobblestones. Shield ulcer is sight-threatening. Topical cyclosporin, mast cell stabilisers.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Trachoma = leading infectious cause of preventable blindness globally.</strong> C. trachomatis A–C. SAFE strategy: Surgery, Antibiotics (azithromycin), Facial washing, Environmental improvement.</div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for these</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
-      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">All red eyes with discharge = conjunctivitis → chloramphenicol.</div></div>
-      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Check VA, photophobia, pupil first.</strong> Keratitis, uveitis, acute glaucoma all have discharge. Missing them = irreversible loss.</div></div>
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Red eye with watery discharge → viral, reassure and discharge.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Check VA and pupil first.</strong> Watery eye + photophobia + reduced VA = keratitis or uveitis. Not conjunctivitis.</div></div>
     </div>
     <div class="n-trap">
-      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Topical steroids for allergic conjunctivitis.</div></div>
-      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Steroids in undiagnosed red eye are dangerous.</strong> HSV keratitis, IOP rise, cataract. Use antihistamines or mast cell stabilisers instead.</div></div>
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Red eye + profuse mucopurulent discharge → topical chloramphenicol, review in a week.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Hyperacute = gonococcal until proven otherwise.</strong> Same-day emergency. IV ceftriaxone. Can perforate the cornea within 24 hours.</div></div>
+    </div>
+    <div class="n-trap">
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Scleritis vs episcleritis — both red, both in the sclera, both need topical treatment.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Scleritis needs systemic treatment and systemic workup.</strong> Deep pain, no blanching, associated with RA/GPA/SLE. Topical drops are insufficient.</div></div>
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>Pain. Photophobia. VA. Pupil.</em><br>Four questions separating conjunctivitis from emergency.</div></div>
+<div class="n-anchor"><div class="n-anchor-text"><em>Red eye safety screen: VA + pupil + photophobia before discharge.</em><br>Pre-auricular node = viral. Hyperacute purulent = gonococcal emergency.<br>Blanches with phenylephrine = episcleritis. Does not blanch = scleritis.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.conjunctiva=[{q:"20-year-old with bilateral itching, ropy discharge. First-line?",opts:["Chloramphenicol","Dexamethasone","Topical azelastine","Oral cetirizine only"],ans:2,focus:"Allergic conjunctivitis — antihistamine",exp:"Allergic: itching is hallmark. First-line: topical antihistamine (azelastine) or mast cell stabiliser. Steroids contraindicated in primary care."},{q:"Neonate day 3, profuse pus reforming immediately. Organism and management?",opts:["Chlamydia — oral erythromycin","Staph — topical chloramphenicol","N. gonorrhoeae — IV ceftriaxone + same-day referral","HSV — topical aciclovir"],ans:2,focus:"Gonococcal ophthalmia neonatorum",exp:"Gonococcal ophthalmia (day 1–4): hyperacute. Only organism perforating intact cornea. IV ceftriaxone. Notifiable."},{q:"Sectoral red eye, mild discomfort, blanches with phenylephrine. Diagnosis?",opts:["Scleritis — NSAIDs","Episcleritis — lubricants/NSAIDs","Bacterial conjunctivitis","Uveitis"],ans:1,focus:"Episcleritis — phenylephrine blanching",exp:"Episcleritis: superficial vessels blanch with phenylephrine. Mild discomfort. Self-limiting. Compare: scleritis vessels don't blanch, deep boring pain, systemic association."},{q:"RA patient, deep boring nocturnal eye pain, globe tender, red eye not blanching. Diagnosis?",opts:["Conjunctivitis","Episcleritis","Scleritis — NSAIDs, ophthalmology","Acute glaucoma"],ans:2,focus:"Scleritis — RA, no blanching",exp:"Scleritis: deep boring pain, globe tenderness, no blanching, RA/GPA/SLE association. Treatment: oral NSAIDs → steroids → immunosuppression."},{q:"Watery red eye + pre-auricular node + URTI + VA 6/6 + no photophobia. Key public health advice?",opts:["Return to work tomorrow","Strict hygiene, avoid contact 14 days","No infectious precautions","Oral azithromycin"],ans:1,focus:"Viral conjunctivitis — contagious",exp:"Adenoviral EKC: highly contagious. Strict handwashing, no shared towels, avoid swimming, 14-day contact restriction. Self-limiting."}];
 
@@ -1977,55 +2129,107 @@ NOTES_MCQ.conjunctiva=[{q:"20-year-old with bilateral itching, ropy discharge. F
 NOTES.uveitis = () => `<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-eyebrow">Ophthalmology · Uveal Tract · Note 08</div>
   <div class="n-hero-title">U<em>veitis</em></div>
-  <div class="n-hero-sub">Anterior · Intermediate · Posterior · HLA-B27 · KPs · Synechiae</div>
+  <div class="n-hero-sub">Anterior · Intermediate · Posterior · HLA-B27 · KPs · Synechiae · Complications</div>
   <div class="n-snapshot">
-    <div class="n-snap-cell"><div class="n-snap-label">The uvea</div><div class="n-snap-text">Iris + ciliary body (anterior) + choroid (posterior). Inflammation of any = uveitis.</div></div>
-    <div class="n-snap-cell"><div class="n-snap-label">Anterior uveitis</div><div class="n-snap-text">Painful red eye, photophobia, ciliary flush. <strong>Slit lamp: KPs, cells + flare in AC, miosis.</strong></div></div>
-    <div class="n-snap-cell"><div class="n-snap-label">Systemic clue</div><div class="n-snap-text">HLA-B27: AS, reactive arthritis, psoriatic arthritis, IBD. <strong>The red eye may be the first presentation.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">The uvea</div><div class="n-snap-text">Iris + ciliary body (anterior uvea) + choroid (posterior uvea). Inflammation at any level = uveitis. <strong>Location determines symptoms.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Anterior uveitis signs</div><div class="n-snap-text">Ciliary flush, KPs on corneal endothelium, cells + flare in anterior chamber, miosis, posterior synechiae. <strong>Painful, photophobic, reduced VA.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Systemic clue</div><div class="n-snap-text">HLA-B27: AS, reactive arthritis, psoriatic arthritis, IBD. <strong>The red eye may be the first presentation of spondyloarthropathy.</strong></div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classification</span><span class="n-section-tag">location determines presentation</span></div>
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classification by Anatomical Location</span><span class="n-section-tag">location = presentation</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Uveitis classification and key associations</span><span class="n-viz-sub">Most common = anterior (70%)</span></div>
+    <svg viewBox="0 0 760 175" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="244" height="175" rx="2" fill="#c8452a"/>
+      <text x="122" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">ANTERIOR — 70%</text>
+      <text x="122" y="55" font-family="Syne,sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="800">Iritis / Iridocyclitis</text>
+      <text x="122" y="80" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.72)" text-anchor="middle">Painful · photophobic · red</text>
+      <text x="122" y="98" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.72)" text-anchor="middle">KPs · cells + flare · miosis</text>
+      <text x="122" y="128" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">HLA-B27 · AS · IBD</text>
+      <text x="122" y="148" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Reactive arthritis · psoriasis</text>
+      <rect x="258" y="0" width="244" height="175" rx="2" fill="#2a4a6e"/>
+      <text x="380" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">INTERMEDIATE</text>
+      <text x="380" y="55" font-family="Syne,sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="800">Pars Planitis</text>
+      <text x="380" y="80" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.72)" text-anchor="middle">Floaters · blur · quiet eye</text>
+      <text x="380" y="98" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.72)" text-anchor="middle">Snowball vitreous · snowbanking</text>
+      <text x="380" y="128" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">MS · Sarcoidosis · Lyme</text>
+      <text x="380" y="148" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">CMO = main complication</text>
+      <rect x="516" y="0" width="244" height="175" rx="2" fill="#3a2a4e"/>
+      <text x="638" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">POSTERIOR</text>
+      <text x="638" y="55" font-family="Syne,sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="800">Choroiditis</text>
+      <text x="638" y="80" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.72)" text-anchor="middle">Painless · floaters · scotoma</text>
+      <text x="638" y="98" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.72)" text-anchor="middle">White retinal lesions on fundus</text>
+      <text x="638" y="128" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Toxoplasma · TB · CMV</text>
+      <text x="638" y="148" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Sarcoid · Behçet · Syphilis</text>
+    </svg>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Anterior Uveitis — Slit Lamp Signs</span><span class="n-section-tag">what you see on the slit lamp</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label err">KPs — Keratic Precipitates</div><div class="n-diag-content">WBC deposits on corneal endothelium. <strong>Fine/stellate KPs</strong> = non-granulomatous (HLA-B27, idiopathic). <strong>Mutton-fat KPs (large, greasy)</strong> = granulomatous uveitis — sarcoidosis, TB, syphilis, Vogt-Koyanagi-Harada. Granulomatous = systemic workup mandatory.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Cells + Flare</div><div class="n-diag-content">Cells = WBCs in aqueous. Flare = protein leak (breakdown of blood-aqueous barrier). Graded 1–4+. <strong>Hypopyon</strong> = visible layer of pus in AC — severe inflammation, consider endophthalmitis or Behçet's.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Synechiae</div><div class="n-diag-content"><strong>Posterior synechiae</strong> = iris adheres to lens → irregular pupil on dilation, can cause pupil block → secondary angle-closure glaucoma. <strong>Peripheral anterior synechiae (PAS)</strong> = iris adheres to trabecular meshwork → secondary glaucoma. Dilate early to prevent.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Complications</div><div class="n-diag-content">Cataract (steroid-induced + inflammatory), glaucoma (synechiae + steroid), cystoid macular oedema (CMO) — the main cause of visual loss in chronic uveitis. Hypotony (ciliary shutdown) in severe cases.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">HLA-B27 — The Spondyloarthropathy Connection</span><span class="n-section-tag">eye as window to the spine</span></div>
+  <div class="n-exam-box"><div class="n-exam-if">The pattern</div><div class="n-exam-statement">Young man, recurrent unilateral anterior uveitis, back pain worse in the morning, improves with exercise — <em>ankylosing spondylitis.</em> HLA-B27 in 90% of AS. The eye can precede the spinal symptoms by years.</div></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label">Ankylosing Spondylitis</div><div class="n-diag-content">Most common HLA-B27 association. Recurrent, unilateral, acute anterior uveitis. Attacks self-limit in 6–8 weeks. Same eye may be affected repeatedly. Classic presentation on exams.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Reactive Arthritis</div><div class="n-diag-content">Post-infectious (chlamydia, enteric pathogens). Triad: urethritis + arthritis + conjunctivitis/uveitis. "Can't see, can't pee, can't climb a tree." HLA-B27 in 50–80%.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">IBD-associated</div><div class="n-diag-content">Uveitis in 5–10% of IBD patients. May correlate or not correlate with bowel disease activity. Crohn's more commonly associated than UC.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Psoriatic Arthritis</div><div class="n-diag-content">Uveitis in ~25%. May have nail changes, DIP joint arthritis, sacroiliitis. Ask about skin and joints in all uveitis patients.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Infectious Causes — Posterior Uveitis</span><span class="n-section-tag">always exclude infection before immunosuppression</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label err">Toxoplasma</div><div class="n-diag-content">Most common cause of posterior uveitis worldwide. <strong>Focal necrotising retinochoroiditis</strong> — white fluffy retinal lesion adjacent to old pigmented scar ("headlight in fog"). Congenital (primary) or reactivation. Pyrimethamine + sulfadiazine + folinic acid.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">CMV Retinitis</div><div class="n-diag-content">Immunocompromised — HIV (CD4 &lt;50), post-transplant. <strong>Pizza-pie fundus</strong> — haemorrhages + fluffy white lesions. Brushfire spread along vessels. Ganciclovir IV → valganciclovir oral maintenance.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Sarcoidosis</div><div class="n-diag-content">Granulomatous uveitis, any level. Mutton-fat KPs. Snowball vitreous. Candle-wax dripping on vessels (periphlebitis). Chest X-ray (hilar lymphadenopathy), ACE, serum calcium, HRCT chest.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Syphilis</div><div class="n-diag-content">"The great masquerader." Can mimic any uveitis pattern — anterior, intermediate, posterior, panuveitis. Always test VDRL/RPR + treponemal test in uveitis workup. Treat with IV penicillin.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Treatment Principles</span><span class="n-section-tag">treat the inflammation, protect the vision</span></div>
   <div class="n-mech-chain">
-    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Anterior — most common, painful red eye</div><div class="n-mech-text"><strong>Painful, photophobic, lacrimation, blur.</strong> Ciliary flush. KPs on corneal endothelium, AC cells + flare, miosis. Posterior synechiae (irregular pupil) → secondary glaucoma.</div></div></div>
-    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Intermediate — floaters, quiet eye</div><div class="n-mech-text">Pars plana inflammation. Floaters + blur. Snowball vitreous. MS + sarcoidosis. CMO is main complication.</div></div></div>
-    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Posterior — painless, white eye</div><div class="n-mech-text">Floaters, scotoma, quiet eye. Toxoplasmosis ("headlight in fog"), CMV retinitis (immunocompromised, "pizza pie"). <strong>Check HIV in severe posterior uveitis.</strong></div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Exclude infection first</div><div class="n-mech-text">Never give topical steroids to undiagnosed red eye. HSV keratitis + steroid = dendritic ulcer explodes. CMV/toxoplasma + steroid = catastrophic. Exclude infective cause before immunosuppression.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Anterior uveitis — topical treatment</div><div class="n-mech-text">Topical corticosteroids (prednisolone acetate 1% hourly initially). Cycloplegics (cyclopentolate, atropine) — reduce pain, prevent posterior synechiae formation, dilate pupil. Reduce drops as inflammation settles.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Chronic/posterior — systemic treatment</div><div class="n-mech-text">Oral prednisolone for sight-threatening posterior uveitis. Steroid-sparing agents for chronic disease: methotrexate, mycophenolate, azathioprine. Anti-TNF (adalimumab, infliximab) for refractory cases. Intravitreal triamcinolone for CMO.</div></div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Fine vs Mutton-Fat KPs</span><span class="n-section-tag">granulomatous or not</span></div>
-  <div class="n-diff-grid">
-    <div class="n-diff-card this"><div class="n-diff-card-tag">Fine KPs</div><div class="n-diff-card-name">Neutrophil aggregates, Arlt's triangle</div><div class="n-diff-card-key">Non-granulomatous. HLA-B27 anterior uveitis. Inferior distribution (gravity).</div></div>
-    <div class="n-diff-card that"><div class="n-diff-card-tag">Mutton-Fat KPs</div><div class="n-diff-card-name">Greasy, large = granulomatous</div><div class="n-diff-card-key">Macrophage aggregates. <strong>Sarcoid, TB, sympathetic ophthalmia, VKH.</strong> Send CXR + serum ACE + tuberculin test.</div></div>
-  </div>
-</div>
-<div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
-  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Young man + inflammatory back pain + recurrent unilateral red eye + irregular pupil → think <em>HLA-B27 uveitis in AS</em> → topical steroids + mydriatics.</div></div>
-  <div class="n-distractor-box"><div class="n-distractor-label">Unilateral and alternating</div><div class="n-distractor-text">HLA-B27 uveitis is <strong>unilateral, alternating</strong> — not simultaneously bilateral. Simultaneous bilateral = sarcoidosis. The red eye may be the first presentation of undiagnosed AS or IBD.</div></div>
-</div>
-<div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam favourites</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Ciliary flush = perilimbal injection = deep inflammation.</strong> Not conjunctivitis.<span class="n-pearl-exam">Exam: what does ciliary flush indicate?</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Mydriatics: (1) relieve ciliary spasm; (2) prevent/break posterior synechiae.</strong> Never omit them.</div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Mutton-fat KPs = granulomatous = sarcoid/TB until proven otherwise.</strong></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Mutton-fat KPs = granulomatous uveitis = systemic workup.</strong> Sarcoid, TB, syphilis, VKH. Fine KPs = non-granulomatous = HLA-B27 likely.<span class="n-pearl-exam">Exam: KP type predicts uveitis aetiology — know both.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>HLA-B27 uveitis = unilateral, acute, recurrent, anterior.</strong> Young male, back pain, recurrent attacks. The opposite eye is at risk in subsequent attacks.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>CMO is the commonest cause of visual loss in uveitis.</strong> Macula swells from cytokines and breakdown of blood-retinal barrier. OCT confirms. Treat with periocular/intravitreal steroid.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Toxoplasma = white lesion adjacent to old scar.</strong> "Satellite lesion" pattern. Reactivation of congenital infection is common. Treat when threatening the macula or optic nerve.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Always test for syphilis in uveitis.</strong> VDRL + treponemal test. Syphilis mimics everything — anterior, posterior, panuveitis, retinitis, papillitis. Miss it and you miss a treatable, systemic infection.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Dilate early in anterior uveitis.</strong> Cycloplegics prevent posterior synechiae. Once synechiae form → irregular pupil → pupil block → secondary glaucoma. Easier to prevent than treat.</div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for these</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
-      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Anterior uveitis is always bilateral simultaneously.</div></div>
-      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>HLA-B27 = unilateral, alternating.</strong> Simultaneous bilateral = sarcoidosis or granulomatous.</div></div>
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Red eye + uveitis on slit lamp → topical steroids immediately.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Exclude HSV keratitis first.</strong> Topical steroids on dendritic ulcer = corneal perforation. Fluorescein stain before treating any red eye with steroids.</div></div>
     </div>
     <div class="n-trap">
-      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Posterior uveitis presents as a painful red eye.</div></div>
-      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Posterior uveitis = painless white quiet eye.</strong> Floaters + scotoma. Fundoscopy required. Frequently missed.</div></div>
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Anterior uveitis — treat and discharge, it will settle.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Investigate for systemic cause.</strong> HLA-B27, ANA, ACE, CXR, syphilis serology. Uveitis can be the presenting feature of AS, sarcoid, IBD, syphilis.</div></div>
+    </div>
+    <div class="n-trap">
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">VA normal in uveitis — reassure, no rush with follow-up.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>CMO develops silently.</strong> Normal VA today does not rule out macular oedema developing over days. OCT follow-up is mandatory in all but the mildest cases.</div></div>
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>The eye is a window into systemic disease.</em><br>Uveitis is rheumatology — seen through a slit lamp.</div></div>
+<div class="n-anchor"><div class="n-anchor-text"><em>KP type predicts aetiology. Mutton-fat = granulomatous = systemic search.</em><br>HLA-B27: unilateral, acute, recurrent. Dilate early to prevent synechiae.<br>Always exclude syphilis. Always exclude infection before steroids.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.uveitis=[{q:"Young man with inflammatory back pain + recurrent unilateral red eye + photophobia. Slit lamp: KPs + AC cells. Systemic suspect?",opts:["Crohn's — gastro","Ankylosing spondylitis — HLA-B27","Sarcoidosis — ACE","RA — RF"],ans:1,focus:"HLA-B27 — AS association",exp:"HLA-B27-associated anterior uveitis with IBP suggests AS. 90% of AS is HLA-B27 positive. Uveitis is most common extra-articular manifestation."},{q:"Why prescribe mydriatics in anterior uveitis?",opts:["Lower IOP","Prevent/break posterior synechiae + relieve ciliary spasm","Improve drainage","Prevent secondary glaucoma by constriction"],ans:1,focus:"Mydriatics — dual purpose",exp:"Mydriatics: (1) relieve ciliary spasm pain; (2) prevent/break posterior synechiae. Omitting risks iris-lens adhesion → secondary glaucoma."},{q:"Large greasy yellowish deposits on corneal endothelium. Most important investigation?",opts:["MRI spine","CXR + serum ACE — exclude sarcoid/TB","Corneal scrape","HSV serology"],ans:1,focus:"Mutton-fat KPs — granulomatous",exp:"Mutton-fat KPs = macrophage aggregates = granulomatous uveitis. Causes: sarcoidosis, TB, VKH. Investigate: CXR, serum ACE, tuberculin test."},{q:"HIV+ patient, painless progressive VL. Fundoscopy: yellow-white areas + haemorrhage, 'pizza pie' pattern. Diagnosis?",opts:["Toxoplasma","CMV retinitis","Behçet's","Acute retinal necrosis"],ans:1,focus:"CMV retinitis",exp:"CMV retinitis in immunocompromise (CD4 <50): 'pizza pie' fundus — yellow-white necrosis + intraretinal haemorrhage. Treat: ganciclovir/valganciclovir + ART."},{q:"Anterior uveitis → fixed irregular small pupil. What occurred and treatment?",opts:["Pharmacological mydriasis","Posterior synechiae — intensive topical steroids + mydriatics","Acute angle-closure","Optic nerve compression"],ans:1,focus:"Posterior synechiae",exp:"Posterior synechiae: iris adheres to anterior lens capsule from fibrin → irregular fixed small pupil. Treatment: intensive topical steroids + mydriatics (atropine 1%). Untreated total synechiae → iris bombé → secondary closure."}];
 
@@ -2135,46 +2339,95 @@ NOTES.refraction = () => `<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-title">Refraction &amp;<br><em>Refractive Surgery</em></div>
   <div class="n-hero-sub">Myopia · Hyperopia · Astigmatism · Presbyopia · LASIK · Phakic IOL</div>
   <div class="n-snapshot">
-    <div class="n-snap-cell"><div class="n-snap-label">The errors</div><div class="n-snap-text">Myopia: image anterior to retina. Hyperopia: posterior. Astigmatism: multiple foci. Presbyopia: age-related accommodation loss after 40.</div></div>
-    <div class="n-snap-cell"><div class="n-snap-label">Lenses</div><div class="n-snap-text">Myopia → concave (minus). Hyperopia → convex (plus).</div></div>
-    <div class="n-snap-cell"><div class="n-snap-label">Key caveat</div><div class="n-snap-text">LASIK reshapes the cornea. <strong>It does NOT prevent presbyopia</strong> — caused by lens inelasticity, not corneal curvature.</div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">The errors</div><div class="n-snap-text">Myopia: image in front of retina (globe too long). Hyperopia: behind retina (globe too short). Astigmatism: multiple focal points. Presbyopia: accommodation loss after 40.</div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Correcting lenses</div><div class="n-snap-text">Myopia → <strong>concave (minus)</strong> diverges rays. Hyperopia → <strong>convex (plus)</strong> converges rays. Astigmatism → cylindrical. Presbyopia → reading (plus) add.</div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Key caveat</div><div class="n-snap-text">LASIK corrects corneal curvature. <strong>It does NOT prevent presbyopia</strong> — presbyopia is lens inelasticity, not corneal shape.</div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">The Four Errors</span><span class="n-section-tag">optics and clinical implications</span></div>
-  <div class="n-mech-chain">
-    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Myopia — globe too long</div><div class="n-mech-text">Distant blur, near clear. High myopia (&gt;6D): retinal detachment, glaucoma, myopic maculopathy risk. Concave lens. LASIK flattens cornea.</div></div></div>
-    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Hyperopia — globe too short</div><div class="n-mech-text">Young compensate by accommodating. <strong>Uncorrected hyperopia in children → accommodative esotropia → amblyopia risk.</strong> Convex lens. First presentation may be a squint.</div></div></div>
-    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Keratoconus — irregular astigmatism</div><div class="n-mech-text">Cannot be corrected with spectacles. Rigid contact lenses or DALK. Signs: Munson's sign, scissor reflex on retinoscopy, Fleischer's ring. Progressive in teens. <strong>Absolute CI to LASIK.</strong></div></div></div>
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">The Four Refractive Errors</span><span class="n-section-tag">optics with clinical consequences</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Focus point relative to retina</span><span class="n-viz-sub">The globe length or lens curvature determines where light lands</span></div>
+    <svg viewBox="0 0 760 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="182" height="160" rx="2" fill="#c8452a"/>
+      <text x="91" y="28" font-family="Syne,sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="800">MYOPIA</text>
+      <text x="91" y="50" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.65)" text-anchor="middle">Globe too long</text>
+      <text x="91" y="70" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.65)" text-anchor="middle">Focus: ANTERIOR to retina</text>
+      <text x="91" y="96" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.85)" text-anchor="middle">Blur at distance</text>
+      <text x="91" y="114" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.85)" text-anchor="middle">Clear at near</text>
+      <text x="91" y="146" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.35)" text-anchor="middle">Concave (−) lens · LASIK</text>
+      <rect x="193" y="0" width="182" height="160" rx="2" fill="#2a4a6e"/>
+      <text x="284" y="28" font-family="Syne,sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="800">HYPEROPIA</text>
+      <text x="284" y="50" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.65)" text-anchor="middle">Globe too short</text>
+      <text x="284" y="70" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.65)" text-anchor="middle">Focus: POSTERIOR to retina</text>
+      <text x="284" y="96" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.85)" text-anchor="middle">Blur at near (young)</text>
+      <text x="284" y="114" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.85)" text-anchor="middle">Accommodative esotropia risk</text>
+      <text x="284" y="146" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.35)" text-anchor="middle">Convex (+) lens · LASIK</text>
+      <rect x="386" y="0" width="182" height="160" rx="2" fill="#3a5a38"/>
+      <text x="477" y="28" font-family="Syne,sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="800">ASTIGMATISM</text>
+      <text x="477" y="50" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.65)" text-anchor="middle">Irregular corneal curvature</text>
+      <text x="477" y="70" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.65)" text-anchor="middle">Multiple focal points</text>
+      <text x="477" y="96" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.85)" text-anchor="middle">Distortion at all distances</text>
+      <text x="477" y="114" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.85)" text-anchor="middle">Keratoconus if progressive</text>
+      <text x="477" y="146" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.35)" text-anchor="middle">Cylindrical lens · toric IOL</text>
+      <rect x="579" y="0" width="181" height="160" rx="2" fill="#4a3a1e"/>
+      <text x="669" y="28" font-family="Syne,sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="800">PRESBYOPIA</text>
+      <text x="669" y="50" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.65)" text-anchor="middle">Lens inelasticity (&gt;40yr)</text>
+      <text x="669" y="70" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.65)" text-anchor="middle">Lost accommodation</text>
+      <text x="669" y="96" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.85)" text-anchor="middle">Near blur, arm-length reading</text>
+      <text x="669" y="114" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.85)" text-anchor="middle">Universal after 45</text>
+      <text x="669" y="146" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.35)" text-anchor="middle">Reading (+) add · multifocal IOL</text>
+    </svg>
+  </div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label err">High Myopia Risk</div><div class="n-diag-content">Myopia &gt;6 dioptres. Stretched retina → <strong>retinal detachment, lattice degeneration, myopic macular degeneration, open-angle glaucoma</strong> risk. Annual fundus exam. Myopia control in children: atropine 0.01%, orthokeratology, multifocal contact lenses.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Hyperopia in Children</div><div class="n-diag-content">Young children can compensate by accommodating — but constant accommodation drives the eyes inward. <strong>Uncorrected hyperopia → accommodative esotropia → amblyopia.</strong> A child with a squint needs a refraction before anything else.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Keratoconus</div><div class="n-diag-content">Progressive corneal ectasia — thinning + steepening of cornea, usually inferiorly. Onset teens/20s. Irregular astigmatism, oil-droplet reflex on retinoscopy, Munson's sign (V-shape lower lid on downgaze). Rigid contact lenses → corneal cross-linking → keratoplasty.</div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
-  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">45-year-old holding phone at arm's length, previously normal vision → think <em>presbyopia</em> → reading glasses (+1.00 to +2.50D). Universal after 40.</div></div>
-  <div class="n-distractor-box"><div class="n-distractor-label">Presbyopia vs Hyperopia</div><div class="n-distractor-text">Both cause near difficulty + corrected with plus lens. <strong>Presbyopia: everyone after 40, lens inelasticity. Hyperopia: short globe, may be childhood.</strong> Hyperopes become symptomatic earlier — less accommodative reserve.</div></div>
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Refractive Surgery — Options & Limits</span><span class="n-section-tag">what it can and cannot fix</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label">LASIK</div><div class="n-diag-content">Laser reshapes corneal stroma under a flap. Corrects myopia (up to −10D), hyperopia (+4D), astigmatism. Stable refraction required (&gt;1 year). <strong>Contraindications: thin cornea (&lt;500μm), keratoconus, dry eye, unstable prescription.</strong> Does not correct presbyopia.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">LASEK / PRK</div><div class="n-diag-content">Surface ablation — no flap. Better for thin corneas, contact sport athletes. Slower recovery, more post-op pain, same visual outcome long-term.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Phakic IOL (ICL)</div><div class="n-diag-content">Implantable contact lens placed in posterior chamber, natural lens left in situ. For high myopia beyond LASIK range. Reversible. Risk: cataract, endothelial cell loss, pupil block glaucoma.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Refractive Lens Exchange</div><div class="n-diag-content">Remove natural lens, replace with multifocal IOL. Corrects presbyopia + refractive error. Eliminates future cataract. Risk of retinal detachment in high myopes. Irreversible.</div></div>
+  </div>
+  <div class="n-distractor-box"><div class="n-distractor-label">Why LASIK cannot cure presbyopia</div><div class="n-distractor-text">LASIK corrects refractive error by reshaping corneal curvature. <strong>Presbyopia is caused by loss of lens elasticity</strong> — the lens can no longer change shape to accommodate. No corneal reshaping addresses lens stiffness. LASIK patients still need reading glasses after age 45. Monovision LASIK (one eye for near, one for distance) is a workaround, not a cure.</div></div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Prescriptions & Clinical Notation</span><span class="n-section-tag">reading a refraction</span></div>
+  <div class="n-exam-box"><div class="n-exam-if">Reading the script</div><div class="n-exam-statement">Sphere / Cylinder × Axis. Example: <em>−3.00 / −1.50 × 90</em> = 3D myope with 1.5D of astigmatism, cylinder axis at 90°. Negative sphere = myopia. Positive sphere = hyperopia. Add (+2.50) = presbyopic reading addition.</div></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label">Anisometropia</div><div class="n-diag-content">Significant difference in refraction between eyes (&gt;2D). Brain suppresses the more blurred image → <strong>anisometropic amblyopia.</strong> Treat with glasses early in childhood. Patching if amblyopia established.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Cycloplegic refraction</div><div class="n-diag-content">In children, accommodation masks hyperopia. <strong>Must paralyse accommodation (cycloplegia) with atropine or cyclopentolate</strong> to get true refraction. Adult refraction without cycloplegia may underestimate hyperopia.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam favourites</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Hyperopic children develop convergent squint — not myopic.</strong> Accommodation drives convergence.<span class="n-pearl-exam">Exam: why does hyperopia cause convergent squint?</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>High myopia = retinal detachment risk.</strong> Warn: new floaters/flashes = same-day review.</div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Phakic IOL preferred for high myopia (&gt;-8D)</strong> or thin corneas — no stroma removed, reversible.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Hyperopia in children → squint → amblyopia.</strong> Never dismiss a childhood squint without refraction. Glasses first, patch second if amblyopia confirmed.<span class="n-pearl-exam">Exam: child with convergent squint — first investigation?</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>High myopia (&gt;6D) = annual fundus check.</strong> Lattice degeneration, retinal detachment, myopic maculopathy, glaucoma. The stretched retina is fragile.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Keratoconus = irregular astigmatism in a young person.</strong> Oil-droplet reflex on retinoscopy is pathognomonic. Cross-linking halts progression if cornea is thick enough.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>LASIK contraindicated in keratoconus.</strong> Thinning an already thin cornea accelerates ectasia. Always topographic screening before refractive surgery.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Presbyopia onset is universal and inevitable after 40.</strong> Not a disease — crystalline lens loses elasticity with age. Reading glasses, multifocals, or monovision contact lenses.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Cycloplegic refraction is mandatory in children.</strong> Accommodation masks the true degree of hyperopia. Atropine 1% for 3 days before refraction in young children.</div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for these</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
-      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">LASIK cures presbyopia — no more reading glasses.</div></div>
-      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Refractive surgery corrects corneal curvature, not lens inelasticity.</strong> Must be stated in pre-op counselling.</div></div>
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Patient had LASIK 10 years ago — no need for reading glasses now at 48.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>LASIK does not prevent presbyopia.</strong> Lens inelasticity is inevitable. They still need reading glasses after 45.</div></div>
     </div>
     <div class="n-trap">
-      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Long-sighted children see well — no squint risk.</div></div>
-      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Hyperopia drives accommodative esotropia.</strong> All children with new squint need cycloplegic refraction.</div></div>
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">7-year-old with inward squint — refer to orthoptist for eye exercises.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Refraction first.</strong> Most childhood convergent squints are driven by uncorrected hyperopia. Glasses may resolve the squint entirely.</div></div>
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>Minus for myopia. Plus for hyperopia.</em><br>Surgery reshapes the cornea. It cannot reverse the ageing lens.</div></div>
+<div class="n-anchor"><div class="n-anchor-text"><em>Myopia: long eye, concave lens. Hyperopia: short eye, convex lens.</em><br>High myopia = annual fundus check. Hyperopia in children = squint screen.<br>LASIK reshapes cornea — it cannot fix the lens.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.refraction=[{q:"6-year-old, right convergent squint. Cycloplegic refraction: +4.50D bilateral. Mechanism?",opts:["Myopia → divergence — minus lenses","Hyperopia → excess accommodation → convergence — plus lenses","Astigmatism — cylinder","Presbyopia — readers"],ans:1,focus:"Hyperopia → accommodative esotropia",exp:"Accommodative esotropia: hyperopia → excessive accommodation → convergence via AC/A → esotropia. Correct with full cycloplegic refraction. Squint may resolve with specs if purely accommodative."},{q:"48-year-old emmetrope holds books at arm's length. Cause?",opts:["Myopia — concave lens","Hyperopia — convex","Presbyopia — reading glasses (plus lens)","Astigmatism — cylinder"],ans:2,focus:"Presbyopia",exp:"Presbyopia: lens inelasticity after 40. Universal. Corrected with plus reading glasses. Myope may read without glasses by removing distance correction."},{q:"Key contraindication before LASIK?",opts:["Myopia >-3D","Keratoconus — LASIK causes ectasia","Age under 21","Previous viral conjunctivitis"],ans:1,focus:"Keratoconus — absolute CI to LASIK",exp:"Keratoconus is absolute CI to LASIK. Removing stroma from already thinning cornea → catastrophic ectasia. Screen with topography pre-operatively."},{q:"Patient with -10D myopia wants refractive surgery. Why unsuitable for LASIK?",opts:["LASIK is ideal for high myopia","Would leave unsafe residual bed — phakic IOL preferred","PRK always preferred","LASIK can't correct astigmatism"],ans:1,focus:"High myopia — phakic IOL",exp:"High myopia (>-8D): LASIK ablates too much stroma → residual bed <250μm → ectasia risk. Phakic IOL placed in posterior chamber. No stroma removed, reversible."},{q:"Which refractive error carries increased RD risk?",opts:["Hyperopia — convergence traction","Myopia — elongated globe → stretched retina → lattice → tears","Astigmatism","Presbyopia"],ans:1,focus:"Myopia and RD risk",exp:"High myopia: elongated axial length stretches retina thin → lattice degeneration → tears → detachment. Risk significant above -6D."}];
 
@@ -2496,57 +2749,95 @@ NOTES_MCQ.opticnerve=[{q:"29-year-old, subacute VL right eye over 3 days, pain o
 NOTES.tumours = () => `<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-eyebrow">Ophthalmology · Oncology · Note 17</div>
   <div class="n-hero-title">Ocular<br><em>Tumours</em></div>
-  <div class="n-hero-sub">Retinoblastoma · Uveal Melanoma · BCC · Sebaceous Carcinoma · Leukocoria · Madarosis</div>
+  <div class="n-hero-sub">Retinoblastoma · Uveal Melanoma · BCC · Sebaceous Carcinoma · Leukocoria · Choroidal Mets</div>
   <div class="n-snapshot">
-    <div class="n-snap-cell"><div class="n-snap-label">Retinoblastoma</div><div class="n-snap-text">Most common intraocular tumour in childhood. Leukocoria or strabismus. <strong>Absent red reflex = same-day referral.</strong></div></div>
-    <div class="n-snap-cell"><div class="n-snap-label">Uveal melanoma</div><div class="n-snap-text">Most common primary intraocular malignancy in adults. Mushroom-shaped. <strong>Metastasises almost exclusively to liver.</strong></div></div>
-    <div class="n-snap-cell"><div class="n-snap-label">Eyelid rule</div><div class="n-snap-text">Madarosis adjacent to lid lesion = malignancy until proven otherwise. <strong>BCC most common.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Retinoblastoma</div><div class="n-snap-text">Most common intraocular tumour in childhood. Leukocoria or strabismus. <strong>Absent red reflex in a child = same-day referral.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Uveal melanoma</div><div class="n-snap-text">Most common primary intraocular malignancy in adults. Mushroom-shaped on ultrasound. <strong>Metastasises almost exclusively to liver.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Eyelid rule</div><div class="n-snap-text">Madarosis (lash loss) adjacent to a lid lesion = malignancy until proven otherwise. BCC most common eyelid tumour.</div></div>
   </div>
 </div>
 <div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Retinoblastoma</span><span class="n-section-tag">leukocoria in a child</span></div>
-  <div class="n-mech-chain">
-    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Presentation</div><div class="n-mech-text"><strong>Leukocoria</strong> (white pupil, absent red reflex — often noted in photos). Strabismus is second most common. &lt;5 years. Diagnosis: RetCam ± MRI.</div></div></div>
-    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Genetics — RB1 two-hit</div><div class="n-mech-text"><strong>Hereditary (40%)</strong>: germline first hit → bilateral, multifocal, earlier onset. <strong>Non-hereditary (60%)</strong>: two somatic hits → unilateral, unifocal. ~15% of unilateral cases still have germline mutation. All patients need genetic testing.</div></div></div>
-    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Treatment + secondary tumours</div><div class="n-mech-text">Focal: laser, cryotherapy, intra-arterial chemo. Advanced: enucleation. Survival &gt;95% in HICs. Hereditary: risk of secondary malignancies (osteosarcoma, pinealoblastoma).</div></div></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Retinoblastoma genetics — two-hit model</span><span class="n-viz-sub">Knudson's hypothesis</span></div>
+    <svg viewBox="0 0 760 155" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="370" height="155" rx="2" fill="#c8452a"/>
+      <text x="185" y="28" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.6)" text-anchor="middle" font-weight="700" letter-spacing="2">HEREDITARY — 40%</text>
+      <text x="185" y="56" font-family="Syne,sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="800">Germline first hit</text>
+      <text x="185" y="80" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.75)" text-anchor="middle">Every retinal cell already has one mutation</text>
+      <text x="185" y="98" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.75)" text-anchor="middle">Only one somatic hit needed</text>
+      <text x="185" y="120" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.42)" text-anchor="middle">Bilateral · Multifocal · Earlier onset</text>
+      <text x="185" y="140" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.42)" text-anchor="middle">Risk osteosarcoma · pinealoblastoma</text>
+      <rect x="390" y="0" width="370" height="155" rx="2" fill="#2a4a6e"/>
+      <text x="575" y="28" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.6)" text-anchor="middle" font-weight="700" letter-spacing="2">NON-HEREDITARY — 60%</text>
+      <text x="575" y="56" font-family="Syne,sans-serif" font-size="16" fill="white" text-anchor="middle" font-weight="800">Two somatic hits</text>
+      <text x="575" y="80" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.75)" text-anchor="middle">Both mutations acquired in one cell</text>
+      <text x="575" y="98" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.75)" text-anchor="middle">Less likely → later onset</text>
+      <text x="575" y="120" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.42)" text-anchor="middle">Unilateral · Unifocal · Later onset</text>
+      <text x="575" y="140" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.42)" text-anchor="middle">15% still have germline mutation</text>
+    </svg>
   </div>
-</div>
-<div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Uveal Melanoma + Eyelid Malignancies</span><span class="n-section-tag">adult intraocular + adnexal</span></div>
   <div class="n-diag-steps">
-    <div class="n-diag-row"><div class="n-diag-label">Uveal Melanoma</div><div class="n-diag-content">Often asymptomatic → found on routine fundoscopy. Mushroom-shaped choroidal mass (breaks Bruch's membrane). B-scan: high internal reflectivity. <strong>Plaque brachytherapy for most. Lifelong liver surveillance.</strong></div></div>
-    <div class="n-diag-row"><div class="n-diag-label">BCC</div><div class="n-diag-content">Most common eyelid malignancy (90%). Lower lid, medial canthus. Pearly rolled edge, central ulceration, <strong>madarosis</strong>. Locally invasive. <strong>Mohs surgery.</strong></div></div>
-    <div class="n-diag-row"><div class="n-diag-label gold">Sebaceous Carcinoma</div><div class="n-diag-content">Rare, high mortality. <strong>Masquerades as recurrent chalazion.</strong> Upper lid. Pagetoid spread. <strong>Rule: biopsy any chalazion recurring in same site.</strong></div></div>
-    <div class="n-diag-row"><div class="n-diag-label err">Madarosis</div><div class="n-diag-content"><strong>Lash loss adjacent to lid lesion = malignancy until proven otherwise.</strong> BCC, SCC, sebaceous carcinoma all infiltrate follicles. Benign lesions do not cause madarosis.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Presentation</div><div class="n-diag-content"><strong>Leukocoria</strong> (white pupil — absent/white red reflex, often spotted in flash photos). Strabismus second most common. Age &lt;5 years. Diagnosis: RetCam examination under anaesthesia, MRI orbit (no CT — radiation risk with germline RB1). Never biopsy — risk of seeding.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Treatment</div><div class="n-diag-content">Goal: save life, then eye, then vision. Focal treatments (laser, cryotherapy, thermotherapy) for small tumours. Intra-arterial chemotherapy (IAC) — selective ophthalmic artery chemotherapy — eye-sparing for advanced tumours. Enucleation for advanced disease. Radiation avoided in germline cases (secondary tumour risk).</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Genetics</div><div class="n-diag-content">RB1 gene — tumour suppressor on chromosome 13q14. All bilateral cases and 15% of apparently unilateral cases have germline mutation → genetic counselling + screening of siblings and offspring. 45% risk of secondary malignancy (osteosarcoma, soft tissue sarcoma) in germline carriers by age 40.</div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
-  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">2-year-old with white pupil in photos, absent red reflex → think <em>retinoblastoma</em> → same-day ophthalmology. Leukocoria = intraocular malignancy until excluded.</div></div>
-  <div class="n-distractor-box"><div class="n-distractor-label">Leukocoria differential</div><div class="n-distractor-text">Not all leukocoria is retinoblastoma — but <strong>all leukocoria needs same-day referral</strong>. Others: congenital cataract, PFV, ROP, Coats'. The priority is excluding retinoblastoma.</div></div>
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Uveal Melanoma</span><span class="n-section-tag">most common primary intraocular malignancy in adults</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label err">Presentation</div><div class="n-diag-content">Most are asymptomatic — found on routine fundoscopy. Symptomatic: flashes, floaters, visual field loss, reduced VA (exudative retinal detachment). Choroid (90%), ciliary body (6%), iris (4%). <strong>Iris melanoma has a much better prognosis.</strong></div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Diagnosis</div><div class="n-diag-content">Clinical + B-scan ultrasound: <strong>mushroom shape + choroidal excavation + internal low reflectivity</strong> = pathognomonic. Fundus fluorescein angiography. MRI orbit. <strong>Biopsy rarely needed</strong> — ultrasound features are diagnostic. FNAB (fine needle aspiration biopsy) for molecular prognostication (chromosome 3 monosomy = poor prognosis).</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Metastasis</div><div class="n-diag-content"><strong>Metastasises almost exclusively to the liver</strong> (unlike cutaneous melanoma). 50% of patients develop metastases — often years after treatment, due to micrometastatic dormancy. Liver enzymes + LFTs + liver imaging at diagnosis and annually. No adjuvant treatment proven effective yet.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Treatment</div><div class="n-diag-content">Plaque brachytherapy (most common — ruthenium or iodine-125 plaque sutured to sclera). Proton beam radiotherapy for large tumours near optic disc. Enucleation for very large tumours. Treatment does not improve survival — goal is local control and eye preservation.</div></div>
+  </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Eyelid Tumours</span><span class="n-section-tag">madarosis = malignancy</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label">BCC — most common</div><div class="n-diag-content">80% of eyelid malignancies. Lower lid medial canthus most common site. Pearly nodule, rolled edges, telangiectasia. <strong>Madarosis (lash loss) at the lesion edge.</strong> Treatment: surgical excision with 5mm margins, Mohs micrographic surgery. Rarely metastasises but locally invasive — can invade orbit.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Sebaceous Carcinoma</div><div class="n-diag-content">Rare but dangerous. Arises from Meibomian glands or glands of Zeis. <strong>Masquerades as chalazion — same-site recurrence = biopsy immediately.</strong> Pagetoid spread (intraepithelial spread to conjunctiva) — can mimic chronic conjunctivitis. High metastatic potential. Wide excision + sentinel node biopsy.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">SCC</div><div class="n-diag-content">Less common than BCC. Associated with actinic keratosis, HPV, immunosuppression. Can metastasise to regional lymph nodes. Excision with clear margins, consider sentinel node biopsy.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Melanoma</div><div class="n-diag-content">1–2% of eyelid malignancies. Lentigo maligna melanoma on sun-damaged skin. Wide excision, sentinel node biopsy, systemic staging.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Choroidal Metastases & Other Tumours</span><span class="n-section-tag">the eye as a window to systemic cancer</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">Choroidal Metastases</div><div class="n-diag-content">Most common intraocular malignancy overall (more common than primary uveal melanoma). <strong>Breast cancer most common source (50%)</strong>, then lung. Creamy-white flat lesions (contrast with mushroom shape of melanoma). Often bilateral, multiple. Systemic staging, palliative radiotherapy.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Retinal Haemangioblastoma</div><div class="n-diag-content">Von Hippel-Lindau disease. Orange retinal tumour with dilated feeder vessels. Screen all patients with retinal haemangioblastoma for VHL — cerebellar haemangioblastomas, phaeochromocytoma, renal cell carcinoma.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Iris Melanoma</div><div class="n-diag-content">Pigmented iris lesion with growth on serial photography. <strong>Much better prognosis than choroidal melanoma.</strong> Rarely metastasises. Wide local excision for documented growth.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam favourites</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Uveal melanoma metastasises almost exclusively to liver.</strong> BRAF mutations rare → checkpoint inhibitors have poor efficacy.<span class="n-pearl-exam">Exam: where does uveal melanoma most commonly metastasise?</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Sebaceous carcinoma mimics chalazion.</strong> Biopsy any chalazion recurring in the same location after adequate treatment.</div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Bilateral retinoblastoma = germline RB1 = hereditary.</strong> ~500× normal osteosarcoma risk. Genetic counselling + lifelong surveillance.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Absent red reflex in a child = same-day referral.</strong> Retinoblastoma until proven otherwise. Do not reassure parents and ask them to return next week.<span class="n-pearl-exam">Exam: 2-year-old with white pupil noted in photos — management?</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Retinoblastoma: never biopsy.</strong> Risk of extraocular seeding and orbital spread. Diagnosis is clinical + ultrasound + MRI. Fine needle aspiration only for molecular prognostication in selected cases.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Uveal melanoma metastasises to the liver.</strong> Unlike cutaneous melanoma which metastasises widely. Annual liver surveillance with LFTs ± ultrasound. Micrometastases can be dormant for years.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Choroidal mets are more common than uveal melanoma.</strong> Flat, creamy-white, bilateral. Think breast (women) or lung (men). Always systemic staging.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Sebaceous carcinoma masquerades as chalazion.</strong> Same-site recurrence, chronic unilateral "blepharitis" that doesn't respond to treatment, or pagetoid conjunctival spread — biopsy.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Retinal haemangioblastoma = screen for VHL.</strong> Even solitary lesion may indicate germline VHL mutation. MRI brain/spine, abdominal imaging, 24h urinary catecholamines.</div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for these</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
-      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Unilateral retinoblastoma is never hereditary.</div></div>
-      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>~15% of unilateral cases still carry germline mutation.</strong> All patients need genetic testing regardless of laterality.</div></div>
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Recurrent chalazion in same location → incision and curettage again.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Biopsy it.</strong> Sebaceous gland carcinoma. High local recurrence rate. Can metastasise. Missing it is indefensible.</div></div>
     </div>
     <div class="n-trap">
-      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">BCC never metastasises — safe to observe.</div></div>
-      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>BCC causes devastating local invasion.</strong> Orbital extension + intracranial spread with neglected medial canthal BCC. Mohs surgery is essential.</div></div>
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Uveal melanoma successfully treated — reassure patient, annual review sufficient.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>50% develop liver metastases,</strong> often years later. Annual LFTs + liver imaging. Micrometastatic dormancy is a real phenomenon.</div></div>
+    </div>
+    <div class="n-trap">
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Retinoblastoma patient — biopsy the mass for tissue diagnosis.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Never biopsy retinoblastoma.</strong> Extraocular seeding converts a potentially curable local tumour into metastatic disease. Diagnosis by imaging + clinical exam.</div></div>
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>White pupil in a child. Pigmented mass in an adult.</em><br>Both need same-day referral. Both curable if caught early.</div></div>
+<div class="n-anchor"><div class="n-anchor-text"><em>Leukocoria in a child = retinoblastoma until proven otherwise. Never biopsy.</em><br>Uveal melanoma → liver surveillance. Choroidal mets > primary melanoma in frequency.<br>Madarosis + lid lesion = malignancy. Recurrent chalazion = biopsy.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.tumours=[{q:"2-year-old with absent red reflex and white glow in photographs. Management?",opts:["Reassure — likely artefact","Same-day ophthalmology — exclude retinoblastoma","Optician at 3 months","Review in 2 weeks"],ans:1,focus:"Leukocoria — same-day",exp:"Leukocoria = same-day ophthalmology referral. Retinoblastoma must be excluded urgently. Absent red reflex is never normal."},{q:"Which retinoblastoma type is most likely bilateral?",opts:["Non-hereditary — two somatic hits","Hereditary — germline first hit, one somatic hit needed","X-linked","Mitochondrial"],ans:1,focus:"Hereditary retinoblastoma — bilateral",exp:"Hereditary (40%): germline RB1 → every cell has first hit → only one more hit needed → bilateral, multifocal, earlier onset."},{q:"Pigmented choroidal mass, mushroom shape on B-scan. Standard treatment for medium tumour?",opts:["Photodynamic therapy","Plaque brachytherapy","Intravitreal anti-VEGF","Systemic chemotherapy"],ans:1,focus:"Uveal melanoma — brachytherapy",exp:"Uveal melanoma: mushroom shape (breaks Bruch's membrane), high internal reflectivity. Standard: plaque brachytherapy. All: lifelong liver surveillance — metastases almost exclusively hepatic."},{q:"Lower lid lesion, pearly rolled edge, central ulceration, loss of adjacent lashes. Diagnosis?",opts:["Chalazion — warm compresses","BCC — Mohs surgery","Viral papilloma — reassure","Sebaceous cyst — excise"],ans:1,focus:"BCC — madarosis + pearly edge",exp:"BCC: most common eyelid malignancy. Pearly rolled edge, central ulceration (rodent ulcer), madarosis from follicular infiltration. Mohs micrographic surgery."},{q:"60-year-old, 'chalazion' recurring in same upper lid site after two I&C procedures. Action?",opts:["Third I&C with wider approach","Biopsy — exclude sebaceous gland carcinoma","Oral doxycycline","Allergy testing"],ans:1,focus:"Recurrent chalazion — sebaceous carcinoma",exp:"Sebaceous carcinoma masquerades as recurrent chalazion in same location. Most aggressive eyelid malignancy. Biopsy any chalazion recurring in same spot after adequate treatment."}];
 
@@ -2554,56 +2845,113 @@ NOTES_MCQ.tumours=[{q:"2-year-old with absent red reflex and white glow in photo
 NOTES.pharmacology = () => `<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-eyebrow">Ophthalmology · Pharmacology · Note 18</div>
   <div class="n-hero-title">Ocular<br><em>Pharmacology</em></div>
-  <div class="n-hero-sub">Glaucoma drops · Mydriatics · Antibiotics · Anti-VEGF · Steroid dangers</div>
+  <div class="n-hero-sub">Glaucoma drops · Mydriatics · Antibiotics · Anti-VEGF · Steroids · Systemic dangers</div>
   <div class="n-snapshot">
-    <div class="n-snap-cell"><div class="n-snap-label">Glaucoma drops</div><div class="n-snap-text">Lower IOP by reducing production (beta-blockers, CAIs, alpha-2) or increasing drainage (prostaglandins, miotics). <strong>Systemically absorbed via nasolacrimal duct.</strong></div></div>
-    <div class="n-snap-cell"><div class="n-snap-label">Mydriatics</div><div class="n-snap-text">Anticholinergics + sympathomimetics. Risk of acute angle-closure in narrow angle eyes.</div></div>
-    <div class="n-snap-cell"><div class="n-snap-label">Steroid rule</div><div class="n-snap-text"><strong>Never prescribe topical steroids for undiagnosed red eye.</strong> HSV reactivation, IOP rise, cataract.</div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Glaucoma drops</div><div class="n-snap-text">Reduce IOP by decreasing aqueous production (beta-blockers, CAIs, alpha-2 agonists) or increasing drainage (prostaglandins, miotics). <strong>Absorbed systemically via nasolacrimal duct — systemic side effects are real.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Steroids rule</div><div class="n-snap-text"><strong>Never give topical steroids to undiagnosed red eye.</strong> HSV keratitis reactivation → corneal perforation. IOP rise in steroid responders. Posterior subcapsular cataract.</div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Anti-VEGF</div><div class="n-snap-text">Intravitreal injection. Ranibizumab, bevacizumab, aflibercept. First-line for wet AMD, DMO, RVO. Monthly dosing or treat-and-extend.</div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Glaucoma Drops</span><span class="n-section-tag">mechanism and hazards</span></div>
-  <div class="n-mech-chain">
-    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Reduce production</div><div class="n-mech-text"><strong>Timolol (beta-blocker):</strong> β2 on ciliary epithelium → reduced aqueous. Absorbed via NLD → systemic bradycardia, bronchospasm. <strong>CI: asthma, COPD, heart block.</strong> Topical CAIs (dorzolamide): reduce bicarbonate. Alpha-2 (brimonidine): reduces production + increases uveoscleral drainage. <strong>CI: infants (apnoea).</strong></div></div></div>
-    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Increase drainage — prostaglandins (first-line)</div><div class="n-mech-text"><strong>Latanoprost, bimatoprost:</strong> FP receptor → uveoscleral outflow. 25–35% IOP reduction. Once-daily evening. Most effective single agent. SE: iris colour change (permanent), lash growth, periorbital fat atrophy.</div></div></div>
-    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Systemic — acute IOP reduction</div><div class="n-mech-text"><strong>IV acetazolamide 500mg:</strong> systemic CAI. First-line for acute angle-closure. SE: paraesthesia, hypokalaemia. <strong>CI: sulfonamide allergy.</strong> IV mannitol: hyperosmotic, draws water from vitreous. Reserved for severe closure.</div></div></div>
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Glaucoma Drops — Mechanisms & Hazards</span><span class="n-section-tag">mechanism predicts side effect</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">IOP-lowering mechanisms</span><span class="n-viz-sub">Reduce production vs increase drainage</span></div>
+    <svg viewBox="0 0 760 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="182" height="160" rx="2" fill="#c8452a"/>
+      <text x="91" y="28" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">PROSTAGLANDINS</text>
+      <text x="91" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">First-line</text>
+      <text x="91" y="74" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.75)" text-anchor="middle">↑ Uveoscleral drainage</text>
+      <text x="91" y="92" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.75)" text-anchor="middle">Latanoprost · bimatoprost</text>
+      <text x="91" y="118" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">SE: iris darkening</text>
+      <text x="91" y="136" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">lash growth · periorbital fat loss</text>
+      <rect x="193" y="0" width="182" height="160" rx="2" fill="#2a4a6e"/>
+      <text x="284" y="28" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">BETA-BLOCKERS</text>
+      <text x="284" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Timolol</text>
+      <text x="284" y="74" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.75)" text-anchor="middle">↓ Aqueous production</text>
+      <text x="284" y="92" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.75)" text-anchor="middle">β2 on ciliary epithelium</text>
+      <text x="284" y="118" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">CI: asthma · COPD</text>
+      <text x="284" y="136" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">heart block · bradycardia</text>
+      <rect x="386" y="0" width="182" height="160" rx="2" fill="#3a4e2a"/>
+      <text x="477" y="28" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">ALPHA-2 AGONISTS</text>
+      <text x="477" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Brimonidine</text>
+      <text x="477" y="74" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.75)" text-anchor="middle">↓ Production + ↑ drainage</text>
+      <text x="477" y="92" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.75)" text-anchor="middle">Dual mechanism</text>
+      <text x="477" y="118" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">CI: infants (apnoea)</text>
+      <text x="477" y="136" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">allergy common (20%)</text>
+      <rect x="579" y="0" width="181" height="160" rx="2" fill="#4e3a2a"/>
+      <text x="669" y="28" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">CAIs</text>
+      <text x="669" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Dorzolamide</text>
+      <text x="669" y="74" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.75)" text-anchor="middle">↓ Aqueous (bicarbonate)</text>
+      <text x="669" y="92" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.75)" text-anchor="middle">Topical or oral (acetazolamide)</text>
+      <text x="669" y="118" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">CI: sulfa allergy</text>
+      <text x="669" y="136" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Oral: renal stones · paraesthesia</text>
+    </svg>
   </div>
+  <div class="n-distractor-box"><div class="n-distractor-label">Systemic absorption via the nasolacrimal duct</div><div class="n-distractor-text">Eye drops drain via the nasolacrimal duct into the nasal mucosa, where they are absorbed directly into the systemic circulation — bypassing first-pass hepatic metabolism. A single timolol eye drop delivers a significant systemic beta-blockade. <strong>Nasolacrimal occlusion (press on medial canthus for 2 minutes after instillation) reduces systemic absorption by up to 70%.</strong> Always ask about eye drops when taking a systemic drug history.</div></div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Mydriatics, Antibiotics, Anti-VEGF</span><span class="n-section-tag">other key agents</span></div>
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Mydriatics & Cycloplegics</span><span class="n-section-tag">dilate and paralyse</span></div>
   <div class="n-diag-steps">
-    <div class="n-diag-row"><div class="n-diag-label">Tropicamide 1%</div><div class="n-diag-content">Short-acting anticholinergic. Standard mydriatic for fundal examination. Duration: 4–6h. Warn about driving.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label">Cyclopentolate 1%</div><div class="n-diag-content">Standard cycloplegic for refraction in children + uveitis treatment. Duration: 24h. Paralysis of accommodation reveals true error.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label">Antibiotics</div><div class="n-diag-content"><strong>Chloramphenicol:</strong> first-line bacterial conjunctivitis. <strong>Ciprofloxacin:</strong> keratitis (pseudomonas cover). <strong>Aciclovir:</strong> HSV keratitis (dendritic ulcer). Never use topical steroids for undiagnosed red eye.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label gold">Anti-VEGF</div><div class="n-diag-content"><strong>Intravitreal ranibizumab, bevacizumab, aflibercept:</strong> wet AMD, diabetic macular oedema, CRVO/BRVO with CMO. Monthly → PRN dosing. SE: endophthalmitis (rare), RPE tear, subconjunctival haemorrhage.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Tropicamide</div><div class="n-diag-content">Short-acting anticholinergic. Pupil dilation for fundoscopy. Duration 4–6 hours. <strong>Risk of precipitating acute angle-closure</strong> in anatomically narrow angles — always check anterior chamber depth before dilating.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Cyclopentolate</div><div class="n-diag-content">Anticholinergic. <strong>Cycloplegia + mydriasis.</strong> Used for cycloplegic refraction (mandatory in children) and uveitis (prevents posterior synechiae). Duration 24 hours. Systemic: tachycardia, flushing, confusion in children.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Atropine</div><div class="n-diag-content">Longest-acting cycloplegic — 1–2 weeks. Used for: children's cycloplegic refraction (most accurate), amblyopia penalisation (blur good eye to force use of lazy eye), myopia control (0.01%). Systemic toxicity: "mad as a hatter, blind as a bat, dry as a bone, red as a beet."</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Phenylephrine</div><div class="n-diag-content">Sympathomimetic — pupil dilation without cycloplegia. Used with tropicamide for fundoscopy in older patients (better dilation). <strong>Risk: hypertensive crisis in patients on MAOIs.</strong> 2.5% (not 10%) in patients with cardiovascular disease.</div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
-  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Patient given topical steroid for "red eye" by GP → 2 weeks later: dendritic ulcer + worsening → think <em>HSV keratitis reactivated by steroids</em> → stop steroid, start aciclovir.</div></div>
-  <div class="n-distractor-box"><div class="n-distractor-label">Why steroids are dangerous in undiagnosed red eye</div><div class="n-distractor-text"><strong>Three mechanisms of steroid harm: (1) HSV reactivation → dendritic ulcer → perforation; (2) IOP rise → secondary glaucoma; (3) posterior subcapsular cataract with chronic use.</strong> Slit lamp diagnosis first. Always.</div></div>
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Topical Antibiotics & Antivirals</span><span class="n-section-tag">right drug for right pathogen</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label">Chloramphenicol</div><div class="n-diag-content">Broad-spectrum, first-line for bacterial conjunctivitis and minor corneal infections. Theoretical aplastic anaemia risk (1 in 200,000) — very rare but real. Avoid in neonates.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Aciclovir</div><div class="n-diag-content">Topical 3% ointment for HSV epithelial keratitis (dendritic ulcer). <strong>Never use topical steroids for undiagnosed red eye — if it is HSV, steroids cause rapid progression to stromal disease and perforation.</strong> Oral aciclovir/valaciclovir for prophylaxis of recurrent HSV keratitis.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Ganciclovir</div><div class="n-diag-content">CMV retinitis in immunocompromised. Intravitreal or IV for active disease. Oral valganciclovir for maintenance and prophylaxis (HIV patients with CD4 rising on ART).</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Natamycin/Voriconazole</div><div class="n-diag-content">Fungal keratitis — contact lens wearers, agricultural trauma, immunocompromised. <strong>Diagnose by corneal scraping and culture.</strong> Treatment prolonged (weeks–months). Penetrating keratoplasty for refractory cases.</div></div>
+  </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Anti-VEGF & Intravitreal Therapy</span><span class="n-section-tag">the revolution in retinal medicine</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label">Agents</div><div class="n-diag-content"><strong>Ranibizumab (Lucentis)</strong> — licensed fragment. <strong>Bevacizumab (Avastin)</strong> — unlicensed but widely used, much cheaper, equivalent evidence. <strong>Aflibercept (Eylea)</strong> — VEGF trap, extended dosing interval. <strong>Faricimab (Vabysmo)</strong> — dual angiopoietin-2 + VEGF inhibitor, 4-monthly dosing possible.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Indications</div><div class="n-diag-content">Wet AMD (first-line), diabetic macular oedema (DMO), branch and central retinal vein occlusion (BRVO/CRVO), myopic CNV, proliferative DR (adjunct to laser). Monthly loading doses then treat-and-extend or PRN.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Risks of intravitreal injection</div><div class="n-diag-content">Endophthalmitis (0.03–0.05% per injection), traumatic cataract, retinal detachment, vitreous haemorrhage, subconjunctival haemorrhage (common, benign), IOP spike. Systemic: theoretical thromboembolic risk with repeated injections — discuss in high-risk patients.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Corticosteroids — Indications & Dangers</span><span class="n-section-tag">powerful but hazardous</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label">Topical steroids</div><div class="n-diag-content">Anterior uveitis, allergic conjunctivitis (severe), post-operative inflammation. <strong>Three dangers: (1) HSV reactivation → perforation. (2) Steroid-responder glaucoma (IOP rise in 30% of population). (3) Posterior subcapsular cataract</strong> with chronic use. Never prescribe for undiagnosed red eye.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Intravitreal steroids</div><div class="n-diag-content">Triamcinolone, dexamethasone implant (Ozurdex), fluocinolone implant (Iluvien). CMO from uveitis, CRVO, pseudophakic CMO. Sustained release. Risks: glaucoma and cataract much higher than anti-VEGF — use in pseudophakic or high-risk patients.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Systemic steroids</div><div class="n-diag-content">Giant cell arteritis (GCA) — <strong>start immediately on clinical suspicion</strong>, before biopsy result (IV methylprednisolone if vision already lost). Posterior uveitis. Optic neuritis (shortens episode but doesn't improve final VA). Monitor BP, glucose, bone density.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam favourites</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Prostaglandin analogues are first-line for POAG.</strong> Most effective, once-daily, no systemic respiratory/cardiac CI.<span class="n-pearl-exam">Exam: first-line glaucoma drop and mechanism?</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Topical timolol → systemic beta-blockade via nasolacrimal absorption.</strong> Real bronchospasm, real bradycardia. Always ask about asthma before prescribing.</div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Anti-VEGF treats wet AMD and diabetic macular oedema.</strong> Dry AMD has no proven treatment (AREDS supplements only slow progression).</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Timolol eye drops in a patient with asthma = bronchospasm.</strong> Absorbed systemically via NLD. Beta-2 blockade. Always take a drug history that includes eye drops.<span class="n-pearl-exam">Exam: patient develops bronchospasm — which eye drop might be responsible?</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Prostaglandin analogues = first-line for open-angle glaucoma.</strong> Once-daily, best IOP reduction. Side effects: iris colour change (heterochromia), lash growth (hypertrichosis), periorbital fat atrophy.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Brimonidine is contraindicated in infants.</strong> CNS penetration → apnoea. Never use in children under 2 years. This is a classic exam trap.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Topical steroids + HSV keratitis = corneal perforation.</strong> Fluorescein stain any undiagnosed red eye before steroids. Dendritic ulcer = aciclovir, not steroid.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>GCA = start steroids immediately.</strong> Do not wait for temporal artery biopsy result — the fellow eye may lose vision within hours. The biopsy remains positive for 2 weeks after starting steroids.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Nasolacrimal occlusion reduces systemic absorption of eye drops by 70%.</strong> Press medial canthus for 2 minutes after instillation. Important for timolol, brimonidine, latanoprost.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">07</div><div class="n-pearl-body"><strong>Anti-VEGF injection risks: endophthalmitis, RD, cataract.</strong> Rate is low per injection (~0.05% endophthalmitis) but patients receive many injections over years. Absolute sterility is mandatory.</div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for these</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
-      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Topical steroids are safe for red eye — they only act locally.</div></div>
-      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Topical steroids in undiagnosed red eye can cause HSV perforation, glaucoma, and cataract.</strong> Slit lamp diagnosis first — always.</div></div>
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Eye drops are topical — no systemic effects to worry about.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Significant systemic absorption via NLD.</strong> Timolol causes bradycardia, bronchospasm. Brimonidine causes apnoea in infants. Always take an eye drop history.</div></div>
     </div>
     <div class="n-trap">
-      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Topical eye drops have no systemic effects.</div></div>
-      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Eye drops drain via NLD to nasal mucosa → systemic circulation, bypassing first-pass metabolism.</strong> Timolol causes real bronchospasm. Brimonidine causes apnoea in infants. Always check systemic history.</div></div>
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Undiagnosed red eye in GP → topical steroid to reduce inflammation while awaiting referral.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Never give topical steroids for undiagnosed red eye.</strong> If HSV keratitis, you will perforate the cornea. Refer instead.</div></div>
+    </div>
+    <div class="n-trap">
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Temporal arteritis — await biopsy before starting steroids.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Start steroids immediately on clinical suspicion.</strong> Biopsy remains positive for 2 weeks on steroids. Vision loss in the fellow eye is imminent.</div></div>
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>Prostaglandins first. Steroids never blind.</em><br>Every drop you prescribe is a systemic drug.</div></div>
+<div class="n-anchor"><div class="n-anchor-text"><em>Eye drops have systemic effects — always take a drop history.</em><br>Prostaglandins first-line. Timolol CI: asthma. Brimonidine CI: infants.<br>Never steroids for undiagnosed red eye. GCA: treat before biopsy.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.pharmacology=[{q:"Asthmatic POAG patient prescribed timolol develops worsening wheeze. Mechanism?",opts:["Preservative allergy","Systemic beta-2 blockade via nasolacrimal absorption → bronchospasm","Coincidental COPD","Drop technique"],ans:1,focus:"Timolol — systemic absorption, asthma CI",exp:"Timolol absorbed via NLD → nasal mucosa → systemic circulation, bypassing first-pass. Beta-2 blockade causes bronchospasm. Contraindicated in asthma/COPD. Switch to prostaglandin analogue."},{q:"First-line glaucoma drop and its mechanism?",opts:["Timolol — reduce aqueous production","Prostaglandin analogue (latanoprost) — increase uveoscleral outflow","Dorzolamide — inhibit carbonic anhydrase","Brimonidine — alpha-2 agonist"],ans:1,focus:"Prostaglandins — first-line",exp:"Prostaglandin analogues (latanoprost): most effective single agent, 25–35% IOP reduction. FP receptor → uveoscleral outflow. Once-daily evening. No respiratory/cardiac CI."},{q:"GP prescribes topical dexamethasone for red eye. Patient returns 2 weeks later with corneal dendrites and worsening vision. What happened?",opts:["Steroid-induced glaucoma","HSV keratitis reactivated by steroid immunosuppression","Allergic reaction to preservative","Bacterial superinfection"],ans:1,focus:"Steroids + HSV = disaster",exp:"Topical steroids reactivate HSV → dendritic (or geographic) ulcer. Can lead to corneal perforation. Never prescribe steroids for undiagnosed red eye. Slit lamp + fluorescein first. Treatment: stop steroid, topical aciclovir."},{q:"Which drug is contraindicated in infants due to apnoea risk?",opts:["Latanoprost","Timolol","Brimonidine (alpha-2 agonist)","Dorzolamide"],ans:2,focus:"Brimonidine — CI in infants",exp:"Brimonidine (alpha-2 agonist) causes CNS depression and apnoea in infants and young children. Absolute contraindication. Used in adults for glaucoma (reduces production + increases uveoscleral drainage)."},{q:"A patient with wet AMD is offered intravitreal injections. Which drug class and key complication?",opts:["Intravitreal steroids — cataract","Anti-VEGF (ranibizumab/aflibercept) — endophthalmitis","Topical CAI — metallic taste","Alpha-2 agonist — allergy"],ans:1,focus:"Anti-VEGF for wet AMD",exp:"Anti-VEGF (ranibizumab, bevacizumab, aflibercept) for wet AMD, DMO, CRVO. Intravitreal injection. Key SE: endophthalmitis (rare but serious), RPE tear, subconjunctival haemorrhage. Dry AMD: no proven treatment (AREDS supplements only)."}];
