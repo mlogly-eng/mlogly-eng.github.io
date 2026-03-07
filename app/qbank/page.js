@@ -152,8 +152,6 @@ export default function QBank() {
         <div className="results">
           <div id="res-content"></div>
         </div>
-      </div>
     </>
-  </>
   )
 }
