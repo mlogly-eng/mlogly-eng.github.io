@@ -3,820 +3,358 @@
 import { useEffect } from 'react'
 import './obgyn.css'
 
-export default function Home() {
+export default function ObGyn() {
   useEffect(() => {
-    // All existing JavaScript
-    if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
-  const dot=document.getElementById('cdot'),ring=document.getElementById('cring');
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
-  (function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
-  document.querySelectorAll('a,button,.sc').forEach(el=>{
-    el.addEventListener('mouseenter',()=>{dot.style.transform='translate(-50%,-50%) scale(2.2)';ring.style.width='52px';ring.style.height='52px';ring.style.borderColor='rgba(200,69,42,.65)';});
-    el.addEventListener('mouseleave',()=>{dot.style.transform='translate(-50%,-50%)';ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(200,69,42,.35)';});
-  });
-}
-const hbg=document.getElementById('hbg'),drawer=document.getElementById('drawer');
-hbg.addEventListener('click',()=>{
-  const opening=!hbg.classList.contains('open');
-  hbg.classList.toggle('open');
-  if(opening){drawer.style.display='flex';requestAnimationFrame(()=>drawer.classList.add('open'));document.body.style.overflow='hidden';}
-  else{drawer.classList.remove('open');setTimeout(()=>{drawer.style.display='none';},300);document.body.style.overflow='';}
-});
-document.querySelectorAll('.drawer-link').forEach(l=>l.addEventListener('click',()=>{
-  hbg.classList.remove('open');drawer.classList.remove('open');
-  setTimeout(()=>{drawer.style.display='none';},300);document.body.style.overflow='';
-}));
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:.08,rootMargin:'0px 0px -32px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>{
-  const p=el.closest('.spec-grid,.s-right,.w-rows');
-  if(p){const i=Array.from(p.children).indexOf(el);if(i>-1)el.style.transitionDelay=i*.1+'s';}
-  obs.observe(el);
-});
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3600);}
-function notifyMe(btn,specialty){btn.textContent='✓ Noted';btn.disabled=true;showToast("we'll tell you when "+specialty+" drops.");}
-function validEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);}
-document.getElementById('sb').addEventListener('click',async()=>{
-  const email=document.getElementById('ei').value.trim();
-  const errEl=document.getElementById('cerr');
-  const btn=document.getElementById('sb');
-  errEl.classList.remove('show');
-  if(!validEmail(email)){errEl.textContent='Please enter a valid email address.';errEl.classList.add('show');document.getElementById('ei').focus();return;}
-  btn.disabled=true;btn.textContent='Submitting...';
-  // Replace with: await fetch('https://formspree.io/f/YOUR_ID',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,year:document.getElementById('yr').value})});
-  await new Promise(r=>setTimeout(r,800));
-  document.getElementById('fc').innerHTML='<div style="padding:48px 0;"><div style="font-family:\'Instrument Serif\',serif;font-size:52px;color:#e85d3f;font-style:italic;line-height:1;margin-bottom:20px;">You\'re in.</div><p style="color:rgba(245,242,235,.65);font-size:16px;line-height:1.75;">We\'ll reach out when Vent opens.<br>Until then — breathe.</p></div>';
-});
-
-/* ══════════════════════════════════════
-   Q-BANK DATA
-   Questions are loaded from the OB/GYN
-   note file's NOTES_MCQ. Since this is
-   the home page, we embed them here.
-══════════════════════════════════════ */
-const QB_DATA = {
-  obgyn: {
-    label: 'OB / GYN',
-    questions: [
-      // PPH
-      {q:"A woman delivers vaginally and loses 1200ml. The uterus is soft and boggy. What is the most likely cause?",opts:["Retained placenta","Uterine atony","Genital tract trauma","Coagulopathy"],ans:1,exp:"<strong>Uterine atony</strong> causes 70–80% of PPH. A soft boggy uterus that fails to contract is the classic sign.",wrongs:["<strong>Retained placenta</strong> causes PPH but the uterus is typically firm and well-contracted — this is a tissue cause.","<strong>Genital tract trauma</strong> is a tone-independent cause; the uterus would be well contracted.","<strong>Coagulopathy</strong> (thrombin) is the least common of the 4 Ts and usually follows, not precedes, massive haemorrhage."],focus:"4 Ts — Tone as most common cause",learn:["<strong>PPH = blood loss >500ml vaginal or >1000ml caesarean.</strong> Primary PPH is within 24 hours.","The 4 Ts: <strong>Tone</strong> (70–80%), Trauma, Tissue, Thrombin — in order of frequency.","Bimanual uterine massage and IV oxytocin are the first response to uterine atony.","<strong>Shock Index (HR ÷ SBP) >1.0</strong> indicates significant haemodynamic compromise.","Tranexamic acid reduces PPH mortality when given within 3 hours of onset (WOMAN trial)."]},
-      {q:"First-line uterotonic for PPH prevention and treatment is:",opts:["Ergometrine","Carboprost","Tranexamic acid","Oxytocin"],ans:3,exp:"<strong>Oxytocin</strong> is first-line for both prevention (active management of third stage) and PPH treatment.",wrongs:["<strong>Ergometrine</strong> is second-line; contraindicated in hypertension and cardiac disease.","<strong>Carboprost (PGF2α)</strong> is third-line; contraindicated in asthma.","<strong>Tranexamic acid</strong> is an antifibrinolytic — adjunct treatment, not a uterotonic."],focus:"Uterotonic drug hierarchy",learn:["<strong>Oxytocin 10 IU IM</strong> is given immediately after delivery of the anterior shoulder — active management.","Ergometrine causes sustained uterine contraction; avoid in pre-eclampsia and hypertension.","Carboprost: max 8 doses of 250mcg IM every 15 minutes. Never IV.","<strong>Misoprostol</strong> is an oral/PR option when oxytocin is unavailable.","Uterotonic ladder: oxytocin → ergometrine → carboprost → surgical."]},
-      {q:"After oxytocin and ergometrine fail in PPH, the next pharmacological step is:",opts:["Misoprostol PR","Carboprost IM","IV tranexamic acid","B-Lynch suture"],ans:1,exp:"<strong>Carboprost (15-methyl PGF2α)</strong> is third-line after oxytocin and ergometrine.",wrongs:["<strong>Misoprostol PR</strong> is a useful alternative when other uterotonics are unavailable, but not the next step when ergometrine has already failed.","<strong>IV tranexamic acid</strong> is an antifibrinolytic adjunct — it doesn't cause uterine contraction.","<strong>B-Lynch suture</strong> is a surgical intervention — only after pharmacology has failed."],focus:"Uterotonic escalation ladder",learn:["Carboprost is <strong>contraindicated in asthma</strong> — causes severe bronchospasm.","Maximum dose: 250mcg IM every 15 minutes, up to 8 doses total.","<strong>B-Lynch suture</strong>, uterine artery ligation, and hysterectomy are the surgical escalation.","Interventional radiology (uterine artery embolisation) is an alternative to preserve fertility.","If PPH continues despite all uterotonics → activate massive transfusion protocol."]},
-      {q:"The WOMAN trial showed tranexamic acid reduces PPH mortality when given within:",opts:["1 hour of delivery","3 hours of PPH onset","6 hours of PPH onset","Only with confirmed coagulopathy"],ans:1,exp:"Tranexamic acid reduces PPH-related death when given within <strong>3 hours of onset</strong>. Benefit drops sharply after 3 hours.",wrongs:["<strong>1 hour</strong> is not the WOMAN trial threshold; the benefit extends to 3 hours.","<strong>6 hours</strong> is too late — the antifibrinolytic effect is lost by then.","Waiting for <strong>confirmed coagulopathy</strong> delays treatment unnecessarily; give empirically in significant PPH."],focus:"WOMAN trial — tranexamic acid timing",learn:["WOMAN trial: 20,000 women, showed TXA <strong>reduces PPH mortality by 19%</strong> when given within 3 hours.","Dose: <strong>1g IV over 10 minutes</strong>. Repeat 1g if bleeding continues after 30 minutes.","TXA is an antifibrinolytic — it prevents clot breakdown, not a direct uterotonic.","Give as soon as PPH is recognised — do not wait for lab evidence of coagulopathy.","TXA is safe in breastfeeding."]},
-      {q:"Shock Index >1 in PPH indicates:",opts:["Normal haemodynamics","Mild blood loss only","Significant haemodynamic compromise requiring action","Coagulopathy confirmed"],ans:2,exp:"<strong>Shock Index = HR ÷ Systolic BP.</strong> Normal 0.5–0.7. Value >1.0 signals significant compromise — predicts need for massive transfusion.",wrongs:["A <strong>normal Shock Index</strong> is 0.5–0.7; values >1 are never normal.","<strong>Mild blood loss</strong> typically maintains SI <0.9.","<strong>Shock Index does not confirm coagulopathy</strong> — that requires lab tests (fibrinogen, ROTEM)."],focus:"Shock Index in haemorrhage assessment",learn:["Shock Index detects physiological compromise <strong>earlier than HR or BP alone</strong>.","BP is maintained by vasoconstriction even with significant volume loss — a late sign.","SI >1.7 correlates with massive transfusion requirement.","<strong>MEOWS (Modified Early Obstetric Warning Score)</strong> incorporates multiple parameters including SI.","Trend over time matters — a rising SI despite intervention signals ongoing haemorrhage."]},
-      // Preeclampsia
-      {q:"Which of the following best describes the underlying pathophysiology of pre-eclampsia?",opts:["Primary hypertension aggravated by pregnancy","Abnormal placentation causing systemic endothelial dysfunction","Gestational fluid overload causing BP rise","Autoimmune renal inflammation causing proteinuria"],ans:1,exp:"Pre-eclampsia is caused by <strong>abnormal placentation</strong> — failure of trophoblast invasion → ischaemic placenta → antiangiogenic factors (sFlt-1) → systemic endothelial damage.",wrongs:["<strong>Primary hypertension</strong> precedes pregnancy by definition and is a risk factor for, not the cause of, pre-eclampsia.","<strong>Fluid overload</strong> is a consequence of pre-eclampsia, not the cause — capillary leak causes oedema despite low oncotic pressure.","<strong>Autoimmune renal inflammation</strong> describes nephritic syndrome; the kidney in pre-eclampsia shows glomerular endotheliosis, not inflammation."],focus:"Pre-eclampsia pathophysiology",learn:["Failed trophoblast invasion → <strong>narrow, high-resistance spiral arteries</strong> → placental ischaemia.","Ischaemic placenta releases sFlt-1 (anti-VEGF) → blocks normal endothelial function throughout the body.","This is why pre-eclampsia affects <strong>every organ system</strong>: brain (seizures), liver (HELLP), kidney (proteinuria), lungs (oedema).","<strong>Delivery is the only cure</strong> — removing the placenta resolves the cause.","Aspirin 75–150mg from 12 weeks reduces risk in high-risk women by ~50%."]},
-      {q:"A 28-week primigravida has BP 158/102, 2+ proteinuria and severe headache. First-line antihypertensive?",opts:["Atenolol","Labetalol IV","ACE inhibitor","Furosemide"],ans:1,exp:"<strong>Labetalol IV</strong> is first-line for acute severe hypertension in pregnancy — it is safe, fast-acting, and well-evidenced.",wrongs:["<strong>Atenolol</strong> (beta-blocker) is associated with fetal growth restriction; not used in pregnancy.","<strong>ACE inhibitors</strong> are absolutely contraindicated in pregnancy — cause fetal renal agenesis and oligohydramnios.","<strong>Furosemide</strong> is a diuretic; pre-eclampsia involves capillary leak not fluid overload — diuresis worsens placental perfusion."],focus:"Acute antihypertensive management in pregnancy",learn:["Treat BP ≥160/110 urgently to prevent maternal stroke.","<strong>Labetalol IV, hydralazine IV, or nifedipine oral</strong> are the three first-line options in the UK.","<strong>Target: <150/100</strong> — do not over-lower as this compromises placental perfusion.","Always have magnesium sulphate drawn up when giving antihypertensives acutely.","Absolute contraindications: ACE inhibitors, ARBs, atenolol in any trimester."]},
-      {q:"Magnesium sulphate in pre-eclampsia is used to:",opts:["Lower blood pressure","Prevent and treat eclamptic seizures","Induce diuresis","Reverse coagulopathy in HELLP"],ans:1,exp:"<strong>MgSO4 prevents and treats eclamptic seizures</strong>. It is not an antihypertensive. MAGPIE trial showed 58% reduction in eclampsia.",wrongs:["<strong>MgSO4 does not lower BP</strong> — antihypertensives are given separately.","<strong>Diuresis</strong> is not a magnesium effect; it is caused by furosemide or spontaneous postpartum diuresis.","<strong>HELLP coagulopathy</strong> requires fresh frozen plasma and platelets — magnesium has no role."],focus:"Magnesium sulphate — mechanism and use",learn:["<strong>MAGPIE trial:</strong> MgSO4 reduces eclampsia by 58% and maternal mortality by 45%.","Loading dose: <strong>4g IV over 15 minutes</strong>. Maintenance: 1g/hour infusion.","Monitor for toxicity: loss of patellar reflexes (first sign), respiratory depression, cardiac arrest.","Antidote: <strong>calcium gluconate 10ml of 10%</strong> IV — keep at bedside.","Continue MgSO4 for <strong>24 hours postpartum</strong> — eclampsia commonly occurs after delivery."]},
-      // GDM
-      {q:"A 30-year-old woman at 26 weeks has a 75g OGTT: fasting glucose 5.4 mmol/L, 1-hour 10.8 mmol/L, 2-hour 8.9 mmol/L. The diagnosis is:",opts:["Normal","Gestational diabetes mellitus","Pre-existing type 2 diabetes","Impaired fasting glucose only"],ans:1,exp:"<strong>GDM is diagnosed if any value meets the threshold:</strong> fasting ≥5.1, 1-hour ≥10.0, or 2-hour ≥8.5 mmol/L (NICE/IADPSG). The 2-hour value of 8.9 exceeds 8.5.",wrongs:["<strong>Normal</strong> requires all values below threshold — the 2-hour at 8.9 exceeds the 8.5 cutoff.","<strong>Pre-existing T2DM</strong> is defined by fasting ≥7.0 or 2-hour ≥11.1; this doesn't meet that threshold.","<strong>Impaired fasting glucose</strong> is a non-pregnant diagnosis; in pregnancy, any threshold breach = GDM."],focus:"GDM OGTT diagnostic thresholds",learn:["NICE GDM thresholds: fasting <strong>≥5.1</strong>, 1-hour <strong>≥10.0</strong>, 2-hour <strong>≥8.5</strong> mmol/L.","The OGTT is performed at <strong>24–28 weeks</strong> in women with risk factors.","<strong>Any single value exceeding the threshold</strong> confirms GDM — not an average.","Women with GDM at booking glucose ≥7.0 likely have pre-existing T2DM — refer to diabetologist.","Post-diagnosis: blood glucose monitoring 4×/day (fasting + 1-hour post-meals)."]},
-      {q:"Which fasting glucose level in GDM mandates insulin from the outset rather than a trial of metformin?",opts:[">5.5 mmol/L",">7.0 mmol/L",">6.0 mmol/L","Any fasting hyperglycaemia"],ans:1,exp:"Fasting glucose <strong>>7.0 mmol/L</strong> indicates significant insulin deficiency — metformin alone cannot achieve targets. Start insulin immediately.",wrongs:["<strong>>5.5 mmol/L</strong> is just above the GDM fasting threshold — diet modification and metformin are first-line here.","<strong>>6.0 mmol/L</strong> is not a standard clinical cutoff for immediate insulin.","<strong>Any fasting hyperglycaemia</strong> does not automatically warrant insulin — most GDM is diet or metformin controlled."],focus:"GDM: when to start insulin",learn:["Fasting glucose <strong>>7 mmol/L</strong> at diagnosis = insulin from the outset.","<strong>Isophane insulin (NPH)</strong> at night targets fasting hyperglycaemia.","Short-acting insulin with meals targets post-prandial peaks.","Insulin requirements increase as pregnancy progresses due to rising insulin resistance.","<strong>Stop all insulin and metformin immediately after delivery</strong> — GDM-related resistance resolves within hours."]},
-      // Ectopic
-      {q:"A woman with a positive pregnancy test presents with 6/52 amenorrhoea, unilateral pelvic pain and vaginal spotting. Urine βhCG positive. Transvaginal USS shows no intrauterine pregnancy. What is the next step?",opts:["Reassure and repeat in 2 weeks","Measure serum βhCG and repeat USS in 48 hours","Immediate diagnostic laparoscopy","Prescribe methotrexate empirically"],ans:1,exp:"With no IUP seen and symptoms suggesting ectopic, measure <strong>serum βhCG and repeat USS in 48 hours</strong> to establish location and trend.",wrongs:["<strong>Reassuring and waiting</strong> is dangerous — a ruptured ectopic can cause death within hours.","<strong>Immediate laparoscopy</strong> is indicated if the patient is haemodynamically unstable or a definite ectopic is visualised on USS.","<strong>Methotrexate</strong> requires confirmed ectopic and haemodynamic stability — never give empirically."],focus:"Ectopic pregnancy — initial management",learn:["The triad: <strong>amenorrhoea, pain, vaginal bleeding</strong> — but only 50% have all three.","<strong>Ectopic until proven otherwise</strong> in any woman of reproductive age with pain and a positive pregnancy test.","Discriminatory zone: βhCG <strong>>1500–2000 IU/L</strong> — a viable IUP should be visible on TVUSS above this level.","Absent IUP + rising βhCG + no adnexal mass = <strong>pregnancy of unknown location (PUL)</strong>.","Ruptured ectopic: sudden severe pain + haemodynamic instability = emergency laparoscopy."]},
-      // Shoulder Dystocia
-      {q:"During delivery, after the head delivers, there is difficulty delivering the shoulders. The turtle sign is present. What is the first manoeuvre?",opts:["Fundal pressure","McRoberts' position + suprapubic pressure","Zavanelli manoeuvre","Delivery of posterior arm"],ans:1,exp:"<strong>McRoberts' position</strong> (hyperflexion of maternal thighs) with <strong>suprapubic pressure</strong> is always the first manoeuvre — resolves ~50% of shoulder dystocia.",wrongs:["<strong>Fundal pressure</strong> is absolutely contraindicated — it worsens impaction of the anterior shoulder.","<strong>Zavanelli manoeuvre</strong> (cephalic replacement + caesarean) is the last resort, reserved for all other manoeuvres failing.","<strong>Delivery of the posterior arm</strong> is an effective internal manoeuvre but is used after McRoberts has failed."],focus:"HELPERR — shoulder dystocia management",learn:["HELPERR: <strong>H</strong>elp, <strong>E</strong>pisiotomy, <strong>L</strong>egs (McRoberts), <strong>P</strong>ressure (suprapubic), <strong>E</strong>nter (internal), <strong>R</strong>emove arm, <strong>R</strong>oll.","McRoberts + suprapubic pressure resolves <strong>~50%</strong> of cases.","<strong>Never apply fundal pressure</strong> — this is the most common documented error.","Suprapubic pressure: directed downward and laterally to dislodge the anterior shoulder.","Document time of head delivery — every 60 seconds without delivery increases fetal acidosis significantly."]},
-      // Preterm Labour
-      {q:"A woman at 28 weeks presents in confirmed preterm labour. Which of the following should be given to protect the fetal brain?",opts:["Magnesium sulphate","Betamethasone","Ritodrine","Indomethacin"],ans:0,exp:"<strong>Magnesium sulphate at 28 weeks is neuroprotective</strong> — it reduces the risk of cerebral palsy in preterm infants, not seizures.",wrongs:["<strong>Betamethasone</strong> is crucial for lung maturation (surfactant) but its primary benefit is <strong>pulmonary</strong>, not neuroprotection.","<strong>Ritodrine</strong> (beta-agonist tocolytic) is no longer used routinely in the UK due to maternal side effects.","<strong>Indomethacin</strong> is a tocolytic used <34 weeks; not given for neuroprotection."],focus:"Magnesium sulphate for neuroprotection at <30 weeks",learn:["Magnesium sulphate is given for <strong>neuroprotection</strong> at <30 weeks — reduces cerebral palsy risk by ~30%.","Give <strong>betamethasone 12mg IM × 2 doses 24 hours apart</strong> for lung maturation at 24–34 weeks.","<strong>Antenatal corticosteroids reduce: RDS, IVH, NEC, and neonatal death.</strong>","Tocolysis (e.g. nifedipine, atosiban) is used to delay delivery to allow steroids to work — not to prevent delivery indefinitely.","Transfer to a unit with NICU before delivery if possible."]},
-      // Cord Prolapse
-      {q:"Umbilical cord prolapse is confirmed on examination. The baby is alive. What is the immediate first action?",opts:["Call for help and prepare theatre","Manually replace the cord","Elevate the presenting part off the cord digitally and call for emergency CS","Give terbutaline to stop contractions"],ans:2,exp:"<strong>Elevate the presenting part digitally</strong> to relieve cord compression immediately. This is the priority before all else.",wrongs:["<strong>Calling for help</strong> happens simultaneously but relieving compression is the first physical act.","<strong>Manually replacing the cord</strong> (funic reduction) is controversial and not first-line.","<strong>Terbutaline</strong> may be used to reduce contractions while awaiting theatre but is not the first action."],focus:"Cord prolapse — immediate management",learn:["Cord prolapse = <strong>obstetric emergency</strong>. Category 1 caesarean section.","<strong>Never remove your hand</strong> from the presenting part once it is elevated — continuous pressure until delivery.","Position: <strong>knee-chest</strong> or exaggerated Sims' — gravity takes the presenting part off the cord.","Filling the bladder with 500–700ml saline can also elevate the presenting part.","<strong>Do not attempt vaginal delivery</strong> unless birth is imminent — full dilatation and easy forceps only."]},
-      // Miscarriage
-      {q:"A woman at 9 weeks has heavy vaginal bleeding. Speculum shows dilated cervical os with visible products. The diagnosis is:",opts:["Threatened miscarriage","Inevitable miscarriage","Complete miscarriage","Missed miscarriage"],ans:1,exp:"<strong>Inevitable miscarriage</strong>: dilated os means the pregnancy cannot continue. Products may or may not have passed yet.",wrongs:["<strong>Threatened miscarriage</strong>: bleeding with <strong>closed os</strong> — the pregnancy may still continue.","<strong>Complete miscarriage</strong>: all products have passed, os is closed, USS confirms empty uterus.","<strong>Missed miscarriage</strong>: embryo has died but os is <strong>closed</strong> and no bleeding — found incidentally on USS."],focus:"Types of miscarriage — classification",learn:["Threatened: bleeding + <strong>closed os</strong> — may continue.","Inevitable: bleeding + <strong>open os</strong> — will not continue.","Incomplete: some products remain, os open.","Complete: all products passed, os closed.","<strong>Missed (silent)</strong>: fetal death with closed os, no bleeding — often incidental USS finding."]},
-      // Placenta Praevia
-      {q:"A woman at 34 weeks presents with painless, bright red vaginal bleeding. She is haemodynamically stable. What is absolutely contraindicated?",opts:["USS to check placental position","Corticosteroids for fetal lung maturity","Vaginal examination","IV access and blood cross-match"],ans:2,exp:"<strong>Vaginal examination is absolutely contraindicated</strong> in suspected placenta praevia — it can precipitate catastrophic haemorrhage.",wrongs:["<strong>USS</strong> is the diagnostic tool of choice — safe and should be done urgently.","<strong>Corticosteroids</strong> are appropriate if <34 weeks and delivery may be imminent.","<strong>IV access + cross-match</strong> are essential initial resuscitation steps."],focus:"Placenta praevia — management principles",learn:["<strong>Painless, bright red APH in the third trimester = placenta praevia until proven otherwise.</strong>","Major praevia (covering os) = <strong>elective caesarean at 36–37 weeks</strong>.","<strong>Never perform a digital vaginal examination</strong> before excluding praevia on USS.","Placenta accreta spectrum (accreta, increta, percreta) is the feared complication — risk increases with prior CS.","Ante-partum admissions, steroids if preterm, cross-match blood, plan delivery with senior team."]},
-      // IOL
-      {q:"A nulliparous woman has a Bishop score of 3. The most appropriate cervical ripening agent is:",opts:["Oxytocin infusion","Artificial rupture of membranes","Prostaglandin E2 (dinoprostone)","Misoprostol 200mcg"],ans:2,exp:"<strong>Prostaglandin E2 (dinoprostone)</strong> — vaginal gel or pessary — is the first-line cervical ripening agent for an unfavourable cervix (Bishop ≤6).",wrongs:["<strong>Oxytocin infusion</strong> requires a ripe cervix (Bishop ≥8) and ruptured membranes — it cannot ripen an unfavourable cervix.","<strong>ARM</strong> requires a favourable cervix — impossible with Bishop 3.","<strong>Misoprostol 200mcg</strong> is too high a dose and not standard UK practice for IOL; lower doses (25–50mcg) are used off-label."],focus:"Bishop score and cervical ripening",learn:["<strong>Bishop score ≤6 = unfavourable cervix</strong> requiring ripening before oxytocin.","Dinoprostone: <strong>3mg vaginal tablet or 1mg gel</strong>; can repeat after 6 hours.","Balloon catheter is an alternative for cervical ripening, especially in VBAC (no uterotonic risk).","<strong>Hyperstimulation (>5 contractions in 10 minutes)</strong> with PG = remove pessary, give tocolytic.","Oxytocin is titrated post-ARM once cervix is favourable."]},
-      // OvaryCyst
-      {q:"A premenopausal woman has a 4cm, unilocular, anechoic ovarian cyst on USS. CA-125 is normal. Most appropriate management?",opts:["Immediate surgical excision","Reassure and repeat USS in 3 months","Start OCP to suppress it","Refer to oncology urgently"],ans:1,exp:"A simple unilocular anechoic cyst <5cm with normal CA-125 in a premenopausal woman is almost certainly functional. <strong>Expectant management with repeat USS</strong> is appropriate.",wrongs:["<strong>Immediate surgery</strong> is not warranted for a likely functional cyst with no concerning features.","<strong>OCP</strong> does not reliably suppress established cysts — evidence is poor.","<strong>Urgent oncology referral</strong> is for cysts with malignant features (solid components, septations, ascites, raised CA-125)."],focus:"Ovarian cyst management — premenopausal",learn:["<strong>Unilocular, thin-walled, anechoic cyst in premenopausal woman</strong> = likely functional.","RCOG guidelines: simple cyst <5cm → no follow-up needed; 5–7cm → annual USS.","CA-125 is unreliable in premenopausal women — raised by endometriosis, fibroids, PID.","<strong>IOTA simple rules</strong> classify USS features into benign, malignant, or inconclusive.","Risk of malignancy in simple premenopausal cyst is <1%."]},
-      // PCOS
-      {q:"A 24-year-old presents with oligomenorrhoea, acne, and hirsutism. USS shows bilateral polycystic ovarian morphology. To confirm PCOS by Rotterdam criteria, you need:",opts:["At least 3 of the 3 Rotterdam features","At least 2 of the 3 Rotterdam features","Elevated testosterone only","Elevated LH:FSH ratio >2"],ans:1,exp:"<strong>Rotterdam criteria requires 2 out of 3:</strong> oligo/anovulation, clinical/biochemical hyperandrogenism, polycystic ovarian morphology. This patient already has 2.",wrongs:["<strong>All 3 features</strong> are not required — 2 out of 3 is sufficient.","<strong>Elevated testosterone alone</strong> does not diagnose PCOS without meeting Rotterdam criteria.","<strong>LH:FSH ratio >2</strong> was historical — Rotterdam criteria do not include it."],focus:"PCOS Rotterdam diagnostic criteria",learn:["Rotterdam criteria (2 of 3): <strong>oligo/anovulation</strong>, <strong>hyperandrogenism</strong> (clinical or biochemical), <strong>polycystic ovarian morphology</strong>.","<strong>Polycystic morphology</strong> = ≥20 follicles in one ovary OR ovarian volume >10ml.","PCOS carries metabolic risk: insulin resistance, T2DM, dyslipidaemia — screen all women.","<strong>First-line anovulation treatment for fertility: letrozole</strong> (replaced clomifene citrate in 2022).","Lifestyle modification (weight loss) is the most effective first-line treatment."]},
-      // Endometriosis
-      {q:"A 26-year-old has progressively worsening dysmenorrhoea, deep dyspareunia, and subfertility. Examination is normal. The investigation of choice to confirm endometriosis is:",opts:["Pelvic MRI","Serum CA-125","Transvaginal ultrasound","Diagnostic laparoscopy with biopsy"],ans:3,exp:"<strong>Diagnostic laparoscopy with histological confirmation</strong> is the gold standard for diagnosing endometriosis.",wrongs:["<strong>MRI</strong> detects deep infiltrating endometriosis well but cannot diagnose peritoneal disease and requires laparoscopy to confirm.","<strong>CA-125</strong> is neither sensitive nor specific for endometriosis — not a diagnostic test.","<strong>TVUSS</strong> detects endometriomas (>3cm) and deep infiltrating disease but cannot identify peritoneal implants."],focus:"Endometriosis diagnosis — gold standard",learn:["Endometriosis affects <strong>~10% of women</strong> of reproductive age; average diagnostic delay is 7–10 years.","<strong>Symptoms do not correlate with stage</strong> — stage I disease can cause debilitating pain.","TVUSS with bowel preparation is the first-line investigation for suspected deep endometriosis.","Medical treatment: COCP, progestogens, GnRH analogues — all are suppressive, not curative.","<strong>Laparoscopic excision</strong> is preferred over ablation for visible disease."]},
-    ]
-  },
-  ophtho: {
-    label: 'Ophthalmology',
-    questions: [
-      {q:"A diabetic patient presents with dot and blot haemorrhages, microaneurysms, and hard exudates on fundoscopy. Vision is currently normal. The diagnosis is:",opts:["Proliferative diabetic retinopathy","Background (non-proliferative) diabetic retinopathy","Central retinal vein occlusion","Hypertensive retinopathy grade IV"],ans:1,exp:"<strong>Background (non-proliferative) DR</strong>: dot/blot haemorrhages, microaneurysms, hard exudates — all within the retinal layers. No new vessels yet.",wrongs:["<strong>Proliferative DR</strong> = new vessel formation (neovascularisation) on the disc or elsewhere — not present here.","<strong>CRVO</strong> causes flame haemorrhages in all four quadrants with disc swelling — not microaneurysms.","<strong>Hypertensive retinopathy grade IV</strong> (papilloedema) requires disc swelling and severe hypertension."],focus:"Diabetic retinopathy classification",learn:["<strong>Background DR</strong>: microaneurysms, dot/blot haemorrhages, hard exudates, cotton wool spots.","<strong>Pre-proliferative DR</strong>: IRMA, venous beading, multiple cotton wool spots.","<strong>Proliferative DR</strong>: new vessels on disc (NVD) or elsewhere (NVE) — risk of vitreous haemorrhage.","Hard exudates = lipid deposits from leaky microaneurysms. Cotton wool spots = microinfarcts.","<strong>Annual dilated fundoscopy</strong> is mandatory for all diabetics."]},
-      {q:"A 65-year-old presents with sudden painless loss of vision in one eye. Fundoscopy shows a pale, oedematous retina with a 'cherry red spot' at the macula. Diagnosis?",opts:["Central retinal vein occlusion","Anterior ischaemic optic neuropathy","Central retinal artery occlusion","Vitreous haemorrhage"],ans:2,exp:"<strong>Cherry red spot + pale retina = CRAO.</strong> The fovea appears red as underlying choroid shows through — the rest of the retina is ischaemic and white.",wrongs:["<strong>CRVO</strong> shows flame haemorrhages in all four quadrants ('stormy sunset') — not a cherry red spot.","<strong>AION</strong> causes pale disc swelling (altitudinal field defect) without cherry red spot.","<strong>Vitreous haemorrhage</strong> obscures the fundal view — you wouldn't see the retina clearly."],focus:"Central retinal artery occlusion features",learn:["CRAO: <strong>sudden, painless, profound monocular vision loss.</strong>","Fundoscopy: <strong>pale retina + cherry red spot</strong> at fovea (choroidal circulation preserved).","Aetiology: embolus (carotid, cardiac), vasculitis, thrombosis.","<strong>Emergency</strong>: ocular massage, IOP-lowering, urgent vascular work-up.","CRAO is a <strong>stroke equivalent</strong> — urgent carotid Doppler, ECG, cardiac echo, lipids, BP."]},
-      {q:"A patient with open-angle glaucoma has elevated IOP. The first-line topical treatment is:",opts:["Pilocarpine drops","Timolol (beta-blocker) drops","Latanoprost (prostaglandin analogue)","Acetazolamide tablets"],ans:2,exp:"<strong>Prostaglandin analogues (latanoprost)</strong> are first-line for POAG — once daily, highly effective at reducing IOP with fewer systemic side effects.",wrongs:["<strong>Pilocarpine</strong> is a miotic — used for acute angle-closure, not chronic open-angle glaucoma.","<strong>Timolol</strong> was historically first-line but has been superseded by prostaglandin analogues.","<strong>Acetazolamide</strong> (carbonic anhydrase inhibitor) is oral, used in acute angle-closure emergencies — not first-line maintenance."],focus:"Glaucoma — first-line medical treatment",learn:["<strong>Prostaglandin analogues</strong> (latanoprost, bimatoprost): increase uveoscleral outflow — once daily, most potent IOP reduction.","<strong>Beta-blockers</strong> (timolol): reduce aqueous production — avoid in asthma, heart block.","<strong>Carbonic anhydrase inhibitors</strong> (dorzolamide, brimonidine): adjuncts.","Target IOP should be individualised — lower if disc damage is severe.","<strong>Visual field testing and OCT</strong> monitor progression regardless of IOP."]},
-      {q:"A 70-year-old woman presents with sudden onset red, painful eye, fixed mid-dilated pupil, corneal oedema, and vomiting. The diagnosis is:",opts:["Acute anterior uveitis","Acute angle-closure glaucoma","Episcleritis","Bacterial conjunctivitis"],ans:1,exp:"<strong>Acute angle-closure glaucoma:</strong> sudden severe pain, red eye, fixed mid-dilated oval pupil, corneal haziness, nausea/vomiting — IOP often >50 mmHg.",wrongs:["<strong>Anterior uveitis</strong>: red eye + photophobia + small irregular pupil (posterior synechiae) — not mid-dilated fixed.","<strong>Episcleritis</strong>: sectoral redness, no pain on movement, normal IOP and normal pupil.","<strong>Bacterial conjunctivitis</strong>: bilateral purulent discharge, no change in IOP or pupil."],focus:"Acute angle-closure glaucoma — clinical features",learn:["Classically in <strong>hyperopic elderly women</strong> — shallow anterior chamber.","Triggers: dim lighting, mydriatic drops, emotional stress (pupil dilates, blocks angle).","<strong>Emergency treatment:</strong> IV acetazolamide, topical pilocarpine, IV mannitol, laser iridotomy.","<strong>Fixed mid-dilated pupil</strong> distinguishes from uveitis (small, irregular) and normal (reactive).","Contralateral prophylactic laser iridotomy is recommended."]},
-      {q:"Which layer of the cornea is avascular and provides ~70% of its refractive power?",opts:["Bowman's layer","Descemet's membrane","Stroma","Epithelium"],ans:2,exp:"The <strong>stroma</strong> comprises ~90% of corneal thickness and provides the bulk of its refractive power, maintained by regular collagen fibril arrangement.",wrongs:["<strong>Bowman's layer</strong>: acellular, protects stroma — does not contribute to refraction.","<strong>Descemet's membrane</strong>: basement membrane of endothelium — structural role only.","<strong>Epithelium</strong>: provides smooth optical surface and barrier function but minimal refraction."],focus:"Corneal anatomy and layers",learn:["Corneal layers anterior to posterior: <strong>Epithelium → Bowman's → Stroma → Dua's → Descemet's → Endothelium.</strong>","Stroma = <strong>~500μm</strong>, made of collagen fibrils in precise arrangement — disruption causes opacity.","<strong>Endothelium</strong> pumps fluid out to keep stroma clear — endothelial failure = corneal oedema.","Cornea is the <strong>main refracting surface</strong> of the eye (~43 dioptres); lens adds ~19D.","<strong>Keratoconus</strong>: progressive thinning and ectasia of the stroma — causes irregular astigmatism."]},
-    ]
-  }
-};
-
-// Flatten all questions with system tag
-function qbGetPool(sys) {
-  let pool = [];
-  if (sys === 'all') {
-    Object.entries(QB_DATA).forEach(([sysKey, sysData]) => {
-      sysData.questions.forEach(q => pool.push({...q, _sys: sysData.label}));
-    });
-  } else if (QB_DATA[sys]) {
-    QB_DATA[sys].questions.forEach(q => pool.push({...q, _sys: QB_DATA[sys].label}));
-  }
-  return pool;
-}
-
-// State
-let qbSys = 'all', qbMode = 'normal', qbCount = 10;
-let qbSession = null; // {questions, current, answers, mode}
-
-
-
-
-
-
-
-function qbExit() {
-  document.getElementById('qb-room').classList.remove('open');
-  document.body.style.overflow = '';
-  qbSession = null;
-}
-function qbUpdateProgress() {
-  if (!qbSession) return;
-  const pct = Math.round((qbSession.current / qbSession.questions.length) * 100);
-  document.getElementById('qb-room-pbar').style.width = pct + '%';
-  document.getElementById('qb-room-nav-right').textContent = (qbSession.current + 1) + ' / ' + qbSession.questions.length;
-}
-function qbRenderQ() {
-  if (!qbSession) return;
-  const {questions, current} = qbSession;
-  const q = questions[current];
-  const total = questions.length;
-  const letters = ['A','B','C','D','E'];
-  qbUpdateProgress();
-  let dots = '';
-  for (let i = 0; i < total; i++) dots += `<div class="qb-dot ${i < current ? 'done' : i === current ? 'current' : ''}"></div>`;
-  const html = `
-    <div class="qb-q-shell">
-      <div class="qb-q-meta">
-        <div class="qb-q-tag">${q._sys}</div>
-        <div class="qb-q-num">Q${current+1} of ${total}</div>
-      </div>
-      <div class="qb-dots">${dots}</div>
-      <div class="qb-q-text">${q.q}</div>
-      <div class="qb-opts" id="qb-opts-wrap">
-        ${q.opts.map((o,i) => `
-          <button class="qb-opt" onclick="qbSelectOpt(${i})">
-            <span class="qb-opt-ltr">${letters[i]}</span>
-            <span class="qb-opt-txt">${o}</span>
-          </button>`).join('')}
-      </div>
-      <div id="qb-feedback-area"></div>
-      <div class="qb-next-row">
-        <button class="qb-next-btn" id="qb-next-btn" onclick="qbNext()" disabled>
-          ${current + 1 < total ? 'Next &rarr;' : 'See results &rarr;'}
-        </button>
-      </div>
-    </div>`;
-  document.getElementById('qb-room-body').innerHTML = html;
-  document.getElementById('qb-room-body').scrollTop = 0;
-}
-function qbSelectOpt(oi) {
-  if (!qbSession) return;
-  const {questions, current, mode} = qbSession;
-  if (qbSession.answers[current] !== null) return;
-  qbSession.answers[current] = oi;
-  const q = questions[current];
-  const letters = ['A','B','C','D','E'];
-  // Lock all options
-  document.querySelectorAll('.qb-opt').forEach(b => b.classList.add('qb-locked'));
-  if (mode === 'normal') {
-    // Colour the options
-    document.querySelectorAll('.qb-opt').forEach((b, i) => {
-      if (i === q.ans) b.classList.add('qb-correct-reveal');
-      else if (i === oi && oi !== q.ans) b.classList.add('qb-wrong-reveal');
-    });
-    // Build feedback
-    const isCorrect = oi === q.ans;
-    let wrongsHtml = '';
-    if (q.wrongs) {
-      wrongsHtml = `<div class="qb-fb-lbl">Why the others are wrong</div><div class="qb-fb-wrongs">
-        ${q.opts.map((o,i) => i !== q.ans ? `<div class="qb-fb-wrong-item"><strong>${letters[i]}. ${o}</strong> — ${q.wrongs[i - (i > q.ans ? 1 : 0)] || ''}</div>` : '').filter(Boolean).join('')}
-      </div>`;
-    }
-    let learnHtml = '';
-    if (q.learn && q.learn.length) {
-      learnHtml = `<div class="qb-learn">
-        <div class="qb-learn-lbl">Learning note</div>
-        <div class="qb-learn-pts">${q.learn.map(pt => `<div class="qb-learn-pt">${pt}</div>`).join('')}</div>
-      </div>`;
-    }
-    document.getElementById('qb-feedback-area').innerHTML = `
-      <div class="qb-feedback ${isCorrect ? '' : 'wrong'}">
-        <div class="qb-fb-verdict">${isCorrect ? '✓ Correct' : '✗ Incorrect'}</div>
-        <div class="qb-fb-lbl">Why</div>
-        <div class="qb-fb-why">${q.exp}</div>
-        ${wrongsHtml}
-      </div>
-      ${learnHtml}`;
-  } else {
-    // Exam mode: just mark selected, no reveal
-    document.querySelectorAll('.qb-opt').forEach((b, i) => {
-      if (i === oi) b.classList.add('qb-selected');
-    });
-  }
-  document.getElementById('qb-next-btn').disabled = false;
-}
-function qbNext() {
-  if (!qbSession) return;
-  if (qbSession.current + 1 < qbSession.questions.length) {
-    qbSession.current++;
-    qbRenderQ();
-  } else {
-    qbRenderResults();
-  }
-}
-function qbRenderResults() {
-  const {questions, answers, mode} = qbSession;
-  const letters = ['A','B','C','D','E'];
-  let correct = 0, missed = [];
-  questions.forEach((q,i) => {
-    if (answers[i] === q.ans) correct++;
-    else missed.push(q.focus || 'Review this topic');
-  });
-  const total = questions.length;
-  const pct = Math.round((correct/total)*100);
-  const gc = pct>=80?'#4db87a':pct>=60?'#c8a040':'#e05a5a';
-  const gl = pct===100?'Flawless.':pct>=80?'Well done.':pct>=60?'Getting there.':'Back to the notes.';
-  const gs = pct===100?'Every single one correct.':pct>=80?'Solid work. Review the ones you missed.':pct>=60?'Good base. Some gaps to close.':"That's okay. Read the relevant notes, then retry.";
-  document.getElementById('qb-room-pbar').style.width = '100%';
-  document.getElementById('qb-room-nav-right').textContent = correct + '/' + total + ' correct';
-  let focusHtml = '';
-  if (missed.length) {
-    const u = [...new Set(missed)];
-    focusHtml = `<div class="qb-res-slbl">Focus on</div><div class="qb-focus-box">${u.map(m=>`<div class="qb-focus-item">${m}</div>`).join('')}</div>`;
-  }
-  const qlistHtml = questions.map((q,i) => {
-    const ch = answers[i], ok = ch === q.ans;
-    return `<div class="qb-res-qb ${ok?'right':'wrong'}">
-      <div class="qb-res-qb-hdr">
-        <span class="qb-res-badge ${ok?'right':'wrong'}">${ok?'&#10003; Correct':'&#10007; Incorrect'}</span>
-        <span class="qb-res-src">${q._sys} · Q${i+1}</span>
-      </div>
-      <div class="qb-res-qtext">${q.q}</div>
-      <div class="qb-res-opts">
-        ${q.opts.map((o,oi)=>`<div class="qb-res-opt${oi===q.ans?' correct':oi===ch&&!ok?' chosen-wrong':''}">
-          <span class="qb-res-opt-ltr">${letters[oi]}</span><span>${o}${oi===q.ans?' &#10003;':oi===ch&&!ok?' &#10007;':''}</span>
-        </div>`).join('')}
-      </div>
-      <div class="qb-res-explain">
-        <div class="qb-res-exp-lbl">Why</div>
-        <div class="qb-res-exp-txt">${q.exp}</div>
-      </div>
-    </div>`;
-  }).join('');
-  document.getElementById('qb-room-body').innerHTML = `
-    <div class="qb-res-shell">
-      <div class="qb-res-top">
-        <div class="qb-res-circle" style="border-color:${gc}">
-          <div class="qb-res-n" style="color:${gc}">${correct}/${total}</div>
-          <div class="qb-res-pct" style="color:${gc}">${pct}%</div>
-        </div>
-        <div>
-          <div class="qb-res-grade">${gl}</div>
-          <div class="qb-res-sub">${gs}</div>
-        </div>
-      </div>
-      ${focusHtml}
-      <div class="qb-res-slbl">Full breakdown</div>
-      <div class="qb-res-qlist">${qlistHtml}</div>
-      <div class="qb-res-actions">
-        <button class="qb-res-retry" onclick="qbRetry()">&#8635; Retry</button>
-        <button class="qb-res-new" onclick="qbNewSession()">New session &#8599;</button>
-      </div>
-    </div>`;
-  document.getElementById('qb-room-body').scrollTop = 0;
-}
-function qbRetry() {
-  qbSession.current = 0;
-  qbSession.answers = Array(qbSession.questions.length).fill(null);
-  qbSession.questions = qbSession.questions.sort(() => Math.random() - .5);
-  qbRenderQ();
-}
-function qbNewSession() {
-  qbExit();
-  openQBLauncher();
-}
+    const script = document.createElement('script')
+    script.src = '/obgyn-script.js'
+    script.async = true
+    document.body.appendChild(script)
+    return () => { if (document.body.contains(script)) document.body.removeChild(script) }
   }, [])
 
   return (
     <>
-      <div id="cdot"></div>
-      <div id="cring"></div>
-      <div id="toast" className="toast"></div>
-      <div dangerouslySetInnerHTML={{ __html: `<nav>
-  <a href="/" class="logo">
-    <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" stroke="#1a1510" stroke-width="1.5"/><path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M10 30 Q22 36 34 30" stroke="#1a1510" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="22" cy="10" r="2.5" fill="#c8452a"/><path d="M14 22 Q10 26 10 30" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity="0.4"/><path d="M30 22 Q34 26 34 30" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity="0.4"/></svg>
-    <span class="logo-name">Vent</span>
-  </a>
-  <div class="nav-links"><a href="#specialties">Specialties</a><a href="#story">Our story</a><a href="/qbank">Q-Bank</a><a href="#waitlist">Early access</a></div>
-  <a href="#waitlist" class="nav-pill">Join waitlist</a>
-  <button class="nav-hamburger" id="hbg" aria-label="Open menu"><span></span><span></span><span></span></button>
-</nav>
-<div class="nav-drawer" id="drawer">
-  <a href="#specialties" class="drawer-link">Specialties</a>
-  <a href="#story" class="drawer-link">Our story</a>
-  <a href="/qbank" class="drawer-link">Q-Bank</a>
-  <a href="#waitlist" class="drawer-link drawer-pill">Join waitlist</a>
-</div>
-
-<section class="hero">
-  <div class="hero-l">
-    <div class="hero-kick">2026 — Early access</div>
-    <h1 class="hero-hl">Finally,<br><em>breathe.</em></h1>
-    <p class="hero-body">Medical school gives you <strong>10,000 pages</strong> when you need ten minutes. Vent gives you the framework — so you can finally understand, not just memorise.</p>
-    <div class="hero-ctas">
-      <a href="#specialties" class="btn-p">Browse notes</a>
-      <a href="#story" class="btn-g">Read the story →</a>
-    </div>
-  </div>
-  <div class="hero-r">
-    <div class="particle" style="left:20%;animation-duration:6s;animation-delay:0s;"></div>
-    <div class="particle" style="left:45%;animation-duration:8s;animation-delay:1.5s;width:5px;height:5px;"></div>
-    <div class="particle" style="left:68%;animation-duration:5s;animation-delay:.8s;"></div>
-    <div class="particle" style="left:82%;animation-duration:9s;animation-delay:3s;"></div>
-    <div class="hero-glow"></div>
-    <div class="hero-brand-panel">
-      <div class="hbp-logo">
-        <svg width="120" height="120" viewBox="0 0 44 44" fill="none">
-          <circle cx="22" cy="22" r="21" stroke="rgba(245,242,235,0.07)" stroke-width="1.5"/>
-          <path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M10 30 Q22 36 34 30" stroke="rgba(245,242,235,0.22)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-          <circle cx="22" cy="10" r="2.5" fill="#c8452a"/>
-          <circle cx="22" cy="10" r="5" fill="#c8452a" opacity="0.15">
-            <animate attributeName="r" values="2.5;10;2.5" dur="3s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.2;0;0.2" dur="3s" repeatCount="indefinite"/>
-          </circle>
-          <path d="M14 22 Q10 26 10 30" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
-          <path d="M30 22 Q34 26 34 30" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
-        </svg>
-      </div>
-      <div class="hbp-name">VENT</div>
-      <div class="hbp-sub">ventilate · vent · breathe</div>
-      <div class="hbp-manifesto">
-        <div class="hbp-m-line">Clinical notes that teach.</div>
-        <div class="hbp-m-line">Questions that test what matters.</div>
-        <div class="hbp-m-line hbp-m-accent">Built to make you understand.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="specs" id="specialties">
-  <div class="reveal">
-    <div class="sec-kick">// Clinical notes</div>
-    <h2 class="sec-hl">Choose your<br><em>specialty</em></h2>
-    <p class="sec-desc">Every note built to the same standard — integrated visuals, clinical reasoning frameworks, and the insight no textbook gives you. Built to the same standard throughout.</p>
-  </div>
-  <div class="spec-grid">
-    <a href="/ophtho" class="sc reveal">
-      <div class="sc-icon">👁</div><div class="sc-num">01 — Ophthalmology</div>
-      <div class="sc-title">Eye &amp; Vision</div>
-      <p class="sc-desc">Lens anatomy, cataracts and their types, corneal infections, retinal anatomy, diabetic retinopathy, hypertensive retinopathy. The eye conditions every doctor must know.</p>
-      <div class="sc-foot" style="flex-direction:column;align-items:flex-start;gap:8px;">
-        <div class="breathing-badge"><span class="breathing-dot"></span>Test yourself — 5 MCQs per note</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;"><div class="sc-meta">6 notes · 5 MCQs each · Live</div><div class="sc-arr">↗</div></div>
-      </div>
-    </a>
-    <a href="/obgyn" class="sc reveal">
-      <div class="sc-icon">🩺</div><div class="sc-num">02 — OB/GYN</div>
-      <div class="sc-title">Obstetrics &amp; Gynaecology</div>
-      <p class="sc-desc">PPH, preeclampsia, ectopic pregnancy, placenta praevia, gestational diabetes, shoulder dystocia — and 21 more. Every OB/GYN condition you need to know, cold.</p>
-      <div class="sc-foot" style="flex-direction:column;align-items:flex-start;gap:8px;">
-        <div class="breathing-badge"><span class="breathing-dot"></span>Test yourself — MCQs per note</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;"><div class="sc-meta">27 notes · Live</div><div class="sc-arr">↗</div></div>
-      </div>
-    </a>
-    <div class="sc soon reveal">
-      <div class="soon-tag">Coming soon</div><div class="sc-icon">🫀</div><div class="sc-num">03 — Internal Medicine</div>
-      <div class="sc-title">Internal Med</div>
-      <p class="sc-desc">Heart failure, ACS, pneumonia, COPD, sepsis, AKI, liver disease. The bread and butter of every medicine rotation.</p>
-      <div class="sc-foot"><div class="sc-meta">In progress</div><button class="sc-notify" onclick="notifyMe(this,'Internal Medicine')">Notify me →</button></div>
-    </div>
-    <div class="sc soon reveal">
-      <div class="soon-tag">Coming soon</div><div class="sc-icon">🩻</div><div class="sc-num">04 — Surgery</div>
-      <div class="sc-title">Surgery</div>
-      <p class="sc-desc">Appendicitis, bowel obstruction, hernias, acute abdomen, perioperative care. What you need before you scrub in.</p>
-      <div class="sc-foot"><div class="sc-meta">In progress</div><button class="sc-notify" onclick="notifyMe(this,'Surgery')">Notify me →</button></div>
-    </div>
-    <div class="sc soon reveal">
-      <div class="soon-tag">Coming soon</div><div class="sc-icon">🧠</div><div class="sc-num">05 — Neurology</div>
-      <div class="sc-title">Neurology</div>
-      <p class="sc-desc">Stroke, seizures, meningitis, Parkinson's, MS. Where pattern recognition saves lives and milliseconds matter.</p>
-      <div class="sc-foot"><div class="sc-meta">In progress</div><button class="sc-notify" onclick="notifyMe(this,'Neurology')">Notify me →</button></div>
-    </div>
-    <div class="sc soon reveal">
-      <div class="soon-tag">Coming soon</div><div class="sc-icon">👶</div><div class="sc-num">06 — Paediatrics</div>
-      <div class="sc-title">Paediatrics</div>
-      <p class="sc-desc">Paediatric sepsis, bronchiolitis, febrile convulsions, developmental milestones. Emergencies that look different from adults.</p>
-      <div class="sc-foot"><div class="sc-meta">In progress</div><button class="sc-notify" onclick="notifyMe(this,'Paediatrics')">Notify me →</button></div>
-    </div>
-  </div>
-</section>
-
-
-<section class="qbank-entry">
-  <div class="qbank-entry-in reveal">
-    <div class="qbe-left">
-      <div class="qbe-tag">// Q-Bank</div>
-      <h2 class="qbe-hl">Test yourself.<br><em>No notes allowed.</em></h2>
-      <p class="qbe-body">Pure recall. Choose a specialty, set your mode, pick your count. Clinical questions written from the notes — so they test exactly what matters. Growing towards 1,000+.</p>
-      <a href="/qbank" class="qbe-btn">Enter Q-Bank <span>↗</span></a>
-    </div>
-    <div class="qbe-right">
-      <div class="qbe-stat"><div class="qbe-stat-n">1,000+</div><div class="qbe-stat-l">Questions — the goal</div></div>
-      <div class="qbe-divider"></div>
-      <div class="qbe-modes">
-        <div class="qbe-mode"><span class="qbe-mode-dot"></span>Normal — feedback after each</div>
-        <div class="qbe-mode"><span class="qbe-mode-dot exam"></span>Exam — results at the end</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="story" id="story">
-  <div class="story-in">
-    <div class="s-eye">The story behind Vent</div>
-    <div class="s-grid">
-      <div class="s-left reveal">
-        <h2 class="s-hl">One word.<br><em>Two truths.</em></h2>
-        <div class="mb">
-          <div class="mb-t">// What "Vent" means</div>
-          <div class="mb-r"><div class="mb-ico">🫁</div><div><div class="mb-w">Ventilate</div><div class="mb-d">To supply fresh air. In medicine — keeping someone alive when they can't breathe alone. That's what this does for your mind.</div></div></div>
-          <div class="mb-r"><div class="mb-ico">💬</div><div><div class="mb-w">To Vent</div><div class="mb-d">To release. To express what's suffocating you. Med school is overwhelming — you need somewhere to exhale.</div></div></div>
-          <div class="mb-r"><div class="mb-ico">⚡</div><div><div class="mb-w">The Logo</div><div class="mb-d">A V tracing the bronchial tree. A breath entering, branching. Relief made into a mark.</div></div></div>
+      <div className="overlay" id="overlay" onClick={(e) => window.closeBg && window.closeBg(e)}>
+        <div className="note-modal" id="modal">
+          <div className="mbar">
+            <div className="mbar-l">
+              <div className="mpulse"></div>
+              <span className="mbc" id="mbar-title">OB/GYN — VENT</span>
+            </div>
+            <div className="mbar-center" id="mbar-note-nav">
+              <button className="mnav-btn" id="btn-prev-note" onClick={() => window.prevNote && window.prevNote()} title="Previous note">←</button>
+              <span className="mnav-label" id="mnav-label"></span>
+              <button className="mnav-btn" id="btn-next-note" onClick={() => window.nextNote && window.nextNote()} title="Next note">→</button>
+            </div>
+            <div className="mbar-r" id="mbar-note-tools">
+              <button className="mtool-btn" onClick={() => window.changeFontSize && window.changeFontSize(-1)} title="Decrease font size">
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5h7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/></svg>
+              </button>
+              <span className="font-size-display" id="font-size-display">100%</span>
+              <button className="mtool-btn" onClick={() => window.changeFontSize && window.changeFontSize(1)} title="Increase font size">
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M5.5 2v7M2 5.5h7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/></svg>
+              </button>
+              <div className="mbar-divider"></div>
+              <button className="b-hist-btn" id="b-hist-btn" onClick={() => window.bOpenHistory && window.bOpenHistory()} title="Ventilation log">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1.5" y="1.5" width="9" height="9" rx="1.5" stroke="currentColor" strokeWidth="1.2"/><path d="M4 4.5h4M4 6h4M4 7.5h2" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round"/></svg>
+                Log <span className="b-log-badge" id="b-log-badge"></span>
+              </button>
+              <div className="mbar-divider"></div>
+              <button className="b-prefs-trigger" id="btn-prefs" onClick={() => window.openPrefs && window.openPrefs()} title="Adjust breathing rhythm">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="2" stroke="currentColor" strokeWidth="1.2"/><path d="M6.5 1v1.2M6.5 10.8V12M12 6.5h-1.2M2.2 6.5H1M10.3 2.7l-.85.85M3.55 9.45l-.85.85M10.3 10.3l-.85-.85M3.55 3.55l-.85-.85" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round"/></svg>
+              </button>
+              <button className="breathe-toggle-btn b-locked" id="btn-breathe" onClick={() => window.toggleBreathe && window.toggleBreathe()} title="Read through the note to unlock breathing mode">
+                <span className="breathe-btn-fill" id="breathe-btn-fill"></span>
+                <span className="breathe-btn-dot" id="breathe-btn-dot"></span>
+                <span className="breathe-btn-label" id="breathe-btn-label">Breathe</span>
+              </button>
+              <div className="mbar-divider"></div>
+              <button className="mfull" id="btn-fullscreen" onClick={() => window.toggleFullscreen && window.toggleFullscreen()} title="Full screen">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 5V1h4M9 1h4v4M13 9v4h-4M5 13H1V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </button>
+              <button className="mclose" onClick={() => window.closeModal && window.closeModal()}>✕</button>
+            </div>
+          </div>
+          <div id="page-note-ob">
+            <div id="mcontent"></div>
+            <div className="b-reading-bar" id="b-reading-bar" style={{display:'none'}}>
+              <div className="b-reading-fill" id="b-reading-fill"></div>
+            </div>
+            <div className="b-ring-wrap" id="b-ring-wrap">
+              <div className="b-ring-stage">
+                <div className="b-ring-outer"></div>
+                <div className="b-ring-inner"></div>
+                <svg className="b-ring-svg" viewBox="0 0 96 96">
+                  <circle className="b-r-track" cx="48" cy="48" r="42"/>
+                  <circle className="b-r-arc" id="b-r-arc" cx="48" cy="48" r="42"/>
+                </svg>
+                <div className="b-ring-core" id="b-ring-core">
+                  <div className="b-core-sec" id="b-core-sec">4</div>
+                </div>
+              </div>
+              <div className="b-phase-label" id="b-phase-label">inhale</div>
+            </div>
+          </div>
+          <div id="page-mcq-ob" style={{display:'none'}}><div id="mcq-inner-ob"></div></div>
         </div>
       </div>
-      <div class="s-right">
-        <div class="ch reveal"><div class="ch-n">Chapter 01 — The problem</div><div class="ch-t">I was suffocating in my own curriculum.</div><p class="ch-b">Final year. Every week a new mountain of material. <strong>No one tells you which 20% actually matters.</strong></p></div>
-        <div class="ch reveal"><div class="ch-n">Chapter 02 — The realization</div><div class="ch-t">The best students weren't reading more.</div><p class="ch-b">They had frameworks. They knew <strong>what to look for, not everything there is to see.</strong></p></div>
-        <div class="ch reveal"><div class="ch-n">Chapter 03 — The answer</div><div class="ch-t">So I built what I needed.</div><p class="ch-b">Not a database. Not a question bank. <strong>A breathing room</strong> — where content earns its place or gets cut.</p></div>
+
+      <div id="vent-popup" className="vent-popup">
+        <div className="vent-popup-inner">
+          <div className="vent-popup-glow"></div>
+          <div className="vent-popup-tag">// End of note</div>
+          <div className="vent-popup-title">Are you<br/><em>ventilating?</em></div>
+          <div className="vent-popup-sub">Test whether this note actually landed. 5 questions. No pressure.</div>
+          <div className="vent-popup-btns">
+            <button className="vent-yes" onClick={() => window.startMCQ && window.startMCQ()}>Let&apos;s find out →</button>
+            <button className="vent-no" onClick={() => window.dismissVentPopup && window.dismissVentPopup()}>Not now</button>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+      <div id="vent-backdrop" className="vent-backdrop" onClick={() => window.dismissVentPopup && window.dismissVentPopup()}></div>
 
-<section class="what">
-  <div class="w-hdr reveal">
-    <h2 class="w-hl">What Vent<br><em>actually is</em></h2>
-    <p class="w-note">Notes. MCQs. A full Q-Bank. In one place. Nothing you do not need.</p>
-  </div>
-  <div class="w-rows">
-    <div class="wr reveal"><div class="wrn">1</div><div class="wrm"><h3>Concept-driven visual notes</h3><p>Every condition with integrated diagrams that teach, not just label. The visual is the explanation.</p></div><div class="wrx"><div class="wrxl">Format</div><div class="wrxv">Premium SVG diagrams built into the text flow. Not appended — integrated.</div></div></div>
-    <div class="wr reveal"><div class="wrn">2</div><div class="wrm"><h3>Clinical reasoning frameworks</h3><p>Here's how to think through it when the patient is in front of you at 3am, not just the facts.</p></div><div class="wrx"><div class="wrxl">The differentiator</div><div class="wrxv">Every note ends with "what everyone gets wrong" — the insight no textbook includes.</div></div></div>
-    <div class="wr reveal"><div class="wrn">3</div><div class="wrm"><h3>A full Q-Bank — standalone, not an afterthought</h3><p>Clinical questions across specialties, growing towards 1,000+. Choose your system, set your mode, pick your count. Pure recall — no notes, no hints.</p></div><div class="wrx"><div class="wrxl">Two modes</div><div class="wrxv">Normal: per-question feedback with explanations for every option — right and wrong. Exam: no feedback until the end. Full breakdown at results.</div></div></div>
-    <div class="wr reveal"><div class="wrn">4</div><div class="wrm"><h3>Test yourself — built in, not bolted on</h3><p>5 clinical MCQs at the end of every note. Not a separate app. Not later. Right there, in the same breath.</p></div><div class="wrx"><div class="wrxl">How it works</div><div class="wrxv">Finish reading. One tap. The questions are written from the note — so they test exactly what you just learned. Immediate results. Explanations for every answer.</div></div></div>
-  </div>
-</section>
-
-<section class="breathe">
-  <div class="bring"></div><div class="bring"></div><div class="bring"></div><div class="bring"></div>
-  <div class="bc">
-    <h2>You can<br><em>breathe now.</em></h2>
-    <p>Medicine is already the hardest thing you'll ever do. Your notes shouldn't be.</p>
-    <a href="#waitlist" class="bc-cta">Get early access →</a>
-  </div>
-</section>
-
-<section class="cta" id="waitlist">
-  <div class="ctabg">Breathe.</div>
-  <div class="cta-in">
-    <div class="reveal">
-      <h2 class="c-hl">Time to<br><em>exhale.</em></h2>
-      <p class="c-body">Vent is in early access. Join the waitlist and be first through the door. No spam. No filler. Just the signal.</p>
-    </div>
-    <div class="c-form reveal" id="fc">
-      <input type="email" class="c-field" placeholder="your@email.com" id="ei" autocomplete="email">
-      <select class="c-field" id="yr"><option value="" disabled selected>What year are you in?</option><option value="MS1">MS1</option><option value="MS2">MS2</option><option value="MS3">MS3</option><option value="MS4">MS4</option><option value="Resident">Resident</option><option value="Other">Other</option></select>
-      <p class="c-err" id="cerr">Please enter a valid email address.</p>
-      <button class="c-btn" id="sb">Join the waitlist →</button>
-      <p class="c-note">// no spam. no filler. just vent.</p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="f-in">
-    <div>
-      <div class="f-logo"><svg width="28" height="28" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" stroke="rgba(245,242,235,0.2)" stroke-width="1.5"/><path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M10 30 Q22 36 34 30" stroke="rgba(245,242,235,0.3)" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="22" cy="10" r="2.5" fill="#c8452a"/></svg><span class="f-name">VENT</span></div>
-      <p class="f-tag">Finally. Just what you need.<br>Beta · 2026</p>
-    </div>
-    <div class="f-links"><a href="#story">Story</a><a href="#specialties">Specialties</a><a href="#waitlist">Early access</a><a href="#">Privacy</a></div>
-    <div class="f-right"><div class="f-social"><a href="#">Instagram</a><a href="#">X / Twitter</a></div><div class="f-copy">© 2026 Vent. All rights reserved.</div></div>
-  </div>
-</footer>
-
-
-<div id="qb-room" class="qb-room">
-  <div class="qb-room-nav">
-    <button class="qb-room-exit" onclick="qbExit()">&#8592; Exit</button>
-    <div class="qb-room-nav-mid">
-      <span class="qb-room-label" id="qb-room-label">Q-Bank</span>
-      <span class="qb-room-mode-badge" id="qb-room-mode-badge">Normal</span>
-    </div>
-    <div class="qb-room-nav-right" id="qb-room-nav-right"></div>
-  </div>
-  <div class="qb-room-progress-bar"><div class="qb-room-progress-fill" id="qb-room-pbar"></div></div>
-  <div id="qb-room-body" class="qb-room-body"></div>
-</div>
-
-<script>
-if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
-  const dot=document.getElementById('cdot'),ring=document.getElementById('cring');
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
-  (function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
-  document.querySelectorAll('a,button,.sc').forEach(el=>{
-    el.addEventListener('mouseenter',()=>{dot.style.transform='translate(-50%,-50%) scale(2.2)';ring.style.width='52px';ring.style.height='52px';ring.style.borderColor='rgba(200,69,42,.65)';});
-    el.addEventListener('mouseleave',()=>{dot.style.transform='translate(-50%,-50%)';ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(200,69,42,.35)';});
-  });
-}
-const hbg=document.getElementById('hbg'),drawer=document.getElementById('drawer');
-hbg.addEventListener('click',()=>{
-  const opening=!hbg.classList.contains('open');
-  hbg.classList.toggle('open');
-  if(opening){drawer.style.display='flex';requestAnimationFrame(()=>drawer.classList.add('open'));document.body.style.overflow='hidden';}
-  else{drawer.classList.remove('open');setTimeout(()=>{drawer.style.display='none';},300);document.body.style.overflow='';}
-});
-document.querySelectorAll('.drawer-link').forEach(l=>l.addEventListener('click',()=>{
-  hbg.classList.remove('open');drawer.classList.remove('open');
-  setTimeout(()=>{drawer.style.display='none';},300);document.body.style.overflow='';
-}));
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:.08,rootMargin:'0px 0px -32px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>{
-  const p=el.closest('.spec-grid,.s-right,.w-rows');
-  if(p){const i=Array.from(p.children).indexOf(el);if(i>-1)el.style.transitionDelay=i*.1+'s';}
-  obs.observe(el);
-});
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3600);}
-function notifyMe(btn,specialty){btn.textContent='✓ Noted';btn.disabled=true;showToast("we'll tell you when "+specialty+" drops.");}
-function validEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);}
-document.getElementById('sb').addEventListener('click',async()=>{
-  const email=document.getElementById('ei').value.trim();
-  const errEl=document.getElementById('cerr');
-  const btn=document.getElementById('sb');
-  errEl.classList.remove('show');
-  if(!validEmail(email)){errEl.textContent='Please enter a valid email address.';errEl.classList.add('show');document.getElementById('ei').focus();return;}
-  btn.disabled=true;btn.textContent='Submitting...';
-  // Replace with: await fetch('https://formspree.io/f/YOUR_ID',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,year:document.getElementById('yr').value})});
-  await new Promise(r=>setTimeout(r,800));
-  document.getElementById('fc').innerHTML='<div style="padding:48px 0;"><div style="font-family:\'Instrument Serif\',serif;font-size:52px;color:#e85d3f;font-style:italic;line-height:1;margin-bottom:20px;">You\'re in.</div><p style="color:rgba(245,242,235,.65);font-size:16px;line-height:1.75;">We\'ll reach out when Vent opens.<br>Until then — breathe.</p></div>';
-});
-
-/* ══════════════════════════════════════
-   Q-BANK DATA
-   Questions are loaded from the OB/GYN
-   note file's NOTES_MCQ. Since this is
-   the home page, we embed them here.
-══════════════════════════════════════ */
-const QB_DATA = {
-  obgyn: {
-    label: 'OB / GYN',
-    questions: [
-      // PPH
-      {q:"A woman delivers vaginally and loses 1200ml. The uterus is soft and boggy. What is the most likely cause?",opts:["Retained placenta","Uterine atony","Genital tract trauma","Coagulopathy"],ans:1,exp:"<strong>Uterine atony</strong> causes 70–80% of PPH. A soft boggy uterus that fails to contract is the classic sign.",wrongs:["<strong>Retained placenta</strong> causes PPH but the uterus is typically firm and well-contracted — this is a tissue cause.","<strong>Genital tract trauma</strong> is a tone-independent cause; the uterus would be well contracted.","<strong>Coagulopathy</strong> (thrombin) is the least common of the 4 Ts and usually follows, not precedes, massive haemorrhage."],focus:"4 Ts — Tone as most common cause",learn:["<strong>PPH = blood loss >500ml vaginal or >1000ml caesarean.</strong> Primary PPH is within 24 hours.","The 4 Ts: <strong>Tone</strong> (70–80%), Trauma, Tissue, Thrombin — in order of frequency.","Bimanual uterine massage and IV oxytocin are the first response to uterine atony.","<strong>Shock Index (HR ÷ SBP) >1.0</strong> indicates significant haemodynamic compromise.","Tranexamic acid reduces PPH mortality when given within 3 hours of onset (WOMAN trial)."]},
-      {q:"First-line uterotonic for PPH prevention and treatment is:",opts:["Ergometrine","Carboprost","Tranexamic acid","Oxytocin"],ans:3,exp:"<strong>Oxytocin</strong> is first-line for both prevention (active management of third stage) and PPH treatment.",wrongs:["<strong>Ergometrine</strong> is second-line; contraindicated in hypertension and cardiac disease.","<strong>Carboprost (PGF2α)</strong> is third-line; contraindicated in asthma.","<strong>Tranexamic acid</strong> is an antifibrinolytic — adjunct treatment, not a uterotonic."],focus:"Uterotonic drug hierarchy",learn:["<strong>Oxytocin 10 IU IM</strong> is given immediately after delivery of the anterior shoulder — active management.","Ergometrine causes sustained uterine contraction; avoid in pre-eclampsia and hypertension.","Carboprost: max 8 doses of 250mcg IM every 15 minutes. Never IV.","<strong>Misoprostol</strong> is an oral/PR option when oxytocin is unavailable.","Uterotonic ladder: oxytocin → ergometrine → carboprost → surgical."]},
-      {q:"After oxytocin and ergometrine fail in PPH, the next pharmacological step is:",opts:["Misoprostol PR","Carboprost IM","IV tranexamic acid","B-Lynch suture"],ans:1,exp:"<strong>Carboprost (15-methyl PGF2α)</strong> is third-line after oxytocin and ergometrine.",wrongs:["<strong>Misoprostol PR</strong> is a useful alternative when other uterotonics are unavailable, but not the next step when ergometrine has already failed.","<strong>IV tranexamic acid</strong> is an antifibrinolytic adjunct — it doesn't cause uterine contraction.","<strong>B-Lynch suture</strong> is a surgical intervention — only after pharmacology has failed."],focus:"Uterotonic escalation ladder",learn:["Carboprost is <strong>contraindicated in asthma</strong> — causes severe bronchospasm.","Maximum dose: 250mcg IM every 15 minutes, up to 8 doses total.","<strong>B-Lynch suture</strong>, uterine artery ligation, and hysterectomy are the surgical escalation.","Interventional radiology (uterine artery embolisation) is an alternative to preserve fertility.","If PPH continues despite all uterotonics → activate massive transfusion protocol."]},
-      {q:"The WOMAN trial showed tranexamic acid reduces PPH mortality when given within:",opts:["1 hour of delivery","3 hours of PPH onset","6 hours of PPH onset","Only with confirmed coagulopathy"],ans:1,exp:"Tranexamic acid reduces PPH-related death when given within <strong>3 hours of onset</strong>. Benefit drops sharply after 3 hours.",wrongs:["<strong>1 hour</strong> is not the WOMAN trial threshold; the benefit extends to 3 hours.","<strong>6 hours</strong> is too late — the antifibrinolytic effect is lost by then.","Waiting for <strong>confirmed coagulopathy</strong> delays treatment unnecessarily; give empirically in significant PPH."],focus:"WOMAN trial — tranexamic acid timing",learn:["WOMAN trial: 20,000 women, showed TXA <strong>reduces PPH mortality by 19%</strong> when given within 3 hours.","Dose: <strong>1g IV over 10 minutes</strong>. Repeat 1g if bleeding continues after 30 minutes.","TXA is an antifibrinolytic — it prevents clot breakdown, not a direct uterotonic.","Give as soon as PPH is recognised — do not wait for lab evidence of coagulopathy.","TXA is safe in breastfeeding."]},
-      {q:"Shock Index >1 in PPH indicates:",opts:["Normal haemodynamics","Mild blood loss only","Significant haemodynamic compromise requiring action","Coagulopathy confirmed"],ans:2,exp:"<strong>Shock Index = HR ÷ Systolic BP.</strong> Normal 0.5–0.7. Value >1.0 signals significant compromise — predicts need for massive transfusion.",wrongs:["A <strong>normal Shock Index</strong> is 0.5–0.7; values >1 are never normal.","<strong>Mild blood loss</strong> typically maintains SI <0.9.","<strong>Shock Index does not confirm coagulopathy</strong> — that requires lab tests (fibrinogen, ROTEM)."],focus:"Shock Index in haemorrhage assessment",learn:["Shock Index detects physiological compromise <strong>earlier than HR or BP alone</strong>.","BP is maintained by vasoconstriction even with significant volume loss — a late sign.","SI >1.7 correlates with massive transfusion requirement.","<strong>MEOWS (Modified Early Obstetric Warning Score)</strong> incorporates multiple parameters including SI.","Trend over time matters — a rising SI despite intervention signals ongoing haemorrhage."]},
-      // Preeclampsia
-      {q:"Which of the following best describes the underlying pathophysiology of pre-eclampsia?",opts:["Primary hypertension aggravated by pregnancy","Abnormal placentation causing systemic endothelial dysfunction","Gestational fluid overload causing BP rise","Autoimmune renal inflammation causing proteinuria"],ans:1,exp:"Pre-eclampsia is caused by <strong>abnormal placentation</strong> — failure of trophoblast invasion → ischaemic placenta → antiangiogenic factors (sFlt-1) → systemic endothelial damage.",wrongs:["<strong>Primary hypertension</strong> precedes pregnancy by definition and is a risk factor for, not the cause of, pre-eclampsia.","<strong>Fluid overload</strong> is a consequence of pre-eclampsia, not the cause — capillary leak causes oedema despite low oncotic pressure.","<strong>Autoimmune renal inflammation</strong> describes nephritic syndrome; the kidney in pre-eclampsia shows glomerular endotheliosis, not inflammation."],focus:"Pre-eclampsia pathophysiology",learn:["Failed trophoblast invasion → <strong>narrow, high-resistance spiral arteries</strong> → placental ischaemia.","Ischaemic placenta releases sFlt-1 (anti-VEGF) → blocks normal endothelial function throughout the body.","This is why pre-eclampsia affects <strong>every organ system</strong>: brain (seizures), liver (HELLP), kidney (proteinuria), lungs (oedema).","<strong>Delivery is the only cure</strong> — removing the placenta resolves the cause.","Aspirin 75–150mg from 12 weeks reduces risk in high-risk women by ~50%."]},
-      {q:"A 28-week primigravida has BP 158/102, 2+ proteinuria and severe headache. First-line antihypertensive?",opts:["Atenolol","Labetalol IV","ACE inhibitor","Furosemide"],ans:1,exp:"<strong>Labetalol IV</strong> is first-line for acute severe hypertension in pregnancy — it is safe, fast-acting, and well-evidenced.",wrongs:["<strong>Atenolol</strong> (beta-blocker) is associated with fetal growth restriction; not used in pregnancy.","<strong>ACE inhibitors</strong> are absolutely contraindicated in pregnancy — cause fetal renal agenesis and oligohydramnios.","<strong>Furosemide</strong> is a diuretic; pre-eclampsia involves capillary leak not fluid overload — diuresis worsens placental perfusion."],focus:"Acute antihypertensive management in pregnancy",learn:["Treat BP ≥160/110 urgently to prevent maternal stroke.","<strong>Labetalol IV, hydralazine IV, or nifedipine oral</strong> are the three first-line options in the UK.","<strong>Target: <150/100</strong> — do not over-lower as this compromises placental perfusion.","Always have magnesium sulphate drawn up when giving antihypertensives acutely.","Absolute contraindications: ACE inhibitors, ARBs, atenolol in any trimester."]},
-      {q:"Magnesium sulphate in pre-eclampsia is used to:",opts:["Lower blood pressure","Prevent and treat eclamptic seizures","Induce diuresis","Reverse coagulopathy in HELLP"],ans:1,exp:"<strong>MgSO4 prevents and treats eclamptic seizures</strong>. It is not an antihypertensive. MAGPIE trial showed 58% reduction in eclampsia.",wrongs:["<strong>MgSO4 does not lower BP</strong> — antihypertensives are given separately.","<strong>Diuresis</strong> is not a magnesium effect; it is caused by furosemide or spontaneous postpartum diuresis.","<strong>HELLP coagulopathy</strong> requires fresh frozen plasma and platelets — magnesium has no role."],focus:"Magnesium sulphate — mechanism and use",learn:["<strong>MAGPIE trial:</strong> MgSO4 reduces eclampsia by 58% and maternal mortality by 45%.","Loading dose: <strong>4g IV over 15 minutes</strong>. Maintenance: 1g/hour infusion.","Monitor for toxicity: loss of patellar reflexes (first sign), respiratory depression, cardiac arrest.","Antidote: <strong>calcium gluconate 10ml of 10%</strong> IV — keep at bedside.","Continue MgSO4 for <strong>24 hours postpartum</strong> — eclampsia commonly occurs after delivery."]},
-      // GDM
-      {q:"A 30-year-old woman at 26 weeks has a 75g OGTT: fasting glucose 5.4 mmol/L, 1-hour 10.8 mmol/L, 2-hour 8.9 mmol/L. The diagnosis is:",opts:["Normal","Gestational diabetes mellitus","Pre-existing type 2 diabetes","Impaired fasting glucose only"],ans:1,exp:"<strong>GDM is diagnosed if any value meets the threshold:</strong> fasting ≥5.1, 1-hour ≥10.0, or 2-hour ≥8.5 mmol/L (NICE/IADPSG). The 2-hour value of 8.9 exceeds 8.5.",wrongs:["<strong>Normal</strong> requires all values below threshold — the 2-hour at 8.9 exceeds the 8.5 cutoff.","<strong>Pre-existing T2DM</strong> is defined by fasting ≥7.0 or 2-hour ≥11.1; this doesn't meet that threshold.","<strong>Impaired fasting glucose</strong> is a non-pregnant diagnosis; in pregnancy, any threshold breach = GDM."],focus:"GDM OGTT diagnostic thresholds",learn:["NICE GDM thresholds: fasting <strong>≥5.1</strong>, 1-hour <strong>≥10.0</strong>, 2-hour <strong>≥8.5</strong> mmol/L.","The OGTT is performed at <strong>24–28 weeks</strong> in women with risk factors.","<strong>Any single value exceeding the threshold</strong> confirms GDM — not an average.","Women with GDM at booking glucose ≥7.0 likely have pre-existing T2DM — refer to diabetologist.","Post-diagnosis: blood glucose monitoring 4×/day (fasting + 1-hour post-meals)."]},
-      {q:"Which fasting glucose level in GDM mandates insulin from the outset rather than a trial of metformin?",opts:[">5.5 mmol/L",">7.0 mmol/L",">6.0 mmol/L","Any fasting hyperglycaemia"],ans:1,exp:"Fasting glucose <strong>>7.0 mmol/L</strong> indicates significant insulin deficiency — metformin alone cannot achieve targets. Start insulin immediately.",wrongs:["<strong>>5.5 mmol/L</strong> is just above the GDM fasting threshold — diet modification and metformin are first-line here.","<strong>>6.0 mmol/L</strong> is not a standard clinical cutoff for immediate insulin.","<strong>Any fasting hyperglycaemia</strong> does not automatically warrant insulin — most GDM is diet or metformin controlled."],focus:"GDM: when to start insulin",learn:["Fasting glucose <strong>>7 mmol/L</strong> at diagnosis = insulin from the outset.","<strong>Isophane insulin (NPH)</strong> at night targets fasting hyperglycaemia.","Short-acting insulin with meals targets post-prandial peaks.","Insulin requirements increase as pregnancy progresses due to rising insulin resistance.","<strong>Stop all insulin and metformin immediately after delivery</strong> — GDM-related resistance resolves within hours."]},
-      // Ectopic
-      {q:"A woman with a positive pregnancy test presents with 6/52 amenorrhoea, unilateral pelvic pain and vaginal spotting. Urine βhCG positive. Transvaginal USS shows no intrauterine pregnancy. What is the next step?",opts:["Reassure and repeat in 2 weeks","Measure serum βhCG and repeat USS in 48 hours","Immediate diagnostic laparoscopy","Prescribe methotrexate empirically"],ans:1,exp:"With no IUP seen and symptoms suggesting ectopic, measure <strong>serum βhCG and repeat USS in 48 hours</strong> to establish location and trend.",wrongs:["<strong>Reassuring and waiting</strong> is dangerous — a ruptured ectopic can cause death within hours.","<strong>Immediate laparoscopy</strong> is indicated if the patient is haemodynamically unstable or a definite ectopic is visualised on USS.","<strong>Methotrexate</strong> requires confirmed ectopic and haemodynamic stability — never give empirically."],focus:"Ectopic pregnancy — initial management",learn:["The triad: <strong>amenorrhoea, pain, vaginal bleeding</strong> — but only 50% have all three.","<strong>Ectopic until proven otherwise</strong> in any woman of reproductive age with pain and a positive pregnancy test.","Discriminatory zone: βhCG <strong>>1500–2000 IU/L</strong> — a viable IUP should be visible on TVUSS above this level.","Absent IUP + rising βhCG + no adnexal mass = <strong>pregnancy of unknown location (PUL)</strong>.","Ruptured ectopic: sudden severe pain + haemodynamic instability = emergency laparoscopy."]},
-      // Shoulder Dystocia
-      {q:"During delivery, after the head delivers, there is difficulty delivering the shoulders. The turtle sign is present. What is the first manoeuvre?",opts:["Fundal pressure","McRoberts' position + suprapubic pressure","Zavanelli manoeuvre","Delivery of posterior arm"],ans:1,exp:"<strong>McRoberts' position</strong> (hyperflexion of maternal thighs) with <strong>suprapubic pressure</strong> is always the first manoeuvre — resolves ~50% of shoulder dystocia.",wrongs:["<strong>Fundal pressure</strong> is absolutely contraindicated — it worsens impaction of the anterior shoulder.","<strong>Zavanelli manoeuvre</strong> (cephalic replacement + caesarean) is the last resort, reserved for all other manoeuvres failing.","<strong>Delivery of the posterior arm</strong> is an effective internal manoeuvre but is used after McRoberts has failed."],focus:"HELPERR — shoulder dystocia management",learn:["HELPERR: <strong>H</strong>elp, <strong>E</strong>pisiotomy, <strong>L</strong>egs (McRoberts), <strong>P</strong>ressure (suprapubic), <strong>E</strong>nter (internal), <strong>R</strong>emove arm, <strong>R</strong>oll.","McRoberts + suprapubic pressure resolves <strong>~50%</strong> of cases.","<strong>Never apply fundal pressure</strong> — this is the most common documented error.","Suprapubic pressure: directed downward and laterally to dislodge the anterior shoulder.","Document time of head delivery — every 60 seconds without delivery increases fetal acidosis significantly."]},
-      // Preterm Labour
-      {q:"A woman at 28 weeks presents in confirmed preterm labour. Which of the following should be given to protect the fetal brain?",opts:["Magnesium sulphate","Betamethasone","Ritodrine","Indomethacin"],ans:0,exp:"<strong>Magnesium sulphate at 28 weeks is neuroprotective</strong> — it reduces the risk of cerebral palsy in preterm infants, not seizures.",wrongs:["<strong>Betamethasone</strong> is crucial for lung maturation (surfactant) but its primary benefit is <strong>pulmonary</strong>, not neuroprotection.","<strong>Ritodrine</strong> (beta-agonist tocolytic) is no longer used routinely in the UK due to maternal side effects.","<strong>Indomethacin</strong> is a tocolytic used <34 weeks; not given for neuroprotection."],focus:"Magnesium sulphate for neuroprotection at <30 weeks",learn:["Magnesium sulphate is given for <strong>neuroprotection</strong> at <30 weeks — reduces cerebral palsy risk by ~30%.","Give <strong>betamethasone 12mg IM × 2 doses 24 hours apart</strong> for lung maturation at 24–34 weeks.","<strong>Antenatal corticosteroids reduce: RDS, IVH, NEC, and neonatal death.</strong>","Tocolysis (e.g. nifedipine, atosiban) is used to delay delivery to allow steroids to work — not to prevent delivery indefinitely.","Transfer to a unit with NICU before delivery if possible."]},
-      // Cord Prolapse
-      {q:"Umbilical cord prolapse is confirmed on examination. The baby is alive. What is the immediate first action?",opts:["Call for help and prepare theatre","Manually replace the cord","Elevate the presenting part off the cord digitally and call for emergency CS","Give terbutaline to stop contractions"],ans:2,exp:"<strong>Elevate the presenting part digitally</strong> to relieve cord compression immediately. This is the priority before all else.",wrongs:["<strong>Calling for help</strong> happens simultaneously but relieving compression is the first physical act.","<strong>Manually replacing the cord</strong> (funic reduction) is controversial and not first-line.","<strong>Terbutaline</strong> may be used to reduce contractions while awaiting theatre but is not the first action."],focus:"Cord prolapse — immediate management",learn:["Cord prolapse = <strong>obstetric emergency</strong>. Category 1 caesarean section.","<strong>Never remove your hand</strong> from the presenting part once it is elevated — continuous pressure until delivery.","Position: <strong>knee-chest</strong> or exaggerated Sims' — gravity takes the presenting part off the cord.","Filling the bladder with 500–700ml saline can also elevate the presenting part.","<strong>Do not attempt vaginal delivery</strong> unless birth is imminent — full dilatation and easy forceps only."]},
-      // Miscarriage
-      {q:"A woman at 9 weeks has heavy vaginal bleeding. Speculum shows dilated cervical os with visible products. The diagnosis is:",opts:["Threatened miscarriage","Inevitable miscarriage","Complete miscarriage","Missed miscarriage"],ans:1,exp:"<strong>Inevitable miscarriage</strong>: dilated os means the pregnancy cannot continue. Products may or may not have passed yet.",wrongs:["<strong>Threatened miscarriage</strong>: bleeding with <strong>closed os</strong> — the pregnancy may still continue.","<strong>Complete miscarriage</strong>: all products have passed, os is closed, USS confirms empty uterus.","<strong>Missed miscarriage</strong>: embryo has died but os is <strong>closed</strong> and no bleeding — found incidentally on USS."],focus:"Types of miscarriage — classification",learn:["Threatened: bleeding + <strong>closed os</strong> — may continue.","Inevitable: bleeding + <strong>open os</strong> — will not continue.","Incomplete: some products remain, os open.","Complete: all products passed, os closed.","<strong>Missed (silent)</strong>: fetal death with closed os, no bleeding — often incidental USS finding."]},
-      // Placenta Praevia
-      {q:"A woman at 34 weeks presents with painless, bright red vaginal bleeding. She is haemodynamically stable. What is absolutely contraindicated?",opts:["USS to check placental position","Corticosteroids for fetal lung maturity","Vaginal examination","IV access and blood cross-match"],ans:2,exp:"<strong>Vaginal examination is absolutely contraindicated</strong> in suspected placenta praevia — it can precipitate catastrophic haemorrhage.",wrongs:["<strong>USS</strong> is the diagnostic tool of choice — safe and should be done urgently.","<strong>Corticosteroids</strong> are appropriate if <34 weeks and delivery may be imminent.","<strong>IV access + cross-match</strong> are essential initial resuscitation steps."],focus:"Placenta praevia — management principles",learn:["<strong>Painless, bright red APH in the third trimester = placenta praevia until proven otherwise.</strong>","Major praevia (covering os) = <strong>elective caesarean at 36–37 weeks</strong>.","<strong>Never perform a digital vaginal examination</strong> before excluding praevia on USS.","Placenta accreta spectrum (accreta, increta, percreta) is the feared complication — risk increases with prior CS.","Ante-partum admissions, steroids if preterm, cross-match blood, plan delivery with senior team."]},
-      // IOL
-      {q:"A nulliparous woman has a Bishop score of 3. The most appropriate cervical ripening agent is:",opts:["Oxytocin infusion","Artificial rupture of membranes","Prostaglandin E2 (dinoprostone)","Misoprostol 200mcg"],ans:2,exp:"<strong>Prostaglandin E2 (dinoprostone)</strong> — vaginal gel or pessary — is the first-line cervical ripening agent for an unfavourable cervix (Bishop ≤6).",wrongs:["<strong>Oxytocin infusion</strong> requires a ripe cervix (Bishop ≥8) and ruptured membranes — it cannot ripen an unfavourable cervix.","<strong>ARM</strong> requires a favourable cervix — impossible with Bishop 3.","<strong>Misoprostol 200mcg</strong> is too high a dose and not standard UK practice for IOL; lower doses (25–50mcg) are used off-label."],focus:"Bishop score and cervical ripening",learn:["<strong>Bishop score ≤6 = unfavourable cervix</strong> requiring ripening before oxytocin.","Dinoprostone: <strong>3mg vaginal tablet or 1mg gel</strong>; can repeat after 6 hours.","Balloon catheter is an alternative for cervical ripening, especially in VBAC (no uterotonic risk).","<strong>Hyperstimulation (>5 contractions in 10 minutes)</strong> with PG = remove pessary, give tocolytic.","Oxytocin is titrated post-ARM once cervix is favourable."]},
-      // OvaryCyst
-      {q:"A premenopausal woman has a 4cm, unilocular, anechoic ovarian cyst on USS. CA-125 is normal. Most appropriate management?",opts:["Immediate surgical excision","Reassure and repeat USS in 3 months","Start OCP to suppress it","Refer to oncology urgently"],ans:1,exp:"A simple unilocular anechoic cyst <5cm with normal CA-125 in a premenopausal woman is almost certainly functional. <strong>Expectant management with repeat USS</strong> is appropriate.",wrongs:["<strong>Immediate surgery</strong> is not warranted for a likely functional cyst with no concerning features.","<strong>OCP</strong> does not reliably suppress established cysts — evidence is poor.","<strong>Urgent oncology referral</strong> is for cysts with malignant features (solid components, septations, ascites, raised CA-125)."],focus:"Ovarian cyst management — premenopausal",learn:["<strong>Unilocular, thin-walled, anechoic cyst in premenopausal woman</strong> = likely functional.","RCOG guidelines: simple cyst <5cm → no follow-up needed; 5–7cm → annual USS.","CA-125 is unreliable in premenopausal women — raised by endometriosis, fibroids, PID.","<strong>IOTA simple rules</strong> classify USS features into benign, malignant, or inconclusive.","Risk of malignancy in simple premenopausal cyst is <1%."]},
-      // PCOS
-      {q:"A 24-year-old presents with oligomenorrhoea, acne, and hirsutism. USS shows bilateral polycystic ovarian morphology. To confirm PCOS by Rotterdam criteria, you need:",opts:["At least 3 of the 3 Rotterdam features","At least 2 of the 3 Rotterdam features","Elevated testosterone only","Elevated LH:FSH ratio >2"],ans:1,exp:"<strong>Rotterdam criteria requires 2 out of 3:</strong> oligo/anovulation, clinical/biochemical hyperandrogenism, polycystic ovarian morphology. This patient already has 2.",wrongs:["<strong>All 3 features</strong> are not required — 2 out of 3 is sufficient.","<strong>Elevated testosterone alone</strong> does not diagnose PCOS without meeting Rotterdam criteria.","<strong>LH:FSH ratio >2</strong> was historical — Rotterdam criteria do not include it."],focus:"PCOS Rotterdam diagnostic criteria",learn:["Rotterdam criteria (2 of 3): <strong>oligo/anovulation</strong>, <strong>hyperandrogenism</strong> (clinical or biochemical), <strong>polycystic ovarian morphology</strong>.","<strong>Polycystic morphology</strong> = ≥20 follicles in one ovary OR ovarian volume >10ml.","PCOS carries metabolic risk: insulin resistance, T2DM, dyslipidaemia — screen all women.","<strong>First-line anovulation treatment for fertility: letrozole</strong> (replaced clomifene citrate in 2022).","Lifestyle modification (weight loss) is the most effective first-line treatment."]},
-      // Endometriosis
-      {q:"A 26-year-old has progressively worsening dysmenorrhoea, deep dyspareunia, and subfertility. Examination is normal. The investigation of choice to confirm endometriosis is:",opts:["Pelvic MRI","Serum CA-125","Transvaginal ultrasound","Diagnostic laparoscopy with biopsy"],ans:3,exp:"<strong>Diagnostic laparoscopy with histological confirmation</strong> is the gold standard for diagnosing endometriosis.",wrongs:["<strong>MRI</strong> detects deep infiltrating endometriosis well but cannot diagnose peritoneal disease and requires laparoscopy to confirm.","<strong>CA-125</strong> is neither sensitive nor specific for endometriosis — not a diagnostic test.","<strong>TVUSS</strong> detects endometriomas (>3cm) and deep infiltrating disease but cannot identify peritoneal implants."],focus:"Endometriosis diagnosis — gold standard",learn:["Endometriosis affects <strong>~10% of women</strong> of reproductive age; average diagnostic delay is 7–10 years.","<strong>Symptoms do not correlate with stage</strong> — stage I disease can cause debilitating pain.","TVUSS with bowel preparation is the first-line investigation for suspected deep endometriosis.","Medical treatment: COCP, progestogens, GnRH analogues — all are suppressive, not curative.","<strong>Laparoscopic excision</strong> is preferred over ablation for visible disease."]},
-    ]
-  },
-  ophtho: {
-    label: 'Ophthalmology',
-    questions: [
-      {q:"A diabetic patient presents with dot and blot haemorrhages, microaneurysms, and hard exudates on fundoscopy. Vision is currently normal. The diagnosis is:",opts:["Proliferative diabetic retinopathy","Background (non-proliferative) diabetic retinopathy","Central retinal vein occlusion","Hypertensive retinopathy grade IV"],ans:1,exp:"<strong>Background (non-proliferative) DR</strong>: dot/blot haemorrhages, microaneurysms, hard exudates — all within the retinal layers. No new vessels yet.",wrongs:["<strong>Proliferative DR</strong> = new vessel formation (neovascularisation) on the disc or elsewhere — not present here.","<strong>CRVO</strong> causes flame haemorrhages in all four quadrants with disc swelling — not microaneurysms.","<strong>Hypertensive retinopathy grade IV</strong> (papilloedema) requires disc swelling and severe hypertension."],focus:"Diabetic retinopathy classification",learn:["<strong>Background DR</strong>: microaneurysms, dot/blot haemorrhages, hard exudates, cotton wool spots.","<strong>Pre-proliferative DR</strong>: IRMA, venous beading, multiple cotton wool spots.","<strong>Proliferative DR</strong>: new vessels on disc (NVD) or elsewhere (NVE) — risk of vitreous haemorrhage.","Hard exudates = lipid deposits from leaky microaneurysms. Cotton wool spots = microinfarcts.","<strong>Annual dilated fundoscopy</strong> is mandatory for all diabetics."]},
-      {q:"A 65-year-old presents with sudden painless loss of vision in one eye. Fundoscopy shows a pale, oedematous retina with a 'cherry red spot' at the macula. Diagnosis?",opts:["Central retinal vein occlusion","Anterior ischaemic optic neuropathy","Central retinal artery occlusion","Vitreous haemorrhage"],ans:2,exp:"<strong>Cherry red spot + pale retina = CRAO.</strong> The fovea appears red as underlying choroid shows through — the rest of the retina is ischaemic and white.",wrongs:["<strong>CRVO</strong> shows flame haemorrhages in all four quadrants ('stormy sunset') — not a cherry red spot.","<strong>AION</strong> causes pale disc swelling (altitudinal field defect) without cherry red spot.","<strong>Vitreous haemorrhage</strong> obscures the fundal view — you wouldn't see the retina clearly."],focus:"Central retinal artery occlusion features",learn:["CRAO: <strong>sudden, painless, profound monocular vision loss.</strong>","Fundoscopy: <strong>pale retina + cherry red spot</strong> at fovea (choroidal circulation preserved).","Aetiology: embolus (carotid, cardiac), vasculitis, thrombosis.","<strong>Emergency</strong>: ocular massage, IOP-lowering, urgent vascular work-up.","CRAO is a <strong>stroke equivalent</strong> — urgent carotid Doppler, ECG, cardiac echo, lipids, BP."]},
-      {q:"A patient with open-angle glaucoma has elevated IOP. The first-line topical treatment is:",opts:["Pilocarpine drops","Timolol (beta-blocker) drops","Latanoprost (prostaglandin analogue)","Acetazolamide tablets"],ans:2,exp:"<strong>Prostaglandin analogues (latanoprost)</strong> are first-line for POAG — once daily, highly effective at reducing IOP with fewer systemic side effects.",wrongs:["<strong>Pilocarpine</strong> is a miotic — used for acute angle-closure, not chronic open-angle glaucoma.","<strong>Timolol</strong> was historically first-line but has been superseded by prostaglandin analogues.","<strong>Acetazolamide</strong> (carbonic anhydrase inhibitor) is oral, used in acute angle-closure emergencies — not first-line maintenance."],focus:"Glaucoma — first-line medical treatment",learn:["<strong>Prostaglandin analogues</strong> (latanoprost, bimatoprost): increase uveoscleral outflow — once daily, most potent IOP reduction.","<strong>Beta-blockers</strong> (timolol): reduce aqueous production — avoid in asthma, heart block.","<strong>Carbonic anhydrase inhibitors</strong> (dorzolamide, brimonidine): adjuncts.","Target IOP should be individualised — lower if disc damage is severe.","<strong>Visual field testing and OCT</strong> monitor progression regardless of IOP."]},
-      {q:"A 70-year-old woman presents with sudden onset red, painful eye, fixed mid-dilated pupil, corneal oedema, and vomiting. The diagnosis is:",opts:["Acute anterior uveitis","Acute angle-closure glaucoma","Episcleritis","Bacterial conjunctivitis"],ans:1,exp:"<strong>Acute angle-closure glaucoma:</strong> sudden severe pain, red eye, fixed mid-dilated oval pupil, corneal haziness, nausea/vomiting — IOP often >50 mmHg.",wrongs:["<strong>Anterior uveitis</strong>: red eye + photophobia + small irregular pupil (posterior synechiae) — not mid-dilated fixed.","<strong>Episcleritis</strong>: sectoral redness, no pain on movement, normal IOP and normal pupil.","<strong>Bacterial conjunctivitis</strong>: bilateral purulent discharge, no change in IOP or pupil."],focus:"Acute angle-closure glaucoma — clinical features",learn:["Classically in <strong>hyperopic elderly women</strong> — shallow anterior chamber.","Triggers: dim lighting, mydriatic drops, emotional stress (pupil dilates, blocks angle).","<strong>Emergency treatment:</strong> IV acetazolamide, topical pilocarpine, IV mannitol, laser iridotomy.","<strong>Fixed mid-dilated pupil</strong> distinguishes from uveitis (small, irregular) and normal (reactive).","Contralateral prophylactic laser iridotomy is recommended."]},
-      {q:"Which layer of the cornea is avascular and provides ~70% of its refractive power?",opts:["Bowman's layer","Descemet's membrane","Stroma","Epithelium"],ans:2,exp:"The <strong>stroma</strong> comprises ~90% of corneal thickness and provides the bulk of its refractive power, maintained by regular collagen fibril arrangement.",wrongs:["<strong>Bowman's layer</strong>: acellular, protects stroma — does not contribute to refraction.","<strong>Descemet's membrane</strong>: basement membrane of endothelium — structural role only.","<strong>Epithelium</strong>: provides smooth optical surface and barrier function but minimal refraction."],focus:"Corneal anatomy and layers",learn:["Corneal layers anterior to posterior: <strong>Epithelium → Bowman's → Stroma → Dua's → Descemet's → Endothelium.</strong>","Stroma = <strong>~500μm</strong>, made of collagen fibrils in precise arrangement — disruption causes opacity.","<strong>Endothelium</strong> pumps fluid out to keep stroma clear — endothelial failure = corneal oedema.","Cornea is the <strong>main refracting surface</strong> of the eye (~43 dioptres); lens adds ~19D.","<strong>Keratoconus</strong>: progressive thinning and ectasia of the stroma — causes irregular astigmatism."]},
-    ]
-  }
-};
-
-// Flatten all questions with system tag
-function qbGetPool(sys) {
-  let pool = [];
-  if (sys === 'all') {
-    Object.entries(QB_DATA).forEach(([sysKey, sysData]) => {
-      sysData.questions.forEach(q => pool.push({...q, _sys: sysData.label}));
-    });
-  } else if (QB_DATA[sys]) {
-    QB_DATA[sys].questions.forEach(q => pool.push({...q, _sys: QB_DATA[sys].label}));
-  }
-  return pool;
-}
-
-// State
-let qbSys = 'all', qbMode = 'normal', qbCount = 10;
-let qbSession = null; // {questions, current, answers, mode}
-
-
-
-
-
-
-
-function qbExit() {
-  document.getElementById('qb-room').classList.remove('open');
-  document.body.style.overflow = '';
-  qbSession = null;
-}
-function qbUpdateProgress() {
-  if (!qbSession) return;
-  const pct = Math.round((qbSession.current / qbSession.questions.length) * 100);
-  document.getElementById('qb-room-pbar').style.width = pct + '%';
-  document.getElementById('qb-room-nav-right').textContent = (qbSession.current + 1) + ' / ' + qbSession.questions.length;
-}
-function qbRenderQ() {
-  if (!qbSession) return;
-  const {questions, current} = qbSession;
-  const q = questions[current];
-  const total = questions.length;
-  const letters = ['A','B','C','D','E'];
-  qbUpdateProgress();
-  let dots = '';
-  for (let i = 0; i < total; i++) dots += \`<div class="qb-dot \${i < current ? 'done' : i === current ? 'current' : ''}"></div>\`;
-  const html = \`
-    <div class="qb-q-shell">
-      <div class="qb-q-meta">
-        <div class="qb-q-tag">\${q._sys}</div>
-        <div class="qb-q-num">Q\${current+1} of \${total}</div>
+      <div className="hl-popup" id="hl-popup">
+        <div className="hl-pop-swatch hl-yellow" onClick={() => window.applyHlColor && window.applyHlColor('yellow')} title="Yellow"></div>
+        <div className="hl-pop-swatch hl-green" onClick={() => window.applyHlColor && window.applyHlColor('green')} title="Green"></div>
+        <div className="hl-pop-swatch hl-blue" onClick={() => window.applyHlColor && window.applyHlColor('blue')} title="Blue"></div>
+        <div className="hl-pop-swatch hl-pink" onClick={() => window.applyHlColor && window.applyHlColor('pink')} title="Pink"></div>
+        <div className="hl-pop-divider"></div>
+        <button className="hl-pop-undo" onClick={() => window.undoHighlight && window.undoHighlight()} title="Undo">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 4h4a2.5 2.5 0 010 5H3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/><path d="M3.2 2L1.5 4l1.7 2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </button>
+        <button className="hl-pop-clear" onClick={() => window.clearAllHighlights && window.clearAllHighlights()}>Clear all</button>
       </div>
-      <div class="qb-dots">\${dots}</div>
-      <div class="qb-q-text">\${q.q}</div>
-      <div class="qb-opts" id="qb-opts-wrap">
-        \${q.opts.map((o,i) => \`
-          <button class="qb-opt" onclick="qbSelectOpt(\${i})">
-            <span class="qb-opt-ltr">\${letters[i]}</span>
-            <span class="qb-opt-txt">\${o}</span>
-          </button>\`).join('')}
-      </div>
-      <div id="qb-feedback-area"></div>
-      <div class="qb-next-row">
-        <button class="qb-next-btn" id="qb-next-btn" onclick="qbNext()" disabled>
-          \${current + 1 < total ? 'Next &rarr;' : 'See results &rarr;'}
+
+      <div className="b-spine" id="b-spine"></div>
+      <div className="b-kbd-hint" id="b-kbd-hint">← → navigate · space pause · esc exit</div>
+
+      <div className="b-nav" id="b-nav">
+        <button className="b-nav-btn b-nav-pause" id="b-nav-pause-btn" onClick={() => window.bTogglePause && window.bTogglePause()}>
+          <span id="b-pause-lbl">⏸</span> Pause <span className="b-kbd">space</span>
+        </button>
+        <button className="b-nav-btn b-nav-skip" onClick={() => window.bSkipFwd && window.bSkipFwd()}>
+          Skip → <span className="b-kbd">→</span>
         </button>
       </div>
-    </div>\`;
-  document.getElementById('qb-room-body').innerHTML = html;
-  document.getElementById('qb-room-body').scrollTop = 0;
-}
-function qbSelectOpt(oi) {
-  if (!qbSession) return;
-  const {questions, current, mode} = qbSession;
-  if (qbSession.answers[current] !== null) return;
-  qbSession.answers[current] = oi;
-  const q = questions[current];
-  const letters = ['A','B','C','D','E'];
-  // Lock all options
-  document.querySelectorAll('.qb-opt').forEach(b => b.classList.add('qb-locked'));
-  if (mode === 'normal') {
-    // Colour the options
-    document.querySelectorAll('.qb-opt').forEach((b, i) => {
-      if (i === q.ans) b.classList.add('qb-correct-reveal');
-      else if (i === oi && oi !== q.ans) b.classList.add('qb-wrong-reveal');
-    });
-    // Build feedback
-    const isCorrect = oi === q.ans;
-    let wrongsHtml = '';
-    if (q.wrongs) {
-      wrongsHtml = \`<div class="qb-fb-lbl">Why the others are wrong</div><div class="qb-fb-wrongs">
-        \${q.opts.map((o,i) => i !== q.ans ? \`<div class="qb-fb-wrong-item"><strong>\${letters[i]}. \${o}</strong> — \${q.wrongs[i - (i > q.ans ? 1 : 0)] || ''}</div>\` : '').filter(Boolean).join('')}
-      </div>\`;
-    }
-    let learnHtml = '';
-    if (q.learn && q.learn.length) {
-      learnHtml = \`<div class="qb-learn">
-        <div class="qb-learn-lbl">Learning note</div>
-        <div class="qb-learn-pts">\${q.learn.map(pt => \`<div class="qb-learn-pt">\${pt}</div>\`).join('')}</div>
-      </div>\`;
-    }
-    document.getElementById('qb-feedback-area').innerHTML = \`
-      <div class="qb-feedback \${isCorrect ? '' : 'wrong'}">
-        <div class="qb-fb-verdict">\${isCorrect ? '✓ Correct' : '✗ Incorrect'}</div>
-        <div class="qb-fb-lbl">Why</div>
-        <div class="qb-fb-why">\${q.exp}</div>
-        \${wrongsHtml}
-      </div>
-      \${learnHtml}\`;
-  } else {
-    // Exam mode: just mark selected, no reveal
-    document.querySelectorAll('.qb-opt').forEach((b, i) => {
-      if (i === oi) b.classList.add('qb-selected');
-    });
-  }
-  document.getElementById('qb-next-btn').disabled = false;
-}
-function qbNext() {
-  if (!qbSession) return;
-  if (qbSession.current + 1 < qbSession.questions.length) {
-    qbSession.current++;
-    qbRenderQ();
-  } else {
-    qbRenderResults();
-  }
-}
-function qbRenderResults() {
-  const {questions, answers, mode} = qbSession;
-  const letters = ['A','B','C','D','E'];
-  let correct = 0, missed = [];
-  questions.forEach((q,i) => {
-    if (answers[i] === q.ans) correct++;
-    else missed.push(q.focus || 'Review this topic');
-  });
-  const total = questions.length;
-  const pct = Math.round((correct/total)*100);
-  const gc = pct>=80?'#4db87a':pct>=60?'#c8a040':'#e05a5a';
-  const gl = pct===100?'Flawless.':pct>=80?'Well done.':pct>=60?'Getting there.':'Back to the notes.';
-  const gs = pct===100?'Every single one correct.':pct>=80?'Solid work. Review the ones you missed.':pct>=60?'Good base. Some gaps to close.':"That's okay. Read the relevant notes, then retry.";
-  document.getElementById('qb-room-pbar').style.width = '100%';
-  document.getElementById('qb-room-nav-right').textContent = correct + '/' + total + ' correct';
-  let focusHtml = '';
-  if (missed.length) {
-    const u = [...new Set(missed)];
-    focusHtml = \`<div class="qb-res-slbl">Focus on</div><div class="qb-focus-box">\${u.map(m=>\`<div class="qb-focus-item">\${m}</div>\`).join('')}</div>\`;
-  }
-  const qlistHtml = questions.map((q,i) => {
-    const ch = answers[i], ok = ch === q.ans;
-    return \`<div class="qb-res-qb \${ok?'right':'wrong'}">
-      <div class="qb-res-qb-hdr">
-        <span class="qb-res-badge \${ok?'right':'wrong'}">\${ok?'&#10003; Correct':'&#10007; Incorrect'}</span>
-        <span class="qb-res-src">\${q._sys} · Q\${i+1}</span>
-      </div>
-      <div class="qb-res-qtext">\${q.q}</div>
-      <div class="qb-res-opts">
-        \${q.opts.map((o,oi)=>\`<div class="qb-res-opt\${oi===q.ans?' correct':oi===ch&&!ok?' chosen-wrong':''}">
-          <span class="qb-res-opt-ltr">\${letters[oi]}</span><span>\${o}\${oi===q.ans?' &#10003;':oi===ch&&!ok?' &#10007;':''}</span>
-        </div>\`).join('')}
-      </div>
-      <div class="qb-res-explain">
-        <div class="qb-res-exp-lbl">Why</div>
-        <div class="qb-res-exp-txt">\${q.exp}</div>
-      </div>
-    </div>\`;
-  }).join('');
-  document.getElementById('qb-room-body').innerHTML = \`
-    <div class="qb-res-shell">
-      <div class="qb-res-top">
-        <div class="qb-res-circle" style="border-color:\${gc}">
-          <div class="qb-res-n" style="color:\${gc}">\${correct}/\${total}</div>
-          <div class="qb-res-pct" style="color:\${gc}">\${pct}%</div>
-        </div>
-        <div>
-          <div class="qb-res-grade">\${gl}</div>
-          <div class="qb-res-sub">\${gs}</div>
+
+      <div className="prefs-overlay" id="prefs-overlay" onClick={(e) => { if(e.target===e.currentTarget) window.closePrefs && window.closePrefs() }}>
+        <div className="prefs-panel">
+          <div className="prefs-tag">// Breathe settings</div>
+          <div className="prefs-hdr">
+            <div className="prefs-title">Your <em>rhythm.</em></div>
+            <button className="prefs-close" onClick={() => window.closePrefs && window.closePrefs()}>✕</button>
+          </div>
+          {[
+            {label:'Inhale',hint:'seconds',id:'inhale',def:4},
+            {label:'Hold',hint:'after inhale',id:'hold',def:3},
+            {label:'Exhale',hint:'seconds',id:'exhale',def:3},
+            {label:'Cycles per section',hint:'before moving on',id:'cycles',def:2},
+          ].map(p => (
+            <div key={p.id} className="prefs-row">
+              <div><div className="prefs-label">{p.label}</div><div className="prefs-hint">{p.hint}</div></div>
+              <div className="prefs-ctrl">
+                <button className="prefs-btn" onClick={() => window.prefAdj && window.prefAdj(p.id,-1)}>−</button>
+                <div className="prefs-num" id={`ps-${p.id}-display`}>{p.def}</div>
+                <input type="hidden" id={`ps-${p.id}`} defaultValue={p.def}/>
+                <button className="prefs-btn" onClick={() => window.prefAdj && window.prefAdj(p.id,1)}>+</button>
+              </div>
+            </div>
+          ))}
+          <button className="prefs-save" onClick={() => { window.savePrefs && window.savePrefs(); window.closePrefs && window.closePrefs() }}>Save rhythm</button>
         </div>
       </div>
-      \${focusHtml}
-      <div class="qb-res-slbl">Full breakdown</div>
-      <div class="qb-res-qlist">\${qlistHtml}</div>
-      <div class="qb-res-actions">
-        <button class="qb-res-retry" onclick="qbRetry()">&#8635; Retry</button>
-        <button class="qb-res-new" onclick="qbNewSession()">New session &#8599;</button>
+
+      <div className="b-hist-overlay" id="b-hist-overlay" onClick={(e) => window.bCloseHistory && window.bCloseHistory(e)}>
+        <div className="b-hist-panel">
+          <div className="vl-hdr">
+            <div className="vl-hdr-top">
+              <div className="vl-hdr-left">
+                <div className="vl-tag">// Vent</div>
+                <div className="vl-title">Ventilation <em>Log</em></div>
+              </div>
+              <button className="b-hist-close" onClick={() => window.bCloseHistory && window.bCloseHistory()}>✕</button>
+            </div>
+            <div className="vl-stats">
+              <div className="vl-stat"><div className="vl-stat-val" id="vl-stat-time">—</div><div className="vl-stat-lbl">Breathed</div></div>
+              <div className="vl-stat"><div className="vl-stat-val" id="vl-stat-today">0</div><div className="vl-stat-lbl">Today</div></div>
+              <div className="vl-stat"><div className="vl-stat-val" id="vl-stat-total">0</div><div className="vl-stat-lbl">All time</div></div>
+            </div>
+          </div>
+          <div className="vl-streak">
+            <div className="vl-streak-meta">
+              <div className="vl-streak-lbl" id="vl-streak-lbl">—</div>
+              <div className="vl-streak-sub" id="vl-streak-sub">16 weeks</div>
+            </div>
+            <div className="vl-hm-wrap">
+              <div className="vl-hm-daylbl"><span></span><span>M</span><span></span><span>W</span><span></span><span>F</span><span></span></div>
+              <div>
+                <div className="vl-hm-month-row" id="vl-hm-months"></div>
+                <div className="vl-heatmap" id="vl-heatmap"></div>
+              </div>
+            </div>
+            <div className="vl-hm-legend">
+              <div className="vl-hm-leg-lbl">Less</div>
+              <div className="vl-hm-leg-cell" style={{background:'rgba(255,255,255,.05)'}}></div>
+              <div className="vl-hm-leg-cell" style={{background:'rgba(200,69,42,.2)'}}></div>
+              <div className="vl-hm-leg-cell" style={{background:'rgba(200,69,42,.4)'}}></div>
+              <div className="vl-hm-leg-cell" style={{background:'rgba(200,69,42,.65)'}}></div>
+              <div className="vl-hm-leg-cell" style={{background:'#c8452a'}}></div>
+              <div className="vl-hm-leg-lbl">More</div>
+            </div>
+          </div>
+          <div className="vl-burnout" id="vl-burnout">
+            <p>3+ sessions today. <strong>Let it consolidate.</strong> Rest is part of learning.</p>
+          </div>
+          <div className="vl-tabs">
+            <button className="vl-tab active" id="vl-tab-today" onClick={() => window.vlSwitchTab && window.vlSwitchTab('today')}>Today <span className="vl-tab-count" id="vl-today-count">0</span></button>
+            <button className="vl-tab" id="vl-tab-missed" onClick={() => window.vlSwitchTab && window.vlSwitchTab('missed')}>Missed <span className="vl-tab-count" id="vl-missed-count">0</span></button>
+            <button className="vl-tab" id="vl-tab-all" onClick={() => window.vlSwitchTab && window.vlSwitchTab('all')}>All</button>
+            <button className="vl-tab" id="vl-tab-strength" onClick={() => window.vlSwitchTab && window.vlSwitchTab('strength')}>Topics</button>
+          </div>
+          <div className="vl-body">
+            <div className="vl-pane active" id="vl-pane-today"></div>
+            <div className="vl-pane" id="vl-pane-missed"></div>
+            <div className="vl-pane" id="vl-pane-all"></div>
+            <div className="vl-pane" id="vl-pane-strength"></div>
+          </div>
+          <div className="vl-footer">
+            <button className="vl-footer-clear" onClick={() => window.bClearHistory && window.bClearHistory()}>Clear all data</button>
+          </div>
+          <div id="b-ht-time" style={{display:'none'}}></div>
+          <div id="b-ht-count" style={{display:'none'}}></div>
+          <div id="b-hs-dots" style={{display:'none'}}></div>
+          <div id="b-hs-lbl" style={{display:'none'}}></div>
+          <div id="b-hist-burnout" style={{display:'none'}}></div>
+          <div id="b-hist-list" style={{display:'none'}}></div>
+        </div>
       </div>
-    </div>\`;
-  document.getElementById('qb-room-body').scrollTop = 0;
-}
-function qbRetry() {
-  qbSession.current = 0;
-  qbSession.answers = Array(qbSession.questions.length).fill(null);
-  qbSession.questions = qbSession.questions.sort(() => Math.random() - .5);
-  qbRenderQ();
-}
-function qbNewSession() {
-  qbExit();
-  openQBLauncher();
-}` }} />
+
+      <div className="vs-overlay" id="breathe-summary">
+        <div className="vs-panel" id="vs-panel">
+          <button className="vs-close-btn" onClick={() => window.vsConfirmClose && window.vsConfirmClose()} title="Close">✕</button>
+          <div className="vs-confirm" id="vs-confirm">
+            <div className="vs-confirm-q">Leave the recall check?</div>
+            <div className="vs-confirm-sub">Your progress matters — gaps stay hidden if you skip.</div>
+            <div className="vs-confirm-btns">
+              <button className="vs-confirm-yes" onClick={() => window.vsDoClose && window.vsDoClose()}>Yes, exit</button>
+              <button className="vs-confirm-no" onClick={() => window.vsCancelClose && window.vsCancelClose()}>Keep going</button>
+            </div>
+          </div>
+          <div className="vs-header">
+            <div className="vs-tag">// Ventilation Check</div>
+            <div className="vs-title" id="vs-title">Test your <em>recall.</em></div>
+            <div className="vs-meta" id="vs-meta"></div>
+          </div>
+          <div className="vs-progress" id="vs-progress"></div>
+          <div className="vs-intro" id="vs-intro">
+            <div className="vs-intro-icon">🌬</div>
+            <div className="vs-intro-h">You just <em>ventilated.</em></div>
+            <div className="vs-intro-sub" id="vs-intro-sub"></div>
+            <div className="vs-intro-btns">
+              <button className="vs-intro-primary" onClick={() => window.vsStartQuestions && window.vsStartQuestions()}>Test my recall →</button>
+              <button className="vs-intro-secondary" onClick={() => window.vsBackToNotes && window.vsBackToNotes()}>Back to notes</button>
+            </div>
+          </div>
+          <div id="vs-question-view" style={{display:'none'}}>
+            <div className="vs-q-area">
+              <div className="vs-q-num" id="vs-q-num">Question 1 of 3</div>
+              <div className="vs-q-text" id="vs-q-text"></div>
+            </div>
+            <div className="vs-answer-area" id="vs-answer-area">
+              <div className="vs-ans-lbl">Answer</div>
+              <div className="vs-ans-text" id="vs-ans-text"></div>
+              <div className="vs-ans-exp" id="vs-ans-exp"></div>
+            </div>
+            <div className="vs-self-lbl" id="vs-self-lbl" style={{display:'none'}}>Did you get it?</div>
+            <div className="vs-controls" id="vs-controls"></div>
+          </div>
+          <div className="vs-finish" id="vs-finish">
+            <div className="vs-finish-icon">🌬</div>
+            <div className="vs-finish-h" id="vs-finish-h">Well <em>ventilated.</em></div>
+            <div className="vs-finish-sub" id="vs-finish-sub"></div>
+            <div className="vs-finish-btns">
+              <button className="vs-finish-primary" onClick={() => window.vsKeepVentilating && window.vsKeepVentilating()}>Keep ventilating →</button>
+              <button className="vs-finish-secondary" onClick={() => window.vsBackToNotes && window.vsBackToNotes()}>Back to notes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="main-page">
+        <nav>
+          <a href="/" className="logo">
+            <svg className="logo-mark" viewBox="0 0 44 44" fill="none">
+              <circle cx="22" cy="22" r="21" stroke="#1a1510" strokeWidth="1.5"/>
+              <path d="M22 10 L10 30" stroke="#c8452a" strokeWidth="2.5" strokeLinecap="round"/>
+              <path d="M22 10 L34 30" stroke="#c8452a" strokeWidth="2.5" strokeLinecap="round"/>
+              <path d="M10 30 Q22 36 34 30" stroke="#1a1510" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
+              <circle cx="22" cy="10" r="2.5" fill="#c8452a"/>
+            </svg>
+            <span className="logo-name">Vent</span>
+          </a>
+          <a href="#" onClick={(e) => { e.preventDefault(); history.back() }} className="nav-back">← All specialties</a>
+          <a href="/#waitlist" className="nav-pill">Join waitlist</a>
+        </nav>
+
+        <section className="shero">
+          <div className="shero-orb"></div>
+          <div className="shero-kicker">Clinical Notes</div>
+          <h1 className="shero-h1">Obstetrics &amp;<br/><em>Gynaecology</em></h1>
+          <p className="shero-desc">Twenty-seven conditions across obstetrics and gynaecology. Built to make you understand — not memorise.</p>
+          <div className="shero-stats">
+            <div className="shero-stat"><div className="sv">27</div><div className="sl">Notes</div></div>
+            <div className="shero-stat"><div className="sv">OB / GYN</div><div className="sl">Toggle</div></div>
+            <div className="shero-stat"><div className="sv">5 min</div><div className="sl">Per note</div></div>
+          </div>
+        </section>
+
+        <section className="notes-sec">
+          <div className="ns-hdr reveal">
+            <div className="ns-hdr-left">
+              <div className="ns-discipline-label">OB/GYN Clinical Notes</div>
+              <h2 className="ns-h2">All <em>notes</em></h2>
+            </div>
+            <div className="disc-toggle">
+              <button className="dtab on" data-filter="all">All <span className="dtab-count">27</span></button>
+              <button className="dtab" data-filter="ob">Obstetrics <span className="dtab-count">12</span></button>
+              <button className="dtab" data-filter="gyn">Gynaecology <span className="dtab-count">15</span></button>
+            </div>
+          </div>
+
+          <div className="notes-grid" id="notes-grid">
+            {[
+              {disc:'ob',num:'OB 01',title:'Postpartum Haemorrhage',type:'Emergency · OB',preview:'The leading cause of maternal mortality. The 4 Ts, why BP is a late sign, and how to escalate without hesitation.',meta:'4 Ts · Atony · Emergency',id:'pph'},
+              {disc:'ob',num:'OB 02',title:'Preeclampsia',type:'Antenatal · OB',preview:'Not a blood pressure problem. A disease of the placenta that raises BP. The distinction changes how you manage it entirely.',meta:'HTN · HELLP · Magnesium',id:'preeclampsia'},
+              {disc:'ob',num:'OB 03',title:'Ectopic Pregnancy',type:'Emergency · OB',preview:'Ectopic until proven otherwise. What the triad is, the discriminatory zone, and what negative urine hCG actually rules out.',meta:'hCG · Rupture · Ultrasound',id:'ectopic'},
+              {disc:'ob',num:'OB 04',title:'Placenta Praevia',type:'Antenatal · OB',preview:'Painless bright red bleeding in the third trimester. Why placental position determines route of delivery.',meta:'APH · Accreta · Caesarean',id:'placenta'},
+              {disc:'ob',num:'OB 05',title:'Gestational Diabetes',type:'Antenatal · OB',preview:'Why hyperglycaemia in pregnancy endangers both mother and baby. The OGTT, thresholds, and why macrosomia is not just a big baby.',meta:'OGTT · Macrosomia · Insulin',id:'gdm'},
+              {disc:'ob',num:'OB 06',title:'Shoulder Dystocia',type:'Emergency · OB',preview:'The head delivers. The shoulders don\'t follow. Five minutes. HELPERR must be automatic — not recalled under pressure.',meta:'HELPERR · McRoberts · Drill',id:'shoulder'},
+              {disc:'ob',num:'OB 07',title:'Preterm Labour',type:'Emergency · OB',preview:'Labour before 37 weeks. Why you give steroids before tocolysis, and why magnesium at 28 weeks is not about seizures.',meta:'Tocolysis · Steroids · Neuroprotection',id:'pretermlabour'},
+              {disc:'ob',num:'OB 08',title:'Miscarriage',type:'Early Pregnancy · OB',preview:'Pregnancy loss before 24 weeks. The types, what the ultrasound tells you, and why management is a shared decision.',meta:'ERPC · Misoprostol · Anti-D',id:'miscarriage'},
+              {disc:'ob',num:'OB 09',title:'Cord Prolapse',type:'Emergency · OB',preview:'The cord delivers before the baby. Every second of cord compression is fetal hypoxia. Position before anything else.',meta:'Category 1 CS · Decompression · Position',id:'cordprolapse'},
+              {disc:'ob',num:'OB 10',title:'Placental Abruption',type:'Emergency · OB',preview:'Painful dark bleeding — but 20% of abruptions have no visible bleeding at all. The concealed abruption is the one that kills.',meta:'APH · Coagulopathy · DIC',id:'abruption'},
+              {disc:'ob',num:'OB 11',title:'Induction of Labour',type:'Intrapartum · OB',preview:'One in three labours is induced. The Bishop score, the methods, and why uterine hyperstimulation is a clinical emergency.',meta:'Bishop Score · Prostaglandins · Oxytocin',id:'iol'},
+              {disc:'ob',num:'OB 12',title:'Obstetric Cholestasis',type:'Antenatal · OB',preview:'Intense pruritus, no rash, abnormal LFTs in the third trimester. The risk is sudden unexplained fetal death.',meta:'Bile Acids · Pruritus · IOL',id:'obstetriccholestasis'},
+              {disc:'gyn',num:'GYN 01',title:'Ovarian Cysts',type:'Gynaecology · GYN',preview:'Not all cysts are equal. Functional vs pathological, the IOTA rules, and when a cyst stops being a cyst and becomes a torsion.',meta:'IOTA · Torsion · CA-125',id:'ovarycyst'},
+              {disc:'gyn',num:'GYN 02',title:'Cervical Cancer',type:'Oncology · GYN',preview:'HPV drives almost every case. The screening programme, the CIN progression model, and why the vaccine does not replace the smear.',meta:'HPV · CIN · Colposcopy',id:'cervicalcancer'},
+              {disc:'gyn',num:'GYN 03',title:'Endometriosis',type:'Gynaecology · GYN',preview:'Endometrium outside the uterus. Why it takes 7–10 years to diagnose, and why pain severity does not predict disease stage.',meta:'Dysmenorrhoea · Laparoscopy · Fertility',id:'endometriosis'},
+              {disc:'gyn',num:'GYN 04',title:'PCOS',type:'Endocrine · GYN',preview:'The most common endocrine disorder in women of reproductive age. Rotterdam criteria, the metabolic risk hiding behind the cycle problem.',meta:'Rotterdam · Insulin Resistance · Anovulation',id:'pcos'},
+              {disc:'gyn',num:'GYN 05',title:'Uterine Fibroids',type:'Gynaecology · GYN',preview:'Benign smooth muscle tumours. Why location matters more than size, and the management ladder from GnRH to hysterectomy.',meta:'FIGO Classification · HMB · Myomectomy',id:'fibroids'},
+              {disc:'gyn',num:'GYN 06',title:'Pelvic Inflammatory Disease',type:'Infectious · GYN',preview:'Ascending infection of the upper genital tract. Chlamydia leads, but the sequelae — infertility, ectopic, chronic pain — outlast the infection.',meta:'Chlamydia · Fitz-Hugh-Curtis · Sequelae',id:'pid'},
+              {disc:'gyn',num:'GYN 07',title:'Menopause & HRT',type:'Endocrine · GYN',preview:'Not just hot flushes. The systemic consequences of oestrogen withdrawal — and why the risks of HRT were overstated for a generation.',meta:'HRT · Bone · Cardiovascular · MHT',id:'menopause'},
+              {disc:'gyn',num:'GYN 08',title:'Vulval Conditions',type:'Gynaecology · GYN',preview:'Lichen sclerosus, vulvodynia, VIN. Why the diagnosis is frequently delayed — and why lichen sclerosus is not just a skin condition.',meta:'Lichen Sclerosus · Vulvodynia · VIN',id:'vulvalconditions'},
+              {disc:'gyn',num:'GYN 09',title:'Ovarian Cancer',type:'Oncology · GYN',preview:'The silent killer that isn\'t silent — the symptoms are there, they\'re just vague. Stage at diagnosis determines everything.',meta:'CA-125 · FIGO · BRCA · Debulking',id:'ovariancancer'},
+              {disc:'gyn',num:'GYN 10',title:'Subfertility',type:'Reproductive · GYN',preview:'One in seven couples. The structured investigation, when to start, and why IVF is the end of the pathway — not the beginning.',meta:'Semen Analysis · IVF · Tubal · Anovulation',id:'subfertility'},
+              {disc:'gyn',num:'GYN 11',title:'Endometrial Cancer',type:'Oncology · GYN',preview:'The most common gynaecological cancer. Postmenopausal bleeding is the alarm symptom — and 90% of women present because of it.',meta:'PMB · Type I/II · Hysterectomy',id:'endometrialcancer'},
+              {disc:'gyn',num:'GYN 12',title:'Urinary Incontinence',type:'Urogynaecology · GYN',preview:'Stress vs urgency — the mechanism, the investigation, and why surgery before conservative treatment is always the wrong sequence.',meta:'Urodynamics · TVT · Bladder Training',id:'urinaryincontinence'},
+              {disc:'gyn',num:'GYN 13',title:'Contraception',type:'Reproductive · GYN',preview:'Pearl index, UKMEC, reversibility. Why the most effective methods are the ones least frequently offered first.',meta:'LARC · UKMEC · Emergency',id:'contraception'},
+              {disc:'gyn',num:'GYN 14',title:'STIs',type:'Infectious · GYN',preview:'Chlamydia, gonorrhoea, syphilis, herpes. The presentations, the tests, the treatments — and why partner notification is part of the prescription.',meta:'NAAT · Syphilis · Herpes · Contact Tracing',id:'sexuallytransmitted'},
+              {disc:'gyn',num:'GYN 15',title:'Acute Gynaecology',type:'Emergency · GYN',preview:'Ovarian torsion, TOA, acute vulval haematoma. The time-critical diagnoses — and the clinical details that make the difference.',meta:'Torsion · TOA · Bartholin\'s',id:'acutegynae'},
+            ].map(n => (
+              <div key={n.id} className="nc reveal" data-disc={n.disc} onClick={() => window.openNote && window.openNote(n.id)}>
+                <div className="nc-type">{n.type}</div>
+                <div className="nc-num">{n.num}</div>
+                <div className="diff"><div className="dd on"></div><div className="dd on"></div><div className="dd on"></div></div>
+                <div className="nc-title">{n.title}</div>
+                <p className="nc-preview">{n.preview}</p>
+                <div className="nc-foot"><div className="nc-meta">{n.meta}</div><div className="nc-arr">↗</div></div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+
+      <div className="b-next-bar" id="b-next-bar">
+        <div className="b-next-body">
+          <div className="b-next-tag">// You&apos;ve reached the end</div>
+          <div className="b-next-title" id="b-next-title">Next note</div>
+        </div>
+        <div className="b-next-actions">
+          <button className="b-next-btn b-next-go" onClick={() => window.bGoNextNote && window.bGoNextNote()}>Continue →</button>
+          <button className="b-next-btn b-next-stay" onClick={() => window.bDismissNextNote && window.bDismissNextNote()}>Linger here</button>
+          <button className="b-next-stop" onClick={() => window.bStop && window.bStop(true)}>Done</button>
+        </div>
+      </div>
     </>
   )
 }

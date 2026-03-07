@@ -1,4 +1,3 @@
-
 // REVEAL ANIMATION
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
