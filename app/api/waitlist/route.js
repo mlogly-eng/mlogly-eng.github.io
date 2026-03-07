@@ -11,4 +11,3 @@ export async function POST(request) {
   })
   return new Response(JSON.stringify({ ok: res.ok }), { status: 200 })
 }
-}
