@@ -378,6 +378,17 @@ export default function Ophtho() {
           ))}
         </div>
       </section>
+      <div className="b-next-bar" id="b-next-bar">
+        <div className="b-next-body">
+          <div className="b-next-tag">// You've reached the end</div>
+          <div className="b-next-title" id="b-next-title">Next note</div>
+        </div>
+        <div className="b-next-actions">
+          <button className="b-next-btn b-next-go" onClick={() => window.bGoNextNote && window.bGoNextNote()}>Continue u2192</button>
+          <button className="b-next-btn b-next-stay" onClick={() => window.bDismissNextNote && window.bDismissNextNote()}>Linger here</button>
+          <button className="b-next-stop" onClick={() => window.bStop && window.bStop(true)}>Done</button>
+        </div>
+      </div>
     </>
   )
 }
