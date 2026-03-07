@@ -15,6 +15,7 @@ export default function QBank() {
   }, [])
 
   return (
+    <>
   
       <nav>
         <a href="/" className="logo">
@@ -153,5 +154,6 @@ export default function QBank() {
         </div>
       </div>
     </>
+  </>
   )
 }
