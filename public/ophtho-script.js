@@ -2,7 +2,7 @@
 // ── Inject n-anchor enhanced styles ──
 (function(){
   const s=document.createElement('style');
-  s.textContent=`.n-anchor{margin:0;padding:0 32px;border-top:none!important;}.n-anchor-card{background:linear-gradient(150deg,rgba(200,69,42,0.13) 0%,rgba(160,80,30,0.08) 60%,rgba(200,69,42,0.11) 100%);border:1px solid rgba(200,69,42,0.25);border-left:3px solid rgba(200,69,42,0.55);border-radius:6px;padding:32px 40px 30px 34px;margin:0;position:relative;}.n-anchor-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(200,69,42,0.5),rgba(200,69,42,0.15),transparent);border-radius:6px 6px 0 0;}.n-anchor-label{font-family:Syne,sans-serif;font-size:8.5px;font-weight:700;letter-spacing:3.5px;color:rgba(200,69,42,0.7);text-transform:uppercase;display:block;margin-bottom:16px;}.n-anchor-text{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(17px,2vw,24px);line-height:1.65;color:rgba(245,242,235,0.92);letter-spacing:0.15px;font-weight:400;display:block;}.n-anchor-text em{font-style:italic;color:rgba(245,242,235,1);}.n-anchor-ornament{display:none;}`;
+  s.textContent=`.n-anchor{margin:0;padding:0 32px;border-top:none!important;}.n-anchor-card{background:linear-gradient(150deg,rgba(200,69,42,0.13) 0%,rgba(160,80,30,0.08) 60%,rgba(200,69,42,0.11) 100%);border:1px solid rgba(200,69,42,0.25);border-left:3px solid rgba(200,69,42,0.55);border-radius:6px;padding:32px 40px 30px 34px;margin:0;position:relative;}.n-anchor-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(200,69,42,0.5),rgba(200,69,42,0.15),transparent);border-radius:6px 6px 0 0;}.n-anchor-label{font-family:Syne,sans-serif;font-size:8.5px;font-weight:700;letter-spacing:3.5px;color:rgba(200,69,42,0.7)!important;text-transform:uppercase;display:block;margin-bottom:16px;}.n-anchor-text{font-family:'Instrument Serif',Georgia,serif!important;font-size:clamp(17px,2vw,24px)!important;line-height:1.65!important;color:rgba(245,242,235,0.92)!important;letter-spacing:0.15px;font-weight:400!important;display:block!important;}.n-anchor-text em{font-style:italic!important;color:rgba(245,242,235,1)!important;}.n-anchor-ornament{display:none!important;}.n-compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(245,242,235,0.1);border-radius:6px;overflow:hidden;margin:4px 0;}.n-compare-col{padding:0;}.n-compare-col:first-child{border-right:1px solid rgba(245,242,235,0.1);}.n-compare-head{font-family:Syne,sans-serif;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:16px 20px 14px;border-bottom:1px solid rgba(245,242,235,0.1);color:rgba(245,242,235,0.9);background:rgba(245,242,235,0.04);}.n-compare-row{display:grid;grid-template-columns:90px 1fr;gap:0;border-bottom:1px solid rgba(245,242,235,0.06);padding:0;}.n-compare-row:last-child{border-bottom:none;}.n-compare-label{font-family:Syne,sans-serif;font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(245,242,235,0.38);padding:12px 12px 12px 20px;border-right:1px solid rgba(245,242,235,0.06);display:flex;align-items:center;}.n-compare-row span:last-child{font-family:JetBrains Mono,monospace;font-size:11px;color:rgba(245,242,235,0.78);padding:12px 16px;line-height:1.5;}.n-compare-row span:last-child strong{color:rgba(245,242,235,0.95);font-weight:700;}`;
   document.head.appendChild(s);
 })();
 const revealObs = new IntersectionObserver(entries => {
@@ -2051,19 +2051,19 @@ NOTES.eyelids = () => `<div class="n-page"><div class="n-hero-new">
   <div class="n-compare-grid">
     <div class="n-compare-col">
       <div class="n-compare-head">Chalazion</div>
-      <div class="n-compare-row"><span class="n-compare-label">What</span><span>Lipogranuloma of Meibomian gland — chronic sterile inflammation</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Tender?</span><span><strong>No</strong> — firm, non-tender nodule in tarsal plate</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Cause</span><span>Blocked Meibomian duct → retained lipid → granulomatous response</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Treatment</span><span>Warm compresses + massage first. Intralesional steroid. I&C if persistent (&gt;4 weeks)</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Red flag</span><span><strong>Recurrence in same site = biopsy.</strong> Sebaceous gland carcinoma masquerades as chalazion</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">What</span><span>Meibomian lipogranuloma — chronic <strong>sterile</strong> inflammation</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Tender?</span><span><strong>No.</strong> Firm nodule deep in tarsal plate. Non-inflamed.</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Cause</span><span>Blocked duct → retained lipid → granulomatous response</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Rx</span><span>Warm compresses → intralesional steroid → I&amp;C if &gt;4 weeks</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Red flag</span><span><strong>Same site recurrence = biopsy.</strong> Sebaceous carcinoma masquerades here.</span></div>
     </div>
     <div class="n-compare-col">
-      <div class="n-compare-head" style="color:#c8452a">Hordeolum (Stye)</div>
-      <div class="n-compare-row"><span class="n-compare-label">What</span><span>Staphylococcal abscess — acute bacterial infection</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Tender?</span><span><strong>Yes</strong> — acutely painful, red, swollen lid</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Cause</span><span>Staph aureus. External (Zeis/Moll glands) or internal (Meibomian)</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Treatment</span><span>Warm compresses + topical antibiotics. Systemic if spreading cellulitis</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Red flag</span><span>Spreading erythema + fever + proptosis = preseptal/orbital cellulitis — IV antibiotics urgently</span></div>
+      <div class="n-compare-head" style="color:#c8452a;">Hordeolum (Stye)</div>
+      <div class="n-compare-row"><span class="n-compare-label">What</span><span>Staphylococcal abscess — acute <strong>bacterial</strong> infection</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Tender?</span><span><strong>Yes.</strong> Acutely painful, red, pointing. Hot to touch.</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Cause</span><span>Staph aureus. External = Zeis/Moll. Internal = Meibomian.</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Rx</span><span>Warm compresses + topical abx. Systemic if cellulitis spreading.</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Red flag</span><span><strong>Fever + proptosis + restricted EOM</strong> = orbital cellulitis. IV abx now.</span></div>
     </div>
   </div>
 </div>
@@ -2265,21 +2265,21 @@ NOTES.conjunctiva = () => `<div class="n-page"><div class="n-hero-new">
   <div class="n-compare-grid">
     <div class="n-compare-col">
       <div class="n-compare-head">Episcleritis</div>
-      <div class="n-compare-row"><span class="n-compare-label">Pain</span><span>Mild discomfort or none</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Appearance</span><span>Sectoral or diffuse redness, vessels blanch with phenylephrine</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Systemic</span><span>Usually idiopathic. Minor association with IBD, RA</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">VA</span><span>Normal</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Treatment</span><span>Topical NSAIDs or artificial tears. Resolves in weeks</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Urgency</span><span>Routine ophthalmology</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Pain</span><span>Mild discomfort or <strong>none.</strong> Dull ache at most.</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Colour</span><span>Bright red, sectoral. <strong>Blanches with phenylephrine.</strong></span></div>
+      <div class="n-compare-row"><span class="n-compare-label">VA</span><span><strong>Normal.</strong> No threat to vision.</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Systemic</span><span>Usually idiopathic. Mild assoc: IBD, RA.</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Rx</span><span>Topical NSAIDs or lubricants. Self-limiting weeks.</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Urgency</span><span>Routine — no emergency referral needed.</span></div>
     </div>
     <div class="n-compare-col">
-      <div class="n-compare-head" style="color:#c8452a">Scleritis</div>
-      <div class="n-compare-row"><span class="n-compare-label">Pain</span><span><strong>Severe, boring, wakes from sleep,</strong> radiates to jaw/temple</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Appearance</span><span>Deep violaceous hue, vessels do NOT blanch with phenylephrine</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Systemic</span><span><strong>RA (most common), GPA, SLE, IBD, relapsing polychondritis</strong></span></div>
-      <div class="n-compare-row"><span class="n-compare-label">VA</span><span>Can be reduced (posterior scleritis)</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Treatment</span><span>Oral NSAIDs, oral steroids, DMARDs for underlying disease</span></div>
-      <div class="n-compare-row"><span class="n-compare-label">Urgency</span><span><strong>Urgent</strong> — can cause scleral thinning, perforation</span></div>
+      <div class="n-compare-head" style="color:#c8452a;">Scleritis</div>
+      <div class="n-compare-row"><span class="n-compare-label">Pain</span><span><strong>Severe boring pain. Wakes from sleep.</strong> Radiates to jaw/temple.</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Colour</span><span>Deep violaceous. <strong>Does NOT blanch</strong> with phenylephrine.</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">VA</span><span>Can be <strong>reduced.</strong> Posterior scleritis → exudative RD.</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Systemic</span><span><strong>RA · GPA · SLE · IBD</strong> — workup mandatory.</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Rx</span><span>Oral NSAIDs → steroids → DMARDs. Topicals insufficient.</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Urgency</span><span><strong>Urgent.</strong> Scleral thinning → perforation if untreated.</span></div>
     </div>
   </div>
 </div>
