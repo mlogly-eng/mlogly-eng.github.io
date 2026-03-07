@@ -1692,7 +1692,7 @@ mark.vent-hl:hover{filter:brightness(.82) saturate(1.8);}
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="logo">
+  <a href="/" class="logo">
     <svg width="40" height="40" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" stroke="#1a1510" stroke-width="1.5"/><path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M10 30 Q22 36 34 30" stroke="#1a1510" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="22" cy="10" r="2.5" fill="#c8452a"/></svg>
     <span class="logo-name">Vent</span>
   </a>
@@ -1992,8 +1992,8 @@ function loadFontSize(){
 
 // ══ BREATHE MODE ══
 // breatheOn and nav/prefs state
-const NOTE_ORDER_OPHTHO=['intro','eyelids','lacrimal','conjunctiva','lens','cataract','cornea','uveitis','refraction','glaucoma','retina','retdetach','dr','hr','vascular','orbit','opticnerve','tumours','pharmacology'];
-const NOTE_NAMES={'intro':'Intro to Ophthalmology','eyelids':'Eyelids','lacrimal':'Lacrimal Apparatus','conjunctiva':'Conjunctiva','lens':'The Lens','cataract':'Cataracts','cornea':'Corneal Infections','uveitis':'Uveitis','refraction':'Refraction','glaucoma':'Glaucoma','retina':'The Retina','retdetach':'Retinal Detachment','dr':'Diabetic Retinopathy','hr':'Hypertensive Retinopathy','vascular':'Vascular Retinopathy','orbit':'The Orbit','opticnerve':'Optic Neuropathy','tumours':'Ocular Tumours','pharmacology':'Ocular Pharmacology'};
+const NOTE_ORDER_OPHTHO=['intro','eyelids','lacrimal','conjunctiva','lens','cataract','cornea','uveitis','refraction','glaucoma','retina','retdetach','dr','hr','vascular','amd','redeye','orbit','opticnerve','tumours','strabismus','pharmacology'];
+const NOTE_NAMES={'intro':'Intro to Ophthalmology','eyelids':'Eyelids','lacrimal':'Lacrimal Apparatus','conjunctiva':'Conjunctiva','lens':'The Lens','cataract':'Cataracts','cornea':'Corneal Infections','uveitis':'Uveitis','refraction':'Refraction','glaucoma':'Glaucoma','retina':'The Retina','retdetach':'Retinal Detachment','dr':'Diabetic Retinopathy','hr':'Hypertensive Retinopathy','vascular':'Vascular Retinopathy','amd':'Age-Related Macular Degeneration','redeye':'The Red Eye','orbit':'The Orbit','opticnerve':'Optic Neuropathy','tumours':'Ocular Tumours','strabismus':'Strabismus & Amblyopia','pharmacology':'Ocular Pharmacology'};
 // Alias so breathe engine (which uses NOTE_ORDER) works
 const NOTE_ORDER = NOTE_ORDER_OPHTHO;
 const NOTE_NAMES_NAV = NOTE_NAMES;
@@ -2444,6 +2444,8 @@ function bStop(showSummary=false){
   if(_bStart && elapsed>0){
     const sess={ id:Date.now(), noteId:currentNote, topic:NOTE_NAMES[currentNote]||currentNote, duration:elapsed, sections:bSessionSections, feeling:null, date:new Date().toISOString() };
     bAddSession(sess);
+    // Save breathe session to Supabase
+    if(typeof saveBreatheSession === 'function') saveBreatheSession(currentNote);
     if(showSummary) setTimeout(()=>bShowSummary(sess),600);
   }
 }
@@ -2890,6 +2892,8 @@ let currentNote=null, isFullscreen=false;
 
 function openNote(id){
   currentNote=id;
+  // Save progress to Supabase
+  if(typeof saveNoteProgress === 'function') saveNoteProgress(id);
   document.getElementById('mcontent').innerHTML=NOTES[id]?NOTES[id]():'<div class="n-page"><p style="color:var(--ink3);font-size:15px;">Coming soon.</p></div>';
   // Auto-tag key content for breathe mode highlight
   document.querySelectorAll('#mcontent .n-mech-cause, #mcontent .n-section-title, #mcontent .n-pearl-num, #mcontent .n-exam-statement').forEach(el=>{
@@ -3619,12 +3623,19 @@ NOTES.eyelids = () => `<div class="n-page"><div class="n-hero-new">
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Chalazion vs Hordeolum</span><span class="n-section-tag">tender = infected</span></div>
+  <div class="n-diff-grid">
+    <div class="n-diff-card this"><div class="n-diff-card-tag">Chalazion</div><div class="n-diff-card-name">Non-tender lid nodule</div><div class="n-diff-card-key">Blocked Meibomian gland → lipogranuloma. Firm, round, in tarsal plate. <strong>No pain, no erythema.</strong> Warm compresses → steroid injection → I&amp;C if &gt;4 weeks. Same-site recurrence = biopsy (sebaceous carcinoma).</div></div>
+    <div class="n-diff-card that"><div class="n-diff-card-tag">Hordeolum (Stye)</div><div class="n-diff-card-name">Acute, tender, pointing</div><div class="n-diff-card-key">Staphylococcal abscess of Zeis/Moll (external) or Meibomian (internal). <strong>Acutely painful, red, hot.</strong> Warm compresses + topical antibiotics. Fever + proptosis + restricted EOM = orbital cellulitis → IV abx now.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
   <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Complete ptosis + dilated fixed pupil + eye down-and-out → think <em>posterior communicating artery aneurysm</em> → emergency CT/MR angiography.</div></div>
   <div class="n-distractor-box"><div class="n-distractor-label">Why the pupil matters</div><div class="n-distractor-text"><strong>Pupillary fibres run on the outer surface of CN III</strong> — compressed first by extrinsic pressure (aneurysm). Ischaemic CN III (DM/HTN) affects the inner core first → pupil spared. Pupil-involved = aneurysm.</div></div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Ptosis + dilated pupil = aneurysm until proven otherwise.</strong><span class="n-pearl-exam">Exam: what differentiates aneurysmal from ischaemic CN III?</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Horner: partial ptosis + miosis.</strong> The miosis distinguishes it from aponeurotic ptosis. Image the full sympathetic pathway.</div></div>
@@ -3632,7 +3643,7 @@ NOTES.eyelids = () => `<div class="n-page"><div class="n-hero-new">
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
       <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Drooping lid + dilated pupil — routine neurology referral.</div></div>
@@ -4386,6 +4397,172 @@ NOTES.pharmacology = () => `<div class="n-page"><div class="n-hero-new">
 </div>
 <div class="n-anchor"><div class="n-anchor-text"><em>Prostaglandins first. Steroids never blind.</em><br>Every drop you prescribe is a systemic drug.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+// ── AMD ──
+NOTES.amd = () => `<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">Ophthalmology · Retina · Note 17</div>
+  <div class="n-hero-title">Age-Related Macular<br><em>Degeneration</em></div>
+  <div class="n-hero-sub">Dry · Wet · Drusen · Anti-VEGF · The Amsler Grid</div>
+  <div class="n-snapshot">
+    <div class="n-snap-cell"><div class="n-snap-label">Dry vs Wet</div><div class="n-snap-text">Dry = drusen + geographic atrophy. Slow, no treatment. Wet = choroidal neovascularisation. Fast, treatable. <strong>Distortion = wet until proven otherwise.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Key symptom</div><div class="n-snap-text">Central scotoma + metamorphopsia (distortion). Peripheral vision preserved. Reading and faces affected first.</div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Treatment</div><div class="n-snap-text">Dry: AREDS2 supplements (high-risk only). Wet: <strong>intravitreal anti-VEGF (ranibizumab, aflibercept)</strong> — preserves vision, does not restore it.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Dry vs Wet AMD</span><span class="n-section-tag">the distinction that changes management</span></div>
+  <div class="n-diff-grid">
+    <div class="n-diff-card this"><div class="n-diff-card-tag">Dry AMD</div><div class="n-diff-card-name">Slow, atrophic, no treatment</div><div class="n-diff-card-key">Drusen (yellow deposits under RPE) → geographic atrophy of RPE and photoreceptors. Gradual central vision loss over years. <strong>No proven treatment.</strong> AREDS2 supplements slow progression in high-risk (intermediate/advanced fellow eye).</div></div>
+    <div class="n-diff-card that"><div class="n-diff-card-tag">Wet AMD</div><div class="n-diff-card-name">Fast, neovascular, treatable</div><div class="n-diff-card-key">Choroidal neovascularisation breaches Bruch's membrane → subretinal fluid, haemorrhage, scarring. Rapid central vision loss — days to weeks. <strong>Intravitreal anti-VEGF urgently.</strong> Distortion on Amsler grid = refer same week.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Elderly patient + central visual distortion + straight lines appear wavy → <em>wet AMD</em> → same-week anti-VEGF referral. Every week of delay = more photoreceptor loss.</div></div>
+  <div class="n-distractor-box"><div class="n-distractor-label">Amsler grid test</div><div class="n-distractor-text">Patient covers one eye, looks at central dot. <strong>Wavy or missing lines = metamorphopsia = wet AMD until proven otherwise.</strong> Every AMD patient should have one at home.</div></div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-pearl-list">
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Distortion = wet AMD until proven otherwise.</strong> Scotoma alone = dry. Distortion = wet. The distinction determines urgency.<span class="n-pearl-exam">Exam: what symptom distinguishes wet from dry AMD?</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Anti-VEGF preserves vision — it does not restore it.</strong> Ranibizumab, bevacizumab, aflibercept. Intravitreal injections every 4–8 weeks. The scar that forms before treatment is permanent.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>AREDS2 supplements for dry AMD only in high-risk patients</strong> — intermediate AMD or advanced AMD in the fellow eye. Not for early dry AMD. Contents: vitamins C/E, zinc, lutein, zeaxanthin.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>AMD does not cause total blindness</strong> — peripheral vision is preserved. Patients lose the ability to read, recognise faces, drive. Central scotoma with intact periphery is the hallmark.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-trap-list">
+    <div class="n-trap">
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Dry AMD — give AREDS supplements to all patients.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>AREDS2 only benefits high-risk patients</strong> (intermediate AMD or advanced in fellow eye). Early dry AMD: lifestyle advice, stop smoking, monitor.</div></div>
+    </div>
+    <div class="n-trap">
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Anti-VEGF will restore the central vision lost to wet AMD.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Anti-VEGF preserves remaining vision — it cannot reverse photoreceptor loss already sustained.</strong> Early treatment = better outcome. Every week matters.</div></div>
+    </div>
+  </div>
+</div>
+<div class="n-anchor"><div class="n-anchor-text"><em>Distortion means wet. Wet means urgent.</em><br>Anti-VEGF preserves vision. But only if started before the scar forms.</div></div>
+<div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+NOTES_MCQ.amd=[{q:"Elderly patient notices wavy lines on the Amsler grid with one eye. Next step?",opts:["Reassure — normal ageing","Same-week urgent ophthalmology referral — wet AMD","AREDS2 supplements and review in 6 months","Refer to neurology"],ans:1,focus:"Wet AMD — metamorphopsia = urgent",exp:"Metamorphopsia (distortion/wavy lines) = wet AMD until proven otherwise. Same-week referral for OCT and anti-VEGF. Every week of delay = irreversible photoreceptor loss."},{q:"Which supplement reduces progression risk in intermediate dry AMD?",opts:["Vitamin D","AREDS2 (vitamins C/E, zinc, lutein, zeaxanthin)","Omega-3 only","No supplements have evidence"],ans:1,focus:"AREDS2 — intermediate AMD",exp:"AREDS2 supplements reduce progression risk by ~25% in intermediate AMD or advanced AMD in the fellow eye. Not indicated for early dry AMD."},{q:"Anti-VEGF injections for wet AMD — realistic goal of treatment?",opts:["Restore vision to pre-disease level","Prevent further vision loss — preservation not restoration","Cure the underlying disease","Eliminate drusen"],ans:1,focus:"Anti-VEGF — preserves not restores",exp:"Anti-VEGF (ranibizumab, aflibercept) halts neovascularisation and preserves remaining vision. It cannot restore photoreceptors already lost. Early treatment = best outcome."},{q:"AMD patient asks if they will go completely blind. Correct response?",opts:["Yes — AMD causes total blindness","No — peripheral vision is preserved; central vision is affected","Only wet AMD causes blindness","Only if untreated"],ans:1,focus:"AMD — peripheral vision preserved",exp:"AMD causes central scotoma — loss of reading, face recognition, driving. Peripheral vision is preserved. Total blindness is rare. This is important for patient counselling."},{q:"Wet AMD — which drug class is first-line intravitreal treatment?",opts:["Steroids (triamcinolone)","Anti-VEGF (ranibizumab, aflibercept, bevacizumab)","Antibiotic (vancomycin)","Carbonic anhydrase inhibitor"],ans:1,focus:"Anti-VEGF for wet AMD",exp:"Anti-VEGF agents inhibit vascular endothelial growth factor, reducing choroidal neovascularisation. Injected intravitreally every 4–8 weeks. Key SE: endophthalmitis (rare), RPE tear."}];
+
+// ── RED EYE ──
+NOTES.redeye = () => `<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">Ophthalmology · Clinical · Note 18</div>
+  <div class="n-hero-title">The Red<br><em>Eye</em></div>
+  <div class="n-hero-sub">VA · Pupil · Photophobia · The Three Questions That Give the Diagnosis</div>
+  <div class="n-snapshot">
+    <div class="n-snap-cell"><div class="n-snap-label">The safety screen</div><div class="n-snap-text"><strong>VA + pupil + photophobia</strong> before any red eye leaves your clinic. Normal all three = likely benign. Any abnormal = refer.</div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Dangerous red eye</div><div class="n-snap-text">Reduced VA, irregular/fixed pupil, photophobia, ciliary flush, corneal haze = keratitis, uveitis, or acute glaucoma. <strong>Never just conjunctivitis.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Benign red eye</div><div class="n-snap-text">Normal VA, reactive pupil, no photophobia, peripheral injection = conjunctivitis, episcleritis, subconjunctival haemorrhage.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Red Eye Differential at a Glance</span><span class="n-section-tag">use the discriminators</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label err">Acute Glaucoma</div><div class="n-diag-content">Severe pain, vomiting, fixed mid-dilated oval pupil, corneal haze, IOP &gt;40. Ciliary flush. <strong>Emergency — IV acetazolamide + pilocarpine + urgent ophthalmology.</strong></div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Keratitis</div><div class="n-diag-content">Painful, photophobic, white corneal spot/ulcer on fluorescein. Reduced VA. Ciliary flush. <strong>Same-day referral. Never steroids until organism known.</strong></div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Anterior Uveitis</div><div class="n-diag-content">Ciliary flush + photophobia + irregular/small pupil (posterior synechiae) + VA reduced. Keratic precipitates on slit lamp. <strong>Topical steroids + cycloplegia. Same-day referral.</strong></div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Scleritis</div><div class="n-diag-content">Deep boring pain, worse at night, tender globe, violaceous hue, <strong>does not blanch with phenylephrine.</strong> RA/GPA. Oral NSAIDs → steroids.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Episcleritis</div><div class="n-diag-content">Sectoral redness, mild discomfort, normal VA. <strong>Blanches with phenylephrine.</strong> Benign, self-limiting. Lubricants ± topical NSAIDs.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Conjunctivitis</div><div class="n-diag-content">Peripheral injection, discharge, normal VA, normal pupil, no photophobia. Bacterial/viral/allergic. Chloramphenicol (bacterial) or observation (viral).</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Subconj. Haem.</div><div class="n-diag-content">Bright red, sharply demarcated, asymptomatic. Normal VA. Alarming but benign. <strong>Check BP if recurrent. Resolves in 2 weeks. No treatment.</strong></div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Red eye + fixed mid-dilated oval pupil + vomiting + severe headache → <em>acute angle-closure glaucoma</em> → emergency. Not migraine.</div></div>
+  <div class="n-distractor-box"><div class="n-distractor-label">Ciliary flush vs conjunctival injection</div><div class="n-distractor-text"><strong>Ciliary flush</strong> = ring of redness around the limbus (corneal margin) = anterior segment pathology (keratitis, uveitis, glaucoma). <strong>Peripheral injection</strong> = redness at the fornix, fades toward limbus = conjunctivitis. This distinction alone separates benign from emergency.</div></div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-pearl-list">
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>VA + pupil + photophobia. Always. Before the patient leaves.</strong> These three discriminate emergency from benign in every red eye.<span class="n-pearl-exam">Exam: what three signs must you check in any red eye?</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Steroids for undiagnosed red eye = disaster.</strong> HSV keratitis will perforate. IOP will spike in steroid responders. Never prescribe without slit lamp diagnosis.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Blanches with phenylephrine = episcleritis. Does not blanch = scleritis.</strong> One clinical test, two completely different management pathways.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Subconjunctival haemorrhage looks alarming, is benign.</strong> Reassure. Check BP. If recurrent, check coagulation and anticoagulants. No treatment needed.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-trap-list">
+    <div class="n-trap">
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Red eye + vomiting → gastroenteritis.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Acute angle-closure glaucoma.</strong> The vagal response to high IOP causes nausea and vomiting. Always check the eye in a vomiting patient with headache.</div></div>
+    </div>
+    <div class="n-trap">
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Prescribe topical dexamethasone for a red, irritated eye.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Never steroids for undiagnosed red eye.</strong> HSV keratitis + steroids = perforation. Dendritic ulcer on fluorescein = topical aciclovir, not steroids.</div></div>
+    </div>
+  </div>
+</div>
+<div class="n-anchor"><div class="n-anchor-text"><em>Where is the redness? What is the pupil doing? Is the vision affected?</em><br>Three questions. They give you the diagnosis.</div></div>
+<div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+NOTES_MCQ.redeye=[{q:"Red eye with fixed mid-dilated oval pupil, corneal haze, vomiting. Diagnosis?",opts:["Viral conjunctivitis","Acute angle-closure glaucoma — emergency","Anterior uveitis","Subconjunctival haemorrhage"],ans:1,focus:"Acute angle-closure — fixed oval pupil",exp:"Acute angle-closure: fixed mid-dilated oval pupil + corneal haze + severe pain + vomiting. Emergency: IV acetazolamide, pilocarpine, urgent ophthalmology. Not migraine."},{q:"Three signs to check in every red eye before the patient leaves?",opts:["IOP, fundus, slit lamp","VA, pupil, photophobia","Discharge, proptosis, RAPD","Colour vision, visual fields, red reflex"],ans:1,focus:"Red eye safety screen",exp:"VA + pupil + photophobia is the red eye safety screen. Normal all three = likely benign. Any abnormal = same-day referral. This catches keratitis, uveitis, and acute glaucoma."},{q:"Sectoral red eye, vessels blanch with phenylephrine, mild discomfort, normal VA. Diagnosis?",opts:["Scleritis","Episcleritis","Anterior uveitis","Keratitis"],ans:1,focus:"Episcleritis — blanching",exp:"Episcleritis: superficial episcleral vessels blanch with phenylephrine. Mild discomfort, normal VA, self-limiting. Scleritis: vessels do NOT blanch, deep boring pain, systemic association."},{q:"Topical dexamethasone prescribed for red eye. Patient returns with corneal dendrites. What happened?",opts:["Steroid-induced glaucoma","HSV keratitis reactivated by steroids","Allergic reaction","Bacterial superinfection"],ans:1,focus:"Steroids + HSV = disaster",exp:"Topical steroids suppress immunity → HSV reactivation → dendritic ulcer → geographic ulcer → perforation. Never prescribe steroids for undiagnosed red eye. Always slit lamp first."},{q:"Bright red sharply demarcated patch on white of eye, no pain, normal VA. Management?",opts:["Same-day ophthalmology","Topical antibiotics","Reassure — subconjunctival haemorrhage, check BP","Topical steroids"],ans:2,focus:"Subconjunctival haemorrhage — benign",exp:"Subconjunctival haemorrhage: alarming appearance, benign cause (Valsalva, cough, hypertension). Normal VA, asymptomatic. Reassure, check BP, resolves in 2 weeks. No treatment."}];
+
+// ── STRABISMUS ──
+NOTES.strabismus = () => `<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">Ophthalmology · Paediatric · Note 21</div>
+  <div class="n-hero-title">Strabismus &amp;<br><em>Amblyopia</em></div>
+  <div class="n-hero-sub">Esotropia · Exotropia · Amblyopia · Cover Test · Critical Period · Patching</div>
+  <div class="n-snapshot">
+    <div class="n-snap-cell"><div class="n-snap-label">Key distinction</div><div class="n-snap-text">Strabismus = eye misalignment (the eyes). Amblyopia = cortical suppression (the brain). <strong>Amblyopia is the consequence — strabismus is one cause.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Critical period</div><div class="n-snap-text">Visual cortex remains plastic until age 7–8. Treatment only works within this window. <strong>Screen at age 4–5. Detect early.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Leukocoria rule</div><div class="n-snap-text">White reflex in a child with apparent strabismus = <strong>retinoblastoma until proven otherwise.</strong> Always check red reflex first.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Amblyopia — Why Patching Works</span><span class="n-section-tag">cortical not ocular</span></div>
+  <div class="n-mech-chain">
+    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Abnormal visual input — strabismus, refractive error, or deprivation</div><div class="n-mech-text">The brain receives two mismatched or unequal images. Rather than fusing them, it <strong>suppresses the weaker eye's input</strong> to avoid diplopia. The eye itself is structurally normal.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Cortical suppression → cortical connections weaken</div><div class="n-mech-text">Without stimulation, the visual cortex connections for the suppressed eye atrophy. <strong>VA loss is cortical — not retinal or optic nerve.</strong> This is why the eye looks normal on examination.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Critical period — the closing window</div><div class="n-mech-text">The visual cortex remains plastic until approximately <strong>age 7–8 years.</strong> Treatment during this window can reverse amblyopia. After the critical period, cortical reorganisation is irreversible.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d4">04</div><div class="n-mech-body"><div class="n-mech-cause">Patching forces cortical use of the suppressed eye</div><div class="n-mech-text">Cover the dominant eye → brain forced to process input from the amblyopic eye → cortical connections rebuild → VA improves. <strong>Correct refractive error first.</strong> Compliance is the biggest challenge.</div></div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">The Cover Test</span><span class="n-section-tag">the key examination</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label">Cover test</div><div class="n-diag-content">Cover one eye — watch the other. If the uncovered eye <strong>moves to fixate = manifest strabismus (tropia).</strong> Cover right, watch left: if left moves = left was deviated.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Uncover test</div><div class="n-diag-content">Remove cover — watch the previously covered eye. If it <strong>moves to re-align = latent strabismus (phoria).</strong> Only manifest when binocular fusion is disrupted.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Pseudostrabismus</div><div class="n-diag-content">Wide epicanthal folds make eyes appear crossed — <strong>cover test is normal, no movement.</strong> Corneal light reflexes symmetric. Reassure parents. Never reassure without the cover test.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-pearl-list">
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Amblyopia is a cortical problem, not an ocular one.</strong> The eye is structurally normal. VA loss is from cortical suppression. This is why patching the good eye works.<span class="n-pearl-exam">Exam: why does patching the good eye treat amblyopia?</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>After age 7–8, amblyopia treatment is largely ineffective.</strong> The critical period has closed. Preschool vision screening at 4–5 years exists to detect amblyopia while still treatable.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Accommodative esotropia: correct the hyperopia first.</strong> +4D hyperopia → excess accommodation → convergence → esotropia. Glasses often resolve it fully. Residual deviation after optical correction = surgery.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Leukocoria = retinoblastoma until proven otherwise.</strong> Always examine the red reflex before diagnosing benign strabismus. White or absent red reflex = same-day urgent referral.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-trap-list">
+    <div class="n-trap">
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Child with crossing eyes, wide nasal bridge — reassure parents it's normal.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Always perform a cover test.</strong> Wide epicanthal folds cause pseudostrabismus — but real esotropia looks identical to parents. Never reassure without examining.</div></div>
+    </div>
+    <div class="n-trap">
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Child age 10, amblyopia detected late — start patching now.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>The critical period closes at age 7–8.</strong> Patching after this has minimal benefit. Early detection at preschool screening is the only opportunity.</div></div>
+    </div>
+  </div>
+</div>
+<div class="n-anchor"><div class="n-anchor-text"><em>The brain suppresses what it cannot fuse. After age eight, that suppression is permanent.</em><br>Detect early. Patch early. The window closes.</div></div>
+<div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+NOTES_MCQ.strabismus=[{q:"A 3-year-old with apparent crossing of the eyes. Cover test shows no movement. Diagnosis?",opts:["Esotropia — refer to orthoptics","Pseudostrabismus — wide epicanthal folds, reassure","Amblyopia — patch immediately","Exotropia — prism therapy"],ans:1,focus:"Pseudostrabismus — normal cover test",exp:"Pseudostrabismus: wide epicanthal folds make eyes appear crossed, but cover test is normal — no movement. Corneal light reflexes symmetric. Reassure parents. Never reassure without the cover test."},{q:"Why does patching the good eye treat amblyopia?",opts:["Strengthens extraocular muscles","Forces visual cortex to process input from suppressed eye, rebuilding connections","Corrects refractive error","Reduces diplopia"],ans:1,focus:"Amblyopia — cortical mechanism",exp:"Amblyopia is cortical suppression. Patching the good eye forces the brain to use the amblyopic eye → cortical connections rebuild → VA improves. The eye itself is structurally normal."},{q:"After what age is amblyopia treatment largely ineffective?",opts:["Age 3–4","Age 5–6","Age 7–8","Age 10–12"],ans:2,focus:"Critical period — age 7–8",exp:"The visual cortex remains plastic until age 7–8. After the critical period closes, cortical reorganisation is irreversible and patching has minimal benefit. Screen at age 4–5."},{q:"5-year-old with right esotropia, refraction shows +4.00D hyperopia. First-line treatment?",opts:["Patch left eye immediately","Correct hyperopia with glasses first","Surgical correction","Botulinum toxin"],ans:1,focus:"Accommodative esotropia — glasses first",exp:"Accommodative esotropia: hyperopia → excess accommodation → convergence → esotropia. First-line: correct refractive error with glasses. Many resolve fully. Residual deviation after full optical correction = surgery."},{q:"Child with apparent strabismus and a white reflex on photographs. Immediate action?",opts:["Refer to orthoptics","Same-day ophthalmology — exclude retinoblastoma","Reassure — camera flash artefact","Review in 3 months"],ans:1,focus:"Leukocoria — retinoblastoma",exp:"Leukocoria (white reflex) = retinoblastoma until proven otherwise. Same-day ophthalmology. Never reassure. Never biopsy (risk of seeding). Absent or white red reflex is never normal."}];
+
+// ID aliases
+NOTES.rd = NOTES.retdetach;
+NOTES_MCQ.rd = NOTES_MCQ.retdetach;
+NOTES.rvo = NOTES.vascular;
+NOTES_MCQ.rvo = NOTES_MCQ.vascular;
+NOTES.on = NOTES.opticnerve;
+NOTES_MCQ.on = NOTES_MCQ.opticnerve;
+
 NOTES_MCQ.pharmacology=[{q:"Asthmatic POAG patient prescribed timolol develops worsening wheeze. Mechanism?",opts:["Preservative allergy","Systemic beta-2 blockade via nasolacrimal absorption → bronchospasm","Coincidental COPD","Drop technique"],ans:1,focus:"Timolol — systemic absorption, asthma CI",exp:"Timolol absorbed via NLD → nasal mucosa → systemic circulation, bypassing first-pass. Beta-2 blockade causes bronchospasm. Contraindicated in asthma/COPD. Switch to prostaglandin analogue."},{q:"First-line glaucoma drop and its mechanism?",opts:["Timolol — reduce aqueous production","Prostaglandin analogue (latanoprost) — increase uveoscleral outflow","Dorzolamide — inhibit carbonic anhydrase","Brimonidine — alpha-2 agonist"],ans:1,focus:"Prostaglandins — first-line",exp:"Prostaglandin analogues (latanoprost): most effective single agent, 25–35% IOP reduction. FP receptor → uveoscleral outflow. Once-daily evening. No respiratory/cardiac CI."},{q:"GP prescribes topical dexamethasone for red eye. Patient returns 2 weeks later with corneal dendrites and worsening vision. What happened?",opts:["Steroid-induced glaucoma","HSV keratitis reactivated by steroid immunosuppression","Allergic reaction to preservative","Bacterial superinfection"],ans:1,focus:"Steroids + HSV = disaster",exp:"Topical steroids reactivate HSV → dendritic (or geographic) ulcer. Can lead to corneal perforation. Never prescribe steroids for undiagnosed red eye. Slit lamp + fluorescein first. Treatment: stop steroid, topical aciclovir."},{q:"Which drug is contraindicated in infants due to apnoea risk?",opts:["Latanoprost","Timolol","Brimonidine (alpha-2 agonist)","Dorzolamide"],ans:2,focus:"Brimonidine — CI in infants",exp:"Brimonidine (alpha-2 agonist) causes CNS depression and apnoea in infants and young children. Absolute contraindication. Used in adults for glaucoma (reduces production + increases uveoscleral drainage)."},{q:"A patient with wet AMD is offered intravitreal injections. Which drug class and key complication?",opts:["Intravitreal steroids — cataract","Anti-VEGF (ranibizumab/aflibercept) — endophthalmitis","Topical CAI — metallic taste","Alpha-2 agonist — allergy"],ans:1,focus:"Anti-VEGF for wet AMD",exp:"Anti-VEGF (ranibizumab, bevacizumab, aflibercept) for wet AMD, DMO, CRVO. Intravitreal injection. Key SE: endophthalmitis (rare but serious), RPE tear, subconjunctival haemorrhage. Dry AMD: no proven treatment (AREDS supplements only)."}];
 </script>
 <!-- BREATHING NEXT NOTE POPUP - outside modal to avoid transform stacking context -->
@@ -4400,5 +4577,77 @@ NOTES_MCQ.pharmacology=[{q:"Asthmatic POAG patient prescribed timolol develops w
     <button class="b-next-stop" onclick="bStop(true)">Done</button>
   </div>
 </div>
+
+<!-- Supabase Progress Tracking -->
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+const supabase = createClient('https://vwotkstjgzwjjutzjjph.supabase.co', 'sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj')
+
+// Get current user
+async function getUser() {
+  const { data: { user } } = await supabase.auth.getUser()
+  return user
+}
+
+// Save or update progress when a note is opened
+window.saveNoteProgress = async function(noteId) {
+  const user = await getUser()
+  if (!user) return
+
+  const { data: existing } = await supabase
+    .from('progress')
+    .select('*')
+    .eq('user_id', user.id)
+    .eq('note_id', noteId)
+    .single()
+
+  if (existing) {
+    await supabase
+      .from('progress')
+      .update({ last_opened: new Date().toISOString() })
+      .eq('user_id', user.id)
+      .eq('note_id', noteId)
+  } else {
+    await supabase
+      .from('progress')
+      .insert({
+        user_id: user.id,
+        note_id: noteId,
+        last_opened: new Date().toISOString(),
+        breathe_sessions: 0,
+        mcq_score: 0
+      })
+  }
+}
+
+// Save breathe session
+window.saveBreatheSession = async function(noteId) {
+  const user = await getUser()
+  if (!user) return
+
+  const { data: existing } = await supabase
+    .from('progress')
+    .select('*')
+    .eq('user_id', user.id)
+    .eq('note_id', noteId)
+    .single()
+
+  if (existing) {
+    await supabase
+      .from('progress')
+      .update({ breathe_sessions: (existing.breathe_sessions || 0) + 1 })
+      .eq('user_id', user.id)
+      .eq('note_id', noteId)
+  }
+}
+
+// Show user email in nav if logged in
+const user = await getUser()
+if (user) {
+  const loginBtn = document.querySelector('.nav-login-btn')
+  if (loginBtn) loginBtn.textContent = user.email.split('@')[0]
+}
+</script>
 </body>
 </html>
