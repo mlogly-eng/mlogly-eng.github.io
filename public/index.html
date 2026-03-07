@@ -668,11 +668,16 @@ document.getElementById('sb').addEventListener('click',async()=>{
   const email=document.getElementById('ei').value.trim();
   const errEl=document.getElementById('cerr');
   const btn=document.getElementById('sb');
+  const year=document.getElementById('yr').value;
   errEl.classList.remove('show');
   if(!validEmail(email)){errEl.textContent='Please enter a valid email address.';errEl.classList.add('show');document.getElementById('ei').focus();return;}
   btn.disabled=true;btn.textContent='Submitting...';
-  // Replace with: await fetch('https://formspree.io/f/YOUR_ID',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,year:document.getElementById('yr').value})});
-  await new Promise(r=>setTimeout(r,800));
+  try {
+    const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm');
+    const supabase = createClient('https://vwotkstjgzwjjutzjjph.supabase.co','sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj');
+    const { error } = await supabase.from('waitlist').insert({ email, year: year||null });
+    if(error && error.code !== '23505') throw error; // 23505 = duplicate email, still show success
+  } catch(e) { console.error('Waitlist error:',e); }
   document.getElementById('fc').innerHTML='<div style="padding:48px 0;"><div style="font-family:\'Instrument Serif\',serif;font-size:52px;color:#e85d3f;font-style:italic;line-height:1;margin-bottom:20px;">You\'re in.</div><p style="color:rgba(245,242,235,.65);font-size:16px;line-height:1.75;">We\'ll reach out when Vent opens.<br>Until then — breathe.</p></div>';
 });
 
