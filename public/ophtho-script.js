@@ -3268,35 +3268,35 @@ NOTES.amd = () => `<div class="n-page"><div class="n-hero-new">
     <div class="n-viz-label-row"><span class="n-viz-title">The macular anatomy — from drusen to CNV</span><span class="n-viz-sub">Where AMD begins and how it progresses</span></div>
     <svg viewBox="0 0 760 160" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="146" height="160" rx="2" fill="#1a2a3a"/>
-      <text x="73" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">NORMAL</text>
-      <text x="73" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Macula</text>
-      <text x="73" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">RPE intact</text>
-      <text x="73" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Bruch's membrane healthy</text>
-      <text x="73" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Central 5° — highest cone density</text>
+      <text x="73" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">NORMAL</text>
+      <text x="73" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Macula</text>
+      <text x="73" y="72" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">RPE intact</text>
+      <text x="73" y="87" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Bruch's membrane healthy</text>
+      <text x="73" y="128" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Highest cone density</text>
       <rect x="157" y="0" width="146" height="160" rx="2" fill="#3a4a2a"/>
-      <text x="230" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">EARLY DRY</text>
-      <text x="230" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Drusen</text>
-      <text x="230" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Hard = small, benign</text>
-      <text x="230" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Soft = confluent, high risk</text>
-      <text x="230" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">AREDS2 if intermediate</text>
+      <text x="230" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">EARLY DRY</text>
+      <text x="230" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Drusen</text>
+      <text x="230" y="72" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Hard = small, benign</text>
+      <text x="230" y="87" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Soft = confluent, high risk</text>
+      <text x="230" y="128" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">AREDS2 if intermediate</text>
       <rect x="314" y="0" width="146" height="160" rx="2" fill="#5a4a2a"/>
-      <text x="387" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">ADVANCED DRY</text>
-      <text x="387" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Geo Atrophy</text>
-      <text x="387" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">RPE cell death</text>
-      <text x="387" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Bare Bruch's membrane</text>
-      <text x="387" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Slow central scotoma · no tx</text>
+      <text x="387" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">ADVANCED DRY</text>
+      <text x="387" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Geo Atrophy</text>
+      <text x="387" y="72" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">RPE cell death</text>
+      <text x="387" y="87" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Bare Bruch's membrane</text>
+      <text x="387" y="128" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Slow scotoma · no tx</text>
       <rect x="471" y="0" width="146" height="160" rx="2" fill="#8a3a1a"/>
-      <text x="544" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">WET CONVERSION</text>
-      <text x="544" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">CNV</text>
-      <text x="544" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Choroidal neovascularisation</text>
-      <text x="544" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Leaky vessels → fluid + bleed</text>
-      <text x="544" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Metamorphopsia · urgent anti-VEGF</text>
+      <text x="544" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">WET CONVERSION</text>
+      <text x="544" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">CNV</text>
+      <text x="544" y="72" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Choroidal new vessels</text>
+      <text x="544" y="87" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Leaky → fluid + bleed</text>
+      <text x="544" y="128" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Metamorphopsia · anti-VEGF</text>
       <rect x="628" y="0" width="132" height="160" rx="2" fill="#c8452a"/>
-      <text x="694" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">UNTREATED</text>
-      <text x="694" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Disciform</text>
-      <text x="694" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Fibrovascular scar</text>
-      <text x="694" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Permanent central scotoma</text>
-      <text x="694" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Irreversible — scar cannot be reversed</text>
+      <text x="694" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">UNTREATED</text>
+      <text x="694" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Disciform</text>
+      <text x="694" y="72" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Fibrovascular scar</text>
+      <text x="694" y="87" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Permanent central scotoma</text>
+      <text x="694" y="128" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Irreversible — no recovery</text>
     </svg>
   </div>
 </div>
@@ -3398,35 +3398,35 @@ NOTES.redeye = () => `<div class="n-page"><div class="n-hero-new">
     <div class="n-viz-label-row"><span class="n-viz-title">Red eye — location of redness tells you where the problem is</span><span class="n-viz-sub">The single most useful clinical rule</span></div>
     <svg viewBox="0 0 760 160" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="148" height="160" rx="2" fill="#1a3a2a"/>
-      <text x="74" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">PERIPHERAL</text>
-      <text x="74" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Conjunctivitis</text>
-      <text x="74" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Diffuse peripheral injection</text>
-      <text x="74" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Normal VA · normal pupil</text>
-      <text x="74" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Benign · chloramphenicol if bacterial</text>
+      <text x="74" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">PERIPHERAL</text>
+      <text x="74" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Conjunctivitis</text>
+      <text x="74" y="72" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Diffuse peripheral redness</text>
+      <text x="74" y="87" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Normal VA · normal pupil</text>
+      <text x="74" y="128" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Chloramphenicol if bacterial</text>
       <rect x="159" y="0" width="148" height="160" rx="2" fill="#2a3a5a"/>
-      <text x="233" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SECTORAL</text>
-      <text x="233" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Episcleritis</text>
-      <text x="233" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">One sector · blanches w/ phenyl</text>
-      <text x="233" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Mild discomfort · normal VA</text>
-      <text x="233" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">IBD · RA · SLE · topical NSAIDs</text>
+      <text x="233" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SECTORAL</text>
+      <text x="233" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Episcleritis</text>
+      <text x="233" y="72" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Blanches w/ phenylephrine</text>
+      <text x="233" y="87" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Mild discomfort · normal VA</text>
+      <text x="233" y="128" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">IBD · RA · SLE · NSAIDs</text>
       <rect x="318" y="0" width="148" height="160" rx="2" fill="#5a2a3a"/>
-      <text x="392" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">CIRCUMLIMBAL</text>
-      <text x="392" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Ciliary Flush</text>
-      <text x="392" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Deepest at limbus</text>
-      <text x="392" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Uveitis · keratitis · AC glaucoma</text>
-      <text x="392" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Check pupil + VA → refer</text>
+      <text x="392" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">CIRCUMLIMBAL</text>
+      <text x="392" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Ciliary Flush</text>
+      <text x="392" y="72" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Deepest at limbus</text>
+      <text x="392" y="87" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Uveitis · keratitis · glaucoma</text>
+      <text x="392" y="128" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Check pupil + VA → refer</text>
       <rect x="477" y="0" width="148" height="160" rx="2" fill="#1a2a5a"/>
-      <text x="551" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SMALL IRREGULAR PUPIL</text>
-      <text x="551" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Uveitis</text>
-      <text x="551" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Post synechiae · KPs · flare</text>
-      <text x="551" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Photophobia · reduced VA</text>
-      <text x="551" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Topical steroids + cycloplegics</text>
+      <text x="551" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">SMALL PUPIL</text>
+      <text x="551" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Uveitis</text>
+      <text x="551" y="72" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Irregular · synechiae · KPs</text>
+      <text x="551" y="87" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Photophobia · reduced VA</text>
+      <text x="551" y="128" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Steroids + cycloplegics</text>
       <rect x="636" y="0" width="124" height="160" rx="2" fill="#c8452a"/>
-      <text x="698" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">FIXED MID-DILATED</text>
-      <text x="698" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Angle-Closure</text>
-      <text x="698" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">IOP &gt;50 · corneal haze</text>
-      <text x="698" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Severe pain · N&amp;V · haloes</text>
-      <text x="698" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Emergency — IV acetazolamide</text>
+      <text x="698" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">MID-DILATED</text>
+      <text x="698" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Angle-Closure</text>
+      <text x="698" y="72" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Fixed oval · IOP &gt;50</text>
+      <text x="698" y="87" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Pain · N&amp;V · haloes</text>
+      <text x="698" y="128" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Emergency — acetazolamide</text>
     </svg>
   </div>
 </div>
@@ -3510,35 +3510,35 @@ NOTES.strabismus = () => `<div class="n-page"><div class="n-hero-new">
     <div class="n-viz-label-row"><span class="n-viz-title">Strabismus types &amp; consequences</span><span class="n-viz-sub">Direction of deviation determines the diagnosis</span></div>
     <svg viewBox="0 0 760 160" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="146" height="160" rx="2" fill="#2a3a5a"/>
-      <text x="73" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">ESOTROPIA</text>
-      <text x="73" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Inward turn</text>
-      <text x="73" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Most common in children</text>
-      <text x="73" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Accommodative → hyperopia</text>
-      <text x="73" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Glasses first · then surgery</text>
+      <text x="73" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">ESOTROPIA</text>
+      <text x="73" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Inward turn</text>
+      <text x="73" y="72" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Most common in children</text>
+      <text x="73" y="87" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Accommodative → hyperopia</text>
+      <text x="73" y="128" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Glasses first · then surgery</text>
       <rect x="157" y="0" width="146" height="160" rx="2" fill="#3a2a5a"/>
-      <text x="230" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">EXOTROPIA</text>
-      <text x="230" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Outward turn</text>
-      <text x="230" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Often intermittent initially</text>
-      <text x="230" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Worse when tired or daydreaming</text>
-      <text x="230" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Prisms · occlusion · surgery</text>
+      <text x="230" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">EXOTROPIA</text>
+      <text x="230" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Outward turn</text>
+      <text x="230" y="72" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Often intermittent initially</text>
+      <text x="230" y="87" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Worse when tired/daydreaming</text>
+      <text x="230" y="128" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Prisms · occlusion · surgery</text>
       <rect x="314" y="0" width="146" height="160" rx="2" fill="#1a3a2a"/>
-      <text x="387" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">AMBLYOPIA</text>
-      <text x="387" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Cortical loss</text>
-      <text x="387" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Brain suppresses deviated eye</text>
-      <text x="387" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Critical period: ≤7–8 yr</text>
-      <text x="387" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Patch good eye · glasses first</text>
+      <text x="387" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">AMBLYOPIA</text>
+      <text x="387" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Cortical loss</text>
+      <text x="387" y="72" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Brain suppresses deviated eye</text>
+      <text x="387" y="87" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Critical period: ≤7–8 yr</text>
+      <text x="387" y="128" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Patch good eye · glasses first</text>
       <rect x="471" y="0" width="146" height="160" rx="2" fill="#4a3a1a"/>
-      <text x="544" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">PSEUDOSTRABISMUS</text>
-      <text x="544" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Normal cover test</text>
-      <text x="544" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Wide epicanthal folds</text>
-      <text x="544" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Apparent crossing — not real</text>
-      <text x="544" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Reassure — always cover test first</text>
+      <text x="544" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">PSEUDOSTRABISMUS</text>
+      <text x="544" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Normal cover test</text>
+      <text x="544" y="72" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Wide epicanthal folds</text>
+      <text x="544" y="87" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Apparent crossing — not real</text>
+      <text x="544" y="128" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Always cover test first</text>
       <rect x="628" y="0" width="132" height="160" rx="2" fill="#c8452a"/>
-      <text x="694" y="28" font-family="Syne,sans-serif" font-size="10" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">PARALYTIC</text>
-      <text x="694" y="56" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">CN Palsy</text>
-      <text x="694" y="76" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Sudden diplopia + EOM limit</text>
-      <text x="694" y="92" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">CN III + dilated pupil = aneurysm</text>
-      <text x="694" y="130" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.38)" text-anchor="middle">Emergency MR angiography</text>
+      <text x="694" y="26" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1">PARALYTIC</text>
+      <text x="694" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">CN Palsy</text>
+      <text x="694" y="72" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Sudden diplopia + EOM limit</text>
+      <text x="694" y="87" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">CN III + pupil = aneurysm</text>
+      <text x="694" y="128" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Emergency MR angiography</text>
     </svg>
   </div>
 </div>
