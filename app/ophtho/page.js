@@ -48,7 +48,7 @@ export default function Ophtho() {
 
     // Inject main script
     const script = document.createElement('script')
-    script.textContent = OPHTHO_SCRIPT
+    script.src = "/ophtho-script.js"
     document.body.appendChild(script)
 
     return () => {
