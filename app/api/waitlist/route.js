@@ -1,11 +1,12 @@
 export async function POST(request) {
   const { email, year } = await request.json()
+  const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY
   const res = await fetch("https://vwotkstjgzwjjutzjjph.supabase.co/rest/v1/waitlist", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "apikey": "sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj",
-      "Authorization": "Bearer sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj"
+      "apikey": SUPABASE_KEY,
+      "Authorization": "Bearer " + SUPABASE_KEY
     },
     body: JSON.stringify({ email, year })
   })
