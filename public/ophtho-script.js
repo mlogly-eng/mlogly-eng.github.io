@@ -1752,49 +1752,119 @@ NOTES_MCQ.intro=[{q:"A 45-year-old has sudden painless visual loss in a white qu
 NOTES.eyelids = () => `<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-eyebrow">Ophthalmology · Adnexa · Note 02</div>
   <div class="n-hero-title">Eye<em>lids</em></div>
-  <div class="n-hero-sub">Chalazion · Hordeolum · Ptosis · Entropion · Ectropion · The pupil tells all</div>
+  <div class="n-hero-sub">Ptosis · Chalazion · Hordeolum · Entropion · Ectropion · Blepharitis</div>
   <div class="n-snapshot">
-    <div class="n-snap-cell"><div class="n-snap-label">Chalazion vs Hordeolum</div><div class="n-snap-text">Chalazion = lipogranuloma (non-tender). Hordeolum = staphylococcal abscess (tender). <strong>Tender = infected.</strong></div></div>
-    <div class="n-snap-cell"><div class="n-snap-label">Ptosis localisation</div><div class="n-snap-text">The pupil is the key. Dilated = CN III/aneurysm. Miosis = Horner. Normal = aponeurotic or myasthenia.</div></div>
-    <div class="n-snap-cell"><div class="n-snap-label">Lid malposition</div><div class="n-snap-text">Entropion (in) = lashes abrade cornea. Ectropion (out) = exposure + epiphora. Both scar the cornea if untreated.</div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Ptosis localisation</div><div class="n-snap-text">The pupil is everything. <strong>Dilated = CN III/aneurysm. Miosis = Horner. Normal = aponeurotic or myasthenia.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Chalazion vs Hordeolum</div><div class="n-snap-text">Chalazion = Meibomian lipogranuloma — <strong>non-tender.</strong> Hordeolum = staphylococcal abscess — <strong>tender = infected.</strong></div></div>
+    <div class="n-snap-cell"><div class="n-snap-label">Lid malposition</div><div class="n-snap-text">Entropion (lid in) = lashes abrade cornea. Ectropion (lid out) = exposure keratopathy + epiphora. Both scar the cornea if untreated.</div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Ptosis — Localise by Pupil</span><span class="n-section-tag">the pupil is everything</span></div>
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Ptosis — Localise by the Pupil</span><span class="n-section-tag">the pupil is everything</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Ptosis classification by pupil state</span><span class="n-viz-sub">Examine the pupil before anything else</span></div>
+    <svg viewBox="0 0 760 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="183" height="190" rx="2" fill="#c8452a"/>
+      <text x="91" y="34" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="3">PUPIL</text>
+      <text x="91" y="66" font-family="Syne,sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="800">DILATED</text>
+      <text x="91" y="96" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.8)" text-anchor="middle">CN III palsy</text>
+      <text x="91" y="114" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.8)" text-anchor="middle">PComm aneurysm</text>
+      <text x="91" y="152" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Emergency CT/MRA now</text>
+      <rect x="193" y="0" width="183" height="190" rx="2" fill="#2a4a6e"/>
+      <text x="284" y="34" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="3">PUPIL</text>
+      <text x="284" y="66" font-family="Syne,sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="800">MIOSIS</text>
+      <text x="284" y="96" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.8)" text-anchor="middle">Horner syndrome</text>
+      <text x="284" y="114" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.8)" text-anchor="middle">Pancoast · Carotid dissection</text>
+      <text x="284" y="152" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Image full sympathetic chain</text>
+      <rect x="386" y="0" width="183" height="190" rx="2" fill="#3a5a38"/>
+      <text x="477" y="34" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="3">PUPIL</text>
+      <text x="477" y="66" font-family="Syne,sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="800">NORMAL</text>
+      <text x="477" y="96" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.8)" text-anchor="middle">Fatigable → Myasthenia</text>
+      <text x="477" y="114" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.8)" text-anchor="middle">High crease → Aponeurotic</text>
+      <text x="477" y="152" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Ice test · Anti-AChR</text>
+      <rect x="579" y="0" width="181" height="190" rx="2" fill="#1a1510" stroke="rgba(200,69,42,.25)" stroke-width="1"/>
+      <text x="669" y="34" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="3">PUPIL</text>
+      <text x="669" y="66" font-family="Syne,sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="800">NORMAL</text>
+      <text x="669" y="96" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.8)" text-anchor="middle">Congenital ptosis</text>
+      <text x="669" y="114" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.8)" text-anchor="middle">Risk amblyopia if untreated</text>
+      <text x="669" y="152" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.38)" text-anchor="middle">Early surgical correction</text>
+    </svg>
+  </div>
   <div class="n-diag-steps">
-    <div class="n-diag-row"><div class="n-diag-label err">CN III + Aneurysm</div><div class="n-diag-content">Complete ptosis + down-and-out eye + <strong>fixed dilated pupil = PComm aneurysm until proven otherwise.</strong> Emergency CT/MRA. Pupil-sparing CN III = ischaemic (DM/HTN).</div></div>
-    <div class="n-diag-row"><div class="n-diag-label gold">Horner Syndrome</div><div class="n-diag-content">Partial ptosis (2–3mm) + <strong>miosis</strong> + anhidrosis. Sympathetic chain disruption. Pancoast tumour, carotid dissection. Image entire pathway.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label">Myasthenia</div><div class="n-diag-content"><strong>Fatigable ptosis</strong> — worsens through the day. Normal pupil. Ice test improves it transiently. Anti-AChR antibodies.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label">Aponeurotic</div><div class="n-diag-content">Most common in adults. Levator dehiscence. Normal pupil. High lid crease. Age/contact lens wear.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">CN III + Aneurysm</div><div class="n-diag-content">Complete ptosis + eye down-and-out + <strong>fixed dilated pupil = PComm aneurysm until proven otherwise.</strong> Emergency CT/MRA. Do not wait. Pupil-sparing CN III = ischaemic (DM/HTN) — can observe.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Horner Syndrome</div><div class="n-diag-content">Partial ptosis (2–3mm) + <strong>miosis</strong> + anhidrosis. Disruption of sympathetic chain at any level. Pancoast tumour, carotid dissection, aortic aneurysm. Image the entire pathway — hypothalamus to orbit.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Myasthenia Gravis</div><div class="n-diag-content"><strong>Fatigable ptosis</strong> — worsens through the day. Normal pupil. Variable, can be unilateral. Ice test: cold transiently improves ptosis. Anti-AChR antibodies in 85%. CT chest for thymoma.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Aponeurotic</div><div class="n-diag-content">Most common in adults. Levator aponeurosis dehiscence. Normal pupil. <strong>High lid crease</strong> is the clue. Age-related, contact lens use, post-operative. Surgical repair.</div></div>
+  </div>
+  <div class="n-distractor-box"><div class="n-distractor-label">Why the pupil separates aneurysm from ischaemia</div><div class="n-distractor-text"><strong>Pupillomotor fibres run on the outer surface of CN III</strong> — they are compressed first by extrinsic pressure (aneurysm, tumour). Ischaemic CN III (DM/HTN) affects the inner vascular core first, sparing the outer pupillary fibres. So: pupil involved = compressive = aneurysm. Pupil spared = ischaemic = watch. This distinction is life-saving.</div></div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Chalazion vs Hordeolum</span><span class="n-section-tag">tender = infected</span></div>
+  <div class="n-compare-grid">
+    <div class="n-compare-col">
+      <div class="n-compare-head">Chalazion</div>
+      <div class="n-compare-row"><span class="n-compare-label">What</span><span>Lipogranuloma of Meibomian gland — chronic sterile inflammation</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Tender?</span><span><strong>No</strong> — firm, non-tender nodule in tarsal plate</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Cause</span><span>Blocked Meibomian duct → retained lipid → granulomatous response</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Treatment</span><span>Warm compresses + massage first. Intralesional steroid. I&C if persistent (&gt;4 weeks)</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Red flag</span><span><strong>Recurrence in same site = biopsy.</strong> Sebaceous gland carcinoma masquerades as chalazion</span></div>
+    </div>
+    <div class="n-compare-col">
+      <div class="n-compare-head" style="color:#c8452a">Hordeolum (Stye)</div>
+      <div class="n-compare-row"><span class="n-compare-label">What</span><span>Staphylococcal abscess — acute bacterial infection</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Tender?</span><span><strong>Yes</strong> — acutely painful, red, swollen lid</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Cause</span><span>Staph aureus. External (Zeis/Moll glands) or internal (Meibomian)</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Treatment</span><span>Warm compresses + topical antibiotics. Systemic if spreading cellulitis</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Red flag</span><span>Spreading erythema + fever + proptosis = preseptal/orbital cellulitis — IV antibiotics urgently</span></div>
+    </div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
-  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Complete ptosis + dilated fixed pupil + eye down-and-out → think <em>posterior communicating artery aneurysm</em> → emergency CT/MR angiography.</div></div>
-  <div class="n-distractor-box"><div class="n-distractor-label">Why the pupil matters</div><div class="n-distractor-text"><strong>Pupillary fibres run on the outer surface of CN III</strong> — compressed first by extrinsic pressure (aneurysm). Ischaemic CN III (DM/HTN) affects the inner core first → pupil spared. Pupil-involved = aneurysm.</div></div>
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Lid Malposition — Entropion & Ectropion</span><span class="n-section-tag">both damage the cornea</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label err">Entropion</div><div class="n-diag-content">Lid margin turns <strong>inward</strong> → lashes abrade the corneal epithelium → keratitis, corneal ulcer, scarring. Usually lower lid. Involutional (age-related lid laxity) most common in developed world. Cicatricial (trachoma, burns) in endemic areas. Acute tape, then surgical correction.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Ectropion</div><div class="n-diag-content">Lid margin turns <strong>outward</strong> → punctum displaced → epiphora (watering). Conjunctival exposure → exposure keratopathy. Usually lower lid. Involutional, cicatricial, or paralytic (CN VII palsy — Bell's, parotid tumour). Lubricate aggressively. Tape at night. Surgical correction.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Trichiasis</div><div class="n-diag-content">Misdirected lashes abrading cornea <strong>without</strong> the lid turning — distinct from entropion. Causes: trachoma, chronic blepharitis, post-surgical. Epilate acutely. Definitive: electrolysis, cryotherapy, or laser.</div></div>
+  </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Blepharitis</span><span class="n-section-tag">the commonest lid condition</span></div>
+  <div class="n-exam-box"><div class="n-exam-if">The pattern</div><div class="n-exam-statement">Chronic bilateral red, itchy, crusty lid margins — worse on waking — <em>blepharitis.</em> Not an infection. A dysfunction. Manage it as a routine, not a course.</div></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label">Anterior</div><div class="n-diag-content">Staphylococcal overgrowth at lash base. Hard collarette scales. Associated with seborrhoeic dermatitis. Lid hygiene (warm compress + cotton bud scrub) + topical antibiotics (chloramphenicol) for flares.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Posterior (MGD)</div><div class="n-diag-content">Meibomian gland dysfunction. Oily, foamy secretions at lid margin. Associated with <strong>rosacea</strong>. Warm compresses + Meibomian expression. Oral doxycycline 100mg OD for 3 months in refractory cases (anti-inflammatory dose).</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam favourites</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Ptosis + dilated pupil = aneurysm until proven otherwise.</strong><span class="n-pearl-exam">Exam: what differentiates aneurysmal from ischaemic CN III?</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Horner: partial ptosis + miosis.</strong> The miosis distinguishes it from aponeurotic ptosis. Image the full sympathetic pathway.</div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Recurrent chalazion in same location = biopsy.</strong> Sebaceous carcinoma masquerades as chalazion.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Ptosis + dilated pupil = PComm aneurysm until proven otherwise.</strong> Emergency CT angiography. Not a routine neurology referral — this is a surgical emergency.<span class="n-pearl-exam">Exam: what distinguishes aneurysmal from ischaemic CN III palsy?</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Horner = partial ptosis + miosis + anhidrosis.</strong> The miosis distinguishes it from aponeurotic ptosis (normal pupil). Image the full sympathetic pathway from hypothalamus to orbit.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Recurrent chalazion in the same location = biopsy.</strong> Sebaceous gland carcinoma of the eyelid masquerades as chalazion. Missing it is a serious diagnostic error.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Fatigable ptosis = myasthenia gravis.</strong> Ice test: ptosis improves transiently with cold (cold inhibits acetylcholinesterase). Anti-AChR antibodies in 85%. CT chest for thymoma.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Congenital ptosis → early surgery to prevent amblyopia.</strong> The visual cortex is plastic — deprivation amblyopia develops rapidly in the first years of life. Don't watch and wait.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Paralytic ectropion = CN VII palsy.</strong> Bell's palsy, parotid tumour, acoustic neuroma. Cornea is exposed and at risk — lubricate every hour, tape eye shut at night until lid function returns.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">07</div><div class="n-pearl-body"><strong>Posterior blepharitis + facial flushing/telangiectasia = rosacea.</strong> Treat the skin and the lids together. Doxycycline addresses both.</div></div>
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for these</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
-      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Drooping lid + dilated pupil — routine neurology referral.</div></div>
-      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Emergency CT angiography.</strong> PComm aneurysm. Rupture = 40% mortality.</div></div>
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Drooping lid + dilated pupil → neurology referral next week.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Emergency CT angiography today.</strong> PComm aneurysm. Rupture = 40% mortality. Hours matter.</div></div>
     </div>
     <div class="n-trap">
-      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Ptosis worsening at end of day = fatigue.</div></div>
-      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Fatigable ptosis = myasthenia gravis.</strong> Anti-AChR antibodies, ice test, neurology referral.</div></div>
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Ptosis that worsens through the day = tiredness.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Fatigable ptosis = myasthenia gravis.</strong> Anti-AChR, ice test, CT chest for thymoma.</div></div>
+    </div>
+    <div class="n-trap">
+      <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Lump recurs in the same lid location — another chalazion, I&C again.</div></div>
+      <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Biopsy it.</strong> Sebaceous gland carcinoma. Can metastasise. Same-site recurrence = malignancy until proven otherwise.</div></div>
     </div>
   </div>
 </div>
-<div class="n-anchor"><div class="n-anchor-text"><em>Tender = infected. Non-tender = chalazion.</em><br>Dilated pupil + ptosis = aneurysm until proven otherwise.</div></div>
+<div class="n-anchor"><div class="n-anchor-text"><em>The pupil localises the cause of ptosis.</em><br>Dilated = aneurysm. Miosis = Horner. Normal = myasthenia or aponeurotic.<br>Tender lid lump = infected. Same-site recurrence = biopsy.</div></div>
 <div class="n-note-end-cta" onclick="showVentPopup()"><div><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div></div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
 NOTES_MCQ.eyelids=[{q:"Firm non-tender upper lid nodule for 6 weeks. First-line management?",opts:["Flucloxacillin","Warm compresses + massage","Urgent excision","Topical steroids"],ans:1,focus:"Chalazion management",exp:"Chalazion = blocked meibomian gland lipogranuloma. First-line: warm compresses + massage. Persistent: steroid injection or I&C. Recurrent in same spot → biopsy."},{q:"Complete right ptosis, eye down-and-out, pupil 7mm fixed. Immediate investigation?",opts:["TFTs","Ice test","Emergency CT/MR angiography","Anti-AChR antibodies"],ans:2,focus:"CN III + pupil = aneurysm",exp:"Complete CN III with pupil involvement = PComm aneurysm until proven otherwise. Pupillary fibres on outer surface compressed by extrinsic pressure first."},{q:"Lower lid sags away from globe. Watery eye despite no increased tearing. Diagnosis?",opts:["Entropion reflex tearing","Ectropion — disrupted tear drainage","NLDO","Dry eye"],ans:1,focus:"Ectropion — paradoxical epiphora",exp:"Ectropion: lower lid everts → punctum displaced → impaired drainage → epiphora. Paradoxically watery despite drainage problem not excess production."},{q:"Ptosis worsening through the day + normal pupil + improves with ice. Diagnosis?",opts:["Aponeurotic ptosis","Myasthenia gravis","Horner syndrome","CN III ischaemic"],ans:1,focus:"Myasthenia — fatigable ptosis",exp:"Fatigable ptosis in MG: ACh depletes with repetitive use. Ice test improves it (cold enhances ACh). Normal pupil. Anti-AChR antibodies."},{q:"Horner syndrome — how does ptosis differ from CN III?",opts:["Horner = complete; CN III = partial","Horner = partial ptosis + miosis; CN III = complete ptosis + mydriasis","Both cause complete ptosis","Horner has no pupil change"],ans:1,focus:"Horner vs CN III pupils",exp:"Horner: sympathetic loss → partial ptosis (Müller's muscle) + miosis. CN III: levator palsy → complete ptosis + fixed dilated pupil. Pupil size is the key."}];
 
