@@ -492,4 +492,3 @@ nav{
 /* Keyboard hint */
 .kbd-hint{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ink4);margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;opacity:.7;}
 .kbd-key{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);font-size:10px;color:var(--ink3);}
-</style>
