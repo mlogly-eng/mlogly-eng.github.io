@@ -1544,15 +1544,27 @@ NOTES.pph=()=>`<div class="n-page"><div class="n-hero-new">
 </div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">08</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">08</span><span class="n-section-title">Uterotonic Agents</span><span class="n-section-tag">know the ladder</span></div>
+  <div class="n-compare-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+    <div class="n-compare-head">Drug</div><div class="n-compare-head">Route / Dose</div><div class="n-compare-head">Mechanism</div><div class="n-compare-head">Key Contraindication</div>
+    <div class="n-compare-row-label">Oxytocin</div><div class="n-compare-cell">IV infusion 40 units/500mL (never bolus)</div><div class="n-compare-cell">Oxytocin receptor → myometrial contraction</div><div class="n-compare-cell">Rapid IV bolus → vasodilation → cardiovascular collapse</div>
+    <div class="n-compare-row-label">Ergometrine</div><div class="n-compare-cell">0.5 mg IM or slow IV</div><div class="n-compare-cell">α-adrenergic + serotonin → sustained contraction</div><div class="n-compare-cell">Hypertension, pre-eclampsia, cardiac disease</div>
+    <div class="n-compare-row-label">Carboprost</div><div class="n-compare-cell">250 mcg IM, repeat every 15 min (max 8 doses)</div><div class="n-compare-cell">PGF2α analogue → powerful uterine contraction</div><div class="n-compare-cell">Asthma (causes bronchospasm)</div>
+    <div class="n-compare-row-label">Misoprostol</div><div class="n-compare-cell">800 mcg PR or sublingual</div><div class="n-compare-cell">PGE1 analogue → uterotonic</div><div class="n-compare-cell">None absolute — useful when others contraindicated</div>
+    <div class="n-compare-row-label">TXA</div><div class="n-compare-cell">1g IV over 10 min (repeat at 30 min if bleeding)</div><div class="n-compare-cell">Antifibrinolytic — inhibits plasminogen activation</div><div class="n-compare-cell">Must give within 3 hours — no benefit after</div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">09</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>TXA within 3 hours.</strong> The WOMAN trial (20,000 women) showed TXA reduces PPH death by 31% when given within 3 hours of birth. After 3 hours: no benefit. Give it early.<span class="n-pearl-exam">Exam loves this: time-sensitive drug most candidates forget.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Balloon tamponade before surgery.</strong> The Bakri balloon is the bridge between uterotonics and laparotomy. If it controls the bleeding, you've avoided a B-Lynch.<span class="n-pearl-exam">Exam loves this: candidates jump straight to B-Lynch or hysterectomy.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Fibrinogen is the first factor to fall.</strong> Fibrinogen &lt;2 g/L predicts severe PPH with high sensitivity. Order it early. Treat with cryoprecipitate — FFP alone is insufficient.</div></div>
     <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Placenta accreta = do not pull.</strong> Any placenta that won't deliver with gentle traction at LSCS → call senior, prepare for hysterectomy. The attempt to deliver it manually is the catastrophe.</div></div>
-  </div>
+      <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Ergometrine is contraindicated in hypertension — carboprost in asthma.</strong> In a woman with pre-eclampsia who is still bleeding after oxytocin, the next step is carboprost (if no asthma) or misoprostol — not ergometrine. Getting this wrong in an exam or in real life is consequential.<span class="n-pearl-exam">Contraindication question — always comes up.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Massive transfusion protocol: give blood products in a 1:1:1 ratio.</strong> Red cells : FFP : platelets in equal parts to replace whole blood. Target fibrinogen &gt;2 g/L — use cryoprecipitate specifically for this, not FFP alone. Avoid crystalloid dilution of clotting factors.</div></div>
+</div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">09</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">10</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">The uterus is firm — keep escalating uterotonics.</div></div>
@@ -1659,15 +1671,27 @@ NOTES.preeclampsia=()=>`<div class="n-page"><div class="n-hero-new">
 </div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Antihypertensive Choice</span><span class="n-section-tag">not interchangeable</span></div>
+  <div class="n-compare-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+    <div class="n-compare-head">Drug</div><div class="n-compare-head">Route</div><div class="n-compare-head">Use when</div><div class="n-compare-head">Avoid if</div>
+    <div class="n-compare-row-label">Labetalol</div><div class="n-compare-cell">Oral or IV infusion</div><div class="n-compare-cell">First-line severe PET; IV for urgent control</div><div class="n-compare-cell">Asthma, bradycardia, heart block</div>
+    <div class="n-compare-row-label">Nifedipine</div><div class="n-compare-cell">Oral (modified release)</div><div class="n-compare-cell">Alternative first-line; good oral option</div><div class="n-compare-cell">Do not combine with MgSO₄ (enhanced hypotension risk)</div>
+    <div class="n-compare-row-label">Hydralazine</div><div class="n-compare-cell">IV bolus or infusion</div><div class="n-compare-cell">Severe acute PET if labetalol/nifedipine fail</div><div class="n-compare-cell">Reflex tachycardia — use with care</div>
+    <div class="n-compare-row-label">Methyldopa</div><div class="n-compare-cell">Oral</div><div class="n-compare-cell">Chronic / mild BP in pregnancy; not for acute control</div><div class="n-compare-cell">Depression; not for acute severe PET</div>
+    <div class="n-compare-row-label">ACE inhibitors</div><div class="n-compare-cell">—</div><div class="n-compare-cell">Not in pregnancy</div><div class="n-compare-cell"><strong>Absolutely contraindicated</strong> — fetal renal agenesis, oligohydramnios, IUFD</div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>MgSO₄ for seizure prevention, not control of BP.</strong> It does not lower blood pressure. It prevents eclampsia. The antihypertensive is separate.<span class="n-pearl-exam">Exam loves this: candidates confuse the roles.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Delivery cures preeclampsia — the placenta is the source.</strong> After delivery, most features resolve within 48–72 hours, though BP may worsen in the first 24 hours postpartum.</div></div>
     <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Aspirin 75–150 mg from 12 weeks</strong> reduces preeclampsia risk by 10–20% in high-risk women (prior PET, CKD, antiphospholipid syndrome, diabetes, multiple pregnancy, BMI &gt;35).</div></div>
     <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>HELLP triad: Haemolysis, Elevated Liver enzymes, Low Platelets.</strong> Platelets fall first — check FBC if any suspicion. Can occur postpartum.</div></div>
-  </div>
+      <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Postpartum BP can spike on days 3–5.</strong> Preeclampsia doesn't end at delivery — BP often worsens in the first 24 hours postpartum and can cause eclampsia up to 6 weeks post-delivery. Women need at least 72 hours of observation and ongoing antihypertensives after discharge.<span class="n-pearl-exam">This is the most missed timing question.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Fluid restriction: 80 mL/hr total (all sources).</strong> Preeclamptic women are at high risk of pulmonary oedema — their capillaries are leaky due to endothelial dysfunction. Aggressive IV fluids kill them. Restrict total fluid input to 80 mL/hr (including drug infusions) and watch urine output closely. Target UO &gt;25 mL/hr.<span class="n-pearl-exam">Fluid management question — candidates over-fluid and cause pulmonary oedema.</span></div></div>
+</div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">BP is 145/95 but she feels well — continue monitoring.</div></div>
@@ -1769,14 +1793,29 @@ NOTES.ectopic=()=>`<div class="n-page"><div class="n-hero-new">
 </div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Expectant vs Medical vs Surgical</span><span class="n-section-tag">decision logic</span></div>
+  <div class="n-compare-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+    <div class="n-compare-head">Feature</div><div class="n-compare-head">Expectant</div><div class="n-compare-head">Methotrexate (MTX)</div><div class="n-compare-head">Surgery</div>
+    <div class="n-compare-row-label">β-hCG</div><div class="n-compare-cell">&lt;1000 IU/L and falling</div><div class="n-compare-cell">&lt;5000 IU/L</div><div class="n-compare-cell">Any — or &gt;5000</div>
+    <div class="n-compare-row-label">Mass size</div><div class="n-compare-cell">Small (&lt;2 cm)</div><div class="n-compare-cell">&lt;3.5 cm</div><div class="n-compare-cell">Any (must if &gt;3.5 cm)</div>
+    <div class="n-compare-row-label">Fetal heartbeat</div><div class="n-compare-cell">None</div><div class="n-compare-cell">None — absolute contraindication to MTX if present</div><div class="n-compare-cell">Present or absent</div>
+    <div class="n-compare-row-label">Haemodynamics</div><div class="n-compare-cell">Stable, no pain</div><div class="n-compare-cell">Stable</div><div class="n-compare-cell">Unstable → emergency laparotomy</div>
+    <div class="n-compare-row-label">MTX contraindications</div><div class="n-compare-cell">—</div><div class="n-compare-cell">Renal/hepatic/haem impairment, immunodeficiency, breastfeeding, intrauterine pregnancy</div><div class="n-compare-cell">—</div>
+    <div class="n-compare-row-label">Follow-up</div><div class="n-compare-cell">hCG twice weekly until &lt;20</div><div class="n-compare-cell">hCG day 4 + day 7; if &lt;15% drop by day 7 → repeat dose or surgery</div><div class="n-compare-cell">hCG post-op (salpingotomy: persistent trophoblast risk)</div>
+  </div>
+  <div class="n-body-text"><strong>The discriminatory zone:</strong> At β-hCG &gt;1500–2000 IU/L, a normal intrauterine pregnancy should be visible on transvaginal USS. If β-hCG is above this threshold and no IUP is seen → presume ectopic until proven otherwise. This is the principle that drives management when USS is equivocal.</div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Heterotopic pregnancy:</strong> simultaneous intrauterine and ectopic. Rare spontaneously (1:30,000) but 1:100 with IVF. Finding an IUP on USS does not exclude co-existing ectopic in IVF patients.<span class="n-pearl-exam">Exam loves this: rare but guaranteed to appear.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>After salpingectomy for ectopic, future IVF outcomes are not significantly worse</strong> if the other tube is normal. Salpingotomy risks persistent trophoblast — monitor hCG after.</div></div>
     <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Give anti-D to all Rh-negative women</strong> with ectopic pregnancy, regardless of management method. Sensitisation risk is real.</div></div>
-  </div>
+      <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Fetal heartbeat on USS is an absolute contraindication to methotrexate.</strong> MTX will not reliably kill a cardiac-activity-positive trophoblast at standard doses. Surgery is required. Students often miss this and select MTX for any unruptured ectopic regardless of cardiac activity.<span class="n-pearl-exam">The contraindication question — comes up in almost every ectopic question set.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>The discriminatory zone is ~1500–2000 IU/L.</strong> Above this, transvaginal USS should show an IUP if it exists. An empty uterus above the discriminatory zone = ectopic until proven otherwise. Don't wait for the hCG to go higher before acting — scan and decide.<span class="n-pearl-exam">Frequently tested as a threshold question.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Salpingotomy carries a risk of persistent trophoblast (5–10%).</strong> The tube is opened and the ectopic removed, but trophoblastic tissue can remain implanted. Always monitor hCG after salpingotomy until it reaches zero. If it plateaus or rises, give MTX or re-operate. Salpingectomy avoids this risk.</div></div>
+</div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">We found an intrauterine pregnancy on the scan — it's not ectopic.</div></div>
@@ -1877,14 +1916,27 @@ NOTES.placenta=()=>`<div class="n-page"><div class="n-hero-new">
 </div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Minor vs Major Praevia</span><span class="n-section-tag">the distinction that changes management</span></div>
+  <div class="n-compare-grid" style="grid-template-columns:1fr 1fr 1fr;">
+    <div class="n-compare-head">Feature</div><div class="n-compare-head">Minor Praevia</div><div class="n-compare-head">Major Praevia</div>
+    <div class="n-compare-row-label">Definition</div><div class="n-compare-cell">Low-lying — edge within 2 cm of os but not covering it</div><div class="n-compare-cell">Placenta partially or completely covers the internal os</div>
+    <div class="n-compare-row-label">Delivery</div><div class="n-compare-cell">Vaginal delivery possible if edge &gt;2 cm from os at term</div><div class="n-compare-cell">LSCS mandatory — planned at 36–37 weeks</div>
+    <div class="n-compare-row-label">Migration</div><div class="n-compare-cell">Often resolves — rescan at 32 and 36 weeks</div><div class="n-compare-cell">Major praevia at 20 weeks: ~10% persist to term</div>
+    <div class="n-compare-row-label">VE</div><div class="n-compare-cell">Safe in theatre if labour commences</div><div class="n-compare-cell"><strong>Never perform VE</strong> — catastrophic haemorrhage risk</div>
+    <div class="n-compare-row-label">Vasa praevia</div><div class="n-compare-cell">Fetal vessels over os — rupture = fetal exsanguination</div><div class="n-compare-cell">Painless dark blood + fetal bradycardia = emergency LSCS</div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>The warning bleed.</strong> The first haemorrhage in praevia is usually moderate and self-limiting. It is a warning — do not be falsely reassured. The next bleed can be catastrophic.<span class="n-pearl-exam">Exam loves this: candidates say 'she's stable now' and wait.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Vasa praevia</strong> is different: fetal vessels overlie the os without placental coverage. When membranes rupture, fetal exsanguination can occur within minutes. Sinusoidal CTG + bleeding = fetal emergency.</div></div>
     <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>1 previous LSCS + anterior low-lying placenta</strong> = accreta must be excluded. Colour Doppler + MRI if USS equivocal. This combination can occur in 15–25% of cases.</div></div>
-  </div>
+      <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Vasa praevia: fetal blood, not maternal.</strong> Painless dark red bleeding + sudden fetal bradycardia = vasa praevia until proven otherwise. Fetal blood is dark (deoxygenated after fetal death begins). Emergency LSCS immediately — fetal blood volume at term is only ~300 mL, exsanguination is rapid.<span class="n-pearl-exam">The dark blood + bradycardia pattern — a classic exam vignette.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Accreta spectrum: accreta → increta → percreta.</strong> Superficial invasion, into myometrium, through serosa. 3 previous LSCS + anterior praevia = &gt;50% risk of accreta. Never attempt manual removal — leave placenta in situ and perform en-bloc hysterectomy. Pre-plan with interventional radiology.<span class="n-pearl-exam">Accreta nomenclature and risk factors appear together.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Painless, bright red PV bleeding after 20 weeks = praevia until proven otherwise.</strong> Painless because lower segment distension separates placenta without contractions. Abruption has pain and a hard uterus. Vasa praevia has dark blood and immediate fetal distress. These three clinical patterns must be distinguished before any VE.</div></div>
+</div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Low-lying placenta found at 20 weeks — plan caesarean.</div></div>
@@ -1994,14 +2046,28 @@ NOTES.gdm=()=>`<div class="n-page"><div class="n-hero-new">
     <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>75g OGTT at 6–13 weeks postpartum</strong> to rule out persistent T2DM. If normal: annual HbA1c indefinitely. 50% lifetime risk of T2DM.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">GDM vs Pre-existing Diabetes</span><span class="n-section-tag">different risk, different management</span></div>
+  <div class="n-compare-grid" style="grid-template-columns:1fr 1fr 1fr;">
+    <div class="n-compare-head">Feature</div><div class="n-compare-head">GDM</div><div class="n-compare-head">Pre-existing T1/T2 DM</div>
+    <div class="n-compare-row-label">Definition</div><div class="n-compare-cell">Glucose intolerance first detected in pregnancy</div><div class="n-compare-cell">DM diagnosed before conception</div>
+    <div class="n-compare-row-label">Screening</div><div class="n-compare-cell">OGTT at 24–28 weeks (earlier if risk factors)</div><div class="n-compare-cell">Pre-conception counselling + tight control from start</div>
+    <div class="n-compare-row-label">Folic acid dose</div><div class="n-compare-cell">400 mcg (standard)</div><div class="n-compare-cell"><strong>5 mg</strong> — higher dose pre-conception and first trimester</div>
+    <div class="n-compare-row-label">Targets (fasting/1hr)</div><div class="n-compare-cell">Fasting &lt;5.3 / 1hr post-meal &lt;7.8 mmol/L</div><div class="n-compare-cell">Fasting &lt;5.3 / 1hr &lt;7.8 mmol/L — same targets</div>
+    <div class="n-compare-row-label">Delivery timing</div><div class="n-compare-cell">Diet-controlled: 40+6. Insulin/metformin: 38–39 weeks</div><div class="n-compare-cell">T1: 37–38 weeks. T2: 38–39 weeks</div>
+    <div class="n-compare-row-label">Postpartum</div><div class="n-compare-cell">Stop insulin immediately after delivery. OGTT at 6–13 weeks to exclude T2DM</div><div class="n-compare-cell">Return to pre-pregnancy regimen</div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">7</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Glucose targets in pregnancy are tighter than outside pregnancy.</strong> Fasting ≤5.3, 1h post-meal ≤7.8, 2h post-meal ≤6.4 — because even modest hyperglycaemia drives fetal hyperinsulinaemia.<span class="n-pearl-exam">Exam loves this: candidates use non-pregnant thresholds.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Macrosomia is not just a big baby.</strong> The shoulder and trunk grow disproportionately (asymmetric growth from hyperinsulinaemia). This is why shoulder dystocia is the obstetric risk — not just size alone.</div></div>
     <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>GDM is a metabolic stress test.</strong> A woman who develops GDM has revealed β-cell insufficiency under physiological stress. She carries that susceptibility for life.</div></div>
-  </div>
+      <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Macrosomia causes shoulder dystocia — not just a "big baby".</strong> Fetal fat deposition is disproportionately around the shoulders and trunk in GDM — not the head. This explains why macrosomic babies in GDM have proportionally larger shoulder-to-head ratios. Estimated fetal weight alone is a poor predictor of shoulder dystocia — the abdominal circumference:head circumference ratio is more informative.<span class="n-pearl-exam">The mechanism question: why does GDM macrosomia cause dystocia?</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>GDM is a metabolic stress test — 50% develop T2DM within 5–10 years.</strong> GDM reveals underlying insulin resistance that was subclinical. The pregnancy is the stressor. After delivery, perform OGTT at 6–13 weeks, and annual fasting glucose or HbA1c thereafter. Lifestyle intervention reduces progression to T2DM by ~50%. This is a lifelong conversation, not a temporary condition.<span class="n-pearl-exam">The "what happens after pregnancy" question — not reassurance, surveillance.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>OGTT diagnostic thresholds in pregnancy (NICE): fasting ≥5.6 mmol/L or 2-hour ≥7.8 mmol/L.</strong> These are lower than non-pregnancy OGTT thresholds — because tighter control is needed to prevent fetal complications. Don't apply non-pregnancy thresholds to a pregnant woman. Also: HbA1c is unreliable in pregnancy due to altered red cell turnover — do not use for GDM diagnosis.</div></div>
+</div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">8</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">HbA1c came back normal at booking — she doesn't have GDM risk.</div></div>
@@ -2084,14 +2150,29 @@ NOTES.shoulder=()=>`<div class="n-page"><div class="n-hero-new">
     <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Document time of head delivery</strong> and every subsequent step with timestamps. Shoulder dystocia is a medico-legal red flag — complete documentation is mandatory.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">HELPERR Drill — Each Step</span><span class="n-section-tag">order matters in the room</span></div>
+  <div class="n-compare-grid" style="grid-template-columns:1fr 1fr 1fr;">
+    <div class="n-compare-head">Step</div><div class="n-compare-head">Action</div><div class="n-compare-head">Why / mechanism</div>
+    <div class="n-compare-row-label">H — Call for Help</div><div class="n-compare-cell">Activate emergency response immediately</div><div class="n-compare-cell">Senior obstetrician, anaesthetist, neonatologist, extra midwives needed within minutes</div>
+    <div class="n-compare-row-label">E — Evaluate for Epis</div><div class="n-compare-cell">Consider episiotomy</div><div class="n-compare-cell">Doesn't release bony impaction but creates space for manoeuvres</div>
+    <div class="n-compare-row-label">L — Legs (McRoberts)</div><div class="n-compare-cell">Hyperflexion of maternal thighs onto abdomen</div><div class="n-compare-cell">Flattens lumbar lordosis → rotates pubic symphysis superiorly → increases relative AP diameter of pelvis → releases anterior shoulder in ~40% alone</div>
+    <div class="n-compare-row-label">P — Suprapubic Pressure</div><div class="n-compare-cell">Downward and lateral pressure on anterior shoulder</div><div class="n-compare-cell">Dislodges anterior shoulder from behind pubic symphysis. McRoberts + SPP resolves ~90% of cases.</div>
+    <div class="n-compare-row-label">E — Enter (Rubin/Woods)</div><div class="n-compare-cell">Internal rotation manoeuvres</div><div class="n-compare-cell">Rubin II: pressure on posterior aspect of anterior shoulder. Woods screw: pressure on anterior of posterior shoulder. Rotate fetus like unscrewing a bottle.</div>
+    <div class="n-compare-row-label">R — Remove posterior arm</div><div class="n-compare-cell">Deliver posterior arm first</div><div class="n-compare-cell">Reduces shoulder-to-shoulder diameter — most reliable internal manoeuvre</div>
+    <div class="n-compare-row-label">R — Roll (Gaskin)</div><div class="n-compare-cell">All-fours position</div><div class="n-compare-cell">Changes pelvic dimensions; gravity assists posterior shoulder delivery</div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">5</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>50% of shoulder dystocia occurs with no antenatal risk factors.</strong> It cannot be reliably predicted. All delivery room staff must be trained, every delivery.<span class="n-pearl-exam">Exam loves this: candidates list risk factors as if they predict it.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>McRoberts' + suprapubic pressure resolves ~90% of cases.</strong> Internal manoeuvres are rarely needed if the first two steps are applied correctly and simultaneously.</div></div>
     <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Posterior arm delivery</strong> is highly effective and underused. Reaching for the posterior arm and sweeping it across the chest delivers the shoulder and significantly reduces the AP diameter.</div></div>
-  </div>
+      <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Never apply fundal pressure during shoulder dystocia.</strong> Fundal pressure drives the anterior shoulder further into the pubic symphysis — it worsens the impaction. The only pressure that helps is suprapubic pressure (downward onto the anterior shoulder). Midwives and students instinctively push the fundus — this is the most dangerous error in the room.<span class="n-pearl-exam">The contraindicated action question — always comes up.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>50% of shoulder dystocia occurs with no antenatal risk factors.</strong> Risk factors (GDM, macrosomia, previous dystocia, BMI &gt;35) are present in many patients who don't have dystocia — and absent in half who do. Do not falsely reassure patients or abandon HELPERR skills because a patient appears "low risk."<span class="n-pearl-exam">The "but she had no risk factors" question — HELPERR must be known regardless.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Brachial plexus injury (Erb's palsy) is the most common complication of shoulder dystocia.</strong> C5–C6 roots damaged by lateral traction — arm held internally rotated with extended elbow ("waiter's tip"). Most resolve within 6–12 months. Document traction applied (direction and force) meticulously. Do not apply lateral traction to the fetal head — always axial, in line with the spine.</div></div>
+</div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">6</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Apply strong downward traction — the shoulders will come.</div></div>
@@ -2194,14 +2275,28 @@ NOTES.miscarriage=()=>`<div class="n-page"><div class="n-hero-new">
     <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Recurrent miscarriage (≥3 losses)</strong> warrants investigation: karyotype (both partners), antiphospholipid antibodies, uterine anatomy (HSG/hysteroscopy), thyroid function.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Classification of Miscarriage</span><span class="n-section-tag">get the type right</span></div>
+  <div class="n-compare-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+    <div class="n-compare-head">Type</div><div class="n-compare-head">USS findings</div><div class="n-compare-head">Os</div><div class="n-compare-head">Management</div>
+    <div class="n-compare-row-label">Threatened</div><div class="n-compare-cell">Viable IUP — heartbeat present</div><div class="n-compare-cell">Closed</div><div class="n-compare-cell">Reassure, rescan in 1–2 weeks; 50% go on to miscarry</div>
+    <div class="n-compare-row-label">Inevitable</div><div class="n-compare-cell">Viable or non-viable; POC in uterus</div><div class="n-compare-cell">Open</div><div class="n-compare-cell">Expectant, medical, or surgical depending on clinical state</div>
+    <div class="n-compare-row-label">Incomplete</div><div class="n-compare-cell">Retained POC in uterus; partial expulsion</div><div class="n-compare-cell">Open</div><div class="n-compare-cell">Expectant, misoprostol, or ERPC</div>
+    <div class="n-compare-row-label">Complete</div><div class="n-compare-cell">Empty uterus; no POC</div><div class="n-compare-cell">Closed</div><div class="n-compare-cell">No intervention — confirm with falling hCG</div>
+    <div class="n-compare-row-label">Missed</div><div class="n-compare-cell">Non-viable IUP — fetal pole, no heartbeat; or empty sac (&gt;25mm mean sac diameter)</div><div class="n-compare-cell">Closed</div><div class="n-compare-cell">Expectant, medical (misoprostol), or surgical (ERPC)</div>
+    <div class="n-compare-row-label">Septic</div><div class="n-compare-cell">Variable — signs of infection</div><div class="n-compare-cell">Open or closed</div><div class="n-compare-cell"><strong>IV antibiotics first</strong>, then evacuation — do not delay</div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">6</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>80% of miscarriages are caused by chromosomal abnormality</strong> — most commonly trisomy. Reassure patients that this is not caused by activity, stress, or diet.<span class="n-pearl-exam">Exam loves this: candidates confuse with preventable causes.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Antiphospholipid syndrome</strong> is the most important treatable cause of recurrent miscarriage. Screen with lupus anticoagulant and anticardiolipin antibodies on two occasions 12 weeks apart.</div></div>
     <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>IUCD insertion at ERPC</strong> is an option for appropriate patients and reduces the risk of intrauterine adhesions (Asherman's syndrome) postoperatively.</div></div>
-  </div>
+      <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Recurrent miscarriage: investigate after 3 losses (or 2 if &gt;35 years).</strong> Causes: antiphospholipid syndrome (most treatable — aspirin + LMWH), chromosomal (parental karyotype), uterine anomaly (USS or hysteroscopy), thrombophilia. 50% remain unexplained even after full workup. APS testing: anticardiolipin antibody, lupus anticoagulant, β2-glycoprotein I — on two occasions 12 weeks apart.<span class="n-pearl-exam">The recurrent miscarriage workup question — always APS first.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Molar pregnancy must be excluded in every miscarriage.</strong> Complete mole: 46XX (all paternal), no fetal tissue, very high hCG, snowstorm appearance. Partial mole: 69XXX or 69XXY (triploid), some fetal tissue, moderately elevated hCG. Both require registration and hCG surveillance for gestational trophoblastic disease. Missing it means missing a treatable cancer.<span class="n-pearl-exam">The hCG and USS pattern question — complete vs partial mole.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Anti-D in miscarriage: give to all Rh-negative women with surgical management or heavy bleeding after 12 weeks.</strong> Before 12 weeks with complete or threatened miscarriage: not routinely given unless sensitising event (surgical evacuation). The threshold matters for the exam — and it's changed in recent NICE guidance: anti-D not required before 12 weeks for threatened miscarriage.</div></div>
+</div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">7</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">She's emotionally distressed — avoid discussing recurrence risk.</div></div>
@@ -2412,14 +2507,27 @@ NOTES.endometriosis=()=>`<div class="n-page"><div class="n-hero-new">
 </div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Medical vs Surgical Management</span><span class="n-section-tag">not one size fits all</span></div>
+  <div class="n-compare-grid" style="grid-template-columns:1fr 1fr 1fr;">
+    <div class="n-compare-head">Approach</div><div class="n-compare-head">Options</div><div class="n-compare-head">When to use</div>
+    <div class="n-compare-row-label">Analgesia</div><div class="n-compare-cell">NSAIDs + paracetamol</div><div class="n-compare-cell">First step — always try before hormones</div>
+    <div class="n-compare-row-label">Hormonal suppression</div><div class="n-compare-cell">COCP (continuous), POP, Mirena IUS, dienogest, medroxyprogesterone</div><div class="n-compare-cell">Suppress ovulation → reduce oestrogenic stimulation of deposits</div>
+    <div class="n-compare-row-label">GnRH agonists</div><div class="n-compare-cell">Leuprorelin, goserelin — create pseudomenopause</div><div class="n-compare-cell">Severe/refractory disease; use with add-back HRT to prevent bone loss</div>
+    <div class="n-compare-row-label">Laparoscopy</div><div class="n-compare-cell">Excision or ablation of deposits; drainage of endometrioma</div><div class="n-compare-cell">Failed medical treatment; infertility; diagnostic uncertainty</div>
+    <div class="n-compare-row-label">Definitive surgery</div><div class="n-compare-cell">Hysterectomy ± BSO</div><div class="n-compare-cell">Completed family + severe refractory disease; not guaranteed cure — can recur on residual peritoneum</div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">5</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Laparoscopy is the gold standard for diagnosis</strong> — but clinical diagnosis is sufficient to start treatment. NICE and ESHRE both support empirical treatment without histological confirmation.<span class="n-pearl-exam">Exam loves this: candidates refuse to treat without 'proof'.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>CA-125 is not a diagnostic test for endometriosis.</strong> It is elevated in endometriosis but also in ovarian cancer, fibroids, and PID. It has no role in diagnosis but may be used to monitor disease activity.</div></div>
     <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Endometriosis is oestrogen-dependent.</strong> It does not progress after menopause (without exogenous oestrogen). Progestins and GnRH agonists work by suppressing oestrogen.</div></div>
-  </div>
+      <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Endometriosis is oestrogen-dependent — but it can recur after menopause on HRT.</strong> Deposits regress after menopause naturally. However, if the woman starts HRT, oestrogen reactivates residual disease. Use continuous combined HRT (not sequential) after bilateral oophorectomy for endometriosis, to minimise stimulation of any residual implants.<span class="n-pearl-exam">The HRT-after-BSO-for-endometriosis question.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Adenomyosis is endometriosis within the myometrium — same concept, different location.</strong> Endometrial glands and stroma within the uterine muscle wall. Presents with heavy, painful periods + uniformly enlarged ("globular") uterus. MRI is the best diagnostic test. Definitive treatment is hysterectomy — but Mirena IUS can manage symptoms in women who haven't completed their family.<span class="n-pearl-exam">Students confuse adenomyosis and endometriosis — different location, similar mechanism.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>ENZIAN and rASRM staging do not correlate well with symptom severity.</strong> A woman can have minimal visible disease at laparoscopy and be severely symptomatic — or extensive disease and minimal pain. This is because pain correlates with depth of invasion and nerve involvement, not disease extent. Laparoscopy is diagnostic — but stage doesn't predict who needs what treatment.</div></div>
+</div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">8</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Normal USS rules out endometriosis.</div></div>
@@ -2524,14 +2632,27 @@ NOTES.pcos=()=>`<div class="n-page"><div class="n-hero-new">
     <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Rapid-onset virilisation</strong> (clitoromegaly, deep voice, rapid hair growth) = not PCOS. This suggests androgen-secreting tumour. Urgent referral.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">PCOS by Presenting Complaint</span><span class="n-section-tag">different problem, different treatment</span></div>
+  <div class="n-compare-grid" style="grid-template-columns:1fr 1fr 1fr;">
+    <div class="n-compare-head">Complaint</div><div class="n-compare-head">First-line treatment</div><div class="n-compare-head">Key points</div>
+    <div class="n-compare-row-label">Irregular cycles / anovulation</div><div class="n-compare-cell">Lifestyle (weight loss) → letrozole → clomifene → FSH injection → IVF</div><div class="n-compare-cell">Letrozole now preferred over clomifene (NICE 2023); lower multiple pregnancy risk</div>
+    <div class="n-compare-row-label">Hirsutism / acne</div><div class="n-compare-cell">COCP (especially co-cyprindiol); topical for acne; spironolactone if severe</div><div class="n-compare-cell">Co-cyprindiol: anti-androgenic progestogen — do not use long term (VTE risk)</div>
+    <div class="n-compare-row-label">Metabolic / insulin resistance</div><div class="n-compare-cell">Lifestyle + metformin</div><div class="n-compare-cell">Metformin improves insulin sensitivity and restores cycles in some; check glucose and lipids annually</div>
+    <div class="n-compare-row-label">Endometrial protection</div><div class="n-compare-cell">Progestogen (oral or Mirena) to induce withdrawal bleeds</div><div class="n-compare-cell">Anovulation → unopposed oestrogen → endometrial hyperplasia → cancer. Induce bleed at least every 3–4 months</div>
+    <div class="n-compare-row-label">Psychological</div><div class="n-compare-cell">Acknowledge — screen for depression and anxiety</div><div class="n-compare-cell">PCOS has significant psychological burden; body image, fertility anxiety, chronic condition management</div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">6</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Letrozole has replaced clomifene as first-line for ovulation induction in PCOS.</strong> It achieves higher live birth rates and lower multiple pregnancy rates. NICE now recommends letrozole.<span class="n-pearl-exam">Exam loves this: candidates still say clomifene first.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Insulin resistance occurs in 70% of PCOS women regardless of BMI.</strong> Lean women with PCOS are not protected. Metabolic screening applies to all.</div></div>
     <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>PCOS does not resolve at menopause.</strong> The metabolic risks (diabetes, cardiovascular disease) persist. Long-term follow-up is needed throughout life.</div></div>
-  </div>
+      <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Unopposed oestrogen in PCOS causes endometrial hyperplasia.</strong> Anovulation means no luteal phase, no progesterone, so oestrogen acts on the endometrium unopposed. Women with PCOS who are anovulatory need progestogen every 3–4 months at minimum (or continuous with Mirena) to prevent endometrial hyperplasia and cancer. This is one of the main long-term risks of PCOS — often missed.<span class="n-pearl-exam">The long-term complication question — not fertility, but endometrial protection.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Metformin improves insulin sensitivity AND can restore ovulation.</strong> In insulin-resistant PCOS, metformin reduces hyperinsulinaemia → reduces LH-driven androgen production → LH:FSH ratio normalises → ovulation can resume. It also reduces risk of OHSS if used alongside ovulation induction. Not first-line for ovulation alone, but useful as adjunct or in metabolic syndrome.<span class="n-pearl-exam">Mechanism question — why does metformin help in PCOS?</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>PCOS does not resolve at menopause — but the androgen and metabolic risks persist.</strong> After menopause, the ovaries produce less oestrogen but still produce androgens. The metabolic syndrome, type 2 diabetes risk, and cardiovascular risk remain elevated lifelong. PCOS should be thought of as a lifelong metabolic condition, not just a reproductive one.</div></div>
+</div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">8</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Normal periods exclude PCOS.</div></div>
@@ -2881,14 +3002,28 @@ Tertiary Unit</text>
     <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Group B Streptococcus:</strong> if GBS colonisation is known or suspected, IV penicillin intrapartum to prevent neonatal early-onset GBS sepsis.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Tocolytics & Neuroprotection</span><span class="n-section-tag">know the drugs</span></div>
+  <div class="n-compare-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+    <div class="n-compare-head">Drug</div><div class="n-compare-head">Class</div><div class="n-compare-head">Use</div><div class="n-compare-head">Key point</div>
+    <div class="n-compare-row-label">Nifedipine</div><div class="n-compare-cell">Calcium channel blocker</div><div class="n-compare-cell">First-line tocolysis (48h window)</div><div class="n-compare-cell">Do not combine with MgSO₄ (hypotension)</div>
+    <div class="n-compare-row-label">Atosiban</div><div class="n-compare-cell">Oxytocin receptor antagonist</div><div class="n-compare-cell">Alternative tocolysis — fewer side effects</div><div class="n-compare-cell">IV infusion; expensive but well tolerated</div>
+    <div class="n-compare-row-label">Betamethasone</div><div class="n-compare-cell">Corticosteroid</div><div class="n-compare-cell">Fetal lung maturity &lt;34 weeks (2 doses 24h apart)</div><div class="n-compare-cell">The most important intervention — give first</div>
+    <div class="n-compare-row-label">MgSO₄</div><div class="n-compare-cell">Neuroprotectant</div><div class="n-compare-cell">&lt;30 weeks — reduces cerebral palsy risk by ~30%</div><div class="n-compare-cell">Not tocolysis — this is a distinct indication</div>
+    <div class="n-compare-row-label">Cervical cerclage</div><div class="n-compare-cell">Mechanical</div><div class="n-compare-cell">Short cervix (&lt;25mm) + prior preterm birth</div><div class="n-compare-cell">McDonald or Shirodkar suture at 12–14 weeks</div>
+    <div class="n-compare-row-label">Progesterone</div><div class="n-compare-cell">Hormone</div><div class="n-compare-cell">Vaginal progesterone if short cervix on USS</div><div class="n-compare-cell">Reduces recurrence but not standard for all</div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">5</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Tocolysis alone does not improve perinatal outcomes.</strong> Its value is buying 24–48 hours for steroids. If delivery is inevitable, do not obsess over tocolysis — ensure steroids and MgSO₄ are given.<span class="n-pearl-exam">Exam loves this: candidates tocolyse without giving steroids.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Cervical cerclage</strong> reduces preterm birth in women with prior spontaneous preterm birth &lt;34 weeks AND short cervix &lt;25mm in current pregnancy. NICE recommends Shirodkar or McDonald technique.</div></div>
     <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Progesterone (vaginal)</strong> — reduces preterm birth in singleton pregnancies with short cervix (&lt;25mm) at 24 weeks. Given from 24 to 36+6 weeks.</div></div>
-  </div>
+      <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Tocolysis buys 48 hours — nothing more.</strong> The purpose is not to stop labour permanently but to allow time for corticosteroids to work and in-utero transfer to a neonatal unit. Once steroids are given and transfer done, tocolysis has served its purpose. It does not improve perinatal mortality on its own.<span class="n-pearl-exam">The "why do we give tocolysis" question — not to prevent birth, to create a window.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>fFN (foetal fibronectin) has a high negative predictive value.</strong> A negative fFN between 22–34 weeks has &gt;95% NPV for preterm delivery within 14 days — it is essentially a rule-out test. If negative, tocolysis and admission are less justified. If positive, only 15–20% will actually deliver within 2 weeks — it is a poor positive test.<span class="n-pearl-exam">The diagnostic value question — NPV not PPV.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>MgSO₄ before 30 weeks is neuroprotection, not tocolysis.</strong> Students frequently confuse these. MgSO₄ stabilises oligodendrocyte precursors and reduces periventricular white matter injury, cutting cerebral palsy risk by ~30%. It does not reliably delay delivery. Give it alongside corticosteroids — they have different mechanisms and both are needed.</div></div>
+</div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">08</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">9</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Give tocolysis first to buy time for steroids.</div></div>
@@ -3211,14 +3346,28 @@ NOTES.abruption=()=>`<div class="n-page"><div class="n-hero-new">
     <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Antihypertensive treatment must not be delayed</strong> if hypertension is present — abruption + uncontrolled BP is a compounding emergency.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Praevia vs Abruption vs Vasa Praevia</span><span class="n-section-tag">three causes of APH</span></div>
+  <div class="n-compare-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+    <div class="n-compare-head">Feature</div><div class="n-compare-head">Placenta Praevia</div><div class="n-compare-head">Abruption</div><div class="n-compare-head">Vasa Praevia</div>
+    <div class="n-compare-row-label">Pain</div><div class="n-compare-cell">Painless</div><div class="n-compare-cell">Painful — sudden severe</div><div class="n-compare-cell">Painless</div>
+    <div class="n-compare-row-label">Blood colour</div><div class="n-compare-cell">Bright red</div><div class="n-compare-cell">Dark red (concealed possible)</div><div class="n-compare-cell">Dark red (fetal blood)</div>
+    <div class="n-compare-row-label">Uterus</div><div class="n-compare-cell">Soft</div><div class="n-compare-cell">Woody hard, tender</div><div class="n-compare-cell">Soft</div>
+    <div class="n-compare-row-label">Fetal heart</div><div class="n-compare-cell">Usually normal unless severe</div><div class="n-compare-cell">Distress proportional to abruption size</div><div class="n-compare-cell">Sudden severe bradycardia / sinusoidal</div>
+    <div class="n-compare-row-label">Whose blood</div><div class="n-compare-cell">Maternal</div><div class="n-compare-cell">Maternal</div><div class="n-compare-cell"><strong>Fetal</strong> — exsanguination risk</div>
+    <div class="n-compare-row-label">Action</div><div class="n-compare-cell">No VE; USS; LSCS if major</div><div class="n-compare-cell">Deliver urgently; DIC screen</div><div class="n-compare-cell">Emergency LSCS immediately</div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">5</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>The Couvelaire uterus</strong> (uteroplacental apoplexy): extravasated blood infiltrates the uterine muscle, turning it blue-purple. Rarely causes contractile failure — hysterectomy rarely needed but may be.<span class="n-pearl-exam">Exam loves this: rare but high-yield term.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Kleihauer-Betke test</strong> quantifies feto-maternal haemorrhage — guides anti-D dosing in Rh-negative women. Standard dose if &lt;4 mL FMH; additional doses if more.</div></div>
     <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>After abruption, risk of recurrence is 10× baseline</strong> in future pregnancies. Aspirin from 12 weeks and closer surveillance are recommended.</div></div>
-  </div>
+      <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Concealed abruption: no external bleeding, but worse than it looks.</strong> Blood tracks behind the placenta and does not escape vaginally. A woman with severe abdominal pain, woody uterus, and fetal distress — but minimal PV blood — may have a massive concealed abruption. The absence of visible bleeding is not reassurance.<span class="n-pearl-exam">The "no bleeding but bad signs" scenario — this is the one that kills.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>DIC is a direct complication of abruption.</strong> Retroplacental blood clot releases thromboplastin → activates clotting cascade → consumes fibrinogen and platelets → DIC. Check fibrinogen urgently (normal in pregnancy is &gt;4 g/L; &lt;2 g/L = severe coagulopathy). Treat with cryoprecipitate + FFP + deliver.<span class="n-pearl-exam">Abruption → DIC mechanism question.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Kleihauer-Betke test quantifies fetal-maternal haemorrhage.</strong> Used in Rh-negative women with abruption to calculate the dose of anti-D needed. Standard 500 IU covers up to 4 mL of fetal blood — but large APH may require higher doses. Always check Kleihauer before giving anti-D in significant bleeds.</div></div>
+</div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">8</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Placental abruption always presents with heavy vaginal bleeding.</div></div>
@@ -3322,14 +3471,27 @@ NOTES.iol=()=>`<div class="n-page"><div class="n-hero-new">
     <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Informed consent must cover failed induction and caesarean risk.</strong> IOL doubles caesarean risk in some groups if cervix is unfavourable.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">IOL Methods Compared</span><span class="n-section-tag">choose by cervix and clinical context</span></div>
+  <div class="n-compare-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+    <div class="n-compare-head">Method</div><div class="n-compare-head">Mechanism</div><div class="n-compare-head">Use when</div><div class="n-compare-head">Caution</div>
+    <div class="n-compare-row-label">Dinoprostone (PGE2)</div><div class="n-compare-cell">Prostaglandin gel/pessary — cervical ripening + stimulation</div><div class="n-compare-cell">Unfavourable cervix (Bishop &lt;6); intact membranes</div><div class="n-compare-cell">Previous LSCS: increased uterine rupture risk — use balloon instead</div>
+    <div class="n-compare-row-label">Misoprostol (PGE1)</div><div class="n-compare-cell">Prostaglandin — potent uterotonic</div><div class="n-compare-cell">Second-trimester IOL; IUFD (low dose)</div><div class="n-compare-cell">Not licensed in UK for IOL in live pregnancy — use dinoprostone instead</div>
+    <div class="n-compare-row-label">Balloon catheter</div><div class="n-compare-cell">Mechanical cervical ripening — Foley/Cook balloon distends lower segment</div><div class="n-compare-cell">Previous LSCS — preferred method (no prostaglandin uterotonic risk)</div><div class="n-compare-cell">Not if ruptured membranes or active infection</div>
+    <div class="n-compare-row-label">ARM (AROM)</div><div class="n-compare-cell">Artificial rupture of membranes — releases prostaglandins + allows syntocinon</div><div class="n-compare-cell">Favourable cervix (Bishop ≥6); after successful ripening</div><div class="n-compare-cell">Only when presenting part engaged — cord prolapse risk</div>
+    <div class="n-compare-row-label">Syntocinon (oxytocin)</div><div class="n-compare-cell">IV infusion — drives contractions once membranes ruptured</div><div class="n-compare-cell">After ARM; augmentation of slow labour</div><div class="n-compare-cell">Continuous CTG mandatory; previous LSCS: lower-dose protocol</div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">5</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Offering IOL at 41 weeks reduces stillbirth without increasing caesarean rate</strong> (Hannah Post-term trial, SWEPIS trial). Waiting for 42 weeks increases risk.<span class="n-pearl-exam">Exam loves this: the evidence shifted from 'wait' to 'offer'.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Misoprostol (PGE1) is not licensed in the UK for IOL</strong> but is used in low-resource settings and for IUFD. More potent and cheaper than dinoprostone. Higher hyperstimulation risk.</div></div>
     <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Balloon catheter is preferred over prostaglandins for previous caesarean IOL</strong> — lower uterine rupture risk. Transcervical Foley catheter inflated in the lower segment.</div></div>
-  </div>
+      <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Offering IOL at 41 weeks reduces stillbirth without increasing caesarean rate.</strong> The ARRIVE trial and NICE NG207 evidence: induction at 41+0 vs expectant management reduces perinatal mortality with no increase in LSCS. The old teaching ("IOL increases caesarean risk") has been overturned. Stillbirth risk rises sharply after 41 weeks — don't withhold IOL to "let things happen naturally."<span class="n-pearl-exam">The evidence-practice gap question — old vs new guidance.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Bishop score components: Dilation, Effacement, Station, Consistency, Position (DESCP).</strong> Score 0–13. Score ≥8 = favourable — ARM alone may be sufficient. Score &lt;6 = unfavourable — cervical ripening required first. The cervix is almost entirely responsible for IOL success: a good cervix makes almost any IOL work; a poor cervix makes even optimal IOL fail.<span class="n-pearl-exam">Bishop score components and threshold values — always examined.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Previous LSCS + IOL: use balloon catheter, not prostaglandins.</strong> Prostaglandins (especially misoprostol) increase uterine rupture risk in a scarred uterus — approximately 1 in 200 with dinoprostone, higher with misoprostol. Balloon catheter achieves mechanical ripening without pharmacological uterotonic effect. Syntocinon with continuous CTG is then used after ARM — at lower doses, with vigilance for scar pain or CTG changes suggesting rupture.</div></div>
+</div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">08</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">9</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">A Bishop score of 6 means induction will succeed.</div></div>
@@ -3427,14 +3589,28 @@ NOTES.menopause=()=>`<div class="n-page"><div class="n-hero-new">
     <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>HRT breast cancer risk:</strong> combined HRT carries a small increased risk (~4 extra cases per 1000 women over 5 years). Oestrogen-only has less risk. Absolute risk is small.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">HRT: Benefits vs Risks</span><span class="n-section-tag">individualise every decision</span></div>
+  <div class="n-compare-grid" style="grid-template-columns:1fr 1fr 1fr;">
+    <div class="n-compare-head">Factor</div><div class="n-compare-head">Oral HRT</div><div class="n-compare-head">Transdermal HRT</div>
+    <div class="n-compare-row-label">VTE risk</div><div class="n-compare-cell">Increased ~2–3× (first-pass hepatic effect on clotting factors)</div><div class="n-compare-cell">No increased VTE risk — bypasses liver</div>
+    <div class="n-compare-row-label">Stroke risk</div><div class="n-compare-cell">Slight increase with conjugated equine oestrogen</div><div class="n-compare-cell">No increased stroke risk</div>
+    <div class="n-compare-row-label">Breast cancer</div><div class="n-compare-cell">Combined HRT: small increased risk (&lt;1 extra case per 1000 women per year). Oestrogen-only: no increased risk (in hysterectomised women)</div><div class="n-compare-cell">Same risk profile as oral for breast cancer</div>
+    <div class="n-compare-row-label">Progestogen type</div><div class="n-compare-cell">Synthetic progestogens (MPA, norethisterone) — higher breast cancer risk</div><div class="n-compare-cell">Micronised progesterone (Utrogestan) — lower breast cancer risk, preferred</div>
+    <div class="n-compare-row-label">Contraindications</div><div class="n-compare-cell" colspan="2">Oestrogen receptor-positive breast cancer (absolute), unexplained PV bleeding, uncontrolled hypertension, active VTE/liver disease</div>
+    <div class="n-compare-row-label">POI (&lt;40 years)</div><div class="n-compare-cell" colspan="2">HRT is essential until at least age 51 — to prevent premature cardiovascular and bone disease. Not optional.</div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">5</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Transdermal (patch/gel) HRT has lower thrombotic risk than oral HRT.</strong> Oral oestrogen undergoes first-pass hepatic metabolism → clotting factor effects. Transdermal bypasses this. Prefer transdermal in women with VTE risk factors.<span class="n-pearl-exam">Exam loves this: candidates prescribe oral to everyone.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Micronised progesterone (Utrogestan)</strong> is the safest progestogen — lower breast cancer risk, no cardiovascular effect. Preferred over synthetic progestogens (norethisterone, medroxyprogesterone acetate).</div></div>
     <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>HRT can be prescribed by GPs</strong> — no specialist referral required for straightforward cases. Refer if: POI, HRT failure, uncertainty about risk, or complex co-morbidities.</div></div>
-  </div>
+      <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Premature ovarian insufficiency (POI) is not the same as early menopause.</strong> POI is ovarian failure before age 40 — affects 1% of women. These women need HRT for cardiovascular and bone protection until at least 51 (natural menopause age). Without HRT they have markedly increased risk of osteoporosis and cardiovascular disease. POI requires specialist management including psychological support, fertility counselling (spontaneous pregnancy still possible in 5–10%).<span class="n-pearl-exam">The "under-40 amenorrhoea" vignette — POI must be top of the differential.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Genitourinary syndrome of menopause (GSM) responds to local oestrogen.</strong> Vaginal dryness, recurrent UTIs, dyspareunia, urinary urgency — these are all GSM. Local vaginal oestrogen (cream, ring, pessary) is first-line and does not carry the systemic HRT risks. It can be used lifelong, even in women in whom systemic HRT is contraindicated (including most breast cancer survivors).<span class="n-pearl-exam">The "breast cancer survivor with vaginal symptoms" question — local oestrogen is safe.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>HRT absolute contraindications: current breast cancer (ER+), unexplained PV bleeding, active VTE, uncontrolled hypertension, active liver disease.</strong> A history of VTE is not an absolute contraindication — transdermal HRT can be considered with specialist advice. Prior breast cancer is complex: ER-negative cancer does not carry the same absolute ban. Know the difference between absolute and relative.</div></div>
+</div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">8</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">HRT cannot be prescribed to women with a family history of breast cancer.</div></div>
@@ -3586,101 +3762,203 @@ NOTES.vulvalconditions=()=>`<div class="n-page"><div class="n-hero-new">
 NOTES.ovariancancer=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-eyebrow">Gynaecology · Oncology</div>
   <div class="n-hero-title">Ovarian<br><em>Cancer</em></div>
-  <div class="n-hero-sub">ICD C56 &nbsp;·&nbsp; The silent killer — late diagnosis, late symptoms</div>
-  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Malignancy of the ovary. <strong>High-grade serous carcinoma (HGSC)</strong> is most common and most aggressive — 70% of cases. Also: clear cell, endometrioid, mucinous, low-grade serous.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Lifetime risk 1.7%. Risk: BRCA1/2 (40–60%), Lynch syndrome, nulliparity, endometriosis, HRT &gt;10 years. <strong>COCP reduces risk by 50% across 5 years of use.</strong></div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">5-year survival for Stage III–IV = &lt;30%. Most present at advanced stage. Debulking surgery + chemotherapy are the mainstays — but stage determines prognosis entirely.</div></div></div>
+  <div class="n-hero-sub">ICD C56 &nbsp;·&nbsp; The silent killer — vague symptoms, late diagnosis, poor prognosis</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Malignancy of the ovary. <strong>High-grade serous carcinoma (HGSC)</strong> is most common — 70% of cases. Subtypes: low-grade serous, endometrioid, clear cell, mucinous, borderline.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Lifetime risk 1.7%. Key risks: <strong>BRCA1 (40–60% lifetime risk), BRCA2 (20–30%), Lynch syndrome</strong>, nulliparity, endometriosis, HRT &gt;10 years. COCP is protective.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">5-year survival Stage I = 90%. Stage III–IV = &lt;30%. <strong>75% present at advanced stage</strong> — because symptoms are vague and overlap with IBS. Early detection is the only way to improve survival.</div></div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Histological Types</span><span class="n-section-tag">know what you're dealing with</span></div>
   <div class="n-viz-block">
     <div class="n-viz-label-row">
-      <span class="n-viz-title">Ovarian cancer — the silent killer</span>
-      <span class="n-viz-sub">Persistent bloating in a woman >50 is not IBS until you've ruled this out</span>
+      <span class="n-viz-title">Ovarian cancer subtypes — 90% are epithelial</span>
+      <span class="n-viz-sub">Each subtype has distinct biology, risk factors and chemo-sensitivity</span>
     </div>
-    <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">HISTOLOGY</text>
-      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">HGSC</tspan><tspan x="72" dy="16">70% of cases</tspan></text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">High-grade serous</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Most aggressive subtype</text>
-      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">TP53 mutation universal</text>
-      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SYMPTOMS</text>
-      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Bloating</tspan><tspan x="227" dy="16">Satiety · IBS</tspan></text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Vague — hence late Dx</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Persistent ≥12×/month</text>
-      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Pelvic/abdo mass</text>
-      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">INVESTIGATE</text>
-      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">CA-125</tspan><tspan x="382" dy="16">+ USS</tspan></text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">RMI to risk-stratify</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">CT chest/abdo/pelvis</text>
-      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Refer if RMI >200</text>
-      <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">STAGING</text>
-      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">FIGO</tspan><tspan x="537" dy="16">I – IV</tspan></text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Stage I: confined ovary</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Stage III: peritoneal</text>
-      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">75% diagnosed stage III+</text>
-      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TREATMENT</text>
-      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Debulk</tspan><tspan x="690" dy="16">+ Carbo/Tax</tspan></text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Optimal debulking key</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">BRCA: PARP inhibitors</text>
-      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">5yr survival <30% stIII</text>
+    <svg viewBox="0 0 760 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="148" height="200" rx="2" fill="#1a2a3a"/>
+      <text x="74" y="22" font-family="Syne,sans-serif" font-size="7.5" fill="rgba(255,255,255,.5)" text-anchor="middle" font-weight="700" letter-spacing="1.5">HIGH-GRADE SEROUS</text>
+      <text x="74" y="46" font-family="Syne,sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="800">70%</text>
+      <text x="74" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.75)" text-anchor="middle">Most aggressive</text>
+      <text x="74" y="82" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.75)" text-anchor="middle">TP53 mutation universal</text>
+      <text x="74" y="96" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.75)" text-anchor="middle">BRCA1/2 in 20%</text>
+      <text x="74" y="120" font-family="JetBrains Mono,monospace" font-size="6.5" fill="rgba(255,255,255,.45)" text-anchor="middle">Often bilateral</text>
+      <text x="74" y="133" font-family="JetBrains Mono,monospace" font-size="6.5" fill="rgba(255,255,255,.45)" text-anchor="middle">Chemo-sensitive initially</text>
+      <text x="74" y="170" font-family="JetBrains Mono,monospace" font-size="6.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Platinum + PARP inhibitor</text>
+      <rect x="155" y="0" width="118" height="200" rx="2" fill="#2a3a5a"/>
+      <text x="214" y="22" font-family="Syne,sans-serif" font-size="7.5" fill="rgba(255,255,255,.5)" text-anchor="middle" font-weight="700" letter-spacing="1.5">ENDOMETRIOID</text>
+      <text x="214" y="46" font-family="Syne,sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="800">10%</text>
+      <text x="214" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.75)" text-anchor="middle">Better prognosis</text>
+      <text x="214" y="82" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.75)" text-anchor="middle">Linked to endometriosis</text>
+      <text x="214" y="96" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.75)" text-anchor="middle">Lynch syndrome risk</text>
+      <text x="214" y="133" font-family="JetBrains Mono,monospace" font-size="6.5" fill="rgba(255,255,255,.45)" text-anchor="middle">Often early stage at Dx</text>
+      <rect x="280" y="0" width="118" height="200" rx="2" fill="#3a2a4a"/>
+      <text x="339" y="22" font-family="Syne,sans-serif" font-size="7.5" fill="rgba(255,255,255,.5)" text-anchor="middle" font-weight="700" letter-spacing="1.5">CLEAR CELL</text>
+      <text x="339" y="46" font-family="Syne,sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="800">5%</text>
+      <text x="339" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.75)" text-anchor="middle">Chemo-resistant</text>
+      <text x="339" y="82" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.75)" text-anchor="middle">Linked to endometriosis</text>
+      <text x="339" y="96" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.75)" text-anchor="middle">Poor platinum response</text>
+      <text x="339" y="133" font-family="JetBrains Mono,monospace" font-size="6.5" fill="rgba(255,255,255,.45)" text-anchor="middle">Higher VTE risk</text>
+      <rect x="405" y="0" width="118" height="200" rx="2" fill="#3a3a1a"/>
+      <text x="464" y="22" font-family="Syne,sans-serif" font-size="7.5" fill="rgba(255,255,255,.5)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MUCINOUS</text>
+      <text x="464" y="46" font-family="Syne,sans-serif" font-size="22" fill="white" text-anchor="middle" font-weight="800">3%</text>
+      <text x="464" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.75)" text-anchor="middle">Often large, unilateral</text>
+      <text x="464" y="82" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.75)" text-anchor="middle">CA-125 often normal</text>
+      <text x="464" y="96" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.75)" text-anchor="middle">CEA may be raised</text>
+      <text x="464" y="133" font-family="JetBrains Mono,monospace" font-size="6.5" fill="rgba(255,255,255,.45)" text-anchor="middle">Rule out GI primary first</text>
+      <rect x="530" y="0" width="108" height="200" rx="2" fill="#4a2a1a"/>
+      <text x="584" y="22" font-family="Syne,sans-serif" font-size="7.5" fill="rgba(255,255,255,.5)" text-anchor="middle" font-weight="700" letter-spacing="1.5">BORDERLINE</text>
+      <text x="584" y="46" font-family="Syne,sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="800">10–15%</text>
+      <text x="584" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.75)" text-anchor="middle">Low malignant potential</text>
+      <text x="584" y="82" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.75)" text-anchor="middle">No stromal invasion</text>
+      <text x="584" y="96" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.75)" text-anchor="middle">Excellent prognosis</text>
+      <text x="584" y="133" font-family="JetBrains Mono,monospace" font-size="6.5" fill="rgba(255,255,255,.45)" text-anchor="middle">Fertility-sparing possible</text>
+      <rect x="645" y="0" width="115" height="200" rx="2" fill="#c8452a"/>
+      <text x="702" y="22" font-family="Syne,sans-serif" font-size="7.5" fill="rgba(255,255,255,.5)" text-anchor="middle" font-weight="700" letter-spacing="1.5">GCT / OTHERS</text>
+      <text x="702" y="46" font-family="Syne,sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="800">Rare</text>
+      <text x="702" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.75)" text-anchor="middle">Granulosa cell tumour</text>
+      <text x="702" y="82" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.75)" text-anchor="middle">Oestrogen-secreting</text>
+      <text x="702" y="96" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.75)" text-anchor="middle">Inhibin B as marker</text>
+      <text x="702" y="133" font-family="JetBrains Mono,monospace" font-size="6.5" fill="rgba(255,255,255,.45)" text-anchor="middle">Dysgerminoma in young</text>
     </svg>
   </div>
-
-  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Persistent bloating + early satiety + pelvic/abdominal mass in a postmenopausal woman → think <em>ovarian cancer</em> → USS + CA-125 → calculate RMI.</div></div>
-  <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>The symptoms of ovarian cancer are non-specific and mimic IBS.</strong> Persistent bloating, change in bowel habit, and urinary frequency in a woman over 50 warrant USS — not a GI referral. NICE NG12: test CA-125 if any of these symptoms occur &gt;12 times/month.</div></div>
+  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Persistent bloating + early satiety + urinary frequency + pelvic mass in a woman &gt;50 → think <em>ovarian cancer</em> → CA-125 + USS → calculate RMI → refer if &gt;200.</div></div>
+  <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Mucinous ovarian cancer: CA-125 is often NORMAL.</strong> If you only check CA-125 and it's normal, you'll miss it. CEA may be raised instead, and you must also rule out a GI primary (colorectal, appendix) before attributing it to ovary.</div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Management</span><span class="n-section-tag">surgery + chemotherapy</span></div>
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">FIGO Staging</span><span class="n-section-tag">determines everything</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">FIGO staging — ovarian cancer</span>
+      <span class="n-viz-sub">Stage at diagnosis is the single most important prognostic factor</span>
+    </div>
+    <svg viewBox="0 0 760 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="760" height="160" rx="3" fill="#f9f6f2"/>
+      <rect x="10" y="10" width="170" height="140" rx="3" fill="#2d6a4f"/>
+      <text x="95" y="32" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.6)" text-anchor="middle" font-weight="700" letter-spacing="2">STAGE I</text>
+      <text x="95" y="54" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Confined to ovary</text>
+      <text x="95" y="75" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.8)" text-anchor="middle">IA: one ovary, capsule intact</text>
+      <text x="95" y="88" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.8)" text-anchor="middle">IB: both ovaries</text>
+      <text x="95" y="101" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.8)" text-anchor="middle">IC: capsule ruptured / ascites</text>
+      <text x="95" y="130" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.95)" text-anchor="middle" font-weight="800">5yr: ~90%</text>
+      <rect x="190" y="10" width="170" height="140" rx="3" fill="#52b788"/>
+      <text x="275" y="32" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.6)" text-anchor="middle" font-weight="700" letter-spacing="2">STAGE II</text>
+      <text x="275" y="54" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Pelvic extension</text>
+      <text x="275" y="75" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.85)" text-anchor="middle">Spread to uterus / tubes /</text>
+      <text x="275" y="88" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.85)" text-anchor="middle">other pelvic structures</text>
+      <text x="275" y="101" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.85)" text-anchor="middle">Still within pelvis</text>
+      <text x="275" y="130" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.95)" text-anchor="middle" font-weight="800">5yr: ~70%</text>
+      <rect x="370" y="10" width="190" height="140" rx="3" fill="#e76f51"/>
+      <text x="465" y="32" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.6)" text-anchor="middle" font-weight="700" letter-spacing="2">STAGE III</text>
+      <text x="465" y="54" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Peritoneal / lymph nodes</text>
+      <text x="465" y="75" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.85)" text-anchor="middle">IIIA: micro peritoneal mets</text>
+      <text x="465" y="88" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.85)" text-anchor="middle">IIIB: &lt;2cm peritoneal deposits</text>
+      <text x="465" y="101" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.85)" text-anchor="middle">IIIC: &gt;2cm / +lymph nodes</text>
+      <text x="465" y="115" font-family="JetBrains Mono,monospace" font-size="6.5" fill="rgba(255,255,255,.65)" text-anchor="middle">75% diagnosed here or stage IV</text>
+      <text x="465" y="130" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.95)" text-anchor="middle" font-weight="800">5yr: ~25%</text>
+      <rect x="570" y="10" width="180" height="140" rx="3" fill="#c8452a"/>
+      <text x="660" y="32" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.6)" text-anchor="middle" font-weight="700" letter-spacing="2">STAGE IV</text>
+      <text x="660" y="54" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Distant metastases</text>
+      <text x="660" y="75" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.85)" text-anchor="middle">IVA: pleural effusion (cytology+)</text>
+      <text x="660" y="88" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.85)" text-anchor="middle">IVB: liver/spleen parenchyma</text>
+      <text x="660" y="101" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.85)" text-anchor="middle">or extraabdominal sites</text>
+      <text x="660" y="130" font-family="Syne,sans-serif" font-size="11" fill="rgba(255,255,255,.95)" text-anchor="middle" font-weight="800">5yr: ~15%</text>
+    </svg>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Investigation &amp; RMI</span><span class="n-section-tag">how to risk-stratify</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Risk of Malignancy Index (RMI) — the triage tool</span>
+      <span class="n-viz-sub">RMI = U × M × CA-125. Score &gt;200 → urgent gynaecological oncology referral</span>
+    </div>
+    <svg viewBox="0 0 760 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="760" height="150" rx="3" fill="#1a1a2e"/>
+      <text x="380" y="28" font-family="Syne,sans-serif" font-size="14" fill="white" text-anchor="middle" font-weight="800">RMI = U × M × CA-125</text>
+      <rect x="20" y="42" width="220" height="95" rx="3" fill="rgba(255,255,255,.06)"/>
+      <text x="130" y="62" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">U — USS SCORE</text>
+      <text x="130" y="80" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.8)" text-anchor="middle">0 = no features</text>
+      <text x="130" y="93" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.8)" text-anchor="middle">1 = one feature</text>
+      <text x="130" y="106" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.8)" text-anchor="middle">3 = two or more features</text>
+      <text x="130" y="125" font-family="JetBrains Mono,monospace" font-size="6.5" fill="rgba(255,255,255,.4)" text-anchor="middle">Multilocular, solid, bilateral,</text>
+      <text x="130" y="136" font-family="JetBrains Mono,monospace" font-size="6.5" fill="rgba(255,255,255,.4)" text-anchor="middle">ascites, metastases</text>
+      <rect x="255" y="42" width="220" height="95" rx="3" fill="rgba(255,255,255,.06)"/>
+      <text x="365" y="62" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">M — MENOPAUSAL STATUS</text>
+      <text x="365" y="80" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.8)" text-anchor="middle">1 = premenopausal</text>
+      <text x="365" y="93" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.8)" text-anchor="middle">3 = postmenopausal</text>
+      <text x="365" y="115" font-family="JetBrains Mono,monospace" font-size="6.5" fill="rgba(255,255,255,.4)" text-anchor="middle">Postmenopausal = &gt;12m amenorrhoea</text>
+      <text x="365" y="128" font-family="JetBrains Mono,monospace" font-size="6.5" fill="rgba(255,255,255,.4)" text-anchor="middle">or age &gt;50 if hysterectomised</text>
+      <rect x="490" y="42" width="250" height="95" rx="3" fill="rgba(200,69,42,.15)"/>
+      <text x="615" y="62" font-family="Syne,sans-serif" font-size="9" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="2">CA-125 — raw value (IU/mL)</text>
+      <text x="615" y="80" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Plug in raw number directly</text>
+      <text x="615" y="100" font-family="JetBrains Mono,monospace" font-size="9" fill="#c8452a" text-anchor="middle" font-weight="700">RMI &gt; 200 = refer urgently</text>
+      <text x="615" y="120" font-family="JetBrains Mono,monospace" font-size="6.5" fill="rgba(255,255,255,.4)" text-anchor="middle">Sensitivity 85%, Specificity 97%</text>
+      <text x="615" y="133" font-family="JetBrains Mono,monospace" font-size="6.5" fill="rgba(255,255,255,.4)" text-anchor="middle">for identifying high-risk lesions</text>
+    </svg>
+  </div>
+  <div class="n-body-text">Work-up once suspected: <strong>CA-125 + pelvic USS first</strong>. If RMI &gt;200: CT chest/abdomen/pelvis for staging + urgent gynaecological oncology referral. Do not biopsy percutaneously — risk of peritoneal seeding. Diagnosis is surgical. For germ cell tumours in young women, also check AFP, β-hCG, LDH, inhibin B.</div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Epithelial vs Non-Epithelial</span><span class="n-section-tag">know the distinction</span></div>
+  <div class="n-compare-grid" style="grid-template-columns:1fr 1fr 1fr;">
+    <div class="n-compare-head">Feature</div><div class="n-compare-head">Epithelial (90%)</div><div class="n-compare-head">Non-Epithelial (10%)</div>
+    <div class="n-compare-row-label">Age</div><div class="n-compare-cell">Postmenopausal (50–70s)</div><div class="n-compare-cell">Young women (teens–30s)</div>
+    <div class="n-compare-row-label">Types</div><div class="n-compare-cell">HGSC, clear cell, mucinous, endometrioid, borderline</div><div class="n-compare-cell">Dysgerminoma, yolk sac, granulosa cell, teratoma</div>
+    <div class="n-compare-row-label">Markers</div><div class="n-compare-cell">CA-125 (most), CEA (mucinous)</div><div class="n-compare-cell">AFP, β-hCG, LDH, inhibin B</div>
+    <div class="n-compare-row-label">Prognosis</div><div class="n-compare-cell">Stage-dependent; often poor</div><div class="n-compare-cell">Generally better — chemo-sensitive</div>
+    <div class="n-compare-row-label">Fertility</div><div class="n-compare-cell">Rarely spared (bilateral common)</div><div class="n-compare-cell">Often fertility-sparing possible</div>
+    <div class="n-compare-row-label">Special feature</div><div class="n-compare-cell">Peritoneal carcinomatosis common</div><div class="n-compare-cell">Granulosa: oestrogen → endometrial hyperplasia</div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Management</span><span class="n-section-tag">surgery is the foundation</span></div>
   <div class="n-algo">
     <div class="n-algo-row">
   <div class="n-algo-step s-first">Primary debulking surgery</div>
-  <div class="n-algo-body"><strong>Total abdominal hysterectomy + bilateral salpingo-oophorectomy + omentectomy</strong> + peritoneal sampling + pelvic/para-aortic lymphadenectomy. The more complete the cytoreduction, the better the survival.<span class="n-involve">Specialist gynaecological oncology MDT</span></div>
+  <div class="n-algo-body"><strong>Total abdominal hysterectomy + bilateral salpingo-oophorectomy + omentectomy</strong> + peritoneal biopsies + pelvic/para-aortic lymphadenectomy. Goal: no visible residual disease (R0). Every cm of residual tumour worsens survival.<span class="n-involve">Gynaecological oncology MDT</span></div>
 </div>
     <div class="n-algo-row">
-  <div class="n-algo-step s-fail">Chemotherapy</div>
-  <div class="n-algo-body"><strong>Carboplatin + paclitaxel × 6 cycles</strong> — standard first-line. PARP inhibitors (olaparib, niraparib) as maintenance in BRCA-mutated or HRD tumours.<span class="n-involve">Clinical oncology</span></div>
+  <div class="n-algo-step s-fail">Adjuvant chemotherapy</div>
+  <div class="n-algo-body"><strong>Carboplatin + paclitaxel × 6 cycles</strong> — standard first-line for Stage IC and above. PARP inhibitors (olaparib, niraparib) as <strong>maintenance</strong> in BRCA-mutated or HRD-positive tumours — dramatically improves PFS.<span class="n-involve">Clinical oncology</span></div>
 </div>
     <div class="n-algo-row">
-  <div class="n-algo-step s-severe">Neoadjuvant (bulky disease)</div>
-  <div class="n-algo-body">If primary surgery not feasible: <strong>3 cycles carboplatin/paclitaxel → interval debulking surgery → 3 further cycles.</strong> Equivalent overall survival to primary surgery in selected cases.<span class="n-involve">MDT decision</span></div>
+  <div class="n-algo-step s-severe">Neoadjuvant (bulky / unresectable)</div>
+  <div class="n-algo-body">If primary surgery not feasible: <strong>3 cycles carboplatin/paclitaxel → interval debulking surgery → 3 further cycles.</strong> Equivalent OS to primary surgery in selected cases. Decision made at MDT with CT staging.<span class="n-involve">MDT decision</span></div>
 </div>
     <div class="n-algo-row">
   <div class="n-algo-step s-unstable">Recurrence</div>
-  <div class="n-algo-body dark-body">Platinum-sensitive (&gt;6 months): repeat platinum + PARP inhibitor. Platinum-resistant: single-agent chemotherapy ± bevacizumab. Median survival 12–18 months.<span class="n-involve">Palliative + oncology</span></div>
+  <div class="n-algo-body dark-body"><strong>Platinum-sensitive</strong> (relapse &gt;6 months): repeat platinum-based ± PARP inhibitor. <strong>Platinum-resistant</strong> (relapse &lt;6 months): single-agent (liposomal doxorubicin, topotecan, gemcitabine) ± bevacizumab. Median survival 12–18 months.<span class="n-involve">Palliative + oncology</span></div>
 </div>
   </div>
+  <div class="n-body-text"><strong>BRCA testing:</strong> All women with high-grade ovarian cancer should have germline BRCA testing — guides PARP inhibitor use AND enables cascade testing for relatives. Somatic (tumour) BRCA testing also relevant for treatment decisions.</div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
-  <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>PARP inhibitors work by synthetic lethality in BRCA-mutated tumours.</strong> BRCA-mutated cells rely on PARP for DNA repair — inhibiting PARP causes irreparable DNA damage and cell death. Olaparib dramatically improves PFS as maintenance.<span class="n-pearl-exam">Exam loves this: mechanism question.</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>COCP protects against ovarian cancer.</strong> 5 years of use = ~50% risk reduction. This protective effect persists for decades after stopping. The most powerful modifiable protective factor.<span class="n-pearl-exam">Exam loves this: protection in a contraceptive.</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>CA-125 is used to monitor treatment response and detect recurrence</strong> — not as a screening test. A rising CA-125 during remission often predicts clinical recurrence by 3–6 months.</div></div>
-  </div>
-</div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
   <div class="n-flag-list">
-    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>BRCA1/2 carriers should be referred to clinical genetics.</strong> Risk-reducing PBSO reduces ovarian cancer risk by 80%. Timing depends on variant (BRCA1: 35–40; BRCA2: 40–45).</div></div>
-    <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>All high-grade ovarian cancer should have BRCA testing</strong> — for treatment decisions (PARP inhibitors) and family implications. This is standard of care.</div></div>
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Ascites + ovarian mass = ovarian cancer until proven otherwise.</strong> Refer urgently without waiting for CA-125. Do not attribute ascites to a benign cyst.</div></div>
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Young woman + ovarian mass + AFP/β-hCG raised</strong> → germ cell tumour. Highly chemo-sensitive and potentially curable — urgent referral changes outcomes.</div></div>
+    <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>BRCA1/2 carriers must be referred to clinical genetics.</strong> Risk-reducing PBSO reduces ovarian cancer risk by &gt;80%. BRCA1: offer age 35–40. BRCA2: offer age 40–45.</div></div>
+    <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Never biopsy an ovarian mass percutaneously</strong> — risk of peritoneal seeding and upstaging. Diagnosis is always surgical.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-pearl-list">
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>COCP is the most powerful modifiable protective factor.</strong> 5 years of use reduces lifetime risk by ~50%. Protection persists decades after stopping. The mechanism: fewer ovulatory cycles = fewer opportunities for malignant transformation at the surface epithelium.<span class="n-pearl-exam">Exam loves this — protective in a contraceptive question.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>PARP inhibitors work by synthetic lethality.</strong> BRCA1/2-mutated cells use PARP for single-strand DNA repair. Inhibit PARP → double-strand breaks accumulate → BRCA-deficient cells can't repair → cell death. Olaparib as maintenance post-chemo dramatically improves PFS in BRCA-mutated HGSC.<span class="n-pearl-exam">Mechanism question favourite.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>CA-125 is normal in up to 50% of Stage I ovarian cancers</strong> — and often normal in mucinous tumours. It monitors treatment response and detects recurrence. A rising CA-125 in remission predicts relapse by 3–6 months. It is NOT a screening test — poor specificity (raised in endometriosis, fibroids, PID, pregnancy).<span class="n-pearl-exam">This trips up students every time.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Granulosa cell tumours secrete oestrogen</strong> — leading to postmenopausal bleeding, endometrial hyperplasia, or precocious puberty in girls. Marker is inhibin B, not CA-125. They have a late recurrence pattern — can relapse 10–20 years after initial treatment.<span class="n-pearl-exam">Non-epithelial tumour question — always about the oestrogen effect.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Borderline tumours have no stromal invasion</strong> — low malignant potential, excellent prognosis. Fertility-sparing surgery (unilateral salpingo-oophorectomy) is appropriate in young women. No routine chemotherapy. But they can recur and rarely transform to invasive cancer — long-term follow-up required.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Optimal cytoreduction (R0) is the most important surgical goal.</strong> Residual disease &gt;1cm significantly worsens overall survival. This is why ovarian cancer surgery is performed only in specialist centres — it often involves bowel resection, diaphragm stripping, and multi-visceral resection to achieve R0.<span class="n-pearl-exam">Explains why subspecialty referral matters clinically and on the exam.</span></div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">08</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">CA-125 is normal, so ovarian cancer is excluded.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>CA-125 is normal in up to 50% of stage I ovarian cancers.</strong> A normal result does not exclude malignancy. In a woman with persistent symptoms (≥12 times/month), normal CA-125 should prompt USS, not reassurance.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">CA-125 is normal so ovarian cancer is excluded.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Normal CA-125 does not exclude ovarian cancer</strong> — particularly Stage I (50% normal) and mucinous type. In a woman with symptoms &gt;12×/month, normal CA-125 should prompt USS, not reassurance.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Ovarian cancer is rare in women under 50 and can be deprioritised in younger patients.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>20% of ovarian cancers occur in women under 50, including BRCA carriers.</strong> Younger women are more likely to be diagnosed late because the diagnosis is not considered. BRCA testing should be offered to all women diagnosed with ovarian cancer regardless of age.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Ascites with an ovarian mass is probably benign — large benign cysts can cause ascites.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Ascites + ovarian mass = cancer until proven otherwise.</strong> Benign cysts do not cause ascites. Refer urgently. Don't wait for CA-125.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Ascites with an ovarian mass is probably benign — it's common with large cysts.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Ascites with an ovarian mass is ovarian cancer until proven otherwise.</strong> Direct urgent referral without waiting for CA-125 or USS is indicated. Do not attribute ascites to a benign cyst.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">She's 28, so this ovarian mass is almost certainly benign.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>In young women, check AFP, β-hCG, LDH, inhibin B</strong> — germ cell and sex cord tumours are more common in this age group. These are often highly treatable but need the right workup and markers.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Persistent bloating in a woman over 50<br>is not IBS until you've done a <em>CA-125 and an ultrasound.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Ovarian cancer is staged surgically, treated surgically,<br>and the goal is always <em>complete cytoreduction.</em><br>CA-125 monitors — it does not exclude.</div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -4042,7 +4320,18 @@ NOTES.obstetriccholestasis=()=>`<div class="n-page"><div class="n-hero-new">
     <div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>OC resolves within 2–4 weeks of delivery.</strong> If LFTs do not normalise postnatally, liver disease must be excluded — refer to hepatology. Persistent abnormalities after 6 weeks are not OC.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">OC vs Other Causes of Itch</span><span class="n-section-tag">not all itch is the same</span></div>
+  <div class="n-compare-grid" style="grid-template-columns:1fr 1fr 1fr;">
+    <div class="n-compare-head">Feature</div><div class="n-compare-head">Obstetric Cholestasis</div><div class="n-compare-head">Other Causes of Itch in Pregnancy</div>
+    <div class="n-compare-row-label">Itch pattern</div><div class="n-compare-cell">Palms and soles, worsens at night, no rash</div><div class="n-compare-cell">PUPPP: urticarial rash on abdomen; PG: blistering rash</div>
+    <div class="n-compare-row-label">Bile acids</div><div class="n-compare-cell">Raised (&gt;10 µmol/L = OC; &gt;40 = severe)</div><div class="n-compare-cell">Normal</div>
+    <div class="n-compare-row-label">LFTs</div><div class="n-compare-cell">Often raised (ALT/AST); bilirubin may be raised</div><div class="n-compare-cell">Normal</div>
+    <div class="n-compare-row-label">Fetal risk</div><div class="n-compare-cell">Stillbirth, meconium-stained liquor, preterm birth — risk rises with bile acid level</div><div class="n-compare-cell">None significant</div>
+    <div class="n-compare-row-label">Delivery timing</div><div class="n-compare-cell">Bile acids &lt;40: 38–39 weeks. &gt;40: 35–36 weeks (individualise)</div><div class="n-compare-cell">Term</div>
+    <div class="n-compare-row-label">Treatment</div><div class="n-compare-cell">UDCA (ursodeoxycholic acid) — improves itch and bile acids. Vitamin K if prolonged.</div><div class="n-compare-cell">Emollients, antihistamines (PUPPP). Topical steroids (PG).</div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">7</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Stillbirth in OC is sudden and unpredictable — CTG cannot reliably predict it.</strong> The mechanism is bile-acid-induced fetal cardiac arrhythmia, not chronic hypoxia. Delivery timing is the only effective intervention.<span class="n-pearl-exam">Exam loves this: candidates say CTG provides reassurance in OC.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>ALP is not a useful marker in OC.</strong> Normally elevated in the third trimester due to placental isoform. Rely on ALT, AST, and fasting bile acids. Using ALP to diagnose or monitor OC is a common error.</div></div>
@@ -4052,7 +4341,7 @@ NOTES.obstetriccholestasis=()=>`<div class="n-page"><div class="n-hero-new">
     <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>OC is associated with increased risk of preterm labour, meconium passage, and fetal distress in labour.</strong> Continuous CTG in labour is recommended. Meconium-stained liquor in a known OC pregnancy should be taken seriously.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">8</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">A normal CTG in OC means the fetus is safe.</div></div>
@@ -4161,14 +4450,28 @@ NOTES.endometrialcancer=()=>`<div class="n-page"><div class="n-hero-new">
     <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Tamoxifen increases endometrial cancer risk 2–3 fold</strong> due to its agonist effect on the endometrium. Women on tamoxifen with PMB must be investigated promptly — they are not simply having a drug effect.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">FIGO Staging & Treatment</span><span class="n-section-tag">surgery is the foundation</span></div>
+  <div class="n-compare-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+    <div class="n-compare-head">Stage</div><div class="n-compare-head">Extent</div><div class="n-compare-head">Treatment</div><div class="n-compare-head">5yr survival</div>
+    <div class="n-compare-row-label">Stage I</div><div class="n-compare-cell">Confined to uterus (IA: &lt;50% myometrial invasion; IB: &gt;50%)</div><div class="n-compare-cell">Total hysterectomy + BSO ± vault brachytherapy</div><div class="n-compare-cell">~85–95%</div>
+    <div class="n-compare-row-label">Stage II</div><div class="n-compare-cell">Involves cervical stroma</div><div class="n-compare-cell">Radical hysterectomy + radiotherapy</div><div class="n-compare-cell">~75%</div>
+    <div class="n-compare-row-label">Stage III</div><div class="n-compare-cell">Beyond uterus: adnexa, vagina, nodes</div><div class="n-compare-cell">Surgery + chemo + radiotherapy</div><div class="n-compare-cell">~50%</div>
+    <div class="n-compare-row-label">Stage IV</div><div class="n-compare-cell">Bladder/bowel or distant mets</div><div class="n-compare-cell">Palliative chemotherapy ± hormonal</div><div class="n-compare-cell">~15%</div>
+    <div class="n-compare-row-label">Type I</div><div class="n-compare-cell">Endometrioid — oestrogen-driven, well differentiated</div><div class="n-compare-cell">Most common (80%) — good prognosis. Lynch syndrome if young.</div><div class="n-compare-cell">Generally good</div>
+    <div class="n-compare-row-label">Type II</div><div class="n-compare-cell">Serous, clear cell — not oestrogen-driven</div><div class="n-compare-cell">Aggressive; chemo + surgery. TP53 mutation.</div><div class="n-compare-cell">Poor — presents late</div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">6</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Endometrial thickness ≤4mm in a postmenopausal woman not on HRT has a &gt;99% negative predictive value for cancer.</strong> This is the threshold for reassurance — not 5mm. For women on HRT, the threshold does not apply; biopsy is required.<span class="n-pearl-exam">Exam loves this: candidates use 5mm as a universal threshold.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Type II endometrial cancer (serous, clear cell)</strong> is oestrogen-independent, occurs in older atrophic endometrium, and carries a poor prognosis. It represents 20% of cases but a disproportionate share of deaths. Adjuvant chemotherapy is standard regardless of stage.</div></div>
     <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Obesity is the most important modifiable risk factor.</strong> Each 5 kg/m² increase in BMI increases endometrial cancer risk by 50%. Adipose tissue converts androgens to oestrone via aromatase — peripheral oestrogen production drives endometrial hyperplasia without progesterone opposition.</div></div>
-  </div>
+      <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Lynch syndrome causes endometrial cancer before colorectal cancer in ~50% of affected women.</strong> Lynch (HNPCC) mutations (MLH1, MSH2, MSH6, PMS2) increase lifetime endometrial cancer risk to 40–60%. Any woman &lt;50 with endometrial cancer, or a family history of Lynch-associated cancers (colorectal, ovarian, gastric, urinary), should be referred for genetic testing. MMR immunohistochemistry should be routine on all resected endometrial cancers.<span class="n-pearl-exam">The young woman with endometrial cancer question — always consider Lynch.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Fertility-sparing management is possible in Stage IA, Grade 1, ER-positive disease in young women.</strong> High-dose progestogens (medroxyprogesterone or Mirena IUS) can achieve complete response in carefully selected women who wish to conceive. This requires MDT review, endometrial sampling every 3–6 months, and completion of family as soon as possible. Not appropriate for Type II cancers or deep myometrial invasion.<span class="n-pearl-exam">The "young woman wanting children with stage IA EC" vignette.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Postmenopausal bleeding = endometrial cancer until proven otherwise.</strong> Endometrial thickness ≤4mm on TVUSS in a postmenopausal woman (not on HRT) has &gt;99% NPV for cancer. But any thickness &gt;4mm, or persistent symptoms despite thin endometrium, requires pipelle biopsy or hysteroscopy. Never discharge on USS alone if symptoms persist.</div></div>
+</div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">8</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Atrophic vaginitis explains postmenopausal bleeding — no further investigation needed.</div></div>
@@ -4229,6 +4532,43 @@ NOTES.urinaryincontinence=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Leakage on coughing/sneezing/exercise → stress UI → PFMT first. Sudden urge, can't make it → urgency UI → bladder training first. Dribbling + high post-void residual → overflow UI → investigate cause, catheterise, never anticholinergics.</div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Assessment</span><span class="n-section-tag">history + bladder diary + PVR before any treatment</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row">
+      <span class="n-viz-title">Urinary incontinence — diagnostic pathway</span>
+      <span class="n-viz-sub">Post-void residual separates overflow from other types</span>
+    </div>
+    <svg viewBox="0 0 760 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="760" height="130" rx="3" fill="#1a1a2e"/>
+      <rect x="10" y="20" width="130" height="90" rx="2" fill="rgba(255,255,255,.07)"/>
+      <text x="75" y="42" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">HISTORY</text>
+      <text x="75" y="62" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.8)" text-anchor="middle">Stress vs urge?</text>
+      <text x="75" y="76" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.8)" text-anchor="middle">Frequency, nocturia</text>
+      <text x="75" y="90" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.8)" text-anchor="middle">Bladder diary 3 days</text>
+      <path d="M142 65 L160 65" stroke="rgba(255,255,255,.3)" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <rect x="162" y="20" width="140" height="90" rx="2" fill="rgba(255,255,255,.07)"/>
+      <text x="232" y="42" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">EXAMINATION</text>
+      <text x="232" y="62" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.8)" text-anchor="middle">Pelvic floor strength</text>
+      <text x="232" y="76" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.8)" text-anchor="middle">Prolapse assessment</text>
+      <text x="232" y="90" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.8)" text-anchor="middle">Stress test (cough)</text>
+      <path d="M304 65 L322 65" stroke="rgba(255,255,255,.3)" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <rect x="324" y="20" width="140" height="90" rx="2" fill="rgba(255,255,255,.07)"/>
+      <text x="394" y="42" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">INVESTIGATIONS</text>
+      <text x="394" y="62" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.8)" text-anchor="middle">MSU (exclude UTI)</text>
+      <text x="394" y="76" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.8)" text-anchor="middle">Post-void residual USS</text>
+      <text x="394" y="90" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.8)" text-anchor="middle">PVR &gt;150mL = overflow</text>
+      <path d="M466 65 L484 65" stroke="rgba(255,255,255,.3)" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <rect x="486" y="20" width="140" height="90" rx="2" fill="rgba(200,69,42,.12)"/>
+      <text x="556" y="42" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">URODYNAMICS</text>
+      <text x="556" y="62" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.8)" text-anchor="middle">Before surgery only</text>
+      <text x="556" y="76" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.8)" text-anchor="middle">Confirms type + severity</text>
+      <text x="556" y="90" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.8)" text-anchor="middle">Not routine for conservative Rx</text>
+      <rect x="638" y="20" width="112" height="90" rx="2" fill="rgba(255,255,255,.04)"/>
+      <text x="694" y="52" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.5)" text-anchor="middle">Haematuria → cystoscopy</text>
+      <text x="694" y="66" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.5)" text-anchor="middle">Neurological signs → MRI</text>
+      <text x="694" y="80" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(200,69,42,.8)" text-anchor="middle">Red flags → don't wait</text>
+    </svg>
+  </div>
+
   <div class="n-diag-steps">
     <div class="n-diag-row"><div class="n-diag-label gold">Bladder diary</div><div class="n-diag-content"><strong>3-day bladder diary before any treatment.</strong> Documents: frequency (normal &lt;8 voids/day), volumes, urgency episodes, nocturia (&gt;1/night = significant), leakage type (on exertion vs with urge). Identifies dominant UI type and functional bladder capacity.</div></div>
     <div class="n-diag-row"><div class="n-diag-label">Post-void residual (PVR)</div><div class="n-diag-content">Bladder scan after voiding. <strong>PVR &gt;150 mL = significant.</strong> Overflow UI diagnosis. Contraindication to anticholinergic drugs. Causes: bladder outlet obstruction, detrusor underactivity, neurological (MS, diabetic autonomic neuropathy), anticholinergic drugs.</div></div>
@@ -4261,7 +4601,15 @@ NOTES.urinaryincontinence=()=>`<div class="n-page"><div class="n-hero-new">
     <div class="n-diag-row"><div class="n-diag-label">Treatment</div><div class="n-diag-content">Treat the underlying cause. <strong>Clean intermittent self-catheterisation (CISC)</strong> for detrusor underactivity. Catheterise acutely for large residuals. <strong>Absolute contraindication to anticholinergic drugs.</strong> Refer to urology/urogynaecology.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Haematuria + urinary symptoms = bladder cancer until proven otherwise.</strong> Do not attribute haematuria to UI. Urgent cystoscopy is required to exclude transitional cell carcinoma.</div></div>
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Overflow incontinence in a young woman = think neurological.</strong> Absent detrusor contractions, high post-void residual, painless dribbling — consider MS, spinal cord compression, or cauda equina syndrome. Check perianal sensation and anal tone.</div></div>
+    <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Occult stress incontinence hidden by prolapse.</strong> Reduce the prolapse digitally and repeat the stress cough test — stress UI may only become apparent once the prolapse is reduced. Repair prolapse without addressing UI and the patient will have new post-op leakage.</div></div>
+    <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Antimuscarinics in elderly patients: falls and cognitive impairment.</strong> Anticholinergic burden from oxybutynin causes confusion and falls. Prefer mirabegron (β3-agonist) in older patients — no central anticholinergic effects.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Urodynamics before surgery — not before conservative treatment.</strong> NICE is explicit: start PFMT for stress UI and bladder training for urgency UI without urodynamics. Urodynamics before conservative treatment is incorrect.<span class="n-pearl-exam">Exam: when are urodynamics indicated?</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Oxybutynin in elderly women = cognitive impairment.</strong> Anticholinergic burden — crosses blood-brain barrier, causes confusion, memory impairment, increased dementia risk with long-term use. Use mirabegron (β3-agonist) instead — does not cross BBB.</div></div>
@@ -4271,7 +4619,7 @@ NOTES.urinaryincontinence=()=>`<div class="n-page"><div class="n-hero-new">
     <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Supervised PFMT achieves ~70% improvement in stress UI.</strong> The critical word is supervised — physiotherapist-led, with real-time feedback. Women given leaflets with exercises at home have significantly worse outcomes. Always refer to a specialist continence physiotherapist.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Patient has urgency and frequency — prescribe oxybutynin and review in 6 weeks.</div></div>
@@ -4642,7 +4990,17 @@ NOTES.acutegynae=()=>`<div class="n-page"><div class="n-hero-new">
     <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Negative β-hCG does not exclude ectopic in very early gestation.</strong> If clinical suspicion is high, serial β-hCG + repeat USS are required. Very early ectopics can have undetectable hCG on initial testing.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Acute Gynaecology — At a Glance</span><span class="n-section-tag">one table for the department</span></div>
+  <div class="n-compare-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+    <div class="n-compare-head">Diagnosis</div><div class="n-compare-head">Key feature</div><div class="n-compare-head">Investigation</div><div class="n-compare-head">Immediate action</div>
+    <div class="n-compare-row-label">Ectopic (ruptured)</div><div class="n-compare-cell">Amenorrhoea + shoulder tip pain + haemodynamic instability</div><div class="n-compare-cell">βhCG + TVUSS + FBC/G&amp;S</div><div class="n-compare-cell">IV access + laparotomy</div>
+    <div class="n-compare-row-label">Ovarian torsion</div><div class="n-compare-cell">Sudden-onset unilateral pain + nausea + vomiting; intermittent</div><div class="n-compare-cell">USS (Doppler may be normal)</div><div class="n-compare-cell">Urgent laparoscopy — time-critical</div>
+    <div class="n-compare-row-label">PID</div><div class="n-compare-cell">Bilateral pain + fever + cervical excitation + vaginal discharge</div><div class="n-compare-cell">Swabs, CRP, WBC; exclude ectopic first</div><div class="n-compare-cell">IV antibiotics if severe; admit</div>
+    <div class="n-compare-row-label">Haemoperitoneum</div><div class="n-compare-cell">Ruptured corpus luteum cyst — sudden onset, right-sided, haemodynamic</div><div class="n-compare-cell">USS + βhCG (must exclude ectopic)</div><div class="n-compare-cell">Conservative if stable; surgery if unstable</div>
+    <div class="n-compare-row-label">Fibroids (red degeneration)</div><div class="n-compare-cell">Localised uterine tenderness + pregnancy (14–22 weeks)</div><div class="n-compare-cell">USS — central necrosis on Doppler</div><div class="n-compare-cell">Analgesia + supportive care; not surgical</div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">7</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Detorsion even if the ovary looks black.</strong> Congestion and haemorrhage cause apparent infarction — colour returns after untwisting in ~90%. Intraoperative oophorectomy based on visual appearance alone is no longer appropriate.<span class="n-pearl-exam">Exam: candidate says ovary looked necrotic and was removed. Wrong.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Doppler flow does not exclude torsion.</strong> Sensitivity of absent Doppler is only ~44%. Partial or intermittent torsion preserves flow. Clinical suspicion + enlarged ovary = diagnostic laparoscopy regardless of Doppler.</div></div>
@@ -4652,7 +5010,7 @@ NOTES.acutegynae=()=>`<div class="n-page"><div class="n-hero-new">
     <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Dermoid cyst is the most common cause of ovarian torsion.</strong> Heavy, eccentric mass creates a pendulum effect — predisposes to twisting. Other risk factors: ovulation induction (enlarged follicles), previous torsion, long utero-ovarian ligament.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">8</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Normal Doppler flow excludes torsion — safe to observe.</div></div>
