@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: 'vent.med',
-  description: 'OB/GYN study notes for medical students',
+  description: 'Your medical learning companion',
 }
 
 export default function RootLayout({ children }) {
