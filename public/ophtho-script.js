@@ -11,17 +11,17 @@
 .n-anchor-text em{font-style:italic;color:rgba(20,15,10,0.92);}
 .n-anchor-ornament{display:none;}
 
-/* ── COMPARE GRID ── */
-.n-compare-grid{display:grid;gap:0;overflow:hidden;margin-bottom:0;border-radius:4px;border:1px solid #d6d0c6;}
-.n-compare-head{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#c8452a;background:#141210;padding:13px 18px;border-right:1px solid rgba(255,255,255,.07);border-bottom:2px solid rgba(200,69,42,.4);}
+/* ── COMPARE GRID — clean table matching OB/GYN aesthetic ── */
+.n-compare-grid{display:grid;gap:0;overflow:hidden;margin-bottom:0;border:1px solid var(--n-border);}
+.n-compare-head{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--n-ink5);background:var(--n-bg2);padding:11px 16px;border-right:1px solid var(--n-border);border-bottom:1px solid var(--n-border2);}
 .n-compare-head:last-child{border-right:none;}
-.n-compare-row-label{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#c8452a;background:#1e1c18;padding:14px 18px;border-right:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:flex-start;line-height:1.6;}
-.n-compare-cell{font-family:'Syne',sans-serif;font-size:13.5px;color:#3a342a;background:#fdfcfa;padding:14px 18px;border-right:1px solid #e8e2da;border-bottom:1px solid #e8e2da;line-height:1.65;}
+.n-compare-row-label{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--n-red);background:var(--n-card);padding:13px 16px;border-right:1px solid var(--n-border);border-bottom:1px solid var(--n-border);display:flex;align-items:flex-start;line-height:1.55;}
+.n-compare-cell{font-size:13px;color:var(--n-ink3);background:var(--n-white);padding:13px 16px;border-right:1px solid var(--n-border);border-bottom:1px solid var(--n-border);line-height:1.6;}
 .n-compare-cell:last-child{border-right:none;}
-.n-compare-cell strong{color:#0d0b08;font-weight:700;}
-.note-modal.focus-mode .n-compare-head{background:#111;color:#c8452a;}
-.note-modal.focus-mode .n-compare-row-label{background:#1a1814;color:#c8452a;border-color:rgba(255,255,255,.06);}
-.note-modal.focus-mode .n-compare-cell{background:rgba(255,255,255,.02);color:#b8b0a0;border-color:rgba(255,255,255,.06);}
+.n-compare-cell strong{color:var(--n-ink);font-weight:700;}
+.note-modal.focus-mode .n-compare-head{background:rgba(255,255,255,.04);color:rgba(255,255,255,.35);border-color:rgba(255,255,255,.07);}
+.note-modal.focus-mode .n-compare-row-label{background:rgba(255,255,255,.03);color:#c8452a;border-color:rgba(255,255,255,.07);}
+.note-modal.focus-mode .n-compare-cell{background:rgba(255,255,255,.02);color:#b8b0a0;border-color:rgba(255,255,255,.07);}
 .note-modal.focus-mode .n-compare-cell strong{color:#e0dbd0;}
 .note-modal.focus-mode .n-compare-grid{border-color:rgba(255,255,255,.08);}
 
@@ -31,7 +31,7 @@
 @media(max-width:640px){
   .n-compare-grid{grid-template-columns:1fr !important;}
   .n-compare-head{display:none;}
-  .n-compare-row-label{border-top:2px solid #c8452a;margin-top:12px;}
+  .n-compare-row-label{border-top:2px solid var(--n-red);margin-top:12px;}
 }
 `;
   document.head.appendChild(s);
