@@ -2555,104 +2555,131 @@ NOTES.pcos=()=>`<div class="n-page"><div class="n-hero-new">
 NOTES.fibroids=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-eyebrow">Gynaecology · Benign</div>
   <div class="n-hero-title">Uterine<br><em>Fibroids</em></div>
-  <div class="n-hero-sub">Leiomyomata &nbsp;·&nbsp; ICD D25 &nbsp;·&nbsp; Most common benign tumour in women</div>
-  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Benign smooth muscle tumours of the myometrium. Oestrogen-dependent — grow during reproductive years, regress after menopause.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">20–50% of women over 30. Three times more common and more symptomatic in <strong>Black women</strong>. Family history, nulliparity, obesity, early menarche.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Cause HMB, pressure symptoms, subfertility (submucosal type), pregnancy complications. Most are asymptomatic and found incidentally.</div></div></div>
+  <div class="n-hero-sub">Leiomyomata &nbsp;·&nbsp; ICD D25 &nbsp;·&nbsp; Most common benign tumour in women — location matters more than size</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Benign smooth muscle tumours of the myometrium. Oestrogen-dependent — grow in reproductive years, regress after menopause. Most are asymptomatic.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">20–50% of women over 30. <strong>Three times more common and more symptomatic in Black women.</strong> Family history, nulliparity, obesity, early menarche all increase risk.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Submucosal fibroids cause HMB, impair implantation, and increase miscarriage risk. Management is symptom-driven — <strong>size alone is never an indication for treatment.</strong></div></div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Types and Symptoms</span><span class="n-section-tag">location drives symptoms</span></div>
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classification by Location</span><span class="n-section-tag">location drives symptoms</span></div>
   <div class="n-viz-block">
-    <div class="n-viz-label-row">
-      <span class="n-viz-title">Uterine fibroids — location drives symptoms</span>
-      <span class="n-viz-sub">Submucosal = bleeding · intramural = bulk · subserosal = pressure</span>
-    </div>
+    <div class="n-viz-label-row"><span class="n-viz-title">Uterine fibroids — location drives symptoms</span><span class="n-viz-sub">Submucosal = bleeding · intramural = bulk · subserosal = pressure</span></div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SUBMUCOSAL</text>
-      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Type 0–2</tspan><tspan x="72" dy="16">SM</tspan></text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Distorts cavity</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">HMB · subfertility</text>
+      <text x="72" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SUBMUCOSAL</text>
+      <text x="72" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Type 0–2 · SM</text>
+      <text x="72" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Distorts cavity</text>
+      <text x="72" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">HMB · subfertility</text>
+      <text x="72" y="98" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Recurrent miscarriage</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Hysteroscopic resection</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">INTRAMURAL</text>
-      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Type 3–4</tspan><tspan x="227" dy="16">IM</tspan></text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Within myometrium</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Bulk symptoms · HMB</text>
+      <text x="227" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">INTRAMURAL</text>
+      <text x="227" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Type 3–4 · IM</text>
+      <text x="227" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Within myometrium</text>
+      <text x="227" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Bulk symptoms · HMB</text>
+      <text x="227" y="98" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Most common type</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">GnRH · UAE · myomectomy</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SUBSEROSAL</text>
-      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Type 5–7</tspan><tspan x="382" dy="16">SS</tspan></text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Outside uterus</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pressure on bladder/bowel</text>
+      <text x="382" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SUBSEROSAL</text>
+      <text x="382" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Type 5–7 · SS</text>
+      <text x="382" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Outside uterus</text>
+      <text x="382" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pressure on bladder/bowel</text>
+      <text x="382" y="98" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Least effect on fertility</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Often asymptomatic</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">PEDUNCULATED</text>
-      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">Type 7</tspan><tspan x="537" dy="16">Ped</tspan></text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">On stalk — can torse</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Mimics ovarian mass</text>
-      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Torsion = acute pain</text>
+      <text x="537" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">PEDUNCULATED</text>
+      <text x="537" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Type 7 · Ped</text>
+      <text x="537" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">On stalk — can torse</text>
+      <text x="537" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Mimics ovarian mass</text>
+      <text x="537" y="98" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Acute pain if torsion</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Confirm on MRI</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">IN PREGNANCY</text>
-      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Red</tspan><tspan x="690" dy="16">Degeneration</tspan></text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Rapid growth → infarct</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Acute pain at 20 wks</text>
+      <text x="690" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">IN PREGNANCY</text>
+      <text x="690" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Red degeneration</text>
+      <text x="690" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Rapid growth → infarct</text>
+      <text x="690" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Acute pain ~20 wks</text>
+      <text x="690" y="98" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Localised tenderness</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Analgesia · self-limiting</text>
     </svg>
   </div>
-
-  <div class="n-diag-steps">
-    <div class="n-diag-row"><div class="n-diag-label err">Submucosal</div><div class="n-diag-content">Distorts the endometrial cavity. <strong>Most symptomatic: HMB, subfertility, recurrent miscarriage.</strong> Even small submucosal fibroids cause significant bleeding.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label ">Intramural</div><div class="n-diag-content">Within the myometrium. Can enlarge significantly. Causes HMB, dysmenorrhoea, pressure symptoms. Most common type.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label ">Subserosal</div><div class="n-diag-content">Grows outward from uterus. Pressure on bladder (urinary frequency) or bowel (constipation). <strong>Least impact on fertility.</strong></div></div>
-    <div class="n-diag-row"><div class="n-diag-label ">Pedunculated</div><div class="n-diag-content">On a stalk — can be submucosal or subserosal. Risk of torsion if pedunculated and subserosal.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label gold">Cervical</div><div class="n-diag-content">Rare. Distorts cervix, may obstruct labour or cause urinary symptoms.</div></div>
+  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Heavy menstrual bleeding + enlarged irregular uterus → think <em>fibroids</em> → pelvic USS. Submucosal fibroid + subfertility → hysteroscopic resection before IVF.</div></div>
+  <div class="n-distractor-box"><div class="n-distractor-label">Rapid post-menopausal growth</div><div class="n-distractor-text"><strong>A fibroid that grows rapidly after menopause is uterine sarcoma (leiomyosarcoma) until proven otherwise.</strong> Malignant transformation is rare but must not be missed. Investigate with MRI — do not simply observe.</div></div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Submucosal vs Other Types</span><span class="n-section-tag">submucosal causes the most harm</span></div>
+  <div class="n-compare-grid">
+    <div class="n-compare-col">
+      <div class="n-compare-head">Submucosal (Type 0–2)</div>
+      <div class="n-compare-row"><span class="n-compare-label">Location</span><span>Distorts endometrial cavity — even small ones cause significant symptoms</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Bleeding</span><span><strong>HMB is the dominant symptom</strong> — even a 5mm submucosal fibroid causes more bleeding than a 5cm intramural</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Fertility</span><span><strong>Impairs implantation and increases miscarriage risk.</strong> Resect before IVF regardless of size</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Treatment</span><span><strong>Hysteroscopic resection</strong> — outpatient or day case. Definitive for types 0–1</span></div>
+    </div>
+    <div class="n-compare-col">
+      <div class="n-compare-head">Intramural / Subserosal</div>
+      <div class="n-compare-row"><span class="n-compare-label">Location</span><span>Within myometrium (IM) or outside uterus (SS) — cavity not directly distorted</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Bleeding</span><span>HMB possible from IM fibroids but less predictable. SS fibroids rarely cause bleeding</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Fertility</span><span>Large IM fibroids may impair implantation. SS fibroids have minimal effect on fertility</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Treatment</span><span>Medical (LNG-IUS, GnRH) or surgical (myomectomy, UAE, hysterectomy) based on symptoms</span></div>
+    </div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
-  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Heavy menstrual bleeding + enlarged irregular uterus on examination → think <em>fibroids</em> → pelvic USS to confirm size, number, and type.</div></div>
-  <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Rapid growth of a fibroid</strong> — especially after menopause — should raise concern for <strong>uterine sarcoma</strong> (leiomyosarcoma). Malignant transformation of a fibroid is very rare, but rapidly growing post-menopausal fibroids need investigation.</div></div>
-</div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Management</span><span class="n-section-tag">symptom-driven</span></div>
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Management</span><span class="n-section-tag">symptom-driven — never treat size alone</span></div>
   <div class="n-algo">
     <div class="n-algo-row">
-  <div class="n-algo-step s-first">Medical — HMB</div>
-  <div class="n-algo-body"><strong>LNG-IUS</strong> (Mirena): most effective medical option for HMB. Tranexamic acid + NSAIDs: symptom relief. COCP: cycle control. All only control symptoms — do not shrink fibroids.<span class="n-involve">GP / outpatient gynaecology</span></div>
+  <div class="n-algo-step s-first">Medical — HMB control</div>
+  <div class="n-algo-body"><strong>LNG-IUS (Mirena) first-line</strong> if cavity not significantly distorted — reduces blood loss by 86–97%. Tranexamic acid + NSAIDs for symptom relief. COCP for cycle control. <strong>None shrink fibroids — all manage symptoms only.</strong><span class="n-involve">GP / outpatient gynaecology</span></div>
 </div>
     <div class="n-algo-row">
-  <div class="n-algo-step s-fail">GnRH agonists (short-term)</div>
-  <div class="n-algo-body">Pre-operative shrinkage of fibroids before surgery. <strong>Reduce size by ~30–40%.</strong> Maximum 3–6 months. Can cause hypoestrogenic side effects — add-back therapy.<span class="n-involve">Specialist gynaecology</span></div>
+  <div class="n-algo-step s-fail">GnRH agonists (pre-op)</div>
+  <div class="n-algo-body">Induce temporary menopause — shrink fibroids by ~30–40%. Maximum 3–6 months (bone loss). Used pre-operatively to reduce size and blood loss. <strong>Rebound growth occurs on stopping.</strong> Add-back HRT to reduce side effects.<span class="n-involve">Specialist gynaecology</span></div>
 </div>
     <div class="n-algo-row">
-  <div class="n-algo-step s-severe">Surgical — uterus-sparing</div>
-  <div class="n-algo-body"><strong>Myomectomy:</strong> laparoscopic or open. Preserves fertility. Recurrence rate 25–50% within 5 years.<span class="n-involve">Specialist gynaecological surgeon</span></div>
+  <div class="n-algo-step s-severe">Surgical — fertility-sparing</div>
+  <div class="n-algo-body"><strong>Myomectomy</strong> (laparoscopic or open) removes fibroids while preserving the uterus. Recurrence 25–50% within 5 years. <strong>Hysteroscopic resection</strong> for submucosal types 0–2.<span class="n-involve">Specialist gynaecological surgeon</span></div>
 </div>
     <div class="n-algo-row">
-  <div class="n-algo-step s-unstable">Hysterectomy / UAE</div>
-  <div class="n-algo-body dark-body"><strong>Hysterectomy:</strong> definitive, no recurrence. <strong>Uterine Artery Embolisation (UAE):</strong> minimally invasive, 80–90% effective for symptoms, <strong>not recommended if future pregnancy desired.</strong><span class="n-involve">Consultant gynaecology + interventional radiology</span></div>
+  <div class="n-algo-step s-unstable">Definitive / UAE</div>
+  <div class="n-algo-body dark-body"><strong>Hysterectomy</strong> — definitive, no recurrence. <strong>UAE (uterine artery embolisation)</strong> — 80–90% effective for symptoms. <strong>Not recommended if future pregnancy desired</strong> — compromises uterine blood supply. Suitable for women who want to avoid surgery.<span class="n-involve">Consultant gynaecology + interventional radiology</span></div>
 </div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Fibroids in Pregnancy</span><span class="n-section-tag">red degeneration and complications</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label err">Red degeneration</div><div class="n-diag-content">Rapid fibroid growth during pregnancy outstrips blood supply → central infarction. <strong>Presents ~16–22 weeks:</strong> acute localised pain, low-grade fever, uterine tenderness over fibroid. USS confirms. <strong>Treatment: analgesia (paracetamol ± codeine) — self-limiting.</strong> Does not require surgical intervention.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Obstetric complications</div><div class="n-diag-content">Large fibroids increase risk of: malpresentation, placenta praevia (if low-lying), preterm labour, obstructed labour (cervical fibroid), and postpartum haemorrhage. Submucosal fibroids increase miscarriage risk in first trimester.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Myomectomy in pregnancy</div><div class="n-diag-content">Rarely performed during pregnancy — high haemorrhage risk. Reserved for torsion of pedunculated fibroid causing acute abdomen. Do not perform elective myomectomy during pregnancy.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Rapidly enlarging fibroid after menopause = uterine sarcoma until proven otherwise.</strong> MRI urgently. Do not assume benign without investigation.</div></div>
+    <div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Submucosal fibroid + subfertility = resect before IVF.</strong> Even small submucosal fibroids halve IVF success rates. Hysteroscopic resection should precede any assisted conception cycle.</div></div>
+    <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>UAE in a woman who wants future pregnancy is inappropriate.</strong> Counsel clearly — UAE is not fertility-sparing. Myomectomy is the correct surgical option in this context.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>LNG-IUS is first-line medical treatment for HMB from fibroids</strong> (if the cavity is not significantly distorted). Reduces blood loss by 86–97%.<span class="n-pearl-exam">Exam loves this: candidates skip to surgery.</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Submucosal fibroids impair implantation.</strong> Hysteroscopic resection improves IVF outcomes. In women with subfertility + submucosal fibroid: resect before IVF.</div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>UAE is contraindicated in women wanting future pregnancy</strong> — uterine blood supply alteration may compromise placentation. Myomectomy is the fertility-sparing alternative.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>LNG-IUS is first-line for HMB from fibroids if the cavity is not significantly distorted.</strong> Reduces blood loss by 86–97%. Candidates who go straight to surgery before trying medical management are wrong.<span class="n-pearl-exam">Exam: what is first-line for fibroid-related HMB?</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>A 5mm submucosal fibroid causes more harm than a 5cm subserosal one.</strong> Location, not size, determines clinical significance. The FIGO classification (types 0–8) reflects this — submucosal types 0–2 are highest priority for treatment.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>UAE is contraindicated if future pregnancy is desired.</strong> Disruption of uterine blood supply risks placental abnormalities and uterine rupture in subsequent pregnancy. Myomectomy preserves fertility — UAE does not.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>GnRH agonists cause rebound fibroid growth on stopping.</strong> They are a bridge to surgery, not a standalone treatment. Maximum 3–6 months, always combined with add-back HRT to prevent bone loss.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Myomectomy recurrence rate is 25–50% within 5 years.</strong> Women who want definitive treatment and have completed their family should be counselled about hysterectomy. Myomectomy is fertility-sparing, not curative.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Fibroids are three times more common and more symptomatic in Black women.</strong> Earlier presentation, larger fibroids at diagnosis, higher surgical rates. Ethnicity is the strongest demographic risk factor — more important than BMI or parity.</div></div>
   </div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">A large fibroid causing no symptoms needs treatment.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Asymptomatic fibroids do not require treatment regardless of size.</strong> The indication for intervention is symptoms — HMB, pressure, subfertility — not size on imaging. Incidental large fibroids in asymptomatic women are managed expectantly.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Asymptomatic fibroids do not require treatment regardless of size.</strong> The indication is symptoms — HMB, pressure, subfertility — not imaging findings. Incidental large fibroids in asymptomatic women are managed expectantly.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Fibroids always shrink after menopause.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Most fibroids regress after menopause, but not all.</strong> Women on HRT may have oestrogen-driven continued growth. A fibroid that grows post-menopause requires investigation to exclude uterine sarcoma.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">A fibroid growing after menopause is probably just not regressing fully.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Post-menopausal fibroid growth = uterine sarcoma until excluded.</strong> MRI is required. Women on HRT may have oestrogen-driven continued growth, but any enlargement must be investigated.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Myomectomy cures fibroids permanently.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Myomectomy removes existing fibroids but does not prevent recurrence.</strong> Up to 25% of women require further intervention within 10 years. Women who want definitive treatment and have completed their family should be counselled about hysterectomy.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">UAE can be offered to a woman who wants to get pregnant after treatment.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>UAE is not fertility-sparing.</strong> It compromises uterine blood supply. Myomectomy is the only surgical option for women who wish to preserve future fertility.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Location matters more than size.<br>A 5 mm <em>submucosal</em> fibroid causes more harm than a 5 cm subserosal one.</div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Location matters more than size.<br><em>A 5mm submucosal fibroid outranks a 5cm subserosal one.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2661,104 +2688,115 @@ NOTES.fibroids=()=>`<div class="n-page"><div class="n-hero-new">
 NOTES.pid=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-eyebrow">Gynaecology · Infection</div>
   <div class="n-hero-title">Pelvic Inflammatory<br><em>Disease</em></div>
-  <div class="n-hero-sub">PID &nbsp;·&nbsp; ICD N73 &nbsp;·&nbsp; Ascending infection with permanent consequences</div>
-  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Ascending infection from the lower genital tract to the uterus, fallopian tubes, and ovaries. Most commonly STI-associated — <em>Chlamydia, Gonorrhoea,</em> anaerobes.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Sexually active women &lt;25. Multiple partners, new partner, no barrier contraception. Preceding instrumentation (IUCD insertion, ERPC, hysteroscopy) increases risk.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Tubal damage → ectopic pregnancy risk × 6–10. Infertility after 3 episodes = 50%. Tubo-ovarian abscess = surgical emergency.</div></div></div>
+  <div class="n-hero-sub">PID &nbsp;·&nbsp; ICD N73 &nbsp;·&nbsp; Treat empirically. Every day of delay damages the tube.</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Ascending infection from the lower genital tract to the uterus, fallopian tubes, and ovaries. Polymicrobial — chlamydia, gonorrhoea, anaerobes, Mycoplasma genitalium.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Sexually active women under 25. Multiple partners, new partner, no barrier contraception. IUCD insertion, ERPC, and hysteroscopy all increase risk by disrupting the cervical barrier.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Tubal damage → ectopic risk ×6–10, infertility (50% after 3 episodes), chronic pelvic pain. <strong>The Fallopian tube does not recover well from inflammation.</strong> Speed of treatment is the only modifiable variable.</div></div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">treat before swabs come back</span></div>
   <div class="n-viz-block">
-    <div class="n-viz-label-row">
-      <span class="n-viz-title">PID — ascending infection and its consequences</span>
-      <span class="n-viz-sub">Treat empirically — swab results confirm, they don't trigger treatment</span>
-    </div>
+    <div class="n-viz-label-row"><span class="n-viz-title">PID — ascending infection and its consequences</span><span class="n-viz-sub">Swab results confirm. They don't trigger treatment.</span></div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">ORGANISMS</text>
-      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Chlamydia</tspan><tspan x="72" dy="16">+ Gonorrhoea</tspan></text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Most common STI cause</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Anaerobes also involved</text>
-      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Often polymicrobial</text>
+      <text x="72" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">ORGANISMS</text>
+      <text x="72" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Polymicrobial</text>
+      <text x="72" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Chlamydia · Gonorrhoea</text>
+      <text x="72" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Anaerobes · M. genitalium</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Often no single pathogen</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">ASCENT</text>
-      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Cervix →</tspan><tspan x="227" dy="16">Uterus → Tubes</tspan></text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Endometritis first</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Then salpingitis</text>
-      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Cervical motion tender</text>
+      <text x="227" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">ASCENT</text>
+      <text x="227" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Cervix → tubes</text>
+      <text x="227" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Endometritis → salpingitis</text>
+      <text x="227" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">CMT is the key sign</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Cervical motion tenderness</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">DIAGNOSIS</text>
-      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Clinical</tspan><tspan x="382" dy="16">+ Swabs</tspan></text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Adnexal · CMT tender</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">No single test confirms</text>
-      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Treat if suspected</text>
+      <text x="382" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">DIAGNOSIS</text>
+      <text x="382" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Clinical + swabs</text>
+      <text x="382" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">No single test confirms</text>
+      <text x="382" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Treat if suspected</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Low threshold</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TREATMENT</text>
-      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">Ceftriaxone</tspan><tspan x="537" dy="16">+ Doxy + Met</tspan></text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">BASHH guidelines</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">14-day course</text>
-      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Review IUCD if present</text>
+      <text x="537" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TREATMENT</text>
+      <text x="537" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Ceftriaxone + Doxy + Met</text>
+      <text x="537" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">BASHH guidelines</text>
+      <text x="537" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">14-day course</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Review IUCD if &lt;3 wks</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">COMPLICATION</text>
-      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">TOA /</tspan><tspan x="690" dy="16">Infertility</tspan></text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">TOA: IV abx or drain</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">3 episodes → 50% infertile</text>
+      <text x="690" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">COMPLICATION</text>
+      <text x="690" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">TOA · infertility</text>
+      <text x="690" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">TOA: IV abx or drain</text>
+      <text x="690" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">3 episodes → 50% infertile</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Ectopic risk ×6–10</text>
     </svg>
   </div>
-
-  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Lower abdominal pain + cervical motion tenderness + adnexal tenderness in a sexually active woman → think <em>PID</em> → treat empirically, do not wait for swab results.</div></div>
-  <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Negative swabs do not exclude PID.</strong> Chlamydia PCR sensitivity is ~90% — 10% of cases are missed. If clinical picture fits, treat. Delayed treatment increases tubal damage risk.</div></div>
+  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Lower abdominal pain + cervical motion tenderness + adnexal tenderness in a sexually active woman → think <em>PID</em> → treat empirically now. Do not wait for swab results.</div></div>
+  <div class="n-distractor-box"><div class="n-distractor-label">Negative swabs do not exclude PID</div><div class="n-distractor-text"><strong>Chlamydia NAAT sensitivity is ~90% — 10% of cases will be missed.</strong> PID is polymicrobial and often culture-negative. If the clinical picture fits, treat. Delayed treatment increases tubal damage exponentially.</div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Diagnosis</span><span class="n-section-tag">clinical, not microbiological</span></div>
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Diagnosis — Clinical, Not Microbiological</span><span class="n-section-tag">low threshold to treat</span></div>
   <div class="n-diag-steps">
-    <div class="n-diag-row"><div class="n-diag-label ">Minimum criteria</div><div class="n-diag-content">Lower abdominal pain + <strong>cervical motion tenderness (CMT)</strong> or uterine/adnexal tenderness. All three not required — any combination that fits warrants treatment.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label ">Swabs</div><div class="n-diag-content">Endocervical swab for Chlamydia, gonorrhoea. High vaginal swab for anaerobes. Urine NAAT. <strong>Treat before results return.</strong></div></div>
-    <div class="n-diag-row"><div class="n-diag-label ">Bloods</div><div class="n-diag-content">CRP, WBC — to assess severity. Elevated in most, but normal does not exclude PID.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label err">USS</div><div class="n-diag-content"><strong>Tubo-ovarian abscess (TOA)</strong> = complex adnexal mass on USS. This changes management — requires IV antibiotics ± drainage.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label gold">Laparoscopy</div><div class="n-diag-content">Gold standard for diagnosis but not routine. Reserve for diagnostic uncertainty or failure to respond to treatment.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Minimum criteria</div><div class="n-diag-content">Lower abdominal pain + <strong>cervical motion tenderness (CMT)</strong> or uterine/adnexal tenderness in a sexually active woman. Any one of these in the right clinical context is sufficient to start treatment. All three are not required.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Swabs</div><div class="n-diag-content">Endocervical NAAT for chlamydia and gonorrhoea. HVS for anaerobes. Urine NAAT. <strong>Treat before results return</strong> — results guide de-escalation, not initiation.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Bloods</div><div class="n-diag-content">CRP and WBC — elevated in most cases but normal does not exclude PID. Useful for monitoring response to treatment.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">USS — TOA</div><div class="n-diag-content"><strong>USS to exclude tubo-ovarian abscess if severe symptoms, mass palpable, or failure to respond.</strong> TOA changes management — requires IV antibiotics ± drainage. Do not miss it.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Laparoscopy</div><div class="n-diag-content">Gold standard — direct visualisation of tubes. Reserved for diagnostic uncertainty or failure to respond to treatment. Not required routinely.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Management</span><span class="n-section-tag">treat promptly and broadly</span></div>
-  <div class="n-algo">
-    <div class="n-algo-row">
-  <div class="n-algo-step s-first">Outpatient (mild PID)</div>
-  <div class="n-algo-body"><strong>Ceftriaxone 500 mg IM stat + doxycycline 100 mg BD × 14 days + metronidazole 400 mg BD × 14 days.</strong> BASHH guidelines. Review at 72 hours — if not improving, admit.<span class="n-involve">GP / sexual health clinic</span></div>
-</div>
-    <div class="n-algo-row">
-  <div class="n-algo-step s-fail">Inpatient (moderate–severe)</div>
-  <div class="n-algo-body">IV cefoxitin + doxycycline, then oral doxycycline + metronidazole to complete 14 days. Admit if: TOA, severe symptoms, pregnancy, surgical abdomen, failed outpatient.<span class="n-involve">Gynaecology ward</span></div>
-</div>
-    <div class="n-algo-row">
-  <div class="n-algo-step s-severe">TOA — IV antibiotics</div>
-  <div class="n-algo-body">Most TOAs respond to IV antibiotics alone (60–80%). Image-guided drainage if no improvement at 48–72 hours, or if abscess &gt;8 cm.<span class="n-involve">Interventional radiology + gynaecology</span></div>
-</div>
-    <div class="n-algo-row">
-  <div class="n-algo-step s-unstable">TOA — surgical drainage</div>
-  <div class="n-algo-body dark-body">Laparoscopic drainage or salpingo-oophorectomy if: ruptured TOA, septic shock, failure of medical + radiological management. Treat like surgical sepsis.<span class="n-involve">Consultant gynaecologist + HDU</span></div>
-</div>
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Severity and Treatment</span><span class="n-section-tag">BASHH regimen — 14 days always</span></div>
+  <div class="n-compare-grid">
+    <div class="n-compare-col">
+      <div class="n-compare-head">Outpatient (Mild PID)</div>
+      <div class="n-compare-row"><span class="n-compare-label">Criteria</span><span>Systemically well, no peritonism, no TOA, not pregnant, able to take oral medication</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Regimen</span><span><strong>Ceftriaxone 500mg IM stat</strong> + doxycycline 100mg BD × 14 days + metronidazole 400mg BD × 14 days</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Review</span><span>72-hour review — if not improving, admit for IV antibiotics</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Partners</span><span>Notify all sexual contacts within 6 months — treat empirically</span></div>
+    </div>
+    <div class="n-compare-col">
+      <div class="n-compare-head">Inpatient (Moderate–Severe)</div>
+      <div class="n-compare-row"><span class="n-compare-label">Criteria</span><span>Systemically unwell, TOA, surgical abdomen, pregnancy, failed outpatient treatment at 72h</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Regimen</span><span><strong>IV cefoxitin + doxycycline</strong>, then oral doxycycline + metronidazole to complete 14 days total</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">TOA</span><span>60–80% respond to IV antibiotics alone. Image-guided drainage if &gt;8cm or no improvement at 48–72h</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Ruptured TOA</span><span><strong>Immediate laparotomy.</strong> Ruptured TOA = surgical emergency with high mortality</span></div>
+    </div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">IUCD in PID — What to Do</span><span class="n-section-tag">the question the exam always asks</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label err">Inserted &lt;3 weeks ago</div><div class="n-diag-content"><strong>Remove the IUCD.</strong> Insertion within 3 weeks is the likely source of ascending infection. Removal improves outcomes. Provide emergency contraception if appropriate.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Longstanding IUCD</div><div class="n-diag-content"><strong>Leave it in if the woman wishes to keep it and responds to antibiotics.</strong> Removal does not improve outcomes for established PID with a longstanding device. Only remove if no clinical improvement at 72 hours.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">TOA with IUCD</div><div class="n-diag-content">Consider removal of IUCD in TOA that is not responding to antibiotics. Discuss with senior. Provide contraceptive advice after removal.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Ruptured TOA = surgical emergency.</strong> Sudden deterioration + peritonism + haemodynamic instability in a woman with PID = laparotomy immediately. High mortality if delayed.</div></div>
+    <div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Fitz-Hugh-Curtis syndrome</strong> — perihepatitis from PID. Right upper quadrant pain + tenderness + PID signs. Violin-string adhesions on laparoscopy. Treat as PID — same antibiotics.</div></div>
+    <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Mycoplasma genitalium — the missed organism.</strong> Not covered by standard ceftriaxone + doxy + metronidazole. If PID fails to respond: test for M. genitalium and add moxifloxacin.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Treat PID empirically before swab results.</strong> Every day of delay increases tubal damage. The Fallopian tube does not recover well from inflammation — even sub-clinical PID causes scarring.<span class="n-pearl-exam">Exam loves this: candidates wait for the lab.</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Partner notification is mandatory.</strong> All sexual contacts within the preceding 6 months must be assessed and treated. This prevents re-infection and breaks transmission chains.</div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>IUCD in situ during PID:</strong> If the IUCD was inserted within the preceding 3 weeks, remove it. If longstanding, leave it in — removal does not improve outcomes and risks losing contraception.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Treat empirically — never wait for swab results.</strong> Every day of delay increases tubal damage and adhesion formation. NICE and BASHH are explicit: start antibiotics on clinical diagnosis.<span class="n-pearl-exam">Exam: candidates wait for the microbiology lab. Always wrong.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>PID is polymicrobial — chlamydia is only found in 40–50% of cases.</strong> Gonorrhoea, anaerobes, and M. genitalium all cause PID independently. A negative chlamydia NAAT does not exclude PID.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Partner notification is mandatory — 6-month look-back period.</strong> Untreated partners cause re-infection. All contacts must be assessed and treated empirically. Health advisors at GUM clinics manage this.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Longstanding IUCD does not need to be removed in mild-to-moderate PID.</strong> Remove only if: inserted &lt;3 weeks ago, no improvement at 72h, or TOA not responding to antibiotics. Routine removal is incorrect.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Infertility risk rises sharply with episodes.</strong> 1 episode: ~12% infertility. 2 episodes: ~25%. 3 episodes: ~50%. Each episode leaves permanent tubal scarring — the first episode is the most important to treat rapidly.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Fitz-Hugh-Curtis syndrome = PID + RUQ pain.</strong> Perihepatitis from PID spreading to the liver capsule. Same treatment as PID. Laparoscopy shows 'violin-string' adhesions between liver and abdominal wall.</div></div>
   </div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Wait for swab results before starting antibiotics for suspected PID.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Do not wait for microbiology before treating suspected PID.</strong> NICE explicitly recommends empirical antibiotics based on clinical diagnosis. Delay risks tubal damage, adhesion formation, and long-term subfertility. Swabs guide de-escalation, not initiation.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Wait for swab results before treating suspected PID.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Treat empirically on clinical diagnosis.</strong> Swabs guide de-escalation, not initiation. Delay causes irreversible tubal damage.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Negative chlamydia NAAT rules out PID.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>PID is polymicrobial.</strong> Chlamydia is only identified in 40–50% of cases. Gonorrhoea, anaerobes, and Mycoplasma genitalium cause PID independently. A negative chlamydia test does not exclude PID if the clinical picture fits.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Negative chlamydia NAAT = no PID.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Chlamydia is only found in ~40–50% of PID cases.</strong> The other 50–60% are caused by gonorrhoea, anaerobes, and M. genitalium. Treat clinically regardless of swab result.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">An IUCD should be removed immediately if PID is diagnosed.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>IUCD removal is not mandatory in mild-to-moderate PID.</strong> If the woman wishes to retain the device and responds to antibiotics, it can stay in situ. Remove only if there is no improvement within 72 hours or if the infection is severe.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">IUCD must always be removed if PID is diagnosed.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Longstanding IUCD can be left in place if the woman responds to antibiotics and wishes to keep it.</strong> Remove only if inserted &lt;3 weeks ago, or if there is no improvement at 72 hours.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Treat first. The swab result<br>confirms what you <em>already suspected</em>.</div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Treat first. The swab result<br>confirms what you <em>already suspected.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2875,103 +2913,115 @@ NOTES.ovarycyst=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-eyebrow">Gynaecology · Assessment</div>
   <div class="n-hero-title">Ovarian<br><em>Cyst</em></div>
   <div class="n-hero-sub">ICD N83 &nbsp;·&nbsp; Most are benign. The challenge is identifying which aren't.</div>
-  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">A fluid-filled structure on or in the ovary. Can be functional (follicular, corpus luteal) or pathological (dermoid, endometrioma, mucinous, serous cystadenoma, malignant).</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Very common. Functional cysts: any woman of reproductive age. Dermoids: peak 20–40. Malignant: risk rises sharply after 50. BRCA1/2: significantly elevated risk.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Ovarian torsion is a surgical emergency. Malignancy must not be missed. Cyst rupture and haemorrhage can mimic ectopic pregnancy.</div></div></div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">A fluid-filled structure on or in the ovary. Functional (follicular, corpus luteal) or pathological (dermoid, endometrioma, cystadenoma, malignant). Most resolve spontaneously.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Very common across all ages. Functional cysts: any reproductive-age woman. Dermoids: peak 20–40. Malignant: risk rises sharply after 50. <strong>BRCA1/2 carriers: significantly elevated lifetime risk.</strong></div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Torsion is a surgical emergency. Malignancy must not be missed. The RMI (Risk of Malignancy Index) is the tool that separates benign from malignant — use it in every postmenopausal woman with a cyst.</div></div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Risk of Malignancy Index (RMI)</span><span class="n-section-tag">the key number</span></div>
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Cyst Types — Know Each One</span><span class="n-section-tag">appearance on USS guides management</span></div>
   <div class="n-viz-block">
-    <div class="n-viz-label-row">
-      <span class="n-viz-title">Ovarian cyst — type, RMI, and management</span>
-      <span class="n-viz-sub">The challenge is separating benign from malignant — RMI does this</span>
-    </div>
+    <div class="n-viz-label-row"><span class="n-viz-title">Ovarian cysts — type determines management</span><span class="n-viz-sub">RMI separates benign from malignant — calculate it in every case</span></div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">FUNCTIONAL</text>
-      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Follicular /</tspan><tspan x="72" dy="16">Corpus Luteal</tspan></text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Simple unilocular</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle"><5cm — likely resolve</text>
-      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Rescan in 6–12 wks</text>
+      <text x="72" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">FUNCTIONAL</text>
+      <text x="72" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Follicular / corpus luteal</text>
+      <text x="72" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Simple unilocular</text>
+      <text x="72" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">&lt;5cm — likely resolve</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Rescan 6–12 weeks</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">BENIGN</text>
-      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Dermoid /</tspan><tspan x="227" dy="16">Cystadenoma</tspan></text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Dermoid: teeth/fat on USS</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Mucinous: very large</text>
+      <text x="227" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">DERMOID</text>
+      <text x="227" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Teratoma</text>
+      <text x="227" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Teeth/fat/hair on USS</text>
+      <text x="227" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Echogenic on USS</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Laparoscopic cystectomy</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">ENDOMETRIOMA</text>
-      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">'Chocolate</tspan><tspan x="382" dy="16">Cyst'</tspan></text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Ground-glass appearance</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Associated with endo</text>
+      <text x="382" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">ENDOMETRIOMA</text>
+      <text x="382" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">'Chocolate cyst'</text>
+      <text x="382" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Ground-glass USS</text>
+      <text x="382" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Dysmenorrhoea · deep dyspareunia</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Medical or surgical</text>
-      <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">RMI SCORE</text>
-      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">U × M ×</tspan><tspan x="537" dy="16">CA-125</tspan></text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">RMI >200 = high risk</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Refer to cancer MDT</text>
-      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">U=USS · M=menopausal</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
+      <text x="537" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">CYSTADENOMA</text>
+      <text x="537" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Serous / mucinous</text>
+      <text x="537" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Mucinous: very large</text>
+      <text x="537" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">May be bilateral (serous)</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">RMI · surgical</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TORSION</text>
-      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Time is</tspan><tspan x="690" dy="16">Ovary</tspan></text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Sudden onset pain</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">USS may show blood flow</text>
-      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Laparoscopy within hrs</text>
+      <text x="690" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MALIGNANT</text>
+      <text x="690" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">RMI &gt;250</text>
+      <text x="690" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Solid elements · ascites</text>
+      <text x="690" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Bilateral · peritoneal mets</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Refer: gynaecological oncology</text>
     </svg>
   </div>
-
+  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Sudden severe unilateral pelvic pain + ovarian cyst on USS → think <em>torsion</em> → emergency laparoscopy. Do not wait for Doppler to be absent — torsion can have preserved flow.</div></div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Risk of Malignancy Index (RMI)</span><span class="n-section-tag">the formula you must know</span></div>
   <div class="n-diag-steps">
-    <div class="n-diag-row"><div class="n-diag-label ">RMI formula</div><div class="n-diag-content"><strong>RMI = USS score × menopausal status × CA-125</strong>. USS features scored 0/1/3 based on number of malignant features.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label ">USS features</div><div class="n-diag-content">Multilocularity, solid elements, bilateral, ascites, intraperitoneal metastases — each adds to USS score.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label gold">RMI &lt;25</div><div class="n-diag-content">Low risk — manage in general gynaecology. Most likely benign. If premenopausal and simple: rescan in 3 months.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label ">RMI 25–250</div><div class="n-diag-content">Moderate risk — review at specialist MDT. Further imaging (MRI) and discussion.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label err">RMI &gt;250</div><div class="n-diag-content">High risk — <strong>urgent referral to gynaecological oncology.</strong> Do not perform surgery outside a cancer centre.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Formula</div><div class="n-diag-content"><strong>RMI = USS score (U) × Menopausal status (M) × CA-125.</strong> USS score: 0 (no features), 1 (one feature), 3 (two or more features). Menopausal status: premenopausal = 1, postmenopausal = 3. CA-125 = measured value in U/mL.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">USS features scored</div><div class="n-diag-content">Multilocularity, solid elements, bilateral cysts, ascites, intraperitoneal metastases. Each feature present adds to the USS score (1 feature = U score 1, ≥2 features = U score 3).</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">RMI &lt;25</div><div class="n-diag-content">Low risk — manage in general gynaecology. Premenopausal with simple cyst: rescan at 3 months.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">RMI 25–250</div><div class="n-diag-content">Moderate risk — specialist MDT review. Further imaging (MRI) and discussion.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">RMI &gt;250</div><div class="n-diag-content"><strong>High risk — urgent referral to gynaecological oncology.</strong> Surgery must not be performed outside a cancer centre. 2WW referral. Do not operate locally.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
-  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Sudden onset severe unilateral pelvic pain + ovarian cyst on USS → think <em>torsion</em> → emergency laparoscopy. Don't wait for Doppler to be normal — torsion can have preserved flow.</div></div>
-  <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Normal Doppler does not exclude torsion.</strong> Blood flow can be intermittent in partial torsion, or preserved in early torsion. Clinical suspicion + USS evidence of cyst + pain = diagnostic laparoscopy, not imaging reassurance.</div></div>
-</div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Management by type</span><span class="n-section-tag">size and features guide decisions</span></div>
-  <div class="n-algo">
-    <div class="n-algo-row">
-  <div class="n-algo-step s-first">Simple cyst — premenopausal</div>
-  <div class="n-algo-body">&lt;5 cm: likely functional, resolve spontaneously. <strong>Rescan in 8–12 weeks.</strong> 5–7 cm: annual USS. &gt;7 cm: MRI or consider surgery.<span class="n-involve">GP / outpatient gynaecology</span></div>
-</div>
-    <div class="n-algo-row">
-  <div class="n-algo-step s-fail">Simple cyst — postmenopausal</div>
-  <div class="n-algo-body">Any simple cyst: USS + CA-125. &lt;5 cm with normal CA-125: 4-monthly USS for 1 year. Any complex features → oncology referral.<span class="n-involve">Gynaecology specialist</span></div>
-</div>
-    <div class="n-algo-row">
-  <div class="n-algo-step s-severe">Dermoid (teratoma)</div>
-  <div class="n-algo-body">Surgical removal — <strong>laparoscopic cystectomy.</strong> Risk of torsion and chemical peritonitis if rupture. Preserve as much ovarian tissue as possible.<span class="n-involve">Gynaecological surgeon</span></div>
-</div>
-    <div class="n-algo-row">
-  <div class="n-algo-step s-unstable">Torsion</div>
-  <div class="n-algo-body dark-body">Emergency laparoscopy. <strong>De-torsion first</strong> — even if the ovary looks ischaemic, it may recover. Oophorectomy only if clearly non-viable at 10 minutes post de-torsion.<span class="n-involve">Emergency gynaecology + theatre</span></div>
-</div>
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Management by Type and Age</span><span class="n-section-tag">premenopausal vs postmenopausal rules differ</span></div>
+  <div class="n-compare-grid">
+    <div class="n-compare-col">
+      <div class="n-compare-head">Premenopausal</div>
+      <div class="n-compare-row"><span class="n-compare-label">Simple &lt;5cm</span><span>Likely functional — rescan at 6–8 weeks. Most resolve spontaneously. No intervention needed</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Simple 5–7cm</span><span>Annual USS. Consider MRI if persists &gt;1 year. RMI if any complex features develop</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Simple &gt;7cm</span><span>MRI to characterise. Consider surgical removal — laparoscopic cystectomy</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Dermoid</span><span>Laparoscopic cystectomy — risk of torsion and chemical peritonitis if rupture. Preserve ovarian tissue</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Endometrioma</span><span>Medical (hormonal suppression) or laparoscopic cystectomy. IVF considerations — cystectomy first</span></div>
+    </div>
+    <div class="n-compare-col">
+      <div class="n-compare-head">Postmenopausal</div>
+      <div class="n-compare-row"><span class="n-compare-label">Any cyst</span><span><strong>USS + CA-125 + calculate RMI.</strong> Functional cysts do not occur post-menopause — any cyst needs evaluation</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Simple &lt;5cm + normal CA-125</span><span>4-monthly USS for 1 year, then annual if stable. Can discharge after 1 year if unchanged</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Any complex features</span><span><strong>Calculate RMI. If &gt;250 → urgent oncology referral.</strong> Do not operate locally on suspicious postmenopausal cysts</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">BRCA1/2</span><span>Risk-reducing BSO at 35–40 (BRCA1) or 40–45 (BRCA2). Dramatically reduces ovarian cancer risk</span></div>
+    </div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Torsion — Time is Ovary</span><span class="n-section-tag">detorsion even if it looks black</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">Presentation</div><div class="n-diag-content">Sudden severe unilateral pain, nausea/vomiting (~70%), adnexal tenderness. May be intermittent if partial torsion. No pathognomonic signs — high index of suspicion required.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Doppler rule</div><div class="n-diag-content"><strong>Present Doppler flow does NOT exclude torsion.</strong> Sensitivity of absent Doppler for torsion is only ~44%. Partial torsion preserves intermittent flow. Clinical suspicion + ovarian enlargement = diagnostic laparoscopy regardless of Doppler.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Surgical principle</div><div class="n-diag-content"><strong>Detorsion first — even if the ovary looks black.</strong> Up to 90% of visually compromised ovaries recover normal function after detorsion. Oophorectomy based on appearance alone is no longer appropriate.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Risk factors</div><div class="n-diag-content">Dermoid cyst (most common cause — heavy, eccentric), ovarian hyperstimulation, previous torsion (10% recurrence risk), long utero-ovarian ligament. Can occur in a normal ovary.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>RMI &gt;250 = urgent gynaecological oncology referral.</strong> Do not operate on a suspicious postmenopausal cyst outside a cancer centre — staging surgery must be performed correctly the first time.</div></div>
+    <div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Torsion — every hour matters.</strong> Diagnostic laparoscopy should not be delayed by observation if clinical suspicion is high. Ovarian viability falls with time.</div></div>
+    <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>CA-125 alone is not a screening test for ovarian cancer.</strong> It is only useful as part of RMI. CA-125 is elevated in endometriosis, fibroids, PID, and peritoneal irritation. Specificity is low in isolation.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Torsion can occur in a normal ovary</strong> (especially in children and adolescents) or with a cyst. Unilateral pain + ovarian enlargement = torsion until proven otherwise regardless of cyst size.<span class="n-pearl-exam">Exam loves this: candidates look for a large cyst before suspecting torsion.</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>CA-125 is not a screening test for ovarian cancer.</strong> It is only useful as part of RMI in symptomatic women with a pelvic mass. Low sensitivity and specificity in isolation.</div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>BRCA1/2 carriers:</strong> risk-reducing bilateral salpingo-oophorectomy recommended after completion of family (typically 35–40 for BRCA1, 40–45 for BRCA2). This dramatically reduces ovarian cancer risk.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Detorsion even if the ovary looks black — up to 90% recover.</strong> Visual inspection at laparoscopy is unreliable. Congestion and haemorrhage mimic infarction. Untwist, observe, then decide. Oophorectomy based on appearance = unnecessary organ loss.<span class="n-pearl-exam">Exam: candidate removes the black ovary. Always wrong.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Dermoid is the most common cause of ovarian torsion.</strong> The heavy, eccentric fat content creates a pendulum effect — predisposes to twisting. Always consider torsion in a young woman with known dermoid and acute pain.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>CA-125 is not a screening test — it is part of RMI.</strong> Elevated CA-125 in isolation is non-specific. It is only meaningful when combined with USS features and menopausal status in the RMI formula.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Functional cysts do not occur in postmenopausal women.</strong> Any ovarian cyst in a postmenopausal woman needs USS + CA-125 + RMI calculation. Do not apply premenopausal reassurance criteria to postmenopausal women.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>BRCA1/2 — risk-reducing BSO prevents ovarian cancer.</strong> BRCA1: recommend BSO at 35–40. BRCA2: 40–45. Reduces ovarian cancer risk by ~80–90%. Discuss HRT to manage surgical menopause symptoms.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Mucinous cystadenomas can grow very large (>20cm).</strong> They are benign but cause significant bulk symptoms. Rupture releases mucin into the peritoneal cavity — pseudomyxoma peritonei. Remove intact if possible.</div></div>
   </div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Normal blood flow on Doppler excludes ovarian torsion.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Present Doppler flow does not exclude torsion.</strong> Partial torsion with preserved flow is well documented. The clinical diagnosis — acute onset unilateral pain, nausea, ovarian mass — should drive management. Normal Doppler should never be used to dismiss the diagnosis.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Normal Doppler flow excludes ovarian torsion — safe to observe.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Present Doppler does not exclude torsion.</strong> Sensitivity of absent Doppler is only ~44%. Partial torsion preserves flow. Clinical suspicion + enlarged ovary = laparoscopy regardless of Doppler.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">A functional cyst in a premenopausal woman can be watched for 12 weeks without action.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Re-imaging at 6–8 weeks is appropriate for simple cysts &lt;5cm in premenopausal women, not 12 weeks.</strong> Any cyst with complex features, symptoms, or in a postmenopausal woman requires RMI calculation and consideration of 2WW referral.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">CA-125 is the best test to decide if an ovarian cyst is malignant.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>CA-125 alone is insufficient. Use the RMI (U × M × CA-125).</strong> CA-125 can be elevated in benign conditions and is normal in up to 50% of early ovarian cancers.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">CA-125 is the best test for diagnosing a malignant ovarian cyst.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>CA-125 alone is insufficient — use the Risk of Malignancy Index (RMI) which combines USS score, menopausal status, and CA-125.</strong> CA-125 can be elevated in benign conditions and is normal in up to 50% of early ovarian cancers.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">A simple ovarian cyst in a postmenopausal woman can be rescanned in 3 months like a premenopausal cyst.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Postmenopausal cysts require USS + CA-125 + RMI immediately.</strong> Functional cysts do not occur after menopause. Any cyst in a postmenopausal woman needs formal evaluation before any decision to observe.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Sudden onset pain + ovarian cyst =<br><em>torsion until you've looked inside.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Sudden pain + cyst = torsion until laparoscopy.<br><em>Detorsion even if it looks dead.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -2981,109 +3031,118 @@ NOTES.cervicalcancer=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-eyebrow">Gynaecology · Oncology</div>
   <div class="n-hero-title">Cervical<br><em>Cancer</em></div>
   <div class="n-hero-sub">ICD C53 &nbsp;·&nbsp; Almost entirely preventable. Almost entirely caused by HPV.</div>
-  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Malignancy of the cervix, predominantly <strong>squamous cell carcinoma (75%)</strong> or adenocarcinoma. HPV 16 and 18 drive 70% of cases.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Peak incidence 30–45. Risk: early sexual debut, multiple partners, HPV high-risk subtypes, smoking, immunosuppression, non-attendance at screening.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Screening detects pre-cancer (CIN). Vaccination prevents it. But when invasive — prognosis depends critically on stage at diagnosis.</div></div></div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Malignancy of the cervix, predominantly <strong>squamous cell carcinoma (75%)</strong> or adenocarcinoma (20%). HPV 16 and 18 drive 70% of all cases.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Peak incidence 30–45. Risk factors: early sexual debut, multiple partners, high-risk HPV subtypes, smoking, immunosuppression (HIV, post-transplant), non-attendance at cervical screening.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Cervical screening detects CIN (pre-cancer) before invasion. HPV vaccination prevents it. When invasive: <strong>prognosis depends entirely on stage at diagnosis.</strong> Stage 1 = 90% 5-year survival. Stage 4 = 15%.</div></div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Pathogenesis</span><span class="n-section-tag">HPV to cancer</span></div>
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">HPV → CIN → Cancer</span><span class="n-section-tag">a preventable progression</span></div>
   <div class="n-viz-block">
-    <div class="n-viz-label-row">
-      <span class="n-viz-title">Cervical cancer — HPV to invasion</span>
-      <span class="n-viz-sub">A vaccine and a smear programme have made this almost entirely preventable</span>
-    </div>
+    <div class="n-viz-label-row"><span class="n-viz-title">Cervical cancer — HPV to invasion</span><span class="n-viz-sub">A vaccine and a smear programme have made this almost entirely preventable</span></div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">CAUSE</text>
-      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">HPV 16</tspan><tspan x="72" dy="16">and 18</tspan></text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">High-risk HPV 70%</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Transmitted sexually</text>
-      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Vaccination at 12–13</text>
+      <text x="72" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">CAUSE</text>
+      <text x="72" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">HPV 16 and 18</text>
+      <text x="72" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">70% of cervical cancers</text>
+      <text x="72" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Sexually transmitted</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Vaccine at 12–13 yrs</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">PRE-CANCER</text>
-      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">CIN I–III</tspan><tspan x="227" dy="16">(Dysplasia)</tspan></text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">CIN III = severe dysplasia</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Not yet invasive</text>
+      <text x="227" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">PRE-CANCER</text>
+      <text x="227" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">CIN I–III</text>
+      <text x="227" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">CIN1: mild dysplasia</text>
+      <text x="227" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">CIN3: severe → carcinoma in situ</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Detected on smear</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SCREENING</text>
-      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">HPV Primary</tspan><tspan x="382" dy="16">Screening</tspan></text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">3-yearly 25–49</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">5-yearly 50–64</text>
+      <text x="382" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SCREENING</text>
+      <text x="382" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">HPV primary screening</text>
+      <text x="382" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">3-yearly 25–49</text>
+      <text x="382" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">5-yearly 50–64</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Colposcopy if HPV+</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SYMPTOMS</text>
-      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">PCB /</tspan><tspan x="537" dy="16">IMB / DC</tspan></text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Postcoital bleed</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Intermenstrual bleed</text>
-      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Refer urgently if PCB</text>
+      <text x="537" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SYMPTOMS</text>
+      <text x="537" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">PCB · IMB · discharge</text>
+      <text x="537" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Post-coital bleed = red flag</text>
+      <text x="537" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pelvic pain in advanced disease</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">2WW urgent referral</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">STAGING</text>
-      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">FIGO</tspan><tspan x="690" dy="16">I → IV</tspan></text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Stage IB1: confined</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Stage IV: spread beyond</text>
+      <text x="690" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">STAGING</text>
+      <text x="690" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">FIGO I → IV</text>
+      <text x="690" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Stage I: confined to cervix</text>
+      <text x="690" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Stage IV: bladder/rectum/distant</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">MRI for staging</text>
     </svg>
   </div>
-
   <div class="n-mech-chain">
-    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">HPV infection</div><div class="n-mech-text">High-risk HPV (16, 18, 31, 33) infects the transformation zone. Usually cleared by immune system. <strong>Persistent infection = risk of transformation.</strong></div></div></div>
-    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">CIN (cervical intraepithelial neoplasia)</div><div class="n-mech-text">Pre-invasive changes. CIN1 (mild dysplasia), CIN2, CIN3 (severe dysplasia/carcinoma in situ). <strong>CIN3 left untreated → invasive cancer in ~30%</strong> over 10 years.</div></div></div>
-    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Invasion</div><div class="n-mech-text">Basement membrane breached → invasive cancer. Lymphovascular invasion → spread to parametria, bladder, rectum (direct), and iliac/para-aortic nodes (lymphatic).</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">HPV infection</div><div class="n-mech-text">High-risk HPV (16, 18, 31, 33) infects the transformation zone of the cervix. Usually cleared by the immune system within 2 years. <strong>Persistent infection is required for malignant transformation.</strong></div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">CIN (cervical intraepithelial neoplasia)</div><div class="n-mech-text">Pre-invasive dysplastic changes. CIN1 (mild), CIN2 (moderate), CIN3 (severe/carcinoma in situ). <strong>CIN3 left untreated progresses to invasive cancer in ~30% within 10 years.</strong> This is the screening target.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Invasion and spread</div><div class="n-mech-text">Basement membrane breach → invasion. Direct extension to parametria, bladder, rectum. Lymphatic spread to iliac and para-aortic nodes. Hydronephrosis = stage IIIB minimum.</div></div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
-  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Post-coital bleeding + irregular vaginal bleeding in a woman of reproductive age → think <em>cervical cancer</em> → urgent colposcopy, do not wait for next smear.</div></div>
-  <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>A normal smear does not exclude cervical cancer.</strong> Smears screen for pre-cancer — but invasive cancer can bleed and be missed if sampling is inadequate. Clinical symptoms warrant direct examination regardless of smear result.</div></div>
-</div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Screening pathway UK</span><span class="n-section-tag">smear to treatment</span></div>
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Screening Pathway</span><span class="n-section-tag">HPV primary screening — UK 2019</span></div>
   <div class="n-diag-steps">
-    <div class="n-diag-row"><div class="n-diag-label ">Smear (25–64)</div><div class="n-diag-content">HPV primary screening. If HPV-positive: cytology added. HPV-negative: routine 5-yearly recall.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label ">Colposcopy</div><div class="n-diag-content">If HPV+/high-grade cytology. Direct visualisation of transformation zone, aceto-white areas, and abnormal vasculature.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label gold">LLETZ</div><div class="n-diag-content"><strong>Large Loop Excision of the Transformation Zone</strong> — treatment for CIN2/3. Outpatient, local anaesthetic. Curative in most cases.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label err">Staging</div><div class="n-diag-content">FIGO staging: <strong>1A = microscopic</strong>, 1B = visible/&gt;5mm, 2 = extends beyond cervix, 3 = pelvic wall/lower vagina/hydronephrosis, 4 = bladder/rectum/distant.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Smear (age 25–64)</div><div class="n-diag-content">UK uses <strong>HPV primary screening</strong> (since 2019). Test for high-risk HPV first. If HPV-negative: routine recall (3-yearly 25–49, 5-yearly 50–64). If HPV-positive: reflex cytology added to the same sample.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">HPV+ / abnormal cytology</div><div class="n-diag-content">Colposcopy referral. Direct visualisation of the transformation zone under magnification. Aceto-white areas, abnormal vascular patterns, and iodine staining identify CIN.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">CIN1</div><div class="n-diag-content">Active surveillance — most CIN1 regresses spontaneously (60% within 2 years). Colposcopy at 12 months. Treat only if persists or progresses.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">CIN2 / CIN3</div><div class="n-diag-content"><strong>LLETZ (Large Loop Excision of the Transformation Zone)</strong> — outpatient, local anaesthetic. Curative in ~95% of CIN2/3. Specimen sent for histology to confirm margins.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Post-LLETZ follow-up</div><div class="n-diag-content">Test of cure: HPV test at 6 months. If HPV-negative: return to routine screening. If HPV-positive: colposcopy again.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Management</span><span class="n-section-tag">stage-dependent</span></div>
-  <div class="n-algo">
-    <div class="n-algo-row">
-  <div class="n-algo-step s-first">IA1 (microinvasive)</div>
-  <div class="n-algo-body"><strong>LLETZ or cone biopsy</strong> if fertility desired. Simple hysterectomy if not. Excellent prognosis: &gt;99% 5-year survival.<span class="n-involve">Gynaecological oncology</span></div>
-</div>
-    <div class="n-algo-row">
-  <div class="n-algo-step s-fail">IB1 (small invasive)</div>
-  <div class="n-algo-body"><strong>Radical hysterectomy + pelvic lymphadenectomy</strong> or chemo-radiotherapy. Equivalent outcomes. Surgery preferred in younger women to preserve ovarian function.<span class="n-involve">Specialist MDT: gynaecological oncology</span></div>
-</div>
-    <div class="n-algo-row">
-  <div class="n-algo-step s-severe">IB2–IIA (larger tumour)</div>
-  <div class="n-algo-body"><strong>Concurrent chemoradiotherapy</strong> (cisplatin + external beam + brachytherapy). Surgery has higher morbidity at this stage.<span class="n-involve">Clinical oncology + gynaecological oncology</span></div>
-</div>
-    <div class="n-algo-row">
-  <div class="n-algo-step s-unstable">IIB–IV (advanced)</div>
-  <div class="n-algo-body dark-body"><strong>Chemoradiotherapy ± brachytherapy.</strong> Palliative in Stage IV. Bevacizumab added in recurrent/metastatic disease improves survival.<span class="n-involve">Palliative care + oncology MDT</span></div>
-</div>
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">FIGO Staging and Treatment</span><span class="n-section-tag">stage determines treatment</span></div>
+  <div class="n-compare-grid">
+    <div class="n-compare-col">
+      <div class="n-compare-head">Early Stage (I–IIA)</div>
+      <div class="n-compare-row"><span class="n-compare-label">Stage IA1</span><span><strong>LLETZ or cone biopsy if fertility desired.</strong> Simple hysterectomy if family complete. Survival &gt;99%</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Stage IA2–IB1</span><span><strong>Radical hysterectomy + pelvic lymphadenectomy</strong> OR chemo-radiotherapy. Equivalent outcomes. Surgery preferred in younger women (preserves ovarian function)</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Fertility-sparing</span><span><strong>Radical trachelectomy</strong> for IA1–IB1 — removes cervix, preserves uterus. Cerclage placed at isthmus. Selected cases only at specialist centres</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">IB2–IIA</span><span>Concurrent chemoradiotherapy (cisplatin) preferred for larger tumours (&gt;4cm). Surgery has higher morbidity at this size</span></div>
+    </div>
+    <div class="n-compare-col">
+      <div class="n-compare-head">Advanced Stage (IIB–IV)</div>
+      <div class="n-compare-row"><span class="n-compare-label">Stage IIB–IIIC</span><span><strong>Concurrent chemoradiotherapy</strong> (external beam + brachytherapy + weekly cisplatin). Not operable at this stage</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Brachytherapy</span><span>Internal radiation delivered directly to tumour — essential component of treatment for locally advanced disease. Improves survival</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Stage IV</span><span>Palliative intent. <strong>Bevacizumab</strong> (anti-VEGF) + chemotherapy for recurrent/metastatic disease — improves OS in selected cases</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Hydronephrosis</span><span>Bilateral hydronephrosis = stage IIIB minimum. Associated with poor prognosis. Ureteric stenting for symptom control</span></div>
+    </div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Vaccination — Near Elimination</span><span class="n-section-tag">Gardasil 9 · boys and girls</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">Gardasil 9</div><div class="n-diag-content">Offered to all girls <strong>and boys</strong> aged 12–13 in the UK. Protects against HPV 6, 11, 16, 18, 31, 33, 45, 52, 58 — covering ~90% of cervical cancers, plus genital warts (6, 11). Two doses given 6–24 months apart.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Efficacy</div><div class="n-diag-content">Expected to reduce cervical cancer incidence by &gt;90% in vaccinated generations. Scotland has already seen near-elimination in women vaccinated at 12–13. Screening still required — vaccine doesn't cover all high-risk types.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Catch-up</div><div class="n-diag-content">Available on NHS up to age 25 if missed school programme. Offered to men who have sex with men up to age 45. Three doses if started after age 15.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Still screen after vaccination</div><div class="n-diag-content"><strong>Vaccinated women must still attend cervical screening.</strong> HPV 16/18 account for 70%, not 100%, of cervical cancers. Vaccination reduces, does not eliminate, risk.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Post-coital bleeding in any woman = urgent colposcopy / 2WW referral.</strong> Do not reassure without examination. Do not defer because of a recent normal smear. PCB is a red flag symptom regardless of screening history.</div></div>
+    <div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Unilateral leg swelling + pelvic mass = stage IIIB+ disease.</strong> Lymphatic obstruction causing leg oedema is a sign of advanced pelvic disease. Urgent staging CT + oncology referral.</div></div>
+    <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Normal smear does not exclude invasive cancer.</strong> Smears detect pre-invasive CIN, not all invasive cancers. Symptomatic women need examination and direct biopsy regardless of smear result.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>HPV vaccination</strong> (Gardasil 9): offered to girls and boys aged 12–13 in the UK. Protects against HPV 6, 11, 16, 18 and 5 additional high-risk types. Expected to eliminate &gt;90% of cervical cancers.<span class="n-pearl-exam">Exam loves this: vaccination + screening together are a near-elimination strategy.</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Post-coital bleeding = urgent colposcopy</strong> regardless of smear result. This is a NICE 2WW (two-week wait) referral criterion. Do not reassure with a normal smear.</div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Fertility-sparing surgery</strong> (radical trachelectomy) is an option for carefully selected stage 1A–1B1 women who wish to preserve their uterus. Cervix removed, uterus retained with a cerclage.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Post-coital bleeding = urgent 2WW referral regardless of smear history.</strong> PCB is the cardinal symptom of cervical cancer. A normal smear from 2 years ago does not exclude invasive cancer presenting now.<span class="n-pearl-exam">Exam: candidate reassures based on normal smear. Always wrong.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>HPV vaccination + cervical screening = near-elimination strategy.</strong> Scotland has already achieved this in vaccinated cohorts. Gardasil 9 covers HPV types responsible for &gt;90% of cervical cancers plus genital warts.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>CIN3 ≠ cancer.</strong> CIN3 is pre-invasive — it has not breached the basement membrane. Treated with LLETZ, which is curative in ~95%. Do not use the word 'cancer' when explaining CIN3 to patients.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Radical trachelectomy — cervix removed, uterus preserved.</strong> For stage IA1–IB1 in women who want fertility. Cerclage placed to prevent pregnancy loss. Only available at specialist centres. Oncological outcomes equivalent to radical hysterectomy in selected cases.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Adenocarcinoma is harder to detect on cervical screening than squamous cell carcinoma.</strong> It arises higher in the endocervical canal, away from the transformation zone. It is proportionally increasing as HPV-related squamous cell cancer falls with vaccination.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Stage IB1 can be treated with surgery or chemoradiotherapy — equivalent outcomes.</strong> Surgery is preferred in younger women to preserve ovarian function and avoid radiation-induced vaginal stenosis. Choice is individualised through MDT.</div></div>
   </div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Post-coital bleeding in a young woman is almost certainly cervical ectropion.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Post-coital bleeding requires speculum examination and urgent 2WW referral if no benign cause is immediately apparent.</strong> Ectropion is common and often responsible, but cervical cancer must be excluded. Do not reassure without examination.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Post-coital bleeding in a young woman = cervical ectropion — reassure and discharge.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>PCB requires speculum examination and urgent 2WW referral if no immediately apparent benign cause.</strong> Ectropion is common, but cervical cancer must be excluded. Never reassure without examination.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">A recent normal smear means cervical cancer is very unlikely.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Cervical screening reduces risk but does not eliminate it.</strong> Interval cancers occur. A symptomatic woman with a recent normal smear still requires clinical assessment — symptoms take precedence over screening history.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">A recent normal smear means cervical cancer is very unlikely — no further action needed.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Symptoms take precedence over screening history.</strong> Interval cancers occur. A symptomatic woman needs clinical assessment regardless of her last smear result.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Stage IB cervical cancer always requires hysterectomy.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Stage IA1–IB1 can be managed with radical trachelectomy in women who wish to preserve fertility.</strong> Radical hysterectomy is the standard, but fertility-sparing surgery is an established option in selected cases at specialist centres.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">CIN3 means the patient has cervical cancer — explain this to the patient.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>CIN3 is pre-invasive — it has NOT breached the basement membrane.</strong> It is high-grade pre-cancer, not cancer. LLETZ is curative. Saying 'cancer' causes significant distress and is factually incorrect.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">A vaccine. A smear programme.<br>This cancer is almost <em>entirely preventable.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">A vaccine. A smear programme.<br><em>This cancer is almost entirely preventable.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -3630,105 +3689,125 @@ NOTES.ovariancancer=()=>`<div class="n-page"><div class="n-hero-new">
 NOTES.subfertility=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-eyebrow">Gynaecology · Reproductive</div>
   <div class="n-hero-title">Sub-<br><em>fertility</em></div>
-  <div class="n-hero-sub">ICD N97 &nbsp;·&nbsp; Failure to conceive after 12 months — investigate both partners</div>
-  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Failure to conceive after 12 months of regular unprotected intercourse (or 6 months if woman &gt;35 or known risk factor). 1 in 7 couples affected.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Equal male and female causes. <strong>Male factor: ~30%</strong>. Female ovulatory: ~25%. Tubal: ~20%. Unexplained: ~25%. Both: ~10%. Never investigate one partner without the other.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Investigation is time-sensitive (especially with age). Many causes are treatable — ovulatory dysfunction responds well to induction. Tubal disease may require IVF.</div></div></div>
+  <div class="n-hero-sub">ICD N97 &nbsp;·&nbsp; Failure to conceive after 12 months — investigate both partners simultaneously</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">Definition</div><div class="n-snap-text">Failure to conceive after <strong>12 months</strong> of regular unprotected intercourse. Investigate earlier (6 months) if woman &gt;35 or known risk factor. 1 in 7 couples affected.</div></div><div class="n-snap-cell"><div class="n-snap-label">Causes</div><div class="n-snap-text"><strong>Male factor ~30%, ovulatory ~25%, tubal ~20%, unexplained ~25%.</strong> Male and female causes are equally common — never investigate one partner without the other.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Time-sensitive — female fertility declines sharply after 35. Many causes are treatable. <strong>Hydrosalpinx halves IVF success rates</strong> — must be treated before IVF cycles begin.</div></div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Initial Investigation</span><span class="n-section-tag">at first consultation — both partners</span></div>
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Initial Investigation — Both Partners at First Visit</span><span class="n-section-tag">never investigate sequentially</span></div>
   <div class="n-viz-block">
-    <div class="n-viz-label-row">
-      <span class="n-viz-title">Subfertility — equal cause investigation</span>
-      <span class="n-viz-sub">Never investigate one partner without investigating both</span>
-    </div>
+    <div class="n-viz-label-row"><span class="n-viz-title">Subfertility — causes and investigations</span><span class="n-viz-sub">Never investigate one partner without investigating both</span></div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MALE FACTOR
-~30%</text>
-      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Semen</tspan><tspan x="72" dy="16">Analysis</tspan></text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Count · motility · morph</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Azoospermia → genetics</text>
+      <text x="72" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MALE ~30%</text>
+      <text x="72" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Semen analysis</text>
+      <text x="72" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Count · motility · morphology</text>
+      <text x="72" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Azoospermia → genetics</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Repeat if abnormal</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">OVULATORY
-~25%</text>
-      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">LH · FSH</tspan><tspan x="227" dy="16">Day 21 Prog</tspan></text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">PCOS most common</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Hyperprolactinaemia</text>
-      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Clomifene / letrozole</text>
+      <text x="227" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">OVULATORY ~25%</text>
+      <text x="227" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Day 21 progesterone</text>
+      <text x="227" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">FSH · LH · AMH</text>
+      <text x="227" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">PCOS most common cause</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Letrozole / FSH</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TUBAL
-~20%</text>
-      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">HyCoSy /</tspan><tspan x="382" dy="16">Laparoscopy</tspan></text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Post-PID · endo</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Chlamydia serology first</text>
+      <text x="382" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TUBAL ~20%</text>
+      <text x="382" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">HyCoSy / laparoscopy</text>
+      <text x="382" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Post-PID · endometriosis</text>
+      <text x="382" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Chlamydia serology first</text>
       <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">IVF if bilateral block</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">UNEXPLAINED
-~25%</text>
-      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">All Tests</tspan><tspan x="537" dy="16">Normal</tspan></text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Empirical treatment</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">IUI then IVF</text>
+      <text x="537" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">UNEXPLAINED ~25%</text>
+      <text x="537" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">All tests normal</text>
+      <text x="537" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Expectant if &lt;35</text>
+      <text x="537" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">IUI then IVF</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Age determines urgency</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">IVF</text>
-      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Stimulate</tspan><tspan x="690" dy="16">Retrieve Transfer</tspan></text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">NHS: ≤3 cycles if eligible</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Success: 40% at <35</text>
-      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Multiple pregnancy risk</text>
+      <text x="690" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">IVF / ICSI</text>
+      <text x="690" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Stimulate → retrieve → transfer</text>
+      <text x="690" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">NHS: ≤3 cycles if eligible</text>
+      <text x="690" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">ICSI: single sperm injection</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Success ~40% at &lt;35</text>
     </svg>
   </div>
-
-  <div class="n-diag-steps">
-    <div class="n-diag-row"><div class="n-diag-label ">Semen analysis</div><div class="n-diag-content"><strong>First test. Always.</strong> WHO criteria: volume &gt;1.5 mL, sperm count &gt;16 million/mL, motility &gt;42%, morphology &gt;4% (strict criteria). Two analyses if abnormal.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label ">Ovulation</div><div class="n-diag-content">Mid-luteal progesterone: &gt;30 nmol/L confirms ovulation in a 28-day cycle (taken day 21). FSH, LH, AMH (ovarian reserve), prolactin, TFT.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label gold">Tubal patency</div><div class="n-diag-content"><strong>HyCoSy</strong> (hysterosalpingo-contrast sonography) or <strong>laparoscopy and dye test</strong>. Hysterosalpingography (HSG) is alternative.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label ">Uterine cavity</div><div class="n-diag-content">USS, or SIS (saline infusion sonography) for intrauterine pathology (polyps, fibroids, adhesions).</div></div>
-    <div class="n-diag-row"><div class="n-diag-label err">Common mistake</div><div class="n-diag-content">Investigating only the woman at first appointment. Male factor accounts for 30% — semen analysis should be requested simultaneously.</div></div>
+  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">12 months trying + irregular periods + elevated LH:FSH ratio → think <em>PCOS</em> → letrozole for ovulation induction. But first: confirm semen analysis has been done.</div></div>
+  <div class="n-distractor-box"><div class="n-distractor-label">Hydrosalpinx halves IVF success</div><div class="n-distractor-text"><strong>A hydrosalpinx found before IVF must be treated with salpingectomy before starting cycles.</strong> Not drainage — it refills. The toxic fluid reflux from a hydrosalpinx into the uterus halves implantation rates. This step is commonly missed.</div></div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Investigation Framework</span><span class="n-section-tag">systematic, simultaneous, both partners</span></div>
+  <div class="n-compare-grid">
+    <div class="n-compare-col">
+      <div class="n-compare-head">Female Partner</div>
+      <div class="n-compare-row"><span class="n-compare-label">Ovulation</span><span><strong>Day 21 progesterone (&gt;30 nmol/L = ovulation confirmed)</strong> in a 28-day cycle. Adjust timing for cycle length (7 days before expected period)</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Ovarian reserve</span><span>AMH (anti-Müllerian hormone) — predicts response to stimulation. FSH + LH day 2–5. Antral follicle count on USS</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Tubal patency</span><span><strong>HyCoSy</strong> (hysterosalpingo-contrast sonography) or HSG or laparoscopy + dye test. Chlamydia serology first</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Uterine cavity</span><span>USS or SIS (saline infusion sonography) for polyps, fibroids, adhesions, septum</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Other</span><span>Prolactin, TFT (thyroid), BMI, rubella immunity, folic acid advice</span></div>
+    </div>
+    <div class="n-compare-col">
+      <div class="n-compare-head">Male Partner</div>
+      <div class="n-compare-row"><span class="n-compare-label">Semen analysis</span><span><strong>First test — request at initial consultation.</strong> WHO criteria: volume &gt;1.5mL, count &gt;16M/mL, motility &gt;42%, morphology &gt;4%</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Repeat if abnormal</span><span>Two analyses minimum if first abnormal — 2–3 months apart. Single test insufficient</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Azoospermia</span><span>No sperm at all → FSH, LH, testosterone, karyotype, Y-chromosome microdeletion, testicular biopsy</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Severe OAT</span><span>Oligoasthenoteratospermia → ICSI is treatment of choice. Refer to reproductive medicine</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Lifestyle</span><span>Hot baths, cycling, smoking, anabolic steroids, alcohol all impair spermatogenesis</span></div>
+    </div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
-  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">12 months of trying + oligomenorrhoea + elevated LH:FSH → think <em>PCOS</em> → letrozole for ovulation induction after confirming both partners investigated.</div></div>
-  <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Hydrosalpinx halves IVF success rates.</strong> A hydrosalpinx found before IVF must be treated with salpingectomy (not drainage — it refills). Do not proceed to IVF cycles with a known hydrosalpinx.</div></div>
-</div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Management by cause</span><span class="n-section-tag">matched to diagnosis</span></div>
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Management by Cause</span><span class="n-section-tag">matched to diagnosis</span></div>
   <div class="n-algo">
     <div class="n-algo-row">
   <div class="n-algo-step s-first">Ovulatory dysfunction (PCOS)</div>
-  <div class="n-algo-body"><strong>Letrozole first-line</strong> for ovulation induction (NICE). Metformin as adjunct in insulin-resistant women. All cycles require USS monitoring. FSH injections if letrozole fails.<span class="n-involve">Reproductive medicine clinic</span></div>
+  <div class="n-algo-body"><strong>Letrozole first-line</strong> (NICE — replaced clomifene). Higher live birth rates, lower multiple pregnancy risk, no anti-oestrogenic endometrial effect. All cycles require USS monitoring for OHSS risk. Metformin as adjunct in insulin-resistant women. FSH injections if letrozole fails.<span class="n-involve">Reproductive medicine clinic</span></div>
 </div>
     <div class="n-algo-row">
   <div class="n-algo-step s-fail">Tubal factor</div>
-  <div class="n-algo-body"><strong>IVF is first-line</strong> for tubal disease. Tubal surgery may be appropriate for mild distal disease in specialist hands — but IVF is usually more effective and faster.<span class="n-involve">Reproductive medicine clinic</span></div>
+  <div class="n-algo-body"><strong>IVF is first-line for tubal disease.</strong> Treat hydrosalpinx with salpingectomy before IVF. Tubal surgery may be appropriate for mild distal disease at specialist centres — but IVF is faster and usually more effective.<span class="n-involve">Reproductive medicine clinic</span></div>
 </div>
     <div class="n-algo-row">
   <div class="n-algo-step s-severe">Male factor</div>
-  <div class="n-algo-body">Mild–moderate: <strong>IUI</strong> (intrauterine insemination). Severe oligospermia or azoospermia: <strong>ICSI (intracytoplasmic sperm injection)</strong> — a single sperm injected directly into the egg.<span class="n-involve">Reproductive medicine</span></div>
+  <div class="n-algo-body">Mild–moderate oligospermia: <strong>IUI (intrauterine insemination).</strong> Severe oligospermia or non-obstructive azoospermia: <strong>ICSI</strong> — single sperm injected directly into the egg under microscopy. Obstructive azoospermia: surgical sperm retrieval (PESA/TESE) + ICSI.<span class="n-involve">Reproductive medicine</span></div>
 </div>
     <div class="n-algo-row">
   <div class="n-algo-step s-unstable">Unexplained subfertility</div>
-  <div class="n-algo-body dark-body">Expectant management if &lt;35 with normal investigations. <strong>IUI × 3 cycles</strong> then IVF if not successful. Risk of delay increases with maternal age.<span class="n-involve">Reproductive medicine</span></div>
+  <div class="n-algo-body dark-body">Expectant management up to 2 years if woman &lt;35, all investigations normal. IUI × 3 cycles. Then IVF. <strong>Age is the most important variable</strong> — escalate faster in women &gt;35. Do not defer IVF past 38.<span class="n-involve">Reproductive medicine</span></div>
 </div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">OHSS — Ovarian Hyperstimulation Syndrome</span><span class="n-section-tag">the IVF complication to know</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">Mild</div><div class="n-diag-content">Bloating, mild abdominal discomfort, nausea. Ovaries enlarged. Manage conservatively — analgesia, fluids, monitor. Resolves spontaneously.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Severe</div><div class="n-diag-content"><strong>Massive ascites, pleural effusion, haemoconcentration, thromboembolism, renal failure, electrolyte imbalance.</strong> Admit — IV albumin, anticoagulation, fluid management. Can be fatal.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Prevention</div><div class="n-diag-content"><strong>GnRH agonist trigger</strong> instead of hCG, <strong>embryo freeze-all strategy</strong> (defer transfer), cycle cancellation, or cabergoline (dopamine agonist — reduces VEGF). Risk factors: PCOS, young, low BMI, high AMH.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Hydrosalpinx before IVF = salpingectomy first.</strong> Do not proceed to IVF cycles with a known hydrosalpinx — toxic reflux halves implantation rates. This is not optional.</div></div>
+    <div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Woman &gt;38 with unexplained subfertility should not wait 2 years.</strong> Escalate to IVF faster. Age is the dominant prognostic factor — fertility declines sharply after 38.</div></div>
+    <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Azoospermia on semen analysis requires urgent investigation.</strong> FSH, karyotype, Y-chromosome microdeletion, testosterone. Obstructive azoospermia (normal FSH) may be surgically correctable. Non-obstructive (raised FSH) may need donor sperm.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Letrozole has replaced clomifene as first-line ovulation induction in PCOS.</strong> Higher live birth rates, lower multiple pregnancy risk, no anti-oestrogenic endometrial effect.<span class="n-pearl-exam">Exam loves this: candidates say clomifene.</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>AMH (anti-Müllerian hormone) predicts ovarian reserve</strong> — guides IVF stimulation protocol. Low AMH = fewer eggs = higher dose FSH. It does not predict fertility in natural conception.</div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>OHSS (ovarian hyperstimulation syndrome)</strong> — risk with FSH injections. Mild: bloating, mild pain. Severe: massive ascites, thromboembolism, renal failure. Prevent with agonist trigger, cycle cancellation, or embryo freeze-all strategy.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Letrozole has replaced clomifene as first-line ovulation induction in PCOS (NICE).</strong> Higher live birth rates, lower multiple pregnancy risk, no anti-oestrogenic effect on endometrium. Clomifene is no longer correct first-line.<span class="n-pearl-exam">Exam: candidates say clomifene. Wrong since NICE update.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Male factor accounts for 30% of subfertility — request semen analysis at the first appointment.</strong> Investigating only the woman is the most common error. Semen analysis is cheap, non-invasive, and changes management in 30% of couples.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Hydrosalpinx = salpingectomy before IVF.</strong> Toxic fluid reflux from a hydrosalpinx into the uterus halves IVF implantation rates. Never proceed to IVF cycles with an untreated hydrosalpinx.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>AMH predicts ovarian reserve and guides IVF stimulation dosing.</strong> Low AMH = poor responder = higher FSH dose needed. It does not predict fertility in natural conception — only response to stimulation.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Day 21 progesterone &gt;30 nmol/L confirms ovulation in a 28-day cycle.</strong> Adjust timing: sample 7 days before expected next period. A value of 16–30 is borderline — repeat in next cycle before concluding anovulation.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>OHSS risk is highest in PCOS women with high AMH undergoing IVF.</strong> Prevention: GnRH agonist trigger instead of hCG, freeze-all embryos, cabergoline. Severe OHSS with haemoconcentration carries VTE risk — anticoagulate.</div></div>
   </div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">The woman's investigations are normal, so male factor is unlikely.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Male factor contributes to 30% of subfertility cases — it is the single most common identifiable cause.</strong> Semen analysis must be requested at the first consultation, not after female investigations are complete. Investigating sequentially wastes months.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">The female investigations are normal — male factor is unlikely.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Male factor accounts for 30% of subfertility — the single most common identifiable cause.</strong> Request semen analysis at the first consultation regardless of the female investigations.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">A day 21 progesterone of 28 nmol/L in a 28-day cycle indicates anovulation.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Day 21 progesterone of 28 nmol/L is borderline, not definitively anovulatory.</strong> Values &gt;30 nmol/L confirm ovulation. Values 16–30 require repeat testing in a subsequent cycle before concluding anovulation. A single borderline result should not drive treatment decisions.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Clomifene is first-line for ovulation induction in PCOS.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Letrozole is now first-line (NICE 2023).</strong> Higher live birth rates and lower multiple pregnancy risk. Clomifene has anti-oestrogenic effects on cervical mucus and endometrium that letrozole avoids.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">IVF is the appropriate next step after 6 months of unexplained subfertility.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>IVF is the end of the pathway, not the first response to unexplained subfertility.</strong> After completing investigation, expectant management for up to 2 years (in women under 35 with no identified cause) is appropriate. Ovulation induction and IUI precede IVF in most pathways.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Proceed to IVF with a hydrosalpinx — it won't affect the result.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Hydrosalpinx halves IVF success rates.</strong> Salpingectomy before IVF is mandatory. The toxic reflux fluid directly impairs endometrial receptivity and embryo implantation.</div></div>
 </div>
   </div>
 <div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Never investigate one partner<br><em>without investigating both.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
@@ -4217,106 +4296,143 @@ NOTES.urinaryincontinence=()=>`<div class="n-page"><div class="n-hero-new">
 NOTES.contraception=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-eyebrow">Gynaecology · Reproductive</div>
   <div class="n-hero-title">Contra-<br><em>ception</em></div>
-  <div class="n-hero-sub">ICD Z30 &nbsp;·&nbsp; UKMEC · Pearl index · The most effective methods are the least used</div>
-  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Prevention of pregnancy. Effectiveness measured by <strong>Pearl index</strong> (pregnancies per 100 woman-years with perfect use). UKMEC categories 1–4 classify medical eligibility for each method.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who needs counselling</div><div class="n-snap-text">Any woman of reproductive age. Contraception fails most often due to <strong>non-compliance and incorrect use</strong> — not method failure. LARC (long-acting reversible contraception) eliminates user error.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">LARC methods have Pearl index &lt;1 and are the most cost-effective NHS interventions. Yet the most effective methods are the least frequently offered. Method choice should match the woman's life, health, and priorities — not default to the pill.</div></div></div>
+  <div class="n-hero-sub">ICD Z30 &nbsp;·&nbsp; UKMEC · Pearl index · The most effective methods are the least offered</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Prevention of pregnancy. Effectiveness measured by <strong>Pearl index</strong> (pregnancies per 100 woman-years with perfect use). UKMEC categories 1–4 classify medical eligibility for each method.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who needs counselling</div><div class="n-snap-text">Any woman of reproductive age. Most contraceptive failures are due to <strong>non-compliance and incorrect use</strong> — not method failure. LARC eliminates user error entirely.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">LARC methods (implant, IUS, IUD, injectable) are the most effective and cost-efficient NHS interventions. <strong>They are the least frequently offered.</strong> Method choice must be individualised — not defaulted to the pill.</div></div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Efficacy Hierarchy</span><span class="n-section-tag">Pearl index — lower is better</span></div>
   <div class="n-viz-block">
-    <div class="n-viz-label-row">
-      <span class="n-viz-title">Contraception — efficacy hierarchy</span>
-      <span class="n-viz-sub">Pearl index: pregnancies per 100 woman-years with perfect use</span>
-    </div>
+    <div class="n-viz-label-row"><span class="n-viz-title">Contraception — efficacy by method</span><span class="n-viz-sub">Pearl index: pregnancies per 100 woman-years (perfect use)</span></div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MOST
-EFFECTIVE</text>
-      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">IUD / IUS</tspan><tspan x="72" dy="16">Implant</tspan></text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pearl index <1</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">No user error</text>
-      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">LARC — first-line offer</text>
+      <text x="72" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MOST EFFECTIVE</text>
+      <text x="72" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">IUD · IUS · Implant</text>
+      <text x="72" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pearl index &lt;1</text>
+      <text x="72" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">No user error possible</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">LARC — always offer first</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">VERY
-EFFECTIVE</text>
-      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Injectable</tspan><tspan x="227" dy="16">DMPA</tspan></text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pearl index <1</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Every 12 weeks</text>
-      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Amenorrhoea common</text>
+      <text x="227" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">INJECTABLE</text>
+      <text x="227" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">DMPA / Sayana Press</text>
+      <text x="227" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pearl index &lt;1</text>
+      <text x="227" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Every 12–13 weeks</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Fertility delay up to 1 year</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">EFFECTIVE</text>
-      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">COCP /</tspan><tspan x="382" dy="16">POP</tspan></text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pearl index 0.1–0.3</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">User-dependent</text>
-      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Miss 1: follow rules</text>
+      <text x="382" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">EFFECTIVE</text>
+      <text x="382" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">COCP / POP</text>
+      <text x="382" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pearl 0.1–0.3 (perfect)</text>
+      <text x="382" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pearl 9 (typical use)</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">User compliance essential</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">BARRIER</text>
-      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">Condoms</tspan><tspan x="537" dy="16">Diaphragm</tspan></text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Condom: only STI protect</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pearl index 2–18</text>
+      <text x="537" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">BARRIER</text>
+      <text x="537" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Condoms / diaphragm</text>
+      <text x="537" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Condom: only STI protection</text>
+      <text x="537" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pearl index 2–18</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Correct use essential</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">EMERGENCY</text>
-      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">EC pill</tspan><tspan x="690" dy="16">or Cu-IUD</tspan></text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Cu-IUD most effective</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">≤120 hrs for UPA/LNG</text>
-      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Cu-IUD also ongoing</text>
+      <text x="690" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">EMERGENCY</text>
+      <text x="690" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Cu-IUD / EC pill</text>
+      <text x="690" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Cu-IUD most effective</text>
+      <text x="690" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">UPA within 120h</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">LNG within 72h</text>
     </svg>
   </div>
-
-  <div class="n-diff-grid">
-    <div class="n-diff-card this"><div class="n-diff-card-tag">Most effective — LARC</div><div class="n-diff-card-name">IUS / IUD / Implant / Injectable</div><div class="n-diff-card-key">Pearl index <strong>&lt;1</strong>. No user action required after insertion. Implant/IUS/IUD: &gt;99% effective. Depo-Provera injectable: 99.8% with perfect use. LARC should be default offer.</div></div>
-    <div class="n-diff-card that"><div class="n-diff-card-tag">User-dependent</div><div class="n-diff-card-name">COCP / POP / Barrier</div><div class="n-diff-card-key">COCP: <strong>Pearl index 0.3 (perfect) / 9 (typical)</strong>. POP: 0.3/9. Male condom: 2/18. Effectiveness drops substantially with typical use. Correct and consistent use is the challenge.</div></div>
-  </div>
+  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Woman with <strong>migraine with aura</strong> requesting contraception → POP, implant, or IUS — never COCP. Oestrogen + aura = UKMEC 4. Absolute contraindication.</div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">UKMEC Categories</span><span class="n-section-tag">eligibility framework</span></div>
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">UKMEC Categories</span><span class="n-section-tag">the eligibility framework</span></div>
   <div class="n-diag-steps">
-    <div class="n-diag-row"><div class="n-diag-label gold">UKMEC 1</div><div class="n-diag-content">No restriction. Method can be used. Example: healthy woman, no risk factors.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label">UKMEC 2</div><div class="n-diag-content">Advantages generally outweigh risks. Can use — monitor. Example: COCP in migraine without aura.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label">UKMEC 3</div><div class="n-diag-content">Risks generally outweigh advantages. Use with specialist guidance. Example: COCP in migraine with aura, hypertension, smoking &gt;35 years.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label err">UKMEC 4</div><div class="n-diag-content"><strong>Unacceptable health risk — do not use.</strong> COCP: migraine with aura + additional risk factors, current breast cancer, DVT/PE on anticoagulation, ischaemic heart disease.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">UKMEC 1</div><div class="n-diag-content">No restriction. Method can be used freely. Example: healthy young woman with no risk factors.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">UKMEC 2</div><div class="n-diag-content">Advantages generally outweigh risks — can use with caution and monitoring. Example: COCP in migraine without aura, uncomplicated diabetes, BMI 30–35.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">UKMEC 3</div><div class="n-diag-content">Risks generally outweigh advantages — use only if no acceptable alternative and with specialist guidance. Example: COCP in migraine with aura, hypertension 140–159/90–99, smoking ≥35 years, BMI &gt;35.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">UKMEC 4</div><div class="n-diag-content"><strong>Unacceptable health risk — do not use under any circumstances.</strong> COCP: migraine with aura, current breast cancer, DVT/PE on anticoagulation, ischaemic heart disease, BP &gt;160/100, smoker &gt;35 with &gt;15 cigarettes/day.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Method-Specific Essentials</span><span class="n-section-tag">what exams test</span></div>
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">COCP vs POP — Key Differences</span><span class="n-section-tag">the migraine rule is critical</span></div>
+  <div class="n-compare-grid">
+    <div class="n-compare-col">
+      <div class="n-compare-head">COCP (Combined Pill)</div>
+      <div class="n-compare-row"><span class="n-compare-label">Hormones</span><span>Oestrogen + progestogen — inhibits ovulation, thickens mucus, thins endometrium</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Key CI (UKMEC 4)</span><span><strong>Migraine with aura, active VTE/PE, breast cancer, BP &gt;160/100, smoker &gt;35 (&gt;15/day), ischaemic heart disease</strong></span></div>
+      <div class="n-compare-row"><span class="n-compare-label">VTE risk</span><span>2–4× background risk. Higher with third-generation progestogens (desogestrel, gestodene) vs levonorgestrel</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Miss 2+ pills (week 1)</span><span>Use condoms for 7 days. Consider EC if UPSI in pill-free week or first week of pack</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Benefits</span><span>Reduces HMB, dysmenorrhoea, ovarian/endometrial cancer risk, acne, PMS</span></div>
+    </div>
+    <div class="n-compare-col">
+      <div class="n-compare-head">POP (Mini-Pill)</div>
+      <div class="n-compare-row"><span class="n-compare-label">Hormones</span><span>Progestogen-only — desogestrel POP primarily inhibits ovulation. Older POPs mainly thicken mucus</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Key advantage</span><span><strong>Safe in most COCP contraindications:</strong> migraine with aura (UKMEC 2), breastfeeding, hypertension, smoker &gt;35, previous VTE</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Window</span><span><strong>Desogestrel POP: 12-hour window.</strong> Older POPs (levonorgestrel): 3-hour window. Know which one you're prescribing</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Side effects</span><span>Irregular bleeding, amenorrhoea (~20%), functional ovarian cysts. No oestrogen-related effects</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Only absolute CI</span><span>Current breast cancer (UKMEC 4). Severe liver disease</span></div>
+    </div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">LARC — Intrauterine and Implant</span><span class="n-section-tag">99%+ effective · first-line offer</span></div>
   <div class="n-algo">
     <div class="n-algo-row">
-  <div class="n-algo-step s-first">COCP (combined pill)</div>
-  <div class="n-algo-body">Oestrogen + progestogen. Inhibits ovulation. <strong>Contraindicated (UKMEC 4): migraine with aura, active VTE, breast cancer, hypertension &gt;160/100, smoker &gt;35.</strong> Missing 2+ pills in week 1 = use condoms 7 days. Start day 1 of cycle = immediate protection.<span class="n-involve">GP</span></div>
+  <div class="n-algo-step s-first">IUS (Mirena / LNG-IUS)</div>
+  <div class="n-algo-body">Progestogen-releasing. <strong>Dual benefit: contraception + treatment of HMB, dysmenorrhoea, endometrial protection on HRT.</strong> Amenorrhoea in ~50% after 12 months. Licensed 5–8 years. UKMEC 1 for most conditions.<span class="n-involve">Trained GP / community sexual health</span></div>
 </div>
     <div class="n-algo-row">
-  <div class="n-algo-step s-fail">POP (mini-pill)</div>
-  <div class="n-algo-body">Progestogen-only. <strong>Safe in most COCP contraindications</strong> including migraine with aura, hypertension, breastfeeding, &gt;35 smoker. Desogestrel POP: 12-hour window (not 3-hour like older POPs). Primarily inhibits ovulation (unlike older POPs which mainly thicken mucus).<span class="n-involve">GP</span></div>
+  <div class="n-algo-step s-fail">IUD (Copper coil)</div>
+  <div class="n-algo-body">Non-hormonal — suitable when hormones are contraindicated. Effective 5–10 years. <strong>Also the most effective emergency contraception</strong> (≤5 days post-UPSI or 5 days post-predicted ovulation). Increases menstrual flow — avoid in women with HMB.<span class="n-involve">Trained GP / community sexual health</span></div>
 </div>
     <div class="n-algo-row">
-  <div class="n-algo-step s-severe">IUD (copper coil)</div>
-  <div class="n-algo-body">Non-hormonal — suitable for women who cannot use hormones. Effective for 5–10 years. <strong>Also the most effective emergency contraception</strong> (if inserted within 5 days of UPSI or within 5 days of predicted ovulation). Increases menstrual flow — not ideal for women with HMB.<span class="n-involve">Trained GP or community sexual health</span></div>
+  <div class="n-algo-step s-severe">Implant (Nexplanon)</div>
+  <div class="n-algo-body">Single progestogen rod inserted subdermally in upper arm. Effective 3 years. Highest Pearl index (&lt;0.1) of all methods. <strong>Irregular bleeding is the main reason for removal (20% request removal).</strong> Safe in most conditions including migraine with aura.<span class="n-involve">Trained GP / community sexual health</span></div>
 </div>
     <div class="n-algo-row">
-  <div class="n-algo-step s-unstable">IUS (Mirena / levonorgestrel)</div>
-  <div class="n-algo-body dark-body">Progestogen-releasing. <strong>Dual benefit: contraception + treatment of HMB, dysmenorrhoea, endometrial protection on HRT.</strong> Causes amenorrhoea in ~50% after 12 months. Licensed 5–8 years depending on brand. UKMEC 1 for most conditions.<span class="n-involve">Trained GP or community sexual health</span></div>
+  <div class="n-algo-step s-unstable">Injectable (DMPA/Sayana Press)</div>
+  <div class="n-algo-body dark-body">Progestogen every 12–13 weeks. <strong>Fertility may take up to 12 months to return after stopping.</strong> Counsel about this delay before starting. Amenorrhoea common and beneficial for some women. Bone density decreases with prolonged use.<span class="n-involve">GP / nurse prescriber</span></div>
 </div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Emergency Contraception</span><span class="n-section-tag">time-critical</span></div>
-  <div class="n-diff-grid">
-    <div class="n-diff-card this"><div class="n-diff-card-tag">Most effective EC</div><div class="n-diff-card-name">Copper IUD</div><div class="n-diff-card-key">Within <strong>5 days of UPSI</strong> or 5 days of predicted ovulation. &gt;99% effective. Also provides ongoing contraception. First-line if eligible.</div></div>
-    <div class="n-diff-card that"><div class="n-diff-card-tag">Oral EC</div><div class="n-diff-card-name">Ulipristal (ellaOne) / Levonorgestrel</div><div class="n-diff-card-key">Ulipristal within <strong>120 hours (5 days)</strong> — more effective than levonorgestrel, especially days 3–5. Levonorgestrel within <strong>72 hours</strong>. Both less effective in women &gt;70 kg (double levonorgestrel dose).</div></div>
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Emergency Contraception</span><span class="n-section-tag">time-critical — Cu-IUD is best</span></div>
+  <div class="n-compare-grid">
+    <div class="n-compare-col">
+      <div class="n-compare-head">Copper IUD (Cu-IUD)</div>
+      <div class="n-compare-row"><span class="n-compare-label">Timing</span><span>Within <strong>5 days of UPSI</strong> or 5 days after predicted ovulation (can be calculated). Most effective EC available</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Efficacy</span><span>&gt;99% effective as EC. Failure rate &lt;0.1%</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Ongoing</span><span>Can remain as ongoing contraception (5–10 years). Convert unplanned need to long-term LARC</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">First-line if</span><span>Weight &gt;70kg, enzyme-inducing drugs, presenting at 72–120h, wants ongoing non-hormonal contraception</span></div>
+    </div>
+    <div class="n-compare-col">
+      <div class="n-compare-head">Oral EC</div>
+      <div class="n-compare-row"><span class="n-compare-label">Ulipristal (ellaOne)</span><span>Within <strong>120 hours (5 days).</strong> More effective than LNG, especially days 3–5. Progesterone receptor modulator</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Levonorgestrel</span><span>Within <strong>72 hours.</strong> Efficacy drops substantially after 24h. Less effective if weight &gt;70kg — double dose</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Key interaction</span><span>Ulipristal inhibits progesterone-receptor — do not start POP or progestogen-based LARC for 5 days after taking it</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">After 72h</span><span><strong>If 72–120h post-UPSI: ulipristal or Cu-IUD — not levonorgestrel alone</strong></span></div>
+    </div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Enzyme-inducing drugs reduce hormonal contraceptive effectiveness.</strong> Rifampicin, carbamazepine, phenytoin, St John's Wort — induce CYP450, reduce oestrogen/progestogen levels. Use copper IUD or increase pill dose (not reliable) — switch to non-hormonal method.<span class="n-pearl-exam">Exam loves this: candidates ignore drug interactions.</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>The COCP is not contraindicated in obesity alone</strong> — it is UKMEC 2 (BMI 30–35) or UKMEC 3 (BMI &gt;35) due to VTE risk. It is not absolutely contraindicated. LARC is preferable in obese women given the efficacy advantage and no VTE risk.</div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Contraception is needed until 2 years after the last period if under 50, and 1 year after the last period if over 50.</strong> FSH cannot be reliably used to confirm menopause in women on hormonal contraception. Barrier or LARC until the natural endpoint.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Migraine with aura + COCP = UKMEC 4. Absolute contraindication.</strong> Oestrogen in the context of aura increases ischaemic stroke risk. POP, implant, IUS, and injectable are all safe (UKMEC 2) in migraine with aura.<span class="n-pearl-exam">Exam: migraine classification determines the answer.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Enzyme-inducing drugs (rifampicin, carbamazepine, phenytoin, St John's Wort) reduce hormonal contraceptive effectiveness.</strong> CYP450 induction accelerates metabolism. Use Cu-IUD as ongoing non-hormonal contraception. Do not rely on increased pill dose.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Cu-IUD is the most effective emergency contraception (&gt;99%).</strong> Can be inserted up to 5 days after UPSI or 5 days after predicted ovulation. Always offer it — it's better than oral EC and provides ongoing contraception.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>After ulipristal (ellaOne) EC: wait 5 days before starting progestogen-based methods.</strong> Ulipristal competes with progesterone receptor — simultaneous use reduces efficacy of hormonal contraception. Use condoms in the interim.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Contraception is needed until 2 years after last period if under 50, and 1 year if over 50.</strong> FSH cannot reliably confirm menopause in women on hormonal contraception. Continue barrier or LARC until the natural endpoint.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>DMPA injectable delays return of fertility by up to 12 months.</strong> Counsel all women who may want pregnancy within the next year — injectable is inappropriate for them. Implant and IUS allow immediate return of fertility on removal.</div></div>
   </div>
-</div><div class="n-section">
+</div></div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06b</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Migraine with aura + COCP = absolute contraindication (UKMEC 4).</strong> Oestrogen in the context of aura significantly increases ischaemic stroke risk. Prescribing COCP here is dangerous.</div></div>
+    <div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Enzyme-inducing drugs render hormonal contraception unreliable.</strong> Rifampicin, carbamazepine, phenytoin, St John's Wort — use Cu-IUD as the only reliable non-hormonal option.</div></div>
+    <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>After ulipristal EC — wait 5 days before starting progestogen-based contraception.</strong> Ulipristal competes at the progesterone receptor. Use condoms for the 5-day window.</div></div>
+  </div>
+<div class="n-section">
   <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Migraine is a contraindication to all hormonal contraception.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Migraine without aura = UKMEC 2 for COCP (can use with caution).</strong> Migraine with aura = UKMEC 4 for COCP (do not use — stroke risk). Progestogen-only methods (POP, implant, IUS, injectable) are UKMEC 2 for migraine with aura — they can be used. The distinction is oestrogen + aura = absolute contraindication.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Migraine without aura: COCP is UKMEC 2 (usable with caution).</strong> Migraine with aura: COCP is UKMEC 4 (absolute contraindication). Progestogen-only methods are UKMEC 2 for migraine with aura — they can be used.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Levonorgestrel EC is equally effective on days 1–5 after UPSI.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Levonorgestrel loses effectiveness significantly after 72 hours.</strong> Its efficacy is ~95% within 24h, ~85% at 25–48h, ~58% at 49–72h. Ulipristal acetate maintains effectiveness for the full 120 hours and is significantly more effective on days 3–5. If presenting between 72–120 hours, ulipristal is the appropriate oral EC — or copper IUD.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Levonorgestrel EC is equally effective across the full 72 hours.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Levonorgestrel loses efficacy substantially after 24h.</strong> At 49–72h, efficacy drops to ~58%. Beyond 72h: ulipristal or Cu-IUD only. If presenting between 72–120h, levonorgestrel alone is insufficient.</div></div>
+</div>
+    <div class="n-trap">
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Start the POP immediately after taking ulipristal EC.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Wait 5 days before starting any progestogen-based method after ulipristal.</strong> Ulipristal is a progesterone receptor modulator — simultaneous use impairs both. Use condoms for the 5-day window.</div></div>
 </div>
   </div>
 <div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">The most effective methods<br><em>are the least frequently offered.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
