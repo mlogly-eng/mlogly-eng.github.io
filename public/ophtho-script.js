@@ -3682,31 +3682,6 @@ NOTES.amd = () => `<div class="n-page"><div class="n-hero-new">
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Dry vs Wet AMD — The Core Distinction</span><span class="n-section-tag">mechanism drives management</span></div>
-  <div class="n-diff-grid">
-    <div class="n-diff-card this">
-      <div class="n-diff-card-tag">Slow — 90% of cases</div>
-      <div class="n-diff-card-name">Dry AMD</div>
-      <div class="n-diff-card-key">Drusen accumulation → RPE dysfunction → photoreceptor loss. <strong>Gradual central vision loss over years.</strong> No leakage. No treatment reverses it.</div>
-      <div class="n-diag-steps" style="margin-top:16px;">
-        <div class="n-diag-row"><div class="n-diag-label">Fundoscopy</div><div class="n-diag-content">Drusen (yellow deposits under RPE), RPE pigmentary changes, geographic atrophy</div></div>
-        <div class="n-diag-row"><div class="n-diag-label gold">Tx</div><div class="n-diag-content">No proven treatment. AREDS2 supplements (ACSF + zinc) slow progression in intermediate AMD. Low vision aids. Stop smoking.</div></div>
-        <div class="n-diag-row"><div class="n-diag-label err">Risk</div><div class="n-diag-content">10–15% convert to wet AMD. Patients should monitor with Amsler grid and report new metamorphopsia immediately.</div></div>
-      </div>
-    </div>
-    <div class="n-diff-card that">
-      <div class="n-diff-card-tag">Fast — 10% of cases, 90% of severe loss</div>
-      <div class="n-diff-card-name">Wet AMD (nAMD)</div>
-      <div class="n-diff-card-key">Choroidal neovascularisation (CNV) → subretinal fluid + haemorrhage → rapid central vision loss. <strong>Treatable with anti-VEGF.</strong> Time-critical.</div>
-      <div class="n-diag-steps" style="margin-top:16px;">
-        <div class="n-diag-row"><div class="n-diag-label">Symptoms</div><div class="n-diag-content">Rapid central visual loss, metamorphopsia (distortion), central scotoma. New-onset distortion = wet AMD until proven otherwise.</div></div>
-        <div class="n-diag-row"><div class="n-diag-label gold">Tx</div><div class="n-diag-content"><strong>Intravitreal anti-VEGF</strong> (ranibizumab, aflibercept, bevacizumab). Monthly injections initially, then as-needed. Preserves — and can improve — vision if started promptly.</div></div>
-        <div class="n-diag-row"><div class="n-diag-label err">Urgency</div><div class="n-diag-content">Refer to medical retina within <strong>1 week</strong> of symptom onset. Every week of delay = permanent photoreceptor loss.</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="n-section">
   <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Mechanism — From Drusen to Blindness</span><span class="n-section-tag">5 steps</span></div>
   <div class="n-mech-chain">
     <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Drusen formation — the earliest sign</div><div class="n-mech-text">Lipid-protein deposits accumulate beneath the RPE (Bruch's membrane). <strong>Hard drusen</strong>: small, discrete, benign. <strong>Soft drusen</strong>: larger, confluent — high risk of progression. Soft drusen = the warning sign on screening.</div></div></div>
