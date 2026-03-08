@@ -2222,100 +2222,111 @@ NOTES.cordprolapse=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-eyebrow">Obstetrics · Emergency</div>
   <div class="n-hero-title">Cord<br><em>Prolapse</em></div>
   <div class="n-hero-sub">ICD O69.0 &nbsp;·&nbsp; The cord is out. The clock has started.</div>
-  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Umbilical cord descends below the presenting part after membrane rupture. Every contraction compresses the cord → fetal hypoxia.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Malpresentation (breech, transverse lie), preterm, polyhydramnios, artificial rupture of membranes with high presenting part, <strong>multiparous, cord presentation</strong>.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Perinatal mortality without immediate intervention is very high. Intact cord + immediate action → good outcomes. Every minute of compression matters.</div></div></div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Umbilical cord descends below the presenting part after membrane rupture. Every contraction compresses the cord → fetal hypoxia → acidosis → death without immediate action.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Malpresentation (breech, transverse lie), preterm, polyhydramnios, ARM with high presenting part, multiparity, cord presentation. <strong>Incidence: 1 in 500 deliveries.</strong></div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Perinatal mortality without immediate intervention is very high. <strong>Intact cord + immediate action = good outcomes.</strong> Every minute of cord compression matters. Speed is the only variable you control.</div></div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Immediate Response — Five Steps in Parallel</span><span class="n-section-tag">fingers in, part up, don't let go</span></div>
   <div class="n-viz-block">
-    <div class="n-viz-label-row">
-      <span class="n-viz-title">Cord prolapse — every action in parallel</span>
-      <span class="n-viz-sub">Fingers in. Part up. Don't let go. Call theatre.</span>
-    </div>
+    <div class="n-viz-label-row"><span class="n-viz-title">Cord prolapse — every action in parallel</span><span class="n-viz-sub">Fingers in. Part up. Don't let go. Call theatre.</span></div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
       <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">RECOGNISE</text>
-      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Cord felt</tspan><tspan x="72" dy="16">or Seen</tspan></text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">After ROM — fetal HR</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">drops with contraction</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Cord felt or seen</text>
+      <text x="72" y="76" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">After ROM — FHR drops</text>
+      <text x="72" y="91" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">with contractions</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Feel on VE — act now</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
       <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">IMMEDIATELY</text>
-      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Fingers In</tspan><tspan x="227" dy="16">Part Up</tspan></text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Elevate presenting part</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Relieve compression</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Fingers in, part up</text>
+      <text x="227" y="76" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Elevate presenting part</text>
+      <text x="227" y="91" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Relieve compression</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Do not remove hand</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
       <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">POSITION</text>
-      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">All-Fours</tspan><tspan x="382" dy="16">or Trendelenburg</tspan></text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Keep gravity working</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">for you not against</text>
-      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Left lateral if alone</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">All-fours or Trendelenburg</text>
+      <text x="382" y="76" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Gravity works for you</text>
+      <text x="382" y="91" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Left lateral if alone</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Reduces cord pressure</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
       <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">CALL</text>
-      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">999 / Crash</tspan><tspan x="537" dy="16">Call</tspan></text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Senior obs · anaes</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Neonatal team</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Crash call now</text>
+      <text x="537" y="76" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Senior obs · anaes</text>
+      <text x="537" y="91" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Neonatal team</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Category 1 CS target</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
       <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">DELIVER</text>
-      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">CS within
-<30 min</text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Bladder fill if delay</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Tocolysis if needed</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">CS within 30 min</text>
+      <text x="690" y="76" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Bladder fill if delay</text>
+      <text x="690" y="91" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Tocolysis if needed</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Good outcomes if fast</text>
     </svg>
   </div>
-
-  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Cord felt on VE or visible at vulva after membrane rupture → <em>cord prolapse</em> → call emergency team + manual elevation immediately.</div></div>
-  <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Do not pull on the cord or allow it to dry out.</strong> Handling causes vasospasm. If cord is outside, cover with a warm moist pad. Do not clamp or cut. Keep it warm and do not manipulate.</div></div>
+  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Cord felt on VE or visible at vulva after membrane rupture → <em>cord prolapse</em> → call emergency team + manual elevation immediately. Do not step back from the patient.</div></div>
+  <div class="n-distractor-box"><div class="n-distractor-label">Do not handle the cord</div><div class="n-distractor-text"><strong>Do not pull on the cord, manipulate it, or allow it to dry out.</strong> Handling causes vasospasm. If the cord is outside the vagina, cover with a warm moist pad. Do not clamp, cut, or attempt to reposition it back inside the vagina.</div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Immediate Actions</span><span class="n-section-tag">in parallel</span></div>
-  <div class="n-algo">
-    <div class="n-algo-row">
-  <div class="n-algo-step s-first">Manual elevation</div>
-  <div class="n-algo-body"><strong>Examiner's fingers remain in vagina</strong> and manually elevate the presenting part off the cord. This must be maintained until caesarean. Do not remove fingers.<span class="n-involve">Whoever detects it — do not step back</span></div>
-</div>
-    <div class="n-algo-row">
-  <div class="n-algo-step s-fail">Positioning</div>
-  <div class="n-algo-body"><strong>Knee-chest position</strong> or exaggerated Sims. Elevates the presenting part with gravity. Call for help.<span class="n-involve">Midwife + bleep team</span></div>
-</div>
-    <div class="n-algo-row">
-  <div class="n-algo-step s-severe">Bladder filling</div>
-  <div class="n-algo-body">If delay is anticipated: fill bladder with 500 mL saline via catheter to lift presenting part. Reduces compression.<span class="n-involve">Midwifery team + obstetric registrar</span></div>
-</div>
-    <div class="n-algo-row">
-  <div class="n-algo-step s-unstable">Emergency LSCS</div>
-  <div class="n-algo-body dark-body"><strong>Category 1 caesarean</strong> — aim for delivery within 30 minutes. All manual elevation measures maintained until uterine incision.<span class="n-involve">Full theatre team — declared emergency</span></div>
-</div>
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Cord Presentation vs Cord Prolapse</span><span class="n-section-tag">prevent the preventable</span></div>
+  <div class="n-compare-grid">
+    <div class="n-compare-col">
+      <div class="n-compare-head">Cord Presentation</div>
+      <div class="n-compare-row"><span class="n-compare-label">Definition</span><span>Cord lies below the presenting part — <strong>membranes still intact</strong></span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Diagnosis</span><span>USS or felt on VE through intact membranes</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Risk</span><span>Will become prolapse if membranes rupture — spontaneously or by ARM</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Action</span><span><strong>Plan CS before labour. Never permit ARM.</strong> Admit and monitor closely if not immediate CS</span></div>
+    </div>
+    <div class="n-compare-col">
+      <div class="n-compare-head" style="color:#c8452a">Cord Prolapse</div>
+      <div class="n-compare-row"><span class="n-compare-label">Definition</span><span>Cord descends below presenting part — <strong>membranes ruptured</strong></span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Diagnosis</span><span>Cord felt on VE, visible at vulva, or sudden fetal bradycardia after ROM</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Risk</span><span>Fetal hypoxia with every contraction — immediate threat to life</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Action</span><span><strong>Fingers in, part up, crash call, Category 1 CS.</strong> No delay</span></div>
+    </div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Risk Factors</span><span class="n-section-tag">prevent iatrogenic prolapse</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label err">Iatrogenic — ARM</div><div class="n-diag-content"><strong>ARM with unengaged or high presenting part is the most common iatrogenic cause.</strong> Always confirm engagement (station ≥0, head well applied to cervix) before performing ARM. If presenting part is high or mobile — do not perform ARM without senior review.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Malpresentation</div><div class="n-diag-content">Footling breech, transverse or oblique lie, unstable lie — the presenting part does not fill the lower segment, leaving space for the cord to prolapse beside or below it.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Prematurity / Polyhydramnios</div><div class="n-diag-content">Preterm presenting part is small and ill-fitting. Polyhydramnios → gush of fluid at ROM displaces cord. Both increase risk significantly.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Multiparity</div><div class="n-diag-content">Lax uterus + well-established lower segment + rapid labour — presenting part may not be engaged even in cephalic presentation.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">In-Hospital vs Community Prolapse</span><span class="n-section-tag">community = transfer while holding</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label">In hospital</div><div class="n-diag-content">Crash call → manual elevation maintained → knee-chest or Trendelenburg → bladder filling if delay anticipated → Category 1 CS. Tocolysis (terbutaline 0.25mg SC) if time needed. Aim delivery within 30 minutes of diagnosis.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Community / homebirth</div><div class="n-diag-content"><strong>999 immediately. Manual elevation maintained throughout transfer.</strong> Knee-chest position in ambulance. Midwife maintains digital elevation of presenting part until theatre — this can be 20–40 minutes. Do not release pressure. Hospital informed en route — theatre prepared before arrival.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Bladder filling</div><div class="n-diag-content">If CS is delayed: fill bladder with 500 mL saline via catheter — this mechanically lifts the presenting part and reduces cord compression. Drain immediately before uterine incision. Useful temporising measure when manual elevation alone is insufficient.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">When vaginal delivery is appropriate</div><div class="n-diag-content">If cervix is fully dilated, presenting part is at or below spines, and delivery is truly imminent — assisted vaginal delivery (ventouse or forceps) is appropriate. <strong>Senior obstetrician must be present.</strong> Cord prolapse + second stage fully dilated = deliver immediately vaginally, not by CS.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
   <div class="n-flag-list">
-    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Do not remove fingers from the vagina</strong> until the baby is delivered. Removing pressure even briefly causes immediate cord compression.</div></div>
-    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Do not attempt to replace the cord.</strong> This is not a manoeuvre — it causes vasospasm and worsens compression.</div></div>
-    <div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Tocolysis (terbutaline SC 0.25 mg)</strong> can be used to reduce contractions and relieve intermittent compression while awaiting delivery.</div></div>
-    <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Document time of cord diagnosis precisely.</strong> The decision-to-delivery interval is audited in all cases of cord prolapse.</div></div>
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Do not remove fingers from the vagina until the baby is delivered.</strong> Even briefly releasing pressure causes immediate cord compression. The examiner's hand stays in until uterine incision.</div></div>
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Do not attempt to replace the cord inside the vagina.</strong> This is not a recognised manoeuvre — it causes vasospasm and worsens compression.</div></div>
+    <div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Document time of cord diagnosis precisely.</strong> Decision-to-delivery interval is audited in every cord prolapse case. Category 1 CS target: 30 minutes.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Artificial rupture of membranes (ARM) with an unengaged or high presenting part is a cord prolapse risk.</strong> Always check presenting part position and station before ARM.<span class="n-pearl-exam">Exam loves this: causes of iatrogenic cord prolapse.</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Cord presentation</strong> (cord below presenting part but membranes intact) → plan caesarean before labour. Do not permit vaginal delivery or ARM.</div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Vaginal delivery may be appropriate</strong> if the cervix is fully dilated and delivery is imminent. Senior obstetrician at bedside, instrumental delivery preferred.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>ARM with high or unengaged presenting part = iatrogenic cord prolapse risk.</strong> Always confirm station before ARM. The most avoidable cause of cord prolapse is a poorly executed ARM.<span class="n-pearl-exam">Exam loves this: what are the risks of ARM?</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Cord presentation = plan CS before labour.</strong> Never permit ARM or spontaneous rupture at home. Admit at 37–38 weeks for elective CS. Do not permit vaginal delivery attempt.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>A pulsating cord confirms fetal circulation but not fetal safety.</strong> Cord compression can become complete within seconds. Pulsation does not permit any delay in management.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Fully dilated + cord prolapse = deliver vaginally now.</strong> Do not transfer to theatre for CS if delivery is imminent. Assisted vaginal delivery is faster and appropriate at full dilation with presenting part at or below spines.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Bladder filling buys time when manual elevation is insufficient.</strong> 500 mL saline via catheter elevates the presenting part mechanically. Drain before uterine incision. A useful bridge during transfer or theatre preparation.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Footling breech + prolabour rupture of membranes = very high cord prolapse risk.</strong> The foot does not occlude the lower segment. Urgent assessment and usually Category 1 CS regardless of gestation.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">The CTG looks reassuring, so cord prolapse can be managed conservatively.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>There is no conservative management of cord prolapse with fetal compromise.</strong> A reassuring CTG buys minutes, not time for watchful waiting. The moment cord compression occurs, category 1 CS or immediate assisted delivery is the only answer.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">The CTG looks reassuring — cord prolapse can be managed conservatively.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>There is no conservative management of cord prolapse with a live fetus.</strong> A reassuring CTG buys minutes, not time for observation. Category 1 CS or immediate assisted delivery is the only appropriate response.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">The cord is pulsating — that means the baby is fine.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>A pulsating cord confirms fetal circulation, but cord compression can become complete within seconds.</strong> Do not interpret pulsation as safety. Keep the presenting part elevated at all times until delivery.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">The cord is pulsating — the baby is fine, no rush.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Pulsation confirms circulation exists now — not that it will in 30 seconds.</strong> Complete compression can occur with any contraction. Maintain elevation and proceed to delivery at full speed regardless of cord pulsation.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">In a footling breech with cord prolapse, vaginal delivery is safer than CS.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Category 1 CS is the default for cord prolapse unless vaginal delivery is imminent.</strong> Footling breech does not make vaginal delivery safer — it makes cord compression more likely.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Footling breech + cord prolapse → CS is too risky at this gestation, try vaginal delivery.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Category 1 CS is the default for cord prolapse unless vaginal delivery is genuinely imminent.</strong> Footling breech does not lower the threshold — it raises it. The cord is compressed with every contraction and with the foot.</div></div>
 </div>
   </div>
 <div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Fingers in. Presenting part up.<br><em>Don't let go until delivery.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
@@ -3388,90 +3399,123 @@ NOTES.menopause=()=>`<div class="n-page"><div class="n-hero-new">
 NOTES.vulvalconditions=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-eyebrow">Gynaecology · Dermatology</div>
   <div class="n-hero-title">Vulval<br><em>Conditions</em></div>
-  <div class="n-hero-sub">Lichen sclerosus · VIN · Bartholin's &nbsp;·&nbsp; The ones that get missed</div>
-  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">A group of distinct vulval pathologies: <strong>lichen sclerosus (autoimmune atrophy), VIN (pre-cancer), Bartholin's cyst/abscess</strong>. Each requires different management.</div></div><div class="n-snap-cell"><div class="n-snap-label">Lichen sclerosus</div><div class="n-snap-text">White, atrophic, wrinkled skin ('cigarette paper'). Intense pruritus. Affects labia and peri-anal skin. Autoimmune — associated with thyroid disease and vitiligo.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Untreated lichen sclerosus → architectural distortion, phimosis of the clitoris, fused labia. 4–5% risk of squamous cell carcinoma of the vulva.</div></div></div>
+  <div class="n-hero-sub">Lichen sclerosus · Lichen planus · VIN · Bartholin's · Vulvodynia · The ones that get missed</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">Lichen sclerosus</div><div class="n-snap-text">White atrophic 'cigarette paper' skin in a figure-of-8 distribution. Intense pruritus. Autoimmune. <strong>4–5% lifetime risk of vulval SCC — annual review for life.</strong></div></div><div class="n-snap-cell"><div class="n-snap-label">Lichen planus</div><div class="n-snap-text">Erosive, glazed, red. Wickham's striae. Can involve vagina causing scarring and stenosis. Potent topical steroids + vaginal steroid suppositories.</div></div><div class="n-snap-cell"><div class="n-snap-label">Rule</div><div class="n-snap-text">Any vulval lesion that doesn't respond to treatment, any suspicious area, any same-site recurrence — <strong>biopsy it. Every time.</strong></div></div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Lichen Sclerosus vs Lichen Planus vs Lichen Simplex</span><span class="n-section-tag">three white conditions, three different diseases</span></div>
   <div class="n-viz-block">
-    <div class="n-viz-label-row">
-      <span class="n-viz-title">Vulval conditions — white, red, and ulcerated</span>
-      <span class="n-viz-sub">Biopsy what you are not sure about. Every time.</span>
-    </div>
+    <div class="n-viz-label-row"><span class="n-viz-title">Vulval conditions — white, red, and ulcerated</span><span class="n-viz-sub">Biopsy what you are not sure about. Every time.</span></div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">LICHEN
-SCLEROSUS</text>
-      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">White</tspan><tspan x="72" dy="16">Atrophic</tspan></text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Figure-of-8 pattern</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">'Cigarette paper' skin</text>
-      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Clobetasol · lifelong</text>
+      <text x="72" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">LICHEN SCLEROSUS</text>
+      <text x="72" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">White · Atrophic</text>
+      <text x="72" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Figure-of-8 pattern</text>
+      <text x="72" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Cigarette paper skin</text>
+      <text x="72" y="98" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Autoimmune (thyroid/vitiligo)</text>
+      <text x="72" y="140" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Clobetasol · lifelong</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">4–5% SCC risk</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">LICHEN
-PLANUS</text>
-      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Erosive</tspan><tspan x="227" dy="16">Red/Purple</tspan></text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Wickham's striae</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Affects vagina too</text>
-      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Steroids · immunosup</text>
-      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">VIN</text>
-      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Vulval</tspan><tspan x="382" dy="16">Intraepithelial</tspan></text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Pre-malignant lesion</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">HPV or differentiated</text>
-      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Refer to colposcopy</text>
-      <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">BARTHOLIN'S</text>
-      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">Cyst /</tspan><tspan x="537" dy="16">Abscess</tspan></text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">4 o'clock position</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Tender fluctuant swelling</text>
-      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Word catheter / marsup</text>
+      <text x="227" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">LICHEN PLANUS</text>
+      <text x="227" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Erosive · Red</text>
+      <text x="227" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Glazed erythema</text>
+      <text x="227" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Wickham's striae</text>
+      <text x="227" y="98" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Affects vagina too</text>
+      <text x="227" y="140" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Topical steroid + vaginal</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">SCC risk lower than LS</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
+      <text x="382" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">LICHEN SIMPLEX</text>
+      <text x="382" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Thickened · Lichenified</text>
+      <text x="382" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Scratch-itch cycle</text>
+      <text x="382" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Secondary to atopy/irritants</text>
+      <text x="382" y="98" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Not autoimmune</text>
+      <text x="382" y="140" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Moderate steroid + emollient</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Break the itch-scratch cycle</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
+      <text x="537" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">VIN</text>
+      <text x="537" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Pre-malignant</text>
+      <text x="537" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">HPV-related (younger)</text>
+      <text x="537" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Differentiated (older, from LS)</text>
+      <text x="537" y="98" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Raised white/red lesions</text>
+      <text x="537" y="140" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Biopsy · excision · imiquimod</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">dVIN: higher malignant potential</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">VULVAL
-CANCER</text>
-      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Squamous</tspan><tspan x="690" dy="16">Cell Ca</tspan></text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Arises on lichen scl.</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Warty / nodular ulcer</text>
-      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">4–5% lifetime LS risk</text>
+      <text x="690" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">VULVAL SCC</text>
+      <text x="690" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Malignant</text>
+      <text x="690" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Warty/nodular ulcer</text>
+      <text x="690" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Arises on LS or VIN</text>
+      <text x="690" y="98" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Postmenopausal peak</text>
+      <text x="690" y="140" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Wide excision + SNB</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Inguinofemoral LN dissection</text>
     </svg>
   </div>
-
-  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">White atrophic vulval skin + severe pruritus + figure-of-8 distribution (vulva + peri-anal) → think <em>lichen sclerosus</em> → potent topical steroid (clobetasol propionate).</div></div>
-  <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Lichen sclerosus is not a sexually transmitted infection.</strong> Patients are often wrongly told this. It is autoimmune. Sexual partners do not need treatment. Reassurance and correct diagnosis matter enormously for this group.</div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">The Main Vulval Conditions</span><span class="n-section-tag">side by side</span></div>
-  <div class="n-diff-grid">
-    <div class="n-diff-card this"><div class="n-diff-card-tag">Autoimmune atrophy</div><div class="n-diff-card-name">Lichen Sclerosus</div><div class="n-diff-card-key">White, wrinkled, 'cigarette paper' skin. Severe itch. Figure-of-8 pattern. <strong>Clobetasol propionate</strong> ointment. Annual review for SCC.</div></div>
-    <div class="n-diff-card that"><div class="n-diff-card-tag" style="color:#a03820">Inflammatory dermatosis</div><div class="n-diff-card-name">Lichen Planus</div><div class="n-diff-card-key">Erosive, glazed, red. Wickham's striae. Can involve vagina (causing scarring). Steroid cream ± vaginal steroid.</div></div>
-    <div class="n-diff-card that"><div class="n-diff-card-tag" style="color:#6b4fa8">Pre-cancer</div><div class="n-diff-card-name">VIN (Vulval Intraepithelial Neoplasia)</div><div class="n-diff-card-key">Raised, thickened, erythematous or white lesions. Often multifocal. HPV-related or differentiated (from LS). <strong>Biopsy all suspicious lesions.</strong></div></div>
-    <div class="n-diff-card that"><div class="n-diff-card-tag" style="color:#2a5aa8">Blocked duct</div><div class="n-diff-card-name">Bartholin's Cyst / Abscess</div><div class="n-diff-card-key">Cyst: painless, posterior labia. Abscess: acute onset, exquisitely tender swelling. Treat cyst if symptomatic; abscess needs <strong>marsupialisation or Word catheter</strong>.</div></div>
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Lichen Sclerosus vs Lichen Planus — Side by Side</span><span class="n-section-tag">the comparison the exam wants</span></div>
+  <div class="n-compare-grid">
+    <div class="n-compare-col">
+      <div class="n-compare-head">Lichen Sclerosus</div>
+      <div class="n-compare-row"><span class="n-compare-label">Appearance</span><span>White, atrophic, wrinkled. 'Cigarette paper' texture. Purpura from fragile vessels</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Distribution</span><span><strong>Figure-of-8</strong> — vulva + perianal skin. Does NOT affect vagina</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Symptoms</span><span>Intense pruritus. Dyspareunia. Clitoral phimosis. Fused labia minora</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Cause</span><span>Autoimmune. Associated with thyroid disease, vitiligo, alopecia areata</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Treatment</span><span><strong>Clobetasol propionate 0.05%</strong> — nightly × 4 weeks, alternate nights × 4 weeks, twice weekly maintenance</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">SCC risk</span><span><strong>4–5% lifetime risk of vulval SCC</strong> — annual specialist review for life</span></div>
+    </div>
+    <div class="n-compare-col">
+      <div class="n-compare-head">Lichen Planus</div>
+      <div class="n-compare-row"><span class="n-compare-label">Appearance</span><span>Glazed erythema, erosions, lacy white border (Wickham's striae)</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Distribution</span><span>Vulva <strong>AND vagina</strong> (causes scarring, stenosis) — distinguishes from LS</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Symptoms</span><span>Burning, soreness, dyspareunia. Postcoital bleeding if vaginal. Vaginal discharge</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Cause</span><span>T-cell mediated autoimmune. May have oral LP (lacy white patches on buccal mucosa)</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Treatment</span><span>Potent topical steroid + <strong>vaginal steroid suppositories/hydrocortisone foam</strong> to prevent stenosis. Immunosuppressants if refractory</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">SCC risk</span><span>Lower than LS but present — erosive LP is pre-malignant in some classifications</span></div>
+    </div>
+  </div>
+  <div class="n-exam-box"><div class="n-exam-if">Key differentiator</div><div class="n-exam-statement">Lichen planus involves the vagina and can cause vaginal stenosis/scarring — lichen sclerosus does not extend into the vagina. If there is vaginal involvement, it is LP until proven otherwise.</div></div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">VIN — Vulval Intraepithelial Neoplasia</span><span class="n-section-tag">two types, different risks</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">HPV-related VIN (uVIN)</div><div class="n-diag-content">Younger women (&lt;50). High-risk HPV (16, 18). Multifocal, raised, white/red/pigmented lesions. Associated with CIN, VAIN, anal intraepithelial neoplasia. Treatment: surgical excision, imiquimod (topical immune modifier), or CO2 laser. <strong>Lower malignant potential than dVIN.</strong></div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Differentiated VIN (dVIN)</div><div class="n-diag-content">Older women. Arises on background of lichen sclerosus. <strong>Much higher malignant potential — can progress to SCC rapidly.</strong> Often subtle — thickened, fissured lesion on LS background. Biopsy any non-healing area in LS. Treatment: surgical excision with clear margins.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Bartholin's cyst/abscess</div><div class="n-diag-content">Cyst: painless, posterior labium majus at 4 or 8 o'clock. Treat if symptomatic. Abscess: acutely tender, hot, fluctuant. <strong>Word catheter (4–6 weeks) or marsupialization.</strong> Swab for gonorrhoea/chlamydia. New Bartholin's mass in postmenopausal woman = biopsy (Bartholin's gland carcinoma).</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Vulvodynia</span><span class="n-section-tag">not psychosomatic — a real pain condition</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">Definition</div><div class="n-diag-content">Chronic vulval pain (&gt;3 months) without identifiable cause. Localised (vestibulodynia — provoked by touch/penetration) or generalised. <strong>Peripheral and central sensitisation — not a psychological disorder.</strong> Prevalence ~7–8% of women.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Assessment</div><div class="n-diag-content">Cotton-bud test: map pain at clock-face positions of vestibule. Exclude infection, LS, LP, contact dermatitis, fissures. Diagnosis of exclusion — biopsy if any visible lesion.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Treatment</div><div class="n-diag-content">Multidisciplinary: <strong>topical lidocaine</strong> (immediate relief before intercourse), <strong>topical amitriptyline/gabapentin</strong> (neuropathic modulation), <strong>pelvic floor physiotherapy</strong> (hypertonicity very common), <strong>CBT/pain psychology</strong>, oral tricyclics or gabapentinoids. Surgical vestibulectomy for refractory localised vestibulodynia — good outcomes.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">biopsy threshold is low</span></div>
   <div class="n-flag-list">
-    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Any suspicious vulval lesion must be biopsied.</strong> VIN and early vulval SCC are missed by appearance alone. Low threshold for biopsy in outpatients.</div></div>
-    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Lichen sclerosus without regular follow-up</strong> — annual review is required for life to detect malignant transformation. 4–5% SCC risk.</div></div>
-    <div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Bartholin's abscess in a postmenopausal woman</strong> — Bartholin's glands normally atrophy after menopause. A new swelling in this location = biopsy to exclude Bartholin's gland carcinoma.</div></div>
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Any vulval lesion not responding to treatment = biopsy.</strong> VIN and early vulval SCC are missed on appearance alone. Outpatient punch biopsy under LA is simple and definitive.</div></div>
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Lichen sclerosus without regular follow-up is inadequate care.</strong> Annual specialist review is required lifelong to detect malignant transformation. 4–5% lifetime SCC risk.</div></div>
+    <div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>New Bartholin's swelling in a postmenopausal woman = biopsy to exclude Bartholin's gland carcinoma.</strong> Bartholin's glands atrophy after menopause. Any new swelling in this location needs histology.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Clobetasol propionate (0.05% ointment) is first-line for lichen sclerosus.</strong> Use nightly for 4 weeks, then alternate nights for 4 weeks, then twice weekly for maintenance. Do not underdose.<span class="n-pearl-exam">Exam loves this: candidates prescribe weak steroids.</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>VIN is associated with high-risk HPV in younger women</strong> but with lichen sclerosus (differentiated VIN) in older women. The two types have different behaviours — differentiated VIN has higher malignant potential.</div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Word catheter</strong> for Bartholin's abscess: insert catheter, inflate balloon, leave in situ for 4–6 weeks to create an epithelialised tract. Preferable to simple incision and drainage which has high recurrence.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Clobetasol propionate 0.05% — first-line for lichen sclerosus, use the 3-month tapering regimen.</strong> Nightly × 4 weeks, alternate nights × 4 weeks, twice weekly maintenance. Underdosing is common — potent steroid is needed, not hydrocortisone.<span class="n-pearl-exam">Exam: candidates prescribe weak steroids. Wrong.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Lichen planus involves the vagina — lichen sclerosus does not.</strong> Vaginal involvement with scarring, stenosis, and loss of architecture = LP. This distinction is the most commonly tested differentiator.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Differentiated VIN has higher malignant potential than HPV-related VIN.</strong> Arises on lichen sclerosus in older women. Subtle lesion — any non-healing fissure or thickened area on LS must be biopsied.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Vulvodynia is a recognised neuropathic pain condition — not psychosomatic.</strong> Peripheral sensitisation + central sensitisation. Dismissing it as anxiety delays effective treatment. Multimodal management is required.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Word catheter for Bartholin's abscess — not simple I&D.</strong> Simple incision has a high recurrence rate. Word catheter left in situ for 4–6 weeks epithelialises a new duct opening. Marsupialization is the surgical equivalent.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Lichen sclerosus is not sexually transmitted — it is autoimmune.</strong> Patients are frequently and incorrectly told this. Sexual partners do not need treatment or testing. Reassurance and correct diagnosis matter enormously for this group.</div></div>
   </div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Lichen sclerosus is a skin condition — it can be managed by the GP indefinitely without review.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Lichen sclerosus requires annual specialist review indefinitely.</strong> The 4–5% lifetime risk of vulval SCC means ongoing surveillance is mandatory. Any non-healing area, induration, or failure to respond to clobetasol requires urgent biopsy.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Lichen sclerosus can be managed by GP indefinitely — specialist review is optional.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Annual specialist review is mandatory lifelong.</strong> 4–5% lifetime SCC risk. Any non-healing area, induration, or failure to respond to clobetasol requires urgent biopsy.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Vulvodynia is a psychosomatic condition caused by anxiety.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Vulvodynia is a recognised chronic pain condition driven by peripheral and central sensitisation — not psychological illness.</strong> Dismissing it as anxiety delays treatment and causes harm. It requires a structured multidisciplinary approach: neuropathic analgesia, physio, and psychological support in combination.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Topical oestrogen is first-line for lichen sclerosus.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Topical oestrogen has no role in lichen sclerosus.</strong> It treats vulvovaginal atrophy — a completely different condition. First-line for LS is clobetasol propionate 0.05%.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Topical oestrogen is the first-line treatment for lichen sclerosus.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Topical oestrogen has no role in lichen sclerosus.</strong> First-line is clobetasol propionate 0.05% applied using the 3-month tapering regimen. Topical oestrogen treats vulvovaginal atrophy — a completely different condition.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Vulvodynia is caused by anxiety and should be referred to psychiatry.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Vulvodynia is driven by peripheral and central sensitisation.</strong> Psychology is one component of a multimodal approach — not the sole treatment. Pelvic floor physiotherapy, topical neuropathic agents, and surgical options are all evidence-based.</div></div>
 </div>
   </div>
 <div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">White skin. Itch. Figure-of-8.<br>Biopsy what you're not sure about. <em>Every time.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
@@ -3848,102 +3892,100 @@ NOTES.obstetriccholestasis=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-eyebrow">Obstetrics · Antenatal</div>
   <div class="n-hero-title">Obstetric<br><em>Cholestasis</em></div>
   <div class="n-hero-sub">ICD O26.6 &nbsp;·&nbsp; Intrahepatic cholestasis of pregnancy — the itch that kills the baby, not the mother</div>
-  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Abnormal liver function with elevated bile acids in pregnancy, causing intense pruritus. Resolves after delivery. <strong>Bile acids &gt;40 µmol/L</strong> are associated with fetal risk.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">~0.7% of pregnancies in UK. Higher in South Asian and Scandinavian women. <strong>Recurs in 45–70% of subsequent pregnancies.</strong> Family history in first-degree relatives.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">The risk is entirely fetal: sudden unexplained stillbirth. The mother feels terrible but is not in danger. Fetal risk correlates with bile acid level — mild ICP has low risk, severe ICP is a different disease.</div></div></div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Abnormal liver function with elevated bile acids in pregnancy causing intense pruritus. Resolves after delivery. <strong>Bile acids ≥40 µmol/L</strong> carry significant fetal risk.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">~0.7% of pregnancies in UK. Higher incidence in South Asian and Scandinavian women. <strong>Recurs in 45–70% of subsequent pregnancies.</strong> Strong family history in first-degree relatives.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">The risk is entirely fetal: sudden unexplained stillbirth via bile-acid-induced cardiac arrhythmia. <strong>The mother feels terrible but is not in danger.</strong> Fetal risk correlates with bile acid level — mild ICP has low risk, severe ICP is a different disease.</div></div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">itch without rash, fetal risk, not maternal</span></div>
   <div class="n-viz-block">
-    <div class="n-viz-label-row">
-      <span class="n-viz-title">Obstetric cholestasis — bile acids and fetal risk</span>
-      <span class="n-viz-sub">The mother itches. The danger is entirely to the baby.</span>
-    </div>
+    <div class="n-viz-label-row"><span class="n-viz-title">Obstetric cholestasis — bile acids and fetal risk</span><span class="n-viz-sub">The mother itches. The danger is entirely to the baby.</span></div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
       <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MECHANISM</text>
-      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">↓Bile Acid</tspan><tspan x="72" dy="16">Excretion</tspan></text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Oestrogen impairs</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">hepatic bile transport</text>
+      <text x="72" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">↓ Bile acid excretion</text>
+      <text x="72" y="76" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Oestrogen impairs</text>
+      <text x="72" y="91" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">hepatic bile transport</text>
       <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Genetic susceptibility</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
       <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SYMPTOMS</text>
-      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Palmar /</tspan><tspan x="227" dy="16">Plantar Itch</tspan></text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Worse at night</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">No rash (scratch marks only)</text>
+      <text x="227" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Palmar/plantar itch</text>
+      <text x="227" y="76" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Worse at night</text>
+      <text x="227" y="91" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">No rash (scratch marks only)</text>
       <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">LFTs + bile acids</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a1a"/>
       <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">DIAGNOSIS</text>
-      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Bile Acids</tspan><tspan x="382" dy="16">>10 µmol/L</tspan></text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Mild <40 / Severe ≥40</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">ALT often elevated</text>
-      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Exclude other liver Dx</text>
+      <text x="382" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Bile acids &gt;19 µmol/L</text>
+      <text x="382" y="76" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Mild 19–39 / Severe ≥40</text>
+      <text x="382" y="91" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">ALT often elevated</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Fasting sample essential</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#8a3a1a"/>
       <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TREATMENT</text>
-      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">UDCA</tspan><tspan x="537" dy="16">+ Monitor</tspan></text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Ursodeoxycholic acid</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Weekly bile acids + LFT</text>
+      <text x="537" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">UDCA + monitor</text>
+      <text x="537" y="76" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Ursodeoxycholic acid</text>
+      <text x="537" y="91" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Weekly bile acids + LFTs</text>
       <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Relieves symptoms</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
       <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">DELIVER</text>
-      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">≥40 µmol/L</tspan><tspan x="690" dy="16">→ 35–37 wks</tspan></text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Sudden stillbirth risk</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Mechanism not fully known</text>
+      <text x="690" y="52" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">≥40 µmol/L → 35–37 wks</text>
+      <text x="690" y="76" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Sudden stillbirth risk</text>
+      <text x="690" y="91" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Cardiac arrhythmia mechanism</text>
       <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Mild: offer IOL 38–40</text>
     </svg>
   </div>
-
-  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Third trimester + intense pruritus (especially palms and soles) + no rash + abnormal LFTs → think <em>obstetric cholestasis</em> → fasting bile acids, LFTs. Do not reassure without investigating.</div></div>
-  <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>PUPPP (pruritic urticarial papules of pregnancy) has a rash. OC does not.</strong> If there is no rash but pruritus is severe — especially on palms and soles — investigate for OC regardless of LFT results on first test. Bile acids can be elevated before LFTs become abnormal.</div></div>
+  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Third trimester + intense pruritus (especially palms and soles) + no rash + raised ALT or bile acids → think <em>obstetric cholestasis</em> → fasting bile acids + LFTs. Do not reassure without investigating.</div></div>
+  <div class="n-distractor-box"><div class="n-distractor-label">PUPPP has a rash. OC does not.</div><div class="n-distractor-text"><strong>PUPPP (pruritic urticarial papules of pregnancy) has a visible rash. OC does not.</strong> Scratch marks from excoriation may be present, but there is no primary rash in OC. If there is no rash but severe pruritus — especially palms and soles — investigate for OC regardless of LFT results. Bile acids can be elevated before LFTs become abnormal.</div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Diagnosis</span><span class="n-section-tag">what to measure and when</span></div>
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Diagnosis — What to Measure and When</span><span class="n-section-tag">fasting bile acids are the test</span></div>
   <div class="n-diag-steps">
-    <div class="n-diag-row"><div class="n-diag-label gold">Fasting bile acids</div><div class="n-diag-content"><strong>The definitive test.</strong> Must be fasting (postprandial levels are unreliable). Diagnostic threshold: <strong>&gt;19 µmol/L</strong>. Mild: 19–39. Severe: ≥40. Risk of stillbirth rises steeply above 100 µmol/L.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label">LFTs</div><div class="n-diag-content">ALT/AST elevated. ALP is not useful in pregnancy (elevated normally due to placental isoform). Bilirubin may be mildly raised in severe cases.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label">Exclude other causes</div><div class="n-diag-content">Hepatitis A/B/C serology. USS liver if ALT grossly elevated. Exclude pre-eclampsia (BP, urinalysis, platelets). HELLP syndrome must be considered if severe derangement.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label err">Common mistake</div><div class="n-diag-content">Reassuring a woman with normal LFTs but pruritus. Bile acids can be elevated with normal LFTs. Always measure fasting bile acids in symptomatic women.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Fasting bile acids</div><div class="n-diag-content"><strong>The definitive test. Must be fasting</strong> — postprandial levels are unreliable and will be elevated in all pregnant women after a meal. Diagnostic threshold: &gt;19 µmol/L. Severity: mild 19–39 µmol/L, severe ≥40 µmol/L, extreme ≥100 µmol/L. Risk of stillbirth rises steeply above 100 µmol/L.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">LFTs</div><div class="n-diag-content">ALT/AST elevated. <strong>ALP is not useful in pregnancy</strong> — it is normally elevated due to placental ALP production. Bilirubin may be mildly raised in severe cases. Check weekly alongside bile acids once diagnosis confirmed.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Exclude other causes</div><div class="n-diag-content">Hepatitis A/B/C serology, USS liver if ALT grossly elevated. Exclude pre-eclampsia (BP, urinalysis, platelets, urate). <strong>HELLP syndrome</strong> must be considered if platelets falling or haemolysis present. Acute fatty liver of pregnancy (AFLP) if unwell + hypoglycaemia + coagulopathy.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Common mistake</div><div class="n-diag-content">Reassuring a woman with normal LFTs but ongoing pruritus. <strong>Bile acids can be elevated with entirely normal LFTs.</strong> Always measure fasting bile acids in any symptomatic woman — do not rely on LFTs alone to exclude OC.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Management</span><span class="n-section-tag">symptom + fetal surveillance + timing</span></div>
-  <div class="n-algo">
-    <div class="n-algo-row">
-  <div class="n-algo-step s-first">Ursodeoxycholic acid (UDCA)</div>
-  <div class="n-algo-body">First-line treatment. Dose: <strong>500 mg BD</strong> (or 10–15 mg/kg/day). Reduces maternal pruritus and improves LFTs. Does not clearly reduce stillbirth risk but is standard of care. Continue until delivery.<span class="n-involve">Obstetric team</span></div>
-</div>
-    <div class="n-algo-row">
-  <div class="n-algo-step s-fail">Fetal surveillance</div>
-  <div class="n-algo-body">CTG at each appointment from 32 weeks. Weekly bile acids and LFTs. <strong>CTG does not predict sudden fetal death in OC</strong> — the arrhythmia is sudden. Do not give false reassurance based on a normal CTG.<span class="n-involve">Obstetric team</span></div>
-</div>
-    <div class="n-algo-row">
-  <div class="n-algo-step s-severe">Timing of delivery</div>
-  <div class="n-algo-body"><strong>Mild OC (bile acids &lt;40): IOL at 40 weeks.</strong> Moderate (40–99): IOL at 38–39 weeks. Severe (≥100): discuss IOL at 35–37 weeks. Timing is the primary intervention — OC resolves within days of delivery.<span class="n-involve">Senior obstetrician</span></div>
-</div>
-    <div class="n-algo-row">
-  <div class="n-algo-step s-unstable">Vitamin K</div>
-  <div class="n-algo-body dark-body">Cholestasis impairs fat-soluble vitamin absorption. <strong>Vitamin K deficiency → neonatal haemorrhagic disease.</strong> Offer oral vitamin K supplementation if steatorrhoea present or PT prolonged. Ensure newborn receives vitamin K at birth.<span class="n-involve">Obstetric/neonatal team</span></div>
-</div>
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">UDCA — Mechanism & Evidence</span><span class="n-section-tag">treats the mother, not proven to save the baby</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">How UDCA works</div><div class="n-diag-content">Ursodeoxycholic acid is a hydrophilic bile acid that replaces toxic hydrophobic bile acids in the hepatic bile pool. It improves bile acid transport across the hepatocyte canalicular membrane, reduces serum bile acid levels, and decreases placental bile acid transfer to the fetus. <strong>Dose: 500mg BD (or 10–15 mg/kg/day).</strong></div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Clinical effect</div><div class="n-diag-content">Reduces maternal pruritus significantly and improves LFTs. Reduces serum bile acid levels. <strong>The PITCHES trial (2019) found no significant reduction in adverse perinatal outcomes</strong> with UDCA vs placebo — it does not definitively reduce stillbirth risk. Standard of care despite this — it improves maternal quality of life and may have benefit not captured by the trial.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Vitamin K</div><div class="n-diag-content">Cholestasis impairs fat-soluble vitamin absorption (A, D, E, K). <strong>Vitamin K deficiency → neonatal haemorrhagic disease.</strong> Offer oral vitamin K to mother if steatorrhoea or prolonged PT. Ensure newborn receives IM vitamin K at birth — routine in UK but especially important in OC.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Timing of Delivery — The Primary Intervention</span><span class="n-section-tag">delivery cures OC</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label">Mild OC (19–39 µmol/L)</div><div class="n-diag-content">Weekly bile acids + LFTs. CTG at each review. <strong>Offer IOL at 40 weeks</strong> (or from 38 weeks after discussion of risks/benefits). Low absolute fetal risk at this level.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Moderate OC (40–99 µmol/L)</div><div class="n-diag-content">Weekly monitoring. <strong>Offer IOL at 37–38 weeks.</strong> Significant fetal risk. Discuss risks of prematurity vs risk of stillbirth. Senior obstetrician involvement.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Severe OC (≥100 µmol/L)</div><div class="n-diag-content"><strong>Discuss IOL from 35–36 weeks.</strong> Individualize based on gestation, fetal wellbeing, and patient preference. Bile acids ≥100 µmol/L carry a substantial stillbirth risk — delivery outweighs prematurity risk from 35 weeks. Immediate senior review.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Why CTG doesn't help</div><div class="n-diag-content">The mechanism of fetal death in OC is thought to be a <strong>sudden bile-acid-induced cardiac arrhythmia</strong> — not progressive hypoxia. There is no preceding growth restriction, Doppler abnormality, or CTG change. A normal CTG provides false reassurance. Delivery timing is the only evidence-based fetal protective intervention.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Red Flags — Not OC</span><span class="n-section-tag">these are different, more dangerous diagnoses</span></div>
   <div class="n-flag-list">
-    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Bile acids ≥100 µmol/L carries a significant risk of stillbirth.</strong> These women require urgent senior obstetric review and individual discussion about early delivery.</div></div>
-    <div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Pruritus + jaundice + right upper quadrant pain = not OC.</strong> Think acute fatty liver of pregnancy (AFLP) or HELLP — both are obstetric emergencies requiring immediate delivery.</div></div>
-    <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>OC resolves within 2–4 weeks of delivery.</strong> If LFTs do not normalise postnatally, liver disease must be excluded — OC does not persist.</div></div>
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Bile acids ≥100 µmol/L = urgent senior review and discussion of early delivery.</strong> This is not mild OC — it carries substantial stillbirth risk. Do not manage as routine outpatient.</div></div>
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Pruritus + jaundice + RUQ pain + unwell = NOT OC.</strong> Think AFLP (acute fatty liver of pregnancy) or HELLP — both are obstetric emergencies requiring immediate delivery regardless of gestation.</div></div>
+    <div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>OC resolves within 2–4 weeks of delivery.</strong> If LFTs do not normalise postnatally, liver disease must be excluded — refer to hepatology. Persistent abnormalities after 6 weeks are not OC.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>The stillbirth in OC is sudden and unpredictable.</strong> Unlike placental causes of fetal compromise, it is not preceded by growth restriction or Doppler changes. CTG cannot reliably predict it. Delivery timing is the only effective intervention.<span class="n-pearl-exam">Exam loves this: candidates say CTG provides reassurance.</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>ALP is not a useful marker in OC.</strong> It is normally elevated in the third trimester due to placental ALP production. Rely on ALT, AST, and fasting bile acids.</div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>OC in a previous pregnancy increases the risk of future pregnancies being affected.</strong> Advise early testing (from 20 weeks) in subsequent pregnancies. Oral contraceptive pill containing oestrogen may trigger a recurrence — warn patients.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Stillbirth in OC is sudden and unpredictable — CTG cannot reliably predict it.</strong> The mechanism is bile-acid-induced fetal cardiac arrhythmia, not chronic hypoxia. Delivery timing is the only effective intervention.<span class="n-pearl-exam">Exam loves this: candidates say CTG provides reassurance in OC.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>ALP is not a useful marker in OC.</strong> Normally elevated in the third trimester due to placental isoform. Rely on ALT, AST, and fasting bile acids. Using ALP to diagnose or monitor OC is a common error.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>OC recurs in 45–70% of subsequent pregnancies.</strong> Advise testing from 20 weeks in future pregnancies. Warn that oestrogen-containing oral contraceptives can trigger a biochemical recurrence — use progesterone-only or non-hormonal contraception.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>UDCA treats maternal symptoms but has not been proven to prevent stillbirth (PITCHES trial, 2019).</strong> Still used as standard of care — improves bile acid levels and quality of life. Delivery timing remains the primary fetal-protective strategy.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Fasting bile acids &gt;19 µmol/L = diagnostic.</strong> Postprandial samples are unreliable — all pregnant women will have elevated levels after eating. Always request fasting sample. Repeat if symptomatic but initial level normal.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>OC is associated with increased risk of preterm labour, meconium passage, and fetal distress in labour.</strong> Continuous CTG in labour is recommended. Meconium-stained liquor in a known OC pregnancy should be taken seriously.</div></div>
   </div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">A normal CTG in OC means the fetus is safe.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>CTG does not predict sudden fetal death in obstetric cholestasis.</strong> The mechanism is thought to be a sudden bile-acid-induced fetal cardiac arrhythmia — not chronic hypoxia. A normal CTG does not negate the need for appropriately timed delivery.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>CTG does not predict sudden fetal death in obstetric cholestasis.</strong> The mechanism is an acute cardiac arrhythmia — not chronic hypoxia. A normal CTG does not negate the need for appropriately timed delivery.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">UDCA eliminates fetal risk in severe OC.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>UDCA reduces maternal symptoms and improves biochemistry but has not been shown to definitively reduce stillbirth risk.</strong> The PITCHES trial (2019) found no significant reduction in composite adverse outcomes with UDCA versus placebo. Delivery timing remains the primary intervention for fetal safety.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">UDCA eliminates fetal risk — delivery can wait until 40 weeks regardless of bile acid level.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>UDCA has not been shown to reduce stillbirth risk (PITCHES 2019).</strong> Delivery timing is individualised by bile acid level. Severe OC (≥100 µmol/L) warrants discussion of delivery from 35 weeks — regardless of UDCA use.</div></div>
+</div>
+    <div class="n-trap">
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Normal LFTs exclude obstetric cholestasis in a symptomatic woman.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Bile acids can be elevated with entirely normal LFTs.</strong> Always request fasting bile acids in any woman with unexplained pruritus in pregnancy. Do not rely on LFTs alone.</div></div>
 </div>
   </div>
 <div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">The mother itches.<br>The danger is entirely <em>to the baby.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
@@ -4068,99 +4110,104 @@ NOTES.endometrialcancer=()=>`<div class="n-page"><div class="n-hero-new">
 NOTES.urinaryincontinence=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-eyebrow">Gynaecology · Urogynaecology</div>
   <div class="n-hero-title">Urinary<br><em>Incontinence</em></div>
-  <div class="n-hero-sub">ICD N39.3 &nbsp;·&nbsp; The mechanism determines everything — treat the cause, not the symptom</div>
-  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Involuntary leakage of urine. Three main types: <strong>stress UI</strong> (leakage on exertion/cough/sneeze), <strong>urgency UI</strong> (overactive bladder — unable to defer), and <strong>mixed UI</strong> (both). Mechanism, not severity, determines treatment.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Affects ~1 in 3 women. Stress UI peaks post-childbirth; urgency UI peaks after menopause. <strong>Most women do not volunteer the symptom — always ask.</strong> Under-reported and under-treated.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Major impact on quality of life, social function, and mental health. Highly treatable with conservative measures. Surgery before conservative treatment is almost always the wrong sequence.</div></div></div>
+  <div class="n-hero-sub">Stress · Urgency · Overflow · Mixed · The mechanism determines everything</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">Stress UI</div><div class="n-snap-text">Sphincter weakness — leaks on cough, sneeze, exercise. Pelvic floor muscle training first. Surgery only after conservative failure.</div></div><div class="n-snap-cell"><div class="n-snap-label">Urgency UI / OAB</div><div class="n-snap-text">Detrusor overactivity — sudden urge, can't defer. Bladder training first. Anticholinergics or mirabegron second-line.</div></div><div class="n-snap-cell"><div class="n-snap-label">Overflow UI</div><div class="n-snap-text">Chronic urinary retention with overflow dribbling. Often missed. <strong>Check post-void residual in all UI.</strong> Cause: obstruction, neurological, anticholinergic drugs.</div></div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Four Types — Mechanism Determines Treatment</span><span class="n-section-tag">get the type right before treating</span></div>
   <div class="n-viz-block">
-    <div class="n-viz-label-row">
-      <span class="n-viz-title">Urinary incontinence — mechanism determines treatment</span>
-      <span class="n-viz-sub">Stress and urgency are different diseases with different treatments</span>
-    </div>
+    <div class="n-viz-label-row"><span class="n-viz-title">Urinary incontinence — mechanism determines treatment</span><span class="n-viz-sub">Stress and urgency are different diseases with different treatments</span></div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">STRESS UI</text>
-      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Sphincter</tspan><tspan x="72" dy="16">Weakness</tspan></text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Leak on cough/sneeze</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Childbirth · prolapse</text>
-      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">PFMT first-line</text>
-      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">URGENCY UI</text>
-      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Overactive</tspan><tspan x="227" dy="16">Bladder</tspan></text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Can't defer void</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Detrusor overactivity</text>
-      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Bladder training first</text>
-      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MIXED UI</text>
-      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Both</tspan><tspan x="382" dy="16">Components</tspan></text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Treat dominant first</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Then reassess</text>
-      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Very common post-meno</text>
-      <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MEDICAL</text>
-      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">Antimuscar</tspan><tspan x="537" dy="16">/ β3 agonist</tspan></text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Oxybutynin · solifenacin</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Mirabegron (β3-agonist)</text>
-      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Only after lifestyle fail</text>
-      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SURGICAL</text>
-      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">TVT / TOT</tspan><tspan x="690" dy="16">or Botox</tspan></text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Stress: mid-urethral tape</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Urgency: botox or SNM</text>
-      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Conservative always first</text>
+      <rect x="0" y="0" width="182" height="180" rx="2" fill="#1a3a2a"/>
+      <text x="91" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">STRESS UI</text>
+      <text x="91" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Sphincter weakness</text>
+      <text x="91" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Leak on cough/sneeze/exercise</text>
+      <text x="91" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Childbirth · prolapse</text>
+      <text x="91" y="140" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">PFMT × 3 months first</text>
+      <text x="91" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">TVT if conservative fails</text>
+      <rect x="193" y="0" width="182" height="180" rx="2" fill="#2a3a5a"/>
+      <text x="284" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">URGENCY UI / OAB</text>
+      <text x="284" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Detrusor overactivity</text>
+      <text x="284" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Sudden urge, can't defer</text>
+      <text x="284" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Frequency · nocturia</text>
+      <text x="284" y="140" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Bladder training first</text>
+      <text x="284" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Anticholinergic / mirabegron</text>
+      <rect x="386" y="0" width="182" height="180" rx="2" fill="#3a3a2a"/>
+      <text x="477" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">OVERFLOW UI</text>
+      <text x="477" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Retention + overflow</text>
+      <text x="477" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Dribbling, incomplete voiding</text>
+      <text x="477" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">PVR &gt;150 mL</text>
+      <text x="477" y="140" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Treat cause · catheterise</text>
+      <text x="477" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Never anticholinergics</text>
+      <rect x="579" y="0" width="181" height="180" rx="2" fill="#4a2a3a"/>
+      <text x="669" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">MIXED UI</text>
+      <text x="669" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Both components</text>
+      <text x="669" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Treat dominant type first</text>
+      <text x="669" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Reassess after treatment</text>
+      <text x="669" y="140" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Very common postmenopause</text>
+      <text x="669" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Combined approach</text>
     </svg>
   </div>
-
-  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Leakage on coughing/sneezing/exercise → <em>stress UI</em> → pelvic floor muscle training first. Sudden urge + can't make it to the toilet → <em>urgency UI</em> → bladder training + anticholinergics. Both → mixed UI → address predominant symptom first.</div></div>
-  <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Urodynamics are not required before treating uncomplicated stress or urgency UI.</strong> NICE: offer PFMT for stress UI and bladder training for urgency UI before urodynamics. Urodynamics are required before surgical treatment — not before conservative management.</div></div>
+  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Leakage on coughing/sneezing/exercise → stress UI → PFMT first. Sudden urge, can't make it → urgency UI → bladder training first. Dribbling + high post-void residual → overflow UI → investigate cause, catheterise, never anticholinergics.</div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Assessment</span><span class="n-section-tag">history drives the diagnosis</span></div>
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Assessment</span><span class="n-section-tag">history + bladder diary + PVR before any treatment</span></div>
   <div class="n-diag-steps">
-    <div class="n-diag-row"><div class="n-diag-label gold">Bladder diary</div><div class="n-diag-content"><strong>3-day bladder diary</strong> before any treatment. Documents frequency, volumes, leakage episodes, urgency. Identifies: frequency (>8 voids/day = OAB), nocturia (>1/night), large functional bladder capacity (>400 mL = unlikely OAB).</div></div>
-    <div class="n-diag-row"><div class="n-diag-label">Urinalysis + MSU</div><div class="n-diag-content">Exclude UTI and haematuria. <strong>Haematuria + urgency requires cystoscopy</strong> to exclude bladder cancer before treating as OAB.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label">Post-void residual</div><div class="n-diag-content">Bladder scan after voiding. Significant residual (&gt;150 mL) suggests voiding dysfunction — do not prescribe anticholinergics (worsens retention).</div></div>
-    <div class="n-diag-row"><div class="n-diag-label">Urodynamics</div><div class="n-diag-content">Required before surgery. Demonstrates: urodynamic stress incontinence (raised IAP + leak, no detrusor contraction), detrusor overactivity (involuntary contraction during filling), voiding dysfunction.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Bladder diary</div><div class="n-diag-content"><strong>3-day bladder diary before any treatment.</strong> Documents: frequency (normal &lt;8 voids/day), volumes, urgency episodes, nocturia (&gt;1/night = significant), leakage type (on exertion vs with urge). Identifies dominant UI type and functional bladder capacity.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Post-void residual (PVR)</div><div class="n-diag-content">Bladder scan after voiding. <strong>PVR &gt;150 mL = significant.</strong> Overflow UI diagnosis. Contraindication to anticholinergic drugs. Causes: bladder outlet obstruction, detrusor underactivity, neurological (MS, diabetic autonomic neuropathy), anticholinergic drugs.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Urinalysis + MSU</div><div class="n-diag-content">Exclude UTI (exacerbates all UI types). <strong>Haematuria + urgency = cystoscopy to exclude bladder cancer before treating as OAB.</strong> Never attribute haematuria to OAB without investigation.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Urodynamics</div><div class="n-diag-content"><strong>Required before surgery — not before conservative treatment.</strong> Demonstrates: urodynamic stress incontinence (IAP rise + leakage, no detrusor contraction), detrusor overactivity (involuntary contraction during filling), voiding dysfunction. NICE: do not perform urodynamics before first-line conservative management.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Management by Type</span><span class="n-section-tag">conservative before surgical — always</span></div>
-  <div class="n-algo">
-    <div class="n-algo-row">
-  <div class="n-algo-step s-first">Stress UI — conservative</div>
-  <div class="n-algo-body"><strong>Supervised pelvic floor muscle training (PFMT) × 3 months minimum</strong> — at least 8 contractions 3 times daily. 70% success rate with supervised training. Duloxetine (SNRI) second-line if PFMT fails: reduces leakage by 50% but poor tolerability (nausea).<span class="n-involve">Physiotherapy / GP</span></div>
-</div>
-    <div class="n-algo-row">
-  <div class="n-algo-step s-fail">Stress UI — surgical</div>
-  <div class="n-algo-body">After failed conservative treatment: <strong>mid-urethral synthetic sling (TVT/TOT)</strong> — most effective surgical option (cure rate ~80%). Colposuspension (Burch) and autologous fascial sling are alternatives. Urodynamics mandatory pre-operatively.<span class="n-involve">Urogynaecology</span></div>
-</div>
-    <div class="n-algo-row">
-  <div class="n-algo-step s-severe">Urgency UI / OAB — conservative</div>
-  <div class="n-algo-body"><strong>Bladder training: 6-week programme, gradually extending voiding intervals.</strong> Fluid advice (1.5L/day; reduce caffeine). Combined with PFMT for mixed UI.<span class="n-involve">GP / Continence nurse</span></div>
-</div>
-    <div class="n-algo-row">
-  <div class="n-algo-step s-unstable">Urgency UI — pharmacological/third-line</div>
-  <div class="n-algo-body dark-body"><strong>Anticholinergics</strong> (oxybutynin, tolterodine, solifenacin) or <strong>mirabegron</strong> (β3-agonist — preferred in elderly due to fewer cognitive side effects). Third-line: <strong>botulinum toxin A</strong> (cystoscopic injection, lasts 6 months) or <strong>percutaneous tibial nerve stimulation (PTNS). Sacral neuromodulation</strong> for refractory cases.<span class="n-involve">Urogynaecology</span></div>
-</div>
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Treatment Pathways</span><span class="n-section-tag">conservative before surgical — always</span></div>
+  <div class="n-compare-grid">
+    <div class="n-compare-col">
+      <div class="n-compare-head">Stress UI</div>
+      <div class="n-compare-row"><span class="n-compare-label">1st line</span><span><strong>Supervised PFMT × 3 months minimum.</strong> At least 8 contractions, 3×/day. 70% improvement with supervised training. Must be supervised — unsupervised exercises have much lower efficacy</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">2nd line</span><span>Duloxetine (SNRI) — reduces leakage episodes by ~50%. Poor tolerability (nausea in 30%). Offer as adjunct or if PFMT fails and patient declines surgery</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Surgical</span><span><strong>Mid-urethral synthetic sling (TVT/TOT)</strong> — ~80% cure rate. Requires urodynamics first. Autologous fascial sling or colposuspension as alternatives. Patient counselled about mesh risks</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Urodynamics?</span><span>Mandatory before surgery. Not required before conservative treatment</span></div>
+    </div>
+    <div class="n-compare-col">
+      <div class="n-compare-head">Urgency UI / OAB</div>
+      <div class="n-compare-row"><span class="n-compare-label">1st line</span><span><strong>Bladder training: 6-week programme,</strong> gradually extending voiding intervals. Combined with fluid advice (1.5L/day, reduce caffeine, avoid evening fluids). PFMT if mixed UI</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">2nd line</span><span>Anticholinergics: oxybutynin, tolterodine, solifenacin. Or <strong>mirabegron (β3-agonist) — preferred in elderly</strong> (fewer cognitive SE, does not cross BBB). Avoid oxybutynin in elderly</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">3rd line</span><span><strong>Botulinum toxin A</strong> (cystoscopic injection, lasts ~6 months). <strong>PTNS</strong> (percutaneous tibial nerve stimulation). <strong>Sacral neuromodulation</strong> for refractory cases</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Urodynamics?</span><span>Before 3rd-line treatments. Not required before bladder training or pharmacology</span></div>
+    </div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Overflow UI — Don't Miss It</span><span class="n-section-tag">the one that gets confused with the others</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label err">Presentation</div><div class="n-diag-content">Continuous dribbling, sensation of incomplete emptying, frequent small voids, recurrent UTIs. PVR &gt;150 mL on bladder scan. <strong>Often misdiagnosed as urgency UI</strong> — giving anticholinergics makes it dramatically worse.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Causes</div><div class="n-diag-content">Bladder outlet obstruction (prolapse, post-surgical), detrusor underactivity (neurological — MS, diabetes, spinal cord), iatrogenic (anticholinergic drugs, opiates), chronic urinary retention from any cause.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Treatment</div><div class="n-diag-content">Treat the underlying cause. <strong>Clean intermittent self-catheterisation (CISC)</strong> for detrusor underactivity. Catheterise acutely for large residuals. <strong>Absolute contraindication to anticholinergic drugs.</strong> Refer to urology/urogynaecology.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Oxybutynin is the most effective anticholinergic but has the worst side-effect profile.</strong> Dry mouth, constipation, blurred vision, and — critically — cognitive impairment in elderly women. Prefer tolterodine or solifenacin, or switch to mirabegron (β3-agonist) which does not cross the blood-brain barrier.<span class="n-pearl-exam">Exam loves this: candidates prescribe oxybutynin to elderly women.</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Mesh complications — be aware of the regulatory context.</strong> Transvaginal mesh for prolapse is banned in UK. Mid-urethral slings (TVT) for stress UI are still in use but restricted to specialist centres with patient counselling about risks (mesh exposure, chronic pain, dyspareunia).</div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Haematuria + urgency ≠ OAB until bladder cancer is excluded.</strong> Refer for cystoscopy and upper tract imaging first. Do not treat as overactive bladder in the presence of unexplained haematuria.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Urodynamics before surgery — not before conservative treatment.</strong> NICE is explicit: start PFMT for stress UI and bladder training for urgency UI without urodynamics. Urodynamics before conservative treatment is incorrect.<span class="n-pearl-exam">Exam: when are urodynamics indicated?</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Oxybutynin in elderly women = cognitive impairment.</strong> Anticholinergic burden — crosses blood-brain barrier, causes confusion, memory impairment, increased dementia risk with long-term use. Use mirabegron (β3-agonist) instead — does not cross BBB.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>High post-void residual + anticholinergic prescription = acute urinary retention.</strong> Always check PVR before prescribing anticholinergics. Overflow UI mimics urgency UI — the treatment for one is catastrophic for the other.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Haematuria + urgency ≠ OAB until bladder cancer excluded.</strong> Cystoscopy and upper tract imaging first. Never attribute haematuria to overactive bladder without investigation — bladder cancer is the diagnosis not to miss.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Mid-urethral sling (TVT) is restricted to specialist centres in the UK.</strong> Following the mesh scandal, all transvaginal mesh procedures require detailed counselling about risks (mesh exposure, chronic pain, dyspareunia) and must be performed by surgeons on the NHS mesh registry.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Supervised PFMT achieves ~70% improvement in stress UI.</strong> The critical word is supervised — physiotherapist-led, with real-time feedback. Women given leaflets with exercises at home have significantly worse outcomes. Always refer to a specialist continence physiotherapist.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Urodynamics should be performed before starting conservative treatment.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Urodynamics are required before surgical treatment, not before conservative treatment.</strong> NICE recommends PFMT for stress UI and bladder training for urgency UI as first-line without urodynamics. Performing urodynamics too early adds delay and cost without changing initial management.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Patient has urgency and frequency — prescribe oxybutynin and review in 6 weeks.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Check PVR first.</strong> Urgency UI and overflow UI look identical in history. Prescribing anticholinergics to a patient with overflow incontinence causes acute urinary retention. Always bladder scan before prescribing.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Surgery is the most effective treatment for stress incontinence and should be offered early.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Conservative treatment (supervised PFMT) achieves ~70% improvement and should always precede surgery.</strong> Surgery before a proper trial of PFMT is not appropriate. Pelvic floor physiotherapy outcomes are significantly better with supervised training versus unsupervised exercises — which is what most women are given.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Surgery is the most effective treatment for stress UI — offer it early to motivated patients.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Supervised PFMT achieves ~70% improvement and must precede surgery.</strong> Surgery before an adequate conservative trial is not appropriate. Urodynamics must be performed before any surgical intervention.</div></div>
+</div>
+    <div class="n-trap">
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Haematuria in a woman with OAB — treat the OAB, the haematuria is likely related.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Haematuria must be investigated before attributing it to OAB.</strong> Bladder cancer can present with urgency and haematuria. Cystoscopy + upper tract imaging first. OAB does not cause haematuria.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">The mechanism determines the treatment.<br><em>Stress and urgency are different diseases.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">The mechanism determines the treatment.<br><em>Check PVR before prescribing anything.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
@@ -4282,87 +4329,121 @@ EFFECTIVE</text>
 NOTES.sexuallytransmitted=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-eyebrow">Gynaecology · Infectious</div>
   <div class="n-hero-title">Sexually<br><em>Transmitted Infections</em></div>
-  <div class="n-hero-sub">ICD A50–A64 &nbsp;·&nbsp; NAAT · Partner notification · The prescription is never just the antibiotic</div>
-  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What matters</div><div class="n-snap-text">Chlamydia, gonorrhoea, syphilis, herpes, trichomonas, BV. Each has a distinct presentation, specific test, and treatment. <strong>Asymptomatic infection is the norm, not the exception</strong> — most STIs are found by screening, not symptoms.</div></div><div class="n-snap-cell"><div class="n-snap-label">Who gets it</div><div class="n-snap-text">Peak incidence: 16–25 year olds. New STI diagnoses rising in UK. Co-infection is common — test for all STIs when one is found. <strong>Never treat one STI without a full STI screen.</strong></div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Untreated STIs cause PID, infertility, ectopic pregnancy, chronic pelvic pain, neonatal disease, and cancer (HPV→cervical, HBV/HCV→liver). Partner notification is integral to management — not optional.</div></div></div>
+  <div class="n-hero-sub">NAAT · Partner notification · Treatment tables · The prescription is never just the antibiotic</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">The rule</div><div class="n-snap-text">Most STIs are asymptomatic. Found by screening, not symptoms. <strong>Finding one STI = full STI screen for all.</strong> Co-infection is common.</div></div><div class="n-snap-cell"><div class="n-snap-label">Partner notification</div><div class="n-snap-text">Integral to management — not optional. Look-back periods: chlamydia/gonorrhoea = 6 months, syphilis = 3 months to 2 years (stage-dependent). Health advisors at GUM clinics manage this.</div></div><div class="n-snap-cell"><div class="n-snap-label">Gonorrhoea</div><div class="n-snap-text">Resistance is rising — <strong>oral antibiotics no longer recommended.</strong> First-line is ceftriaxone 1g IM. Always culture + NAAT. Never empirical ciprofloxacin.</div></div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">High-Yield STI Summaries</span><span class="n-section-tag">one disease, one key fact</span></div>
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">STI Treatment Table</span><span class="n-section-tag">one disease, one treatment, one look-back period</span></div>
   <div class="n-viz-block">
-    <div class="n-viz-label-row">
-      <span class="n-viz-title">STIs — one disease, one key fact</span>
-      <span class="n-viz-sub">Asymptomatic infection is the norm — the prescription includes partner notification</span>
-    </div>
+    <div class="n-viz-label-row"><span class="n-viz-title">STIs — asymptomatic infection is the norm</span><span class="n-viz-sub">The prescription includes partner notification — every time</span></div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">CHLAMYDIA</text>
-      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Silent</tspan><tspan x="72" dy="16">Infection</tspan></text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Often asymptomatic</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">NAAT urine or swab</text>
-      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Azithromycin 1g stat</text>
+      <text x="72" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">CHLAMYDIA</text>
+      <text x="72" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Silent infection</text>
+      <text x="72" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Doxycycline 100mg BD × 7d</text>
+      <text x="72" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">NAAT (swab or urine)</text>
+      <text x="72" y="140" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Look-back: 6 months</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">PID · ectopic · infertility</text>
       <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">GONORRHOEA</text>
-      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Increasing</tspan><tspan x="227" dy="16">Resistance</tspan></text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">NAAT + culture both</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Urethral/cervical DC</text>
-      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Ceftriaxone 1g IM</text>
+      <text x="227" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">GONORRHOEA</text>
+      <text x="227" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Resistance rising</text>
+      <text x="227" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Ceftriaxone 1g IM stat</text>
+      <text x="227" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">NAAT + culture both</text>
+      <text x="227" y="140" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Look-back: 3 months</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">No oral agents — resistance</text>
       <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SYPHILIS</text>
-      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">3 Stages</tspan><tspan x="382" dy="16">+ Latent</tspan></text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Painless ulcer → rash</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">TPHA · VDRL · RPR</text>
-      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Benzylpenicillin IM</text>
+      <text x="382" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">SYPHILIS</text>
+      <text x="382" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">3 stages + latent</text>
+      <text x="382" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Benzathine pen G IM</text>
+      <text x="382" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">TPPA + RPR serology</text>
+      <text x="382" y="140" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Look-back: 3 months–2 years</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Notifiable disease</text>
       <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">HERPES</text>
-      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">HSV-1 / 2</tspan><tspan x="537" dy="16">Lifelong</tspan></text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Primary: severe ulcers</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Recurrence: triggers</text>
-      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Aciclovir 5 days</text>
+      <text x="537" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">HERPES (HSV)</text>
+      <text x="537" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Lifelong latency</text>
+      <text x="537" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Aciclovir 400mg TDS × 5d</text>
+      <text x="537" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">PCR swab from ulcer</text>
+      <text x="537" y="140" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">No cure — suppression option</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Neonatal risk at delivery</text>
       <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">BV / TRICH</text>
-      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Not STI /</tspan><tspan x="690" dy="16">STI</tspan></text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">BV: Gardnerella · fishy</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Trich: protozoan · frothy</text>
-      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Both: metronidazole</text>
+      <text x="690" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">BV / TRICH</text>
+      <text x="690" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Metronidazole</text>
+      <text x="690" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">BV: 400mg BD × 5d</text>
+      <text x="690" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Trich: 400mg BD × 7d</text>
+      <text x="690" y="140" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Trich: treat partners</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">BV: don't treat partners</text>
     </svg>
   </div>
-
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Partner Notification Look-Back Periods</span><span class="n-section-tag">the part candidates always forget</span></div>
+  <div class="n-compare-grid">
+    <div class="n-compare-col">
+      <div class="n-compare-head">Look-Back Periods (BASHH)</div>
+      <div class="n-compare-row"><span class="n-compare-label">Chlamydia</span><span><strong>6 months</strong> — or last partner if &gt;6 months ago</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Gonorrhoea</span><span><strong>3 months</strong> — or last partner if &gt;3 months ago</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Syphilis (1°)</span><span><strong>3 months + duration of symptoms</strong></span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Syphilis (2°)</span><span><strong>6 months + duration of symptoms</strong></span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Syphilis (early latent)</span><span><strong>2 years</strong></span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Trichomonas</span><span>Most recent partner / current partner</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">BV</span><span>Partners do NOT need treating — BV is not sexually transmitted</span></div>
+    </div>
+    <div class="n-compare-col">
+      <div class="n-compare-head">Who Notifies?</div>
+      <div class="n-compare-row"><span class="n-compare-label">Patient referral</span><span>Patient informs their own partners — most common method. Health advisor provides written notification card</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Provider referral</span><span>Health advisor contacts partners directly — used when patient unable or unwilling</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Contract referral</span><span>Patient given a time limit — if they don't notify, provider does</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Confidentiality</span><span>Index patient's identity is not disclosed to notified partners. Confidentiality is maintained</span></div>
+      <div class="n-compare-row"><span class="n-compare-label">Syphilis</span><span>Notifiable disease — report to UKHSA regardless of partner notification method</span></div>
+    </div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Individual STIs — Key Clinical Points</span><span class="n-section-tag">what the exam actually tests</span></div>
   <div class="n-diag-steps">
-    <div class="n-diag-row"><div class="n-diag-label gold">Chlamydia</div><div class="n-diag-content"><em>C. trachomatis.</em> <strong>Most common bacterial STI in UK.</strong> Usually asymptomatic. Symptoms: mucopurulent discharge, IMB, dysuria, pelvic pain. Test: NAAT (vulvovaginal swab or urine). Treatment: <strong>doxycycline 100mg BD × 7 days</strong> (first-line) or azithromycin 1g stat + 500mg daily × 2 days. Sequelae: PID, infertility, ectopic.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label gold">Gonorrhoea</div><div class="n-diag-content"><em>N. gonorrhoeae.</em> Purulent discharge, dysuria. Often co-infects with chlamydia. Test: NAAT (endocervical swab). <strong>Treatment: ceftriaxone 1g IM stat</strong> — oral agents no longer recommended due to resistance. Resistance patterns: always follow current BASHH guidelines. Contact trace all partners.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label">Syphilis</div><div class="n-diag-content"><em>T. pallidum.</em> Primary: painless ulcer (chancre). Secondary: systemic — rash (including palms/soles), condylomata lata, lymphadenopathy. Latent: asymptomatic. Tertiary: gummas, neuro, cardiovascular. Test: serology (TPPA + RPR). <strong>Treatment: benzathine penicillin G IM.</strong> Notifiable disease.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label">Herpes (HSV)</div><div class="n-diag-content">HSV-1 and HSV-2. Primary episode: painful vulval/vaginal ulcers + systemic symptoms. Recurrences milder. Diagnosis: clinical ± PCR swab from ulcer. <strong>Treatment: aciclovir 400mg TDS × 5 days.</strong> No cure — virus remains latent in dorsal root ganglia. Suppressive therapy (aciclovir 400mg BD) for frequent recurrences or to reduce transmission.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label">Trichomonas</div><div class="n-diag-content"><em>T. vaginalis.</em> Frothy yellow-green discharge, vulvovaginal soreness, strawberry cervix. Often asymptomatic. Microscopy (wet prep) or NAAT. <strong>Treatment: metronidazole 400mg BD × 5–7 days</strong> (avoid alcohol). Treat partners simultaneously.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label">BV (not sexually transmitted but associated)</div><div class="n-diag-content"><em>Gardnerella vaginalis</em> overgrowth. Thin grey-white discharge, <strong>fishy odour</strong> (especially post-coital), pH &gt;4.5. Clue cells on microscopy. <strong>Treatment: metronidazole 400mg BD × 5 days</strong> or 2g stat. High recurrence rate — do not treat partners routinely.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Chlamydia</div><div class="n-diag-content">Most common bacterial STI in UK. Usually asymptomatic. <strong>Doxycycline 100mg BD × 7 days first-line</strong> (BASHH 2022 — azithromycin 1g stat is now second-line due to macrolide resistance concerns and treatment failure). Sequelae: PID, infertility, ectopic pregnancy, Fitz-Hugh-Curtis syndrome (perihepatitis).</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Gonorrhoea</div><div class="n-diag-content"><em>N. gonorrhoeae.</em> Purulent cervical discharge. Often co-infects with chlamydia. <strong>Ceftriaxone 1g IM stat — always.</strong> No oral agents due to widespread resistance. NAAT is diagnostic; culture needed for sensitivity testing. Test of cure at 2 weeks. Resistance is a public health emergency.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Syphilis</div><div class="n-diag-content"><em>T. pallidum.</em> Primary: painless indurated ulcer (chancre), heals spontaneously. Secondary: systemic — rash including <strong>palms and soles</strong>, condylomata lata, lymphadenopathy. Latent: asymptomatic. Tertiary: gummas, neurosyphilis, aortic aneurysm. <strong>Benzathine benzylpenicillin G IM.</strong> Notifiable.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Herpes (HSV)</div><div class="n-diag-content">Primary: painful vulval ulcers + systemic upset + urinary retention. Recurrences milder. Latent in dorsal root ganglia — no cure. <strong>Aciclovir 400mg TDS × 5 days.</strong> Suppressive therapy (aciclovir 400mg BD) for frequent recurrences (&gt;6/year) or to reduce transmission. Asymptomatic shedding causes most transmission.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">HPV / Warts</div><div class="n-diag-content">Low-risk HPV 6 and 11 cause condylomata acuminata (genital warts). High-risk HPV 16, 18 → CIN, cervical cancer, VIN, anal cancer. Treatment for warts: podophyllotoxin (self-applied), imiquimod, cryotherapy, excision. <strong>HPV vaccination (Gardasil-9) protects against 9 types including 6, 11, 16, 18.</strong> No treatment eradicates the virus — clearance is by immune response.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">BV vs Trichomonas</div><div class="n-diag-content">BV (<em>Gardnerella</em> overgrowth): thin grey-white discharge, <strong>fishy odour</strong> especially post-coital, pH &gt;4.5, clue cells. Not sexually transmitted — don't treat partners. Trichomonas (<em>T. vaginalis</em>, protozoan): frothy yellow-green discharge, strawberry cervix, vulvovaginal soreness. STI — treat partners. Both: metronidazole (BV 400mg BD × 5d, Trich 400mg BD × 7d).</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Diagnosis Principles</span><span class="n-section-tag">what to take and why</span></div>
-  <div class="n-diff-grid">
-    <div class="n-diff-card this"><div class="n-diff-card-tag">NAAT — gold standard</div><div class="n-diff-card-name">Nucleic Acid Amplification Test</div><div class="n-diff-card-key">Detects chlamydia and gonorrhoea DNA with high sensitivity. Vulvovaginal self-swab or first-catch urine. <strong>Do not culture instead of NAAT</strong> — NAAT is more sensitive. Culture is needed for gonorrhoea sensitivity testing.</div></div>
-    <div class="n-diff-card that"><div class="n-diff-card-tag">Full STI screen</div><div class="n-diff-card-name">When one STI found</div><div class="n-diff-card-key">Chlamydia/gonorrhoea NAAT + syphilis serology + HIV + hepatitis B/C. <strong>Co-infection is common.</strong> Finding one STI should always prompt a full screen — do not treat in isolation.</div></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">STIs in Pregnancy — Special Considerations</span><span class="n-section-tag">fetal and neonatal risk</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label err">Syphilis in pregnancy</div><div class="n-diag-content"><strong>Treat immediately with benzathine benzylpenicillin G — all trimesters.</strong> Untreated maternal syphilis: stillbirth, neonatal death, congenital syphilis (snuffles, rash, hepatosplenomegaly, saddle nose). Notifiable. Ensure partner treated. All women screened at booking in UK.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Herpes in third trimester</div><div class="n-diag-content">Primary HSV in third trimester: <strong>aciclovir suppression from 36 weeks + strongly consider CS at delivery.</strong> Active lesions at delivery = CS recommended (neonatal herpes encephalitis risk). Recurrent HSV with no active lesions at delivery: vaginal delivery generally safe.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Chlamydia in pregnancy</div><div class="n-diag-content">Causes neonatal conjunctivitis and pneumonia. <strong>Treat with azithromycin 1g stat</strong> (doxycycline is contraindicated in pregnancy). Test of cure 5–6 weeks after treatment. Screen at booking in high-risk women.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Gonorrhoea in pregnancy</div><div class="n-diag-content">Causes ophthalmia neonatorum (hyperacute neonatal conjunctivitis). <strong>Ceftriaxone 1g IM stat.</strong> Neonatal eye prophylaxis at delivery in high-risk women. Gonorrhoea is notifiable.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
   <div class="n-flag-list">
-    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Syphilis in pregnancy = congenital syphilis risk.</strong> Untreated maternal syphilis causes stillbirth, neonatal death, or severely affected infant. Treat immediately with benzathine penicillin — all trimesters. Ensure partner treated. Notifiable.</div></div>
-    <div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Gonorrhoea resistance is rising.</strong> Do not use oral antibiotics (ciprofloxacin) empirically — resistance is widespread. First-line is ceftriaxone IM. If cephalosporin allergy: specialist advice. Always send culture for sensitivity testing alongside NAAT.</div></div>
-    <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Herpes in third trimester = neonatal risk.</strong> Active genital HSV lesions at delivery = strong indication for caesarean section to prevent neonatal herpes encephalitis. Aciclovir prophylaxis from 36 weeks if primary herpes in third trimester.</div></div>
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Gonorrhoea — oral antibiotics are no longer appropriate.</strong> Ciprofloxacin resistance is widespread. Ceftriaxone 1g IM is mandatory. Always send culture for sensitivity testing alongside NAAT.</div></div>
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Syphilis in pregnancy = treat immediately, all trimesters.</strong> Congenital syphilis is entirely preventable. UK screens all pregnant women at booking — missed diagnoses are a serious clinical governance failure.</div></div>
+    <div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Herpes primary in third trimester → aciclovir from 36 weeks + CS discussion.</strong> Neonatal herpes encephalitis has a high mortality. This window is narrow and decisions must be made promptly.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Partner notification is not optional — it is part of treatment.</strong> Untreated partners reinfect the index patient and continue transmission. For chlamydia: notify all partners within 6 months. For gonorrhoea and syphilis: notify all partners within 3 months (or further depending on stage). Health advisors at GUM clinics manage this.<span class="n-pearl-exam">Exam loves this: candidates discharge the patient without mentioning partner notification.</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Azithromycin is no longer recommended as first-line for chlamydia.</strong> BASHH 2022 guidelines recommend doxycycline 100mg BD × 7 days as first-line. Azithromycin 1g stat (with 500mg daily × 2 days) is second-line — concerns about macrolide resistance and treatment failure with single-dose regimen.</div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>BV is not sexually transmitted but increases susceptibility to STIs.</strong> The disrupted vaginal flora removes Lactobacillus — the acidic protective layer. BV triples the risk of STI acquisition including HIV. Do not treat partners routinely, but do treat BV found during STI screening.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Partner notification is part of the prescription — not optional.</strong> Chlamydia: 6-month look-back. Gonorrhoea: 3 months. Syphilis: 3 months to 2 years depending on stage. Health advisors at GUM clinics manage this systematically.<span class="n-pearl-exam">Exam: candidates discharge without mentioning partner notification.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Doxycycline is first-line for chlamydia — not azithromycin 1g stat (BASHH 2022).</strong> Single-dose azithromycin has higher treatment failure rates. Doxycycline 100mg BD × 7 days achieves better eradication. Azithromycin is second-line if doxycycline is contraindicated.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>BV is not sexually transmitted — do not treat the partner.</strong> Lactobacillus disruption from multiple partners is associated, but BV is an ecological imbalance, not an infection passed between partners. Contrast with trichomonas (STI) — always treat the partner.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Syphilis rash involves palms and soles — no other common STI does this.</strong> Secondary syphilis rash is maculopapular, non-itchy, and generalised including the palms and soles. Classic exam vignette. Also: condylomata lata (flat warty lesions at mucosal surfaces) ≠ condylomata acuminata (HPV warts).</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Asymptomatic viral shedding causes most herpes transmission.</strong> The majority of HSV transmission occurs when the source partner has no symptoms and no visible lesions. Suppressive antiviral therapy reduces (but does not eliminate) transmission. Condoms further reduce but do not eliminate risk.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Finding one STI = full STI screen.</strong> NAAT for chlamydia and gonorrhoea, syphilis serology, HIV, hepatitis B and C. Co-infection is common. Treating chlamydia and discharging without a full screen is a missed opportunity and a quality failure.</div></div>
   </div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">A negative swab for gonorrhoea culture means the patient does not have gonorrhoea.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Culture has lower sensitivity than NAAT for gonorrhoea.</strong> A negative culture does not exclude gonorrhoea if the NAAT is positive. NAAT is the diagnostic standard — culture is supplementary, primarily for resistance testing to guide treatment.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Chlamydia — treat with azithromycin 1g stat, review in 2 weeks.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Doxycycline 100mg BD × 7 days is first-line (BASHH 2022).</strong> Azithromycin single dose has higher treatment failure rates due to macrolide resistance. Doxycycline is the correct answer on any post-2022 exam.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Asymptomatic herpes is not infectious.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Herpes is transmitted during asymptomatic viral shedding.</strong> The majority of HSV transmission occurs when the source partner has no symptoms and no visible lesions. Suppressive antiviral therapy reduces (but does not eliminate) transmission risk. Condom use further reduces — but does not eliminate — transmission.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Gonorrhoea — prescribe ciprofloxacin 500mg orally as it's first-line.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Oral antibiotics for gonorrhoea are no longer recommended — widespread resistance.</strong> Ceftriaxone 1g IM stat is first-line. Always send culture for sensitivity. Empirical ciprofloxacin risks treatment failure and ongoing transmission.</div></div>
+</div>
+    <div class="n-trap">
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Patient has BV — treat the patient and advise the partner to get checked.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>BV partners do not need treating.</strong> BV is not sexually transmitted — it is an ecological disruption of vaginal flora. Treating partners does not reduce recurrence. Contrast with trichomonas (STI) where simultaneous partner treatment is mandatory.</div></div>
 </div>
   </div>
 <div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Partner notification<br><em>is part of the prescription.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
@@ -4375,104 +4456,102 @@ NOTES.sexuallytransmitted=()=>`<div class="n-page"><div class="n-hero-new">
 NOTES.acutegynae=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-hero-eyebrow">Gynaecology · Emergency</div>
   <div class="n-hero-title">Acute<br><em>Gynaecology</em></div>
-  <div class="n-hero-sub">ICD N83 &nbsp;·&nbsp; Torsion · TOA · Bartholin's · The diagnoses where hours determine whether an ovary survives</div>
-  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What it covers</div><div class="n-snap-text">Ovarian torsion, tubo-ovarian abscess (TOA), Bartholin's abscess, acute vulval haematoma, Mittelschmerz, haemoperitoneum from ruptured cyst. <strong>All present with acute pelvic pain — the diagnosis determines urgency.</strong></div></div><div class="n-snap-cell"><div class="n-snap-label">What you must not miss</div><div class="n-snap-text"><strong>Torsion and ruptured ectopic are surgical emergencies.</strong> Torsion: every hour of delay risks ovarian infarction. Ectopic: haemodynamic compromise requires immediate theatre. Both can present with a negative pregnancy test.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Ovarian torsion is the only gynaecological emergency where the organ can be saved by prompt surgery. Delayed diagnosis = oophorectomy. The window is narrow. A high index of suspicion is the only protective factor.</div></div></div>
+  <div class="n-hero-sub">Torsion · TOA · Haemoperitoneum · The diagnoses where hours determine whether an ovary survives</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">Must not miss</div><div class="n-snap-text"><strong>Torsion and ruptured ectopic are surgical emergencies.</strong> Torsion: every hour risks infarction. Ectopic: haemodynamic collapse requires immediate theatre. Both can have a normal pregnancy test.</div></div><div class="n-snap-cell"><div class="n-snap-label">Torsion rule</div><div class="n-snap-text">Untwist the ovary even if it looks black. <strong>Up to 90% recover function after detorsion</strong> — visual appearance is unreliable. Oophorectomy based on appearance = unnecessary organ loss.</div></div><div class="n-snap-cell"><div class="n-snap-cell"><div class="n-snap-label">Doppler rule</div><div class="n-snap-text">Present Doppler flow does <strong>not</strong> exclude torsion. Partial torsion preserves flow. Clinical suspicion + adnexal mass = diagnostic laparoscopy regardless of Doppler.</div></div></div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Ovarian Torsion</span><span class="n-section-tag">time is ovary</span></div>
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Triage — The Acute Pelvic Pain Algorithm</span><span class="n-section-tag">β-hCG first, always</span></div>
   <div class="n-viz-block">
-    <div class="n-viz-label-row">
-      <span class="n-viz-title">Acute gynaecology — time-critical diagnoses</span>
-      <span class="n-viz-sub">Torsion and ruptured ectopic — hours, not days</span>
-    </div>
+    <div class="n-viz-label-row"><span class="n-viz-title">Acute pelvic pain triage</span><span class="n-viz-sub">β-hCG is the first branch point — every time</span></div>
     <svg viewBox="0 0 760 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a3a2a"/>
-      <text x="72" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TORSION</text>
-      <text x="72" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="72" dy="0">Sudden</tspan><tspan x="72" dy="16">Unilateral Pain</tspan></text>
-      <text x="72" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Ovary twists on pedicle</text>
-      <text x="72" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">USS may show blood flow</text>
-      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Untwist even if dead</text>
-      <rect x="155" y="0" width="144" height="180" rx="2" fill="#2a3a5a"/>
-      <text x="227" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">RUPTURED
-ECTOPIC</text>
-      <text x="227" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="227" dy="0">Haemo-</tspan><tspan x="227" dy="16">peritoneum</tspan></text>
-      <text x="227" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Shoulder tip · shock</text>
-      <text x="227" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">βhCG positive + empty ut</text>
-      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Laparotomy not laparoscopy</text>
-      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a3a2a"/>
-      <text x="382" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TOA</text>
-      <text x="382" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="382" dy="0">Tubo-ovarian</tspan><tspan x="382" dy="16">Abscess</tspan></text>
-      <text x="382" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">PID + mass + fever</text>
-      <text x="382" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">CT or USS for size</text>
-      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">IV abx or drain</text>
-      <rect x="465" y="0" width="144" height="180" rx="2" fill="#5a3a1a"/>
-      <text x="537" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">BARTHOLIN'S</text>
-      <text x="537" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="537" dy="0">Abscess</tspan><tspan x="537" dy="16">4 o'clock</tspan></text>
-      <text x="537" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Hot tender swelling</text>
-      <text x="537" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Labium majus</text>
-      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Word catheter / marsup</text>
-      <rect x="620" y="0" width="140" height="180" rx="2" fill="#c8452a"/>
-      <text x="690" y="26" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">HAEMO-
-PERITONEUM</text>
-      <text x="690" y="44" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800"><tspan x="690" dy="0">Ruptured</tspan><tspan x="690" dy="16">Cyst</tspan></text>
-      <text x="690" y="74" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Corpus luteal most common</text>
-      <text x="690" y="89" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Haemodynamic instability</text>
-      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Conservative or theatre</text>
+      <rect x="0" y="0" width="144" height="180" rx="2" fill="#1a2a3a"/>
+      <text x="72" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">STEP 1 ALWAYS</text>
+      <text x="72" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">β-hCG</text>
+      <text x="72" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Positive = ectopic</text>
+      <text x="72" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">until excluded</text>
+      <text x="72" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Never skip this step</text>
+      <rect x="155" y="0" width="144" height="180" rx="2" fill="#c8452a"/>
+      <text x="227" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">β-hCG POSITIVE</text>
+      <text x="227" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Ectopic until proven otherwise</text>
+      <text x="227" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Empty uterus on USS</text>
+      <text x="227" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Adnexal mass ± free fluid</text>
+      <text x="227" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Laparotomy if shocked</text>
+      <rect x="310" y="0" width="144" height="180" rx="2" fill="#3a2a4a"/>
+      <text x="382" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">β-hCG NEGATIVE</text>
+      <text x="382" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Torsion · TOA · Cyst</text>
+      <text x="382" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Sudden onset = torsion</text>
+      <text x="382" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Fever + mass = TOA</text>
+      <text x="382" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">USS + CRP + WCC</text>
+      <rect x="465" y="0" width="144" height="180" rx="2" fill="#3a5a3a"/>
+      <text x="537" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TORSION</text>
+      <text x="537" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">Laparoscopy now</text>
+      <text x="537" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Detorsion even if black</text>
+      <text x="537" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Doppler unreliable</text>
+      <text x="537" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">Time = ovary</text>
+      <rect x="620" y="0" width="140" height="180" rx="2" fill="#5a3a1a"/>
+      <text x="690" y="22" font-family="Syne,sans-serif" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle" font-weight="700" letter-spacing="1.5">TOA</text>
+      <text x="690" y="46" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">IV antibiotics</text>
+      <text x="690" y="68" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Drain if no response</text>
+      <text x="690" y="83" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.72)" text-anchor="middle">Ruptured = laparotomy</text>
+      <text x="690" y="158" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.38)" text-anchor="middle">High mortality if missed</text>
     </svg>
   </div>
-
-  <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Sudden-onset severe unilateral pelvic pain (often with nausea/vomiting) in a woman of reproductive age + adnexal mass on USS → think <em>ovarian torsion</em> → urgent surgical review. Do not wait for Doppler to be absent.</div></div>
+  <div class="n-distractor-box"><div class="n-distractor-label">The appendicitis differential</div><div class="n-distractor-text">Right-sided pelvic pain in a woman of reproductive age — is it torsion, ectopic, appendicitis, or a ruptured cyst? <strong>β-hCG first always.</strong> Then USS. If USS inconclusive and appendicitis is possible, CT abdomen/pelvis. Diagnostic laparoscopy resolves the distinction and treats torsion simultaneously.</div></div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Ovarian Torsion</span><span class="n-section-tag">time is ovary</span></div>
   <div class="n-diag-steps">
-    <div class="n-diag-row"><div class="n-diag-label gold">Clinical features</div><div class="n-diag-content">Sudden severe unilateral pain, worse on movement. Often intermittent (partial torsion). Nausea and vomiting in ~70%. Low-grade fever if necrosis. Adnexal tenderness on bimanual. No pathognomonic signs.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label">USS + Doppler</div><div class="n-diag-content"><strong>USS shows ovarian enlargement ± cyst ± free fluid.</strong> Absent Doppler flow supports torsion — but <strong>present Doppler does not exclude it.</strong> Ovarian blood supply can be intermittent in partial torsion. Do not be falsely reassured by Doppler.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label err">Critical mistake</div><div class="n-diag-content"><strong>Waiting for Doppler to disappear before operating.</strong> Torsion is a clinical + USS diagnosis. Doppler flow can persist in early or partial torsion. If clinical suspicion is high, diagnostic laparoscopy is the correct next step.</div></div>
-  </div>
-  <div class="n-algo">
-    <div class="n-algo-row">
-  <div class="n-algo-step s-first">Laparoscopy — detorsion</div>
-  <div class="n-algo-body"><strong>Untwist the ovary even if it appears infarcted.</strong> Colour returns in up to 90% of cases after detorsion — apparent infarction on visual inspection is unreliable. Oophorectomy should be reserved for confirmed necrosis. Ovarian cystectomy if causative cyst identified.<span class="n-involve">Gynaecological surgery</span></div>
-</div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Presentation</div><div class="n-diag-content">Sudden severe unilateral pelvic pain, often with nausea and vomiting (~70%). May be intermittent (partial torsion — the ovary twists and untwists). Low-grade fever if necrosis developing. Adnexal tenderness on bimanual. <strong>No pathognomonic signs.</strong></div></div>
+    <div class="n-diag-row"><div class="n-diag-label">USS + Doppler</div><div class="n-diag-content">Ovarian enlargement ± cyst ± free fluid. <strong>Absent Doppler supports torsion but present Doppler does not exclude it.</strong> Sensitivity of absent Doppler for torsion is only ~44%. Partial torsion preserves intermittent flow. Do not be falsely reassured.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Critical error</div><div class="n-diag-content">Waiting for Doppler to disappear before operating. Torsion is a clinical + USS diagnosis. <strong>High clinical suspicion + adnexal enlargement = diagnostic laparoscopy.</strong> Do not wait for radiological certainty.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Treatment</div><div class="n-diag-content"><strong>Laparoscopic detorsion — even if the ovary looks black or necrotic.</strong> Colour returns in up to 90% of visually compromised ovaries. Oophorectomy reserved for confirmed necrosis after detorsion + observation. Ovarian cystectomy if causative cyst. Oophoropexy considered for recurrence or contralateral torsion risk.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Tubo-Ovarian Abscess (TOA)</span><span class="n-section-tag">PID gone wrong</span></div>
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Tubo-Ovarian Abscess</span><span class="n-section-tag">PID gone wrong</span></div>
   <div class="n-diag-steps">
-    <div class="n-diag-row"><div class="n-diag-label gold">Presentation</div><div class="n-diag-content">Severe pelvic pain, high fever, cervical excitation, adnexal mass. History of PID or unprotected sex. <strong>Markedly elevated CRP and WCC.</strong> USS or CT: thick-walled complex adnexal collection.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label">Management</div><div class="n-diag-content">IV antibiotics: <strong>cefoxitin + doxycycline</strong> or IV co-amoxiclav + metronidazole (BASHH regimen). If no improvement in 48–72 hours → image-guided drainage or laparoscopic drainage/salpingectomy. Risk of rupture → peritonitis.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label err">Ruptured TOA</div><div class="n-diag-content"><strong>Ruptured TOA = surgical emergency.</strong> Signs: sudden deterioration, peritonism, haemodynamic instability. Immediate laparotomy required. High mortality if diagnosis delayed.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Presentation</div><div class="n-diag-content">Severe pelvic pain, high fever (&gt;38°C), cervical excitation, bilateral adnexal tenderness, palpable mass. Markedly elevated CRP and WCC. History of PID or unprotected intercourse. USS or CT: thick-walled complex adnexal collection.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Management</div><div class="n-diag-content">IV antibiotics: <strong>cefoxitin + doxycycline + metronidazole</strong> (BASHH regimen). If no improvement at 48–72 hours → image-guided drainage (USS or CT guided) or laparoscopic drainage/salpingo-oophorectomy.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Ruptured TOA</div><div class="n-diag-content"><strong>Ruptured TOA = surgical emergency.</strong> Sudden deterioration, peritonism, haemodynamic instability. Immediate laparotomy. Septic shock can develop within hours. High mortality if diagnosis delayed.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Bartholin's Abscess & Cyst</span><span class="n-section-tag">the one you drain</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Haemoperitoneum — Ruptured Cyst</span><span class="n-section-tag">corpus luteum is the most common culprit</span></div>
   <div class="n-diag-steps">
-    <div class="n-diag-row"><div class="n-diag-label">Bartholin's cyst</div><div class="n-diag-content">Blocked Bartholin's duct. Painless swelling at 4 or 8 o'clock position of introitus. No treatment needed if asymptomatic. If large/symptomatic: marsupialization or Word catheter insertion.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label gold">Bartholin's abscess</div><div class="n-diag-content">Infected cyst. Exquisitely painful, warm, fluctuant. <strong>Treatment: Word catheter insertion</strong> (inflatable balloon catheter, left in situ for 4–6 weeks to epithelialise a new duct) or marsupialization under LA/GA. Swab for gonorrhoea and chlamydia.</div></div>
-    <div class="n-diag-row"><div class="n-diag-label err">Over-50s</div><div class="n-diag-content"><strong>New Bartholin's mass in a woman over 50 = biopsy to exclude Bartholin's gland carcinoma.</strong> Rare but important. Do not assume all labial masses in older women are benign cysts.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Presentation</div><div class="n-diag-content">Sudden onset unilateral pain, often mid-cycle or post-coital. Free fluid on USS. <strong>Corpus luteal cyst is the most common cause.</strong> May be associated with anticoagulation or bleeding diathesis.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Management</div><div class="n-diag-content">Haemodynamically stable + small bleed: <strong>conservative management</strong> — analgesia, observation, repeat USS. Haemodynamically unstable or large haemoperitoneum: <strong>laparoscopy or laparotomy</strong> for haemostasis (ovarian cystectomy or diathermy).</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Rule out ectopic</div><div class="n-diag-content"><strong>β-hCG must be negative before diagnosing ruptured ovarian cyst.</strong> Ruptured ectopic and ruptured corpus luteum have identical presentations. Never assume haemoperitoneum in a woman of reproductive age is benign without excluding pregnancy.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
   <div class="n-flag-list">
-    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Haemodynamic instability + acute pelvic pain = ruptured ectopic until proven otherwise.</strong> β-hCG, group and crossmatch, immediate senior review. Do not wait for USS if the patient is collapsing.</div></div>
-    <div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Torsion: every hour matters.</strong> Ovarian viability falls with time. Diagnostic laparoscopy should not be delayed by observation if clinical suspicion is high — even if Doppler is present.</div></div>
-    <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>A negative pregnancy test does not exclude ectopic pregnancy in very early gestation.</strong> If clinical suspicion is high, serial β-hCG + repeat USS are required. Rare ectopics can have very low hCG.</div></div>
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Haemodynamic instability + acute pelvic pain = ruptured ectopic until proven otherwise.</strong> β-hCG + group and crossmatch + immediate senior review. Do not wait for USS if the patient is collapsing.</div></div>
+    <div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Torsion: every hour matters.</strong> Ovarian viability falls with time. Do not delay diagnostic laparoscopy if clinical suspicion is high — even with a normal Doppler.</div></div>
+    <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Negative β-hCG does not exclude ectopic in very early gestation.</strong> If clinical suspicion is high, serial β-hCG + repeat USS are required. Very early ectopics can have undetectable hCG on initial testing.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
-    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Detorsion should be performed even if the ovary looks black.</strong> Congestion and haemorrhage cause apparent infarction on visual inspection — colour returns after untwisting in the majority. Intraoperative oophorectomy based on appearance alone is no longer appropriate.<span class="n-pearl-exam">Exam loves this: candidates say the ovary looked necrotic and was removed.</span></div></div>
-    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Risk factors for torsion:</strong> ovarian cyst (especially dermoid — most common cause), ovulation induction (enlarged ovaries), previous torsion (10% recurrence risk), long utero-ovarian ligament (predisposes). Torsion can occur in normal ovaries in reproductive-age women.</div></div>
-    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Mittelschmerz</strong> is mid-cycle ovulation pain — typically mild, unilateral, resolves within 24–48 hours. It is a diagnosis of exclusion. Acute onset, severe pain, or persisting pain requires investigation to exclude torsion, ruptured cyst, or ectopic.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Detorsion even if the ovary looks black.</strong> Congestion and haemorrhage cause apparent infarction — colour returns after untwisting in ~90%. Intraoperative oophorectomy based on visual appearance alone is no longer appropriate.<span class="n-pearl-exam">Exam: candidate says ovary looked necrotic and was removed. Wrong.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Doppler flow does not exclude torsion.</strong> Sensitivity of absent Doppler is only ~44%. Partial or intermittent torsion preserves flow. Clinical suspicion + enlarged ovary = diagnostic laparoscopy regardless of Doppler.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>β-hCG is always the first investigation in acute pelvic pain.</strong> Ruptured ectopic and torsion/ruptured cyst look identical clinically. Never proceed to USS without knowing the β-hCG result first.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>TOA risk factors: PID, IUCD, immunosuppression.</strong> IUCD does not cause TOA directly but may be a nidus. Remove IUCD once IV antibiotics started if TOA confirmed — improves response to treatment.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">05</div><div class="n-pearl-body"><strong>Mittelschmerz is a diagnosis of exclusion.</strong> Mid-cycle, mild, unilateral, resolves in 24–48 hours. Any severe, persistent, or recurrent acute pain requires investigation to exclude torsion, ectopic, or ruptured cyst before attributing to ovulation.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">06</div><div class="n-pearl-body"><strong>Dermoid cyst is the most common cause of ovarian torsion.</strong> Heavy, eccentric mass creates a pendulum effect — predisposes to twisting. Other risk factors: ovulation induction (enlarged follicles), previous torsion, long utero-ovarian ligament.</div></div>
   </div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Normal Doppler flow to the ovary excludes torsion.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Doppler flow can be present in ovarian torsion.</strong> Partial or intermittent torsion preserves some blood flow. The sensitivity of absent Doppler for torsion is only ~44–46%. Clinical suspicion + ovarian enlargement + acute pain is sufficient indication for diagnostic laparoscopy regardless of Doppler findings.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Normal Doppler flow excludes torsion — safe to observe.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Present Doppler does not exclude torsion.</strong> Sensitivity of absent Doppler is only ~44%. If clinical suspicion is high, proceed to diagnostic laparoscopy regardless of Doppler findings.</div></div>
 </div>
     <div class="n-trap">
-  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">A black, necrotic-appearing ovary should be removed at laparoscopy.</div></div>
-  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Untwist first, observe for colour change, then decide.</strong> Studies show up to 90% of visually compromised ovaries recover normal function after detorsion. Immediate oophorectomy based on visual appearance results in unnecessary loss of ovarian tissue and reproductive potential. Conserve unless truly necrotic and non-viable after adequate observation post-detorsion.</div></div>
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Black-looking ovary at laparoscopy = oophorectomy.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Detorsion first, observe for colour change, then decide.</strong> Up to 90% of visually compromised ovaries recover. Reserve oophorectomy for confirmed, irreversible necrosis after adequate observation post-detorsion.</div></div>
+</div>
+    <div class="n-trap">
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Pregnancy test negative — ectopic excluded, proceed to manage as torsion.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Very early ectopics can have undetectable β-hCG on urine dip.</strong> If clinical suspicion of ectopic remains, serum β-hCG is more sensitive. Serial measurements if equivocal. Do not rely solely on urine pregnancy test to exclude ectopic.</div></div>
 </div>
   </div>
-<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">Untwist it.<br><em>Even if it looks dead.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+<div class="n-anchor"><div class="n-anchor-card"><span class="n-anchor-label">The one thing to remember</span><div class="n-anchor-text">β-hCG first. Always.<br><em>Untwist the ovary — even if it looks dead.</em></div></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
   <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
