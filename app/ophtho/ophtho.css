@@ -2266,3 +2266,8 @@ mark.vent-hl:hover{filter:brightness(.82) saturate(1.8);}
 .note-modal.focus-mode .n-compare-row-label{color:rgba(30,87,153,.9);border-color:rgba(255,255,255,.06);}
 .note-modal.focus-mode .n-compare-cell{color:#c0b8a8;border-color:rgba(255,255,255,.06);}
 .note-modal.focus-mode .n-compare-cell strong{color:#e8e3d8;}
+
+/* TRAP FIX */
+.n-trap-list{gap:0 !important;}
+.n-trap{margin-bottom:12px;}
+.n-trap:last-child{margin-bottom:0;}
