@@ -64,8 +64,8 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:24px 6
 .ncard:hover .ncard-arrow{background:var(--accent);transform:rotate(45deg);}
 
 /* OVERLAY */
-.overlay{position:fixed;inset:0;background:rgba(10,7,4,.92);backdrop-filter:blur(14px);z-index:10000;display:flex;align-items:stretch;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:0;}
-.overlay.open{opacity:1;pointer-events:all;}
+.overlay{position:fixed;inset:0;background:rgba(10,7,4,.92);z-index:10000;display:none;align-items:stretch;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:0;}
+.overlay.open{display:flex;opacity:1;pointer-events:all;backdrop-filter:blur(14px);}
 .note-modal{background:var(--white);width:100%;max-width:860px;height:100vh;overflow-y:auto;transform:translateY(20px);transition:transform .4s cubic-bezier(.16,1,.3,1);box-shadow:0 60px 120px rgba(0,0,0,.6);scrollbar-width:thin;scrollbar-color:var(--border) transparent;display:flex;flex-direction:column;}
 .overlay.open .note-modal{transform:translateY(0);}
 .note-modal::-webkit-scrollbar{width:3px;}
