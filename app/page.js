@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import Head from 'next/head'
 import './home.css'
 
 export default function Home() {
@@ -79,7 +80,12 @@ export default function Home() {
   }, [])
 
   return (
-    <>
+    <>      <Head>
+        <meta name="description" content="Your medical learning companion" />
+        <meta property="og:description" content="Your medical learning companion" />
+        <meta property="og:title" content="vent.med" />
+        <meta name="twitter:description" content="Your medical learning companion" />
+      </Head>
       <div id="cdot"></div>
       <div id="cring"></div>
       <div id="toast" className="toast"></div>
