@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import Head from 'next/head'
 import './obgyn.css'
 
 export default function ObGyn() {
@@ -13,7 +14,10 @@ export default function ObGyn() {
   }, [])
 
   return (
-    <>
+    <>    <Head>
+      <meta name="description" content="Your medical learning companion" />
+      <meta property="og:description" content="Your medical learning companion" />
+    </Head>
       <div className="overlay" id="overlay" onClick={(e) => window.closeBg && window.closeBg(e)}>
         <div className="note-modal" id="modal">
           <div className="mbar">
