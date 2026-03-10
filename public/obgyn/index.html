@@ -6417,6 +6417,7 @@ function showResults(noteId) {
   });
   html += `</div><div class="res-actions"><button class="res-btn-retry" onclick="retryMCQ('${noteId}')">↻ Retry</button><button class="res-btn-back" onclick="backToNote()">← Back to note</button></div></div>`;
   document.getElementById('mcq-inner').innerHTML = html;
+  if (window.ventTrack) { window.ventTrack.mcqDone(noteId, noteId, pct, correct, mcqs.length); }
 }
 
 function retryMCQ(noteId) {
