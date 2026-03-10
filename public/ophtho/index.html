@@ -1313,6 +1313,27 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
 }
 
 </style>
+  <script>
+  (function() {
+    'use strict';
+    const SPECIALTY = 'ophtho';
+    const PROJ = 'vwotkstjgzwjjutzjjph';
+    const API  = '/api/progress';
+    function getToken() {
+      try { return JSON.parse(localStorage.getItem('sb-'+PROJ+'-auth-token'))?.access_token || null; } catch(e) { return null; }
+    }
+    function track(payload) {
+      const token = getToken();
+      if (!token) return;
+      fetch(API, { method:'POST', headers:{'Content-Type':'application/json','Authorization':'Bearer '+token}, body:JSON.stringify({specialty:SPECIALTY,...payload}) }).catch(()=>{});
+    }
+    window.ventTrack = {
+      noteOpened(id, name)              { track({note_id:id, note_name:name, event:'opened'}); try{localStorage.setItem('vent_last_note_'+SPECIALTY,JSON.stringify({noteId:id,noteName:name}));}catch(e){} },
+      breatheCompleted(id, name, secs)  { track({note_id:id, note_name:name, event:'completed', duration_s:secs}); },
+      mcqDone(id, name, pct, got, total){ track({note_id:id, note_name:name, event:'mcq_done', score_pct:pct, score_got:got, score_total:total}); },
+    };
+  })();
+  </script>
 </head>
 <body>
 
@@ -4975,6 +4996,7 @@ function bStop(showSummary = false) {
     const noteName = NOTE_NAMES[currentNote] || currentNote;
     const sess = { id: Date.now(), noteId: currentNote, topic: noteName, duration: elapsed, sections: bSessionSections, date: new Date().toISOString() };
     bAddSession(sess);
+    if (window.ventTrack) window.ventTrack.breatheCompleted(sess.noteId, sess.topic, sess.duration);
     if (showSummary) setTimeout(() => bShowSummary(sess), 600);
   }
 }
@@ -5285,6 +5307,17 @@ function vsFinish() {
 
   vsTrackTopicScore(vsCards, vsMarks);
   vlUpdateBadge();
+  if (window.ventTrack) {
+    const _byNote = {};
+    vsCards.forEach((c,i) => {
+      if (!_byNote[c.noteId]) _byNote[c.noteId] = { noteName: c.noteName, got: 0, total: 0 };
+      _byNote[c.noteId].total++;
+      if (vsMarks[i] === 'got') _byNote[c.noteId].got++;
+    });
+    Object.entries(_byNote).forEach(([nId, s]) => {
+      window.ventTrack.mcqDone(nId, s.noteName, s.total > 0 ? Math.round(s.got/s.total*100) : 0, s.got, s.total);
+    });
+  }
 
   const finEl = document.getElementById('vs-finish');
   const qEl   = document.getElementById('vs-question-view');
@@ -5483,6 +5516,7 @@ let currentNote = null;
 
 function openNote(id) {
   currentNote = id;
+  if (window.ventTrack) window.ventTrack.noteOpened(id, NOTE_NAMES[id] || id);
   const html = NOTES[id] ? NOTES[id]() : `<div class="n-page" style="padding-top:80px;text-align:center"><p style="font-family:'Instrument Serif',serif;font-size:28px;font-style:italic;color:var(--n-ink4);">Coming soon.</p></div>`;
   document.getElementById('mcontent').innerHTML = html;
 
