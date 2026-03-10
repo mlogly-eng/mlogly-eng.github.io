@@ -3242,9 +3242,25 @@ function showResults() {
       const tokenKey = keys.find(k => k.startsWith('sb-') && k.endsWith('-auth-token'))
         || keys.find(k => k.includes('supabase.auth.token'));
       if (!tokenKey) return;
-      const session = JSON.parse(localStorage.getItem(tokenKey));
-      const token = session?.access_token || session?.currentSession?.access_token;
+      let session = JSON.parse(localStorage.getItem(tokenKey));
+      let token = session?.access_token;
       if (!token) return;
+
+      // Refresh token if expired
+      const now = Math.floor(Date.now() / 1000);
+      if (session.expires_at && session.expires_at < now) {
+        const refreshRes = await fetch('https://vwotkstjgzwjjutzjjph.supabase.co/auth/v1/token?grant_type=refresh_token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'apikey': 'sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj' },
+          body: JSON.stringify({ refresh_token: session.refresh_token })
+        });
+        if (refreshRes.ok) {
+          const refreshed = await refreshRes.json();
+          token = refreshed.access_token;
+          // Update localStorage with new session
+          localStorage.setItem(tokenKey, JSON.stringify({...session, ...refreshed}));
+        } else return;
+      }
 
       await fetch('/api/progress', {
         method: 'POST',
