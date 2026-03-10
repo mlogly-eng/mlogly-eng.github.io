@@ -25,12 +25,16 @@ const SPECIALTIES = [
 
 export default function DashboardPage() {
   const router = useRouter()
-  const [user, setUser]           = useState(null)
-  const [loading, setLoading]     = useState(true)
-  const [stats, setStats]         = useState({ today: 0, total: 0, streak: 0, mcqAvg: null })
-  const [progress, setProgress]   = useState({}) // { ophtho: { opened: Set, completed: Set }, obgyn: ... }
-  const [lastNote, setLastNote]   = useState(null)
-  const [weaknesses, setWeaknesses] = useState([])
+  const [user, setUser]               = useState(null)
+  const [loading, setLoading]         = useState(true)
+  const [stats, setStats]             = useState({ today: 0, total: 0, streak: 0, mcqAvg: null })
+  const [progress, setProgress]       = useState({})
+  const [lastNote, setLastNote]       = useState(null)
+  const [weaknesses, setWeaknesses]   = useState([])
+  const [strengths, setStrengths]     = useState([])
+  const [scoreTrend, setScoreTrend]   = useState([])
+  const [untested, setUntested]       = useState([])
+  const [topicBreakdown, setTopicBreakdown] = useState([])
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
@@ -49,7 +53,6 @@ export default function DashboardPage() {
 
     if (error || !data) { setLoading(false); return }
 
-    // Build stats
     const today = new Date().toISOString().slice(0, 10)
     const byDate = {}
     let totalSessions = 0
@@ -58,6 +61,11 @@ export default function DashboardPage() {
     const progressMap = {}
     let latestNote = null
 
+    // Topic-level MCQ tracking: { [topic]: { got: number, total: number } }
+    const topicMap = {}
+    // Note-level: opened notes per specialty
+    const openedNotes = {}
+
     data.forEach(row => {
       const date = row.created_at.slice(0, 10)
       if (!byDate[date]) byDate[date] = 0
@@ -65,17 +73,31 @@ export default function DashboardPage() {
       totalSessions++
       if (date === today) todayCount++
 
-      // Track per-specialty progress
       if (!progressMap[row.specialty]) progressMap[row.specialty] = { opened: new Set(), completed: new Set() }
-      if (row.event === 'opened') progressMap[row.specialty].opened.add(row.note_id)
+      if (row.event === 'opened') {
+        progressMap[row.specialty].opened.add(row.note_id)
+        if (!openedNotes[row.specialty]) openedNotes[row.specialty] = new Set()
+        openedNotes[row.specialty].add(row.note_id)
+      }
       if (row.event === 'completed') progressMap[row.specialty].completed.add(row.note_id)
 
-      // MCQ scores
       if (row.event === 'mcq_done' && row.metadata?.score_pct != null) {
-        mcqScores.push({ note: row.note_id, specialty: row.specialty, pct: row.metadata.score_pct })
+        mcqScores.push({
+          note: row.note_id,
+          noteName: row.note_name || row.note_id,
+          specialty: row.specialty,
+          pct: row.metadata.score_pct,
+          got: row.metadata.score_got,
+          total: row.metadata.score_total,
+          date: row.created_at,
+        })
+
+        // Topic breakdown from metadata (if topic stored) or use note_name as proxy
+        const topicKey = row.note_name || row.note_id
+        if (!topicMap[topicKey]) topicMap[topicKey] = { name: topicKey, specialty: row.specialty, scores: [] }
+        topicMap[topicKey].scores.push(row.metadata.score_pct)
       }
 
-      // Last note
       if (!latestNote && (row.event === 'opened' || row.event === 'completed')) {
         latestNote = { specialty: row.specialty, noteId: row.note_id, noteName: row.metadata?.note_name || row.note_id }
       }
@@ -96,16 +118,45 @@ export default function DashboardPage() {
       ? Math.round(mcqScores.reduce((a, b) => a + b.pct, 0) / mcqScores.length)
       : null
 
-    // Weaknesses — notes with MCQ score < 60%
+    // Weaknesses — notes with MCQ score < 60%, lowest first
     const weak = mcqScores
       .filter(s => s.pct < 60)
       .sort((a, b) => a.pct - b.pct)
       .slice(0, 3)
 
+    // Score trend — last 8 MCQ sessions (oldest to newest for chart)
+    const trend = [...mcqScores].reverse().slice(-8)
+
+    // Topic breakdown — avg score per topic, sorted
+    const breakdown = Object.values(topicMap).map(t => ({
+      name: t.name,
+      specialty: t.specialty,
+      avg: Math.round(t.scores.reduce((a, b) => a + b, 0) / t.scores.length),
+      attempts: t.scores.length,
+    })).sort((a, b) => a.avg - b.avg)
+
+    // Strengths — topics consistently above 80%
+    const strong = breakdown.filter(t => t.avg >= 80).sort((a, b) => b.avg - a.avg).slice(0, 4)
+
+    // Untested — notes opened but no MCQ done
+    const testedNoteIds = new Set(mcqScores.map(s => s.note))
+    const untestedList = []
+    Object.entries(openedNotes).forEach(([spec, noteSet]) => {
+      noteSet.forEach(noteId => {
+        if (!testedNoteIds.has(noteId)) {
+          untestedList.push({ noteId, specialty: spec })
+        }
+      })
+    })
+
     setStats({ today: todayCount, total: totalSessions, streak, mcqAvg })
     setProgress(progressMap)
     setLastNote(latestNote)
     setWeaknesses(weak)
+    setStrengths(strong)
+    setScoreTrend(trend)
+    setTopicBreakdown(breakdown)
+    setUntested(untestedList.slice(0, 5))
     setLoading(false)
   }
 
@@ -129,6 +180,8 @@ export default function DashboardPage() {
       <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'10px',letterSpacing:'3px',color:'#a89e88',textTransform:'uppercase'}}>Loading…</div>
     </div>
   )
+
+  const trendMax = Math.max(...scoreTrend.map(s => s.pct), 1)
 
   return (
     <>
@@ -196,12 +249,55 @@ export default function DashboardPage() {
         .db-weak-score{font-family:'Instrument Serif',serif;font-size:24px;font-style:italic;color:#c8452a;}
         .db-empty{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:#a89e88;padding:24px 0;}
 
+        /* ── ANALYTICS ── */
+        .db-analytics{margin-bottom:56px;}
+
+        /* Score trend chart */
+        .trend-chart{display:flex;align-items:flex-end;gap:6px;height:80px;background:#faf7f0;border:1px solid #d4cfc0;padding:16px 20px 12px;margin-bottom:8px;}
+        .trend-bar-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
+        .trend-bar{width:100%;border-radius:1px;transition:height .4s cubic-bezier(.16,1,.3,1);min-height:3px;}
+        .trend-bar.good{background:#2a6642;}
+        .trend-bar.ok{background:#c8962a;}
+        .trend-bar.bad{background:#c8452a;}
+        .trend-label{font-family:'JetBrains Mono',monospace;font-size:8px;color:#a89e88;white-space:nowrap;}
+        .trend-caption{font-family:'JetBrains Mono',monospace;font-size:9px;color:#a89e88;letter-spacing:1px;margin-bottom:32px;}
+
+        /* Two-col analytics grid */
+        .analytics-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+        /* Strength / topic card */
+        .analytics-panel{background:#faf7f0;border:1px solid #d4cfc0;padding:24px;}
+        .analytics-panel-title{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#a89e88;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+        .analytics-panel-title::after{content:'';flex:1;height:1px;background:#ece7dc;}
+
+        .topic-row{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+        .topic-row:last-child{margin-bottom:0;}
+        .topic-name{font-size:12px;font-weight:600;color:#18140e;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+        .topic-bar-bg{flex:2;height:4px;background:#ece7dc;border-radius:2px;overflow:hidden;}
+        .topic-bar-fill{height:100%;border-radius:2px;transition:width .5s cubic-bezier(.16,1,.3,1);}
+        .topic-bar-fill.good{background:#2a6642;}
+        .topic-bar-fill.ok{background:#c8962a;}
+        .topic-bar-fill.bad{background:#c8452a;}
+        .topic-pct{font-family:'Instrument Serif',serif;font-size:16px;font-style:italic;min-width:36px;text-align:right;}
+        .topic-pct.good{color:#2a6642;}
+        .topic-pct.ok{color:#c8962a;}
+        .topic-pct.bad{color:#c8452a;}
+        .topic-attempts{font-family:'JetBrains Mono',monospace;font-size:8px;color:#a89e88;min-width:24px;text-align:right;}
+
+        /* Untested */
+        .untested-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #ece7dc;}
+        .untested-item:last-child{border-bottom:none;}
+        .untested-name{font-size:12px;font-weight:600;color:#18140e;}
+        .untested-spec{font-family:'JetBrains Mono',monospace;font-size:8px;color:#a89e88;margin-top:2px;}
+        .untested-badge{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1px;color:#c8452a;background:#fdf0ed;border:1px solid rgba(200,69,42,.2);padding:3px 8px;}
+
         @media(max-width:768px){
           .db-nav,.db-body{padding-left:24px;padding-right:24px;}
           .db-cards{grid-template-columns:1fr;}
           .db-stats{flex-direction:column;}
           .db-stat{border-right:none;border-bottom:1px solid #d4cfc0;}
           .db-stat:last-child{border-bottom:none;}
+          .analytics-grid{grid-template-columns:1fr;}
         }
       `}</style>
 
@@ -302,12 +398,96 @@ export default function DashboardPage() {
             {weaknesses.map((w, i) => (
               <div key={i} className="db-weak-item">
                 <div>
-                  <div className="db-weak-name">{w.note}</div>
-                  <div className="db-weak-spec">{w.specialty === 'obgyn' ? 'OB/GYN' : 'Ophthalmology'}</div>
+                  <div className="db-weak-name">{w.noteName || w.note}</div>
+                  <div className="db-weak-spec">{w.specialty === 'obgyn' ? 'OB/GYN' : w.specialty === 'qbank' ? 'Q-Bank' : 'Ophthalmology'}</div>
                 </div>
                 <div className="db-weak-score">{w.pct}%</div>
               </div>
             ))}
+          </div>
+        )}
+
+        {/* ── PERFORMANCE ANALYTICS ── */}
+        {scoreTrend.length > 0 && (
+          <div className="db-analytics">
+            <div className="db-sec-hdr">
+              <div className="db-sec-title">Performance <em>analytics</em></div>
+              <div className="db-sec-sub">{scoreTrend.length} sessions tracked</div>
+            </div>
+
+            {/* Score trend chart */}
+            <div className="trend-chart">
+              {scoreTrend.map((s, i) => {
+                const h = Math.max(6, Math.round((s.pct / 100) * 52))
+                const cls = s.pct >= 80 ? 'good' : s.pct >= 60 ? 'ok' : 'bad'
+                return (
+                  <div key={i} className="trend-bar-wrap" title={`${s.pct}% — ${s.noteName || s.note}`}>
+                    <div className={`trend-bar ${cls}`} style={{height: `${h}px`}}/>
+                    <div className="trend-label">{s.pct}%</div>
+                  </div>
+                )
+              })}
+            </div>
+            <div className="trend-caption">MCQ score trend — last {scoreTrend.length} sessions</div>
+
+            <div className="analytics-grid">
+
+              {/* Topic breakdown — weak first */}
+              {topicBreakdown.length > 0 && (
+                <div className="analytics-panel">
+                  <div className="analytics-panel-title">All topics</div>
+                  {topicBreakdown.slice(0, 6).map((t, i) => {
+                    const cls = t.avg >= 80 ? 'good' : t.avg >= 60 ? 'ok' : 'bad'
+                    return (
+                      <div key={i} className="topic-row">
+                        <div className="topic-name" title={t.name}>{t.name}</div>
+                        <div className="topic-bar-bg">
+                          <div className={`topic-bar-fill ${cls}`} style={{width: `${t.avg}%`}}/>
+                        </div>
+                        <div className={`topic-pct ${cls}`}>{t.avg}%</div>
+                        <div className="topic-attempts">{t.attempts}×</div>
+                      </div>
+                    )
+                  })}
+                </div>
+              )}
+
+              <div style={{display:'flex',flexDirection:'column',gap:20}}>
+
+                {/* Strengths */}
+                {strengths.length > 0 && (
+                  <div className="analytics-panel">
+                    <div className="analytics-panel-title">Strong areas</div>
+                    {strengths.map((t, i) => (
+                      <div key={i} className="topic-row">
+                        <div className="topic-name" title={t.name}>{t.name}</div>
+                        <div className="topic-bar-bg">
+                          <div className="topic-bar-fill good" style={{width: `${t.avg}%`}}/>
+                        </div>
+                        <div className="topic-pct good">{t.avg}%</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Untested notes */}
+                {untested.length > 0 && (
+                  <div className="analytics-panel">
+                    <div className="analytics-panel-title">Opened — never tested</div>
+                    {untested.map((u, i) => (
+                      <div key={i} className="untested-item">
+                        <div>
+                          <div className="untested-name">{u.noteId}</div>
+                          <div className="untested-spec">{u.specialty === 'obgyn' ? 'OB/GYN' : 'Ophthalmology'}</div>
+                        </div>
+                        <div className="untested-badge">No MCQ</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+              </div>
+            </div>
           </div>
         )}
 
