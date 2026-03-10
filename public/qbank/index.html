@@ -30,6 +30,8 @@
   --hl-yellow: rgba(255, 214, 0, 0.35);
   --hl-green:  rgba(42, 102, 66, 0.22);
   --hl-red:    rgba(200, 69, 42, 0.22);
+  --hl-blue:   rgba(42, 90, 180, 0.22);
+  --hl-purple: rgba(120, 42, 180, 0.22);
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -429,6 +431,8 @@ nav {
 .hl-btn.yellow { background: #ffd600; }
 .hl-btn.green  { background: rgba(42,102,66,.8); }
 .hl-btn.red    { background: var(--red); }
+.hl-btn.blue   { background: rgba(42,90,180,.85); }
+.hl-btn.purple { background: rgba(120,42,180,.85); }
 .hl-btn.clear  {
   background: none; border: 1px solid rgba(255,255,255,.2);
   font-family: 'JetBrains Mono', monospace; font-size: 9px;
@@ -449,6 +453,10 @@ mark.hl-green  { background: var(--hl-green);  color: inherit; padding: 0 1px; b
 mark.hl-green:hover  { filter: brightness(.88); }
 mark.hl-red    { background: var(--hl-red);    color: inherit; padding: 0 1px; border-radius: 1px; cursor: pointer; }
 mark.hl-red:hover    { filter: brightness(.88); }
+mark.hl-blue   { background: var(--hl-blue);   color: inherit; padding: 0 1px; border-radius: 1px; cursor: pointer; }
+mark.hl-blue:hover   { filter: brightness(.88); }
+mark.hl-purple { background: var(--hl-purple); color: inherit; padding: 0 1px; border-radius: 1px; cursor: pointer; }
+mark.hl-purple:hover { filter: brightness(.88); }
 
 /* ── STEM ── */
 .q-stem {
@@ -2673,8 +2681,8 @@ function renderQ() {
 
   // Apply user highlights for this question
   applyHighlights(idx);
-  // Auto-highlight critical clinical words
-  autoHighlightClinicalWords(idx);
+  // Auto-highlight disabled — breaks with HTML vignettes
+  // autoHighlightClinicalWords(idx);
 }
 
 // ─── AUTO-HIGHLIGHT CRITICAL CLINICAL WORDS ───────────────────
@@ -2787,6 +2795,8 @@ function showHlToolbar(x, y) {
     tb.innerHTML = `
       <button class="hl-btn yellow" title="Yellow" onclick="applyHl('yellow')"></button>
       <button class="hl-btn green"  title="Green"  onclick="applyHl('green')"></button>
+      <button class="hl-btn blue"   title="Blue"   onclick="applyHl('blue')"></button>
+      <button class="hl-btn purple" title="Purple" onclick="applyHl('purple')"></button>
       <button class="hl-btn red"    title="Red"    onclick="applyHl('red')"></button>
       <button class="hl-btn clear"  title="Remove" onclick="removeHl()">✕</button>
       <button class="hl-btn undo"   title="Undo"   onclick="undoHl()">↩</button>
@@ -2873,24 +2883,68 @@ function removeHl() {
 function applyHighlights(qIdx) {
   const vigEl = document.getElementById('vig-text');
   if(!vigEl) return;
+
+  // Always restore original HTML first
+  const raw = S.queue[S.ci] ? S.queue[S.ci].vig : null;
+  if(raw) vigEl.innerHTML = raw;
+
   const hl = S.highlights[qIdx];
   if(!hl || !hl.length) return;
 
-  // Re-render the vig-text with highlights inserted as <mark> spans
-  const raw = S.queue[S.ci].vig;
-  // We need to work with the HTML string, not just text.
-  // Strategy: render via a temp div, extract text positions, then reinsert marks.
-  // Simple approach: work with plain text content, insert marks, then restore HTML tags.
+  // Walk the DOM text nodes and insert <mark> elements at the right positions
+  // This preserves all original HTML tags (strong, em, etc.)
+  const sorted = [...hl].sort((a,b) => a.start - b.start);
 
-  // Build a text-level annotation layer using a simplified re-render:
-  const temp = document.createElement('div');
-  temp.innerHTML = raw;
-  const plainText = temp.textContent;
+  for(let hi = sorted.length - 1; hi >= 0; hi--) {
+    const { start, end, color } = sorted[hi];
+    insertMarkAtTextRange(vigEl, start, end, color);
+  }
+}
 
-  // Build segments
+function insertMarkAtTextRange(container, start, end, color) {
+  // Walk text nodes, find start and end positions, wrap in <mark>
+  let charCount = 0;
+  let startNode = null, startOffset = 0, endNode = null, endOffset = 0;
+
+  function walk(node) {
+    if(startNode && endNode) return;
+    if(node.nodeType === Node.TEXT_NODE) {
+      const len = node.textContent.length;
+      if(!startNode && charCount + len > start) {
+        startNode = node;
+        startOffset = start - charCount;
+      }
+      if(!endNode && charCount + len >= end) {
+        endNode = node;
+        endOffset = end - charCount;
+      }
+      charCount += len;
+    } else {
+      for(const child of Array.from(node.childNodes)) walk(child);
+    }
+  }
+  walk(container);
+
+  if(!startNode || !endNode) return;
+
+  try {
+    const range = document.createRange();
+    range.setStart(startNode, startOffset);
+    range.setEnd(endNode, endOffset);
+    const mark = document.createElement('mark');
+    mark.className = 'hl-' + color;
+    range.surroundContents(mark);
+  } catch(e) {
+    // surroundContents fails if range crosses element boundaries — skip gracefully
+  }
+}
+
+function _legacyUnused(qIdx) {
+  // kept for reference only — do not call
+  const plainText = '';
   const segments = [];
   let pos = 0;
-  const sorted = [...hl].sort((a,b) => a.start - b.start);
+  const sorted = [];
   for(const h of sorted) {
     if(h.start > pos) segments.push({ text: plainText.slice(pos, h.start), color: null });
     segments.push({ text: plainText.slice(h.start, h.end), color: h.color });
