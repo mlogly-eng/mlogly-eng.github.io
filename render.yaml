@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: vent.med
+    env: static
+    staticPublishPath: public
+    routes:
+      - type: rewrite
+        source: /obgyn
+        destination: /obgyn/index.html
