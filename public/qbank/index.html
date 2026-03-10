@@ -3248,9 +3248,11 @@ function showResults() {
 
       await fetch('/api/progress', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        },
         body: JSON.stringify({
-          token,
           event:     'mcq_done',
           specialty: S.sys && S.sys !== 'all' ? S.sys : 'qbank',
           note_id:   'qbank-session',
