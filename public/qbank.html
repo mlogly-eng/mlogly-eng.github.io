@@ -1,674 +1,929 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VENT — Q-Bank</title>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>VENT — Q-Bank</title><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"><style>
+/* ═══════════════════════════════════════════════════════════════
+   VENT Q-BANK — CLINICAL WORKSPACE
+   Redesigned: warm focus, red accents, AMBOSS-level clinical feel
+   ═══════════════════════════════════════════════════════════════ */
+
 :root {
-  --bg:       #f3f0e8;
-  --bg2:      #ebe7de;
-  --bg3:      #e2ddd3;
-  --card:     #faf8f4;
-  --ink:      #0d0b08;
-  --ink2:     #1a1814;
-  --ink3:     #38342e;
-  --ink4:     #786e64;
-  --ink5:     #a89e94;
-  --red:      #c8452a;
-  --red2:     #e0583a;
-  --redfaint: #f7eeeb;
-  --green:    #2a6642;
+  --bg:        #f3f0e8;
+  --bg2:       #ebe7de;
+  --bg3:       #e2ddd3;
+  --card:      #faf8f4;
+  --ink:       #0d0b08;
+  --ink2:      #1a1814;
+  --ink3:      #38342e;
+  --ink4:      #786e64;
+  --ink5:      #a89e94;
+  --red:       #c8452a;
+  --red2:      #e0583a;
+  --redfaint:  #f7eeeb;
+  --green:     #2a6642;
   --greenfaint:#eaf3ed;
-  --border:   #d6d0c6;
-  --border2:  #c8c2b8;
-  --white:    #fdfcfa;
-  --dark:     #141210;
-  --dark2:    #1e1c18;
-  --dark3:    #2a2822;
+  --border:    #d6d0c6;
+  --border2:   #c8c2b8;
+  --white:     #fdfcfa;
+  --dark:      #141210;
+  --dark2:     #1e1c18;
+  --dark3:     #2a2822;
+
+  /* highlight colours */
+  --hl-yellow: rgba(255, 214, 0, 0.35);
+  --hl-green:  rgba(42, 102, 66, 0.22);
+  --hl-red:    rgba(200, 69, 42, 0.22);
 }
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  font-family:'Syne',sans-serif;
-  background:var(--bg);
-  color:var(--ink);
-  -webkit-font-smoothing:antialiased;
-  min-height:100vh;
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Syne', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
-body::before{
-  content:'';position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:9999;opacity:.6;
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9999; opacity: .6;
 }
 
 /* ── NAV ── */
-nav{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:20px 64px;
-  background:var(--card);
-  border-bottom:1px solid var(--border);
-  position:sticky;top:0;z-index:500;
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 48px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 500;
+  height: 60px;
 }
-.logo{display:flex;align-items:center;gap:11px;text-decoration:none;}
-.logo-name{font-size:18px;font-weight:800;letter-spacing:4px;color:var(--ink);}
-.nav-back{
-  font-family:'JetBrains Mono',monospace;font-size:11px;
-  color:var(--ink4);text-decoration:none;letter-spacing:1px;transition:color .2s;
+.logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
+.logo-name { font-size: 18px; font-weight: 800; letter-spacing: 4px; color: var(--ink); }
+.nav-back {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--ink4); text-decoration: none; letter-spacing: 1px; transition: color .2s;
 }
-.nav-back:hover{color:var(--ink);}
-.nav-label{
-  font-family:'JetBrains Mono',monospace;font-size:10px;
-  letter-spacing:3px;color:var(--red);text-transform:uppercase;
+.nav-back:hover { color: var(--ink); }
+.nav-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 3px; color: var(--red); text-transform: uppercase;
 }
-
-
-.sys-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
-.sys-btn.soon{
-  padding:22px 20px;border:1.5px solid var(--border);background:var(--bg2);
-  text-align:left;opacity:.28;cursor:not-allowed;
-}
-.sys-btn.soon .sn{font-size:15px;font-weight:700;color:var(--ink3);}
-.sys-btn.soon .ss{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink5);}
-@media(max-width:960px){.sys-grid{grid-template-columns:1fr 1fr;}}
 
 /* ── SCREENS ── */
-#screen-launcher{display:block;}
-#screen-session{display:none;}
-#screen-results{display:none;}
+#screen-launcher { display: block; }
+#screen-session  { display: none; }
+#screen-results  { display: none; }
 
-/* ════════════════════════════
-   LAUNCHER
-════════════════════════════ */
-.launcher{max-width:860px;margin:0 auto;padding:80px 64px 100px;}
+/* ════════════════════════════════════════════
+   LAUNCHER — serious, purposeful
+════════════════════════════════════════════ */
+.launcher { max-width: 900px; margin: 0 auto; padding: 80px 64px 100px; }
 
-.l-eyebrow{
-  font-family:'JetBrains Mono',monospace;font-size:10px;
-  letter-spacing:3px;color:var(--red);text-transform:uppercase;
-  margin-bottom:20px;display:flex;align-items:center;gap:14px;
+.l-eyebrow {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 3px; color: var(--red); text-transform: uppercase;
+  margin-bottom: 20px; display: flex; align-items: center; gap: 14px;
 }
-.l-eyebrow::before{content:'';width:28px;height:1px;background:var(--red);}
+.l-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--red); }
 
-.l-h1{
-  font-family:'Instrument Serif',serif;
-  font-size:clamp(56px,8vw,96px);
-  font-weight:400;color:var(--ink);line-height:.92;
-  margin-bottom:24px;
+.l-h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: 400; color: var(--ink); line-height: .92;
+  margin-bottom: 20px;
 }
-.l-h1 em{font-style:italic;color:var(--red);}
+.l-h1 em { font-style: italic; color: var(--red); }
+.l-sub { font-size: 16px; color: var(--ink4); line-height: 1.8; max-width: 480px; margin-bottom: 56px; }
 
-.l-sub{
-  font-size:16px;color:var(--ink4);line-height:1.8;
-  max-width:480px;margin-bottom:80px;
+/* Recent performance strip */
+.l-perf-strip {
+  display: flex; gap: 2px; margin-bottom: 72px;
 }
+.l-perf-block {
+  flex: 1; padding: 20px 22px;
+  background: var(--card); border: 1px solid var(--border);
+}
+.l-perf-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 2px; color: var(--ink5); text-transform: uppercase; margin-bottom: 8px;
+}
+.l-perf-val {
+  font-family: 'Instrument Serif', serif; font-size: 32px;
+  font-style: italic; color: var(--ink); line-height: 1;
+}
+.l-perf-val.ok { color: var(--green); }
+.l-perf-val.warn { color: #8a6020; }
+.l-perf-val.bad { color: var(--red); }
+.l-perf-sub { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink5); margin-top: 4px; }
 
 /* config rows */
-.cfg{margin-bottom:56px;}
-.cfg-label{
-  font-family:'JetBrains Mono',monospace;font-size:9px;
-  letter-spacing:3px;color:var(--ink5);text-transform:uppercase;
-  margin-bottom:14px;display:flex;align-items:center;gap:12px;
+.cfg { margin-bottom: 52px; }
+.cfg-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 3px; color: var(--ink5); text-transform: uppercase;
+  margin-bottom: 14px; display: flex; align-items: center; gap: 12px;
 }
-.cfg-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.cfg-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-/* system */
-.sys-row{display:flex;gap:8px;}
-.sys-btn{
-  flex:1;padding:22px 20px;
-  border:1.5px solid var(--border);background:var(--card);
-  cursor:pointer;text-align:left;transition:all .2s;
+/* system grid */
+.sys-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.sys-btn {
+  padding: 22px 20px; border: 1.5px solid var(--border); background: var(--card);
+  cursor: pointer; text-align: left; transition: all .2s;
 }
-.sys-btn:hover{border-color:var(--ink3);}
-.sys-btn.on{border-color:var(--ink);background:var(--ink);}
-.sys-btn.on .sn{color:var(--bg);}
-.sys-btn.on .ss{color:rgba(243,240,232,.35);}
-.sn{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px;transition:color .2s;}
-.ss{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink5);transition:color .2s;}
+.sys-btn:hover { border-color: var(--ink3); }
+.sys-btn.on { border-color: var(--ink); background: var(--ink); }
+.sys-btn.on .sn { color: var(--bg); }
+.sys-btn.on .ss { color: rgba(243,240,232,.35); }
+.sys-btn.soon { opacity: .28; cursor: not-allowed; background: var(--bg2); }
+.sn { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 4px; transition: color .2s; }
+.ss { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink5); transition: color .2s; }
 
 /* mode */
-.mode-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-.mode-btn{
-  padding:24px 22px;
-  border:1.5px solid var(--border);background:var(--card);
-  cursor:pointer;text-align:left;transition:all .2s;
+.mode-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.mode-btn {
+  padding: 24px 22px; border: 1.5px solid var(--border); background: var(--card);
+  cursor: pointer; text-align: left; transition: all .2s;
 }
-.mode-btn:hover{border-color:var(--ink3);}
-.mode-btn.on{border-color:var(--ink);background:var(--ink);}
-.mode-btn.on .mn{color:var(--bg);}
-.mode-btn.on .md{color:rgba(243,240,232,.35);}
-.mn{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:7px;transition:color .2s;}
-.md{font-size:13px;color:var(--ink4);line-height:1.55;transition:color .2s;}
+.mode-btn:hover { border-color: var(--ink3); }
+.mode-btn.on { border-color: var(--ink); background: var(--ink); }
+.mode-btn.on .mn { color: var(--bg); }
+.mode-btn.on .md { color: rgba(243,240,232,.35); }
+.mn { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 7px; transition: color .2s; }
+.md { font-size: 13px; color: var(--ink4); line-height: 1.55; transition: color .2s; }
 
 /* count */
-.count-row{display:flex;align-items:center;gap:24px;}
-.count-input{
-  width:110px;padding:14px 18px;
-  font-family:'Instrument Serif',serif;font-size:30px;font-style:italic;
-  color:var(--ink);background:var(--card);
-  border:1.5px solid var(--border);outline:none;
-  transition:border-color .2s;text-align:center;
-  -moz-appearance:textfield;
+.count-row { display: flex; align-items: center; gap: 24px; }
+.count-input {
+  width: 110px; padding: 14px 18px;
+  font-family: 'Instrument Serif', serif; font-size: 30px; font-style: italic;
+  color: var(--ink); background: var(--card);
+  border: 1.5px solid var(--border); outline: none;
+  transition: border-color .2s; text-align: center;
+  -moz-appearance: textfield;
 }
-.count-input::-webkit-inner-spin-button,.count-input::-webkit-outer-spin-button{-webkit-appearance:none;}
-.count-input:focus{border-color:var(--ink);}
-.count-note{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink5);line-height:1.7;}
+.count-input::-webkit-inner-spin-button,
+.count-input::-webkit-outer-spin-button { -webkit-appearance: none; }
+.count-input:focus { border-color: var(--ink); }
+.count-note { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink5); line-height: 1.7; }
+
+/* session goal */
+.goal-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.goal-chip {
+  padding: 10px 18px;
+  border: 1px solid var(--border); background: var(--card);
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink4);
+  cursor: pointer; transition: all .18s;
+}
+.goal-chip:hover { border-color: var(--ink3); color: var(--ink); }
+.goal-chip.on { border-color: var(--red); background: var(--redfaint); color: var(--red); }
 
 /* launch */
-.launch-row{
-  display:flex;align-items:center;justify-content:space-between;
-  padding-top:44px;border-top:1px solid var(--border);
+.launch-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 44px; border-top: 1px solid var(--border);
 }
-.launch-summary{
-  font-family:'JetBrains Mono',monospace;font-size:12px;
-  color:var(--ink5);letter-spacing:.3px;
+.launch-summary { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink5); letter-spacing: .3px; }
+.launch-summary strong { color: var(--ink3); }
+.launch-btn {
+  background: var(--ink); color: var(--bg); border: none;
+  padding: 20px 56px;
+  font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700;
+  cursor: pointer; transition: all .25s;
+  display: flex; align-items: center; gap: 14px; letter-spacing: .3px;
 }
-.launch-summary strong{color:var(--ink3);}
-.launch-btn{
-  background:var(--ink);color:var(--bg);border:none;
-  padding:20px 56px;
-  font-family:'Syne',sans-serif;font-size:15px;font-weight:700;
-  cursor:pointer;transition:all .25s;
-  display:flex;align-items:center;gap:14px;letter-spacing:.3px;
-}
-.launch-btn:hover{background:var(--red);}
-.launch-arr{font-size:20px;transition:transform .2s;}
-.launch-btn:hover .launch-arr{transform:translateX(5px);}
+.launch-btn:hover { background: var(--red); }
+.launch-arr { font-size: 20px; transition: transform .2s; }
+.launch-btn:hover .launch-arr { transform: translateX(5px); }
 
-/* ════════════════════════════
-   SESSION  — sidebar + one wide content area
-════════════════════════════ */
-.session{display:grid;grid-template-columns:52px 1fr;min-height:calc(100vh - 61px);}
+/* Focus banner */
+.focus-banner {
+  background: var(--dark); padding: 18px 22px; margin-bottom: 32px;
+  display: flex; align-items: center; gap: 16px;
+  border-left: 3px solid var(--red);
+}
+.focus-banner-text { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(243,240,232,.65); line-height: 1.6; flex: 1; }
+.focus-banner-text strong { color: var(--red); }
+.focus-banner-close { background: none; border: none; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(243,240,232,.3); cursor: pointer; padding: 4px 8px; transition: color .2s; }
+.focus-banner-close:hover { color: rgba(243,240,232,.7); }
+.focus-banner-btn { background: var(--red); color: white; border: none; font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; padding: 10px 20px; cursor: pointer; transition: all .2s; white-space: nowrap; }
+.focus-banner-btn:hover { background: var(--red2); }
+
+
+/* ════════════════════════════════════════════
+   SESSION — clinical workspace
+   Layout: sidebar (220px) + main area
+════════════════════════════════════════════ */
+.session {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: calc(100vh - 60px);
+}
 
 /* ── SIDEBAR ── */
-.sidebar{
-  background:var(--dark);
-  display:flex;flex-direction:column;
-  position:sticky;top:61px;height:calc(100vh - 61px);
-  width:52px;flex-shrink:0;
-  border-right:1px solid rgba(255,255,255,.06);
+.sidebar {
+  background: var(--dark);
+  display: flex; flex-direction: column;
+  position: sticky; top: 60px; height: calc(100vh - 60px);
+  overflow-y: auto; overflow-x: hidden;
+  border-right: 1px solid rgba(255,255,255,.06);
+  flex-shrink: 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,.08) transparent;
 }
-.sb-head{
-  padding:8px 0 6px;
-  border-bottom:1px solid rgba(255,255,255,.06);
-  flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
+.sidebar::-webkit-scrollbar { width: 3px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); }
+
+/* sidebar header */
+.sb-head {
+  padding: 20px 18px 14px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  flex-shrink: 0;
 }
-.sb-head-label{display:none;}
-.sb-head-count{
-  font-family:'JetBrains Mono',monospace;font-size:8px;
-  color:rgba(243,240,232,.2);letter-spacing:.5px;
+.sb-title {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(243,240,232,.3); margin-bottom: 10px;
 }
-.sb-bar{height:2px;background:rgba(255,255,255,.05);flex-shrink:0;}
-.sb-bar-fill{height:100%;background:var(--red);transition:width .4s cubic-bezier(.16,1,.3,1);}
-
-.sb-q-list{flex:1;overflow-y:auto;display:flex;flex-direction:column;scrollbar-width:none;}
-.sb-q-list::-webkit-scrollbar{display:none;}
-.sb-q-row{
-  display:flex;align-items:center;justify-content:center;
-  border-left:2px solid transparent;
-  cursor:pointer;transition:background .12s;
-  flex:1;min-height:0;position:relative;
+.sb-progress-bar {
+  height: 2px; background: rgba(255,255,255,.08); border-radius: 1px;
+  margin-bottom: 8px; overflow: hidden;
 }
-.sb-q-row:hover{background:rgba(255,255,255,.07);}
-.sb-q-row.current{background:rgba(200,69,42,.12);border-left-color:var(--red);}
-.sb-q-row.answered-ok{border-left-color:rgba(42,102,66,.7);}
-.sb-q-row.answered-bad{border-left-color:rgba(200,69,42,.55);}
-.sb-q-row.skipped{border-left-color:rgba(181,168,152,.2);}
-.sb-q-row.flagged::after{content:'⚑';position:absolute;top:2px;right:2px;font-size:6px;color:rgba(200,150,0,.65);}
-.sb-q-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:rgba(243,240,232,.22);line-height:1;}
-.sb-q-row.current .sb-q-num{color:var(--red);}
-.sb-q-row.answered-ok .sb-q-num{color:rgba(100,185,130,.65);}
-.sb-q-row.answered-bad .sb-q-num{color:rgba(200,100,80,.65);}
-.sb-q-row.skipped .sb-q-num{color:rgba(181,168,152,.25);}
-.sb-q-topic{display:none;}.sb-q-dot{display:none;}.sb-q-flag{display:none;}
-
-.sb-footer{padding:6px 4px;border-top:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;gap:4px;flex-shrink:0;}
-.sb-flag-btn{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(200,150,0,.4);background:none;border:none;padding:6px 0;cursor:pointer;transition:all .2s;width:100%;text-align:center;line-height:1;}
-.sb-flag-btn:hover{color:rgba(200,150,0,.75);}
-.sb-flag-btn.active{color:rgba(200,150,0,.95);}
-.sb-exit{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(243,240,232,.14);background:none;border:none;padding:6px 0;cursor:pointer;transition:all .2s;width:100%;text-align:center;line-height:1;}
-.sb-exit:hover{color:rgba(200,69,42,.55);}
-.sb-dot{display:none;}
-
-/* ── QUESTION AREA — full width, centred, breathable ── */
-.q-area{
-  background:var(--bg);
-  padding:52px 0 80px;
-  min-width:0;
+.sb-progress-fill {
+  height: 100%; background: var(--red);
+  transition: width .4s cubic-bezier(.16,1,.3,1);
 }
-.q-inner{
-  max-width:720px;
-  margin:0 auto;
-  padding:0 48px;
+.sb-legend {
+  display: flex; gap: 12px;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  color: rgba(243,240,232,.3);
 }
-
-.q-meta{display:flex;gap:12px;align-items:center;margin-bottom:32px;}
-.q-num{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--red);text-transform:uppercase;}
-.q-sep{width:1px;height:12px;background:var(--border2);}
-.q-topic{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--ink5);text-transform:uppercase;}
-
-.vignette{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-left:3px solid var(--ink3);
-  padding:26px 30px;margin-bottom:26px;
+.sb-legend-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  display: inline-block; margin-right: 4px; vertical-align: middle;
 }
-.vig-label{display:none;}
-.vig-text{font-size:15px;color:var(--ink2);line-height:1.9;}
-.vig-text strong{color:var(--ink);font-weight:700;}
+.sb-legend-dot.answered { background: var(--green); }
+.sb-legend-dot.flagged  { background: var(--red); }
+.sb-legend-dot.current  { background: rgba(243,240,232,.6); }
+.sb-legend-dot.empty    { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.2); }
 
-.q-stem{font-family:'Instrument Serif',serif;font-size:22px;color:var(--ink);line-height:1.45;font-style:italic;margin-bottom:26px;}
-
-/* options */
-.opts{display:flex;flex-direction:column;gap:7px;margin-bottom:20px;}
-.opt{display:flex;align-items:stretch;border:1.5px solid var(--border);background:var(--card);cursor:pointer;text-align:left;overflow:hidden;transition:border-color .18s,background .18s,transform .18s;width:100%;}
-.opt:hover:not(.locked){border-color:var(--ink3);transform:translateX(3px);}
-.opt-ltr{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--ink5);background:var(--bg2);padding:18px 18px;min-width:52px;text-align:center;border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .18s;}
-.opt-txt{font-size:14px;color:var(--ink2);line-height:1.6;padding:18px 22px;flex:1;text-align:left;}
-.opt.sel{border-color:var(--ink);background:var(--white);}
-.opt.sel .opt-ltr{background:var(--ink);color:var(--bg);border-color:var(--ink);}
-.opt.sel .opt-txt{color:var(--ink);font-weight:600;}
-.opt.locked{cursor:default;transform:none !important;}
-.opt.rev-ok{border-color:var(--green);background:var(--greenfaint);}
-.opt.rev-ok .opt-ltr{background:var(--green);color:white;border-color:var(--green);}
-.opt.rev-ok .opt-txt{color:#0f2d1c;font-weight:600;}
-.opt.rev-bad{border-color:var(--red);background:var(--redfaint);}
-.opt.rev-bad .opt-ltr{background:var(--red);color:white;border-color:var(--red);}
-.opt.rev-bad .opt-txt{color:#2d0e08;font-weight:600;}
-.opt.rev-dim{border-color:var(--border);background:var(--bg2);opacity:.5;}
-
-/* confirm bar */
-.confirm-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;background:var(--card);border:1px solid var(--border);margin-bottom:24px;opacity:0;pointer-events:none;transition:opacity .22s,transform .22s;transform:translateY(6px);}
-.confirm-bar.show{opacity:1;pointer-events:all;transform:translateY(0);}
-.confirm-hint{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink5);letter-spacing:.3px;}
-.confirm-btn{background:var(--ink);color:var(--bg);border:none;padding:11px 28px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;flex-shrink:0;}
-.confirm-btn:hover{background:var(--red);}
-.skip-btn{background:none;border:1px solid var(--border);color:var(--ink4);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;padding:10px 18px;cursor:pointer;transition:all .2s;}
-.skip-btn:hover{border-color:var(--ink3);color:var(--ink2);}
-
-/* ── EXPLANATION — appears inline, same surface, after answer ── */
-.exp-block{display:none;}
-.exp-block.show{display:block;animation:expIn .35s cubic-bezier(.16,1,.3,1);}
-@keyframes expIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-
-.exp-verdict{display:flex;align-items:center;gap:12px;margin-bottom:28px;}
-.exp-badge{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1.5px;padding:6px 16px;}
-.exp-badge.ok{background:var(--greenfaint);color:var(--green);border:1px solid rgba(42,102,66,.2);}
-.exp-badge.bad{background:var(--redfaint);color:var(--red);border:1px solid rgba(200,69,42,.2);}
-.exp-correct-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink5);}
-
-.exp-divider{height:1px;background:var(--border);margin-bottom:28px;}
-
-.exp-opts{display:flex;flex-direction:column;gap:0;margin-bottom:28px;border:1px solid var(--border);overflow:hidden;}
-.exp-opt-row{display:flex;gap:0;border-bottom:1px solid var(--border);background:var(--card);}
-.exp-opt-row:last-child{border-bottom:none;}
-.exp-opt-row.is-correct{background:var(--greenfaint);}
-.exp-opt-ltr{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;min-width:44px;padding:16px 0;text-align:center;flex-shrink:0;border-right:1px solid var(--border);}
-.exp-opt-ltr.ok{color:var(--green);}
-.exp-opt-ltr.dim{color:var(--ink5);}
-.exp-opt-row.is-correct .exp-opt-ltr{border-right-color:rgba(42,102,66,.2);}
-.exp-opt-body{font-size:13.5px;color:var(--ink3);line-height:1.75;padding:16px 20px;flex:1;}
-.exp-opt-row.is-correct .exp-opt-body{color:var(--ink2);}
-.exp-opt-body strong{color:var(--ink);font-weight:700;}
-
-.exp-lo{background:var(--dark);padding:28px 30px;margin-bottom:28px;}
-.exp-lo-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
-.exp-lo-label::before{content:'//';color:rgba(200,69,42,.35);}
-.exp-lo-text{font-family:'Instrument Serif',serif;font-size:15px;color:rgba(243,240,232,.72);font-style:italic;line-height:1.6;}
-
-/* next */
-.next-wrap{display:flex;justify-content:flex-end;}
-.next-btn{background:var(--ink);color:var(--bg);border:none;padding:18px 48px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .25s;opacity:0;pointer-events:none;}
-.next-btn.show{opacity:1;pointer-events:all;}
-.next-btn:hover{background:var(--red);}
-
-/* No separate exp-panel column */
-.exp-panel{display:none !important;}
-
-/* ════════════════════════════
-   RESULTS
-════════════════════════════ */
-.results{max-width:800px;margin:0 auto;padding:64px 64px 100px;}
-
-.res-top{
-  display:grid;grid-template-columns:auto 1fr;
-  gap:44px;align-items:center;
-  padding-bottom:48px;border-bottom:1px solid var(--border);margin-bottom:52px;
+/* sidebar navigator — compact number grid */
+.sb-nav {
+  padding: 12px 10px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+  align-content: start;
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
-.score-ring{position:relative;width:128px;height:128px;flex-shrink:0;}
-.score-ring svg{transform:rotate(-90deg);}
-.score-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.score-n{font-family:'Instrument Serif',serif;font-size:32px;font-style:italic;color:var(--ink);line-height:1;}
-.score-pct{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink5);margin-top:3px;}
-.res-grade{font-family:'Instrument Serif',serif;font-size:46px;color:var(--ink);line-height:1;margin-bottom:10px;}
-.res-grade em{font-style:italic;color:var(--red);}
-.res-sub{font-size:15px;color:var(--ink4);line-height:1.7;margin-bottom:18px;}
-.res-tally{display:flex;gap:20px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink5);}
-.td{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:5px;vertical-align:middle;}
-.td.ok{background:var(--green);}.td.bad{background:var(--red);}
-
-.res-section-label{
-  font-family:'JetBrains Mono',monospace;font-size:9px;
-  letter-spacing:3px;color:var(--ink5);text-transform:uppercase;
-  margin-bottom:14px;display:flex;align-items:center;gap:10px;
+.sb-nav::-webkit-scrollbar { display: none; }
+.sb-dot {
+  width: 100%;
+  height: 28px;
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.04);
+  cursor: pointer;
+  transition: all .12s;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  color: rgba(243,240,232,.25);
+  padding: 0;
+  flex-shrink: 0;
 }
-.res-section-label::after{content:'';flex:1;height:1px;background:var(--border);}
-
-.focus-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px;}
-.focus-chip{
-  font-family:'JetBrains Mono',monospace;font-size:11px;
-  color:var(--red);background:var(--redfaint);
-  border:1px solid rgba(200,69,42,.18);padding:6px 14px;
+.sb-dot:hover { background: rgba(255,255,255,.08); color: rgba(243,240,232,.6); }
+.sb-dot.answered { background: rgba(42,102,66,.25); border-color: rgba(42,102,66,.45); color: rgba(42,102,66,.85); }
+.sb-dot.wrong    { background: rgba(200,69,42,.2);  border-color: rgba(200,69,42,.4);  color: rgba(200,69,42,.75); }
+.sb-dot.skipped  { background: rgba(138,96,32,.15); border-color: rgba(138,96,32,.3);  color: rgba(138,96,32,.6);  }
+.sb-dot.flagged::after {
+  content: '';
+  position: absolute; top: 2px; right: 2px;
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--red);
+}
+.sb-dot.current {
+  border-color: rgba(243,240,232,.5);
+  background: rgba(255,255,255,.1);
+  color: rgba(243,240,232,.9);
+  box-shadow: 0 0 0 1px rgba(200,69,42,.3);
 }
 
-.res-list{display:flex;flex-direction:column;gap:12px;margin-bottom:48px;}
-.res-q{border:1px solid var(--border);background:var(--card);overflow:hidden;}
-.res-q.ok{border-left:4px solid var(--green);}
-.res-q.bad{border-left:4px solid var(--red);}
-.res-q-hdr{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:12px 18px;background:var(--bg2);border-bottom:1px solid var(--border);
+/* sidebar actions */
+.sb-actions {
+  padding: 14px 12px;
+  border-top: 1px solid rgba(255,255,255,.06);
+  display: flex; flex-direction: column; gap: 6px;
+  flex-shrink: 0;
 }
-.res-q-badge{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.5px;}
-.res-q-badge.ok{color:var(--green);}.res-q-badge.bad{color:var(--red);}
-.res-q-topic{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink5);}
-.res-vig{padding:14px 18px;font-size:13px;color:var(--ink4);line-height:1.65;border-bottom:1px solid var(--border);font-style:italic;}
-.res-stem{font-size:14px;font-weight:700;color:var(--ink);line-height:1.5;padding:14px 18px;border-bottom:1px solid var(--border);}
-.res-opts{padding:10px 18px;display:flex;flex-direction:column;gap:5px;border-bottom:1px solid var(--border);}
-.res-opt{display:flex;gap:10px;font-size:13px;color:var(--ink5);padding:5px 8px;align-items:flex-start;}
-.res-opt-ltr{font-family:'JetBrains Mono',monospace;font-size:10px;min-width:18px;opacity:.4;margin-top:1px;}
-.res-opt.rk{color:var(--green);font-weight:600;}.res-opt.rk .res-opt-ltr{opacity:1;}
-.res-opt.rw{color:var(--red);}.res-opt.rw .res-opt-ltr{opacity:1;}
-.res-exp-wrap{padding:18px 18px;background:var(--dark);}
-.res-exp-opts{border-bottom:1px solid rgba(255,255,255,.05);margin-bottom:16px;}
-.res-exp-lo-label{
-  font-family:'JetBrains Mono',monospace;font-size:9px;
-  letter-spacing:3px;color:var(--red);text-transform:uppercase;
-  margin-bottom:8px;display:flex;align-items:center;gap:8px;
+.sb-action-btn {
+  background: none; border: 1px solid rgba(255,255,255,.08);
+  color: rgba(243,240,232,.4); cursor: pointer;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 9px 12px; text-align: left;
+  transition: all .15s;
 }
-.res-exp-lo-label::before{content:'//';color:rgba(200,69,42,.35);}
-.res-exp-lo-text{
-  font-family:'Instrument Serif',serif;font-size:16px;
-  color:rgba(243,240,232,.65);font-style:italic;line-height:1.5;
+.sb-action-btn:hover { border-color: rgba(255,255,255,.2); color: rgba(243,240,232,.7); }
+.sb-action-btn.flag-active {
+  border-color: rgba(200,69,42,.5);
+  background: rgba(200,69,42,.12);
+  color: var(--red);
 }
 
-.res-actions{display:flex;gap:10px;}
-.ra-retry{
-  flex:1;background:none;border:1.5px solid var(--border2);
-  padding:18px;font-family:'Syne',sans-serif;font-size:14px;
-  font-weight:700;color:var(--ink3);cursor:pointer;transition:all .2s;
+/* ── MAIN QUESTION AREA ── */
+.q-area {
+  padding: 48px 0 80px;
+  background: var(--bg);
+  min-width: 0;
 }
-.ra-retry:hover{border-color:var(--ink);color:var(--ink);}
-.ra-new{
-  flex:1;background:var(--ink);border:none;
-  padding:18px;font-family:'Syne',sans-serif;font-size:14px;
-  font-weight:700;color:var(--bg);cursor:pointer;transition:all .2s;
+.q-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 48px;
 }
-.ra-new:hover{background:var(--red);}
 
-@media(max-width:960px){
-  nav{padding:16px 22px;}
-  .launcher{padding:48px 24px 72px;}
-  .session{grid-template-columns:1fr;}
-  .sidebar{display:none;}
-  .q-area{padding:28px 0 60px;}
-  .q-inner{padding:0 22px;}
-  .results{padding:48px 22px 72px;}
-  .launch-row{flex-direction:column;align-items:flex-start;gap:20px;}
-  .res-top{grid-template-columns:1fr;gap:24px;}
-  .mobile-progress{display:flex;}
+/* ── QUESTION META ── */
+.q-meta {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
 }
-@media(max-width:480px){
-  nav{padding:14px 16px;}
-  .launcher{padding:32px 16px 56px;}
-  .l-h1{font-size:40px;}
-  .l-sub{font-size:13px;}
-  .sys-grid{grid-template-columns:1fr 1fr;}
-  .sys-btn{padding:14px 12px;}
-  .mode-grid{grid-template-columns:1fr !important;}
-  .count-row{flex-direction:column;gap:8px;}
-  .count-input{width:100%;}
-  .opt{padding:12px 14px;}
-  .vignette{padding:16px 0;}
-  .q-inner{padding:0 16px;}
-  .results{padding:32px 16px 56px;}
-  .res-top{padding-bottom:24px;}
-  .res-score-n{font-size:48px;}
-  .launch-btn{padding:16px 24px;font-size:14px;}
+.q-num {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--ink4); letter-spacing: 1px;
 }
-/* Mobile progress bar (shown only on small screens) */
-.mobile-progress{display:none;align-items:center;gap:12px;padding:12px 22px;background:var(--bg2);border-bottom:1px solid var(--border);position:sticky;top:57px;z-index:50;}
-.mob-prog-bar{flex:1;height:3px;background:var(--border);border-radius:2px;overflow:hidden;}
-.mob-prog-fill{height:100%;background:var(--red);transition:width .4s cubic-bezier(.16,1,.3,1);}
-.mob-prog-txt{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink4);white-space:nowrap;letter-spacing:.5px;}
-.mob-prog-mode{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ink4);background:var(--bg3);border:1px solid var(--border);padding:2px 8px;border-radius:100px;white-space:nowrap;}
+.q-sep {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--border2); flex-shrink: 0;
+}
+.q-topic {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  color: var(--red); letter-spacing: 2px; text-transform: uppercase;
+}
+.q-tools {
+  margin-left: auto; display: flex; align-items: center; gap: 8px;
+}
+.q-tool-btn {
+  background: none; border: 1px solid var(--border);
+  color: var(--ink5); cursor: pointer;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 6px 12px; transition: all .15s;
+  display: flex; align-items: center; gap: 6px;
+}
+.q-tool-btn:hover { border-color: var(--ink3); color: var(--ink); }
+.q-tool-btn.flag-on { border-color: var(--red); background: var(--redfaint); color: var(--red); }
+.q-tool-btn.note-on { border-color: var(--green); background: var(--greenfaint); color: var(--green); }
 
 /* ── DIFFICULTY BADGE ── */
-.diff-badge{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:0;}
-.diff-badge.foundation{color:var(--green);background:var(--greenfaint);border:1px solid rgba(42,102,66,.18);}
-.diff-badge.core{color:#8a6020;background:#fdf6e8;border:1px solid rgba(138,96,32,.18);}
-.diff-badge.advanced{color:var(--red);background:var(--redfaint);border:1px solid rgba(200,69,42,.18);}
-
-/* ── PERSISTENT KBD HINT ── */
-.q-kbd-hint{
-  font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ink5);
-  display:flex;gap:14px;flex-wrap:wrap;align-items:center;
-  margin-bottom:20px;opacity:.55;
+.diff-badge {
+  font-family: 'JetBrains Mono', monospace; font-size: 8px;
+  letter-spacing: 2px; text-transform: uppercase; padding: 3px 10px;
 }
-.q-kbd-hint kbd{
-  display:inline-flex;align-items:center;justify-content:center;
-  min-width:20px;height:18px;padding:0 5px;
-  border:1px solid var(--border2);border-radius:3px;
-  background:var(--card);font-family:'JetBrains Mono',monospace;
-  font-size:9px;color:var(--ink4);
+.diff-badge.foundation { color: var(--green); background: var(--greenfaint); border: 1px solid rgba(42,102,66,.18); }
+.diff-badge.core       { color: #8a6020; background: #fdf6e8; border: 1px solid rgba(138,96,32,.18); }
+.diff-badge.advanced   { color: var(--red); background: var(--redfaint); border: 1px solid rgba(200,69,42,.18); }
+
+/* ── VIGNETTE — clinical chart feel ── */
+.vignette {
+  background: var(--card);
+  border-left: 3px solid var(--red);
+  padding: 24px 28px;
+  margin-bottom: 6px;
+  position: relative;
+}
+.vig-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 8px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--red); margin-bottom: 10px; opacity: .7;
+}
+.vig-text {
+  font-size: 15px; line-height: 1.85;
+  color: var(--ink3);
+  font-family: 'Syne', sans-serif;
+}
+.vig-text strong { color: var(--ink); font-weight: 700; }
+
+/* highlight toolbar (appears on text selection in vignette) */
+.hl-toolbar {
+  position: fixed;
+  background: var(--dark);
+  border: 1px solid rgba(255,255,255,.1);
+  padding: 6px 8px;
+  display: none; gap: 4px; align-items: center;
+  z-index: 800;
+  box-shadow: 0 8px 24px rgba(0,0,0,.3);
+}
+.hl-toolbar.show { display: flex; }
+.hl-btn {
+  width: 24px; height: 24px; border: none; cursor: pointer;
+  border-radius: 2px; transition: transform .1s;
+}
+.hl-btn:hover { transform: scale(1.15); }
+.hl-btn.yellow { background: #ffd600; }
+.hl-btn.green  { background: rgba(42,102,66,.8); }
+.hl-btn.red    { background: var(--red); }
+.hl-btn.clear  {
+  background: none; border: 1px solid rgba(255,255,255,.2);
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  color: rgba(243,240,232,.5); width: auto; padding: 0 8px;
+}
+.hl-btn.clear:hover { color: rgba(243,240,232,.9); }
+.hl-btn.undo   {
+  background: none; border: 1px solid rgba(255,255,255,.2);
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  color: rgba(243,240,232,.5); width: auto; padding: 0 8px;
+}
+.hl-btn.undo:hover { color: rgba(243,240,232,.9); }
+
+/* highlight marks */
+mark.hl-yellow { background: var(--hl-yellow); color: inherit; padding: 0 1px; border-radius: 1px; cursor: pointer; }
+mark.hl-yellow:hover { filter: brightness(.88); }
+mark.hl-green  { background: var(--hl-green);  color: inherit; padding: 0 1px; border-radius: 1px; cursor: pointer; }
+mark.hl-green:hover  { filter: brightness(.88); }
+mark.hl-red    { background: var(--hl-red);    color: inherit; padding: 0 1px; border-radius: 1px; cursor: pointer; }
+mark.hl-red:hover    { filter: brightness(.88); }
+
+/* ── STEM ── */
+.q-stem {
+  font-size: 17px; font-weight: 700; color: var(--ink);
+  line-height: 1.5; margin: 20px 0 24px;
+  font-family: 'Syne', sans-serif;
 }
 
-/* ── COLLAPSIBLE RESULTS CARDS ── */
-.res-q-body{overflow:hidden;max-height:0;transition:max-height .3s cubic-bezier(.16,1,.3,1);}
-.res-q.expanded .res-q-body{max-height:3000px;}
-.res-q-hdr{cursor:pointer;user-select:none;}
-.res-q-hdr:hover{background:var(--bg3);}
-.res-q-toggle{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink5);transition:transform .2s;margin-left:8px;display:inline-block;}
-.res-q.expanded .res-q-toggle{transform:rotate(90deg);}
+/* ── OPTIONS — decisive, clinical ── */
+.opts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
 
-/* ── RESULTS FILTER BAR ── */
-.res-filter-bar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
-.res-filter-btn{
-  font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;
-  padding:7px 16px;border:1px solid var(--border);background:var(--card);
-  color:var(--ink4);cursor:pointer;transition:all .18s;
+.opt {
+  display: flex; align-items: flex-start; gap: 0;
+  border: 1.5px solid var(--border);
+  background: var(--card);
+  cursor: pointer; text-align: left;
+  transition: border-color .15s, background .15s, transform .12s;
+  overflow: hidden;
+  width: 100%;
 }
-.res-filter-btn:hover{border-color:var(--ink3);color:var(--ink);}
-.res-filter-btn.active{background:var(--ink);color:var(--bg);border-color:var(--ink);}
-
-/* ── FOCUS MODE LAUNCHER BANNER ── */
-.focus-banner{
-  background:var(--dark);padding:18px 22px;margin-bottom:32px;
-  display:flex;align-items:center;gap:16px;
-  border-left:3px solid var(--red);
+.opt:hover:not(.locked) {
+  border-color: var(--ink3);
+  transform: translateX(3px);
 }
-.focus-banner-text{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(243,240,232,.65);line-height:1.6;flex:1;}
-.focus-banner-text strong{color:var(--red);}
-.focus-banner-close{background:none;border:none;font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(243,240,232,.3);cursor:pointer;padding:4px 8px;transition:color .2s;}
-.focus-banner-close:hover{color:rgba(243,240,232,.7);}
-.focus-banner-btn{background:var(--red);color:white;border:none;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;padding:10px 20px;cursor:pointer;transition:all .2s;white-space:nowrap;}
-.focus-banner-btn:hover{background:var(--red2);}
-/* Skip button */
-.skip-btn{background:none;border:1px solid var(--border);color:var(--ink4);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;padding:8px 18px;cursor:pointer;transition:all .2s;margin-top:8px;}
-.skip-btn:hover{border-color:var(--ink3);color:var(--ink2);}
-/* Keyboard hint */
-.kbd-hint{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ink4);margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;opacity:.7;}
-.kbd-key{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border:1px solid var(--border);border-radius:3px;background:var(--bg2);font-size:10px;color:var(--ink3);}
-</style>
-</head>
-<body>
+.opt-ltr {
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  font-weight: 700; letter-spacing: .5px;
+  color: var(--ink4);
+  background: var(--bg2); border-right: 1.5px solid var(--border);
+  padding: 16px 14px;
+  min-width: 46px; text-align: center;
+  transition: background .15s, color .15s, border-color .15s;
+  flex-shrink: 0;
+  align-self: stretch; display: flex; align-items: center; justify-content: center;
+}
+.opt-txt {
+  font-size: 14px; color: var(--ink3); line-height: 1.55;
+  padding: 16px 18px;
+  transition: color .15s;
+}
 
-<nav>
-  <a href="/" class="logo">
-    <svg width="34" height="34" viewBox="0 0 44 44" fill="none">
-      <circle cx="22" cy="22" r="21" stroke="#0d0b08" stroke-width="1.5"/>
-      <path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M10 30 Q22 36 34 30" stroke="#0d0b08" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-      <circle cx="22" cy="10" r="2.5" fill="#c8452a"/>
-    </svg>
-    <span class="logo-name">Vent</span>
-  </a>
-  <a href="#" onclick="history.back();return false;" class="nav-back">← Home</a>
-  <div class="nav-label">Q-Bank</div>
-</nav>
+/* selected */
+.opt.sel {
+  border-color: var(--ink);
+  transform: translateX(6px);
+  background: var(--white);
+}
+.opt.sel .opt-ltr {
+  background: var(--ink); color: var(--bg); border-color: var(--ink);
+}
+.opt.sel .opt-txt { color: var(--ink); font-weight: 600; }
+
+/* revealed states */
+.opt.rev-ok {
+  border-color: var(--green) !important;
+  background: var(--greenfaint) !important;
+  transform: translateX(6px) !important;
+}
+.opt.rev-ok .opt-ltr {
+  background: var(--green) !important; color: white !important; border-color: var(--green) !important;
+}
+.opt.rev-ok .opt-txt { color: var(--green) !important; font-weight: 700 !important; }
+
+.opt.rev-bad {
+  border-color: var(--red) !important;
+  background: var(--redfaint) !important;
+}
+.opt.rev-bad .opt-ltr {
+  background: var(--red) !important; color: white !important; border-color: var(--red) !important;
+}
+.opt.rev-bad .opt-txt { color: var(--red) !important; }
+
+.opt.rev-dim {
+  opacity: .35;
+}
+.opt.locked { cursor: default; }
+
+/* ── CONFIRM BAR (exam mode) ── */
+.confirm-bar {
+  display: none; justify-content: space-between; align-items: center;
+  padding: 12px 0; margin-bottom: 8px;
+}
+.confirm-bar.show { display: flex; }
+.confirm-hint { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink5); }
+.confirm-btn {
+  background: var(--ink); color: var(--bg); border: none;
+  padding: 12px 32px; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
+  cursor: pointer; transition: background .2s;
+}
+.confirm-btn:hover { background: var(--red); }
+.skip-btn {
+  background: none; border: 1px solid var(--border); color: var(--ink4);
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1px;
+  padding: 8px 18px; cursor: pointer; transition: all .2s;
+}
+.skip-btn:hover { border-color: var(--ink3); color: var(--ink2); }
+
+/* ── ANNOTATION PANEL ── */
+.note-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green);
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  display: none;
+}
+.note-panel.show { display: block; }
+.note-panel-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 3px; color: var(--green); text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.note-textarea {
+  width: 100%; background: var(--bg); border: 1px solid var(--border);
+  padding: 12px 14px; font-family: 'Syne', sans-serif; font-size: 13px;
+  color: var(--ink); resize: vertical; min-height: 80px; outline: none;
+  transition: border-color .2s;
+}
+.note-textarea:focus { border-color: var(--green); }
+.note-textarea::placeholder { color: var(--ink5); }
+.note-save-btn {
+  margin-top: 8px; background: var(--green); color: white; border: none;
+  padding: 8px 20px; font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: opacity .2s;
+}
+.note-save-btn:hover { opacity: .85; }
+
+/* ── EXPLANATION BLOCK ── */
+.exp-block {
+  background: var(--dark);
+  padding: 0;
+  margin: 24px 0;
+  opacity: 0; max-height: 0; overflow: hidden;
+  transition: opacity .3s, max-height .4s cubic-bezier(.16,1,.3,1);
+}
+.exp-block.show {
+  opacity: 1; max-height: 2400px;
+  padding: 28px 28px;
+}
+
+.exp-verdict {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
+}
+.exp-badge {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 5px 14px;
+}
+.exp-badge.ok  { background: rgba(42,102,66,.2);  color: #5aaa7a; border: 1px solid rgba(42,102,66,.3); }
+.exp-badge.bad { background: rgba(200,69,42,.2);  color: #e87357; border: 1px solid rgba(200,69,42,.3); }
+.exp-correct-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: rgba(243,240,232,.35); letter-spacing: .5px;
+}
+
+.exp-divider { height: 1px; background: rgba(255,255,255,.06); margin-bottom: 20px; }
+
+.exp-opts { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+.exp-opt-row {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 12px 14px;
+  border-left: 2px solid rgba(255,255,255,.06);
+}
+.exp-opt-row.is-correct { border-left-color: rgba(42,102,66,.5); background: rgba(42,102,66,.07); }
+.exp-opt-ltr {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
+  min-width: 20px; flex-shrink: 0; margin-top: 1px;
+}
+.exp-opt-ltr.ok  { color: #5aaa7a; }
+.exp-opt-ltr.dim { color: rgba(243,240,232,.2); }
+.exp-opt-body { font-size: 13px; color: rgba(243,240,232,.6); line-height: 1.7; }
+.exp-opt-body strong { color: rgba(243,240,232,.9); }
+
+.exp-lo {
+  padding-top: 20px; border-top: 1px solid rgba(255,255,255,.06);
+}
+.exp-lo-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 3px; color: var(--red); text-transform: uppercase;
+  margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+}
+.exp-lo-label::before { content: '//'; color: rgba(200,69,42,.35); }
+.exp-lo-text {
+  font-family: 'Instrument Serif', serif; font-size: 17px;
+  color: rgba(243,240,232,.7); font-style: italic; line-height: 1.55;
+}
+
+/* ── NEXT BUTTON ── */
+.next-wrap { margin-top: 8px; }
+.next-btn {
+  background: var(--ink); color: var(--bg); border: none;
+  padding: 18px 44px; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
+  cursor: pointer; transition: all .25s; letter-spacing: .3px;
+  opacity: 0; pointer-events: none;
+}
+.next-btn.show { opacity: 1; pointer-events: all; }
+.next-btn:hover { background: var(--red); }
+
+.exp-panel { display: none !important; }
+
+/* ── KEYBOARD HINT ── */
+.q-kbd-hint {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--ink5);
+  display: flex; gap: 14px; flex-wrap: wrap; align-items: center;
+  margin-bottom: 20px; opacity: .55;
+}
+.q-kbd-hint kbd {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 20px; height: 18px; padding: 0 5px;
+  border: 1px solid var(--border2); border-radius: 3px;
+  background: var(--card); font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; color: var(--ink4);
+}
+
+/* ── MOBILE PROGRESS BAR ── */
+.mobile-progress {
+  display: none; align-items: center; gap: 12px;
+  padding: 12px 22px; background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 60px; z-index: 50;
+}
+.mob-prog-bar { flex: 1; height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.mob-prog-fill { height: 100%; background: var(--red); transition: width .4s cubic-bezier(.16,1,.3,1); }
+.mob-prog-txt  { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink4); white-space: nowrap; letter-spacing: .5px; }
+.mob-prog-mode { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--ink4); background: var(--bg3); border: 1px solid var(--border); padding: 2px 8px; border-radius: 100px; white-space: nowrap; }
 
 
-<!-- ══════════════════════════════════════════
-     LAUNCHER
-══════════════════════════════════════════ -->
-<div id="screen-launcher">
-<div class="launcher">
+/* ════════════════════════════════════════════
+   RESULTS — real debrief
+════════════════════════════════════════════ */
+.results { max-width: 860px; margin: 0 auto; padding: 64px 64px 100px; }
 
-  <div class="l-eyebrow">Q-Bank</div>
-  <h1 class="l-h1">Cases.<br><em>No notes.</em></h1>
-  <p class="l-sub">Clinical vignettes. Hard questions. Real reasoning required. Choose your system and go.</p>
+/* score ring */
+.res-top {
+  display: grid; grid-template-columns: auto 1fr;
+  gap: 44px; align-items: center;
+  padding-bottom: 48px; border-bottom: 1px solid var(--border); margin-bottom: 52px;
+}
+.score-ring { position: relative; width: 128px; height: 128px; flex-shrink: 0; }
+.score-ring svg { transform: rotate(-90deg); }
+.score-inner { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.score-n { font-family: 'Instrument Serif', serif; font-size: 32px; font-style: italic; color: var(--ink); line-height: 1; }
+.score-pct { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink5); margin-top: 3px; }
+.res-grade { font-family: 'Instrument Serif', serif; font-size: 46px; color: var(--ink); line-height: 1; margin-bottom: 10px; }
+.res-grade em { font-style: italic; color: var(--red); }
+.res-sub { font-size: 15px; color: var(--ink4); line-height: 1.7; margin-bottom: 18px; }
+.res-tally { display: flex; gap: 20px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink5); }
+.td { width: 6px; height: 6px; border-radius: 50%; display: inline-block; margin-right: 5px; vertical-align: middle; }
+.td.ok  { background: var(--green); }
+.td.bad { background: var(--red); }
 
-  <div class="focus-banner" id="focus-banner" style="display:none;">
-    <div class="focus-banner-text">
-      <strong>Last session: weak areas detected</strong><br>
-      <span id="focus-topics-list"></span>
-    </div>
-    <button class="focus-banner-btn" onclick="launchFocusSession()">Practice weak areas →</button>
-    <button class="focus-banner-close" onclick="dismissFocusBanner()">✕</button>
-  </div>
+/* section labels */
+.res-section-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 3px; color: var(--ink5); text-transform: uppercase;
+  margin-bottom: 14px; display: flex; align-items: center; gap: 10px;
+}
+.res-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-    <div class="cfg">
-    <div class="cfg-label">System</div>
-    <div class="sys-grid">
-      <button class="sys-btn on" data-sys="all" onclick="pickSys(this,'all')">
-        <div class="sn">Everything</div>
-        <div class="ss" id="sc-all">— questions</div>
-      </button>
-      <button class="sys-btn" data-sys="obgyn" onclick="pickSys(this,'obgyn')">
-        <div class="sn">OB / GYN</div>
-        <div class="ss" id="sc-obgyn">— questions</div>
-      </button>
-      <button class="sys-btn" data-sys="ophtho" onclick="pickSys(this,'ophtho')">
-        <div class="sn">Ophthalmology</div>
-        <div class="ss" id="sc-ophtho">— questions</div>
-      </button>
-      <div class="sys-btn soon">
-        <div class="sn">Internal Med</div>
-        <div class="ss">Coming soon</div>
-      </div>
-      <div class="sys-btn soon">
-        <div class="sn">Surgery</div>
-        <div class="ss">Coming soon</div>
-      </div>
-      <div class="sys-btn soon">
-        <div class="sn">Neurology</div>
-        <div class="ss">Coming soon</div>
-      </div>
-      <div class="sys-btn soon">
-        <div class="sn">Paediatrics</div>
-        <div class="ss">Coming soon</div>
-      </div>
-    </div>
-  </div>
+/* ── TOPIC BREAKDOWN ── */
+.topic-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px; margin-bottom: 52px;
+}
+.topic-card {
+  background: var(--card); border: 1px solid var(--border);
+  padding: 16px 18px;
+}
+.topic-card-name {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  color: var(--ink4); letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase;
+}
+.topic-bar-wrap { height: 4px; background: var(--bg2); margin-bottom: 8px; }
+.topic-bar-fill { height: 100%; transition: width .5s cubic-bezier(.16,1,.3,1); }
+.topic-bar-fill.ok   { background: var(--green); }
+.topic-bar-fill.warn { background: #c8962a; }
+.topic-bar-fill.bad  { background: var(--red); }
+.topic-score {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink3);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.topic-score .pct { font-size: 10px; color: var(--ink5); }
+.topic-note-link {
+  margin-top: 8px;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  color: var(--red); letter-spacing: 1px;
+  text-decoration: none; display: flex; align-items: center; gap: 4px;
+  opacity: 0; transition: opacity .2s;
+}
+.topic-card:hover .topic-note-link { opacity: 1; }
 
+/* ── TIME ANALYSIS ── */
+.time-grid {
+  display: flex; gap: 6px; margin-bottom: 52px; align-items: flex-end;
+}
+.time-bar-wrap {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px;
+}
+.time-bar {
+  width: 100%; background: var(--bg3);
+  transition: height .5s cubic-bezier(.16,1,.3,1);
+  cursor: default;
+  min-height: 4px;
+  position: relative;
+}
+.time-bar.slow { background: rgba(200,69,42,.4); }
+.time-bar.ok   { background: rgba(42,102,66,.4); }
+.time-bar-q    { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: var(--ink5); }
+.time-bar-val  { font-family: 'JetBrains Mono', monospace; font-size: 8px; color: var(--ink5); }
 
-  <div class="cfg">
-    <div class="cfg-label">Questions</div>
-    <div class="count-row">
-      <input type="number" id="count-input" class="count-input" value="10" min="5" max="40" onchange="clampCount()" oninput="updateSummary()">
-      <div class="count-note">questions per session<br>minimum 5</div>
-    </div>
-  </div>
+/* ── RESULTS TABS ── */
+.res-tabs {
+  display: flex; gap: 0; margin-bottom: 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+.res-tab {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 12px 22px; background: none; border: none;
+  color: var(--ink5); cursor: pointer;
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+  transition: all .15s;
+}
+.res-tab:hover { color: var(--ink3); }
+.res-tab.active { color: var(--ink); border-bottom-color: var(--red); }
 
-  <div class="cfg">
-    <div class="cfg-label">Mode</div>
-    <div class="mode-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-      <button class="mode-btn on" onclick="pickMode(this,'normal')">
-        <div class="mn">Normal</div>
-        <div class="md">Answer, get immediate feedback, move on.</div>
-      </button>
-      <button class="mode-btn" onclick="pickMode(this,'exam')">
-        <div class="mn">Exam</div>
-        <div class="md">No feedback until the session ends.</div>
-      </button>
-    </div>
-  </div>
+/* result panels */
+.res-panel { display: none; }
+.res-panel.active { display: block; }
 
-  <div class="launch-row">
-    <div class="launch-summary" id="launch-summary"></div>
-    <button class="launch-btn" onclick="launch()">
-      Begin <span class="launch-arr">→</span>
-    </button>
-  </div>
+/* result cards */
+.focus-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 48px; }
+.focus-chip {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--red); background: var(--redfaint);
+  border: 1px solid rgba(200,69,42,.18); padding: 6px 14px;
+}
 
-</div>
-</div>
+.res-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 48px; }
+.res-q { border: 1px solid var(--border); background: var(--card); overflow: hidden; }
+.res-q.ok  { border-left: 4px solid var(--green); }
+.res-q.bad { border-left: 4px solid var(--red); }
+.res-q-hdr {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 18px; background: var(--bg2); border-bottom: 1px solid var(--border);
+  cursor: pointer; user-select: none;
+}
+.res-q-hdr:hover { background: var(--bg3); }
+.res-q-badge { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: .5px; }
+.res-q-badge.ok  { color: var(--green); }
+.res-q-badge.bad { color: var(--red); }
+.res-q-topic { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink5); }
+.res-q-time  { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--ink5); }
+.res-q-toggle { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink5); transition: transform .2s; margin-left: 8px; display: inline-block; }
+.res-q.expanded .res-q-toggle { transform: rotate(90deg); }
+.res-q-body { overflow: hidden; max-height: 0; transition: max-height .3s cubic-bezier(.16,1,.3,1); }
+.res-q.expanded .res-q-body { max-height: 3000px; }
 
+.res-vig   { padding: 14px 18px; font-size: 13px; color: var(--ink4); line-height: 1.65; border-bottom: 1px solid var(--border); font-style: italic; }
+.res-stem  { font-size: 14px; font-weight: 700; color: var(--ink); line-height: 1.5; padding: 14px 18px; border-bottom: 1px solid var(--border); }
+.res-opts  { padding: 10px 18px; display: flex; flex-direction: column; gap: 5px; border-bottom: 1px solid var(--border); }
+.res-opt   { display: flex; gap: 10px; font-size: 13px; color: var(--ink5); padding: 5px 8px; align-items: flex-start; }
+.res-opt-ltr { font-family: 'JetBrains Mono', monospace; font-size: 10px; min-width: 18px; opacity: .4; margin-top: 1px; }
+.res-opt.rk { color: var(--green); font-weight: 600; }
+.res-opt.rk .res-opt-ltr { opacity: 1; }
+.res-opt.rw { color: var(--red); }
+.res-opt.rw .res-opt-ltr { opacity: 1; }
 
-<!-- ══════════════════════════════════════════
-     SESSION
-══════════════════════════════════════════ -->
+.res-exp-wrap { padding: 18px 18px; background: var(--dark); }
+.res-exp-opts { border-bottom: 1px solid rgba(255,255,255,.05); margin-bottom: 16px; }
+.res-exp-lo-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 3px; color: var(--red); text-transform: uppercase;
+  margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+}
+.res-exp-lo-label::before { content: '//'; color: rgba(200,69,42,.35); }
+.res-exp-lo-text { font-family: 'Instrument Serif', serif; font-size: 16px; color: rgba(243,240,232,.65); font-style: italic; line-height: 1.5; }
+
+/* user annotation in results */
+.res-note {
+  padding: 12px 18px; background: rgba(42,102,66,.08);
+  border-top: 1px solid rgba(42,102,66,.2);
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.res-note-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--green); letter-spacing: 1.5px; text-transform: uppercase; flex-shrink: 0; margin-top: 2px; }
+.res-note-text  { font-size: 13px; color: var(--ink3); line-height: 1.6; }
+
+/* actions */
+.res-actions { display: flex; gap: 10px; }
+.ra-retry {
+  flex: 1; background: none; border: 1.5px solid var(--border2);
+  padding: 18px; font-family: 'Syne', sans-serif; font-size: 14px;
+  font-weight: 700; color: var(--ink3); cursor: pointer; transition: all .2s;
+}
+.ra-retry:hover { border-color: var(--ink); color: var(--ink); }
+.ra-new {
+  flex: 1; background: var(--ink); border: none;
+  padding: 18px; font-family: 'Syne', sans-serif; font-size: 14px;
+  font-weight: 700; color: var(--bg); cursor: pointer; transition: all .2s;
+}
+.ra-new:hover { background: var(--red); }
+
+/* results filter bar (within All tab) */
+.res-filter-bar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.res-filter-btn {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1px;
+  padding: 7px 16px; border: 1px solid var(--border); background: var(--card);
+  color: var(--ink4); cursor: pointer; transition: all .18s;
+}
+.res-filter-btn:hover { border-color: var(--ink3); color: var(--ink); }
+.res-filter-btn.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+/* ════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════ */
+@media (max-width: 960px) {
+  nav { padding: 16px 22px; }
+  .launcher { padding: 48px 24px 72px; }
+  .sys-grid { grid-template-columns: 1fr 1fr; }
+  .session { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .q-area { padding: 28px 0 60px; }
+  .q-inner { padding: 0 22px; }
+  .results { padding: 48px 22px 72px; }
+  .launch-row { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .res-top { grid-template-columns: 1fr; gap: 24px; }
+  .mobile-progress { display: flex; }
+  .l-perf-strip { display: grid; grid-template-columns: 1fr 1fr; }
+  .topic-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  nav { padding: 14px 16px; }
+  .launcher { padding: 32px 16px 56px; }
+  .l-h1 { font-size: 40px; }
+  .l-sub { font-size: 13px; }
+  .sys-grid { grid-template-columns: 1fr 1fr; }
+  .sys-btn { padding: 14px 12px; }
+  .mode-row { grid-template-columns: 1fr !important; }
+  .count-row { flex-direction: column; gap: 8px; }
+  .count-input { width: 100%; }
+  .opt { }
+  .vignette { padding: 16px 18px; }
+  .q-inner { padding: 0 16px; }
+  .results { padding: 32px 16px 56px; }
+  .res-top { padding-bottom: 24px; }
+  .launch-btn { padding: 16px 24px; font-size: 14px; }
+  .l-perf-strip { grid-template-columns: 1fr; }
+  .topic-grid { grid-template-columns: 1fr; }
+  .res-tabs { overflow-x: auto; }
+}
+</style></head><body>
+<nav><a href="/" class="logo"><svg width="34" height="34" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" stroke="#0d0b08" stroke-width="1.5"/><path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M10 30 Q22 36 34 30" stroke="#0d0b08" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="22" cy="10" r="2.5" fill="#c8452a"/></svg><span class="logo-name">Vent</span></a><a href="#" onclick="history.back();return false;" class="nav-back">← Home</a><div class="nav-label">Q-Bank</div></nav>
+<div id="screen-launcher"><div class="launcher">
+  <div class="l-eyebrow">Q-Bank</div><h1 class="l-h1">Cases.<br><em>No notes.</em></h1><p class="l-sub">Clinical vignettes. Hard questions. Real reasoning required.</p>
+  <div class="l-perf-strip" id="l-perf-strip"><div class="l-perf-block"><div class="l-perf-label">Sessions</div><div class="l-perf-val">—</div><div class="l-perf-sub">No sessions yet</div></div><div class="l-perf-block"><div class="l-perf-label">Avg score</div><div class="l-perf-val">—</div><div class="l-perf-sub">Complete a session</div></div><div class="l-perf-block"><div class="l-perf-label">Questions done</div><div class="l-perf-val">—</div><div class="l-perf-sub">across all sessions</div></div></div>
+  <div class="focus-banner" id="focus-banner" style="display:none;"><div class="focus-banner-text"><strong>Last session: weak areas detected</strong><br><span id="focus-topics-list"></span></div><button class="focus-banner-btn" onclick="launchFocusSession()">Practice weak areas →</button><button class="focus-banner-close" onclick="dismissFocusBanner()">✕</button></div>
+  <div class="cfg"><div class="cfg-label">System</div><div class="sys-grid"><button class="sys-btn on" onclick="pickSys(this,'all')"><div class="sn">Everything</div><div class="ss" id="sc-all">— questions</div></button><button class="sys-btn" onclick="pickSys(this,'obgyn')"><div class="sn">OB / GYN</div><div class="ss" id="sc-obgyn">— questions</div></button><button class="sys-btn" onclick="pickSys(this,'ophtho')"><div class="sn">Ophthalmology</div><div class="ss" id="sc-ophtho">— questions</div></button><div class="sys-btn soon"><div class="sn">Internal Med</div><div class="ss">Coming soon</div></div><div class="sys-btn soon"><div class="sn">Surgery</div><div class="ss">Coming soon</div></div><div class="sys-btn soon"><div class="sn">Neurology</div><div class="ss">Coming soon</div></div><div class="sys-btn soon"><div class="sn">Paediatrics</div><div class="ss">Coming soon</div></div></div></div>
+  <div class="cfg"><div class="cfg-label">Questions</div><div class="count-row"><input type="number" id="count-input" class="count-input" value="10" min="5" max="40" onchange="clampCount()" oninput="updateSummary()"><div class="count-note">questions per session<br>minimum 5</div></div></div>
+  <div class="cfg"><div class="cfg-label">Mode</div><div class="mode-row"><button class="mode-btn on" onclick="pickMode(this,'normal')"><div class="mn">Normal</div><div class="md">Answer, get immediate feedback, move on.</div></button><button class="mode-btn" onclick="pickMode(this,'exam')"><div class="mn">Exam</div><div class="md">No feedback until the session ends.</div></button></div></div>
+  <div class="launch-row"><div class="launch-summary" id="launch-summary"></div><button class="launch-btn" onclick="launch()">Begin <span class="launch-arr">→</span></button></div>
+</div></div>
 <div id="screen-session">
-<div class="mobile-progress" id="mobile-progress">
-  <div class="mob-prog-bar"><div class="mob-prog-fill" id="mob-prog-fill" style="width:0%"></div></div>
-  <span class="mob-prog-txt" id="mob-prog-txt">Q1 / —</span>
-  <span class="mob-prog-mode" id="mob-prog-mode">Normal</span>
-  <button style="background:none;border:none;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink4);cursor:pointer;padding:0 0 0 8px;" onclick="exitSession()">✕</button>
-</div>
+<div class="mobile-progress" id="mobile-progress"><div class="mob-prog-bar"><div class="mob-prog-fill" id="mob-prog-fill" style="width:0%"></div></div><span class="mob-prog-txt" id="mob-prog-txt">Q1 / —</span><span class="mob-prog-mode" id="mob-prog-mode">Normal</span><button style="background:none;border:none;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink4);cursor:pointer;padding:0 0 0 8px;" onclick="exitSession()">✕</button></div>
 <div class="session">
-
   <div class="sidebar" id="sidebar">
-    <div class="sb-head">
-      <span class="sb-head-label">Questions</span>
-      <span class="sb-head-count" id="sb-head-count">0 / —</span>
-    </div>
-    <div class="sb-bar"><div class="sb-bar-fill" id="sb-bar-fill" style="width:0%"></div></div>
-
-    <div class="sb-q-list" id="sb-q-list">
-      <!-- rows rendered by JS -->
-    </div>
-
-    <div class="sb-footer">
-      <button class="sb-flag-btn" id="sb-flag-btn" onclick="toggleFlag()" title="Flag (F)">⚑</button>
-      <button class="sb-exit" onclick="exitSession()" title="Exit">✕</button>
-    </div>
-
-    <!-- hidden compat -->
-    <div id="sb-dots" style="display:none"></div>
-    <div id="sb-prog-lbl" style="display:none"></div>
-    <div id="sb-mode-txt" style="display:none"></div>
-    <div id="sb-total" style="display:none"></div>
-    <div id="sb-big" style="display:none"></div>
-    <div id="sb-mode-pill" style="display:none"></div>
+    <div class="sb-head"><div class="sb-title">Navigator</div><div class="sb-progress-bar"><div class="sb-progress-fill" id="sb-bar-fill" style="width:0%"></div></div><div class="sb-legend"><span><span class="sb-legend-dot answered"></span>done</span><span><span class="sb-legend-dot flagged"></span>flag</span><span><span class="sb-legend-dot current"></span>now</span></div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(243,240,232,.4);margin-top:6px;" id="sb-head-count">0 / —</div></div>
+    <div class="sb-nav" id="sb-nav"></div>
+    <div class="sb-actions"><button class="sb-action-btn" id="sb-flag-btn" onclick="toggleFlag()">⚑ Flag for review</button><button class="sb-action-btn" onclick="exitSession()">✕ Exit session</button></div>
   </div>
-
-  <div class="q-area" id="q-area">
-    <!-- rendered by JS -->
-  </div>
-
-</div>
-</div>
-
-</div>
-</div>
-
-
-<!-- ══════════════════════════════════════════
-     RESULTS
-══════════════════════════════════════════ -->
-<div id="screen-results">
-<div class="results">
-  <div id="res-content"></div>
-</div>
-</div>
-
-
+  <div class="q-area" id="q-area"></div>
+</div></div>
+<div id="screen-results"></div>
 <script>
-// ═══════════════════════════════════════════════════════════════
-//  QUESTION BANK
-//  Every question: clinical vignette → stem → options → explanations per option → learning objective
-// ═══════════════════════════════════════════════════════════════
 const QB = [
 
 // ════════════════════════════════════════
@@ -1909,25 +2164,100 @@ const QB = [
 
 ]; // end QB
 
-// ═══════════════════════════════════════════════════
-//  STATE
-// ═══════════════════════════════════════════════════
-const S = { sys:'all', mode:'normal', count:10, queue:[], ci:0, sel:null, confirmed:false, answers:[] };
-const LTR = ['A','B','C','D','E'];
+function pickSys(btn,sys){selectSys(sys,btn);}
+function pickMode(btn,mode){selectMode(mode,btn);}
+// ═══════════════════════════════════════════════════════════════
+//  VENT Q-BANK — CLINICAL WORKSPACE SCRIPT v2
+//  Features: highlight system, annotations, proper sidebar,
+//  topic/time breakdown results, flagging, Supabase sync
+// ═══════════════════════════════════════════════════════════════
 
-// ═══════════════════════════════════════════════════
-//  LAUNCHER
-// ═══════════════════════════════════════════════════
-function pickSys(btn, sys) {
-  document.querySelectorAll('.sys-btn').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on'); S.sys = sys; updateSummary();
+// ─── SUPABASE CONFIG ───────────────────────────────────────────
+const PROJ = 'vwotkstjgzwjjutzjjph';
+const SUPA_KEY = 'sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj';
+
+function getToken() {
+  try {
+    return JSON.parse(localStorage.getItem('sb-' + PROJ + '-auth-token'))?.access_token || null;
+  } catch(e) { return null; }
 }
-function pickMode(btn, mode) {
+
+async function supaFetch(path, opts = {}) {
+  const token = getToken();
+  if(!token) return null;
+  try {
+    const res = await fetch(`https://${PROJ}.supabase.co/rest/v1/${path}`, {
+      ...opts,
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPA_KEY,
+        'Authorization': 'Bearer ' + token,
+        'Prefer': 'return=minimal',
+        ...(opts.headers || {})
+      }
+    });
+    if(!res.ok) return null;
+    if(res.status === 204) return true;
+    return res.json().catch(() => null);
+  } catch(e) { return null; }
+}
+
+// ─── SESSION STATE ─────────────────────────────────────────────
+const LTR = ['A','B','C','D'];
+
+const S = {
+  sys:        'all',
+  mode:       'normal',
+  queue:      [],
+  ci:         0,
+  answers:    [],
+  skipped:    [],
+  flags:      [],
+  sel:        null,
+  confirmed:  false,
+  startTimes: [],  // timestamp when each question was first seen
+  timeSpent:  [],  // seconds spent per question
+  // per-question data keyed by QB index
+  annotations: {},  // qbIdx -> string note
+  highlights:  {},  // qbIdx -> array of {start,end,color} (stored as serialized ranges)
+  _notesLoaded: false,
+  _hlLoaded: false,
+};
+
+// ─── HELPERS ───────────────────────────────────────────────────
+function shuffle(a) {
+  const b = [...a];
+  for(let i=b.length-1; i>0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [b[i],b[j]] = [b[j],b[i]];
+  }
+  return b;
+}
+
+function show(id) {
+  ['screen-launcher','screen-session','screen-results'].forEach(s => {
+    document.getElementById(s).style.display = s===id ? 'block' : 'none';
+  });
+  window.scrollTo(0,0);
+}
+
+function qbIdx(q) { return QB.indexOf(q); }
+
+// ─── LAUNCH / SESSION MANAGEMENT ──────────────────────────────
+function selectSys(sys, btn) {
+  document.querySelectorAll('.sys-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  S.sys = sys;
+  updateSummary();
+}
+
+function selectMode(mode, btn) {
   document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
   S.mode = mode;
   updateSummary();
 }
+
 function clampCount() {
   const el = document.getElementById('count-input');
   let v = parseInt(el.value) || 10;
@@ -1935,39 +2265,117 @@ function clampCount() {
   el.value = v;
   updateSummary();
 }
+
 function updateSummary() {
   const pool = QB.filter(q => S.sys === 'all' || q.sys === S.sys);
   const n = Math.min(parseInt(document.getElementById('count-input').value) || 10, pool.length);
-  const syslbl = {all:'All Systems', obgyn:'OB / GYN', ophtho:'Ophthalmology'}[S.sys];
-  document.getElementById('launch-summary').innerHTML =
-    `<strong>${n}</strong> questions &nbsp;·&nbsp; <strong>${syslbl}</strong> &nbsp;·&nbsp; <strong>${S.mode === 'normal' ? 'Normal' : 'Exam'}</strong>`;
-  document.getElementById('sc-all').textContent = QB.length + ' questions';
-  document.getElementById('sc-obgyn').textContent = QB.filter(q => q.sys==='obgyn').length + ' questions';
-  document.getElementById('sc-ophtho').textContent = QB.filter(q => q.sys==='ophtho').length + ' questions';
-  // Show focus banner if weak topics saved
+  const syslbl = {all:'All Systems', obgyn:'OB / GYN', ophtho:'Ophthalmology'}[S.sys] || 'All Systems';
+  const el = document.getElementById('launch-summary');
+  if(el) el.innerHTML = `<strong>${n}</strong> questions &nbsp;·&nbsp; <strong>${syslbl}</strong> &nbsp;·&nbsp; <strong>${S.mode === 'normal' ? 'Normal' : 'Exam'}</strong>`;
+
+  const sc = document.getElementById('sc-all');
+  if(sc) sc.textContent = QB.length + ' questions';
+  const so = document.getElementById('sc-obgyn');
+  if(so) so.textContent = QB.filter(q=>q.sys==='obgyn').length + ' questions';
+  const sp = document.getElementById('sc-ophtho');
+  if(sp) sp.textContent = QB.filter(q=>q.sys==='ophtho').length + ' questions';
+
+  // show focus banner
   try {
     const wRaw = localStorage.getItem('vent_weak_topics');
-    const focusBanner = document.getElementById('focus-banner');
-    if(wRaw && focusBanner) {
+    const fb = document.getElementById('focus-banner');
+    if(wRaw && fb) {
       const w = JSON.parse(wRaw);
-      const age = Date.now() - (w.ts || 0);
-      if(age < 7 * 24 * 60 * 60 * 1000 && w.topics && w.topics.length) {
-        focusBanner.style.display = 'flex';
-        document.getElementById('focus-topics-list').textContent = w.topics.join(', ');
-      } else {
-        focusBanner.style.display = 'none';
-      }
+      const age = Date.now() - (w.ts||0);
+      if(age < 7*24*60*60*1000 && w.topics?.length) {
+        fb.style.display = 'flex';
+        const tl = document.getElementById('focus-topics-list');
+        if(tl) tl.textContent = w.topics.join(', ');
+      } else { fb.style.display = 'none'; }
     }
+  } catch(e) {}
+
+  // Load recent performance
+  loadRecentPerf();
+}
+
+async function loadRecentPerf() {
+  const token = getToken();
+  if(!token) {
+    // Show placeholder from localStorage
+    try {
+      const hist = JSON.parse(localStorage.getItem('vent_qbank_history') || '[]');
+      renderPerfStrip(hist);
+    } catch(e) {}
+    return;
+  }
+  // Could fetch from Supabase qbank_results table in future; use localStorage for now
+  try {
+    const hist = JSON.parse(localStorage.getItem('vent_qbank_history') || '[]');
+    renderPerfStrip(hist);
   } catch(e) {}
 }
 
-function shuffle(a) {
-  const b = [...a];
-  for(let i = b.length-1; i > 0; i--) {
-    const j = Math.floor(Math.random()*(i+1));
-    [b[i],b[j]] = [b[j],b[i]];
+function renderPerfStrip(hist) {
+  const strip = document.getElementById('l-perf-strip');
+  if(!strip) return;
+  if(!hist.length) {
+    strip.innerHTML = `
+      <div class="l-perf-block">
+        <div class="l-perf-label">Sessions</div>
+        <div class="l-perf-val">—</div>
+        <div class="l-perf-sub">No sessions yet</div>
+      </div>
+      <div class="l-perf-block">
+        <div class="l-perf-label">Avg score</div>
+        <div class="l-perf-val">—</div>
+        <div class="l-perf-sub">Complete a session</div>
+      </div>
+      <div class="l-perf-block">
+        <div class="l-perf-label">Questions done</div>
+        <div class="l-perf-val">—</div>
+        <div class="l-perf-sub">across all sessions</div>
+      </div>
+    `;
+    return;
   }
-  return b;
+  const sessions = hist.length;
+  const avgPct = Math.round(hist.reduce((s,h) => s + h.pct, 0) / sessions);
+  const totalQ = hist.reduce((s,h) => s + h.total, 0);
+  const pctCls = avgPct >= 80 ? 'ok' : avgPct >= 60 ? 'warn' : 'bad';
+  const last = hist[hist.length-1];
+  strip.innerHTML = `
+    <div class="l-perf-block">
+      <div class="l-perf-label">Sessions</div>
+      <div class="l-perf-val">${sessions}</div>
+      <div class="l-perf-sub">completed</div>
+    </div>
+    <div class="l-perf-block">
+      <div class="l-perf-label">Avg score</div>
+      <div class="l-perf-val ${pctCls}">${avgPct}%</div>
+      <div class="l-perf-sub">across sessions</div>
+    </div>
+    <div class="l-perf-block">
+      <div class="l-perf-label">Questions done</div>
+      <div class="l-perf-val">${totalQ}</div>
+      <div class="l-perf-sub">total answered</div>
+    </div>
+    <div class="l-perf-block">
+      <div class="l-perf-label">Last session</div>
+      <div class="l-perf-val ${last.pct>=80?'ok':last.pct>=60?'warn':'bad'}">${last.pct}%</div>
+      <div class="l-perf-sub">${last.total} questions</div>
+    </div>
+  `;
+}
+
+function saveHistory(pct, total, topicStats) {
+  try {
+    const hist = JSON.parse(localStorage.getItem('vent_qbank_history') || '[]');
+    hist.push({ pct, total, ts: Date.now(), topicStats });
+    // keep last 50
+    if(hist.length > 50) hist.splice(0, hist.length - 50);
+    localStorage.setItem('vent_qbank_history', JSON.stringify(hist));
+  } catch(e) {}
 }
 
 function launch() {
@@ -1976,183 +2384,211 @@ function launch() {
   const pool = QB.filter(q => S.sys === 'all' || q.sys === S.sys);
   S.queue = shuffle(pool).slice(0, Math.min(count, pool.length));
   S.ci = 0;
-  S.answers = Array(S.queue.length).fill(null);
-  S.skipped = Array(S.queue.length).fill(false);
-  S.flags = Array(S.queue.length).fill(false);
+  S.answers   = Array(S.queue.length).fill(null);
+  S.skipped   = Array(S.queue.length).fill(false);
+  S.flags     = Array(S.queue.length).fill(false);
+  S.startTimes = Array(S.queue.length).fill(null);
+  S.timeSpent  = Array(S.queue.length).fill(0);
   S.sel = null; S.confirmed = false;
   saveSession();
-  show('screen-session');
-  buildSidebar();
-  renderQ();
+  loadUserData();  // load highlights & annotations from Supabase
+  show('screen-session'); buildSidebar(); renderQ();
 }
 
-// ═══════════════════════════════════════════════════
-//  SESSION PERSISTENCE (localStorage)
-// ═══════════════════════════════════════════════════
+// ─── SESSION PERSISTENCE ────────────────────────────────────────
 function saveSession() {
   try {
     localStorage.setItem('vent_qbank_session', JSON.stringify({
-      sys: S.sys, mode: S.mode, count: S.queue.length,
+      sys: S.sys, mode: S.mode,
       queue: S.queue.map(q => QB.indexOf(q)),
       ci: S.ci, answers: S.answers,
-      skipped: S.skipped || [],
-      flags: S.flags || []
+      skipped: S.skipped, flags: S.flags,
+      startTimes: S.startTimes, timeSpent: S.timeSpent,
     }));
   } catch(e) {}
 }
+
 function loadSession() {
   try {
     const raw = localStorage.getItem('vent_qbank_session');
-    if (!raw) return false;
+    if(!raw) return false;
     const d = JSON.parse(raw);
-    if (!d.queue || !d.queue.length) return false;
+    if(!d.queue?.length) return false;
     const queue = d.queue.map(i => QB[i]).filter(Boolean);
-    if (queue.length !== d.queue.length) return false;
-    S.sys = d.sys || 'all';
-    S.mode = d.mode || 'normal';
-    S.queue = queue;
-    S.ci = d.ci || 0;
-    S.answers = d.answers || Array(queue.length).fill(null);
-    S.skipped = d.skipped || Array(queue.length).fill(false);
-    S.flags = d.flags || Array(queue.length).fill(false);
+    if(queue.length !== d.queue.length) return false;
+    S.sys      = d.sys || 'all';
+    S.mode     = d.mode || 'normal';
+    S.queue    = queue;
+    S.ci       = d.ci || 0;
+    S.answers  = d.answers || Array(queue.length).fill(null);
+    S.skipped  = d.skipped || Array(queue.length).fill(false);
+    S.flags    = d.flags || Array(queue.length).fill(false);
+    S.startTimes = d.startTimes || Array(queue.length).fill(null);
+    S.timeSpent  = d.timeSpent || Array(queue.length).fill(0);
     S.sel = null; S.confirmed = false;
     return true;
   } catch(e) { return false; }
 }
+
 function clearSession() {
   try { localStorage.removeItem('vent_qbank_session'); } catch(e) {}
 }
 
-// ═══════════════════════════════════════════════════
-//  SIDEBAR
-// ═══════════════════════════════════════════════════
+// ─── USER DATA: HIGHLIGHTS + ANNOTATIONS ──────────────────────
+async function loadUserData() {
+  const token = getToken();
+  if(!token) {
+    // fall back to localStorage
+    try {
+      S.annotations = JSON.parse(localStorage.getItem('vent_qbank_notes') || '{}');
+      S.highlights  = JSON.parse(localStorage.getItem('vent_qbank_highlights') || '{}');
+    } catch(e) {}
+    return;
+  }
+  // Try Supabase qbank_user_data table
+  const data = await supaFetch(`qbank_user_data?select=key,value`, {
+    headers: { 'Range': '0-1000' }
+  });
+  if(data && Array.isArray(data)) {
+    data.forEach(row => {
+      try {
+        if(row.key === 'annotations') S.annotations = JSON.parse(row.value);
+        if(row.key === 'highlights')  S.highlights  = JSON.parse(row.value);
+      } catch(e) {}
+    });
+  } else {
+    // table doesn't exist yet, use localStorage
+    try {
+      S.annotations = JSON.parse(localStorage.getItem('vent_qbank_notes') || '{}');
+      S.highlights  = JSON.parse(localStorage.getItem('vent_qbank_highlights') || '{}');
+    } catch(e) {}
+  }
+}
+
+async function saveAnnotations() {
+  // always save to localStorage as fallback
+  try { localStorage.setItem('vent_qbank_notes', JSON.stringify(S.annotations)); } catch(e) {}
+  // try Supabase upsert
+  const token = getToken();
+  if(!token) return;
+  await supaFetch(`qbank_user_data?on_conflict=key`, {
+    method: 'POST',
+    headers: { 'Prefer': 'resolution=merge-duplicates,return=minimal' },
+    body: JSON.stringify({ key: 'annotations', value: JSON.stringify(S.annotations) })
+  });
+}
+
+async function saveHighlights() {
+  try { localStorage.setItem('vent_qbank_highlights', JSON.stringify(S.highlights)); } catch(e) {}
+  const token = getToken();
+  if(!token) return;
+  await supaFetch(`qbank_user_data?on_conflict=key`, {
+    method: 'POST',
+    headers: { 'Prefer': 'resolution=merge-duplicates,return=minimal' },
+    body: JSON.stringify({ key: 'highlights', value: JSON.stringify(S.highlights) })
+  });
+}
+
+// ─── SIDEBAR ──────────────────────────────────────────────────
 function buildSidebar() {
   if(!S.flags) S.flags = Array(S.queue.length).fill(false);
   updateSidebar();
 }
 
 function updateSidebar() {
-  const qi = S.ci, total = S.queue.length;
+  const total = S.queue.length;
   const answered = S.answers.filter(a => a !== null).length;
+  const pct = Math.round((answered/total)*100);
 
-  // Header count
-  const hc = document.getElementById('sb-head-count');
-  if(hc) hc.textContent = answered + ' / ' + total;
-
-  // Progress bar
-  const pct = Math.round((answered / total) * 100);
+  // progress fill
   const fill = document.getElementById('sb-bar-fill');
   if(fill) fill.style.width = pct + '%';
 
-  // Build question rows
-  let rowsHtml = '';
-  for(let i = 0; i < total; i++) {
-    const ans = S.answers[i];
-    const isSkipped = S.skipped && S.skipped[i];
-    const isFlagged = S.flags && S.flags[i];
-    const isCurrent = i === qi;
-    let cls = '';
-    if(isCurrent) cls = 'current';
-    else if(isSkipped) cls = 'skipped';
-    else if(ans === null) cls = '';
-    else if(ans === S.queue[i].ans) cls = 'answered-ok';
-    else cls = 'answered-bad';
-    if(isFlagged) cls += ' flagged';
+  // head count
+  const hc = document.getElementById('sb-head-count');
+  if(hc) hc.textContent = `${answered} / ${total}`;
 
-    rowsHtml += `<div class="sb-q-row ${cls}" onclick="jumpToQ(${i})" title="Q${i+1}"><div class="sb-q-num">${i+1}</div></div>`;
-  }
-  const listEl = document.getElementById('sb-q-list');
-  if(listEl) {
-    listEl.innerHTML = rowsHtml;
-    // Scroll current into view
-    const cur = listEl.querySelector('.sb-q-row.current');
+  // nav dots
+  const nav = document.getElementById('sb-nav');
+  if(nav) {
+    nav.innerHTML = '';
+    for(let i=0; i<total; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'sb-dot';
+      dot.onclick = () => jumpToQ(i);
+
+      const ans = S.answers[i];
+      const isCurrent = i === S.ci;
+      if(isCurrent) dot.classList.add('current');
+      else if(S.skipped[i]) dot.classList.add('skipped');
+      else if(ans !== null) {
+        dot.classList.add(ans === S.queue[i].ans ? 'answered' : 'wrong');
+      }
+      if(S.flags[i]) dot.classList.add('flagged');
+
+      const flagHtml = S.flags[i] ? '<span class="sb-flag-icon">⚑</span>' : '';
+      dot.innerHTML = `<span style="font-size:10px;">${i+1}</span>${flagHtml}`;
+
+      nav.appendChild(dot);
+    }
+    // scroll current into view
+    const cur = nav.querySelector('.sb-dot.current');
     if(cur) cur.scrollIntoView({block:'nearest',behavior:'smooth'});
   }
 
-  // Flag button
-  const flagBtn = document.getElementById('sb-flag-btn');
-  if(flagBtn) {
-    const isFlagged = S.flags && S.flags[qi];
-    flagBtn.classList.toggle('active', !!isFlagged);
-    flagBtn.innerHTML = isFlagged ? '⚑ Flagged' : '⚑ Flag';
+  // flag button state
+  const fb = document.getElementById('sb-flag-btn');
+  if(fb) {
+    const flagged = S.flags[S.ci];
+    fb.classList.toggle('flag-active', !!flagged);
+    fb.textContent = flagged ? '⚑ Flagged' : '⚑ Flag for review';
   }
 
-  // Mobile progress
-  const mobFill = document.getElementById('mob-prog-fill');
-  const mobTxt = document.getElementById('mob-prog-txt');
-  const mobMode = document.getElementById('mob-prog-mode');
-  if(mobFill) mobFill.style.width = Math.round((qi/total)*100) + '%';
-  if(mobTxt) mobTxt.textContent = `Q${qi+1} / ${total}`;
-  if(mobMode) mobMode.textContent = S.queue[qi] ? S.queue[qi].topic : '';
+  // mobile bar
+  const mf = document.getElementById('mob-prog-fill');
+  const mt = document.getElementById('mob-prog-txt');
+  const mm = document.getElementById('mob-prog-mode');
+  if(mf) mf.style.width = Math.round((S.ci/total)*100)+'%';
+  if(mt) mt.textContent = `Q${S.ci+1} / ${total}`;
+  if(mm) mm.textContent = S.queue[S.ci]?.topic || '';
 
   saveSession();
 }
 
 function jumpToQ(i) {
   if(i === S.ci) return;
+  // commit current time
+  tickTime();
   S.ci = i;
-  renderQ();
+  S.sel = null; S.confirmed = false;
   const ans = S.answers[i];
+  renderQ();
   if(ans !== null && ans !== -1) {
-    const q = S.queue[i];
-    const correct = q.ans;
-    document.querySelectorAll('.opt').forEach((el, oi) => {
-      el.classList.add('locked'); el.classList.remove('sel');
-      if(oi === correct)    el.classList.add('rev-ok');
-      else if(oi === ans)   el.classList.add('rev-bad');
-      else                  el.classList.add('rev-dim');
-    });
-    const cb = document.getElementById('confirm-bar');
-    if(cb) cb.classList.remove('show');
-    const isOk = ans === correct;
-    const block = document.getElementById('exp-block');
-    if(block) {
-      if(S.mode === 'normal') {
-        const optRows = q.opts.map((o, oi) => {
-          const isC = oi === correct;
-          const txt = q.oe && q.oe[oi] ? q.oe[oi] : (isC ? (q.lo||'') : '');
-          return `<div class="exp-opt-row ${isC?'is-correct':''}"><span class="exp-opt-ltr ${isC?'ok':'dim'}">${LTR[oi]}</span><div class="exp-opt-body">${txt}</div></div>`;
-        }).join('');
-        block.innerHTML = `<div class="exp-verdict"><span class="exp-badge ${isOk?'ok':'bad'}">${isOk?'✓ Correct':'✗ Incorrect'}</span><span class="exp-correct-label">Correct answer: ${LTR[correct]}</span></div><div class="exp-divider"></div><div class="exp-opts">${optRows}</div><div class="exp-lo"><div class="exp-lo-label">Learning objective</div><div class="exp-lo-text">${q.lo}</div></div>`;
-      } else {
-        block.innerHTML = `<div class="exp-verdict"><span class="exp-badge ${isOk?'ok':'bad'}">${isOk?'✓ Correct':'✗ Incorrect'}</span><span class="exp-correct-label">Correct answer: ${LTR[correct]}</span></div><div class="exp-divider"></div>`;
-      }
-      block.classList.add('show');
-    }
-    const nb = document.getElementById('next-btn');
-    if(nb) nb.classList.add('show');
-    S.confirmed = true;
+    // re-show revealed state
+    setTimeout(() => revealAnswerDisplay(i), 0);
   }
-  window.scrollTo(0,0);
 }
 
-function toggleFlag() {
-  if(!S.flags) S.flags = Array(S.queue.length).fill(false);
-  S.flags[S.ci] = !S.flags[S.ci];
-  updateSidebar();
-  saveSession();
+function tickTime() {
+  if(S.startTimes[S.ci] !== null) {
+    S.timeSpent[S.ci] += Math.round((Date.now() - S.startTimes[S.ci]) / 1000);
+  }
+  S.startTimes[S.ci] = null;
 }
 
-function skipQ() {
-  if(S.confirmed) return;
-  if(!S.skipped) S.skipped = Array(S.queue.length).fill(false);
-  S.skipped[S.ci] = true;
-  S.answers[S.ci] = -1;
-  updateSidebar();
-  if(S.ci + 1 < S.queue.length) { S.ci++; renderQ(); window.scrollTo(0,0); }
-  else { clearSession(); showResults(); }
-}
-
-// ═══════════════════════════════════════════════════
-//  QUESTION
-// ═══════════════════════════════════════════════════
+// ─── QUESTION RENDER ──────────────────────────────────────────
 function renderQ() {
   const q = S.queue[S.ci];
   S.sel = null; S.confirmed = false;
+  S.startTimes[S.ci] = Date.now();
   updateSidebar();
+
   const isLast = S.ci === S.queue.length - 1;
   const diff = q.diff || 'core';
   const diffLabel = {foundation:'Foundation', core:'Core', advanced:'Advanced'}[diff] || 'Core';
+  const isFlagged = S.flags[S.ci];
+  const hasNote = !!(S.annotations[qbIdx(q)]?.trim());
+  const idx = qbIdx(q);
 
   const optsHtml = q.opts.map((o,i) => `
     <button class="opt" id="opt-${i}" onclick="selectOpt(${i})">
@@ -2160,7 +2596,6 @@ function renderQ() {
       <span class="opt-txt">${o}</span>
     </button>`).join('');
 
-  // In exam mode keep the two-step confirm; normal mode is single-click
   const confirmBarHtml = S.mode === 'exam' ? `
     <div class="confirm-bar" id="confirm-bar">
       <span class="confirm-hint"><kbd style="background:var(--bg2);border:1px solid var(--border);padding:2px 6px;font-family:'JetBrains Mono',monospace;font-size:9px;border-radius:2px;">↵</kbd> confirm</span>
@@ -2170,33 +2605,60 @@ function renderQ() {
       </div>
     </div>` : `<div class="confirm-bar" id="confirm-bar" style="display:none"></div>`;
 
+  const existingNote = S.annotations[idx] || '';
+
   document.getElementById('q-area').innerHTML = `
     <div class="q-inner">
       <div class="q-meta">
         <span class="q-num">Q${S.ci+1} / ${S.queue.length}</span>
-        <span class="q-sep"></span>
-        <span class="q-topic">${q.topic}</span>
-        <span class="q-sep"></span>
-        <span class="diff-badge ${diff}">${diffLabel}</span>
+        <span class="q-sep q-meta-reveal" style="display:none"></span>
+        <span class="q-topic q-meta-reveal" style="display:none">${q.topic}</span>
+        <span class="q-sep q-meta-reveal" style="display:none"></span>
+        <span class="diff-badge ${diff} q-meta-reveal" style="display:none">${diffLabel}</span>
+        <div class="q-tools">
+          <button class="q-tool-btn${isFlagged?' flag-on':''}" id="flag-btn-top" onclick="toggleFlag()">
+            <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1h8v6H1V1zM1 1v11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            ${isFlagged ? 'Flagged' : 'Flag'}
+          </button>
+          <button class="q-tool-btn${hasNote?' note-on':''}" id="note-btn-top" onclick="toggleNotePanel()">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="10" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M3.5 4.5h5M3.5 6.5h5M3.5 8.5h3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            Note${hasNote?' ●':''}
+          </button>
+        </div>
       </div>
 
-      <div class="vignette">
-        <div class="vig-text">${q.vig}</div>
+      <div class="vignette" id="vignette-block">
+        <div class="vig-label">Clinical Scenario</div>
+        <div class="vig-text" id="vig-text" onmouseup="onVigMouseUp(event)">${q.vig}</div>
       </div>
 
       <div class="q-stem">${q.stem}</div>
 
       <div class="opts">${optsHtml}</div>
 
-      ${S.mode === 'normal' ? `<div style="display:flex;justify-content:flex-end;margin-bottom:16px;">
-        <button class="skip-btn" id="skip-btn-inline" onclick="skipQ()">Skip →</button>
-      </div>` : confirmBarHtml}
+      ${S.mode === 'normal' ? `
+        <div style="display:flex;justify-content:flex-end;margin-bottom:16px;">
+          <button class="skip-btn" id="skip-btn-inline" onclick="skipQ()">Skip →</button>
+        </div>` : confirmBarHtml}
 
       <div class="q-kbd-hint" id="kbd-hint">
         <span><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd> select</span>
         <span><kbd>F</kbd> flag</span>
+        <span><kbd>N</kbd> note</span>
         ${S.mode === 'exam' ? '<span><kbd>↵</kbd> confirm</span>' : ''}
-        <span><kbd>→</kbd> next after answer</span>
+        <span><kbd>→</kbd> next</span>
+      </div>
+
+      <div class="note-panel" id="note-panel"${hasNote?' style="display:block"':''}>
+        <div class="note-panel-label">Your note</div>
+        <textarea class="note-textarea" id="note-textarea" placeholder="What did you miss? A mnemonic? Write it here…">${existingNote}</textarea>
+        <button class="note-save-btn" onclick="saveNote()">Save note</button>
+        ${hasNote ? `<button onclick="clearNote()" style="margin-top:8px;margin-left:8px;background:none;border:1px solid var(--border);color:var(--ink5);font-family:'JetBrains Mono',monospace;font-size:9px;padding:7px 14px;cursor:pointer;">Clear</button>` : ''}
       </div>
 
       <div class="exp-block" id="exp-block"></div>
@@ -2208,17 +2670,294 @@ function renderQ() {
       </div>
     </div>
   `;
+
+  // Apply user highlights for this question
+  applyHighlights(idx);
+  // Auto-highlight critical clinical words
+  autoHighlightClinicalWords(idx);
 }
 
+// ─── AUTO-HIGHLIGHT CRITICAL CLINICAL WORDS ───────────────────
+// Patterns that represent key clinical data points
+const CLINICAL_PATTERNS = [
+  // Age
+  /\b\d{1,3}-year-old\b/g,
+  // Vitals
+  /\bBP\s+\d+\/\d+\b/g,
+  /\bHR\s+\d+\b/g,
+  /\bSaO2\s+\d+%?\b/gi,
+  /\bGCS\s+\d+\b/gi,
+  /\bRR\s+\d+\b/gi,
+  /\bTemp\s+[\d.]+\b/gi,
+  // Obstetric
+  /\bG\d+P\d+\b/g,
+  /\b\d+\s*weeks?\b/gi,
+  // Labs
+  /\bHbA1c\s+[\d.]+\b/gi,
+  /\bβhCG\s+[\d,]+\b/gi,
+  /\bESR\s+[\d.]+\b/gi,
+  /\bCRP\s+[\d.]+\b/gi,
+  /\bEBL\s+[\d,]+\s*m?L\b/gi,
+  // Existing strong tags (already bolded by author)
+  // We won't double-highlight those
+];
+
+function autoHighlightClinicalWords(qIdx) {
+  const vigEl = document.getElementById('vig-text');
+  if(!vigEl) return;
+  const plainText = vigEl.textContent;
+
+  // Only auto-highlight if user hasn't set any highlights for this Q yet
+  if(S.highlights[qIdx] && S.highlights[qIdx].length > 0) return;
+
+  const ranges = [];
+  CLINICAL_PATTERNS.forEach(pattern => {
+    pattern.lastIndex = 0;
+    let m;
+    while((m = pattern.exec(plainText)) !== null) {
+      ranges.push({ start: m.index, end: m.index + m[0].length, color: 'yellow', auto: true });
+    }
+  });
+
+  if(!ranges.length) return;
+
+  // Merge overlaps, mark as auto
+  ranges.sort((a,b) => a.start - b.start);
+  const merged = [];
+  for(const r of ranges) {
+    const last = merged[merged.length - 1];
+    if(last && r.start < last.end) { last.end = Math.max(last.end, r.end); }
+    else merged.push({...r});
+  }
+
+  // Store as auto highlights (prefixed so undo works)
+  if(!S.highlights[qIdx]) S.highlights[qIdx] = [];
+  // Add only if no manual highlights exist
+  merged.forEach(r => S.highlights[qIdx].push(r));
+  applyHighlights(qIdx);
+  // Don't saveHighlights() for auto — they regenerate each time
+}
+
+function onVigMouseUp(e) {
+  const sel = window.getSelection();
+
+  // Click on an existing highlight mark = remove it immediately
+  if(e.target && e.target.tagName === 'MARK') {
+    const vigEl = document.getElementById('vig-text');
+    if(!vigEl) return;
+    const mark = e.target;
+    // Count chars before this mark by walking all text nodes
+    let offset = 0;
+    const walker = document.createTreeWalker(vigEl, NodeFilter.SHOW_TEXT);
+    let node;
+    while((node = walker.nextNode())) {
+      if(mark.contains(node)) break;
+      offset += node.textContent.length;
+    }
+    const start = offset;
+    const end = start + mark.textContent.length;
+    const idx = qbIdx(S.queue[S.ci]);
+    if(!_hlUndo[idx]) _hlUndo[idx] = [];
+    _hlUndo[idx].push(JSON.parse(JSON.stringify(S.highlights[idx] || [])));
+    S.highlights[idx] = (S.highlights[idx] || []).filter(h => h.end <= start || h.start >= end);
+    applyHighlights(idx);
+    saveHighlights();
+    if(sel) sel.removeAllRanges();
+    return;
+  }
+
+  if(!sel || sel.isCollapsed) { hideHlToolbar(); return; }
+  const range = sel.getRangeAt(0);
+  const vigEl = document.getElementById('vig-text');
+  if(!vigEl || !vigEl.contains(range.commonAncestorContainer)) { hideHlToolbar(); return; }
+  // Show toolbar near selection
+  const rect = range.getBoundingClientRect();
+  showHlToolbar(rect.left + rect.width/2, rect.top + window.scrollY - 44);
+}
+
+// highlight undo stack per question
+const _hlUndo = {};
+
+function showHlToolbar(x, y) {
+  let tb = document.getElementById('hl-toolbar');
+  if(!tb) {
+    tb = document.createElement('div');
+    tb.className = 'hl-toolbar';
+    tb.id = 'hl-toolbar';
+    tb.innerHTML = `
+      <button class="hl-btn yellow" title="Yellow" onclick="applyHl('yellow')"></button>
+      <button class="hl-btn green"  title="Green"  onclick="applyHl('green')"></button>
+      <button class="hl-btn red"    title="Red"    onclick="applyHl('red')"></button>
+      <button class="hl-btn clear"  title="Remove" onclick="removeHl()">✕</button>
+      <button class="hl-btn undo"   title="Undo"   onclick="undoHl()">↩</button>
+    `;
+    document.body.appendChild(tb);
+  }
+  tb.style.left = Math.max(8, x - 70) + 'px';
+  tb.style.top  = y + 'px';
+  tb.classList.add('show');
+}
+
+function hideHlToolbar() {
+  const tb = document.getElementById('hl-toolbar');
+  if(tb) tb.classList.remove('show');
+}
+
+function undoHl() {
+  const idx = qbIdx(S.queue[S.ci]);
+  if(!_hlUndo[idx] || !_hlUndo[idx].length) { hideHlToolbar(); return; }
+  S.highlights[idx] = _hlUndo[idx].pop();
+  hideHlToolbar();
+  applyHighlights(idx);
+  saveHighlights();
+}
+
+function applyHl(color) {
+  const sel = window.getSelection();
+  if(!sel || sel.isCollapsed) { hideHlToolbar(); return; }
+  const vigEl = document.getElementById('vig-text');
+  if(!vigEl) return;
+  const range = sel.getRangeAt(0);
+
+  // Get text offsets within vig-text
+  const fullText = vigEl.textContent;
+  const preRange = document.createRange();
+  preRange.setStart(vigEl, 0);
+  preRange.setEnd(range.startContainer, range.startOffset);
+  const start = preRange.toString().length;
+  const selectedText = range.toString();
+  const end = start + selectedText.length;
+
+  if(end <= start) { hideHlToolbar(); return; }
+
+  const idx = qbIdx(S.queue[S.ci]);
+  if(!S.highlights[idx]) S.highlights[idx] = [];
+  // Save undo snapshot
+  if(!_hlUndo[idx]) _hlUndo[idx] = [];
+  _hlUndo[idx].push(JSON.parse(JSON.stringify(S.highlights[idx])));
+  if(_hlUndo[idx].length > 20) _hlUndo[idx].shift();
+  // Remove overlapping highlights in this range
+  S.highlights[idx] = S.highlights[idx].filter(h => h.end <= start || h.start >= end);
+  S.highlights[idx].push({ start, end, color });
+  S.highlights[idx].sort((a,b) => a.start - b.start);
+
+  sel.removeAllRanges();
+  hideHlToolbar();
+  applyHighlights(idx);
+  saveHighlights();
+}
+
+function removeHl() {
+  const sel = window.getSelection();
+  if(!sel || sel.isCollapsed) { hideHlToolbar(); return; }
+  const vigEl = document.getElementById('vig-text');
+  if(!vigEl) return;
+  const range = sel.getRangeAt(0);
+
+  const preRange = document.createRange();
+  preRange.setStart(vigEl, 0);
+  preRange.setEnd(range.startContainer, range.startOffset);
+  const start = preRange.toString().length;
+  const end = start + range.toString().length;
+
+  const idx = qbIdx(S.queue[S.ci]);
+  if(!S.highlights[idx]) { hideHlToolbar(); return; }
+  // Remove highlights that overlap
+  S.highlights[idx] = S.highlights[idx].filter(h => h.end <= start || h.start >= end);
+  sel.removeAllRanges();
+  hideHlToolbar();
+  applyHighlights(idx);
+  saveHighlights();
+}
+
+function applyHighlights(qIdx) {
+  const vigEl = document.getElementById('vig-text');
+  if(!vigEl) return;
+  const hl = S.highlights[qIdx];
+  if(!hl || !hl.length) return;
+
+  // Re-render the vig-text with highlights inserted as <mark> spans
+  const raw = S.queue[S.ci].vig;
+  // We need to work with the HTML string, not just text.
+  // Strategy: render via a temp div, extract text positions, then reinsert marks.
+  // Simple approach: work with plain text content, insert marks, then restore HTML tags.
+
+  // Build a text-level annotation layer using a simplified re-render:
+  const temp = document.createElement('div');
+  temp.innerHTML = raw;
+  const plainText = temp.textContent;
+
+  // Build segments
+  const segments = [];
+  let pos = 0;
+  const sorted = [...hl].sort((a,b) => a.start - b.start);
+  for(const h of sorted) {
+    if(h.start > pos) segments.push({ text: plainText.slice(pos, h.start), color: null });
+    segments.push({ text: plainText.slice(h.start, h.end), color: h.color });
+    pos = h.end;
+  }
+  if(pos < plainText.length) segments.push({ text: plainText.slice(pos), color: null });
+
+  vigEl.innerHTML = segments.map(seg => {
+    const esc = seg.text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    return seg.color ? `<mark class="hl-${seg.color}">${esc}</mark>` : esc;
+  }).join('');
+}
+
+// ─── ANNOTATION ───────────────────────────────────────────────
+function toggleNotePanel() {
+  const p = document.getElementById('note-panel');
+  if(!p) return;
+  const isOpen = p.style.display !== 'none' && p.style.display !== '';
+  p.style.display = isOpen ? 'none' : 'block';
+  if(!isOpen) { const ta = document.getElementById('note-textarea'); if(ta) ta.focus(); }
+}
+
+async function saveNote() {
+  const ta = document.getElementById('note-textarea');
+  if(!ta) return;
+  const note = ta.value.trim();
+  const idx = qbIdx(S.queue[S.ci]);
+  if(note) S.annotations[idx] = note;
+  else delete S.annotations[idx];
+  await saveAnnotations();
+  // update note button indicator
+  const nb = document.getElementById('note-btn-top');
+  if(nb) {
+    nb.classList.toggle('note-on', !!note);
+    nb.innerHTML = `
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="10" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M3.5 4.5h5M3.5 6.5h5M3.5 8.5h3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      Note${note?' ●':''}
+    `;
+  }
+  // show brief saved indicator
+  const btn = document.querySelector('.note-save-btn');
+  if(btn) { btn.textContent = 'Saved ✓'; setTimeout(() => { btn.textContent = 'Save note'; }, 1200); }
+}
+
+async function clearNote() {
+  const idx = qbIdx(S.queue[S.ci]);
+  delete S.annotations[idx];
+  await saveAnnotations();
+  const ta = document.getElementById('note-textarea');
+  if(ta) ta.value = '';
+  const panel = document.getElementById('note-panel');
+  if(panel) panel.style.display = 'none';
+  const nb = document.getElementById('note-btn-top');
+  if(nb) { nb.classList.remove('note-on'); nb.innerHTML = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="10" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 4.5h5M3.5 6.5h5M3.5 8.5h3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Note`; }
+}
+
+// ─── SELECT / CONFIRM ─────────────────────────────────────────
 function selectOpt(i) {
   if(S.confirmed) return;
   S.sel = i;
   document.querySelectorAll('.opt').forEach((el, idx) => el.classList.toggle('sel', idx === i));
   if(S.mode === 'normal') {
-    // Single-click confirms immediately in normal mode
     confirmAnswer();
   } else {
-    // Exam mode: show confirm bar, wait for explicit confirmation
     const bar = document.getElementById('confirm-bar');
     if(bar) bar.classList.add('show');
   }
@@ -2226,28 +2965,73 @@ function selectOpt(i) {
 
 function confirmAnswer() {
   if(S.sel === null) return;
+  tickTime();
   S.confirmed = true;
   S.answers[S.ci] = S.sel;
+
   const q = S.queue[S.ci];
   const sel = S.sel, correct = q.ans;
   const isOk = sel === correct;
 
   document.querySelectorAll('.opt').forEach((el, i) => {
     el.classList.add('locked'); el.classList.remove('sel');
-    if(i === correct)       el.classList.add('rev-ok');
-    else if(i === sel)      el.classList.add('rev-bad');
-    else                    el.classList.add('rev-dim');
+    if(i === correct)    el.classList.add('rev-ok');
+    else if(i === sel)   el.classList.add('rev-bad');
+    else                 el.classList.add('rev-dim');
   });
 
   const cb = document.getElementById('confirm-bar');
   if(cb) cb.classList.remove('show');
 
-  const block = document.getElementById('exp-block');
+  buildExplanation(q, isOk, sel, correct, S.mode === 'normal');
 
-  if(S.mode === 'normal') {
+  const nb = document.getElementById('next-btn');
+  if(nb) nb.classList.add('show');
+
+  const skipInline = document.getElementById('skip-btn-inline');
+  if(skipInline) skipInline.style.display = 'none';
+  const kbdHint = document.getElementById('kbd-hint');
+  if(kbdHint) kbdHint.style.display = 'none';
+  // Reveal topic + difficulty badge after answering
+  document.querySelectorAll('.q-meta-reveal').forEach(el => { el.style.display = ''; });
+
+  updateSidebar();
+}
+
+function revealAnswerDisplay(qi) {
+  // Called when jumping to an already-answered question
+  const q = S.queue[qi];
+  const sel = S.answers[qi];
+  if(sel === null || sel === -1) return;
+  const correct = q.ans;
+  const isOk = sel === correct;
+
+  document.querySelectorAll('.opt').forEach((el, i) => {
+    el.classList.add('locked');
+    if(i === correct)  el.classList.add('rev-ok');
+    else if(i === sel) el.classList.add('rev-bad');
+    else               el.classList.add('rev-dim');
+  });
+
+  S.sel = sel; S.confirmed = true;
+  buildExplanation(q, isOk, sel, correct, true);
+
+  const nb = document.getElementById('next-btn');
+  if(nb) nb.classList.add('show');
+  const si = document.getElementById('skip-btn-inline');
+  if(si) si.style.display = 'none';
+  // Reveal topic + difficulty
+  document.querySelectorAll('.q-meta-reveal').forEach(el => { el.style.display = ''; });
+}
+
+function buildExplanation(q, isOk, sel, correct, full) {
+  const block = document.getElementById('exp-block');
+  if(!block) return;
+
+  if(full) {
     const optRows = q.opts.map((o, i) => {
       const isC = i === correct;
-      const txt = q.oe && q.oe[i] ? q.oe[i] : (isC ? (q.lo||'') : '');
+      const txt = q.oe?.[i] || (isC ? q.lo || '' : '');
       return `<div class="exp-opt-row ${isC?'is-correct':''}">
         <span class="exp-opt-ltr ${isC?'ok':'dim'}">${LTR[i]}</span>
         <div class="exp-opt-body">${txt}</div>
@@ -2257,7 +3041,7 @@ function confirmAnswer() {
     block.innerHTML = `
       <div class="exp-verdict">
         <span class="exp-badge ${isOk?'ok':'bad'}">${isOk?'✓ Correct':'✗ Incorrect'}</span>
-        <span class="exp-correct-label">Correct answer: ${LTR[correct]}</span>
+        <span class="exp-correct-label">Correct: ${LTR[correct]}</span>
       </div>
       <div class="exp-divider"></div>
       <div class="exp-opts">${optRows}</div>
@@ -2269,26 +3053,53 @@ function confirmAnswer() {
     block.innerHTML = `
       <div class="exp-verdict">
         <span class="exp-badge ${isOk?'ok':'bad'}">${isOk?'✓ Correct':'✗ Incorrect'}</span>
-        <span class="exp-correct-label">Correct answer: ${LTR[correct]}</span>
+        <span class="exp-correct-label">Correct: ${LTR[correct]}</span>
       </div>
       <div class="exp-divider"></div>
       <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink5);line-height:1.7;">Full breakdown shown at end of session.</p>`;
   }
 
   block.classList.add('show');
-  const nb2 = document.getElementById('next-btn');
-  if(nb2) nb2.classList.add('show');
-  // Hide skip + kbd hint after answering
-  const skipInline = document.getElementById('skip-btn-inline');
-  if(skipInline) skipInline.style.display = 'none';
-  const kbdHint = document.getElementById('kbd-hint');
-  if(kbdHint) kbdHint.style.display = 'none';
+}
+
+// ─── FLAG / SKIP / NEXT ───────────────────────────────────────
+function toggleFlag() {
+  if(!S.flags) S.flags = Array(S.queue.length).fill(false);
+  S.flags[S.ci] = !S.flags[S.ci];
+  const isFlagged = S.flags[S.ci];
+
+  // update top button
+  const fb = document.getElementById('flag-btn-top');
+  if(fb) {
+    fb.classList.toggle('flag-on', isFlagged);
+    fb.innerHTML = `
+      <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1h8v6H1V1zM1 1v11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      ${isFlagged ? 'Flagged' : 'Flag'}
+    `;
+  }
   updateSidebar();
 }
 
-function nextQ() {
+function skipQ() {
+  if(S.confirmed) return;
+  tickTime();
+  S.skipped[S.ci] = true;
+  S.answers[S.ci] = -1;
+  updateSidebar();
   if(S.ci + 1 < S.queue.length) { S.ci++; renderQ(); window.scrollTo(0,0); }
   else { clearSession(); showResults(); }
+}
+
+function nextQ() {
+  if(S.ci + 1 < S.queue.length) {
+    tickTime();
+    S.ci++; renderQ(); window.scrollTo(0,0);
+  } else {
+    tickTime();
+    clearSession(); showResults();
+  }
 }
 
 function exitSession() {
@@ -2299,164 +3110,348 @@ function exitSession() {
   }
 }
 
-// ═══════════════════════════════════════════════════
-//  KEYBOARD SHORTCUTS
-// ═══════════════════════════════════════════════════
+// ─── KEYBOARD SHORTCUTS ───────────────────────────────────────
 document.addEventListener('keydown', e => {
-  if(e.target.tagName === 'INPUT') return;
+  if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
   const screen = document.getElementById('screen-session');
   if(!screen || screen.style.display === 'none') return;
+
   if(e.key.toLowerCase() === 'f') { toggleFlag(); return; }
+  if(e.key.toLowerCase() === 'n') { toggleNotePanel(); return; }
+
   const num = parseInt(e.key);
   if(num >= 1 && num <= 4 && !isNaN(num)) {
-    if(!S.confirmed) selectOpt(num - 1); // auto-confirms in normal mode
+    if(!S.confirmed) selectOpt(num-1);
     return;
   }
   if(e.key === 'Enter') {
     if(!S.confirmed && S.sel !== null && S.mode === 'exam') { confirmAnswer(); return; }
     if(S.confirmed) {
       const nb = document.getElementById('next-btn');
-      if(nb && nb.classList.contains('show')) nextQ();
+      if(nb?.classList.contains('show')) nextQ();
     }
     return;
   }
   if((e.key === 'ArrowRight' || e.key === ' ') && S.confirmed) {
     e.preventDefault();
     const nb = document.getElementById('next-btn');
-    if(nb && nb.classList.contains('show')) nextQ();
+    if(nb?.classList.contains('show')) nextQ();
   }
 });
 
+// close highlight toolbar on outside click
+document.addEventListener('mousedown', e => {
+  const tb = document.getElementById('hl-toolbar');
+  if(tb && !tb.contains(e.target) && e.target.id !== 'vig-text') {
+    hideHlToolbar();
+  }
+});
 
+// ─── RESULTS ──────────────────────────────────────────────────
 function showResults() {
   const total = S.queue.length;
-  let correct = 0, missed = [], skippedCount = 0;
+  let correct = 0, skippedCount = 0, flaggedCount = 0;
   S.queue.forEach((q,i) => {
-    if(S.answers[i] === -1) { skippedCount++; }
+    if(S.answers[i] === -1) skippedCount++;
     else if(S.answers[i] === q.ans) correct++;
-    else missed.push(q.topic);
+    if(S.flags[i]) flaggedCount++;
   });
   const answered = total - skippedCount;
   const pct = answered > 0 ? Math.round((correct/answered)*100) : 0;
-  const gc  = pct>=80 ? '#2a6642' : pct>=60 ? '#8a6020' : '#c8452a';
-  const gl  = pct===100 ? 'Perfect.' : pct>=80 ? `${correct} of ${total}.` : pct>=60 ? 'Getting there.' : 'Review and retry.';
-  const gs  = pct===100 ? 'Every concept locked in.' : pct>=80 ? 'Solid. Look at what you missed.' : pct>=60 ? 'Good base. Gaps to close.' : 'Go back to the notes, then return.';
 
-  const r=54, circ=2*Math.PI*r, dash=(pct/100)*circ;
+  // Store weak topics
+  const missed = S.queue
+    .filter((q,i) => S.answers[i] !== -1 && S.answers[i] !== q.ans)
+    .map(q => q.topic);
   const uniqueMissed = [...new Set(missed)];
-
-  // Store weak topics for next session
   if(uniqueMissed.length) {
-    try { localStorage.setItem('vent_weak_topics', JSON.stringify({topics: uniqueMissed, sys: S.sys, ts: Date.now()})); } catch(e){}
+    try { localStorage.setItem('vent_weak_topics', JSON.stringify({topics:uniqueMissed, sys:S.sys, ts:Date.now()})); } catch(e) {}
   }
 
-  const flaggedCount = (S.flags||[]).filter(Boolean).length;
+  // Topic breakdown
+  const topicMap = {};
+  S.queue.forEach((q,i) => {
+    if(!topicMap[q.topic]) topicMap[q.topic] = {correct:0, total:0, missed:false};
+    if(S.answers[i] === -1) return;
+    topicMap[q.topic].total++;
+    if(S.answers[i] === q.ans) topicMap[q.topic].correct++;
+    else topicMap[q.topic].missed = true;
+  });
 
-  const buildQBlock = (q, i) => {
-    const ch = S.answers[i];
-    const skipped = ch === -1;
-    const ok = !skipped && ch === q.ans;
-    const isFlagged = S.flags && S.flags[i];
-    const diff = q.diff || 'core';
-    const opts = q.opts.map((o,oi) => {
-      let cls='';
-      if(oi===q.ans) cls='rk'; else if(!skipped && oi===ch) cls='rw';
-      return `<div class="res-opt ${cls}"><span class="res-opt-ltr">${LTR[oi]}</span><span>${o}${oi===q.ans?' ✓':(!skipped&&oi===ch)?' ✗':''}</span></div>`;
+  // Save to history
+  saveHistory(pct, answered, topicMap);
+
+  // Score ring
+  const r=54, circ=2*Math.PI*r, dash=(pct/100)*circ;
+  const gc = pct>=80?'#2a6642':pct>=60?'#c8962a':'#c8452a';
+  const gl = pct===100?'Perfect.':pct>=80?`${correct} of ${total}.`:pct>=60?'Getting there.':'Review and retry.';
+  const gs = pct===100?'Every concept locked in.':pct>=80?'Solid. Look at what you missed.':pct>=60?'Good base. Gaps to close.':'Go back to the notes, then return.';
+
+  // Topic cards HTML
+  const topicCardsHtml = Object.entries(topicMap).map(([topic, stat]) => {
+    const tPct = stat.total > 0 ? Math.round((stat.correct/stat.total)*100) : 0;
+    const barCls = tPct>=80?'ok':tPct>=60?'warn':'bad';
+    const noteLink = getNoteLink(topic);
+    return `<div class="topic-card">
+      <div class="topic-card-name">${topic}</div>
+      <div class="topic-bar-wrap"><div class="topic-bar-fill ${barCls}" style="width:${tPct}%"></div></div>
+      <div class="topic-score"><span>${stat.correct}/${stat.total} correct</span><span class="pct">${tPct}%</span></div>
+      ${noteLink ? `<a href="${noteLink}" class="topic-note-link" target="_blank">→ Review notes</a>` : ''}
+    </div>`;
+  }).join('');
+
+  // Time chart HTML
+  const maxTime = Math.max(...S.timeSpent.filter(t=>t>0), 1);
+  const timeChartHtml = S.queue.map((q,i) => {
+    const t = S.timeSpent[i] || 0;
+    const h = Math.max(4, Math.round((t/maxTime)*80));
+    const slow = t > 90;
+    const ok = S.answers[i] === q.ans;
+    return `<div class="time-bar-wrap">
+      <div class="time-bar ${slow?'slow':ok?'ok':''}" style="height:${h}px" title="Q${i+1}: ${t}s"></div>
+      <div class="time-bar-q">${i+1}</div>
+    </div>`;
+  }).join('');
+
+  // Question cards HTML
+  const qBlocks = S.queue.map((q,i) => {
+    const ans = S.answers[i];
+    const isSkipped = ans === -1;
+    const isOk = !isSkipped && ans === q.ans;
+    const isFlagged = S.flags[i];
+    const note = S.annotations[qbIdx(q)];
+    const cls = isSkipped ? 'skip' : isOk ? 'ok' : 'bad';
+
+    const optRows = q.opts.map((o,oi) => {
+      const isC = oi === q.ans;
+      const isA = oi === ans && !isSkipped;
+      let cls2 = isC ? 'rk' : (isA && !isOk) ? 'rw' : '';
+      return `<div class="res-opt ${cls2}"><span class="res-opt-ltr">${LTR[oi]}</span><span>${o}</span></div>`;
     }).join('');
 
-    const optExpRows = q.oe ? q.opts.map((o,oi) => {
-      const isC = oi===q.ans;
+    const expRows = q.opts.map((o,oi) => {
+      const isC = oi === q.ans;
+      const txt = q.oe?.[oi] || (isC ? q.lo||'' : '');
+      if(!txt) return '';
       return `<div class="exp-opt-row ${isC?'is-correct':''}">
-        <span class="exp-opt-ltr ${isC?'ok':'bad'}">${LTR[oi]}</span>
-        <div class="exp-opt-body">${q.oe[oi]||''}</div>
+        <span class="exp-opt-ltr ${isC?'ok':'dim'}">${LTR[oi]}</span>
+        <div class="exp-opt-body">${txt}</div>
       </div>`;
-    }).join('') : '';
+    }).join('');
 
-    const statusLabel = skipped ? '→ Skipped' : ok ? '✓ Correct' : '✗ Incorrect';
-    const statusCls = skipped ? '' : ok ? 'ok' : 'bad';
-    const statusStyle = skipped ? 'color:var(--ink4);background:var(--bg2);border:1px solid var(--border);' : '';
+    const timeStr = S.timeSpent[i] ? `${S.timeSpent[i]}s` : '';
 
-    return `<div class="res-q ${skipped?'':ok?'ok':'bad'}" data-ok="${ok?1:0}" data-skipped="${skipped?1:0}" data-flagged="${isFlagged?1:0}">
+    return `<div class="res-q ${cls}" data-ok="${isOk?1:0}" data-skipped="${isSkipped?1:0}" data-flagged="${isFlagged?1:0}">
       <div class="res-q-hdr" onclick="toggleResQ(this)">
-        <div style="display:flex;align-items:center;gap:10px;">
-          <span class="res-q-badge ${statusCls}" style="${statusStyle}">${statusLabel}</span>
-          <span class="diff-badge ${diff}" style="font-size:8px;">${diff}</span>
-          ${isFlagged ? '<span style="color:rgba(200,150,0,.8);font-size:12px;">⚑</span>' : ''}
-        </div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          <span class="res-q-topic">Q${i+1} · ${q.topic}</span>
-          <span class="res-q-toggle">›</span>
-        </div>
+        <span class="res-q-badge ${cls}">${isSkipped?'— Skipped':isOk?'✓ Correct':'✗ Incorrect'}</span>
+        <span class="res-q-topic">${q.topic}</span>
+        ${timeStr ? `<span class="res-q-time">${timeStr}</span>` : ''}
+        ${isFlagged ? '<span style="font-family:\'JetBrains Mono\',monospace;font-size:10px;color:var(--red);">⚑</span>' : ''}
+        <span class="res-q-toggle">›</span>
       </div>
       <div class="res-q-body">
-        <div class="res-vig">${q.vig.replace(/<[^>]*>/g,'').substring(0,140)}…</div>
+        <div class="res-vig">${q.vig}</div>
         <div class="res-stem">${q.stem}</div>
-        <div class="res-opts">${opts}</div>
+        <div class="res-opts">${optRows}</div>
         <div class="res-exp-wrap">
-          ${optExpRows ? `<div class="res-exp-opts">${optExpRows}</div>` : ''}
-          <div class="exp-lo">
-            <div class="exp-lo-label">Learning objective</div>
-            <div class="exp-lo-text">${q.lo}</div>
+          <div class="res-exp-opts">${expRows}</div>
+          <div class="res-exp-lo-label">Learning objective</div>
+          <div class="res-exp-lo-text">${q.lo}</div>
+        </div>
+        ${note ? `<div class="res-note"><span class="res-note-label">Your note</span><span class="res-note-text">${note.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</span></div>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+
+  const incorrectCount = total - correct - skippedCount;
+
+  document.getElementById('screen-results').innerHTML = `
+    <div class="results">
+      <div class="res-top">
+        <div class="score-ring">
+          <svg width="128" height="128">
+            <circle cx="64" cy="64" r="${r}" fill="none" stroke="var(--bg3)" stroke-width="8"/>
+            <circle cx="64" cy="64" r="${r}" fill="none" stroke="${gc}" stroke-width="8"
+              stroke-dasharray="${dash} ${circ}" stroke-linecap="round"
+              style="transition:stroke-dasharray .8s cubic-bezier(.16,1,.3,1)"/>
+          </svg>
+          <div class="score-inner">
+            <div class="score-n">${pct}%</div>
+            <div class="score-pct">${correct}/${answered}</div>
+          </div>
+        </div>
+        <div>
+          <div class="res-grade">${gl.replace(/\.$/, '<em>.</em>')}</div>
+          <div class="res-sub">${gs}</div>
+          <div class="res-tally">
+            <span><span class="td ok"></span>${correct} correct</span>
+            <span><span class="td bad"></span>${incorrectCount} incorrect</span>
+            ${skippedCount ? `<span><span class="td" style="background:var(--ink4)"></span>${skippedCount} skipped</span>` : ''}
+            ${flaggedCount ? `<span><span class="td" style="background:var(--red);border-radius:0;width:6px;height:6px;"></span>${flaggedCount} flagged</span>` : ''}
           </div>
         </div>
       </div>
-    </div>`;
-  };
 
-  const qBlocks = S.queue.map((q,i) => buildQBlock(q,i)).join('');
+      <!-- TABS -->
+      <div class="res-tabs">
+        <button class="res-tab active" onclick="switchResTab('breakdown',this)">By Topic</button>
+        <button class="res-tab" onclick="switchResTab('time',this)">Time</button>
+        <button class="res-tab" onclick="switchResTab('all',this)">All Questions</button>
+        ${flaggedCount ? `<button class="res-tab" onclick="switchResTab('flagged',this)">Flagged (${flaggedCount})</button>` : ''}
+        ${incorrectCount ? `<button class="res-tab" onclick="switchResTab('missed',this)">Missed (${incorrectCount})</button>` : ''}
+        ${Object.keys(S.annotations).length ? `<button class="res-tab" onclick="switchResTab('notes',this)">Notes</button>` : ''}
+      </div>
 
-  document.getElementById('res-content').innerHTML = `
-    <div class="res-top">
-      <div class="score-ring">
-        <svg width="128" height="128" viewBox="0 0 128 128">
-          <circle cx="64" cy="64" r="${r}" fill="none" stroke="#e2ddd3" stroke-width="7"/>
-          <circle cx="64" cy="64" r="${r}" fill="none" stroke="${gc}" stroke-width="7"
-            stroke-dasharray="${dash} ${circ}" stroke-linecap="round"/>
-        </svg>
-        <div class="score-inner">
-          <div class="score-n">${correct}/${total}</div>
-          <div class="score-pct">${pct}%</div>
+      <!-- BREAKDOWN TAB -->
+      <div class="res-panel active" id="rp-breakdown">
+        <div class="res-section-label">Performance by topic</div>
+        <div class="topic-grid">${topicCardsHtml}</div>
+        ${uniqueMissed.length ? `
+          <div class="res-section-label">Weak areas</div>
+          <div class="focus-chips">${uniqueMissed.map(t=>`<div class="focus-chip">${t}</div>`).join('')}</div>
+        ` : ''}
+      </div>
+
+      <!-- TIME TAB -->
+      <div class="res-panel" id="rp-time">
+        <div class="res-section-label">Time per question (seconds)</div>
+        <div style="margin-bottom:12px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink5);">
+          <span style="color:var(--red)">■</span> &gt;90s (slow) &nbsp;
+          <span style="color:var(--green)">■</span> correct &nbsp;
+          <span style="color:var(--ink5)">■</span> incorrect
+        </div>
+        <div class="time-grid" style="min-height:100px;">${timeChartHtml}</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink5);margin-top:16px;">
+          Avg: ${Math.round(S.timeSpent.filter(t=>t>0).reduce((a,b)=>a+b,0) / (S.timeSpent.filter(t=>t>0).length||1))}s per question
         </div>
       </div>
-      <div>
-        <div class="res-grade"><em>${gl}</em></div>
-        <div class="res-sub">${gs}</div>
-        <div class="res-tally">
-          <span><span class="td ok"></span>${correct} correct</span>
-          <span><span class="td bad"></span>${total-correct-skippedCount} missed</span>
-          ${skippedCount > 0 ? `<span><span class="td" style="background:var(--ink4)"></span>${skippedCount} skipped</span>` : ''}
+
+      <!-- ALL QUESTIONS TAB -->
+      <div class="res-panel" id="rp-all">
+        <div class="res-filter-bar">
+          <button class="res-filter-btn active" onclick="filterResults('all',this)">All (${total})</button>
+          <button class="res-filter-btn" onclick="filterResults('incorrect',this)">Incorrect (${incorrectCount})</button>
+          ${flaggedCount ? `<button class="res-filter-btn" onclick="filterResults('flagged',this)">Flagged (${flaggedCount})</button>` : ''}
+          ${skippedCount ? `<button class="res-filter-btn" onclick="filterResults('skipped',this)">Skipped (${skippedCount})</button>` : ''}
+          <button class="res-filter-btn" style="margin-left:auto;" onclick="expandAllResults()">Expand all</button>
+        </div>
+        <div class="res-list" id="res-list">${qBlocks}</div>
+      </div>
+
+      <!-- FLAGGED TAB -->
+      ${flaggedCount ? `
+      <div class="res-panel" id="rp-flagged">
+        <div class="res-list">${S.queue.map((q,i) => {
+          if(!S.flags[i]) return '';
+          const ans = S.answers[i]; const isOk = ans === q.ans;
+          const note = S.annotations[qbIdx(q)];
+          const optRows = q.opts.map((o,oi) => {
+            const isC = oi === q.ans; const isA = oi === ans && ans !== -1;
+            return `<div class="res-opt ${isC?'rk':isA&&!isOk?'rw':''}"><span class="res-opt-ltr">${LTR[oi]}</span><span>${o}</span></div>`;
+          }).join('');
+          return `<div class="res-q ${isOk?'ok':ans===-1?'skip':'bad'}">
+            <div class="res-q-hdr" onclick="toggleResQ(this)">
+              <span class="res-q-badge ${isOk?'ok':'bad'}">${ans===-1?'— Skipped':isOk?'✓ Correct':'✗ Incorrect'}</span>
+              <span class="res-q-topic">${q.topic}</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--red);">⚑</span>
+              <span class="res-q-toggle">›</span>
+            </div>
+            <div class="res-q-body">
+              <div class="res-vig">${q.vig}</div>
+              <div class="res-stem">${q.stem}</div>
+              <div class="res-opts">${optRows}</div>
+              <div class="res-exp-wrap">
+                <div class="res-exp-lo-label">Learning objective</div>
+                <div class="res-exp-lo-text">${q.lo}</div>
+              </div>
+              ${note ? `<div class="res-note"><span class="res-note-label">Your note</span><span class="res-note-text">${note}</span></div>` : ''}
+            </div>
+          </div>`;
+        }).join('')}</div>
+      </div>` : ''}
+
+      <!-- MISSED TAB -->
+      ${incorrectCount ? `
+      <div class="res-panel" id="rp-missed">
+        <div class="res-list">${S.queue.map((q,i) => {
+          const ans = S.answers[i];
+          if(ans === -1 || ans === q.ans) return '';
+          const note = S.annotations[qbIdx(q)];
+          const optRows = q.opts.map((o,oi) => {
+            const isC = oi === q.ans; const isA = oi === ans;
+            return `<div class="res-opt ${isC?'rk':isA?'rw':''}"><span class="res-opt-ltr">${LTR[oi]}</span><span>${o}</span></div>`;
+          }).join('');
+          return `<div class="res-q bad">
+            <div class="res-q-hdr" onclick="toggleResQ(this)">
+              <span class="res-q-badge bad">✗ Incorrect</span>
+              <span class="res-q-topic">${q.topic}</span>
+              <span class="res-q-toggle">›</span>
+            </div>
+            <div class="res-q-body">
+              <div class="res-vig">${q.vig}</div>
+              <div class="res-stem">${q.stem}</div>
+              <div class="res-opts">${optRows}</div>
+              <div class="res-exp-wrap">
+                <div class="res-exp-lo-label">Learning objective</div>
+                <div class="res-exp-lo-text">${q.lo}</div>
+              </div>
+              ${note ? `<div class="res-note"><span class="res-note-label">Your note</span><span class="res-note-text">${note}</span></div>` : ''}
+            </div>
+          </div>`;
+        }).join('')}</div>
+      </div>` : ''}
+
+      <!-- NOTES TAB -->
+      ${Object.keys(S.annotations).length ? `
+      <div class="res-panel" id="rp-notes">
+        <div class="res-list">${S.queue.map((q,i) => {
+          const idx = qbIdx(q);
+          const note = S.annotations[idx];
+          if(!note) return '';
+          return `<div class="res-q ok" style="border-left-color:var(--green)">
+            <div class="res-q-hdr" onclick="toggleResQ(this)">
+              <span class="res-q-badge ok">✎ Note</span>
+              <span class="res-q-topic">${q.topic}</span>
+              <span class="res-q-toggle">›</span>
+            </div>
+            <div class="res-q-body">
+              <div class="res-stem">${q.stem}</div>
+              <div class="res-note" style="margin:0;border:none;">
+                <span class="res-note-label">Your note</span>
+                <span class="res-note-text">${note.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</span>
+              </div>
+            </div>
+          </div>`;
+        }).join('')}</div>
+      </div>` : ''}
+
+      <div style="margin-top:52px;">
+        <div class="res-actions">
+          <button class="ra-retry" onclick="retrySession()">↺ &nbsp;Retry same questions</button>
+          <button class="ra-new" onclick="show('screen-launcher');updateSummary()">New session →</button>
         </div>
       </div>
-    </div>
-
-    ${uniqueMissed.length ? `
-      <div class="res-section-label">Topics to revisit</div>
-      <div class="focus-chips">${uniqueMissed.map(t=>`<div class="focus-chip">${t}</div>`).join('')}</div>
-    ` : ''}
-
-    <div class="res-section-label">Full breakdown</div>
-    <div class="res-filter-bar">
-      <button class="res-filter-btn active" onclick="filterResults('all',this)">All (${total})</button>
-      <button class="res-filter-btn" onclick="filterResults('incorrect',this)">Incorrect (${total-correct-skippedCount})</button>
-      ${flaggedCount ? `<button class="res-filter-btn" onclick="filterResults('flagged',this)">Flagged (${flaggedCount})</button>` : ''}
-      ${skippedCount ? `<button class="res-filter-btn" onclick="filterResults('skipped',this)">Skipped (${skippedCount})</button>` : ''}
-      <button class="res-filter-btn" style="margin-left:auto;" onclick="expandAllResults()">Expand all</button>
-    </div>
-    <div class="res-list" id="res-list">${qBlocks}</div>
-
-    <div class="res-actions">
-      <button class="ra-retry" onclick="retrySession()">↺ &nbsp;Retry same questions</button>
-      <button class="ra-new" onclick="show('screen-launcher');updateSummary()">New session →</button>
-      <button class="ra-settings" onclick="show('screen-launcher');updateSummary()" style="background:none;border:1px solid var(--border);color:var(--ink3);font-family:'Syne',sans-serif;font-size:13px;font-weight:700;padding:14px 24px;cursor:pointer;transition:all .2s;letter-spacing:.3px;">⚙ Change settings</button>
     </div>
   `;
 
   show('screen-results');
 }
 
+// ─── RESULTS UI HELPERS ───────────────────────────────────────
+function switchResTab(name, btn) {
+  document.querySelectorAll('.res-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const panels = {
+    breakdown: 'rp-breakdown', time: 'rp-time', all: 'rp-all',
+    flagged: 'rp-flagged', missed: 'rp-missed', notes: 'rp-notes'
+  };
+  document.querySelectorAll('.res-panel').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById(panels[name]);
+  if(target) target.classList.add('active');
+}
+
 function toggleResQ(hdr) {
-  const card = hdr.closest('.res-q');
-  card.classList.toggle('expanded');
+  hdr.closest('.res-q').classList.toggle('expanded');
 }
 
 function expandAllResults() {
@@ -2467,13 +3462,13 @@ function filterResults(type, btn) {
   document.querySelectorAll('.res-filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('#res-list .res-q').forEach(card => {
-    const ok = card.dataset.ok === '1';
+    const ok      = card.dataset.ok === '1';
     const skipped = card.dataset.skipped === '1';
     const flagged = card.dataset.flagged === '1';
     let show = true;
-    if(type === 'incorrect') show = !ok && !skipped;
-    else if(type === 'flagged') show = flagged;
-    else if(type === 'skipped') show = skipped;
+    if(type==='incorrect') show = !ok && !skipped;
+    else if(type==='flagged') show = flagged;
+    else if(type==='skipped') show = skipped;
     card.style.display = show ? '' : 'none';
   });
 }
@@ -2482,44 +3477,55 @@ function retrySession() {
   S.ci=0; S.answers=Array(S.queue.length).fill(null);
   S.skipped=Array(S.queue.length).fill(false);
   S.flags=Array(S.queue.length).fill(false);
+  S.startTimes=Array(S.queue.length).fill(null);
+  S.timeSpent=Array(S.queue.length).fill(0);
   S.sel=null; S.confirmed=false;
   saveSession();
   show('screen-session'); buildSidebar(); renderQ();
 }
 
-function show(id) {
-  ['screen-launcher','screen-session','screen-results'].forEach(s => {
-    document.getElementById(s).style.display = s===id ? 'block' : 'none';
-  });
-  window.scrollTo(0,0);
+// ─── NOTE LINKS — map topic to relevant note ──────────────────
+function getNoteLink(topic) {
+  const map = {
+    'PPH': '/obgyn/',
+    'Postpartum Haemorrhage': '/obgyn/',
+    'Preeclampsia': '/obgyn/',
+    'Ectopic Pregnancy': '/obgyn/',
+    'Antepartum Haemorrhage': '/obgyn/',
+    'Pre-eclampsia': '/obgyn/',
+    'Diabetic Retinopathy': '/ophtho/',
+    'Retinal Detachment': '/ophtho/',
+    'Glaucoma': '/ophtho/',
+    'Cataract': '/ophtho/',
+    'Uveitis': '/ophtho/',
+    'Cornea': '/ophtho/',
+    'Neuro-ophthalmology': '/ophtho/',
+    'Thyroid Eye Disease': '/ophtho/',
+  };
+  return map[topic] || null;
 }
 
-// ═══════════════════════════════════════════════════
-//  INIT
-// ═══════════════════════════════════════════════════
-updateSummary();
-
+// ─── FOCUS MODE ───────────────────────────────────────────────
 function launchFocusSession() {
   try {
     const w = JSON.parse(localStorage.getItem('vent_weak_topics') || '{}');
-    if(!w.topics || !w.topics.length) { launch(); return; }
+    if(!w.topics?.length) { launch(); return; }
     clampCount();
     const count = Math.max(5, parseInt(document.getElementById('count-input').value) || 10);
-    // Filter QB to weak topics, with fallback to full pool
     let pool = QB.filter(q => w.topics.includes(q.topic));
-    if(pool.length < 5) pool = QB; // fallback if too few
+    if(pool.length < 5) pool = QB;
     S.sys = w.sys || 'all';
-    S.mode = S.mode;
     S.queue = shuffle(pool).slice(0, Math.min(count, pool.length));
     S.ci = 0;
-    S.answers = Array(S.queue.length).fill(null);
-    S.skipped = Array(S.queue.length).fill(false);
-    S.flags = Array(S.queue.length).fill(false);
+    S.answers    = Array(S.queue.length).fill(null);
+    S.skipped    = Array(S.queue.length).fill(false);
+    S.flags      = Array(S.queue.length).fill(false);
+    S.startTimes = Array(S.queue.length).fill(null);
+    S.timeSpent  = Array(S.queue.length).fill(0);
     S.sel = null; S.confirmed = false;
     saveSession();
-    show('screen-session');
-    buildSidebar();
-    renderQ();
+    loadUserData();
+    show('screen-session'); buildSidebar(); renderQ();
   } catch(e) { launch(); }
 }
 
@@ -2529,13 +3535,13 @@ function dismissFocusBanner() {
   if(b) b.style.display = 'none';
 }
 
-// Show resume banner if saved session exists
-(function checkResume(){
+// ─── RESUME BANNER ────────────────────────────────────────────
+(function checkResume() {
   try {
     const raw = localStorage.getItem('vent_qbank_session');
     if(!raw) return;
     const d = JSON.parse(raw);
-    if(!d.queue || !d.queue.length) return;
+    if(!d.queue?.length) return;
     const answered = (d.answers||[]).filter(a=>a!==null).length;
     if(answered === 0) return;
     const banner = document.createElement('div');
@@ -2544,24 +3550,24 @@ function dismissFocusBanner() {
     banner.innerHTML = `
       <span style="color:var(--red);">●</span>
       <span>Session in progress — Q${d.ci+1} of ${d.queue.length} · ${answered} answered</span>
-      <button onclick="resumeSession()" style="margin-left:auto;background:var(--red);color:white;border:none;padding:7px 18px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.5px;">Resume →</button>
+      <button onclick="resumeSession()" style="margin-left:auto;background:var(--red);color:white;border:none;padding:7px 18px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;cursor:pointer;">Resume →</button>
       <button onclick="this.parentElement.remove();clearSession();" style="background:none;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.4);padding:7px 12px;font-family:'JetBrains Mono',monospace;font-size:10px;cursor:pointer;">Discard</button>
     `;
     const launcher = document.getElementById('screen-launcher');
-    launcher.insertBefore(banner, launcher.firstChild);
-  } catch(e){}
+    if(launcher) launcher.insertBefore(banner, launcher.firstChild);
+  } catch(e) {}
 })();
 
 function resumeSession() {
   if(loadSession()) {
     const banner = document.getElementById('resume-banner');
     if(banner) banner.remove();
-    show('screen-session');
-    buildSidebar();
-    // If last confirmed question, re-render without re-confirming
-    renderQ();
+    loadUserData();
+    show('screen-session'); buildSidebar(); renderQ();
   }
 }
-</script>
-</body>
-</html>
+
+// ─── INIT ─────────────────────────────────────────────────────
+updateSummary();
+
+</script></body></html>

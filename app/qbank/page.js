@@ -16,7 +16,6 @@ export default function QBank() {
 
   return (
     <>
-  
       <nav>
         <a href="/" className="logo">
           <svg width="34" height="34" viewBox="0 0 44 44" fill="none">
@@ -39,6 +38,12 @@ export default function QBank() {
           <h1 className="l-h1">Cases.<br/><em>No notes.</em></h1>
           <p className="l-sub">Clinical vignettes. Hard questions. Real reasoning required. Choose your system and go.</p>
 
+          <div className="l-perf-strip" id="l-perf-strip">
+            <div className="l-perf-block"><div className="l-perf-label">Sessions</div><div className="l-perf-val">—</div><div className="l-perf-sub">No sessions yet</div></div>
+            <div className="l-perf-block"><div className="l-perf-label">Avg score</div><div className="l-perf-val">—</div><div className="l-perf-sub">Complete a session</div></div>
+            <div className="l-perf-block"><div className="l-perf-label">Questions done</div><div className="l-perf-val">—</div><div className="l-perf-sub">across all sessions</div></div>
+          </div>
+
           <div className="focus-banner" id="focus-banner" style={{display:'none'}}>
             <div className="focus-banner-text">
               <strong>Last session: weak areas detected</strong><br/>
@@ -51,34 +56,19 @@ export default function QBank() {
           <div className="cfg">
             <div className="cfg-label">System</div>
             <div className="sys-grid">
-              <button className="sys-btn on" data-sys="all" onClick={(e) => window.pickSys && window.pickSys(e.currentTarget, 'all')}>
-                <div className="sn">Everything</div>
-                <div className="ss" id="sc-all">— questions</div>
+              <button className="sys-btn on" onClick={(e) => window.pickSys && window.pickSys(e.currentTarget, 'all')}>
+                <div className="sn">Everything</div><div className="ss" id="sc-all">— questions</div>
               </button>
-              <button className="sys-btn" data-sys="obgyn" onClick={(e) => window.pickSys && window.pickSys(e.currentTarget, 'obgyn')}>
-                <div className="sn">OB / GYN</div>
-                <div className="ss" id="sc-obgyn">— questions</div>
+              <button className="sys-btn" onClick={(e) => window.pickSys && window.pickSys(e.currentTarget, 'obgyn')}>
+                <div className="sn">OB / GYN</div><div className="ss" id="sc-obgyn">— questions</div>
               </button>
-              <button className="sys-btn" data-sys="ophtho" onClick={(e) => window.pickSys && window.pickSys(e.currentTarget, 'ophtho')}>
-                <div className="sn">Ophthalmology</div>
-                <div className="ss" id="sc-ophtho">— questions</div>
+              <button className="sys-btn" onClick={(e) => window.pickSys && window.pickSys(e.currentTarget, 'ophtho')}>
+                <div className="sn">Ophthalmology</div><div className="ss" id="sc-ophtho">— questions</div>
               </button>
-              <div className="sys-btn soon">
-                <div className="sn">Internal Med</div>
-                <div className="ss">Coming soon</div>
-              </div>
-              <div className="sys-btn soon">
-                <div className="sn">Surgery</div>
-                <div className="ss">Coming soon</div>
-              </div>
-              <div className="sys-btn soon">
-                <div className="sn">Neurology</div>
-                <div className="ss">Coming soon</div>
-              </div>
-              <div className="sys-btn soon">
-                <div className="sn">Paediatrics</div>
-                <div className="ss">Coming soon</div>
-              </div>
+              <div className="sys-btn soon"><div className="sn">Internal Med</div><div className="ss">Coming soon</div></div>
+              <div className="sys-btn soon"><div className="sn">Surgery</div><div className="ss">Coming soon</div></div>
+              <div className="sys-btn soon"><div className="sn">Neurology</div><div className="ss">Coming soon</div></div>
+              <div className="sys-btn soon"><div className="sn">Paediatrics</div><div className="ss">Coming soon</div></div>
             </div>
           </div>
 
@@ -95,14 +85,12 @@ export default function QBank() {
 
           <div className="cfg">
             <div className="cfg-label">Mode</div>
-            <div className="mode-grid" style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'10px'}}>
+            <div className="mode-row">
               <button className="mode-btn on" onClick={(e) => window.pickMode && window.pickMode(e.currentTarget, 'normal')}>
-                <div className="mn">Normal</div>
-                <div className="md">Answer, get immediate feedback, move on.</div>
+                <div className="mn">Normal</div><div className="md">Answer, get immediate feedback, move on.</div>
               </button>
               <button className="mode-btn" onClick={(e) => window.pickMode && window.pickMode(e.currentTarget, 'exam')}>
-                <div className="mn">Exam</div>
-                <div className="md">No feedback until the session ends.</div>
+                <div className="mn">Exam</div><div className="md">No feedback until the session ends.</div>
               </button>
             </div>
           </div>
@@ -122,37 +110,33 @@ export default function QBank() {
           <div className="mob-prog-bar"><div className="mob-prog-fill" id="mob-prog-fill" style={{width:'0%'}}></div></div>
           <span className="mob-prog-txt" id="mob-prog-txt">Q1 / —</span>
           <span className="mob-prog-mode" id="mob-prog-mode">Normal</span>
-          <button style={{background:'none',border:'none',fontFamily:"'JetBrains Mono',monospace",fontSize:'10px',color:'var(--ink4)',cursor:'pointer',padding:'0 0 0 8px'}} onClick={() => window.exitSession && window.exitSession()}>✕</button>
+          <button style={{background:'none',border:'none',fontFamily:"'JetBrains Mono',monospace",fontSize:'10px',color:'var(--ink4)',cursor:'pointer',padding:'0 0 0 8px'}}
+            onClick={() => window.exitSession && window.exitSession()}>✕</button>
         </div>
         <div className="session">
           <div className="sidebar" id="sidebar">
             <div className="sb-head">
-              <span className="sb-head-label">Questions</span>
-              <span className="sb-head-count" id="sb-head-count">0 / —</span>
+              <div className="sb-title">Navigator</div>
+              <div className="sb-progress-bar"><div className="sb-progress-fill" id="sb-bar-fill" style={{width:'0%'}}></div></div>
+              <div className="sb-legend">
+                <span><span className="sb-legend-dot answered"></span>done</span>
+                <span><span className="sb-legend-dot flagged"></span>flag</span>
+                <span><span className="sb-legend-dot current"></span>now</span>
+              </div>
+              <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'10px',color:'rgba(243,240,232,.4)',marginTop:'6px'}} id="sb-head-count">0 / —</div>
             </div>
-            <div className="sb-bar"><div className="sb-bar-fill" id="sb-bar-fill" style={{width:'0%'}}></div></div>
-            <div className="sb-q-list" id="sb-q-list"></div>
-            <div className="sb-footer">
-              <button className="sb-flag-btn" id="sb-flag-btn" onClick={() => window.toggleFlag && window.toggleFlag()} title="Flag (F)">⚑</button>
-              <button className="sb-exit" onClick={() => window.exitSession && window.exitSession()} title="Exit">✕</button>
+            <div className="sb-nav" id="sb-nav"></div>
+            <div className="sb-actions">
+              <button className="sb-action-btn" id="sb-flag-btn" onClick={() => window.toggleFlag && window.toggleFlag()}>⚑ Flag for review</button>
+              <button className="sb-action-btn" onClick={() => window.exitSession && window.exitSession()}>✕ Exit session</button>
             </div>
-            <div id="sb-dots" style={{display:'none'}}></div>
-            <div id="sb-prog-lbl" style={{display:'none'}}></div>
-            <div id="sb-mode-txt" style={{display:'none'}}></div>
-            <div id="sb-total" style={{display:'none'}}></div>
-            <div id="sb-big" style={{display:'none'}}></div>
-            <div id="sb-mode-pill" style={{display:'none'}}></div>
           </div>
           <div className="q-area" id="q-area"></div>
         </div>
       </div>
 
       {/* RESULTS */}
-      <div id="screen-results">
-        <div className="results">
-          <div id="res-content"></div>
-        </div>
-      </div>
+      <div id="screen-results"></div>
     </>
   )
 }
