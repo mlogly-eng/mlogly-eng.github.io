@@ -1085,5 +1085,39 @@ function qbNewSession() {
   openQBLauncher();
 }
 </script>
+<script>
+(function() {
+  const PROJ = 'vwotkstjgzwjjutzjjph';
+  function getSession() {
+    try { return JSON.parse(localStorage.getItem('sb-'+PROJ+'-auth-token')); } catch(e) { return null; }
+  }
+  function updateNav() {
+    const session = getSession();
+    if (!session?.access_token) return;
+    const user = session.user;
+    const name = user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'You';
+    const navAuth = document.querySelector('.nav-auth');
+    if (navAuth) {
+      navAuth.innerHTML = `
+        <a href="/dashboard" class="nav-signin">${name}</a>
+        <a href="/dashboard" class="nav-pill">Dashboard →</a>
+      `;
+    }
+    // Update drawer
+    const drawerPill = document.querySelector('.drawer-link.drawer-pill');
+    if (drawerPill) {
+      drawerPill.href = '/dashboard';
+      drawerPill.textContent = 'Dashboard →';
+    }
+    // Update hero CTAs
+    const btnP = document.querySelector('.btn-p');
+    if (btnP) { btnP.href = '/dashboard'; btnP.textContent = 'Go to dashboard →'; }
+    // Update footer sign in link
+    const ctaSignin = document.querySelector('.cta-signin-link');
+    if (ctaSignin) ctaSignin.style.display = 'none';
+  }
+  document.addEventListener('DOMContentLoaded', updateNav);
+})();
+</script>
 </body>
 </html>
