@@ -1,498 +1,413 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { supabase } from '../../lib/supabase'
+import { supabase } from '../../../lib/supabase'
 import { useRouter } from 'next/navigation'
 
-const SPECIALTIES = [
-  {
-    id: 'ophtho',
-    name: 'Ophthalmology',
-    href: '/ophtho/index.html',
-    notes: 19,
-    tag: 'Anterior · Posterior · Neuro',
-    desc: 'From the red eye to the optic nerve. The whole eye in 19 notes.',
-  },
-  {
-    id: 'obgyn',
-    name: 'OB/GYN',
-    href: '/obgyn/index.html',
-    notes: 27,
-    tag: 'Obstetrics · Gynaecology',
-    desc: 'PPH to ectopic. The high-stakes conditions that define the specialty.',
-  },
-]
+const ADMIN_USER_ID = '20dbd05b-45c5-446a-8028-0b45b687f4ae'
 
-export default function DashboardPage() {
+export default function AdminPage() {
   const router = useRouter()
-  const [user, setUser]               = useState(null)
-  const [loading, setLoading]         = useState(true)
-  const [stats, setStats]             = useState({ today: 0, total: 0, streak: 0, mcqAvg: null })
-  const [progress, setProgress]       = useState({})
-  const [lastNote, setLastNote]       = useState(null)
-  const [weaknesses, setWeaknesses]   = useState([])
-  const [strengths, setStrengths]     = useState([])
-  const [scoreTrend, setScoreTrend]   = useState([])
-  const [untested, setUntested]       = useState([])
-  const [topicBreakdown, setTopicBreakdown] = useState([])
+  const [authorized, setAuthorized] = useState(false)
+  const [loading, setLoading]       = useState(true)
+  const [data, setData]             = useState(null)
+  const [expanded, setExpanded]     = useState({})
+  const [inactiveDays, setInactiveDays] = useState(7)
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => {
-      if (!data.user) { router.push('/signin'); return }
-      setUser(data.user)
-      loadProgress(data.user.id)
+    supabase.auth.getUser().then(({ data: auth }) => {
+      if (!auth.user || auth.user.id !== ADMIN_USER_ID) {
+        router.push('/')
+        return
+      }
+      setAuthorized(true)
+      loadAdminData()
     })
   }, [])
 
-  async function loadProgress(userId) {
-    const { data, error } = await supabase
+  async function loadAdminData() {
+    // Fetch all progress rows
+    const { data: rows, error } = await supabase
       .from('progress')
       .select('*')
-      .eq('user_id', userId)
       .order('created_at', { ascending: false })
 
-    if (error || !data) { setLoading(false); return }
+    if (error || !rows) { setLoading(false); return }
 
-    const today = new Date().toISOString().slice(0, 10)
-    const byDate = {}
-    let totalSessions = 0
-    let todayCount = 0
-    let mcqScores = []
-    const progressMap = {}
-    let latestNote = null
+    // Fetch all users from auth (via progress user_ids — we don't have direct auth.users access from client)
+    const userIds = [...new Set(rows.map(r => r.user_id))]
 
-    // Topic-level MCQ tracking: { [topic]: { got: number, total: number } }
-    const topicMap = {}
-    // Note-level: opened notes per specialty
-    const openedNotes = {}
-
-    data.forEach(row => {
-      const date = row.created_at.slice(0, 10)
-      if (!byDate[date]) byDate[date] = 0
-      byDate[date]++
-      totalSessions++
-      if (date === today) todayCount++
-
-      if (!progressMap[row.specialty]) progressMap[row.specialty] = { opened: new Set(), completed: new Set() }
-      if (row.event === 'opened') {
-        progressMap[row.specialty].opened.add(row.note_id)
-        if (!openedNotes[row.specialty]) openedNotes[row.specialty] = new Set()
-        openedNotes[row.specialty].add(row.note_id)
+    // Build per-user stats
+    const userMap = {}
+    userIds.forEach(id => {
+      userMap[id] = {
+        id,
+        sessions: 0,
+        lastActive: null,
+        mcqScores: [],
+        mcqSessions: [],
+        openedNotes: new Set(),
+        specialties: new Set(),
+        firstSeen: null,
       }
-      if (row.event === 'completed') progressMap[row.specialty].completed.add(row.note_id)
+    })
+
+    // Note popularity
+    const notePopularity = {}
+
+    rows.forEach(row => {
+      const u = userMap[row.user_id]
+      if (!u) return
+
+      u.sessions++
+      if (!u.lastActive || row.created_at > u.lastActive) u.lastActive = row.created_at
+      if (!u.firstSeen || row.created_at < u.firstSeen) u.firstSeen = row.created_at
+      u.specialties.add(row.specialty)
+
+      if (row.event === 'opened') {
+        u.openedNotes.add(`${row.specialty}:${row.note_id}`)
+        const key = `${row.specialty}::${row.note_name || row.note_id}`
+        notePopularity[key] = (notePopularity[key] || 0) + 1
+      }
 
       if (row.event === 'mcq_done' && row.metadata?.score_pct != null) {
-        mcqScores.push({
-          note: row.note_id,
-          noteName: row.note_name || row.note_id,
+        u.mcqScores.push(row.metadata.score_pct)
+        u.mcqSessions.push({
+          note: row.note_name || row.note_id,
           specialty: row.specialty,
           pct: row.metadata.score_pct,
           got: row.metadata.score_got,
           total: row.metadata.score_total,
           date: row.created_at,
         })
-
-        // Topic breakdown from metadata (if topic stored) or use note_name as proxy
-        const topicKey = row.note_name || row.note_id
-        if (!topicMap[topicKey]) topicMap[topicKey] = { name: topicKey, specialty: row.specialty, scores: [] }
-        topicMap[topicKey].scores.push(row.metadata.score_pct)
-      }
-
-      if (!latestNote && (row.event === 'opened' || row.event === 'completed')) {
-        latestNote = { specialty: row.specialty, noteId: row.note_id, noteName: row.metadata?.note_name || row.note_id }
       }
     })
 
-    // Streak
-    let streak = 0
-    for (let i = 0; i < 60; i++) {
-      const d = new Date()
-      d.setDate(d.getDate() - i)
-      const key = d.toISOString().slice(0, 10)
-      if (byDate[key]) streak++
-      else if (i > 0) break
-    }
+    // Platform totals
+    const today = new Date().toISOString().slice(0, 10)
+    const weekAgo = new Date(Date.now() - 7 * 86400000).toISOString()
+    const todaySessions = rows.filter(r => r.created_at.slice(0, 10) === today).length
+    const weekSessions  = rows.filter(r => r.created_at >= weekAgo).length
+    const allMcqScores  = rows.filter(r => r.event === 'mcq_done' && r.metadata?.score_pct != null).map(r => r.metadata.score_pct)
+    const platformAvg   = allMcqScores.length > 0 ? Math.round(allMcqScores.reduce((a,b) => a+b,0) / allMcqScores.length) : null
 
-    // MCQ avg
-    const mcqAvg = mcqScores.length > 0
-      ? Math.round(mcqScores.reduce((a, b) => a + b.pct, 0) / mcqScores.length)
-      : null
+    // Signup trend — users by week
+    const signupByWeek = {}
+    userIds.forEach(id => {
+      const u = userMap[id]
+      if (!u.firstSeen) return
+      const weekStart = new Date(u.firstSeen)
+      weekStart.setDate(weekStart.getDate() - weekStart.getDay())
+      const key = weekStart.toISOString().slice(0, 10)
+      signupByWeek[key] = (signupByWeek[key] || 0) + 1
+    })
 
-    // Weaknesses — notes with MCQ score < 60%, lowest first
-    const weak = mcqScores
-      .filter(s => s.pct < 60)
-      .sort((a, b) => a.pct - b.pct)
-      .slice(0, 3)
+    // Sorted user list
+    const users = Object.values(userMap).sort((a, b) =>
+      new Date(b.lastActive) - new Date(a.lastActive)
+    ).map(u => ({
+      ...u,
+      mcqAvg: u.mcqScores.length > 0 ? Math.round(u.mcqScores.reduce((a,b) => a+b,0) / u.mcqScores.length) : null,
+      openedNotes: u.openedNotes.size,
+      specialties: [...u.specialties],
+      daysSinceActive: u.lastActive ? Math.floor((Date.now() - new Date(u.lastActive)) / 86400000) : 999,
+    }))
 
-    // Score trend — last 8 MCQ sessions (oldest to newest for chart)
-    const trend = [...mcqScores].reverse().slice(-8)
-
-    // Topic breakdown — avg score per topic, sorted
-    const breakdown = Object.values(topicMap).map(t => ({
-      name: t.name,
-      specialty: t.specialty,
-      avg: Math.round(t.scores.reduce((a, b) => a + b, 0) / t.scores.length),
-      attempts: t.scores.length,
-    })).sort((a, b) => a.avg - b.avg)
-
-    // Strengths — topics consistently above 80%
-    const strong = breakdown.filter(t => t.avg >= 80).sort((a, b) => b.avg - a.avg).slice(0, 4)
-
-    // Untested — notes opened but no MCQ done
-    const testedNoteIds = new Set(mcqScores.map(s => s.note))
-    const untestedList = []
-    Object.entries(openedNotes).forEach(([spec, noteSet]) => {
-      noteSet.forEach(noteId => {
-        if (!testedNoteIds.has(noteId)) {
-          untestedList.push({ noteId, specialty: spec })
-        }
+    // Top notes
+    const topNotes = Object.entries(notePopularity)
+      .map(([key, count]) => {
+        const [specialty, name] = key.split('::')
+        return { specialty, name, count }
       })
-    })
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 10)
 
-    setStats({ today: todayCount, total: totalSessions, streak, mcqAvg })
-    setProgress(progressMap)
-    setLastNote(latestNote)
-    setWeaknesses(weak)
-    setStrengths(strong)
-    setScoreTrend(trend)
-    setTopicBreakdown(breakdown)
-    setUntested(untestedList.slice(0, 5))
+    setData({ users, topNotes, todaySessions, weekSessions, platformAvg, totalRows: rows.length, signupByWeek })
     setLoading(false)
   }
 
-  async function handleSignOut() {
-    await supabase.auth.signOut()
-    router.push('/signin')
+  function toggleExpand(id) {
+    setExpanded(prev => ({ ...prev, [id]: !prev[id] }))
   }
 
-  function getCompletionPct(specialtyId, totalNotes) {
-    const p = progress[specialtyId]
-    if (!p) return 0
-    return Math.round((p.completed.size / totalNotes) * 100)
+  function formatDate(iso) {
+    if (!iso) return '—'
+    const d = new Date(iso)
+    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
   }
 
-  const displayName = user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'there'
-  const hour = new Date().getHours()
-  const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening'
+  function daysSince(iso) {
+    if (!iso) return '—'
+    const days = Math.floor((Date.now() - new Date(iso)) / 86400000)
+    if (days === 0) return 'Today'
+    if (days === 1) return 'Yesterday'
+    return `${days}d ago`
+  }
 
-  if (loading) return (
-    <div style={{minHeight:'100vh',background:'#f4f0e8',display:'flex',alignItems:'center',justifyContent:'center'}}>
-      <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'10px',letterSpacing:'3px',color:'#a89e88',textTransform:'uppercase'}}>Loading…</div>
+  if (loading || !authorized) return (
+    <div style={{minHeight:'100vh',background:'#0d0b08',display:'flex',alignItems:'center',justifyContent:'center'}}>
+      <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'10px',letterSpacing:'3px',color:'#4a4540',textTransform:'uppercase'}}>
+        {loading ? 'Loading…' : 'Unauthorized'}
+      </div>
     </div>
   )
 
-  const trendMax = Math.max(...scoreTrend.map(s => s.pct), 1)
+  const inactiveUsers = data.users.filter(u => u.daysSinceActive >= inactiveDays)
+  const activeUsers   = data.users.filter(u => u.daysSinceActive < inactiveDays)
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap');
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Syne',sans-serif;background:#f4f0e8;color:#18140e;-webkit-font-smoothing:antialiased;min-height:100vh;}
-        body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;}
+        body{font-family:'Syne',sans-serif;background:#0d0b08;color:#e8e4dc;-webkit-font-smoothing:antialiased;min-height:100vh;}
 
-        .db-nav{display:flex;justify-content:space-between;align-items:center;padding:24px 64px;border-bottom:1px solid #d4cfc0;background:rgba(244,240,232,.95);backdrop-filter:blur(16px);position:sticky;top:0;z-index:100;}
-        .db-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
-        .db-logo-name{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;letter-spacing:5px;color:#18140e;text-transform:uppercase;}
-        .db-nav-r{display:flex;align-items:center;gap:16px;}
-        .db-user-name{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:#a89e88;}
-        .db-signout{background:none;border:1px solid #d4cfc0;padding:8px 16px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#5a5140;cursor:pointer;transition:all .2s;}
-        .db-signout:hover{border-color:#c8452a;color:#c8452a;}
+        .adm-nav{display:flex;justify-content:space-between;align-items:center;padding:20px 48px;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(13,11,8,.95);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
+        .adm-logo{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;letter-spacing:5px;color:#e8e4dc;text-transform:uppercase;text-decoration:none;}
+        .adm-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#c8452a;background:rgba(200,69,42,.12);border:1px solid rgba(200,69,42,.25);padding:4px 10px;}
+        .adm-nav-back{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;color:rgba(232,228,220,.3);text-decoration:none;transition:color .2s;}
+        .adm-nav-back:hover{color:#e8e4dc;}
 
-        .db-body{max-width:1200px;margin:0 auto;padding:64px 64px 120px;}
+        .adm-body{max-width:1300px;margin:0 auto;padding:56px 48px 120px;}
 
-        .db-greeting-kicker{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#a89e88;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
-        .db-greeting-kicker::before{content:'';width:16px;height:1px;background:#a89e88;}
-        .db-greeting{font-family:'Instrument Serif',serif;font-size:clamp(36px,5vw,56px);font-weight:400;color:#18140e;line-height:1;margin-bottom:48px;}
-        .db-greeting em{font-style:italic;color:#c8452a;}
+        .adm-eyebrow{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#c8452a;margin-bottom:12px;display:flex;align-items:center;gap:12px;}
+        .adm-eyebrow::before{content:'';width:20px;height:1px;background:#c8452a;}
+        .adm-h1{font-family:'Instrument Serif',serif;font-size:clamp(40px,5vw,64px);font-weight:400;color:#e8e4dc;line-height:.95;margin-bottom:56px;}
+        .adm-h1 em{font-style:italic;color:#c8452a;}
 
-        .db-stats{display:flex;gap:0;border:1px solid #d4cfc0;background:#faf7f0;margin-bottom:56px;overflow:hidden;}
-        .db-stat{flex:1;padding:24px 28px;border-right:1px solid #d4cfc0;}
-        .db-stat:last-child{border-right:none;}
-        .db-stat-v{font-family:'Instrument Serif',serif;font-size:40px;font-style:italic;color:#c8452a;line-height:1;margin-bottom:4px;}
-        .db-stat-v.good{color:#2a6642;}
-        .db-stat-v.warn{color:#c8452a;}
-        .db-stat-l{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#a89e88;}
+        /* Platform stats */
+        .adm-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06);margin-bottom:56px;}
+        .adm-stat{background:#0d0b08;padding:24px 20px;}
+        .adm-stat-v{font-family:'Instrument Serif',serif;font-size:36px;font-style:italic;color:#c8452a;line-height:1;margin-bottom:4px;}
+        .adm-stat-v.good{color:#2a6642;}
+        .adm-stat-l{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(232,228,220,.3);}
 
-        .db-sec-hdr{display:flex;align-items:baseline;gap:16px;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #d4cfc0;}
-        .db-sec-title{font-family:'Instrument Serif',serif;font-size:24px;font-weight:400;color:#18140e;}
-        .db-sec-title em{font-style:italic;color:#c8452a;}
-        .db-sec-sub{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#a89e88;}
+        /* Section */
+        .adm-sec{margin-bottom:56px;}
+        .adm-sec-hdr{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.06);}
+        .adm-sec-title{font-family:'Instrument Serif',serif;font-size:22px;color:#e8e4dc;}
+        .adm-sec-title em{font-style:italic;color:#c8452a;}
+        .adm-sec-sub{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;color:rgba(232,228,220,.3);}
 
-        .db-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:56px;}
-        .db-card{background:#faf7f0;border:1px solid #d4cfc0;padding:32px;cursor:pointer;position:relative;overflow:hidden;transition:border-color .25s,transform .2s,box-shadow .25s;text-decoration:none;display:block;}
-        .db-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:rgba(200,69,42,.2);transition:background .25s;}
-        .db-card:hover{border-color:#a89e88;transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.06);}
-        .db-card:hover::before{background:#c8452a;}
-        .db-card-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#a89e88;margin-bottom:16px;}
-        .db-card-name{font-family:'Instrument Serif',serif;font-size:28px;font-weight:400;color:#18140e;line-height:1;margin-bottom:8px;}
-        .db-card-desc{font-size:13px;color:#5a5140;line-height:1.7;margin-bottom:24px;}
-        .db-card-footer{display:flex;align-items:center;justify-content:space-between;}
-        .db-card-notes{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;color:#a89e88;}
-        .db-card-arrow{font-size:18px;color:#c8452a;transition:transform .2s;}
-        .db-card:hover .db-card-arrow{transform:translate(3px,-3px);}
-        .db-card-progress{height:2px;background:#ece7dc;margin-bottom:16px;overflow:hidden;}
-        .db-card-progress-fill{height:100%;background:#c8452a;transition:width .6s cubic-bezier(.16,1,.3,1);}
-        .db-card-pct{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;color:#c8452a;}
+        /* User table */
+        .adm-table{width:100%;border-collapse:collapse;}
+        .adm-th{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(232,228,220,.25);padding:10px 14px;text-align:left;border-bottom:1px solid rgba(255,255,255,.06);}
+        .adm-tr{border-bottom:1px solid rgba(255,255,255,.04);transition:background .15s;cursor:pointer;}
+        .adm-tr:hover{background:rgba(255,255,255,.02);}
+        .adm-tr.inactive-row{opacity:.5;}
+        .adm-td{padding:14px;font-size:12px;color:#e8e4dc;vertical-align:top;}
+        .adm-td.mono{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(232,228,220,.5);}
+        .adm-td.score{font-family:'Instrument Serif',serif;font-size:20px;font-style:italic;}
+        .adm-td.score.good{color:#2a6642;}
+        .adm-td.score.ok{color:#c8962a;}
+        .adm-td.score.bad{color:#c8452a;}
+        .adm-td.score.none{color:rgba(232,228,220,.2);}
 
-        .db-continue{background:#18140e;padding:32px;display:flex;align-items:center;justify-content:space-between;gap:24px;text-decoration:none;transition:background .2s;margin-bottom:56px;}
-        .db-continue:hover{background:#2a201a;}
-        .db-continue-kicker{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(250,247,240,.3);margin-bottom:8px;}
-        .db-continue-title{font-family:'Instrument Serif',serif;font-size:22px;font-weight:400;color:#faf7f0;line-height:1.2;}
-        .db-continue-title em{font-style:italic;color:#e05a3a;}
-        .db-continue-arrow{font-size:24px;color:#c8452a;flex-shrink:0;}
+        .adm-expand-row{background:rgba(255,255,255,.015);}
+        .adm-expand-inner{padding:16px 14px 20px 14px;}
+        .adm-expand-title{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(232,228,220,.3);margin-bottom:12px;}
+        .adm-session-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);}
+        .adm-session-row:last-child{border-bottom:none;}
+        .adm-session-note{font-size:12px;font-weight:600;color:#e8e4dc;flex:1;}
+        .adm-session-spec{font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(232,228,220,.3);min-width:60px;}
+        .adm-session-score{font-family:'Instrument Serif',serif;font-size:18px;font-style:italic;}
+        .adm-session-date{font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(232,228,220,.3);min-width:80px;text-align:right;}
 
-        .db-weak{display:flex;flex-direction:column;gap:12px;margin-bottom:56px;}
-        .db-weak-item{background:#faf7f0;border:1px solid #d4cfc0;border-left:3px solid #c8452a;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;}
-        .db-weak-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:#18140e;}
-        .db-weak-spec{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;color:#a89e88;margin-top:2px;}
-        .db-weak-score{font-family:'Instrument Serif',serif;font-size:24px;font-style:italic;color:#c8452a;}
-        .db-empty{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:#a89e88;padding:24px 0;}
+        .adm-chevron{font-size:10px;color:rgba(232,228,220,.2);transition:transform .2s;display:inline-block;}
+        .adm-chevron.open{transform:rotate(90deg);}
 
-        /* ── ANALYTICS ── */
-        .db-analytics{margin-bottom:56px;}
+        /* Inactive threshold */
+        .adm-threshold{display:flex;align-items:center;gap:12px;}
+        .adm-threshold-label{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(232,228,220,.4);}
+        .adm-threshold-btn{background:none;border:1px solid rgba(255,255,255,.1);color:rgba(232,228,220,.5);font-family:'JetBrains Mono',monospace;font-size:9px;padding:4px 10px;cursor:pointer;transition:all .15s;}
+        .adm-threshold-btn.on{border-color:#c8452a;color:#c8452a;background:rgba(200,69,42,.08);}
 
-        /* Score trend chart */
-        .trend-chart{display:flex;align-items:flex-end;gap:6px;height:80px;background:#faf7f0;border:1px solid #d4cfc0;padding:16px 20px 12px;margin-bottom:8px;}
-        .trend-bar-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
-        .trend-bar{width:100%;border-radius:1px;transition:height .4s cubic-bezier(.16,1,.3,1);min-height:3px;}
-        .trend-bar.good{background:#2a6642;}
-        .trend-bar.ok{background:#c8962a;}
-        .trend-bar.bad{background:#c8452a;}
-        .trend-label{font-family:'JetBrains Mono',monospace;font-size:8px;color:#a89e88;white-space:nowrap;}
-        .trend-caption{font-family:'JetBrains Mono',monospace;font-size:9px;color:#a89e88;letter-spacing:1px;margin-bottom:32px;}
+        /* Top notes */
+        .adm-note-row{display:flex;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);}
+        .adm-note-row:last-child{border-bottom:none;}
+        .adm-note-rank{font-family:'Instrument Serif',serif;font-size:20px;font-style:italic;color:rgba(232,228,220,.15);min-width:28px;}
+        .adm-note-name{font-size:13px;font-weight:600;color:#e8e4dc;flex:1;}
+        .adm-note-spec{font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(232,228,220,.3);min-width:80px;}
+        .adm-note-bar-bg{flex:2;height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;}
+        .adm-note-bar-fill{height:100%;background:#c8452a;border-radius:2px;}
+        .adm-note-count{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(232,228,220,.4);min-width:40px;text-align:right;}
 
-        /* Two-col analytics grid */
-        .analytics-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+        /* Inactive alert */
+        .adm-inactive-alert{background:rgba(200,69,42,.06);border:1px solid rgba(200,69,42,.15);border-left:3px solid #c8452a;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+        .adm-inactive-name{font-size:13px;font-weight:600;color:#e8e4dc;}
+        .adm-inactive-meta{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(232,228,220,.4);margin-top:3px;}
+        .adm-inactive-days{font-family:'Instrument Serif',serif;font-size:22px;font-style:italic;color:#c8452a;}
 
-        /* Strength / topic card */
-        .analytics-panel{background:#faf7f0;border:1px solid #d4cfc0;padding:24px;}
-        .analytics-panel-title{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#a89e88;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
-        .analytics-panel-title::after{content:'';flex:1;height:1px;background:#ece7dc;}
+        .adm-empty{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(232,228,220,.2);padding:20px 0;}
 
-        .topic-row{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
-        .topic-row:last-child{margin-bottom:0;}
-        .topic-name{font-size:12px;font-weight:600;color:#18140e;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-        .topic-bar-bg{flex:2;height:4px;background:#ece7dc;border-radius:2px;overflow:hidden;}
-        .topic-bar-fill{height:100%;border-radius:2px;transition:width .5s cubic-bezier(.16,1,.3,1);}
-        .topic-bar-fill.good{background:#2a6642;}
-        .topic-bar-fill.ok{background:#c8962a;}
-        .topic-bar-fill.bad{background:#c8452a;}
-        .topic-pct{font-family:'Instrument Serif',serif;font-size:16px;font-style:italic;min-width:36px;text-align:right;}
-        .topic-pct.good{color:#2a6642;}
-        .topic-pct.ok{color:#c8962a;}
-        .topic-pct.bad{color:#c8452a;}
-        .topic-attempts{font-family:'JetBrains Mono',monospace;font-size:8px;color:#a89e88;min-width:24px;text-align:right;}
+        .spec-chip{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:1px;padding:2px 6px;border:1px solid rgba(255,255,255,.08);color:rgba(232,228,220,.4);margin-right:4px;}
 
-        /* Untested */
-        .untested-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #ece7dc;}
-        .untested-item:last-child{border-bottom:none;}
-        .untested-name{font-size:12px;font-weight:600;color:#18140e;}
-        .untested-spec{font-family:'JetBrains Mono',monospace;font-size:8px;color:#a89e88;margin-top:2px;}
-        .untested-badge{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1px;color:#c8452a;background:#fdf0ed;border:1px solid rgba(200,69,42,.2);padding:3px 8px;}
-
-        @media(max-width:768px){
-          .db-nav,.db-body{padding-left:24px;padding-right:24px;}
-          .db-cards{grid-template-columns:1fr;}
-          .db-stats{flex-direction:column;}
-          .db-stat{border-right:none;border-bottom:1px solid #d4cfc0;}
-          .db-stat:last-child{border-bottom:none;}
-          .analytics-grid{grid-template-columns:1fr;}
+        @media(max-width:900px){
+          .adm-nav,.adm-body{padding-left:24px;padding-right:24px;}
+          .adm-stats{grid-template-columns:repeat(2,1fr);}
         }
       `}</style>
 
-      <nav className="db-nav">
-        <a href="/" className="db-logo">
-          <svg viewBox="0 0 44 44" fill="none" width="32" height="32">
-            <circle cx="22" cy="22" r="21" stroke="#18140e" strokeWidth="1.5"/>
-            <path d="M22 10 L10 30" stroke="#c8452a" strokeWidth="2.5" strokeLinecap="round"/>
-            <path d="M22 10 L34 30" stroke="#c8452a" strokeWidth="2.5" strokeLinecap="round"/>
-            <path d="M10 30 Q22 36 34 30" stroke="#18140e" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
-            <circle cx="22" cy="10" r="2.5" fill="#c8452a"/>
-          </svg>
-          <span className="db-logo-name">Vent</span>
-        </a>
-        <div className="db-nav-r">
-          <span className="db-user-name">{user?.email}</span>
-          {user?.id === '20dbd05b-45c5-446a-8028-0b45b687f4ae' && (
-            <a href="/admin" style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'9px',letterSpacing:'2px',textTransform:'uppercase',color:'#c8452a',textDecoration:'none',border:'1px solid rgba(200,69,42,.3)',padding:'8px 16px',borderRadius:'100px',transition:'all .2s'}}>Admin</a>
-          )}
-          <button className="db-signout" onClick={handleSignOut}>Sign out</button>
-        </div>
+      <nav className="adm-nav">
+        <a href="/" className="adm-logo">Vent</a>
+        <div className="adm-badge">Admin</div>
+        <a href="/dashboard" className="adm-nav-back">← Dashboard</a>
       </nav>
 
-      <div className="db-body">
+      <div className="adm-body">
 
-        <div className="db-greeting-kicker">Dashboard</div>
-        <h1 className="db-greeting">{greeting},<br/><em>{displayName}.</em></h1>
+        <div className="adm-eyebrow">Owner view</div>
+        <h1 className="adm-h1">Platform <em>overview.</em></h1>
 
-        <div className="db-stats">
-          <div className="db-stat">
-            <div className="db-stat-v">{stats.today}</div>
-            <div className="db-stat-l">Sessions today</div>
+        {/* Platform stats */}
+        <div className="adm-stats">
+          <div className="adm-stat">
+            <div className="adm-stat-v">{data.users.length}</div>
+            <div className="adm-stat-l">Total users</div>
           </div>
-          <div className="db-stat">
-            <div className="db-stat-v">{stats.total}</div>
-            <div className="db-stat-l">All-time sessions</div>
+          <div className="adm-stat">
+            <div className="adm-stat-v">{data.todaySessions}</div>
+            <div className="adm-stat-l">Sessions today</div>
           </div>
-          <div className="db-stat">
-            <div className="db-stat-v">{stats.streak}</div>
-            <div className="db-stat-l">Day streak</div>
+          <div className="adm-stat">
+            <div className="adm-stat-v">{data.weekSessions}</div>
+            <div className="adm-stat-l">Sessions this week</div>
           </div>
-          <div className="db-stat">
-            <div className={`db-stat-v ${stats.mcqAvg >= 70 ? 'good' : stats.mcqAvg !== null ? 'warn' : ''}`}>
-              {stats.mcqAvg !== null ? `${stats.mcqAvg}%` : '—'}
+          <div className="adm-stat">
+            <div className="adm-stat-v">{data.totalRows}</div>
+            <div className="adm-stat-l">Total events</div>
+          </div>
+          <div className="adm-stat">
+            <div className={`adm-stat-v ${data.platformAvg >= 70 ? 'good' : ''}`}>
+              {data.platformAvg !== null ? `${data.platformAvg}%` : '—'}
             </div>
-            <div className="db-stat-l">MCQ average</div>
+            <div className="adm-stat-l">Platform MCQ avg</div>
           </div>
         </div>
 
-        <div className="db-sec-hdr">
-          <div className="db-sec-title">Your <em>specialties</em></div>
-          <div className="db-sec-sub">{SPECIALTIES.length} available</div>
-        </div>
-
-        <div className="db-cards">
-          {SPECIALTIES.map(s => {
-            const pct = getCompletionPct(s.id, s.notes)
-            const opened = progress[s.id]?.opened.size || 0
-            return (
-              <a key={s.id} href={s.href} className="db-card">
-                <div className="db-card-tag">{s.tag}</div>
-                <div className="db-card-progress">
-                  <div className="db-card-progress-fill" style={{width: `${pct}%`}}/>
-                </div>
-                <div className="db-card-name">{s.name}</div>
-                <div className="db-card-desc">{s.desc}</div>
-                <div className="db-card-footer">
-                  <span className="db-card-notes">{opened} / {s.notes} notes opened</span>
-                  <span className="db-card-pct">{pct}% done</span>
-                  <span className="db-card-arrow">↗</span>
-                </div>
-              </a>
-            )
-          })}
-        </div>
-
-        {lastNote && (
-          <>
-            <div className="db-sec-hdr">
-              <div className="db-sec-title">Continue where you <em>left off</em></div>
-            </div>
-            <a href={`/${lastNote.specialty}/index.html`} className="db-continue">
-              <div>
-                <div className="db-continue-kicker">Last active · {lastNote.specialty === 'obgyn' ? 'OB/GYN' : 'Ophthalmology'}</div>
-                <div className="db-continue-title">Pick up from<br/><em>{lastNote.noteName}</em></div>
-              </div>
-              <div className="db-continue-arrow">→</div>
-            </a>
-          </>
-        )}
-
-        <div className="db-sec-hdr">
-          <div className="db-sec-title">Areas to <em>revisit</em></div>
-          <div className="db-sec-sub">Based on MCQ scores</div>
-        </div>
-
-        {weaknesses.length === 0 ? (
-          <div className="db-empty">Complete some MCQs and your weak areas will appear here.</div>
-        ) : (
-          <div className="db-weak">
-            {weaknesses.map((w, i) => (
-              <div key={i} className="db-weak-item">
-                <div>
-                  <div className="db-weak-name">{w.noteName || w.note}</div>
-                  <div className="db-weak-spec">{w.specialty === 'obgyn' ? 'OB/GYN' : w.specialty === 'qbank' ? 'Q-Bank' : 'Ophthalmology'}</div>
-                </div>
-                <div className="db-weak-score">{w.pct}%</div>
-              </div>
-            ))}
+        {/* All users */}
+        <div className="adm-sec">
+          <div className="adm-sec-hdr">
+            <div className="adm-sec-title">All <em>users</em></div>
+            <div className="adm-sec-sub">{data.users.length} accounts · click to expand</div>
           </div>
-        )}
-
-        {/* ── PERFORMANCE ANALYTICS ── */}
-        {scoreTrend.length > 0 && (
-          <div className="db-analytics">
-            <div className="db-sec-hdr">
-              <div className="db-sec-title">Performance <em>analytics</em></div>
-              <div className="db-sec-sub">{scoreTrend.length} sessions tracked</div>
-            </div>
-
-            {/* Score trend chart */}
-            <div className="trend-chart">
-              {scoreTrend.map((s, i) => {
-                const h = Math.max(6, Math.round((s.pct / 100) * 52))
-                const cls = s.pct >= 80 ? 'good' : s.pct >= 60 ? 'ok' : 'bad'
+          <table className="adm-table">
+            <thead>
+              <tr>
+                <th className="adm-th">User ID</th>
+                <th className="adm-th">Specialties</th>
+                <th className="adm-th">Sessions</th>
+                <th className="adm-th">Notes opened</th>
+                <th className="adm-th">MCQ avg</th>
+                <th className="adm-th">MCQ sessions</th>
+                <th className="adm-th">First seen</th>
+                <th className="adm-th">Last active</th>
+                <th className="adm-th"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.users.map(u => {
+                const isExp = expanded[u.id]
+                const scoreClass = u.mcqAvg === null ? 'none' : u.mcqAvg >= 80 ? 'good' : u.mcqAvg >= 60 ? 'ok' : 'bad'
                 return (
-                  <div key={i} className="trend-bar-wrap" title={`${s.pct}% — ${s.noteName || s.note}`}>
-                    <div className={`trend-bar ${cls}`} style={{height: `${h}px`}}/>
-                    <div className="trend-label">{s.pct}%</div>
-                  </div>
+                  <>
+                    <tr key={u.id} className={`adm-tr ${u.daysSinceActive >= inactiveDays ? 'inactive-row' : ''}`} onClick={() => toggleExpand(u.id)}>
+                      <td className="adm-td mono">{u.id.slice(0, 8)}…</td>
+                      <td className="adm-td">
+                        {u.specialties.map(s => (
+                          <span key={s} className="spec-chip">{s === 'obgyn' ? 'OB/GYN' : s === 'ophtho' ? 'Ophtho' : s}</span>
+                        ))}
+                      </td>
+                      <td className="adm-td mono">{u.sessions}</td>
+                      <td className="adm-td mono">{u.openedNotes}</td>
+                      <td className={`adm-td score ${scoreClass}`}>{u.mcqAvg !== null ? `${u.mcqAvg}%` : '—'}</td>
+                      <td className="adm-td mono">{u.mcqSessions.length}</td>
+                      <td className="adm-td mono">{formatDate(u.firstSeen)}</td>
+                      <td className="adm-td mono">{daysSince(u.lastActive)}</td>
+                      <td className="adm-td"><span className={`adm-chevron ${isExp ? 'open' : ''}`}>›</span></td>
+                    </tr>
+                    {isExp && (
+                      <tr key={`${u.id}-exp`} className="adm-expand-row">
+                        <td colSpan={9} className="adm-td">
+                          <div className="adm-expand-inner">
+                            {u.mcqSessions.length === 0 ? (
+                              <div className="adm-empty">No MCQ sessions yet.</div>
+                            ) : (
+                              <>
+                                <div className="adm-expand-title">MCQ sessions — {u.mcqSessions.length} total</div>
+                                {u.mcqSessions.map((s, i) => {
+                                  const sc = s.pct >= 80 ? '#2a6642' : s.pct >= 60 ? '#c8962a' : '#c8452a'
+                                  return (
+                                    <div key={i} className="adm-session-row">
+                                      <div className="adm-session-note">{s.note}</div>
+                                      <div className="adm-session-spec">{s.specialty === 'obgyn' ? 'OB/GYN' : s.specialty === 'qbank' ? 'Q-Bank' : 'Ophtho'}</div>
+                                      <div className="adm-session-score" style={{color: sc}}>{s.pct}%</div>
+                                      {s.got != null && <div className="adm-session-spec">{s.got}/{s.total}</div>}
+                                      <div className="adm-session-date">{formatDate(s.date)}</div>
+                                    </div>
+                                  )
+                                })}
+                              </>
+                            )}
+                          </div>
+                        </td>
+                      </tr>
+                    )}
+                  </>
                 )
               })}
-            </div>
-            <div className="trend-caption">MCQ score trend — last {scoreTrend.length} sessions</div>
+            </tbody>
+          </table>
+        </div>
 
-            <div className="analytics-grid">
-
-              {/* Topic breakdown — weak first */}
-              {topicBreakdown.length > 0 && (
-                <div className="analytics-panel">
-                  <div className="analytics-panel-title">All topics</div>
-                  {topicBreakdown.slice(0, 6).map((t, i) => {
-                    const cls = t.avg >= 80 ? 'good' : t.avg >= 60 ? 'ok' : 'bad'
-                    return (
-                      <div key={i} className="topic-row">
-                        <div className="topic-name" title={t.name}>{t.name}</div>
-                        <div className="topic-bar-bg">
-                          <div className={`topic-bar-fill ${cls}`} style={{width: `${t.avg}%`}}/>
-                        </div>
-                        <div className={`topic-pct ${cls}`}>{t.avg}%</div>
-                        <div className="topic-attempts">{t.attempts}×</div>
-                      </div>
-                    )
-                  })}
-                </div>
-              )}
-
-              <div style={{display:'flex',flexDirection:'column',gap:20}}>
-
-                {/* Strengths */}
-                {strengths.length > 0 && (
-                  <div className="analytics-panel">
-                    <div className="analytics-panel-title">Strong areas</div>
-                    {strengths.map((t, i) => (
-                      <div key={i} className="topic-row">
-                        <div className="topic-name" title={t.name}>{t.name}</div>
-                        <div className="topic-bar-bg">
-                          <div className="topic-bar-fill good" style={{width: `${t.avg}%`}}/>
-                        </div>
-                        <div className="topic-pct good">{t.avg}%</div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {/* Untested notes */}
-                {untested.length > 0 && (
-                  <div className="analytics-panel">
-                    <div className="analytics-panel-title">Opened — never tested</div>
-                    {untested.map((u, i) => (
-                      <div key={i} className="untested-item">
-                        <div>
-                          <div className="untested-name">{u.noteId}</div>
-                          <div className="untested-spec">{u.specialty === 'obgyn' ? 'OB/GYN' : 'Ophthalmology'}</div>
-                        </div>
-                        <div className="untested-badge">No MCQ</div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-              </div>
+        {/* Inactive users */}
+        <div className="adm-sec">
+          <div className="adm-sec-hdr">
+            <div className="adm-sec-title">Inactive <em>users</em></div>
+            <div className="adm-threshold">
+              <span className="adm-threshold-label">Threshold:</span>
+              {[3, 7, 14, 30].map(d => (
+                <button key={d} className={`adm-threshold-btn ${inactiveDays === d ? 'on' : ''}`} onClick={() => setInactiveDays(d)}>{d}d</button>
+              ))}
             </div>
           </div>
-        )}
+          {inactiveUsers.length === 0 ? (
+            <div className="adm-empty">No users inactive for {inactiveDays}+ days.</div>
+          ) : (
+            inactiveUsers.map(u => (
+              <div key={u.id} className="adm-inactive-alert">
+                <div>
+                  <div className="adm-inactive-name">{u.id.slice(0, 8)}…{u.id.slice(-4)}</div>
+                  <div className="adm-inactive-meta">{u.sessions} sessions · {u.openedNotes} notes · MCQ avg {u.mcqAvg !== null ? `${u.mcqAvg}%` : 'none'}</div>
+                </div>
+                <div className="adm-inactive-days">{u.daysSinceActive}d inactive</div>
+              </div>
+            ))
+          )}
+        </div>
+
+        {/* Top notes */}
+        <div className="adm-sec">
+          <div className="adm-sec-hdr">
+            <div className="adm-sec-title">Most <em>opened notes</em></div>
+            <div className="adm-sec-sub">Across all users</div>
+          </div>
+          {data.topNotes.length === 0 ? (
+            <div className="adm-empty">No note opens recorded yet.</div>
+          ) : (
+            data.topNotes.map((n, i) => (
+              <div key={i} className="adm-note-row">
+                <div className="adm-note-rank">{i + 1}</div>
+                <div className="adm-note-name">{n.name}</div>
+                <div className="adm-note-spec">{n.specialty === 'obgyn' ? 'OB/GYN' : n.specialty === 'ophtho' ? 'Ophtho' : n.specialty}</div>
+                <div className="adm-note-bar-bg">
+                  <div className="adm-note-bar-fill" style={{width: `${Math.round((n.count / data.topNotes[0].count) * 100)}%`}}/>
+                </div>
+                <div className="adm-note-count">{n.count}×</div>
+              </div>
+            ))
+          )}
+        </div>
 
       </div>
     </>
