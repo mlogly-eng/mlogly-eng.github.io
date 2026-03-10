@@ -314,6 +314,7 @@ export default function DashboardPage() {
         </a>
         <div className="db-nav-r">
           <span className="db-user-name">{user?.email}</span>
+          {user?.id === '20dbd05b-45c5-446a-8028-0b45b687f4ae' && (<a href="/admin" style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'9px',color:'#c8452a',textDecoration:'none',border:'1px solid rgba(200,69,42,.3)',padding:'8px 16px',borderRadius:'100px',fontFamily:"'JetBrains Mono',monospace",fontSize:'9px',letterSpacing:'2px',textTransform:'uppercase'}}>Admin</a>)}
           <button className="db-signout" onClick={handleSignOut}>Sign out</button>
         </div>
       </nav>
@@ -495,4 +496,3 @@ export default function DashboardPage() {
     </>
   )
 }
- 
