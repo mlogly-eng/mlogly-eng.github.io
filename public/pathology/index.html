@@ -196,6 +196,7 @@ nav {
   margin-bottom: 56px;
   display: flex; align-items: flex-end; justify-content: space-between;
   flex-wrap: wrap; gap: 24px;
+  position: relative; z-index: 100;
 }
 .ns-hdr-left { flex: 1; min-width: 280px; }
 .ns-discipline-label {
@@ -213,8 +214,8 @@ nav {
 .ns-h2 em { font-style: italic; color: var(--accent); }
 
 /* Filter tabs */
-.disc-toggle { display: flex; gap: 4px; align-self: flex-end; flex-wrap: wrap; }
-.dtab {
+.disc-toggle-wrap { position: relative; display: inline-flex; }
+.disc-toggle { display: flex; gap: 4px; align-self: flex-end; flex-wrap: wrap; position: relative; }.dtab {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
   padding: 10px 20px;
@@ -227,6 +228,84 @@ nav {
 .dtab.on { background: var(--ink); color: var(--white); border-color: var(--ink); }
 .dtab-count { opacity: .45; }
 .dtab.on .dtab-count { opacity: .55; }
+
+/* ══ SYSTEMIC PICKER DROPDOWN ══════════════════════════════════════════════ */
+.disc-toggle-wrap { position: relative; display: inline-flex; }
+.systemic-picker {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 240px;
+  background: #141210;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 10px;
+  padding: 8px;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity .2s ease, transform .2s ease;
+  max-height: 360px;
+  overflow-y: auto;
+  box-shadow: 0 16px 48px rgba(0,0,0,.8);
+}
+.systemic-picker.open {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+.sp-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  padding: 6px 10px 8px;
+}
+.sp-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background .15s;
+}
+.sp-item:hover:not(.sp-soon) { background: rgba(255,255,255,.08); }
+.sp-item.sp-active { background: rgba(200,69,42,.18); border: 1px solid rgba(200,69,42,.35); }
+.sp-item-left { display: flex; align-items: center; gap: 10px; }
+.sp-dot { width: 8px; height: 8px; border-radius: 50%; background: #c8452a; flex-shrink: 0; }
+.sp-dot.soon { background: rgba(255,255,255,.15); }
+.sp-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,.9);
+}
+.sp-item.sp-active .sp-name { color: #fff; font-weight: 700; }
+.sp-soon .sp-name { color: rgba(255,255,255,.25); }
+.sp-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: rgba(200,69,42,.8);
+  letter-spacing: .5px;
+  font-weight: 700;
+}
+.sp-soon { cursor: default; }
+.sp-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.2);
+  background: rgba(255,255,255,.05);
+  border-radius: 3px;
+  padding: 2px 6px;
+}
+.dtab.systemic-active { background: rgba(200,69,42,.15); color: var(--ink); border-color: rgba(200,69,42,.4); }
+.dtab.systemic-active .dtab-chevron { transform: rotate(180deg); }
+.dtab-chevron { font-size: 8px; opacity: .5; transition: transform .2s ease; display: inline-block; }
+
 .nc.hidden { display: none; }
 
 
@@ -248,6 +327,7 @@ nav {
               background .32s cubic-bezier(.16,1,.3,1);
   display: flex; flex-direction: column;
   position: relative; overflow: hidden;
+  z-index: 0;
   min-height: 230px;
   border-radius: 5px;
   box-shadow:
@@ -1375,16 +1455,17 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
   <script>
   (function() {
     'use strict';
-    const SPECIALTY = 'pathology';
+    const SPECIALTY = 'rbc';
     const PROJ = 'vwotkstjgzwjjutzjjph';
-    const API  = '/api/progress';
+    const SUPABASE_URL = 'https://vwotkstjgzwjjutzjjph.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_bIKimcSjTZWahxZ_5epT3A_s4LGlFUj';
     function getToken() {
       try { return JSON.parse(localStorage.getItem('sb-'+PROJ+'-auth-token'))?.access_token || null; } catch(e) { return null; }
     }
     function track(payload) {
       const token = getToken();
       if (!token) return;
-      fetch(API, { method:'POST', headers:{'Content-Type':'application/json','Authorization':'Bearer '+token}, body:JSON.stringify({specialty:SPECIALTY,...payload}) }).catch(()=>{});
+      fetch(SUPABASE_URL + '/rest/v1/progress', { method:'POST', headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':'Bearer '+token,'Prefer':'return=minimal'}, body:JSON.stringify({specialty:SPECIALTY,...payload}) }).catch(()=>{});
     }
     window.ventTrack = {
       noteOpened(id, name)              { track({note_id:id, note_name:name, event:'opened'}); try{localStorage.setItem('vent_last_note_'+SPECIALTY,JSON.stringify({noteId:id,noteName:name}));}catch(e){} },
@@ -1422,10 +1503,10 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
   <div class="shero-orb"></div>
   <div class="shero-kicker">Clinical Notes · Pathology</div>
   <h1 class="shero-h1">Pathology,<br><em>decoded.</em></h1>
-  <p class="shero-desc">13 notes across General and Systemic pathology. Cell injury to thrombophilia — every mechanism, every exam trap — built so no student going into an exam can say it wasn't here.</p>
+  <p class="shero-desc">Every mechanism. Every exam trap. General pathology to systemic disease — built to make pathology click, not just stick.</p>
   <div class="shero-stats">
-    <div class="shero-stat"><div class="sv">13</div><div class="sl">Notes</div></div>
-    <div class="shero-stat"><div class="sv">65+</div><div class="sl">MCQs</div></div>
+    <div class="shero-stat"><div class="sv">21</div><div class="sl">Notes</div></div>
+    <div class="shero-stat"><div class="sv">100+</div><div class="sl">MCQs</div></div>
     <div class="shero-stat"><div class="sv">0</div><div class="sl">Fillers</div></div>
   </div>
 </section>
@@ -1438,9 +1519,84 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
       <h2 class="ns-h2">All <em>notes</em></h2>
     </div>
     <div class="disc-toggle">
-      <button class="dtab on" data-filter="all">All <span class="dtab-count">13</span></button>
+      <button class="dtab on" data-filter="all">All <span class="dtab-count">21</span></button>
       <button class="dtab" data-filter="general">General <span class="dtab-count">13</span></button>
-      <button class="dtab" data-filter="systemic">Systemic <span class="dtab-count">0</span></button>
+      <div class="disc-toggle-wrap">
+        <button class="dtab" id="systemic-tab" data-filter="systemic">Systemic <span class="dtab-chevron">▾</span></button>
+        <div class="systemic-picker" id="systemic-picker">
+          <div class="sp-label">Choose system</div>
+          <div class="sp-item sp-active" data-system="rbc">
+            <div class="sp-item-left">
+              <div class="sp-dot"></div>
+              <span class="sp-name">RBC</span>
+            </div>
+            <span class="sp-count">8 notes</span>
+          </div>
+          <div class="sp-item sp-soon">
+            <div class="sp-item-left">
+              <div class="sp-dot soon"></div>
+              <span class="sp-name">WBC & Lymphoid</span>
+            </div>
+            <span class="sp-badge">Soon</span>
+          </div>
+          <div class="sp-item sp-soon">
+            <div class="sp-item-left">
+              <div class="sp-dot soon"></div>
+              <span class="sp-name">Vascular</span>
+            </div>
+            <span class="sp-badge">Soon</span>
+          </div>
+          <div class="sp-item sp-soon">
+            <div class="sp-item-left">
+              <div class="sp-dot soon"></div>
+              <span class="sp-name">Endocrine</span>
+            </div>
+            <span class="sp-badge">Soon</span>
+          </div>
+          <div class="sp-item sp-soon">
+            <div class="sp-item-left">
+              <div class="sp-dot soon"></div>
+              <span class="sp-name">Reproductive</span>
+            </div>
+            <span class="sp-badge">Soon</span>
+          </div>
+          <div class="sp-item sp-soon">
+            <div class="sp-item-left">
+              <div class="sp-dot soon"></div>
+              <span class="sp-name">Neurological</span>
+            </div>
+            <span class="sp-badge">Soon</span>
+          </div>
+          <div class="sp-item sp-soon">
+            <div class="sp-item-left">
+              <div class="sp-dot soon"></div>
+              <span class="sp-name">Cardiovascular</span>
+            </div>
+            <span class="sp-badge">Soon</span>
+          </div>
+          <div class="sp-item sp-soon">
+            <div class="sp-item-left">
+              <div class="sp-dot soon"></div>
+              <span class="sp-name">Renal</span>
+            </div>
+            <span class="sp-badge">Soon</span>
+          </div>
+          <div class="sp-item sp-soon">
+            <div class="sp-item-left">
+              <div class="sp-dot soon"></div>
+              <span class="sp-name">Respiratory</span>
+            </div>
+            <span class="sp-badge">Soon</span>
+          </div>
+          <div class="sp-item sp-soon">
+            <div class="sp-item-left">
+              <div class="sp-dot soon"></div>
+              <span class="sp-name">GI &amp; Hepatic</span>
+            </div>
+            <span class="sp-badge">Soon</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1550,7 +1706,74 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
       <div class="nc-foot"><span class="nc-meta">FV Leiden · APS · Protein C/S · ATIII</span><span class="nc-arr">↗</span></div>
     </div>
 
+
+    <!-- RBC PATHOLOGY NOTES -->
+    <div class="nc reveal" data-disc="rbc" data-section="rbc" onclick="openNote('approach')">
+      <div class="nc-type">Foundations · RBC</div><span class="nc-num">RBC 01</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Approach to Anaemia</div>
+      <p class="nc-preview">MCV first, reticulocytes second, film third. A systematic framework that turns every anaemia question into a structured problem — not a memory test.</p>
+      <div class="nc-foot"><span class="nc-meta">MCV · Reticulocytes · Blood Film</span><span class="nc-arr">↗</span></div>
+    </div>
+
+    <div class="nc reveal" data-disc="rbc" data-section="rbc" onclick="openNote('irondeficiency')">
+      <div class="nc-type">Microcytic · RBC</div><span class="nc-num">RBC 02</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Iron Deficiency &amp; ACD</div>
+      <p class="nc-preview">IDA in an adult male means GI malignancy until proven otherwise. ACD is the commonest anaemia in hospital. Iron studies pattern tells you which one — every time.</p>
+      <div class="nc-foot"><span class="nc-meta">Ferritin · Hepcidin · Iron Studies</span><span class="nc-arr">↗</span></div>
+    </div>
+
+    <div class="nc reveal" data-disc="rbc" data-section="rbc" onclick="openNote('megaloblastic')">
+      <div class="nc-type">Macrocytic · RBC</div><span class="nc-num">RBC 03</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Megaloblastic Anaemia</div>
+      <p class="nc-preview">B12 vs folate — identical blood picture, completely different neurological stakes. Folate treats the anaemia and hides the spinal cord damage. Know the distinction cold.</p>
+      <div class="nc-foot"><span class="nc-meta">B12 · Folate · Subacute Combined Degeneration</span><span class="nc-arr">↗</span></div>
+    </div>
+
+    <div class="nc reveal" data-disc="rbc" data-section="rbc" onclick="openNote('haemolytic')">
+      <div class="nc-type">Normocytic · RBC</div><span class="nc-num">RBC 04</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Haemolytic Anaemia</div>
+      <p class="nc-preview">Intravascular vs extravascular. Hereditary spherocytosis, G6PD, AIHA, TTP. Raised LDH + low haptoglobin + raised bilirubin — the triad that confirms haemolysis every time.</p>
+      <div class="nc-foot"><span class="nc-meta">LDH · Haptoglobin · DAT · Spherocytes</span><span class="nc-arr">↗</span></div>
+    </div>
+
+    <div class="nc reveal" data-disc="rbc" data-section="rbc" onclick="openNote('sickle')">
+      <div class="nc-type">Haemoglobinopathy · RBC</div><span class="nc-num">RBC 05</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Sickle Cell Disease</div>
+      <p class="nc-preview">HbS polymerisation, vaso-occlusive crisis, acute chest syndrome, splenic sequestration, stroke. Every complication and why hydroxyurea changes the course of the disease.</p>
+      <div class="nc-foot"><span class="nc-meta">HbS · Vaso-occlusion · Hydroxyurea · Crises</span><span class="nc-arr">↗</span></div>
+    </div>
+
+    <div class="nc reveal" data-disc="rbc" data-section="rbc" onclick="openNote('thalassaemia')">
+      <div class="nc-type">Haemoglobinopathy · RBC</div><span class="nc-num">RBC 06</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Thalassaemia</div>
+      <p class="nc-preview">α vs β — different genes, different rules. Trait carriers look like iron deficiency but have normal ferritin. HbA₂ is the diagnostic key. Iron overload kills the survivors.</p>
+      <div class="nc-foot"><span class="nc-meta">HbA₂ · Chelation · Ineffective Erythropoiesis</span><span class="nc-arr">↗</span></div>
+    </div>
+
+    <div class="nc reveal" data-disc="rbc" data-section="rbc" onclick="openNote('aplastic')">
+      <div class="nc-type">Bone Marrow · RBC</div><span class="nc-num">RBC 07</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Aplastic Anaemia</div>
+      <p class="nc-preview">Pancytopenia from bone marrow failure. Autoimmune T-cell destruction of stem cells. Hypocellular trephine is diagnostic. Transplant or ATG — the age-dependent decision.</p>
+      <div class="nc-foot"><span class="nc-meta">Pancytopenia · Trephine · ATG · Transplant</span><span class="nc-arr">↗</span></div>
+    </div>
+
+    <div class="nc reveal" data-disc="rbc" data-section="rbc" onclick="openNote('polycythaemia')">
+      <div class="nc-type">RBC Excess · RBC</div><span class="nc-num">RBC 08</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Polycythaemia</div>
+      <p class="nc-preview">Primary (PV — JAK2 mutation) vs secondary (EPO-driven). Aquagenic pruritus after a hot shower is pathognomonic of PV. Hyperviscosity causes stroke, MI, and Budd-Chiari.</p>
+      <div class="nc-foot"><span class="nc-meta">JAK2 · EPO · Venesection · Hyperviscosity</span><span class="nc-arr">↗</span></div>
+    </div>
+
   </div><!-- /notes-grid -->
+
 </section>
 
 
@@ -1846,8 +2069,8 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
 <!-- ══ NOTE DATA ══════════════════════════════════════════ -->
 <script>
 // ── Note order & names (used by JS for navigation) ──
-const NOTE_ORDER = ['cellinjury','inflammation','neoplasia','haemodynamics','repair','immunopathology','genetic','infection','metabolic','haemostasis','coagulation','bleeding','thrombophilia'];
-const NOTE_NAMES = {cellinjury:'Cell Injury & Death',inflammation:'Inflammation',neoplasia:'Neoplasia',haemodynamics:'Haemodynamics',repair:'Repair & Wound Healing',immunopathology:'Immunopathology',genetic:'Genetic Disorders',infection:'Infectious Disease Pathology',metabolic:'Metabolic & Storage Disorders',haemostasis:'Primary Haemostasis',coagulation:'Coagulation Cascade',bleeding:'Bleeding Disorders',thrombophilia:'Thrombophilia'};
+const NOTE_ORDER = ['cellinjury','inflammation','neoplasia','haemodynamics','repair','immunopathology','genetic','infection','metabolic','haemostasis','coagulation','bleeding','thrombophilia','approach','irondeficiency','megaloblastic','haemolytic','sickle','thalassaemia','aplastic','polycythaemia'];
+const NOTE_NAMES = {cellinjury:'Cell Injury & Death',inflammation:'Inflammation',neoplasia:'Neoplasia',haemodynamics:'Haemodynamics',repair:'Repair & Wound Healing',immunopathology:'Immunopathology',genetic:'Genetic Disorders',infection:'Infectious Disease Pathology',metabolic:'Metabolic & Storage Disorders',haemostasis:'Primary Haemostasis',coagulation:'Coagulation Cascade',bleeding:'Bleeding Disorders',thrombophilia:'Thrombophilia',approach:'Approach to Anaemia',irondeficiency:'Iron Deficiency & ACD',megaloblastic:'Megaloblastic Anaemia',haemolytic:'Haemolytic Anaemia',sickle:'Sickle Cell Disease',thalassaemia:'Thalassaemia',aplastic:'Aplastic Anaemia',polycythaemia:'Polycythaemia'};
 
 // ── Note content store ──
 const NOTES={};
@@ -3049,31 +3272,885 @@ NOTES_MCQ.thrombophilia=[
 ];
 
 
-// DISC TOGGLE
-document.querySelectorAll('.dtab').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.dtab').forEach(b => b.classList.remove('on'));
+// DISC TOGGLE + SYSTEMIC PICKER
+(function() {
+  const picker   = document.getElementById('systemic-picker');
+  const sysTab   = document.getElementById('systemic-tab');
+  let activeSystem = 'rbc'; // default active system
+
+  function setAllTab(btn) {
+    document.querySelectorAll('.dtab').forEach(b => {
+      b.classList.remove('on', 'systemic-active');
+    });
     btn.classList.add('on');
-    const filter = btn.dataset.filter;
+  }
+
+  function showCards(filterFn) {
     document.querySelectorAll('#notes-grid .nc').forEach(card => {
-      if (filter === 'all') {
-        card.classList.remove('hidden');
-      } else if (filter === 'general' || filter === 'systemic') {
-        if (card.dataset.section === filter) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      } else {
-        if (card.dataset.disc === filter) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
+      filterFn(card) ? card.classList.remove('hidden') : card.classList.add('hidden');
+    });
+  }
+
+  // All tab
+  document.querySelector('.dtab[data-filter="all"]').addEventListener('click', function() {
+    setAllTab(this);
+    picker.classList.remove('open');
+    showCards(() => true);
+  });
+
+  // General tab
+  document.querySelector('.dtab[data-filter="general"]').addEventListener('click', function() {
+    setAllTab(this);
+    picker.classList.remove('open');
+    showCards(card => card.dataset.section === 'general');
+  });
+
+  // Systemic tab — toggle picker
+  sysTab.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const isOpen = picker.classList.contains('open');
+    if (isOpen) {
+      picker.classList.remove('open');
+      if (!document.querySelector('.dtab.on')) {
+        // revert to all if nothing selected
       }
+    } else {
+      picker.classList.add('open');
+      // Mark systemic tab as active-looking
+      document.querySelectorAll('.dtab').forEach(b => b.classList.remove('on'));
+      sysTab.classList.add('systemic-active');
+      // Show current active system
+      showCards(card => card.dataset.disc === activeSystem);
+    }
+  });
+
+  // Systemic picker items
+  document.querySelectorAll('.sp-item:not(.sp-soon)').forEach(item => {
+    item.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const system = this.dataset.system;
+      activeSystem = system;
+      // Update active dot
+      document.querySelectorAll('.sp-item').forEach(i => i.classList.remove('sp-active'));
+      this.classList.add('sp-active');
+      // Filter cards
+      showCards(card => card.dataset.disc === system);
+      // Close picker
+      picker.classList.remove('open');
     });
   });
-});
+
+  // Close picker when clicking outside
+  document.addEventListener('click', function() {
+    picker.classList.remove('open');
+  });
+
+  picker.addEventListener('click', e => e.stopPropagation());
+})();
+
+NOTES.approach=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">RBC Pathology · Foundations</div>
+  <div class="n-hero-title">Approach to<br><em>Anaemia</em></div>
+  <div class="n-hero-sub">RBC 01 &nbsp;·&nbsp; Indices · Reticulocytes · Diagnostic Framework &nbsp;·&nbsp; High-Yield</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">A <strong>systematic framework</strong> for diagnosing any anaemia using red cell indices, reticulocyte count, and blood film morphology. Master this and every anaemia question becomes a structured problem — not a memory test.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Anaemia affects over 2 billion people worldwide. The correct diagnosis requires following the indices. MCV, reticulocyte count, and film morphology together point to a single category within minutes.</div></div><div class="n-snap-cell"><div class="n-snap-label">Key focus</div><div class="n-snap-text">MCV classification (micro/normo/macro), the reticulocyte response (production vs destruction/loss vs underproduction), blood film patterns, and the key lab values that distinguish each category.</div></div></div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">The Diagnostic Framework — MCV First</span><span class="n-section-tag">every anaemia starts here</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Anaemia Classification by MCV</span><span class="n-viz-sub">Start here — every time</span></div>
+    <svg viewBox="0 0 760 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="280" y="0" width="200" height="50" rx="2" fill="#c8452a"/>
+      <text x="380" y="20" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800">ANAEMIA</text>
+      <text x="380" y="38" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.7)" text-anchor="middle">Hb &lt;130 M / &lt;120 F (g/L)</text>
+      <line x1="380" y1="50" x2="90" y2="100" stroke="#c8452a" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <line x1="380" y1="50" x2="380" y2="100" stroke="#8a2818" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <line x1="380" y1="50" x2="670" y2="100" stroke="#5a1810" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <rect x="0" y="100" width="180" height="110" rx="2" fill="#c8452a"/>
+      <text x="90" y="122" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800">MICROCYTIC</text>
+      <text x="90" y="138" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.6)" text-anchor="middle">MCV &lt;80 fL</text>
+      <text x="90" y="158" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Iron deficiency</text>
+      <text x="90" y="173" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Thalassaemia</text>
+      <text x="90" y="188" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Anaemia of chronic disease</text>
+      <text x="90" y="203" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Sideroblastic anaemia</text>
+      <rect x="290" y="100" width="180" height="110" rx="2" fill="#8a2818"/>
+      <text x="380" y="122" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800">NORMOCYTIC</text>
+      <text x="380" y="138" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.6)" text-anchor="middle">MCV 80–100 fL</text>
+      <text x="380" y="158" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Acute blood loss</text>
+      <text x="380" y="173" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Haemolytic anaemia</text>
+      <text x="380" y="188" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Aplastic anaemia</text>
+      <text x="380" y="203" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Renal failure · CKD</text>
+      <rect x="580" y="100" width="180" height="110" rx="2" fill="#5a1810"/>
+      <text x="670" y="122" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800">MACROCYTIC</text>
+      <text x="670" y="138" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.6)" text-anchor="middle">MCV &gt;100 fL</text>
+      <text x="670" y="158" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">B12 / folate deficiency</text>
+      <text x="670" y="173" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Alcohol · liver disease</text>
+      <text x="670" y="188" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Hypothyroidism</text>
+      <text x="670" y="203" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Drugs (methotrexate, AZT)</text>
+    </svg>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Reticulocyte Count — The Second Step</span><span class="n-section-tag">is the marrow responding or failing?</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Reticulocyte Response</span><span class="n-viz-sub">Low = production failure · High = loss or destruction</span></div>
+    <svg viewBox="0 0 760 155" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="270" y="0" width="220" height="44" rx="2" fill="#c8452a"/>
+      <text x="380" y="17" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">ANAEMIA CONFIRMED</text>
+      <text x="380" y="33" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Check reticulocyte count + index</text>
+      <line x1="380" y1="44" x2="160" y2="80" stroke="#c8452a" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <line x1="380" y1="44" x2="600" y2="80" stroke="#c8452a" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <rect x="20" y="80" width="280" height="75" rx="2" fill="#8a2818"/>
+      <text x="160" y="100" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">LOW RETICULOCYTES</text>
+      <text x="160" y="116" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Hypoproliferative — marrow not responding</text>
+      <text x="160" y="132" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.6)" text-anchor="middle">Iron/B12/folate def · aplastic · CKD · MDS</text>
+      <text x="160" y="148" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.5)" text-anchor="middle">Marrow infiltration · hypothyroidism</text>
+      <rect x="460" y="80" width="280" height="75" rx="2" fill="#3a1008"/>
+      <text x="600" y="100" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">HIGH RETICULOCYTES</text>
+      <text x="600" y="116" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Hyperproliferative — marrow compensating</text>
+      <text x="600" y="132" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.6)" text-anchor="middle">Haemolysis · acute blood loss</text>
+      <text x="600" y="148" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.5)" text-anchor="middle">Recovery from deficiency</text>
+    </svg>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Key Indices &amp; Blood Film</span><span class="n-section-tag">what each number tells you</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">MCV</div><div class="n-diag-content">Normal 80–100 fL. <strong>Microcytic &lt;80:</strong> iron def, thal, ACD, sideroblastic. <strong>Macrocytic &gt;100:</strong> B12/folate, alcohol, hypothyroid, drugs. Mixed deficiency (iron + B12) can give normal MCV with dimorphic film — check RDW.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">RDW</div><div class="n-diag-content">Measures size variation (anisocytosis). <strong>↑RDW + microcytosis = iron deficiency</strong> (variable depletion). <strong>Normal RDW + microcytosis = thalassaemia trait</strong> (uniform small cells). This is the key exam separator between the two most common microcytic anaemias.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">MCHC</div><div class="n-diag-content"><strong>↑MCHC = hereditary spherocytosis</strong> — spherocytes are dense. Low in iron deficiency and thalassaemia. MCHC &gt;36 g/dL = spherocytes until proven otherwise.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Blood film patterns</div><div class="n-diag-content"><strong>Hypochromic microcytes:</strong> IDA/thal. <strong>Macroovalocytes + hypersegmented neutrophils:</strong> megaloblastic. <strong>Spherocytes:</strong> HS or AIHA. <strong>Schistocytes:</strong> MAHA (TTP/HUS/DIC). <strong>Target cells:</strong> thal/HbC/liver disease. <strong>Sickle cells:</strong> HbSS. <strong>Heinz bodies (supravital):</strong> G6PD. <strong>Tear drops:</strong> myelofibrosis.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Iron Studies Pattern Table</span><span class="n-section-tag">serum iron · ferritin · TIBC · transferrin sat</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Iron Studies — Pattern Recognition</span><span class="n-viz-sub">Four conditions, four distinct patterns</span></div>
+    <svg viewBox="0 0 760 168" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="152" height="28" fill="#2a0808"/><rect x="152" y="0" width="152" height="28" fill="#2a0808"/><rect x="304" y="0" width="152" height="28" fill="#2a0808"/><rect x="456" y="0" width="152" height="28" fill="#2a0808"/><rect x="608" y="0" width="152" height="28" fill="#2a0808"/>
+      <text x="228" y="19" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.5)" text-anchor="middle" font-weight="700">SERUM IRON</text>
+      <text x="380" y="19" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.5)" text-anchor="middle" font-weight="700">FERRITIN</text>
+      <text x="532" y="19" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.5)" text-anchor="middle" font-weight="700">TIBC</text>
+      <text x="684" y="19" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.5)" text-anchor="middle" font-weight="700">TRANSFERRIN SAT</text>
+      <rect x="0" y="28" width="152" height="35" fill="#c8452a"/><rect x="152" y="28" width="152" height="35" fill="#1e1208"/><rect x="304" y="28" width="152" height="35" fill="#1e1208"/><rect x="456" y="28" width="152" height="35" fill="#1e1208"/><rect x="608" y="28" width="152" height="35" fill="#1e1208"/>
+      <text x="76" y="50" font-family="Syne,sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="700">IRON DEFICIENCY</text>
+      <text x="228" y="50" font-family="JetBrains Mono,monospace" font-size="10" fill="#c8452a" text-anchor="middle">↓ Low</text>
+      <text x="380" y="50" font-family="JetBrains Mono,monospace" font-size="10" fill="#c8452a" text-anchor="middle">↓↓ Very low</text>
+      <text x="532" y="50" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.7)" text-anchor="middle">↑ High</text>
+      <text x="684" y="50" font-family="JetBrains Mono,monospace" font-size="10" fill="#c8452a" text-anchor="middle">↓ Low &lt;16%</text>
+      <rect x="0" y="63" width="152" height="35" fill="#8a2818"/><rect x="152" y="63" width="152" height="35" fill="#1a1008"/><rect x="304" y="63" width="152" height="35" fill="#1a1008"/><rect x="456" y="63" width="152" height="35" fill="#1a1008"/><rect x="608" y="63" width="152" height="35" fill="#1a1008"/>
+      <text x="76" y="84" font-family="Syne,sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="700">ANAEMIA CHRON. DIS.</text>
+      <text x="228" y="84" font-family="JetBrains Mono,monospace" font-size="10" fill="#c8452a" text-anchor="middle">↓ Low</text>
+      <text x="380" y="84" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.7)" text-anchor="middle">↑ High/Normal</text>
+      <text x="532" y="84" font-family="JetBrains Mono,monospace" font-size="10" fill="#c8452a" text-anchor="middle">↓ Low/Normal</text>
+      <text x="684" y="84" font-family="JetBrains Mono,monospace" font-size="10" fill="#c8452a" text-anchor="middle">↓ Low</text>
+      <rect x="0" y="98" width="152" height="35" fill="#5a1810"/><rect x="152" y="98" width="152" height="35" fill="#161008"/><rect x="304" y="98" width="152" height="35" fill="#161008"/><rect x="456" y="98" width="152" height="35" fill="#161008"/><rect x="608" y="98" width="152" height="35" fill="#161008"/>
+      <text x="76" y="119" font-family="Syne,sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="700">HAEMOCHROMATOSIS</text>
+      <text x="228" y="119" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.7)" text-anchor="middle">↑ High</text>
+      <text x="380" y="119" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.7)" text-anchor="middle">↑↑ Very high</text>
+      <text x="532" y="119" font-family="JetBrains Mono,monospace" font-size="10" fill="#c8452a" text-anchor="middle">↓ Low</text>
+      <text x="684" y="119" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.7)" text-anchor="middle">↑↑ &gt;45%</text>
+      <rect x="0" y="133" width="152" height="35" fill="#3a1008"/><rect x="152" y="133" width="152" height="35" fill="#121008"/><rect x="304" y="133" width="152" height="35" fill="#121008"/><rect x="456" y="133" width="152" height="35" fill="#121008"/><rect x="608" y="133" width="152" height="35" fill="#121008"/>
+      <text x="76" y="154" font-family="Syne,sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="700">THALASSAEMIA TRAIT</text>
+      <text x="228" y="154" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.7)" text-anchor="middle">Normal</text>
+      <text x="380" y="154" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.7)" text-anchor="middle">Normal</text>
+      <text x="532" y="154" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.7)" text-anchor="middle">Normal</text>
+      <text x="684" y="154" font-family="JetBrains Mono,monospace" font-size="10" fill="rgba(255,255,255,.7)" text-anchor="middle">Normal</text>
+    </svg>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Haemolysis Screen</span><span class="n-section-tag">five tests that confirm haemolysis</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">↑ LDH</div><div class="n-diag-content">Released from lysed RBCs. Elevated in all haemolytic states + megaloblastic anaemia (ineffective erythropoiesis). Not specific but always elevated in haemolysis.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">↓ Haptoglobin</div><div class="n-diag-content">Binds free haemoglobin → complex cleared by liver. In haemolysis: <strong>haptoglobin consumed → falls to near zero.</strong> Most sensitive test for intravascular haemolysis.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">↑ Unconjugated bilirubin</div><div class="n-diag-content">Excess haem from lysed RBCs overwhelms liver conjugation → <strong>unconjugated bilirubin rises → jaundice.</strong> Urobilinogen elevated, no bilirubinuria (unconjugated not water-soluble).</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Haemoglobinuria</div><div class="n-diag-content"><strong>Intravascular haemolysis only.</strong> Free Hb exceeds haptoglobin binding → filtered by kidney → red/brown urine. Seen in PNH, prosthetic valves, march haemoglobinuria.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Direct Coombs (DAT)</div><div class="n-diag-content"><strong>Positive DAT = immune-mediated haemolysis</strong> (AIHA, transfusion reaction, drug-induced). Negative DAT = non-immune (hereditary spherocytosis, G6PD, TTP, mechanical). The pivot test of the haemolysis workup.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-pearl-list">
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>RDW separates iron deficiency (↑RDW) from thalassaemia trait (normal RDW) despite both being microcytic.</strong> Iron deficiency: variable-sized cells as stores deplete unevenly. Thalassaemia: uniformly small cells — consistent reduced Hb synthesis per cell.<span class="n-pearl-exam">Exam: MCV 68 + RDW 18% → iron deficiency. MCV 68 + RDW 13% → thalassaemia trait.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Mixed deficiency (iron + B12) gives normal MCV with dimorphic film.</strong> Each pulls MCV in opposite directions → net normal range. But RDW is elevated and film shows two populations: hypochromic microcytes + macroovalocytes. Always check the film in unexplained anaemia with normal MCV.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Ferritin is an acute phase reactant</strong> — elevated by inflammation/infection/malignancy regardless of iron stores. Use transferrin saturation (&lt;16%) as the additional confirmatory test when ferritin is unreliable due to concurrent disease.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Hypersegmented neutrophils = megaloblastic process until proven otherwise.</strong> Neutrophils with ≥5 lobes appear in B12 and folate deficiency — sometimes before macrocytosis. A single hypersegmented neutrophil mandates B12 + folate levels immediately.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-trap-list">
+    <div class="n-trap"><div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Normal MCV rules out iron deficiency and B12 deficiency.</div></div><div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Mixed deficiency produces normal MCV while Hb is significantly low.</strong> The film shows a dimorphic picture. Always check ferritin, B12, and folate regardless of MCV in unexplained anaemia.</div></div></div>
+    <div class="n-trap"><div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">High reticulocytes mean the patient is recovering.</div></div><div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>High reticulocytes mean the marrow is responding — to haemolysis OR blood loss, not necessarily recovery.</strong> In haemolytic anaemia, retics are always high. If Hb is falling despite high retics, haemolysis is winning over production.</div></div></div>
+  </div>
+</div><div class="n-anchor"><div class="n-anchor-text">MCV gives the category —<br>reticulocytes tell you if the marrow knows about it.</div></div><div class="n-note-end-cta" onclick="showVentPopup()"><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+NOTES.irondeficiency=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">RBC Pathology · Microcytic</div>
+  <div class="n-hero-title">Iron Deficiency<br><em>&amp; ACD</em></div>
+  <div class="n-hero-sub">RBC 02 &nbsp;·&nbsp; Most Common Anaemias Worldwide &nbsp;·&nbsp; High-Yield</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text"><strong>IDA</strong>: depletion of iron stores → reduced haem synthesis → hypochromic microcytic anaemia. The most common anaemia worldwide. <strong>ACD</strong>: inflammation sequesters iron and suppresses erythropoiesis. The most common anaemia in hospitalised patients.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">IDA in an adult male or post-menopausal female = GI malignancy until proven otherwise. ACD is the commonest anaemia of chronic illness. Getting the distinction right directs treatment and avoids inappropriate supplementation.</div></div><div class="n-snap-cell"><div class="n-snap-label">Key focus</div><div class="n-snap-text">The three stages of iron deficiency, iron studies patterns for IDA vs ACD, hepcidin as the master regulator, causes by age and sex, and the red flags that prompt urgent investigation.</div></div></div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Causes of Iron Deficiency</span><span class="n-section-tag">always find the cause — it is the diagnosis</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Three Mechanisms — Intake · Absorption · Loss</span><span class="n-viz-sub">The cause determines the investigation and treatment</span></div>
+    <svg viewBox="0 0 760 155" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="236" height="155" rx="2" fill="#c8452a"/>
+      <text x="118" y="26" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800">INADEQUATE INTAKE</text>
+      <text x="118" y="50" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Infants (breast milk low in iron)</text>
+      <text x="118" y="66" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Toddlers (cow's milk diet)</text>
+      <text x="118" y="82" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Strict vegan diet</text>
+      <text x="118" y="98" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Poverty · food insecurity</text>
+      <text x="118" y="128" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.4)" text-anchor="middle">Commonest in developing world</text>
+      <rect x="262" y="0" width="236" height="155" rx="2" fill="#8a2818"/>
+      <text x="380" y="26" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800">IMPAIRED ABSORPTION</text>
+      <text x="380" y="50" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Coeliac disease (most important)</text>
+      <text x="380" y="66" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Gastric bypass / gastrectomy</text>
+      <text x="380" y="82" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">H. pylori infection</text>
+      <text x="380" y="98" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">PPI / antacid overuse</text>
+      <text x="380" y="114" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Crohn's (duodenum/jejunum)</text>
+      <rect x="524" y="0" width="236" height="155" rx="2" fill="#3a1008"/>
+      <text x="642" y="26" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800">BLOOD LOSS</text>
+      <text x="642" y="50" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">GI: colorectal cancer · peptic ulcer</text>
+      <text x="642" y="66" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">oesophagitis · angiodysplasia</text>
+      <text x="642" y="82" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Menorrhagia (premenopausal)</text>
+      <text x="642" y="98" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Haematuria · phlebotomy</text>
+      <text x="642" y="128" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.4)" text-anchor="middle">Commonest in developed world</text>
+    </svg>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Three Stages of Iron Deficiency</span><span class="n-section-tag">stores deplete before Hb falls</span></div>
+  <div class="n-mech-chain">
+    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Stage 1 — Store depletion (no anaemia yet)</div><div class="n-mech-text"><strong>Ferritin falls.</strong> Hb and MCV both normal. Symptoms may already begin: fatigue, hair thinning, brittle nails. This stage is missed unless ferritin is measured. Bone marrow: no stainable iron (Prussian blue negative). The window to diagnose and treat before anaemia develops.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Stage 2 — Iron-deficient erythropoiesis</div><div class="n-mech-text">Serum iron falls. TIBC rises. <strong>Transferrin saturation &lt;16%.</strong> Hb still borderline normal. MCV may begin to fall. RDW starts to rise. Marrow: erythroid hyperplasia, reduced Hb per cell. Zinc protoporphyrin (ZPP) accumulates — iron not available to combine with protoporphyrin.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Stage 3 — Iron deficiency anaemia</div><div class="n-mech-text"><strong>Hb falls. MCV &lt;80. MCH low. MCHC low. RDW elevated.</strong> Film: hypochromic microcytes, pencil cells (elliptocytes), target cells. Symptoms: fatigue, dyspnoea, pallor, <strong>pica</strong> (craving ice/clay/soil — pagophagia is most specific), koilonychia (spoon nails), angular stomatitis, glossitis. <strong>Plummer-Vinson</strong>: IDA + dysphagia + oesophageal web.</div></div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Hepcidin — The Master Iron Regulator</span><span class="n-section-tag">the hormone that explains ACD</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">Normal function</div><div class="n-diag-content">Hepcidin (liver peptide): <strong>binds and degrades ferroportin</strong> (the sole iron exporter on enterocytes, macrophages, hepatocytes) → blocks iron absorption + blocks iron release from stores. It is the on/off switch for iron availability.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">In iron deficiency</div><div class="n-diag-content"><strong>↓Iron → ↓hepcidin → ferroportin active → iron absorbed from gut + released from stores.</strong> This is the compensatory mechanism. Oral iron only works when hepcidin is low — if hepcidin is high (as in ACD), oral iron absorption is blocked.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">In ACD — the IL-6 / hepcidin axis</div><div class="n-diag-content"><strong>Chronic inflammation → IL-6 → ↑hepcidin → ferroportin degraded → iron trapped in macrophages → serum iron falls → RBCs cannot be made despite adequate stores.</strong> Ferritin is HIGH (iron stored), serum iron is LOW. Oral iron fails in ACD — IV iron bypasses the gut block.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">IDA vs ACD — The Core Distinction</span><span class="n-section-tag">one table to rule microcytic anaemia</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">Pure IDA</div><div class="n-diag-content">↓↓ Ferritin · ↓ Serum iron · ↑ TIBC · ↓ Transferrin sat · ↑ sTfR (soluble transferrin receptor). High RDW. Microcytic. No chronic disease.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Pure ACD</div><div class="n-diag-content">↑ or Normal ferritin · ↓ Serum iron · ↓ or Normal TIBC · ↓ Transferrin sat · Normal sTfR. Often normocytic. Underlying chronic illness (RA, IBD, cancer, CKD, infection).</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Combined IDA + ACD</div><div class="n-diag-content">Common in IBD, cancer, renal failure. Ferritin may be normal (inflammation elevates it despite true iron deficiency). <strong>↑ sTfR:ferritin ratio</strong> is most useful — elevated ratio indicates iron deficiency superimposed on ACD. Bone marrow iron stain is definitive if needed.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Treatment</span><span class="n-section-tag">replace the iron — find and fix the cause</span></div>
+  <div class="n-algo">
+    <div class="n-algo-row"><div class="n-algo-step s-first">Find the cause</div><div class="n-algo-body"><strong>Always mandatory.</strong> IDA in an adult male or post-menopausal female = GI malignancy until proven otherwise → colonoscopy + upper GI endoscopy. Check anti-tTG IgA (coeliac). Premenopausal women: menorrhagia most common, but still investigate GI if anaemia is severe or no clear source.</div></div>
+    <div class="n-algo-row"><div class="n-algo-step s-fail">Oral iron</div><div class="n-algo-body">Ferrous sulphate 200mg TDS. <strong>Reticulocyte count rises in 7–10 days</strong> (earliest response). Hb rises ~10 g/L per week. Treat 3 months after Hb normalises to replete stores. Side effects: constipation, black stools, GI upset.</div></div>
+    <div class="n-algo-row"><div class="n-algo-step s-severe">IV iron</div><div class="n-algo-body"><strong>Indications:</strong> intolerance to oral, malabsorption (coeliac, IBD, post-gastric bypass), ongoing losses exceeding oral replacement, ACD (high hepcidin blocks absorption), pre-operative anaemia requiring rapid correction. Ferric carboxymaltose preferred. Risk: anaphylaxis (&lt;0.1%).</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>IDA in a man or post-menopausal woman = GI malignancy until proven otherwise.</strong> Colorectal cancer commonly presents with occult blood loss and IDA before any bowel symptoms. Never attribute IDA to diet in these patients without full GI investigation.</div></div>
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Plummer-Vinson syndrome: IDA + dysphagia + upper oesophageal web.</strong> Associated with increased risk of postcricoid carcinoma — requires endoscopic surveillance. Atrophic glossitis and angular cheilitis also present.</div></div>
+    <div class="n-flag-item time"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Coeliac disease is a frequently missed cause of IDA.</strong> Duodenum and proximal jejunum (the iron absorption sites) are the areas destroyed by coeliac villous atrophy. All patients with unexplained IDA should have anti-tTG IgA checked — especially young women.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-pearl-list">
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>First response to oral iron = reticulocytosis at 7–10 days.</strong> Hb doesn't rise for 2–3 weeks. Ferritin is last to recover — months. Monitoring order: reticulocyte count at day 10 (confirms response) → Hb at 4 weeks → ferritin at 3–6 months after Hb normalises.<span class="n-pearl-exam">Exam: which test confirms response to iron at day 10? Reticulocyte count.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Pica: craving non-food substances — pagophagia (ice) is most specific for IDA.</strong> Also: geophagia (soil), amylophagia (starch). Resolves within days of iron supplementation. A teenager eating ice cubes compulsively → check ferritin.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>EPO therapy in CKD anaemia requires iron to work.</strong> CKD → ↓EPO → normocytic, low-retic anaemia. Treat: subcutaneous EPO (darbepoetin/epoetin alfa) + ensure iron replete first — EPO drives erythropoiesis and rapidly depletes iron. Target Hb 100–120 g/L (higher targets increase CV events — TREAT trial).</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">08</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-trap-list">
+    <div class="n-trap"><div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Normal ferritin excludes iron deficiency in a patient with rheumatoid arthritis.</div></div><div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Ferritin is an acute phase reactant.</strong> Active RA, IBD, or any inflammatory state elevates ferritin independently of iron stores. Ferritin of 80 µg/L can mask iron deficiency. Use transferrin saturation (&lt;16%) or sTfR:ferritin index to unmask iron deficiency behind a falsely normal ferritin.</div></div></div>
+    <div class="n-trap"><div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Oral iron works well in ACD patients who also have iron deficiency.</div></div><div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>High hepcidin in ACD blocks oral iron absorption at the gut ferroportin.</strong> Oral iron given to ACD patients with high hepcidin sits in the gut, causes GI side effects, and fails to raise Hb. IV iron bypasses the hepcidin block and is the preferred route in combined IDA + ACD (especially in IBD and CKD).</div></div></div>
+  </div>
+</div><div class="n-anchor"><div class="n-anchor-text">IDA in a man = colonoscopy.<br>IDA in a young woman = coeliac screen + menstrual history.</div></div><div class="n-note-end-cta" onclick="showVentPopup()"><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+NOTES.megaloblastic=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">RBC Pathology · Macrocytic</div>
+  <div class="n-hero-title">Megaloblastic<br><em>Anaemia</em></div>
+  <div class="n-hero-sub">RBC 03 &nbsp;·&nbsp; B12 · Folate · Subacute Combined Degeneration &nbsp;·&nbsp; High-Yield</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Anaemia from <strong>impaired DNA synthesis</strong> in erythroblasts — cells grow but cannot divide → large immature megaloblasts → macroovalocytes in blood. Caused by B12 or folate deficiency, both essential for thymidine synthesis.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">B12 deficiency causes <strong>irreversible neurological damage</strong> (subacute combined degeneration) if untreated. Folate supplementation masks the anaemia while neurology worsens silently. Getting this distinction wrong causes permanent spinal cord damage.</div></div><div class="n-snap-cell"><div class="n-snap-label">Key focus</div><div class="n-snap-text">B12 vs folate — absorption sites, stores, causes, the methyl-folate trap, MMA vs homocysteine distinction, subacute combined degeneration, and pernicious anaemia.</div></div></div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">B12 vs Folate — Same Blood, Different Nerves</span><span class="n-section-tag">identical haematology, completely different neurology</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">B12 vs Folate — Key Differences</span><span class="n-viz-sub">Same macrocytic anaemia picture — very different clinical stakes</span></div>
+    <svg viewBox="0 0 760 175" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="370" height="175" rx="2" fill="#c8452a"/>
+      <text x="185" y="26" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">VITAMIN B12</text>
+      <text x="185" y="48" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.85)" text-anchor="middle">Absorbed: terminal ileum (requires intrinsic factor)</text>
+      <text x="185" y="64" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.85)" text-anchor="middle">Stores: 2–5 mg liver → 3–5 YEARS to deplete</text>
+      <text x="185" y="82" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Causes: pernicious anaemia · gastrectomy</text>
+      <text x="185" y="97" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">terminal ileum disease (Crohn's) · strict vegan</text>
+      <text x="185" y="112" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">metformin · fish tapeworm (Diphyllobothrium)</text>
+      <text x="185" y="135" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">NEUROLOGICAL DAMAGE: YES</text>
+      <text x="185" y="152" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Subacute combined degeneration of cord</text>
+      <text x="185" y="167" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.6)" text-anchor="middle">Peripheral neuropathy · cognitive decline</text>
+      <rect x="390" y="0" width="370" height="175" rx="2" fill="#5a1810"/>
+      <text x="575" y="26" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">FOLATE</text>
+      <text x="575" y="48" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.85)" text-anchor="middle">Absorbed: proximal small intestine (duodenum/jejunum)</text>
+      <text x="575" y="64" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.85)" text-anchor="middle">Stores: 5–10 mg liver → WEEKS to deplete</text>
+      <text x="575" y="82" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Causes: poor diet (alcoholics, elderly, poverty)</text>
+      <text x="575" y="97" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">malabsorption (coeliac, IBD)</text>
+      <text x="575" y="112" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">↑demand (pregnancy, haemolysis, rapid cell turnover)</text>
+      <text x="575" y="127" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Drugs: methotrexate · phenytoin · trimethoprim</text>
+      <text x="575" y="152" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">NEUROLOGICAL DAMAGE: NO</text>
+    </svg>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">The Methyl-Folate Trap</span><span class="n-section-tag">why treating B12 deficiency with folate alone is dangerous</span></div>
+  <div class="n-mech-chain">
+    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Normal biochemistry</div><div class="n-mech-text">B12 is required for <strong>methionine synthase</strong>: methyl-THF donates its methyl group to homocysteine → methionine + THF. THF enters the DNA synthesis pathway → thymidine → cell division.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">B12 deficiency → folate trapped</div><div class="n-mech-text">Without B12, methionine synthase cannot work → <strong>methyl-THF cannot be converted to THF → folate locked as methyl-THF → cannot enter DNA synthesis.</strong> Result: megaloblastic changes identical to folate deficiency, even with normal folate intake.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">B12 also required for MMA pathway</div><div class="n-mech-text">B12 required for methylmalonyl-CoA mutase. B12 deficiency → <strong>methylmalonic acid (MMA) accumulates.</strong> MMA elevated in B12 deficiency but NOT folate deficiency — this is the specific biochemical marker. Both B12 and folate deficiency elevate homocysteine.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d4">04</div><div class="n-mech-body"><div class="n-mech-cause">The danger of folate-only treatment</div><div class="n-mech-text">Folate supplementation in undiagnosed B12 deficiency → <strong>anaemia improves</strong> (folate bypasses some steps) → clinical apparent recovery. But <strong>B12-dependent neurological damage continues unchecked.</strong> Subacute combined degeneration progresses silently to irreversible cord damage.</div></div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Pernicious Anaemia</span><span class="n-section-tag">most important cause of B12 deficiency</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">Mechanism</div><div class="n-diag-content"><strong>Autoimmune destruction of gastric parietal cells → ↓intrinsic factor (IF) → B12 cannot bind IF → not absorbed in terminal ileum.</strong> Anti-parietal cell antibodies: sensitive (90%), not specific. Anti-IF antibodies: specific (50–70%) — if positive, confirms PA.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Who gets it</div><div class="n-diag-content">Northern European, women 45–65, autoimmune diseases (Hashimoto's, Graves', type 1 DM, vitiligo). <strong>↑Risk of gastric adenocarcinoma and carcinoid</strong> — endoscopic surveillance every 3–5 years.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Treatment</div><div class="n-diag-content"><strong>IM hydroxocobalamin 1mg every other day × 6 → then every 3 months for life.</strong> Never oral in PA (absorption mechanism broken). Oral B12 appropriate only in dietary deficiency (vegans with intact IF). Monitor neurological recovery — begins weeks after treatment but may be incomplete if long-standing.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Subacute Combined Degeneration of the Cord</span><span class="n-section-tag">posterior columns + lateral corticospinal tracts</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">SCD — Spinal Cord Involvement</span><span class="n-viz-sub">Posterior columns + lateral corticospinal tracts → "combined" degeneration</span></div>
+    <svg viewBox="0 0 760 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="370" height="130" rx="2" fill="#c8452a"/>
+      <text x="185" y="24" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800">POSTERIOR COLUMN LOSS</text>
+      <text x="185" y="46" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.85)" text-anchor="middle">↓ Vibration sense · ↓ Proprioception</text>
+      <text x="185" y="62" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Positive Romberg sign</text>
+      <text x="185" y="78" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Sensory ataxia — wide-based gait</text>
+      <text x="185" y="108" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.45)" text-anchor="middle">First: peripheral neuropathy (glove + stocking)</text>
+      <rect x="390" y="0" width="370" height="130" rx="2" fill="#5a1810"/>
+      <text x="575" y="24" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800">LATERAL CST LOSS</text>
+      <text x="575" y="46" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.85)" text-anchor="middle">Upper motor neurone signs</text>
+      <text x="575" y="62" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Spasticity · hyperreflexia</text>
+      <text x="575" y="78" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Extensor plantar responses (Babinski)</text>
+      <text x="575" y="108" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.45)" text-anchor="middle">Late: cognitive decline · depression · dementia</text>
+    </svg>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Never treat macrocytic anaemia with folate without first excluding B12 deficiency.</strong> Folate corrects the anaemia but allows subacute combined degeneration to progress to irreversible spinal cord injury. Always check both before treating either.</div></div>
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>SCD can occur with normal MCV and normal Hb.</strong> Neurological features precede or occur without anaemia — especially if folate intake is adequate or concurrent iron deficiency pulls MCV down. Check B12 in any unexplained peripheral neuropathy, ataxia, or cognitive decline regardless of MCV.</div></div>
+    <div class="n-flag-item time"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Metformin reduces B12 absorption.</strong> Long-term metformin → impairs ileal B12 absorption (calcium-dependent mechanism). Check B12 every 1–2 years in diabetics on metformin. Neuropathy in a diabetic on metformin may be B12 deficiency, not diabetic neuropathy.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-pearl-list">
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>MMA elevated = B12 deficiency specifically. Homocysteine elevated = B12 or folate.</strong> MMA is the specific biochemical separator. Use when B12 borderline (150–300 pmol/L) or neurological symptoms present with borderline B12.<span class="n-pearl-exam">Exam: macrocytic + ↑homocysteine + ↑MMA → B12 deficiency. ↑homocysteine + normal MMA → folate deficiency.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Methotrexate causes megaloblastic anaemia by inhibiting DHFR.</strong> Dihydrofolate reductase inhibitor → blocks THF synthesis. Rescue: folinic acid (leucovorin) — bypasses DHFR. Note: folic acid does NOT rescue methotrexate toxicity — folinic acid must be used. Trimethoprim and pyrimethamine work by the same mechanism.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Nitrous oxide (N₂O) irreversibly inactivates B12.</strong> Oxidises cobalt in B12 → permanently inactivates methionine synthase. Single prolonged exposure (long surgery, recreational use) → acute megaloblastic crisis or neurological deterioration in borderline B12 patients. Pre-operative B12 check in vegans and elderly before N₂O anaesthesia.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Folate supplementation in pregnancy prevents neural tube defects.</strong> Fetal demand rapidly depletes maternal folate (stores last only weeks). Start 400µg/day from pre-conception through first trimester. High-dose 5mg/day for women on anti-epileptics, with coeliac disease, or prior NTD-affected pregnancy.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-trap-list">
+    <div class="n-trap"><div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Treating with folate first is safe — it will improve the patient.</div></div><div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Folate alone corrects the blood while neurological damage from B12 deficiency progresses undetected.</strong> This is one of the most dangerous errors in clinical medicine. Always check and replace B12 before (or simultaneously with) folate in any macrocytic anaemia.</div></div></div>
+    <div class="n-trap"><div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Pernicious anaemia is caused by dietary B12 deficiency.</div></div><div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>PA is autoimmune — not dietary.</strong> Anti-parietal cell and anti-IF antibodies destroy IF-secreting cells regardless of intake. Dietary B12 deficiency (vegans) is managed with oral supplements. PA requires lifelong IM B12 injections regardless of diet.</div></div></div>
+  </div>
+</div><div class="n-anchor"><div class="n-anchor-text">Folate fixes the blood — B12 protects the cord.<br>Never give one without checking the other.</div></div><div class="n-note-end-cta" onclick="showVentPopup()"><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+NOTES.haemolytic=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">RBC Pathology · Normocytic</div>
+  <div class="n-hero-title">Haemolytic<br><em>Anaemia</em></div>
+  <div class="n-hero-sub">RBC 04 &nbsp;·&nbsp; Intrinsic vs Extrinsic · Coombs · G6PD · Spherocytosis · AIHA &nbsp;·&nbsp; High-Yield</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Anaemia from <strong>premature RBC destruction</strong> — intravascular (within vessels) or extravascular (spleen/liver). The marrow compensates with reticulocytosis. When destruction exceeds production capacity, Hb falls.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Can be life-threatening in G6PD crisis, aplastic crisis in spherocytosis, warm AIHA, and haemolytic transfusion reactions. The Coombs test divides the entire diagnostic tree into immune vs non-immune — this single result directs everything.</div></div><div class="n-snap-cell"><div class="n-snap-label">Key focus</div><div class="n-snap-text">Intrinsic vs extrinsic, Coombs positive vs negative, G6PD triggers and film findings, hereditary spherocytosis (MCHC, osmotic fragility, splenectomy), warm vs cold AIHA, haemolytic disease of the newborn.</div></div></div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classification — The Branch Tree</span><span class="n-section-tag">intrinsic (RBC defect) vs extrinsic (outside attack)</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Haemolytic Anaemia Classification</span><span class="n-viz-sub">Intrinsic · Extrinsic — then Coombs to divide immune from non-immune</span></div>
+    <svg viewBox="0 0 760 215" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="250" y="0" width="260" height="40" rx="2" fill="#c8452a"/>
+      <text x="380" y="15" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">HAEMOLYTIC ANAEMIA</text>
+      <text x="380" y="30" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">↑Retics · ↑LDH · ↓Haptoglobin · ↑Unconj. bili</text>
+      <line x1="380" y1="40" x2="150" y2="78" stroke="#c8452a" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <line x1="380" y1="40" x2="610" y2="78" stroke="#c8452a" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <rect x="10" y="78" width="280" height="38" rx="2" fill="#8a2818"/>
+      <text x="150" y="94" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">INTRINSIC</text>
+      <text x="150" y="109" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Coombs NEGATIVE · RBC defect itself</text>
+      <line x1="65" y1="116" x2="40" y2="148" stroke="#8a2818" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="150" y1="116" x2="150" y2="148" stroke="#8a2818" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="235" y1="116" x2="260" y2="148" stroke="#8a2818" stroke-width="1" stroke-dasharray="3,3"/>
+      <rect x="0" y="148" width="90" height="67" rx="2" fill="#5a1810"/>
+      <text x="45" y="165" font-family="Syne,sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="700">MEMBRANE</text>
+      <text x="45" y="180" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.75)" text-anchor="middle">Hereditary</text>
+      <text x="45" y="194" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.75)" text-anchor="middle">spherocytosis</text>
+      <text x="45" y="208" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.6)" text-anchor="middle">Elliptocytosis</text>
+      <rect x="105" y="148" width="90" height="67" rx="2" fill="#4a1408"/>
+      <text x="150" y="165" font-family="Syne,sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="700">ENZYME</text>
+      <text x="150" y="180" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.75)" text-anchor="middle">G6PD def.</text>
+      <text x="150" y="194" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.75)" text-anchor="middle">PK deficiency</text>
+      <rect x="210" y="148" width="90" height="67" rx="2" fill="#3a1008"/>
+      <text x="255" y="165" font-family="Syne,sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="700">HAEMOGLOBIN</text>
+      <text x="255" y="180" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.75)" text-anchor="middle">Sickle cell</text>
+      <text x="255" y="194" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.75)" text-anchor="middle">Thalassaemia</text>
+      <rect x="470" y="78" width="280" height="38" rx="2" fill="#3a1008"/>
+      <text x="610" y="94" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">EXTRINSIC</text>
+      <text x="610" y="109" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Coombs +/- · Immune, mechanical, infection</text>
+      <line x1="540" y1="116" x2="510" y2="148" stroke="#3a1008" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="610" y1="116" x2="610" y2="148" stroke="#3a1008" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="680" y1="116" x2="710" y2="148" stroke="#3a1008" stroke-width="1" stroke-dasharray="3,3"/>
+      <rect x="460" y="148" width="95" height="67" rx="2" fill="#2a0808"/>
+      <text x="507" y="165" font-family="Syne,sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="700">IMMUNE</text>
+      <text x="507" y="180" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.75)" text-anchor="middle">Warm AIHA</text>
+      <text x="507" y="194" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.75)" text-anchor="middle">Cold AIHA</text>
+      <text x="507" y="208" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.6)" text-anchor="middle">HDN · Drug</text>
+      <rect x="562" y="148" width="95" height="67" rx="2" fill="#200808"/>
+      <text x="609" y="165" font-family="Syne,sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="700">MECHANICAL</text>
+      <text x="609" y="180" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.75)" text-anchor="middle">TTP · HUS · DIC</text>
+      <text x="609" y="194" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.75)" text-anchor="middle">Prosthetic valve</text>
+      <rect x="664" y="148" width="96" height="67" rx="2" fill="#180808"/>
+      <text x="712" y="165" font-family="Syne,sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="700">INFECTION</text>
+      <text x="712" y="180" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.75)" text-anchor="middle">Malaria</text>
+      <text x="712" y="194" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.75)" text-anchor="middle">Clostridium</text>
+    </svg>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Hereditary Spherocytosis</span><span class="n-section-tag">most common hereditary haemolytic anaemia in Northern Europeans</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">Mechanism</div><div class="n-diag-content"><strong>Spectrin or ankyrin defect (ANK1 most common) → unstable RBC membrane → membrane vesiculates → sphere shape → rigid → trapped and destroyed in spleen.</strong> AD (75%) or de novo mutation. Coombs NEGATIVE.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Labs</div><div class="n-diag-content"><strong>↑MCHC</strong> (spherocytes are dense — key distinguishing feature). Spherocytes on film. EMA binding test (flow cytometry) — now preferred. Osmotic fragility test: spherocytes lyse at higher NaCl concentration (less membrane relative to volume). ↑Retics, ↑LDH, ↓haptoglobin, ↑unconj. bilirubin.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Complications</div><div class="n-diag-content"><strong>Pigment gallstones</strong> (chronic haemolysis → excess bilirubin — most common complication). <strong>Aplastic crisis</strong>: parvovirus B19 → erythroblast arrest → Hb crashes (retic compensation removed). <strong>Megaloblastic crisis</strong>: folate depletion from high RBC turnover. Splenomegaly in all.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Treatment</div><div class="n-diag-content">Mild: folic acid supplementation. Moderate-severe: <strong>splenectomy</strong> → removes destruction site → Hb normalises (spherocytes persist on film). Pre-splenectomy: vaccinate (pneumococcus, meningococcus, Hib) + lifelong prophylactic penicillin post-op.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">G6PD Deficiency</span><span class="n-section-tag">X-linked, trigger-dependent crisis</span></div>
+  <div class="n-mech-chain">
+    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Mechanism</div><div class="n-mech-text"><strong>G6PD → NADPH via pentose phosphate pathway → regenerates glutathione → neutralises ROS.</strong> Deficiency → oxidative stress → Hb oxidised → Heinz bodies (denatured Hb) → rigid cells → intravascular haemolysis. X-linked recessive. Most common enzyme deficiency worldwide (400 million). Protective against P. falciparum.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Triggers — must recognise and avoid</div><div class="n-mech-text"><strong>Drugs:</strong> primaquine, dapsone, rasburicase, nitrofurantoin, methylene blue. <strong>Foods:</strong> fava beans (favism — vicine/convicine → oxidative stress). <strong>Infections:</strong> any oxidative stress. <strong>Neonatal jaundice:</strong> G6PD is a common cause of severe neonatal hyperbilirubinaemia — screen in endemic populations at birth.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Film findings during crisis</div><div class="n-mech-text"><strong>Heinz bodies</strong> (supravital stain — NOT visible on Romanowsky). <strong>Bite cells / blister cells</strong> — splenic macrophages bite out Heinz bodies → irregular cell with missing segment. These findings are pathognomonic during an acute haemolytic episode.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d4">04</div><div class="n-mech-body"><div class="n-mech-cause">Diagnosis timing is critical</div><div class="n-mech-text"><strong>Do NOT test G6PD levels during a haemolytic crisis.</strong> The most deficient cells are destroyed first → remaining cells are relatively G6PD-replete → falsely normal result. Test 3 months after the crisis when the reticulocyte wave has settled.</div></div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Autoimmune Haemolytic Anaemia</span><span class="n-section-tag">warm vs cold — Coombs positive, treatment opposite</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">Warm AIHA (IgG, 37°C)</div><div class="n-diag-content"><strong>IgG binds RBCs at body temp → Fc receptor-mediated splenic phagocytosis (extravascular).</strong> Causes: idiopathic, SLE, CLL, drugs (methyldopa, penicillin, cephalosporins). Film: spherocytes. DAT: IgG positive ± C3d. Treat: steroids first → splenectomy → rituximab → immunosuppression.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Cold Agglutinin Disease (IgM)</div><div class="n-diag-content"><strong>IgM binds RBCs at cold extremities → complement activation → C3d-coated RBCs → hepatic clearance + intravascular lysis.</strong> Causes: Mycoplasma pneumoniae (anti-I), EBV (anti-i), CLL, Waldenström's. Acrocyanosis in cold. DAT: C3d positive, IgG negative. Treat: keep warm, treat cause, rituximab. Steroids relatively ineffective.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Haemolytic Disease of the Newborn</div><div class="n-diag-content"><strong>Rh-negative mother → anti-D IgG crosses placenta → destroys Rh-positive fetal RBCs → hydrops fetalis in severe cases.</strong> Prevented by anti-D immunoglobulin at 28/40, 34/40, and within 72h of any sensitising event. ABO incompatibility: usually mild (IgM anti-A/B — does not cross placenta well). Treat: exchange transfusion in severe cases.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Aplastic crisis in hereditary spherocytosis: parvovirus B19 → sudden Hb crash.</strong> Normally the high reticulocyte rate compensates for haemolysis. Parvovirus B19 arrests erythroblast production → retics fall → Hb drops rapidly and severely. Requires transfusion support. Infection is self-limiting (2 weeks) but can be fatal without support.</div></div>
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>G6PD testing during a crisis gives false-negative results.</strong> Test 3 months after resolution. In a male with haemolysis after fava beans or primaquine with no other explanation — treat as G6PD deficiency regardless of a normal test done during the crisis.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-pearl-list">
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Coombs test divides all haemolytic anaemia: positive = immune, negative = non-immune.</strong> Warm AIHA: IgG + C3d. Cold AIHA: C3d only. Drug-induced: varies. Hereditary spherocytosis, G6PD, TTP, HUS, mechanical: all Coombs NEGATIVE. This single test immediately narrows the differential to immune vs structural/enzymatic/mechanical.<span class="n-pearl-exam">Exam: haemolytic anaemia + positive DAT → immune cause. Negative DAT → non-immune.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>↑MCHC = hereditary spherocytosis until proven otherwise.</strong> Normal MCHC upper limit is ~36 g/dL. Spherocytes are dense, concentrated cells. This index, combined with spherocytes on film and a negative Coombs, points directly to HS before any specialist test is done.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>PNH (Paroxysmal Nocturnal Haemoglobinuria): intravascular haemolysis + thrombosis + cytopenias.</strong> GPI-anchor deficiency → complement attacks RBCs at night (when CO₂ rise lowers pH) → haemoglobin in morning urine. Ham test (historical). Now diagnosed by flow cytometry (CD55/CD59 absent). Treat: eculizumab (anti-complement). Aplastic anaemia-PNH overlap is important.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-trap-list">
+    <div class="n-trap"><div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Steroids are the first-line treatment for both warm and cold AIHA.</div></div><div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Steroids work well in warm AIHA (IgG-mediated, splenic) but are relatively ineffective in cold AIHA (complement-mediated, hepatic).</strong> Cold AIHA is managed by keeping the patient warm, treating the underlying cause (Mycoplasma, lymphoma), and rituximab. Steroids in cold AIHA give minimal benefit and significant side effects.</div></div></div>
+    <div class="n-trap"><div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">G6PD test negative during crisis = G6PD deficiency excluded.</div></div><div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>During a haemolytic crisis, the most G6PD-deficient cells are destroyed first, leaving relatively G6PD-rich cells.</strong> The test measures residual cells — giving a falsely normal result. Always retest 3 months after resolution. A negative G6PD test during an acute episode does not exclude the diagnosis.</div></div></div>
+  </div>
+</div><div class="n-anchor"><div class="n-anchor-text">Coombs positive = immune.<br>Coombs negative = RBC defect, mechanical, or infection.</div></div><div class="n-note-end-cta" onclick="showVentPopup()"><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+NOTES.sickle=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">RBC Pathology · Haemoglobinopathy</div>
+  <div class="n-hero-title">Sickle Cell<br><em>Disease</em></div>
+  <div class="n-hero-sub">RBC 05 &nbsp;·&nbsp; HbSS · Crises · Complications · Management &nbsp;·&nbsp; High-Yield</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Autosomal recessive mutation (Glu→Val at position 6 of β-globin) → HbS polymerises under deoxygenation → rigid sickle-shaped cells → vascular occlusion + haemolysis. The archetypal haemoglobinopathy.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Affects ~100,000 people in the US, millions globally (Sub-Saharan Africa, Middle East, India). Major cause of painful crises, stroke, ACS, and early death. Neonatal screening allows prophylaxis before first crisis. Hydroxyurea changes the disease course.</div></div><div class="n-snap-cell"><div class="n-snap-label">Key focus</div><div class="n-snap-text">The molecular defect, HbS vs HbSC vs HbS/β-thal genotypes, the four acute crises, chronic complications by organ, management priorities, and the heterozygote advantage against malaria.</div></div></div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Molecular Pathogenesis</span><span class="n-section-tag">one mutation, multi-organ disease</span></div>
+  <div class="n-mech-chain">
+    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">The mutation: Glu6Val in β-globin</div><div class="n-mech-text"><strong>Single nucleotide substitution (GAG → GTG) → glutamate replaced by valine at position 6 of the β-globin chain → HbS (α₂β²S).</strong> HbS has a hydrophobic patch on the β-chain that causes polymerisation when deoxygenated. Autosomal recessive — HbSS (homozygous) = disease; HbAS (heterozygous) = sickle cell trait (generally asymptomatic, protective against falciparum malaria).</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Deoxygenation → HbS polymerisation → sickling</div><div class="n-mech-text">Deoxygenation, acidosis, dehydration, cold → <strong>HbS polymerises into long fibres → distorts RBC into sickle shape → rigid, adhesive, deformable.</strong> Initially reversible — reoxygenation dissolves polymers. Repeated cycles → irreversible sickling → cells destroyed + occlude small vessels.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Two consequences: haemolysis + vaso-occlusion</div><div class="n-mech-text"><strong>Haemolysis:</strong> rigid sickle cells destroyed in spleen and circulation → chronic haemolytic anaemia (Hb typically 60–90 g/L). <strong>Vaso-occlusion:</strong> sickle cells + activated endothelium + platelets → occlude capillaries and venules → ischaemia → infarction. Free Hb from haemolysis scavenges NO → vasoconstriction → worsens occlusion.</div></div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Genotype-Phenotype</span><span class="n-section-tag">HbSS is not the only sickle syndrome</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Sickle Cell Syndromes — Genotype and Severity</span><span class="n-viz-sub">HbSS most severe · HbAS trait usually asymptomatic</span></div>
+    <svg viewBox="0 0 760 155" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="185" height="155" rx="2" fill="#c8452a"/>
+      <text x="92" y="24" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">HbSS</text>
+      <text x="92" y="42" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Sickle Cell Disease</text>
+      <text x="92" y="62" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.85)" text-anchor="middle">Most severe phenotype</text>
+      <text x="92" y="78" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Hb 60–90 g/L</text>
+      <text x="92" y="94" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">All complications</text>
+      <text x="92" y="110" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Functional asplenia</text>
+      <text x="92" y="140" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.45)" text-anchor="middle">Homozygous β-globin</text>
+      <rect x="192" y="0" width="185" height="155" rx="2" fill="#8a2818"/>
+      <text x="284" y="24" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">HbSC</text>
+      <text x="284" y="42" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Sickle-C Disease</text>
+      <text x="284" y="62" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.85)" text-anchor="middle">Moderate severity</text>
+      <text x="284" y="78" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Hb 100–130 g/L (higher)</text>
+      <text x="284" y="94" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">↑Retinopathy risk</text>
+      <text x="284" y="110" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">↑Avascular necrosis</text>
+      <text x="284" y="126" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">↑Thrombosis (higher Hb)</text>
+      <rect x="384" y="0" width="185" height="155" rx="2" fill="#5a1810"/>
+      <text x="476" y="24" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">HbS/β-thal</text>
+      <text x="476" y="42" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Sickle-Thal</text>
+      <text x="476" y="62" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.85)" text-anchor="middle">HbS/β⁰: severe (= HbSS)</text>
+      <text x="476" y="78" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">HbS/β⁺: milder (some HbA)</text>
+      <rect x="576" y="0" width="184" height="155" rx="2" fill="#2a0808"/>
+      <text x="668" y="24" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">HbAS (Trait)</text>
+      <text x="668" y="42" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Sickle Cell Trait</text>
+      <text x="668" y="62" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.85)" text-anchor="middle">Generally asymptomatic</text>
+      <text x="668" y="78" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Normal Hb and MCV</text>
+      <text x="668" y="94" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Protective vs P. falciparum</text>
+      <text x="668" y="110" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Rare: extreme hypoxia crisis</text>
+    </svg>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Acute Crises</span><span class="n-section-tag">the four acute presentations — all high stakes</span></div>
+  <div class="n-mech-chain">
+    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Vaso-occlusive (painful) crisis — most common</div><div class="n-mech-text"><strong>Sickled cells occlude microvasculature → ischaemic pain.</strong> Sites: bones (most common — femur, humerus, vertebrae), chest (ACS), abdomen, penis (priapism), CNS. Triggers: infection, dehydration, cold, hypoxia, acidosis, stress. Treatment: aggressive IV fluids, IV opioids (do not withhold), oxygen if SpO₂ &lt;95%, treat precipitant, NSAIDS. Average 4–6 admissions/year in severely affected patients.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Acute Chest Syndrome — most common cause of death</div><div class="n-mech-text"><strong>Sickling in pulmonary microvasculature → pulmonary infarction/infection → chest pain + fever + hypoxia + new pulmonary infiltrate.</strong> Can be triggered by fat embolism from infarcted bone marrow. Treat: IV antibiotics (atypical coverage — Mycoplasma common precipitant), incentive spirometry, exchange transfusion (reduces HbS% rapidly), oxygen. Most common cause of death in SCD.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Splenic sequestration — life-threatening in children</div><div class="n-mech-text"><strong>Sudden massive pooling of blood in spleen → acute splenic enlargement → severe anaemia → circulatory collapse.</strong> Occurs in young children before functional asplenia develops (usually &lt;5 years). Treat: urgent blood transfusion. Parents taught to palpate spleen and attend A&amp;E urgently if enlargement detected. Recurrent episodes → elective splenectomy.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d4">04</div><div class="n-mech-body"><div class="n-mech-cause">Aplastic crisis — parvovirus B19</div><div class="n-mech-text"><strong>Parvovirus B19 → reticulocyte suppression → Hb falls rapidly</strong> (normally compensated by high retic rate). Hb can fall to life-threatening levels within days. Treat: transfusion support for 7–14 days until retic recovery. Infection is self-limiting. Contagious — isolate from other haemolytic patients and pregnant women.</div></div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Chronic Complications by Organ</span><span class="n-section-tag">every organ is at risk</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">Spleen</div><div class="n-diag-content"><strong>Functional asplenia by age 5</strong> (repeated splenic infarction → autosplenectomy). Howell-Jolly bodies on film (DNA remnants in RBCs — normally removed by spleen). Risk: overwhelming infection with encapsulated bacteria (Pneumococcus, Meningococcus, H. influenzae). Mandatory: penicillin prophylaxis from birth + pneumococcal, Hib, meningococcal vaccines.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Brain</div><div class="n-diag-content"><strong>Stroke in 11% by age 20</strong> (large vessel occlusion). Transcranial Doppler screening (annual) detects elevated flow velocities → <strong>chronic transfusion programme</strong> if TCD abnormal → reduces stroke risk by 90%. Silent cerebral infarcts on MRI even without clinical stroke → cognitive impairment.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Bone</div><div class="n-diag-content"><strong>Avascular necrosis</strong> (AVN) of femoral and humeral heads (microvascular occlusion → ischaemic bone death). Bone marrow hyperplasia → "hair-on-end" skull on X-ray, "fish-mouth" vertebrae. Osteomyelitis: <strong>Salmonella is most common</strong> in SCD (not Staph aureus as in normal hosts).</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Kidney</div><div class="n-diag-content">Papillary necrosis → haematuria. Tubular dysfunction → inability to concentrate urine → <strong>isothenuria</strong> (fixed urine osmolality) → polyuria and enuresis. Chronic renal disease → CKD → anaemia (EPO deficiency on top of haemolysis).</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Eye</div><div class="n-diag-content"><strong>Proliferative sickle retinopathy</strong> (especially HbSC — higher Hb → more viscous → more retinal vascular occlusion). Annual ophthalmic screening. Treat: laser photocoagulation to prevent retinal detachment and blindness.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Management</span><span class="n-section-tag">prevention, disease modification, and crisis management</span></div>
+  <div class="n-algo">
+    <div class="n-algo-row"><div class="n-algo-step s-first">Neonatal screening + prophylaxis</div><div class="n-algo-body">Universal newborn screening. Penicillin V prophylaxis from diagnosis (prevents pneumococcal sepsis before functional asplenia — reduces mortality by 85%). Vaccines: pneumococcal, Hib, meningococcal, annual influenza. Folic acid supplementation (high RBC turnover).</div></div>
+    <div class="n-algo-row"><div class="n-algo-step s-fail">Hydroxyurea</div><div class="n-algo-body"><strong>Increases HbF (fetal haemoglobin) production → HbF inhibits HbS polymerisation → fewer crises, less ACS, less stroke.</strong> Also reduces WBC and platelet activation (contributes to vaso-occlusion). Reduces crisis frequency by 50%, ACS by 25%, transfusion requirement. Offer to all patients with ≥3 crises/year or ACS or severe disease.</div></div>
+    <div class="n-algo-row"><div class="n-algo-step s-severe">Exchange transfusion</div><div class="n-algo-body"><strong>Rapidly reduces HbS% by replacing sickle cells with HbA-containing donor cells.</strong> Used acutely in: ACS, stroke, priapism &gt;4h, multi-organ failure. Chronically (monthly) in: TCD-documented high stroke risk. Target HbS &lt;30%. Risk: iron overload (monitor ferritin + chelate if needed), alloimmunisation.</div></div>
+    <div class="n-algo-row"><div class="n-algo-step s-severe">Curative</div><div class="n-algo-body"><strong>Allogeneic bone marrow transplant</strong> is currently the only cure — 85-95% event-free survival if matched sibling donor available. Indication: severe disease with available sibling donor, early in disease course. <strong>Gene therapy</strong> (LentiGlobin/exa-cel) — increasingly available, potentially curative without needing a donor.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Fever in a SCD patient = sepsis with encapsulated organisms until proven otherwise.</strong> Functional asplenia removes the primary defence against pneumococcus, meningococcus, and H. influenzae. Any febrile SCD patient requires urgent blood cultures, IV antibiotics (ceftriaxone), and admission. Pneumococcal sepsis can kill within hours.</div></div>
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Acute chest syndrome is the leading cause of death in SCD — requires urgent exchange transfusion.</strong> New pulmonary infiltrate + chest symptoms in a SCD patient = ACS until proven otherwise. Do not withhold exchange transfusion — waiting for cultures or delays is dangerous. Concurrent antibiotics for atypical organisms.</div></div>
+    <div class="n-flag-item time"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Priapism &gt;4 hours = urological emergency.</strong> Vaso-occlusion in corpora cavernosa → ischaemia → if untreated &gt;4–6h → irreversible erectile dysfunction. Treat: IV fluids, analgesia, aspiration/irrigation of corpora, exchange transfusion if not resolving. All SCD males should be educated on this and have an emergency plan.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-pearl-list">
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Osteomyelitis in SCD: Salmonella, not Staph aureus.</strong> Normal host: Staph aureus most common. SCD: Salmonella most common (gut ischaemia → Salmonella translocation + functional asplenia). Cover both in empirical treatment. This is one of the most reliable exam differentiations in SCD.<span class="n-pearl-exam">Exam: SCD patient + bone pain + fever → Salmonella osteomyelitis vs VOC — culture and treat both.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Hydroxyurea mechanism: increases HbF.</strong> HbF (α₂γ₂) does not polymerise with HbS → mixing HbF with HbS reduces polymerisation threshold → fewer crises. Hydroxyurea also activates soluble guanylate cyclase → NO pathway → vasodilation. This explains why neonates with SCD are protected in the first 6 months of life (high fetal Hb).</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Howell-Jolly bodies = functional asplenia.</strong> Basophilic nuclear remnants in RBCs (DNA) — normally removed by the spleen. Presence on blood film = spleen not functioning regardless of whether it is anatomically present. Seen in: SCD, post-splenectomy, coeliac disease (splenic atrophy), infiltrative disorders.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">08</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-trap-list">
+    <div class="n-trap"><div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Sickle cell trait (HbAS) causes the same complications as sickle cell disease.</div></div><div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>HbAS trait is generally asymptomatic — sickling only occurs under extreme conditions (severe hypoxia, extreme dehydration, very high altitude).</strong> Haematology is normal. Trait is protective against falciparum malaria. Rare exceptions: hyposthenuria (always), haematuria, increased risk of renal papillary necrosis, and slightly elevated VTE risk in pregnancy. They do not have painful crises, ACS, stroke, or functional asplenia.</div></div></div>
+    <div class="n-trap"><div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Pain in a SCD patient is always a vaso-occlusive crisis — treat with opioids and discharge.</div></div><div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Chest pain in SCD may be ACS — the most common cause of death.</strong> Always examine the chest, obtain CXR, SpO₂, and ABG. A patient treated for a VOC who develops respiratory symptoms or a new infiltrate has ACS until proven otherwise. Under-recognition of ACS causes deaths.</div></div></div>
+  </div>
+</div><div class="n-anchor"><div class="n-anchor-text">One mutation — a lifetime of vascular ischaemia.<br>HbF is the natural antidote.</div></div><div class="n-note-end-cta" onclick="showVentPopup()"><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+NOTES.thalassaemia=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">RBC Pathology · Haemoglobinopathy</div>
+  <div class="n-hero-title">Thalass-<br><em>aemia</em></div>
+  <div class="n-hero-sub">RBC 06 &nbsp;·&nbsp; α vs β · Genotype-Phenotype · Transfusion Complications &nbsp;·&nbsp; High-Yield</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Inherited deficiency of one or more globin chains → <strong>unmatched chains precipitate</strong> → ineffective erythropoiesis + haemolysis → microcytic anaemia. Most common inherited disorder worldwide.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">β-thalassaemia major requires lifelong transfusions and chelation. Trait carriers (both α and β) are frequently misdiagnosed as iron deficiency. Identifying trait prevents unnecessary iron prescribing and is essential for genetic counselling.</div></div><div class="n-snap-cell"><div class="n-snap-label">Key focus</div><div class="n-snap-text">α vs β genetics, genotype-phenotype correlation for each, why HbA₂ rises in β-thal trait, the clinical spectrum from trait to major, iron overload and chelation, and bone marrow expansion findings.</div></div></div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">α vs β Thalassaemia — Genetics</span><span class="n-section-tag">different loci, different genotype-phenotype rules</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">α vs β Thalassaemia — Gene Dosage and Phenotype</span><span class="n-viz-sub">α-thal: 4 alleles (deletions) · β-thal: 2 alleles (point mutations)</span></div>
+    <svg viewBox="0 0 760 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- α-Thalassaemia panel -->
+      <rect x="0" y="0" width="370" height="240" rx="3" fill="#1a0806"/>
+      <rect x="0" y="0" width="370" height="36" rx="3" fill="#c8452a"/>
+      <text x="185" y="14" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">α-THALASSAEMIA</text>
+      <text x="185" y="30" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.75)" text-anchor="middle">4 α-globin genes · chromosome 16</text>
+      <!-- Row 1 -->
+      <rect x="8" y="44" width="354" height="42" rx="2" fill="rgba(255,255,255,.04)"/>
+      <text x="16" y="61" font-family="JetBrains Mono,monospace" font-size="10" fill="#e8a090" font-weight="700">1 gene deleted (αα/α−)</text>
+      <text x="16" y="78" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.65)">Silent carrier — normal Hb, normal MCV</text>
+      <!-- Row 2 -->
+      <rect x="8" y="92" width="354" height="42" rx="2" fill="rgba(255,255,255,.06)"/>
+      <text x="16" y="109" font-family="JetBrains Mono,monospace" font-size="10" fill="#e8a090" font-weight="700">2 genes deleted (αα/−− or α−/α−)</text>
+      <text x="16" y="126" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.65)">α-thal trait — mild microcytic anaemia, normal ferritin</text>
+      <!-- Row 3 -->
+      <rect x="8" y="140" width="354" height="42" rx="2" fill="rgba(200,69,42,.15)"/>
+      <text x="16" y="157" font-family="JetBrains Mono,monospace" font-size="10" fill="#f0b080" font-weight="700">3 genes deleted (α−/−−)</text>
+      <text x="16" y="174" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.65)">HbH disease — moderate haemolytic anaemia</text>
+      <!-- Row 4 -->
+      <rect x="8" y="188" width="354" height="44" rx="2" fill="rgba(200,69,42,.3)"/>
+      <text x="16" y="206" font-family="JetBrains Mono,monospace" font-size="10" fill="#ffb8a0" font-weight="700">4 genes deleted (−−/−−)</text>
+      <text x="16" y="222" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(255,255,255,.8)">Hb Bart's — hydrops fetalis · incompatible with life</text>
+      <text x="185" y="88" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">  Mild microcytic anaemia, normal iron studies</text>
+      <text x="185" y="106" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.85)" text-anchor="middle">3 gene del (−−/−α): HbH disease</text>
+      <text x="185" y="122" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">  β₄ tetramers (HbH) form — moderate haemolysis</text>
+      <text x="185" y="140" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.85)" text-anchor="middle">4 gene del (−−/−−): Hb Bart's hydrops fetalis</text>
+      <text x="185" y="156" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">  γ₄ tetramers (Hb Bart's) — incompatible with life</text>
+      <text x="185" y="178" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.4)" text-anchor="middle">Common in SE Asia, Africa, Mediterranean</text>
+      <rect x="390" y="0" width="370" height="190" rx="2" fill="#5a1810"/>
+      <text x="575" y="22" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800">β-THALASSAEMIA</text>
+      <text x="575" y="38" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">2 β-globin genes (chromosome 11) — point mutations</text>
+      <text x="575" y="56" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.85)" text-anchor="middle">β-thal trait (β/β⁺ or β/β⁰): Minor</text>
+      <text x="575" y="72" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">  Mild microcytic anaemia · ↑HbA₂ &gt;3.5%</text>
+      <text x="575" y="90" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.85)" text-anchor="middle">β-thal intermedia: variable severity</text>
+      <text x="575" y="106" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">  Transfusion-independent most of time</text>
+      <text x="575" y="124" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.85)" text-anchor="middle">β-thal major (β⁰/β⁰): Cooley's anaemia</text>
+      <text x="575" y="140" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">  Severe — transfusion-dependent from infancy</text>
+      <text x="575" y="156" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">  No normal β chains made (β⁰) or very few (β⁺)</text>
+      <text x="575" y="178" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.4)" text-anchor="middle">Common in Mediterranean, Middle East, S. Asia</text>
+    </svg>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Why HbA₂ Rises in β-Thalassaemia Trait</span><span class="n-section-tag">the diagnostic marker</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">Normal haemoglobins</div><div class="n-diag-content">HbA (α₂β₂): 97%. HbA₂ (α₂δ₂): 2–3.5%. HbF (α₂γ₂): &lt;1% in adults. In β-thal trait: reduced β-chain → surplus α-chains → α-chains pair with δ-chains instead → <strong>HbA₂ rises &gt;3.5% (diagnostic).</strong> Also a modest ↑HbF in some cases.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Diagnosis of β-thal trait</div><div class="n-diag-content"><strong>HPLC or capillary electrophoresis: HbA₂ &gt;3.5%</strong> with microcytic anaemia + normal iron studies + normal RDW (uniform small cells). Confirm with genetic testing if planning family. Iron deficiency lowers HbA₂ — correct iron deficiency before interpreting HPLC.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">α-thal trait diagnosis</div><div class="n-diag-content">Much harder: HbA₂ is normal, HPLC often normal, no electrophoresis abnormality. <strong>Suspect α-thal trait when: microcytic anaemia + normal iron studies + normal HbA₂ + Southeast Asian or Chinese ethnicity.</strong> Confirm: α-globin gene deletion PCR (molecular genetics).</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">β-Thalassaemia Major — Clinical Features</span><span class="n-section-tag">Cooley's anaemia — what happens when no β-chain is made</span></div>
+  <div class="n-mech-chain">
+    <div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Severe haemolytic anaemia from infancy</div><div class="n-mech-text">No functional HbA (β⁰/β⁰). HbF (γ-chain) maintains life in fetal period → after birth, γ-chain synthesis switches off → <strong>severe anaemia develops in first 6–12 months.</strong> Requires transfusion every 3–4 weeks from infancy for survival. Without transfusion: skeletal deformity, massive organomegaly, death in childhood.</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Bone marrow expansion</div><div class="n-mech-text">Marrow expands dramatically to compensate for ineffective erythropoiesis → <strong>bone remodelling:</strong> "hair-on-end" appearance of skull (X-ray), frontal bossing, maxillary hypertrophy (chipmunk facies), pathological fractures, hepatosplenomegaly (extramedullary haemopoiesis).</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Iron overload — the lethal complication of transfusion</div><div class="n-mech-text">Each unit of blood contains ~200 mg iron. No physiological mechanism to excrete excess iron. <strong>Iron deposits in: heart (cardiomyopathy — leading cause of death in treated β-thal major), liver (cirrhosis), endocrine glands (diabetes, hypogonadism, hypothyroidism, hypoparathyroidism), skin (bronze skin).</strong> Monitor: serum ferritin + MRI T2* (cardiac and hepatic iron).</div></div></div>
+    <div class="n-mech-step"><div class="n-mech-dot d4">04</div><div class="n-mech-body"><div class="n-mech-cause">Iron chelation — mandatory with transfusion</div><div class="n-mech-text"><strong>Desferrioxamine</strong> (SC infusion overnight) — effective but burdensome. <strong>Deferasirox</strong> (oral daily) — preferred for adherence. Deferiprone (oral) — added for cardiac iron specifically. Target ferritin &lt;1000 µg/L. MRI T2* &lt;20ms indicates significant cardiac iron → intensify chelation urgently.</div></div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Iron overload cardiomyopathy is the leading cause of death in β-thalassaemia major.</strong> Cardiac MRI T2* is the most sensitive early indicator — below 20ms requires immediate intensified chelation. Annual cardiac MRI from age 10. Heart failure from iron overload can be rapidly fatal if chelation is delayed.</div></div>
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Do not give iron to a patient with thalassaemia trait mistakenly diagnosed as iron deficiency.</strong> Iron studies and ferritin are normal in thalassaemia trait. Prescribing iron → iron overload. The clue: microcytic anaemia + normal iron studies + normal RDW + family history. Always do HPLC before iron therapy in at-risk populations.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-pearl-list">
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>HbA₂ &gt;3.5% = β-thalassaemia trait. Iron deficiency lowers HbA₂ — correct iron first.</strong> The diagnostic marker of β-thal trait is elevated HbA₂ on HPLC. However, concurrent iron deficiency suppresses HbA₂ synthesis → can mask the elevation. Treat iron deficiency first, repeat HPLC 3 months later if trait still suspected.<span class="n-pearl-exam">Exam: microcytic + low ferritin + HbA₂ 3.2% → treat iron first → repeat HPLC → if then &gt;3.5%, β-thal trait confirmed.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Hb Bart's hydrops fetalis (4-gene α-deletion) is incompatible with life but is preventable.</strong> All four α-genes deleted → only Hb Bart's (γ₄) and HbH (β₄) present → cannot carry oxygen adequately → severe intrauterine anaemia → hydrops → stillbirth. Detectable by third trimester fetal blood sampling. Prenatal counselling essential for couples both carrying Southeast Asian α-thal double deletions (−−/αα).</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Luspatercept: new treatment for β-thal — reduces transfusion burden.</strong> Luspatercept is an erythroid maturation agent (activin receptor ligand trap) that promotes late-stage erythropoiesis and reduces ineffective erythropoiesis. Approved for transfusion-dependent β-thalassaemia and MDS. Reduces transfusion requirement in up to 40% of patients. Gene therapy (betibeglogene — Zynteglo) is now approved for transfusion-dependent β-thal without a sibling donor.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-trap-list">
+    <div class="n-trap"><div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Thalassaemia trait has elevated RDW, like iron deficiency.</div></div><div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Thalassaemia trait has a NORMAL RDW</strong> — all cells are uniformly small because the reduced globin synthesis affects all cells equally and consistently. Iron deficiency has elevated RDW because depletion is uneven across the RBC population. Normal RDW + microcytosis = thalassaemia trait until proven otherwise.</div></div></div>
+    <div class="n-trap"><div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Neonates with β-thalassaemia major are severely anaemic at birth.</div></div><div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>β-thalassaemia major presents at 6–12 months of age, not at birth.</strong> At birth, HbF (α₂γ₂) predominates — no β-chain needed. As γ-chain production switches off after birth and β-chain demand increases, the deficiency becomes apparent. This is why symptoms emerge in infancy, not at birth. Neonatal screening detects it before symptoms.</div></div></div>
+  </div>
+</div><div class="n-anchor"><div class="n-anchor-text">Thalassaemia trait = normal iron studies, normal RDW.<br>Never prescribe iron without checking HPLC.</div></div><div class="n-note-end-cta" onclick="showVentPopup()"><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+NOTES.aplastic=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">RBC Pathology · Bone Marrow Failure</div>
+  <div class="n-hero-title">Aplastic<br><em>Anaemia</em></div>
+  <div class="n-hero-sub">RBC 07 &nbsp;·&nbsp; Pancytopenia · Bone Marrow Failure · PNH &nbsp;·&nbsp; High-Yield</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text"><strong>Failure of haematopoietic stem cells → pancytopenia</strong> (anaemia + neutropenia + thrombocytopenia) with hypocellular bone marrow replaced by fat. Acquired (most common) or inherited.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Severe aplastic anaemia (SAA) is life-threatening — neutropenia → fatal infection, thrombocytopenia → intracranial haemorrhage. Median survival without treatment was under 1 year. Bone marrow transplant or immunosuppression is curative. PNH is a closely linked clonal disorder.</div></div><div class="n-snap-cell"><div class="n-snap-label">Key focus</div><div class="n-snap-text">Causes, severity classification, bone marrow findings, PNH association, treatment (BMT vs IST), Fanconi anaemia as the key inherited cause, and the drugs that cause aplasia.</div></div></div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Causes</span><span class="n-section-tag">most cases are autoimmune — find the trigger</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Causes of Aplastic Anaemia</span><span class="n-viz-sub">Acquired (80%) · Inherited (20%)</span></div>
+    <svg viewBox="0 0 760 155" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="370" height="155" rx="2" fill="#c8452a"/>
+      <text x="185" y="24" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800">ACQUIRED</text>
+      <text x="185" y="46" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.85)" text-anchor="middle">Idiopathic (autoimmune T-cells destroy HSCs) ~70%</text>
+      <text x="185" y="62" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Viral: parvovirus B19 · EBV · hepatitis (non-A/B/C)</text>
+      <text x="185" y="78" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Drugs: chloramphenicol · carbamazepine</text>
+      <text x="185" y="94" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">sulphonamides · NSAIDs · gold · PTU</text>
+      <text x="185" y="110" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Radiation / cytotoxic chemotherapy (predictable)</text>
+      <text x="185" y="126" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Pregnancy (rare, may remit post-delivery)</text>
+      <text x="185" y="142" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">PNH clone (10–30% of AA have PNH clone)</text>
+      <rect x="390" y="0" width="370" height="155" rx="2" fill="#5a1810"/>
+      <text x="575" y="24" font-family="Syne,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="800">INHERITED</text>
+      <text x="575" y="46" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.85)" text-anchor="middle">Fanconi anaemia (most common): AR</text>
+      <text x="575" y="62" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.7)" text-anchor="middle">DNA repair defect → chromosomal fragility</text>
+      <text x="575" y="78" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Short stature · thumb abnormalities · café-au-lait</text>
+      <text x="575" y="94" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.7)" text-anchor="middle">↑AML and squamous cell carcinoma risk</text>
+      <text x="575" y="114" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Diamond-Blackfan: pure red cell aplasia</text>
+      <text x="575" y="130" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Dyskeratosis congenita: telomere defect</text>
+      <text x="575" y="146" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.8)" text-anchor="middle">Shwachman-Diamond: pancreatic insufficiency</text>
+    </svg>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Severity Classification</span><span class="n-section-tag">drives treatment urgency</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">Severe AA (SAA)</div><div class="n-diag-content">Bone marrow cellularity &lt;25% + at least 2 of: <strong>neutrophils &lt;0.5 × 10⁹/L, platelets &lt;20 × 10⁹/L, reticulocytes &lt;20 × 10⁹/L.</strong> Requires urgent treatment (BMT or IST). Without treatment: 80% mortality within 2 years.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Very Severe AA (VSAA)</div><div class="n-diag-content">SAA criteria + <strong>neutrophils &lt;0.2 × 10⁹/L.</strong> Highest risk of fatal infection. Immediate hospital admission, reverse barrier nursing, prophylactic antibiotics and antifungals. Urgent BMT if donor available.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label">Non-severe AA</div><div class="n-diag-content">Cytopenias present but not meeting severe criteria. May be managed with supportive care and monitoring. Treatment if symptomatic or progresses.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Bone Marrow Findings</span><span class="n-section-tag">hypocellularity + fat replacement = aplastic anaemia</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">Trephine biopsy</div><div class="n-diag-content"><strong>Hypocellular marrow (&lt;25%) with fat cell replacement.</strong> Residual haematopoietic cells present but markedly reduced. No dysplasia (unlike MDS). No fibrosis (unlike myelofibrosis). No infiltration (unlike leukaemia/lymphoma). The key diagnostic test — peripheral blood pancytopenia alone is insufficient.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Peripheral blood</div><div class="n-diag-content"><strong>Pancytopenia: anaemia + neutropenia + thrombocytopenia.</strong> Reticulocytes low (hypoproliferative). MCV often mildly elevated (large, sparse cells). No abnormal blasts (excludes leukaemia). Lymphocytes relatively preserved (lymphocytes are long-lived, not dependent on ongoing marrow production).</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Exclude MDS and PNH</div><div class="n-diag-content">All aplastic anaemia workup must include: <strong>flow cytometry for PNH clone (CD55/CD59 on RBCs and granulocytes)</strong> — PNH clone in 30% of AA. Cytogenetics + MDS panel (next-generation sequencing) to exclude hypocellular MDS. HLA typing for potential BMT at same time.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">PNH — Paroxysmal Nocturnal Haemoglobinuria</span><span class="n-section-tag">GPI-anchor deficiency — haemolysis + thrombosis + cytopenia</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">Mechanism</div><div class="n-diag-content"><strong>PIGA gene mutation → loss of GPI anchor → CD55 and CD59 absent from RBC surface → complement (C5b-9) attacks RBCs → intravascular haemolysis.</strong> CD55 (DAF) and CD59 (protectin) normally inhibit complement on self-cells. Clonal disorder — arises from a single HSC.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Clinical triad</div><div class="n-diag-content"><strong>Haemolysis</strong> (↑LDH, ↓haptoglobin, haemoglobinuria — classically dark morning urine as complement is activated at slightly lower nocturnal pH) + <strong>Thrombosis</strong> (unusual sites: hepatic vein = Budd-Chiari, portal vein, cerebral sinus, mesenteric vein) + <strong>Cytopenias</strong> (AA overlap).</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Treatment</div><div class="n-diag-content"><strong>Eculizumab</strong> (anti-C5 monoclonal antibody → blocks terminal complement → stops haemolysis and thrombotic risk). Dramatically reduces haemolysis and thrombosis — does not cure the clone. <strong>BMT is curative.</strong> All PNH patients need meningococcal vaccination (C5 inhibition increases meningococcal risk). Ravelizumab and crovalimab: next-gen anti-C5 agents.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Treatment of Aplastic Anaemia</span><span class="n-section-tag">BMT if young + donor · IST if not</span></div>
+  <div class="n-algo">
+    <div class="n-algo-row"><div class="n-algo-step s-first">Young (&lt;40) + matched sibling donor</div><div class="n-algo-body"><strong>Allogeneic bone marrow transplant (BMT) = treatment of choice.</strong> 80-90% long-term survival if young + sibling donor. Curative — restores normal HSC pool. Do not delay with IST if BMT is available. HLA typing at diagnosis.</div></div>
+    <div class="n-algo-row"><div class="n-algo-step s-fail">No matched donor / older patient</div><div class="n-algo-body"><strong>Immunosuppressive therapy (IST): Anti-thymocyte globulin (ATG) + ciclosporin + eltrombopag.</strong> ATG destroys autoreactive T-cells. Ciclosporin suppresses T-cell activity. Eltrombopag (TPO agonist) stimulates residual stem cell expansion. Response rate ~70-80% with triple therapy. Relapse rate 30-40%.</div></div>
+    <div class="n-algo-row"><div class="n-algo-step s-severe">Supportive care</div><div class="n-algo-body">RBC transfusion + platelet transfusion. Minimise transfusions to reduce alloimmunisation (which can complicate BMT). G-CSF for severe neutropenia + infection. Prophylactic fluconazole + aciclovir.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-pearl-list">
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Chloramphenicol: most famous drug cause of aplastic anaemia.</strong> Two types of toxicity: (1) dose-dependent suppression (reversible) — affects all patients at high doses; (2) idiosyncratic aplasia (irreversible) — rare (1:20,000–1:40,000) but often fatal. The idiosyncratic reaction is unpredictable and can occur weeks after drug stopped. Reason chloramphenicol use is restricted to serious infections where no alternative exists.<span class="n-pearl-exam">Exam: pancytopenia + recent chloramphenicol → aplastic anaemia.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Fanconi anaemia: congenital aplasia + physical abnormalities + markedly elevated cancer risk.</strong> FANC gene mutations → impaired DNA interstrand crosslink repair → chromosomal instability. Physical signs: short stature, radial/thumb defects, café-au-lait spots, microcephaly, renal anomalies. Diagnosis: chromosomal fragility test with diepoxybutane (DEB) or mitomycin C. Lifetime cancer risk: AML 10%, squamous cell carcinoma of head/neck/GI 40%. BMT needed early.</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Hepatitis-associated aplastic anaemia: non-A, non-B, non-C hepatitis → aplasia 2–3 months later.</strong> Mechanism: immune-mediated destruction of HSCs triggered by viral hepatitis (specific virus usually not identified). Young men. Severe and often fatal without BMT. This is distinct from the direct marrow suppression of HBV/HCV.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-trap-list">
+    <div class="n-trap"><div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Pancytopenia always means aplastic anaemia.</div></div><div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Pancytopenia has many causes — bone marrow biopsy is mandatory to distinguish them.</strong> Differentials: aplastic anaemia (hypocellular marrow), MDS (dysplastic hypocellular marrow), acute leukaemia (hypercellular with blasts), myelofibrosis (fibrotic replacement), lymphoma/metastatic cancer (infiltration), megaloblastic anaemia (hypercellular but ineffective). Never diagnose aplastic anaemia without a trephine biopsy.</div></div></div>
+    <div class="n-trap"><div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">G-CSF alone is sufficient treatment for aplastic anaemia with severe neutropenia.</div></div><div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>G-CSF temporarily raises neutrophil count but does not address the underlying stem cell failure.</strong> G-CSF can be used as supportive therapy during an acute infectious episode but it does not constitute definitive treatment. SAA requires BMT or IST. Using G-CSF alone in SAA while deferring definitive treatment is dangerous.</div></div></div>
+  </div>
+</div><div class="n-anchor"><div class="n-anchor-text">Pancytopenia + hypocellular marrow = aplastic anaemia.<br>Always check for PNH clone — it changes everything.</div></div><div class="n-note-end-cta" onclick="showVentPopup()"><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+NOTES.polycythaemia=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">RBC Pathology · Erythrocytosis</div>
+  <div class="n-hero-title">Poly-<br><em>cythaemia</em></div>
+  <div class="n-hero-sub">RBC 08 &nbsp;·&nbsp; PV · Secondary · JAK2 · Thrombosis Risk &nbsp;·&nbsp; High-Yield</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">Elevated red cell mass causing <strong>raised Hb and haematocrit</strong>. True polycythaemia (increased RBC mass) vs relative polycythaemia (reduced plasma volume). Polycythaemia vera (PV) is the primary myeloproliferative cause; secondary polycythaemia is EPO-driven.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">PV carries a high risk of arterial and venous thrombosis (stroke, MI, DVT, PE, Budd-Chiari). The JAK2 V617F mutation is diagnostic. Untreated PV can transform to myelofibrosis or AML. Correct classification prevents inappropriate venesection in secondary causes.</div></div><div class="n-snap-cell"><div class="n-snap-label">Key focus</div><div class="n-snap-text">PV vs secondary vs relative polycythaemia, JAK2 V617F as the diagnostic marker, EPO level as the separator, clinical features of PV (aquagenic pruritus, splenomegaly), treatment, and transformation risks.</div></div></div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classification — The Branch Tree</span><span class="n-section-tag">primary vs secondary vs relative</span></div>
+  <div class="n-viz-block">
+    <div class="n-viz-label-row"><span class="n-viz-title">Polycythaemia Classification</span><span class="n-viz-sub">EPO level is the pivot — low EPO = primary (PV) · high EPO = secondary</span></div>
+    <svg viewBox="0 0 760 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="260" y="0" width="240" height="44" rx="2" fill="#c8452a"/>
+      <text x="380" y="17" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">RAISED Hb / HAEMATOCRIT</text>
+      <text x="380" y="33" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Hb &gt;185 M / &gt;165 F (g/L)</text>
+      <line x1="380" y1="44" x2="120" y2="84" stroke="#c8452a" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <line x1="380" y1="44" x2="380" y2="84" stroke="#c8452a" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <line x1="380" y1="44" x2="640" y2="84" stroke="#c8452a" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <rect x="0" y="84" width="240" height="44" rx="2" fill="#c8452a"/>
+      <text x="120" y="101" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">PRIMARY (PV)</text>
+      <text x="120" y="117" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Intrinsic stem cell defect · EPO LOW · JAK2+</text>
+      <line x1="60" y1="128" x2="40" y2="160" stroke="#c8452a" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="180" y1="128" x2="200" y2="160" stroke="#c8452a" stroke-width="1" stroke-dasharray="3,3"/>
+      <rect x="0" y="160" width="120" height="50" rx="2" fill="#8a2818"/>
+      <text x="60" y="178" font-family="Syne,sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="700">POLYCYTHAEMIA</text>
+      <text x="60" y="192" font-family="Syne,sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="700">VERA</text>
+      <text x="60" y="206" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.6)" text-anchor="middle">JAK2 V617F 95%</text>
+      <rect x="130" y="160" width="120" height="50" rx="2" fill="#6a1810"/>
+      <text x="190" y="178" font-family="Syne,sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="700">PRIMARY</text>
+      <text x="190" y="192" font-family="Syne,sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="700">FAMILIAL</text>
+      <text x="190" y="206" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.6)" text-anchor="middle">EPOR mutation · rare</text>
+      <rect x="270" y="84" width="220" height="44" rx="2" fill="#5a1810"/>
+      <text x="380" y="101" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">SECONDARY</text>
+      <text x="380" y="117" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Normal stem cell · EPO HIGH · JAK2–</text>
+      <line x1="320" y1="128" x2="300" y2="160" stroke="#5a1810" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="440" y1="128" x2="460" y2="160" stroke="#5a1810" stroke-width="1" stroke-dasharray="3,3"/>
+      <rect x="266" y="160" width="110" height="50" rx="2" fill="#3a1008"/>
+      <text x="321" y="178" font-family="Syne,sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="700">PHYSIOLOGICAL</text>
+      <text x="321" y="192" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Altitude · COPD</text>
+      <text x="321" y="206" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.6)" text-anchor="middle">Sleep apnoea</text>
+      <rect x="382" y="160" width="110" height="50" rx="2" fill="#2a0808"/>
+      <text x="437" y="178" font-family="Syne,sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="700">PATHOLOGICAL</text>
+      <text x="437" y="192" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">RCC · PCOS</text>
+      <text x="437" y="206" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.6)" text-anchor="middle">Cerebellar haemangioma</text>
+      <rect x="520" y="84" width="240" height="44" rx="2" fill="#3a1008"/>
+      <text x="640" y="101" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">RELATIVE</text>
+      <text x="640" y="117" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.7)" text-anchor="middle">Normal RBC mass · reduced plasma volume</text>
+      <rect x="530" y="160" width="220" height="50" rx="2" fill="#1a0808"/>
+      <text x="640" y="178" font-family="Syne,sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="700">GAISBOCK SYNDROME</text>
+      <text x="640" y="192" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.7)" text-anchor="middle">Obese · hypertensive · smoker</text>
+      <text x="640" y="206" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.6)" text-anchor="middle">Also: dehydration · diuretics · burns</text>
+    </svg>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Polycythaemia Vera — Clinical Features</span><span class="n-section-tag">the most diagnosed myeloproliferative neoplasm</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">Symptoms</div><div class="n-diag-content"><strong>Aquagenic pruritus</strong> (itch after warm bath/shower — pathognomonic; caused by histamine from mast cells stimulated by basophilia) + headache + dizziness + visual disturbance (hyperviscosity) + facial plethora + erythromelalgia (burning pain + redness in hands/feet — platelet-mediated microvascular occlusion).</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Signs</div><div class="n-diag-content"><strong>Splenomegaly</strong> (extramedullary haemopoiesis — in 70%). Facial plethora. Hypertension (hyperviscosity + blood volume expansion). Gout (hyperuricaemia from high cell turnover). Peptic ulcers (↑histamine from basophils → ↑gastric acid).</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">Thrombosis</div><div class="n-diag-content"><strong>Arterial thrombosis</strong> (stroke, TIA, MI, peripheral arterial occlusion) + <strong>venous thrombosis</strong> (DVT, PE, Budd-Chiari, portal vein, mesenteric vein). Unusual site venous thrombosis (hepatic vein, portal vein) → always check JAK2 V617F. Overall 3-5% annual thrombosis rate — major cause of death.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Diagnosis</span><span class="n-section-tag">JAK2 + EPO + bone marrow</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">WHO 2022 Diagnostic Criteria</div><div class="n-diag-content">Major criteria: (1) <strong>↑Hb/Hct</strong> (Hb &gt;165 M / &gt;160 F, or Hct &gt;49% M / &gt;48% F); (2) <strong>Hypercellular BM</strong> with trilineage proliferation (panmyelosis) on trephine; (3) <strong>JAK2 V617F or JAK2 exon 12 mutation.</strong> Minor criterion: <strong>↓EPO level.</strong> Diagnosis: 3 major OR 2 major + 1 minor.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">JAK2 V617F</div><div class="n-diag-content">Present in <strong>95% of PV</strong> (and 50-60% of ET and PMF). Gain-of-function mutation in JAK2 kinase → constitutive EPO receptor signalling → uncontrolled erythroid proliferation. Serum EPO is <strong>low or undetectable</strong> in PV (stem cells proliferate independently of EPO). Tested by allele-specific PCR or sequencing.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label err">EPO level — the separator</div><div class="n-diag-content"><strong>Low EPO = PV (primary). High EPO = secondary polycythaemia.</strong> In PV: stem cells are EPO-independent → feedback suppresses EPO. In secondary: appropriate or pathological EPO excess drives erythroid expansion. EPO level is the single most useful test to direct the workup from a raised Hb.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Treatment</span><span class="n-section-tag">reduce haematocrit + thrombosis prophylaxis</span></div>
+  <div class="n-algo">
+    <div class="n-algo-row"><div class="n-algo-step s-first">All patients</div><div class="n-algo-body"><strong>Venesection</strong> (phlebotomy): target haematocrit &lt;45% M / &lt;42% F. Reduces hyperviscosity and thrombotic risk. 450ml removed at each session. <strong>Low-dose aspirin 75mg</strong> in all patients (reduces thrombotic risk without significantly increasing bleeding).</div></div>
+    <div class="n-algo-row"><div class="n-algo-step s-fail">High-risk patients</div><div class="n-algo-body">High risk: age &gt;60 or prior thrombosis. Add <strong>cytoreductive therapy: hydroxyurea</strong> (first line) → reduces all cell lines. Ruxolitinib (JAK1/2 inhibitor) for hydroxyurea-resistant/intolerant patients. Interferon-α: particularly in younger patients and pregnancy (not teratogenic).</div></div>
+    <div class="n-algo-row"><div class="n-algo-step s-severe">Transformation monitoring</div><div class="n-algo-body">Annual FBC monitoring. <strong>Myelofibrotic transformation</strong> (spent phase — 10-20% at 20 years): splenomegaly, worsening anaemia, teardrop cells. <strong>AML transformation</strong> (5-10% at 20 years — increased by hydroxyurea). Bone marrow biopsy if transformation suspected.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Budd-Chiari syndrome or portal vein thrombosis = test JAK2 V617F immediately.</strong> Up to 40% of splanchnic vein thromboses are the first presentation of an MPN (PV, ET, PMF). Normal blood count does not exclude the diagnosis — JAK2 PCR must be performed. Missing the underlying MPN means the thrombotic tendency is untreated.</div></div>
+    <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Haematocrit &gt;45% drives thrombosis risk — not just Hb.</strong> In PV, maintaining haematocrit &lt;45% is the most evidence-based intervention to prevent thrombosis (CYTO-PV trial: Hct &lt;45% vs &lt;50% — 4× reduction in cardiovascular events). Do not target Hb alone. Measure haematocrit.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-pearl-list">
+    <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Aquagenic pruritus after a warm shower = PV until proven otherwise.</strong> Pathognomonic symptom. Caused by histamine release from dermal mast cells and basophils (elevated in PV) on contact with warm water. Not triggered by cold. Check JAK2 V617F and EPO in any patient with this symptom — even before Hb is significantly elevated.<span class="n-pearl-exam">Exam: itch after shower + raised Hb + splenomegaly → PV → check JAK2.</span></div></div>
+    <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>EPO level separates primary (low) from secondary (high) polycythaemia — this is the most clinically useful single test.</strong> In PV: constitutive JAK2-driven erythroid proliferation suppresses EPO feedback. In secondary polycythaemia (COPD, altitude, RCC): EPO elevated driving erythroid expansion. Erythromelalgia (burning feet) is essentially pathognomonic of a myeloproliferative disorder (PV or ET).</div></div>
+    <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Renal cell carcinoma is the classic paraneoplastic cause of secondary polycythaemia.</strong> RCC cells produce ectopic EPO → secondary polycythaemia. Also: hepatocellular carcinoma, cerebellar haemangioblastoma (Von Hippel-Lindau), uterine fibroids. Newly diagnosed secondary polycythaemia with no respiratory cause = CT chest/abdomen/pelvis to exclude EPO-secreting tumour.</div></div>
+  </div>
+</div><div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-trap-list">
+    <div class="n-trap"><div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Venesection alone is adequate long-term treatment for all patients with PV.</div></div><div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Venesection alone is adequate only for low-risk PV (&lt;60 years, no prior thrombosis).</strong> High-risk patients (age &gt;60 or prior thrombosis) need cytoreductive therapy (hydroxyurea or ruxolitinib) in addition to venesection and aspirin. Venesection alone in high-risk patients leaves thrombotic risk inadequately managed.</div></div></div>
+    <div class="n-trap"><div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">JAK2 V617F positive = polycythaemia vera.</div></div><div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>JAK2 V617F is present in 95% of PV but also in 50–60% of essential thrombocythaemia and 50–60% of primary myelofibrosis.</strong> JAK2 positivity alone does not diagnose PV — the full clinical picture (Hb/Hct criteria + bone marrow biopsy + EPO level) is required. JAK2 positive + normal Hb + elevated platelets = likely ET, not PV.</div></div></div>
+  </div>
+</div><div class="n-anchor"><div class="n-anchor-text">Low EPO + JAK2 positive = PV.<br>High EPO + JAK2 negative = find what's driving the EPO.</div></div><div class="n-note-end-cta" onclick="showVentPopup()"><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+
+NOTES_MCQ.approach=[
+  {q:"A patient has Hb 95g/L, MCV 70fL, hypochromic cells on film, and a LOW reticulocyte count. What category of anaemia is this?",opts:["Haemolytic anaemia","Microcytic hypochromic — likely iron deficiency or thalassaemia","Macrocytic anaemia","Normocytic anaemia with haemolysis"],ans:1,focus:"MCV-based classification",exp:"<strong>MCV &lt;80fL = microcytic anaemia.</strong> Low MCV + hypochromic film + low reticulocytes = underproduction (not haemolysis, which gives high reticulocytes). Next: iron studies (ferritin, serum iron, TIBC) and Hb electrophoresis to distinguish IDA from thalassaemia."},
+  {q:"Which combination confirms a haemolytic process?",opts:["Low MCV + low ferritin","Raised LDH + low haptoglobin + raised unconjugated bilirubin + raised reticulocytes","Low B12 + high MCV","Pancytopenia + low reticulocytes"],ans:1,focus:"Haemolysis confirmation triad",exp:"<strong>Haemolysis: raised LDH + low haptoglobin + raised unconjugated bilirubin + raised reticulocytes.</strong> Haptoglobin is consumed binding free Hb — most sensitive marker. Raised unconjugated bilirubin = pre-hepatic from RBC breakdown. High reticulocytes = marrow responding appropriately."},
+  {q:"MCV 114fL, oval macrocytes, hypersegmented neutrophils, Hb 79g/L, low reticulocytes. Diagnosis?",opts:["Iron deficiency","Haemolytic anaemia","Megaloblastic anaemia","Aplastic anaemia"],ans:2,focus:"Megaloblastic — hypersegmented neutrophils",exp:"<strong>MCV &gt;100 + oval macrocytes + hypersegmented neutrophils = megaloblastic anaemia.</strong> Hypersegmented neutrophils (≥5 lobes in ≥5% of neutrophils) are pathognomonic. Low reticulocytes = underproduction. Check B12 AND folate before treating — never give folate alone without excluding B12 deficiency."},
+  {q:"Normocytic anaemia (MCV 88fL) with a RAISED reticulocyte count most likely represents:",opts:["Iron deficiency","Megaloblastic anaemia","Haemolytic anaemia or acute blood loss","Aplastic anaemia"],ans:2,focus:"Normocytic + high reticulocytes = haemolysis/loss",exp:"<strong>Normocytic + raised reticulocytes = haemolysis or acute haemorrhage.</strong> The marrow is responding. Aplastic and megaloblastic give low reticulocytes (marrow failure or impaired production). Check LDH, haptoglobin, bilirubin to confirm haemolysis. Reticulocytes are the single most important discriminator between productive and underproductive anaemia."},
+  {q:"Which causes are correctly grouped as MICROCYTIC (MCV <80fL)?",opts:["B12 deficiency, folate, alcohol","Iron deficiency, thalassaemia, ACD, sideroblastic anaemia","Acute blood loss, haemolysis, aplastic anaemia","Hypothyroidism, liver disease"],ans:1,focus:"Microcytic causes — TAILS",exp:"<strong>Microcytic: TAILS</strong> — Thalassaemia, Anaemia of chronic disease, Iron deficiency, Lead poisoning, Sideroblastic anaemia. Macrocytic: B12, folate, alcohol, liver disease, hypothyroidism, hydroxyurea. Normocytic: haemolysis, acute blood loss, aplastic, CKD, mixed deficiency."}
+];
+NOTES_MCQ.irondeficiency=[
+  {q:"A 58-year-old man presents with IDA. No dietary cause is identified. Priority investigation?",opts:["Bone marrow biopsy","Bidirectional GI endoscopy to exclude malignancy","Serum ferritin repeat in 3 months","Reticulocyte count"],ans:1,focus:"IDA in adult male — exclude GI malignancy",exp:"<strong>IDA in adult male or post-menopausal female = GI malignancy until proven otherwise.</strong> Upper + lower GI endoscopy is mandatory. Pre-menopausal women: menstrual history first. The most common cause of occult GI blood loss causing IDA is colorectal cancer."},
+  {q:"Iron studies in IDA: which pattern is correct?",opts:["Low iron, HIGH TIBC, LOW ferritin, low transferrin saturation","Low iron, low TIBC, high ferritin","High iron, low TIBC, high ferritin","Normal iron, normal TIBC, low ferritin only"],ans:0,focus:"IDA iron studies pattern",exp:"<strong>IDA: Low serum iron + HIGH TIBC + LOW ferritin + low transferrin saturation (&lt;16%).</strong> Ferritin is the best single test — LOW only in IDA. TIBC rises because transferrin is upregulated to capture every available iron molecule. Ferritin is an acute phase protein — it can be falsely normal in IDA with concurrent inflammation."},
+  {q:"How does ACD (anaemia of chronic disease) differ from IDA on iron studies?",opts:["ACD: low ferritin, high TIBC; IDA: normal ferritin","ACD: LOW iron, LOW TIBC, NORMAL/HIGH ferritin; IDA: LOW iron, HIGH TIBC, LOW ferritin","They cannot be distinguished","ACD: high iron, high TIBC"],ans:1,focus:"ACD vs IDA iron studies",exp:"<strong>ACD: Low iron + Low TIBC + Normal or HIGH ferritin.</strong> Hepcidin (elevated in inflammation) traps iron inside macrophages and enterocytes — serum iron falls but stores are normal/raised. TIBC is low because inflammation suppresses transferrin. Ferritin is high because it's an acute phase protein. Key: ferritin normal/high in ACD despite low serum iron."},
+  {q:"Hepcidin causes anaemia of chronic disease by:",opts:["Stimulating iron absorption","Degrading ferroportin → trapping iron in enterocytes and macrophages → reducing serum iron","Suppressing EPO production","Increasing transferrin saturation"],ans:1,focus:"Hepcidin mechanism",exp:"<strong>Hepcidin binds and degrades ferroportin</strong> — the only iron export channel on duodenal enterocytes and macrophages. High hepcidin (in infection, inflammation, iron overload) = iron trapped in cells = low serum iron = ACD. This is why oral iron fails in ACD — iron is absorbed but cannot exit the enterocyte into plasma."},
+  {q:"The three stages of iron deficiency in correct order are:",opts:["Microcytic anaemia → iron depletion → iron-deficient erythropoiesis","Iron depletion (low ferritin) → iron-deficient erythropoiesis (low serum iron) → iron deficiency anaemia (low Hb)","IDA → iron-deficient erythropoiesis → iron depletion","Hypochromia → microcytosis → anaemia"],ans:1,focus:"Three stages of iron deficiency",exp:"<strong>Stage 1: Iron depletion</strong> — ferritin falls, Hb normal. <strong>Stage 2: Iron-deficient erythropoiesis</strong> — serum iron falls, TIBC rises, transferrin saturation falls. <strong>Stage 3: IDA</strong> — Hb falls, microcytic hypochromic anaemia. Ferritin is the earliest marker. Hb falls last."}
+];
+NOTES_MCQ.megaloblastic=[
+  {q:"Why is treating megaloblastic anaemia with folate alone dangerous?",opts:["Folate is toxic when B12 is deficient","Folate corrects the anaemia but allows B12-deficiency neurological damage to progress silently","Folate cannot correct megaloblastic anaemia","Folate worsens the haematological picture"],ans:1,focus:"Folate masking B12 neurology",exp:"<strong>Folate treats the anaemia but not the neurology.</strong> The Hb and MCV improve, masking ongoing subacute combined degeneration of the spinal cord. Always check B12 AND folate before treating. If B12 deficiency is present or suspected, treat with B12 first — folate alone can cause irreversible spinal cord damage."},
+  {q:"Subacute combined degeneration of the spinal cord from B12 deficiency damages which tracts?",opts:["Spinothalamic tracts only","Dorsal columns + lateral corticospinal tracts","Anterior horn cells","Spinocerebellar tracts"],ans:1,focus:"SCD — tract involvement",exp:"<strong>Dorsal columns: loss of proprioception + vibration sense, sensory ataxia, positive Romberg.</strong> <strong>Corticospinal tracts: UMN signs — weakness, spasticity, upgoing plantars.</strong> The combination of UMN signs + loss of vibration sense + macrocytic anaemia = B12 deficiency until proven otherwise."},
+  {q:"Which test best distinguishes B12 deficiency from folate deficiency when levels are equivocal?",opts:["Schilling test","Methylmalonic acid (MMA) — elevated only in B12 deficiency","Homocysteine — elevated in both","Anti-intrinsic factor antibodies"],ans:1,focus:"MMA — B12 specific marker",exp:"<strong>MMA is elevated in B12 deficiency only, not folate deficiency.</strong> Both B12 and folate deficiency raise homocysteine — so homocysteine doesn't distinguish them. MMA requires B12 as a cofactor; B12 deficiency → MMA accumulates. Raised MMA with borderline B12 = functional B12 deficiency."},
+  {q:"Pernicious anaemia causes B12 deficiency through which mechanism?",opts:["Dietary B12 deficiency","Autoimmune destruction of gastric parietal cells → loss of intrinsic factor → B12 malabsorption in terminal ileum","Pancreatic insufficiency","Bacterial overgrowth"],ans:1,focus:"Pernicious anaemia mechanism",exp:"<strong>Pernicious anaemia: autoimmune gastritis → parietal cell destruction → no intrinsic factor → B12 cannot be absorbed in terminal ileum.</strong> Anti-parietal cell Ab: 90% sensitive. Anti-intrinsic factor Ab: 50% sensitive but highly specific. Treatment: lifelong IM hydroxocobalamin — oral B12 is ineffective without IF."},
+  {q:"Correct treatment for B12 deficiency due to pernicious anaemia:",opts:["Oral folic acid 5mg daily","IM hydroxocobalamin — loading then every 3 months lifelong","IV B12 then oral maintenance","Dietary B12 only"],ans:1,focus:"B12 treatment — IM route",exp:"<strong>IM hydroxocobalamin: 1mg on alternate days for 2 weeks (loading), then 1mg every 3 months lifelong.</strong> Oral B12 is ineffective in pernicious anaemia — absorption requires intrinsic factor which is absent. Oral is only appropriate for dietary deficiency (vegans), where passive diffusion at high doses works."}
+];
+NOTES_MCQ.haemolytic=[
+  {q:"Which tests best confirm haemolysis?",opts:["Low MCV + low ferritin","Raised LDH + low haptoglobin + raised unconjugated bilirubin + raised reticulocytes","Low B12 + macrocytes","Pancytopenia + low reticulocytes"],ans:1,focus:"Haemolysis confirmation",exp:"<strong>Haemolysis triad: raised LDH + low haptoglobin + raised unconjugated bilirubin.</strong> Haptoglobin is most sensitive — consumed binding free Hb. Add raised reticulocytes (marrow response). Normal haptoglobin makes significant haemolysis unlikely."},
+  {q:"Direct antiglobulin test (DAT) is positive in:",opts:["Hereditary spherocytosis","G6PD deficiency","Autoimmune haemolytic anaemia (AIHA)","Thalassaemia"],ans:2,focus:"DAT positive = AIHA",exp:"<strong>DAT positive = antibody or complement coating the RBC = AIHA.</strong> Warm AIHA: IgG (37°C) — associated with SLE, CLL, methyldopa. Cold AIHA: IgM — associated with Mycoplasma, EBV. Hereditary spherocytosis and G6PD are intrinsic RBC defects — no antibodies, DAT negative."},
+  {q:"Haemoglobinuria (red/brown urine) is specific to which type of haemolysis?",opts:["Extravascular only","Intravascular haemolysis — free Hb released into plasma, filtered by kidney","Both equally","Neither"],ans:1,focus:"Intravascular vs extravascular haemolysis",exp:"<strong>Haemoglobinuria = intravascular haemolysis only.</strong> Free Hb released into plasma → haptoglobin saturated → free Hb filtered by kidney → red/brown urine. Extravascular (spleen/liver macrophages) → no free Hb in plasma → no haemoglobinuria. Causes of intravascular: TTP, HUS, G6PD crisis, mismatched transfusion, PNH."},
+  {q:"G6PD deficiency causes haemolytic crises when:",opts:["Exposed to cold","Exposed to oxidative stress — infections, primaquine, dapsone, fava beans","Autoantibodies form against RBCs","Osmotic fragility increases"],ans:1,focus:"G6PD — oxidative stress triggers",exp:"<strong>G6PD: X-linked. Oxidative stress depletes glutathione → Heinz body formation → haemolysis.</strong> Triggers: primaquine, dapsone, nitrofurantoin, sulfonamides, infections, fava beans. Blood film: bite cells (macrophages nibbling Heinz bodies), blister cells. Between crises: normal Hb and film."},
+  {q:"TTP is caused by:",opts:["Autoantibodies destroying platelets in spleen","Deficiency/inhibition of ADAMTS13 → ultra-large vWF multimers → platelet microthrombi → MAHA","Complement-mediated RBC destruction","IgG antibodies against RBC surface"],ans:1,focus:"TTP — ADAMTS13 mechanism",exp:"<strong>TTP: ADAMTS13 deficiency or inhibition → ultra-large vWF multimers → spontaneous platelet aggregation → microthrombi → microangiopathic haemolytic anaemia + thrombocytopaenia.</strong> Pentad: MAHA + thrombocytopaenia + fever + renal impairment + neurological features. Treatment: plasma exchange. Never give platelets — worsens thrombosis."}
+];
+NOTES_MCQ.sickle=[
+  {q:"The molecular defect in sickle cell disease is:",opts:["β-globin gene deletion","Glutamic acid → valine at position 6 of β-globin (GAG→GTG point mutation)","α-globin gene deletion","Premature stop codon in β-globin"],ans:1,focus:"HbS molecular defect",exp:"<strong>Single point mutation: glutamic acid replaced by valine at β-globin position 6.</strong> Creates a hydrophobic patch → deoxygenated HbS polymerises → sickle shape → rigid sticky RBCs → vaso-occlusion and haemolysis. Heterozygotes (HbAS) are protected against severe malaria — explaining the high prevalence in malaria-endemic regions."},
+  {q:"Acute chest syndrome in SCD is defined as:",opts:["PE from DVT","New pulmonary infiltrate + fever + respiratory symptoms in SCD — the leading cause of death","Pneumonia from encapsulated bacteria","Pulmonary hypertension"],ans:1,focus:"Acute chest syndrome",exp:"<strong>ACS: new pulmonary infiltrate on CXR + fever + respiratory symptoms (chest pain, hypoxia, tachypnoea) in SCD.</strong> Leading cause of death in SCD. Causes: fat embolism from infarcted bone marrow, infection, in-situ sickling. Treatment: O₂, exchange transfusion (most effective), antibiotics (cover atypicals)."},
+  {q:"SCD patients are functionally asplenic. What is the main infectious risk?",opts:["Surgical splenectomy performed in childhood","Repeated splenic infarctions → autosplenectomy → susceptibility to encapsulated bacteria (Pneumococcus, H. influenzae, Meningococcus)","Spleen is unaffected in SCD","Hypersplenism causes normal function despite enlargement"],ans:1,focus:"Functional asplenia — infection risk",exp:"<strong>Repeated vaso-occlusive infarctions → autosplenectomy by age 5–6 in HbSS.</strong> Loss of opsonisation → overwhelming sepsis from encapsulated bacteria. Prevention: lifelong penicillin prophylaxis, pneumococcal/Hib/meningococcal vaccines. Overwhelming post-splenectomy infection carries 50–70% mortality without immediate treatment."},
+  {q:"Hydroxyurea treats SCD by:",opts:["Dissolving HbS polymers directly","Inducing fetal haemoglobin (HbF) — HbF does not polymerise with HbS","Chelating iron","Replacing sickled RBCs via transfusion"],ans:1,focus:"Hydroxyurea — HbF induction",exp:"<strong>Hydroxyurea induces HbF (α₂γ₂) production.</strong> HbF does not participate in HbS polymerisation — dilutes the polymer and reduces sickling. Benefits: fewer vaso-occlusive crises, fewer ACS episodes, reduced transfusions, improved survival. Side effects: myelosuppression (monitor FBC), teratogenicity."},
+  {q:"Sickle cell trait (HbAS) is clinically significant because:",opts:["Causes the same crises as HbSS","Is always asymptomatic with no clinical relevance","Provides partial protection against P. falciparum malaria and requires genetic counselling","Requires hydroxyurea treatment"],ans:2,focus:"Sickle trait — malaria protection and genetics",exp:"<strong>HbAS (sickle trait): usually asymptomatic</strong> but sickling can occur under extreme hypoxia (high altitude, anaesthesia, extreme exercise). <strong>Partial protection against severe P. falciparum malaria</strong> — explains why the mutation reached high frequency in malaria-endemic regions. Critical for <strong>genetic counselling</strong>: two HbAS parents have 25% chance of HbSS child."}
+];
+NOTES_MCQ.thalassaemia=[
+  {q:"A patient has MCV 65fL, mild anaemia, NORMAL ferritin, target cells on film. Most likely diagnosis?",opts:["Iron deficiency anaemia","Beta-thalassaemia trait","Anaemia of chronic disease","Sideroblastic anaemia"],ans:1,focus:"Thalassaemia trait — normal ferritin distinguishes from IDA",exp:"<strong>Thalassaemia trait: microcytic anaemia + NORMAL ferritin.</strong> IDA: microcytic + LOW ferritin. Mentzer index (MCV÷RBC count): &lt;13 suggests thalassaemia; &gt;13 suggests IDA. Confirm: Hb electrophoresis — β-thal trait shows raised HbA₂ (&gt;3.5%). Never prescribe iron for microcytic anaemia without checking ferritin first."},
+  {q:"Why is HbA₂ elevated in β-thalassaemia trait?",opts:["Increased δ-chain production compensates for reduced β-chain — HbA₂ (α₂δ₂) rises","Increased γ-chains switch to HbF","Excess α-chains directly cause HbA₂ rise","Reduced HbA causes relative elevation"],ans:0,focus:"HbA₂ elevation mechanism",exp:"<strong>Reduced β-chain → excess α-chains pair with δ-chains (instead of β-chains) → HbA₂ (α₂δ₂) rises above 3.5%.</strong> HbA₂ &gt;3.5% on HPLC = β-thalassaemia trait. In α-thal trait, HbA₂ is normal — use α-globin gene analysis (chromosome 16 deletions) instead."},
+  {q:"β-thalassaemia major causes iron overload through:",opts:["Dietary excess and reduced hepcidin","Chronic transfusions providing exogenous iron PLUS ineffective erythropoiesis suppressing hepcidin → increased GI iron absorption","Haemolysis releasing iron","Reduced renal iron excretion"],ans:1,focus:"Iron overload — two mechanisms",exp:"<strong>Two mechanisms:</strong> (1) <strong>Chronic transfusions</strong> — each unit contains ~200mg iron; no excretory mechanism exists. (2) <strong>Ineffective erythropoiesis suppresses hepcidin</strong> → upregulates ferroportin → excess duodenal iron absorption. Both combine → progressive iron overload → cardiomyopathy, liver cirrhosis, endocrine failure. Chelation: desferrioxamine SC or oral deferasirox."},
+  {q:"Deletion of ALL FOUR α-globin genes causes:",opts:["Silent carrier","α-thal trait","HbH disease","Hb Bart's hydrops fetalis — incompatible with life"],ans:3,focus:"4-gene α-thal deletion = hydrops fetalis",exp:"<strong>−−/−− (4 genes deleted) = Hb Bart's hydrops fetalis.</strong> No α-chains → only Hb Bart's (γ₄) and HbH (β₄) form — both have very high O₂ affinity and cannot deliver oxygen → severe intrauterine hypoxia → hydrops fetalis → stillbirth. 3 deletions: HbH disease (moderate). 2 deletions: α-thal trait (mild). 1 deletion: silent carrier (normal)."},
+  {q:"First-line chelation in transfusion-dependent thalassaemia major is:",opts:["Hydroxychloroquine","Desferrioxamine (SC) or deferasirox (oral)","Dimercaprol","Penicillamine"],ans:1,focus:"Iron chelation — agents",exp:"<strong>Desferrioxamine (SC overnight infusion, 5–7 nights/week) or deferasirox (oral once daily)</strong> are standard. Target ferritin &lt;1000 μg/L. Monitor cardiac and hepatic iron with MRI T2* — T2* &lt;10ms = severe cardiac iron loading. Side effects: desferrioxamine → retinal and auditory toxicity; deferasirox → nephrotoxicity."}
+];
+NOTES_MCQ.aplastic=[
+  {q:"Aplastic anaemia is characterised by:",opts:["Hypercellular marrow with blasts","Pancytopenia + hypocellular marrow with fat replacement of haemopoietic tissue","Pancytopenia + hypercellular marrow with blasts","Selective anaemia, normal platelets and neutrophils"],ans:1,focus:"Aplastic anaemia definition",exp:"<strong>Aplastic anaemia: pancytopenia + hypocellular marrow</strong> (&lt;25% cellularity in severe disease) with fat replacement. Low reticulocytes. NOT leukaemia — no blasts. The marrow is empty, not packed. Trephine biopsy is diagnostic."},
+  {q:"The main pathological mechanism in acquired aplastic anaemia is:",opts:["Direct toxin destruction of stem cells","Autoreactive CD8+ T-cells attacking haemopoietic stem cells","Malignant infiltration","Nutritional stem cell failure"],ans:1,focus:"Aplastic — autoimmune T-cell mechanism",exp:"<strong>Autoreactive CD8+ cytotoxic T-cells recognise and destroy HSCs.</strong> Evidence: response to immunosuppression (ATG + ciclosporin), HLA associations, activated T-cells in marrow. Triggers: viruses (hepatitis, EBV, parvovirus), drugs (chloramphenicol, gold, NSAIDs), chemicals (benzene). Idiopathic in majority."},
+  {q:"Treatment of choice for severe aplastic anaemia in a 35-year-old with a matched sibling donor:",opts:["ATG + ciclosporin","Allogeneic haemopoietic stem cell transplant (HSCT)","Hydroxyurea","Transfusions alone"],ans:1,focus:"Aplastic — transplant for young patients",exp:"<strong>Allogeneic HSCT is first-line for severe aplastic anaemia in patients &lt;40 years with a matched sibling donor.</strong> Cure rates &gt;80%. Without donor or age &gt;40: horse ATG + ciclosporin ± eltrombopag (response ~60–70%). Avoid unnecessary transfusions before transplant — sensitisation complicates matching."},
+  {q:"PNH (paroxysmal nocturnal haemoglobinuria) is associated with aplastic anaemia. The defect is:",opts:["JAK2 V617F mutation","PIG-A somatic mutation → loss of GPI-anchor proteins CD55/CD59 → complement-mediated haemolysis","Autoantibody against RBC surface","Inherited ADAMTS13 deficiency"],ans:1,focus:"PNH — GPI anchor defect",exp:"<strong>PNH: PIG-A mutation → no GPI-anchor → loss of CD55 and CD59 (complement regulators) → uncontrolled complement → intravascular haemolysis.</strong> PNH clone expands in aplastic anaemia (GPI-deficient cells survive T-cell attack). Triad: haemolytic anaemia + thrombosis (Budd-Chiari, cerebral veins) + cytopaenia. Treatment: eculizumab (anti-C5)."},
+  {q:"Trephine biopsy in aplastic anaemia shows:",opts:["Hypercellular marrow with megakaryocyte excess","Hypocellular marrow with >75% fat spaces and residual lymphocytes — no blasts","Diffuse blast infiltration (>20%)","Ring sideroblasts on Prussian blue stain"],ans:1,focus:"Aplastic trephine findings",exp:"<strong>Aplastic: hypocellular marrow with &gt;75% fat spaces.</strong> Residual lymphocytes, plasma cells, stromal cells — but NO blasts. Compare: MDS has dysplastic cells; AML has blast-packed marrow; myelofibrosis has fibrosis on reticulin stain. The 'empty marrow' is characteristic."}
+];
+NOTES_MCQ.polycythaemia=[
+  {q:"JAK2 V617F mutation is present in what percentage of polycythaemia vera cases?",opts:["20%","50%","95%","100%"],ans:2,focus:"JAK2 V617F prevalence in PV",exp:"<strong>JAK2 V617F is present in &gt;95% of PV cases.</strong> It is also found in 50–60% of essential thrombocythaemia and 50–60% of primary myelofibrosis — so it is not specific to PV, but it is the key diagnostic marker. JAK2 positive + raised Hct + low EPO + hypercellular marrow = PV."},
+  {q:"In polycythaemia vera, EPO level is:",opts:["Elevated — drives RBC production","Normal","Low or suppressed","Unmeasurable"],ans:2,focus:"PV vs secondary — EPO level",exp:"<strong>EPO is LOW in PV.</strong> Constitutive JAK2 activity bypasses EPO signalling → excess RBCs provide negative feedback → EPO suppressed. In secondary polycythaemia (COPD, altitude, RCC): EPO is HIGH. EPO level is the most useful single test to separate primary from secondary polycythaemia."},
+  {q:"Which symptom is pathognomonic of polycythaemia vera?",opts:["Headache and plethora","Aquagenic pruritus — itching after contact with water","Splenomegaly","Erythromelalgia"],ans:1,focus:"Aquagenic pruritus — PV pathognomonic",exp:"<strong>Aquagenic pruritus (intense itch after water contact, especially hot) is pathognomonic of PV.</strong> Caused by histamine release from mast cells and basophils (elevated in PV) when skin temperature changes. Not seen in secondary polycythaemia. Pruritus + raised Hb + splenomegaly → check JAK2 immediately."},
+  {q:"The main cause of morbidity and mortality in untreated PV is:",opts:["Bone marrow failure","Thrombosis — stroke, MI, DVT/PE, Budd-Chiari","Autoimmune haemolytic anaemia","Transformation to ALL"],ans:1,focus:"PV complications — thrombosis",exp:"<strong>Thrombosis is the leading cause of death in PV.</strong> Hyperviscosity + platelet dysfunction → arterial and venous thrombosis. Characteristic: Budd-Chiari, portal vein, cerebral vein thrombosis. Treatment reduces thrombotic risk: venesection (target Hct &lt;45%), aspirin, hydroxyurea for high-risk patients."},
+  {q:"Target haematocrit and first-line treatment in PV:",opts:["<50%; hydroxyurea","<45%; venesection + aspirin 75mg","<55%; observation","<40%; exchange transfusion"],ans:1,focus:"PV treatment targets",exp:"<strong>Target Hct &lt;45% (CYTO-PV trial — 4× reduction in cardiovascular events vs &lt;50% target).</strong> First-line: venesection + low-dose aspirin. High-risk patients (age &gt;60 or prior thrombosis): add hydroxyurea (first-line cytoreduction) or ruxolitinib (JAK1/2 inhibitor for resistant/intolerant). Monitor for myelofibrotic transformation (&lt;20% at 20 years)."}
+];
 
 let currentNote = null;
 
