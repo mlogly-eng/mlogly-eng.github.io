@@ -638,6 +638,7 @@ nav {
 .note-modal.breathe-active .n-hero-new.b-active { opacity: 1; }
 .note-modal.breathe-active .n-anchor { opacity: .07; pointer-events: none; transition: opacity 0.45s ease; }
 
+
 /* Dark-mode content colours in breathe mode (modal bg is #141210) */
 .note-modal.breathe-active .n-section-title,
 .note-modal.breathe-active .n-section-num  { color: var(--n-red) !important; }
@@ -1008,6 +1009,7 @@ nav {
 .note-modal.focus-mode .n-note-end-cta-title { color: rgba(243,240,232,.8); }
 .note-modal.focus-mode .n-note-end-cta { border-color: rgba(200,69,42,.35); background: rgba(200,69,42,.09); }
 .note-modal.breathe-active .n-anchor { opacity: .07; pointer-events: none; transition: opacity 0.45s ease; }
+
 .note-modal.breathe-active.b-at-last .n-anchor { opacity: 1; pointer-events: auto; }
 
 
@@ -1754,7 +1756,7 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
 <div class="b-nav" id="b-nav">
   <button class="b-nav-btn" onclick="bSkipBack()" title="Previous section">←</button>
   <button class="b-nav-btn" onclick="bSkipFwd()"  title="Next section">→</button>
-  <button class="b-nav-btn" onclick="bStop(false)"  title="Stop" style="font-size:10px;color:rgba(255,255,255,.2)">■</button>
+  <button class="b-nav-btn" onclick="bStop(false);setTimeout(()=>bShowSummaryForCurrent(),400)" title="Done" style="font-size:10px;color:rgba(255,255,255,.2)">■</button>
 </div>
 
 <!-- ══ SPINE DOTS ═════════════════════════════════════════ -->
@@ -1851,10 +1853,10 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
 <!-- ══ BREATHE EXIT CONFIRM ═══════════════════════════════ -->
 <div class="breathe-exit-confirm" id="breathe-exit-confirm">
   <div class="breathe-exit-box">
-    <div class="breathe-exit-title">Leave breathing mode?</div>
-    <div class="breathe-exit-sub">Your session progress will be lost</div>
+    <div class="breathe-exit-title">End session?</div>
+    <div class="breathe-exit-sub">Your summary will be shown</div>
     <div class="breathe-exit-btns">
-      <button class="breathe-exit-leave" onclick="breatheExitConfirm()">Leave</button>
+      <button class="breathe-exit-leave" onclick="breatheExitConfirm()">End &amp; summarise</button>
       <button class="breathe-exit-stay"  onclick="breatheExitCancel()">Keep going</button>
     </div>
   </div>
@@ -3692,8 +3694,7 @@ function openNote(id) {
 }
 
 function closeModal() {
-  // If breathe is active, intercept and show confirm
-  if (breatheOn) { breatheExitPrompt(); return; }
+  if (breatheOn) { bStop(false); setTimeout(() => bShowSummaryForCurrent(), 400); return; }
   document.getElementById('overlay').classList.remove('open','fullscreen');
   document.body.style.overflow = '';
   isFullscreen = false;
@@ -3714,13 +3715,7 @@ function breatheExitCancel() {
 function breatheExitConfirm() {
   document.getElementById('breathe-exit-confirm').classList.remove('show');
   bStop(false);
-  document.getElementById('overlay').classList.remove('open','fullscreen');
-  document.body.style.overflow = '';
-  isFullscreen = false;
-  dismissVentPopup();
-  const tools = document.getElementById('mbar-note-tools');
-  if (tools) tools.style.visibility = 'visible';
-  hideHlPopup();
+  setTimeout(() => bShowSummaryForCurrent(), 400);
 }
 
 function closeBg(e) { if (e.target === document.getElementById('overlay')) closeModal(); }
@@ -4283,10 +4278,13 @@ function bStart_() {
   const heroEl  = document.querySelector('#mcontent .n-hero-new');
   const sectEls = Array.from(document.querySelectorAll('#mcontent .n-section'));
   bSections = heroEl ? [heroEl, ...sectEls] : sectEls;
+  // fallback: if no sections found, use all direct child blocks
+  if (!bSections.length) bSections = Array.from(document.querySelectorAll('#mcontent > *'));
   bTotal = bSections.length;
   if (!bTotal) return;
 
   breatheOn = true; bStart = Date.now(); bPaused = false;
+
   bCurIdx = 0; bCyclesDone = 0; bAtLast = false; bNextShown = false; bSessionSections = 0;
 
   document.getElementById('modal').classList.add('focus-mode', 'breathe-active');
@@ -4342,6 +4340,7 @@ function bStop(showSummary = false) {
   hideNoteNav();
 
   bSections.forEach(s => s.classList.remove('b-active', 'b-was', 'b-hold'));
+
   bAtLast = false; bNextShown = false;
   document.getElementById('modal').classList.remove('b-at-last');
 
@@ -4373,12 +4372,11 @@ function bActivate(idx) {
       const margin  = 32;
       const elTopInModal = el.getBoundingClientRect().top - modal.getBoundingClientRect().top - mbarH;
       let scrollTop;
-      if (elH <= availH - margin*2) {
-        scrollTop = modal.scrollTop + elTopInModal - Math.floor((availH - elH) / 2);
-      } else {
-        scrollTop = modal.scrollTop + elTopInModal - margin;
-      }
-      modal.scrollTo({ top: Math.max(0, scrollTop), behavior: 'smooth' });
+      // Scroll active section to top of viewport (with margin)
+      // For last section: also ensure bottom is visible by clamping to scrollHeight
+      scrollTop = modal.scrollTop + elTopInModal - margin;
+      const maxScroll = modal.scrollHeight - modal.clientHeight;
+      modal.scrollTo({ top: Math.min(maxScroll, Math.max(0, scrollTop)), behavior: 'smooth' });
     });
   }
   document.querySelectorAll('#b-spine .b-sdot').forEach((d,i) => {
@@ -4392,7 +4390,7 @@ function bActivate(idx) {
 }
 
 function bJumpTo(idx) { clearTimeout(bPhTimer); cancelAnimationFrame(bRafId); bCurIdx = idx; bActivate(idx); bStartPhase('inhale'); }
-function bSkipFwd()   { if (!breatheOn||bPaused) return; clearTimeout(bPhTimer); cancelAnimationFrame(bRafId); bSections[bCurIdx]?.classList.remove('b-hold'); bAdvance(); }
+function bSkipFwd()   { if (!breatheOn||bPaused) return; clearTimeout(bPhTimer); cancelAnimationFrame(bRafId); bSections[bCurIdx]?.classList.remove('b-hold','b-active'); bCurIdx = Math.min(bTotal-1, bCurIdx+1); bActivate(bCurIdx); bStartPhase('inhale'); }
 function bSkipBack()  { if (!breatheOn||bPaused) return; clearTimeout(bPhTimer); cancelAnimationFrame(bRafId); bSections[bCurIdx]?.classList.remove('b-hold'); bCurIdx = Math.max(0, bCurIdx-1); bActivate(bCurIdx); bStartPhase('inhale'); }
 
 function bAdvance() {
