@@ -7,8 +7,12 @@ const nextConfig = {
         destination: '/ophtho/index.html',
         permanent: false,
       },
+      {
+        source: '/forensic',
+        destination: '/forensic/index.html',
+        permanent: false,
+      },
     ]
   },
 }
-
 module.exports = nextConfig
