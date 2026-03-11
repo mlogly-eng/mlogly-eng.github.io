@@ -1063,7 +1063,8 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
   border-radius: 8px; width: 100%; max-width: 520px; position: relative;
   box-shadow: 0 48px 96px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.03) inset;
   transform: translateY(20px) scale(.97);
-  transition: transform .4s cubic-bezier(.16,1,.3,1), opacity .35s ease; overflow: hidden;
+  transition: transform .4s cubic-bezier(.16,1,.3,1), opacity .35s ease;
+  overflow-y: auto; max-height: 92vh;
 }
 .breathe-summary.show .vs-panel { transform: translateY(0) scale(1); }
 .vs-close-btn {
@@ -1115,6 +1116,8 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
 .vs-btn-got:hover  { background: rgba(42,130,80,.22); }
 .vs-btn-miss { padding: 11px 18px; background: rgba(200,69,42,.08); border: 1px solid rgba(200,69,42,.22); border-radius: 4px; color: rgba(200,69,42,.65); font-family: 'JetBrains Mono',monospace; font-size: 10px; letter-spacing: 1px; cursor: pointer; transition: all .2s; display: none; }
 .vs-btn-miss:hover { background: rgba(200,69,42,.15); }
+.vs-btn-next { flex: 1; padding: 11px 16px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 4px; color: rgba(244,240,232,.7); font-family: 'Syne',sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; transition: all .2s; display: none; }
+.vs-btn-next:hover { background: rgba(255,255,255,.1); color: rgba(244,240,232,1); }
 /* Summary intro */
 .vs-intro { display: none; padding: 24px 26px 20px; }
 .vs-intro.show { display: block; }
@@ -1751,7 +1754,7 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
 <div class="b-nav" id="b-nav">
   <button class="b-nav-btn" onclick="bSkipBack()" title="Previous section">←</button>
   <button class="b-nav-btn" onclick="bSkipFwd()"  title="Next section">→</button>
-  <button class="b-nav-btn" onclick="bStop(true)"  title="Stop & review" style="font-size:10px;color:rgba(255,255,255,.2)">■</button>
+  <button class="b-nav-btn" onclick="bStop(false)"  title="Stop" style="font-size:10px;color:rgba(255,255,255,.2)">■</button>
 </div>
 
 <!-- ══ SPINE DOTS ═════════════════════════════════════════ -->
@@ -1769,7 +1772,7 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
   <div class="b-next-actions">
     <button class="b-next-btn b-next-go" onclick="bGoNextNote()">Continue →</button>
     <button class="b-next-btn b-next-stay" onclick="bDismissNextNote()">Linger here</button>
-    <button class="b-next-stop" onclick="bStop(false);showVentPopup()">Done</button>
+    <button class="b-next-stop" onclick="bStop(false); setTimeout(()=>bShowSummaryForCurrent(),400)">Done</button>
   </div>
 </div>
 
@@ -1825,6 +1828,7 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
         <button class="vs-btn-reveal" id="vs-btn-reveal" onclick="vsReveal()">Reveal answer</button>
         <button class="vs-btn-got"  id="vs-btn-got"  onclick="vsMark('got')">Got it ✓</button>
         <button class="vs-btn-miss" id="vs-btn-miss" onclick="vsMark('missed')">Missed ✗</button>
+        <button class="vs-btn-next" id="vs-btn-next" onclick="vsNext()">Next →</button>
       </div>
     </div>
     <!-- Finish screen -->
@@ -1860,7 +1864,7 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
   <div class="vent-popup-title">Are you <em>ventilating?</em></div>
   <p class="vent-popup-sub">Test what stuck. 5 questions. No feedback until the end.</p>
   <div class="vent-popup-btns">
-    <button class="vent-yes" onclick="startMCQ()">Test me →</button>
+    <button class="vent-yes" onclick="startVentilation()">Test me →</button>
     <button class="vent-no"  onclick="dismissVentPopup()">Maybe later</button>
   </div>
 </div>
@@ -1952,7 +1956,7 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
 <script>
 // ── Note order & names (used by JS for navigation) ──
 const NOTE_ORDER = ['medethics','healthleg','malpractice','generalforensic','forensicpsych','suddendeath','humanid','pregnancyabortion','deathcert','asphyxia','wounds','transport','childabuse','firearm'];
-const NOTE_NAMES = {medethics:'Medical Ethics',healthleg:'National Health Legislation',malpractice:'Medical Malpractice',generalforensic:'General Forensic Medicine',forensicpsych:'Forensic Psychiatry',suddendeath:'Sudden & Unexpected Death',humanid:'Human Identification',pregnancyabortion:'Medical Aspects of Pregnancy & Abortion',deathcert:'Death Certification',asphyxia:'Asphyxia',wounds:'Medico-legal Aspects of Wounds',transport:'Transportation Injuries',childabuse:'Child Abuse',firearm:'Firearm & Explosive Injuries'};
+const NOTE_NAMES = {medethics:'Medical Ethics',healthleg:'National Health Legislation',malpractice:'Medical Malpractice',generalforensic:'General Forensic Medicine',forensicpsych:'Forensic Psychiatry',suddendeath:'Sudden & Unexpected Death',humanid:'Human Identification',pregnancyabortion:'Medical Aspects of Pregnancy & Abortion',deathcert:'Death Certification',asphyxia:'Asphyxia',wounds:'Medico-legal Aspects of Wounds',transport:'Transportation Injuries',childabuse:'Child Abuse',firearm:'Firearm & Explosive Injuries',introtox:'Introduction to Toxicology',drugstox:'Drugs & Therapeutic Toxicology',corrosives:'Corrosives & Irritants',inhalants:'Inhalants & Volatile Substances',pesticides:'Pesticides & Organophosphates',heavymetals:'Heavy Metal Poisoning',animalpoisoning:'Animal & Plant Poisoning',foodpoisoning:'Food Poisoning',substanceabuse:'Substance Abuse & Addiction',neglectabuse:'Neglect & Abuse of Human Rights'};
 
 // ── Note content store ──
 const NOTES={};
@@ -3545,6 +3549,86 @@ NOTES_MCQ.generalforensic=[
   {q:"A forensic pathologist at post-mortem concludes 'cause of death: haemorrhage due to stab wound to the chest'. The 'manner of death' in this case is:",opts:["Haemorrhage","Stab wound","To be determined by the coroner or court — likely homicide but the pathologist does not determine manner","Natural causes"],ans:2,focus:"Manner determination — court's role",exp:"The pathologist determines <strong>cause and mechanism</strong> — not manner. In this case, the cause is 'stab wound to the chest' and the mechanism is 'haemorrhage.' Whether this was homicide, suicide, or accident is a <strong>legal determination by the coroner or court</strong>, based on all available evidence — police investigation, witness accounts, and pathology together. The pathologist's role is to provide objective medical findings, not to conclude on manner."},
   {q:"Which statement best describes the role of the forensic physician during a police examination of a detainee?",opts:["To assess fitness for interview and provide treatment — as an independent medical practitioner","To assist police in obtaining evidence from the detainee regardless of clinical findings","To act as a witness for the prosecution only","To conduct the examination only if formally charged"],ans:0,focus:"Forensic physician role — dual obligation",exp:"The <strong>forensic physician acts as an independent medical practitioner</strong>. Their primary roles in custody: assess fitness for interview and detention, provide medical treatment, document injuries, and collect forensic samples. They owe a duty of care to the detainee regardless of alleged offence. They are not an extension of the investigation — their clinical findings must be reported accurately and impartially to whoever requires them, including defence lawyers."}
 ];
+NOTES_MCQ.introtox=[
+  {q:"The therapeutic index (TI) of a drug is defined as:",opts:["The maximum dose that can be given without side effects","LD50 divided by ED50 — a measure of safety margin","The dose required to produce a therapeutic effect in 50% of a population","The ratio of the therapeutic to toxic dose in a single patient"],ans:1,focus:"Therapeutic index — definition",exp:"<strong>Therapeutic Index = LD50 / ED50.</strong> A high TI (e.g. penicillin) means a wide margin between effective and lethal doses — relatively safe. A <strong>narrow TI</strong> (digoxin, lithium, warfarin, phenytoin) means small dose changes can shift from therapeutic to toxic. Narrow TI drugs require blood level monitoring."},
+  {q:"Which post-mortem specimen is most resistant to redistribution and is preferred for alcohol and some drug analysis?",opts:["Central blood from the aorta","Peripheral blood from the femoral vein","Urine","Vitreous humour"],ans:3,focus:"Vitreous humour — most stable PM sample",exp:"<strong>Vitreous humour</strong> (fluid from the eye) is isolated from the systemic circulation and is not subject to post-mortem redistribution or putrefaction at the same rate as blood. It is the preferred specimen for alcohol estimation, glucose, electrolytes, and detection of drugs that redistribute rapidly (e.g. GHB). Central blood overestimates drug levels after death due to diffusion from viscera."},
+  {q:"A patient presents with miosis, bradycardia, excessive secretions, and muscle fasciculations. This toxidrome is:",opts:["Sympathomimetic","Opioid","Cholinergic (SLUDGE)","Sedative-hypnotic"],ans:2,focus:"Cholinergic toxidrome — SLUDGE",exp:"<strong>SLUDGE: Salivation, Lacrimation, Urination, Defecation, GI upset, Emesis</strong> — plus miosis, bradycardia, bronchospasm, bronchorrhoea, and muscle fasciculations. This is the cholinergic (muscarinic + nicotinic) toxidrome caused by organophosphates, carbamates, or excessive cholinergic drugs. Treatment: atropine (blocks muscarinic effects) + pralidoxime (reactivates acetylcholinesterase if given early)."},
+  {q:"Paracetamol overdose in the first 24 hours characteristically presents with:",opts:["Jaundice and coagulopathy","No symptoms or mild nausea only — despite ongoing hepatocellular damage","Severe abdominal pain and haematemesis","Immediate cardiorespiratory collapse"],ans:1,focus:"Paracetamol — silent first 24 hours",exp:"<strong>Paracetamol overdose is asymptomatic in the first 24 hours</strong> — while NAPQI (the toxic metabolite) is already causing hepatocellular damage. Liver failure, coagulopathy, and jaundice appear 48–72 hours later. This asymptomatic window is the classic exam trap. If the 4-hour level is above the treatment line on the nomogram, start N-acetylcysteine immediately — do not wait for symptoms."},
+  {q:"Which route of administration has the fastest onset of toxicity?",opts:["Oral ingestion","Dermal absorption","Intravenous injection","Rectal administration"],ans:2,focus:"Routes of administration — speed of onset",exp:"<strong>IV injection bypasses all absorption barriers</strong> — drug enters systemic circulation immediately. Speed order: IV > inhalation > sublingual > IM > oral > dermal. Oral drugs undergo first-pass hepatic metabolism which reduces bioavailability and slows onset. Dermal absorption is the slowest under normal conditions (exception: highly lipophilic compounds e.g. organophosphates through wet skin)."}
+];
+
+NOTES_MCQ.drugstox=[
+  {q:"A patient presents 16 hours after paracetamol overdose. Their 4-hour plasma level (from a chart) was above the treatment line. The correct action is:",opts:["Reassure — they are alert and show no jaundice","Start N-acetylcysteine (NAC) immediately","Induce vomiting to reduce further absorption","Wait for LFTs before deciding"],ans:1,focus:"Paracetamol — NAC indications",exp:"<strong>NAC must be started based on the 4-hour plasma level nomogram</strong> — not symptoms, which are absent in the first 24 hours. At 16 hours, the patient is still within the window where NAC is effective if the level was above the treatment line. Waiting for LFTs is dangerous — hepatic necrosis is silent early. Inducing vomiting is inappropriate 16 hours after ingestion."},
+  {q:"Tricyclic antidepressant (TCA) overdose produces which characteristic ECG change?",opts:["ST elevation in V1-V3","Widened QRS > 100ms and prolonged QTc","Tall peaked T waves","Delta waves with short PR interval"],ans:1,focus:"TCA toxicity — ECG findings",exp:"<strong>TCAs block sodium channels → QRS widening (>100ms = significant, >160ms = severe) and prolonged QTc.</strong> Also cause anticholinergic features (tachycardia, dry mouth, urinary retention, confusion), hypotension, and seizures. Treatment: sodium bicarbonate IV (narrows QRS by overcoming Na channel block, also alkalinises to reduce protein binding). QRS >160ms correlates with high risk of seizures and arrhythmia."},
+  {q:"The antidote for opioid overdose (pinpoint pupils, reduced GCS, respiratory depression) is:",opts:["Flumazenil","Naloxone","N-acetylcysteine","Physostigmine"],ans:1,focus:"Opioid antidote — naloxone",exp:"<strong>Naloxone (Narcan)</strong> is the competitive opioid receptor antagonist — reverses CNS and respiratory depression. Short acting (30–90 min) — may need repeated doses or infusion if the opioid is long-acting (e.g. methadone). The classic triad: <strong>miosis + CNS depression + respiratory depression.</strong> Flumazenil reverses benzodiazepines; NAC treats paracetamol; physostigmine is for anticholinergic toxicity."},
+  {q:"Benzodiazepine overdose is distinguished from opioid overdose by:",opts:["Deeper coma","Normal pupil size (no miosis)","Cherry-red skin","Bradycardia and hypotension"],ans:1,focus:"Benzo vs opioid — pupils",exp:"<strong>Benzodiazepines cause sedation and respiratory depression but DO NOT cause miosis.</strong> Pupils are normal or mildly dilated. Opioids cause <strong>pinpoint miosis</strong> — this is the key differentiating sign. Both cause CNS and respiratory depression. Flumazenil reverses benzodiazepines but is rarely used clinically (risk of precipitating seizures in chronic users). Supportive care is the main treatment."},
+  {q:"Digoxin toxicity at therapeutic and supratherapeutic levels most characteristically causes:",opts:["Hypokalaemia and prolonged QT","Nausea, vomiting, xanthopsia (yellow-green vision), and heart block","Metabolic acidosis with high anion gap","Pulmonary oedema and hypertension"],ans:1,focus:"Digoxin toxicity — features",exp:"<strong>Digoxin toxicity: GI symptoms (nausea, vomiting, anorexia), visual disturbances (xanthopsia — yellow-green tinge), and cardiac effects (bradycardia, heart block, junctional rhythms, ventricular arrhythmias).</strong> Hyperkalaemia (not hypo) is a marker of severe toxicity. Narrow TI drug — levels must be monitored. Treatment: digoxin-specific antibody fragments (Digibind/DigiFab) for life-threatening toxicity."}
+];
+
+NOTES_MCQ.corrosives=[
+  {q:"A patient swallows an alkaline household cleaner. The correct immediate management is:",opts:["Administer a neutralising acid immediately","Induce vomiting to remove the substance","Do NOT induce vomiting; do NOT neutralise; provide early airway assessment and arrange endoscopy","Give activated charcoal within 1 hour"],ans:2,focus:"Alkali ingestion — management principles",exp:"<strong>NEVER induce vomiting after corrosive ingestion</strong> — re-exposure of the oesophagus causes additional injury. <strong>NEVER neutralise</strong> — acid-base reaction generates heat, causing thermal injury. Activated charcoal does not adsorb corrosives and obscures endoscopy. Priority: airway (alkalis cause severe supraglottic oedema), IV access, nil by mouth, early endoscopy within 12–24 hours to grade injury, and surgical referral for severe cases."},
+  {q:"Acid ingestion compared to alkali ingestion characteristically causes:",opts:["Deeper tissue penetration with liquefactive necrosis","Superficial coagulative necrosis — a self-limiting eschar that limits deeper penetration","Identical injury patterns — no clinical distinction","More severe oesophageal injury than stomach injury"],ans:1,focus:"Acid vs alkali — injury mechanism",exp:"<strong>Acids cause coagulative necrosis</strong> — the eschar formed limits (but does not prevent) deeper penetration. <strong>Alkalis cause liquefactive necrosis</strong> — deeper, more extensive, harder to limit. Both are dangerous. Acids tend to cause more gastric injury (antrum pools acid). Alkalis cause more oesophageal injury. Both can perforate. The distinction matters for predicting severity, not for changing the initial management approach."},
+  {q:"The most important early investigation after significant corrosive ingestion is:",opts:["Serum amylase","Endoscopy within 12–24 hours to grade mucosal injury","Barium swallow to assess oesophageal integrity","CT chest for mediastinal assessment only"],ans:1,focus:"Corrosive ingestion — endoscopy timing",exp:"<strong>Early endoscopy (12–24 hours) is the gold standard for grading corrosive injury.</strong> Grades: I (erythema), IIa (superficial ulcers), IIb (deep ulcers), IIIa (focal necrosis), IIIb (extensive necrosis). Grade predicts stricture risk and surgical need. Endoscopy should NOT be performed in the first 6 hours (perforation risk during active oedema) or after 24 hours (fragile tissue increases perforation risk). Barium swallow cannot grade injury depth."},
+  {q:"Hydrofluoric acid (HF) exposure is uniquely dangerous because:",opts:["It causes severe acid burns indistinguishable from other acids","Fluoride ion penetrates deep into tissue, chelates calcium and magnesium causing fatal arrhythmias","It is the most strongly ionised acid causing immediate coagulation","Its vapour is non-toxic"],ans:1,focus:"Hydrofluoric acid — systemic fluoride toxicity",exp:"<strong>HF is unique: the fluoride ion penetrates deeply and chelates intracellular calcium and magnesium</strong>, causing hypocalcaemia, hypomagnesaemia, and potentially fatal ventricular fibrillation. Even small dermal exposures can be lethal. Treatment: topical calcium gluconate gel (immediate), IV/IA calcium gluconate for systemic toxicity, continuous cardiac monitoring. Do not underestimate even small skin exposures."},
+  {q:"Chronic low-level exposure to corrosive fumes (e.g. in industrial settings) most commonly causes:",opts:["Acute pulmonary oedema","Erosion of dental enamel, chronic bronchitis, and perforation of the nasal septum","Renal tubular acidosis","Aplastic anaemia"],ans:1,focus:"Chronic corrosive exposure — occupational disease",exp:"<strong>Chronic corrosive vapour exposure (acid mists, alkali dusts) causes:</strong> dental erosion (acid dissolves enamel), chronic bronchitis from mucous membrane irritation, nasal septal perforation (classically chromic acid), and skin dermatitis. This is an occupational medicine pattern — workers in battery manufacturing, electroplating, and cleaning product industries. Acute high-dose exposure causes pulmonary oedema and upper airway burns, which is a separate presentation."}
+];
+
+NOTES_MCQ.inhalants=[
+  {q:"Sudden Sniffing Death from volatile substance abuse is caused by:",opts:["Respiratory centre depression from accumulation of solvent in the brainstem","Cardiac sensitisation to catecholamines → fatal ventricular fibrillation triggered by exertion or fright","Severe cerebral oedema from hypoxia","Hypokalaemia from metabolic acidosis"],ans:1,focus:"Sudden Sniffing Death — mechanism",exp:"<strong>Sudden Sniffing Death</strong> occurs when volatile hydrocarbons (aerosols, petrol, butane) sensitise the myocardium to catecholamines. A sudden surge of adrenaline (fright, exertion, being discovered) triggers VF and cardiac arrest. The person may appear completely well moments before dying. At post-mortem, findings are often minimal — diagnosis requires scene investigation and GC-MS on blood and lung tissue."},
+  {q:"At post-mortem in a suspected volatile substance inhalation death, which specimens are most important?",opts:["Gastric contents only","Blood from the femoral vein and lung tissue for headspace gas chromatography-mass spectrometry (GC-MS)","Vitreous humour for electrolytes","Urine for standard drug screen"],ans:1,focus:"Post-mortem specimens — volatile substance death",exp:"<strong>Headspace GC-MS on blood and lung tissue</strong> is the definitive test for volatile substances. Solvents (butane, toluene, trichloroethylene) are highly volatile — they evaporate from standard samples rapidly. Headspace technique captures vapour from above the sample, preserving the volatile compounds. Lung tissue retains solvents longer than blood. Scene investigation (bags, rags, aerosol cans) is equally critical for diagnosis."},
+  {q:"Carbon monoxide (CO) poisoning produces which pathognomonic post-mortem finding?",opts:["Blue-grey cyanosis","Cherry-red (carmine) lividity","Pale, waxy hypostasis","Yellow discolouration of the skin"],ans:1,focus:"CO poisoning — cherry-red lividity",exp:"<strong>Carboxyhaemoglobin is bright red</strong> → cherry-red (carmine) lividity is pathognomonic of CO poisoning. Normal hypostasis is purple-red (deoxyhaemoglobin). This is the only condition producing bright red lividity — it is a spot diagnosis at post-mortem. Confirm with carboxyhaemoglobin levels. Sources: faulty gas appliances, car exhaust in enclosed spaces, fires. Treatment in the living: 100% high-flow oxygen (halves COHb half-life); hyperbaric O2 for severe cases."},
+  {q:"The 'bag breathing' method in volatile substance abuse increases risk because:",opts:["It increases heat loss via exhalation","It prevents the bag from being removed, causing mechanical asphyxia only","It raises solvent concentration in inspired air while simultaneously reducing oxygen — combining chemical and hypoxic injury","It prevents cardiac monitoring during the session"],ans:2,focus:"Bag breathing — combined toxicity mechanism",exp:"<strong>Bag breathing (inhaling into and from a sealed bag)</strong> concentrates the volatile solvent in each subsequent breath while simultaneously consuming oxygen in the enclosed space. The result is: (1) higher solvent dose per breath, (2) progressive hypoxia as O2 falls. Either mechanism alone can be fatal — together they dramatically increase the risk of loss of consciousness, aspiration, and cardiac arrest. The bag may then suffocate the unconscious person."},
+  {q:"A 17-year-old is found unconscious in a garage with a plastic bag over their face. There is a sticker residue on the bag. This is most consistent with:",opts:["Manual strangulation","Volatile substance abuse with bag breathing — possible combined solvent and hypoxic death","Autoerotic asphyxia","Deliberate suffocation by a third party"],ans:1,focus:"Scene interpretation — VSA death",exp:"<strong>Plastic bag + solvent product residue + adolescent + enclosed space = volatile substance abuse until proven otherwise.</strong> Scene investigation is diagnostic: look for solvent-soaked rags, aerosol cans (especially keyboard cleaners, deodorants, butane lighters), glue tubes, or stains around the mouth and nose. GC-MS on blood and lung tissue confirms the agent. Coroner referral is mandatory — this is an unnatural death."}
+];
+
+NOTES_MCQ.pesticides=[
+  {q:"Organophosphate poisoning causes its toxic effects by:",opts:["Blocking sodium channels in peripheral nerves","Irreversibly inhibiting acetylcholinesterase → accumulation of acetylcholine at all cholinergic synapses","Blocking nicotinic receptors only","Stimulating catecholamine release from the adrenal medulla"],ans:1,focus:"Organophosphate mechanism — AChE inhibition",exp:"<strong>Organophosphates (OPs) irreversibly inhibit acetylcholinesterase (AChE)</strong>, causing accumulation of acetylcholine (ACh) at muscarinic and nicotinic synapses. Muscarinic effects: SLUDGE (Salivation, Lacrimation, Urination, Defecation, GI upset, Emesis) + bradycardia + bronchospasm. Nicotinic effects: muscle fasciculations, weakness, paralysis. CNS: seizures, coma. Carbamates have similar mechanism but are reversible — clinical significance: pralidoxime is less effective for carbamates."},
+  {q:"The specific antidote for organophosphate poisoning that reactivates acetylcholinesterase (if given early) is:",opts:["Atropine","Pralidoxime (2-PAM)","Naloxone","Physostigmine"],ans:1,focus:"OP antidotes — pralidoxime reactivates AChE",exp:"<strong>Pralidoxime (2-PAM)</strong> reactivates AChE by breaking the OP-enzyme bond before 'ageing' occurs (irreversible conformational change, typically within 24–48h). Must be given early. <strong>Atropine</strong> is also essential — it blocks muscarinic receptors, controlling secretions and bradycardia (give large doses, titrate to drying secretions). Atropine does NOT reverse nicotinic effects (fasciculations, weakness). Both drugs are used together."},
+  {q:"Paraquat poisoning is lethal primarily due to:",opts:["Cardiac arrhythmia in the first hour","Progressive pulmonary fibrosis (proliferative bronchiolitis) — lungs destroyed over days to weeks","Acute renal failure within 6 hours","Hepatic necrosis similar to paracetamol"],ans:1,focus:"Paraquat — pulmonary fibrosis mechanism",exp:"<strong>Paraquat causes progressive, irreversible pulmonary fibrosis</strong> — the patient may survive the initial ingestion but dies of respiratory failure over days to weeks as the lungs are destroyed by free radical injury. No effective antidote. High-oxygen therapy is contraindicated (accelerates lung damage). Treatment is supportive. Even small ingestions of concentrated paraquat (Gramoxone) are fatal. This differentiates it from all other pesticide toxicities."},
+  {q:"On arrival in the emergency department, the most important first step in oral organophosphate poisoning is:",opts:["Pralidoxime immediately","Atropine and airway management — establish ABCs before antidote","Induce vomiting to reduce absorption","Activated charcoal as the only intervention needed"],ans:1,focus:"OP poisoning — ABC before antidote",exp:"<strong>ABC (Airway, Breathing, Circulation) first.</strong> OP poisoning causes bronchospasm, bronchorrhoea, and respiratory muscle paralysis — the airway is the priority. Decontaminate skin (remove clothing, wash thoroughly — protect staff). Then atropine (large doses) + pralidoxime. Inducing vomiting risks aspiration in a patient with impaired airway reflexes. Activated charcoal can be considered if within 1 hour and airway is protected."},
+  {q:"Which finding on post-mortem examination specifically supports organophosphate poisoning?",opts:["Cherry-red lividity","Severely contracted (miotic) pupils with high cholinesterase levels in blood","Very low plasma and red cell cholinesterase activity","Carboxyhaemoglobin above 50%"],ans:2,focus:"OP — post-mortem cholinesterase levels",exp:"<strong>Very low cholinesterase activity in plasma and red cells</strong> at post-mortem strongly supports OP poisoning. Plasma cholinesterase falls first (more sensitive); RBC cholinesterase reflects true synaptic inhibition. Note: levels continue to fall post-mortem — interpret with scene context and toxicology. Post-mortem: miotic pupils, excessive secretions, pulmonary oedema. Confirm with GC-MS for the specific OP compound in gastric contents and blood."}
+];
+
+NOTES_MCQ.heavymetals=[
+  {q:"Mees' lines (transverse white bands across fingernails) are a classic sign of chronic poisoning with:",opts:["Lead","Mercury","Arsenic","Thallium"],ans:2,focus:"Arsenic — Mees' lines",exp:"<strong>Mees' lines (Aldrich-Mees lines)</strong> are transverse white bands across the fingernails caused by arsenic deposition during periods of poisoning. Each band corresponds to an episode of significant arsenic exposure — the nails grow at ~3mm/month, so the position of a band can time the exposure. Also seen in: thallium, severe illness. Hair analysis (arsenic deposits in keratin) provides a timeline going back months — useful in suspected homicidal poisoning."},
+  {q:"The classic triad of inorganic lead poisoning in children is:",opts:["Miosis, bradycardia, bronchospasm","Encephalopathy, colic, and peripheral motor neuropathy (wrist/foot drop)","Mees' lines, peripheral neuropathy, and alopecia","Cherry-red lividity, coma, and metabolic acidosis"],ans:1,focus:"Lead poisoning — classic triad",exp:"<strong>Lead poisoning triad: encephalopathy (especially in children), colic (severe abdominal pain), and peripheral neuropathy (motor > sensory — wrist drop, foot drop).</strong> Other findings: blue-black Burton's line on the gingiva (lead sulfide deposition), microcytic anaemia with basophilic stippling of red cells, lead lines on bone X-ray (growth arrest lines). Source in children: lead paint chips (pica). Treatment: chelation with DMSA (succimer) or EDTA."},
+  {q:"Mercury poisoning from organic mercury (methylmercury) causes primarily:",opts:["Renal tubular necrosis","CNS damage — cerebellar ataxia, visual field constriction, sensory neuropathy (Minamata disease)","Pulmonary oedema","Coagulopathy"],ans:1,focus:"Organic mercury — Minamata disease",exp:"<strong>Methylmercury (organic) is highly neurotoxic.</strong> Minamata disease (Japan, 1950s) from contaminated fish: cerebellar ataxia, constriction of visual fields (tunnel vision), sensory neuropathy, hearing loss, intellectual deterioration. Prenatal exposure causes severe developmental disability. <strong>Inorganic mercury</strong> causes mainly renal damage (nephrotic syndrome) and oral/GI corrosive effects (pink disease in children). Route of entry matters: elemental mercury vapour → lungs; methylmercury → oral via fish."},
+  {q:"A child presents with painful swollen hands and feet, hypertension, and photophobia. Hair mercury levels are elevated. This is:",opts:["Lead poisoning","Acrodynia (pink disease) from mercury exposure","Arsenic poisoning","Thallium toxicity"],ans:1,focus:"Acrodynia — mercury in children",exp:"<strong>Acrodynia (pink disease)</strong> is mercury poisoning in young children — classically from teething powders (historical) or contaminated environments. Features: painful erythema of hands and feet, sweating, hypertension, photophobia, irritability, anorexia, and rash. The palms and soles are pink and desquamate. Treatment: remove source, chelation with DMSA. This presentation is pathognomonic — the acral distribution and pain are not seen with other heavy metal toxicities."},
+  {q:"In a suspected arsenic homicide, which specimen best provides a timeline of chronic poisoning?",opts:["Urine sample at the time of presentation","Single blood sample","Hair and nail clippings for segmental analysis","Post-mortem liver tissue only"],ans:2,focus:"Arsenic — hair/nail segmental timeline",exp:"<strong>Hair and nail segmental analysis</strong> provides a timeline of arsenic exposure. Hair grows ~1cm/month and nails ~3mm/month — each segment reflects arsenic levels at the time of growth. This allows the forensic scientist to construct a timeline of when doses were given, how many episodes occurred, and whether exposure was increasing. In homicide cases, this is critical evidence. Urine reflects recent exposure only. Single blood levels are unreliable for chronic exposure."}
+];
+
+NOTES_MCQ.animalpoisoning=[
+  {q:"The 20-minute whole blood clotting test (20WBCT) is used to assess:",opts:["Platelet count in thrombocytopaenia","Coagulopathy from haemotoxic snake venom — if blood fails to clot it confirms venom-induced consumption coagulopathy","Warfarin toxicity in rodenticide poisoning","Disseminated intravascular coagulation from infection"],ans:1,focus:"20WBCT — haemotoxic snake envenomation",exp:"<strong>20WBCT: place 5ml of fresh blood in a clean glass tube, leave undisturbed for 20 minutes.</strong> If blood clots normally = no significant coagulopathy. If blood fails to clot or clots then lyses = venom-induced consumption coagulopathy (VICC). Used for Viper envenomation where haemotoxic venom (e.g. Russell's viper) consumes clotting factors causing severe DIC. Simple, cheap, requires no equipment — essential in resource-limited settings."},
+  {q:"Neurotoxic snake venom (elapid envenomation) causes death primarily by:",opts:["Haemorrhage from venom-induced coagulopathy","Descending flaccid paralysis → respiratory muscle paralysis → respiratory failure","Cardiac arrhythmia from direct myocardiotoxicity","Renal failure from myoglobinuria"],ans:1,focus:"Neurotoxic venom — flaccid paralysis",exp:"<strong>Elapid (cobra, krait, mamba) venom contains neurotoxins</strong> that block neuromuscular transmission at the motor end plate (post-synaptic blockade — cobratoxin; pre-synaptic — beta-bungarotoxin). Result: descending flaccid paralysis, starting with ptosis, then ophthalmoplegia, dysphonia, and finally respiratory muscle paralysis → respiratory failure → death. Treatment: antivenom + respiratory support (ventilator). Early ptosis is the warning sign to observe closely."},
+  {q:"Scorpion envenomation in children causes death primarily through:",opts:["Hepatic failure","Autonomic storm — massive catecholamine release causing hypertension, tachycardia, pulmonary oedema, and cardiac failure","Haemolysis and renal failure","Direct neurotoxic paralysis of respiratory muscles"],ans:1,focus:"Scorpion sting — autonomic storm",exp:"<strong>Scorpion venom triggers massive autonomic discharge</strong> — catecholamine storm causing hypertension, tachyarrhythmia, myocarditis, and pulmonary oedema. Children are more vulnerable due to smaller body mass. Clinical features: pain at sting site, sweating, salivation, priapism, and in severe cases haemodynamic collapse. Treatment: antivenom + prazosin (alpha-blocker to counter catecholamine excess) + supportive ICU care. Severity depends on species — Tityus and Androctonus are most dangerous."},
+  {q:"Aconitine poisoning from Aconitum (monkshood) plants primarily causes:",opts:["Anticholinergic syndrome — tachycardia, dry mouth, delirium","Rapidly progressive cardiac arrhythmias — ventricular tachycardia/fibrillation","Coagulopathy similar to snake venom","Progressive paralysis similar to botulism"],ans:1,focus:"Aconitine — cardiac arrhythmia",exp:"<strong>Aconitine (from monkshood/wolfsbane) is one of the most cardiotoxic plant alkaloids.</strong> It activates voltage-gated sodium channels, causing persistent depolarisation → ventricular arrhythmias (VT/VF), bradyarrhythmias, and hypotension. Rapid onset after ingestion. Features: oral paraesthesia/burning, nausea, then cardiac collapse. Treatment: supportive + antiarrhythmics (amiodarone for VT); no specific antidote. Even small amounts of plant or contaminated herbal preparations can be fatal."},
+  {q:"The most important forensic consideration in a death from suspected bee/wasp anaphylaxis is:",opts:["Performing a 24-hour urine collection for histamine","Post-mortem serum tryptase measurement — tryptase peaks 1–2 hours post-sting and remains elevated longer than histamine","Measuring the number of stings as the cause of death","Blood IgE levels alone confirm the diagnosis"],ans:1,focus:"Anaphylaxis death — post-mortem tryptase",exp:"<strong>Post-mortem serum tryptase</strong> is the most useful marker for confirming fatal anaphylaxis. Tryptase is released from mast cell degranulation — it peaks at 1–2 hours and remains elevated for up to 6 hours, persisting in post-mortem samples better than histamine. Normal tryptase does not exclude anaphylaxis (especially to food). Samples: peripheral blood (vitreous less useful), taken as soon as possible after death. IgE (specific to the allergen) confirms sensitisation."}
+];
+
+NOTES_MCQ.foodpoisoning=[
+  {q:"A group of people become ill with vomiting 2 hours after eating cream pastries at a function. The most likely causative organism is:",opts:["Clostridium perfringens","Salmonella species","Staphylococcus aureus (preformed enterotoxin)","Bacillus cereus emetic toxin"],ans:2,focus:"Short incubation vomiting — Staph aureus",exp:"<strong>Staphylococcus aureus: onset 1–6 hours, predominantly vomiting, caused by preformed heat-stable enterotoxin.</strong> The rapid onset is because the toxin is already present in the food — no multiplication required after ingestion. Classic: dairy products, pastries, cold meats. The toxin survives cooking that kills the organism. Clustered outbreak after a shared meal with rapid onset = Staph aureus or Bacillus cereus emetic toxin (1–5h). Both are toxin-mediated — antibiotics are not indicated."},
+  {q:"Which food poisoning organism is associated with descending paralysis and is potentially fatal without respiratory support?",opts:["Salmonella typhi","Clostridium botulinum (botulism)","Vibrio cholerae","Staphylococcus aureus"],ans:1,focus:"Botulism — descending paralysis",exp:"<strong>Botulinum toxin blocks presynaptic acetylcholine release</strong> at the neuromuscular junction → descending flaccid paralysis starting with cranial nerves (diplopia, dysarthria, dysphagia) then respiratory muscles → respiratory failure. Afebrile, no sensory loss. Sources: improperly canned/preserved foods. Treatment: antitoxin (if available early) + mechanical ventilation. Key differentiator: <strong>no fever, descending pattern, food history, and alert mental status</strong> (unlike Guillain-Barré which is ascending)."},
+  {q:"Food poisoning due to Clostridium perfringens classically presents as:",opts:["Bloody diarrhoea and HUS (haemolytic uraemic syndrome)","Profuse watery diarrhoea and cramps 8–24 hours after a meal — no vomiting","Descending paralysis after canned food ingestion","Vomiting within 2 hours with no diarrhoea"],ans:1,focus:"C. perfringens — watery diarrhoea, no vomiting",exp:"<strong>C. perfringens: incubation 8–24 hours, profuse watery diarrhoea + abdominal cramps, no or minimal vomiting, usually self-limiting (24h).</strong> Source: reheated meat and poultry. Enterotoxin produced in vivo during sporulation in the intestine. Distinguishing: no vomiting (unlike Staph aureus), later onset, meat source. <strong>C. perfringens type C</strong> (pig bel) causes haemorrhagic enteritis with high mortality — rare, seen after pork feast in resource-limited settings."},
+  {q:"E. coli O157:H7 food poisoning is particularly dangerous because it can cause:",opts:["Watery diarrhoea only, self-limiting within 24 hours","Haemolytic uraemic syndrome (HUS) — haemolytic anaemia, thrombocytopaenia, and acute renal failure","Ascending cholangitis","Toxic megacolon requiring surgery"],ans:1,focus:"E. coli O157 — HUS complication",exp:"<strong>E. coli O157:H7 produces Shiga toxin → haemorrhagic colitis → HUS in 5–10% of cases</strong> (especially children under 5 and elderly). HUS triad: microangiopathic haemolytic anaemia + thrombocytopaenia + acute renal failure. Antibiotics are controversial (may increase toxin release). Dialysis may be required. Sources: undercooked minced beef, unpasteurised milk, contaminated water. Notify public health — potential outbreak. Key exam point: <strong>DO NOT give antibiotics</strong> in E. coli O157 colitis."},
+  {q:"A forensic investigation of a mass food poisoning outbreak at a wedding requires which initial public health step?",opts:["Immediate hospital admission for all attendees","Notification of the local health authority and systematic case-finding with a structured questionnaire","Arrest of the caterer pending investigation","Post-mortem on attendees who died before investigation"],ans:1,focus:"Food poisoning outbreak — public health response",exp:"<strong>Immediate notification to the local health authority (Environmental Health Officer / Public Health England) is mandatory.</strong> Systematic case-finding: structured questionnaire for all attendees (food consumed, onset, symptoms, duration). Case definition applied. Incubation period narrows the suspected organism. Food samples from kitchen collected for microbiological analysis. Hypothesis generation → analytical study (cohort/case-control). The caterer's premises are inspected — but this follows notification, not precedes it."}
+];
+
+NOTES_MCQ.substanceabuse=[
+  {q:"The CAGE questionnaire is used to screen for:",opts:["Cannabis use disorder","Alcohol use disorder","Opioid dependence","Stimulant misuse"],ans:1,focus:"CAGE — alcohol screening tool",exp:"<strong>CAGE: Cut down, Annoyed, Guilty, Eye-opener.</strong> Two or more positive answers = likely alcohol use disorder (sensitivity ~85%). Validated, quick, and easily administered. Limitations: less sensitive for hazardous drinking without dependence; does not quantify amount. <strong>AUDIT (Alcohol Use Disorders Identification Test)</strong> is more comprehensive for hazardous and harmful use. In forensic settings, CAGE helps identify alcohol dependence relevant to fitness to drive, custody assessments, and criminal responsibility."},
+  {q:"The Wernicke-Korsakoff syndrome in chronic alcohol use is caused by deficiency of:",opts:["Folate","Vitamin B12","Thiamine (vitamin B1)","Niacin (vitamin B3)"],ans:2,focus:"Wernicke-Korsakoff — thiamine deficiency",exp:"<strong>Thiamine (B1) deficiency</strong> from poor diet + alcohol's effect on thiamine absorption and utilisation. <strong>Wernicke's encephalopathy</strong>: acute — confusion, ataxia, ophthalmoplegia (classic triad). Treat with IV thiamine immediately — before glucose. <strong>Korsakoff's psychosis</strong>: chronic irreversible — anterograde amnesia, confabulation, personality change. Give IV thiamine (Pabrinex) prophylactically to any malnourished or alcohol-dependent patient presenting to hospital."},
+  {q:"Physical alcohol withdrawal, if untreated, can cause:",opts:["Respiratory depression and pinpoint pupils","Generalised seizures and delirium tremens — potentially fatal without treatment","Bradycardia and hypothermia only","Miosis and hypoventilation"],ans:1,focus:"Alcohol withdrawal — seizures and DTs",exp:"<strong>Alcohol withdrawal is potentially fatal.</strong> Timeline: 6–24h — autonomic hyperactivity (tremor, sweating, tachycardia, hypertension, anxiety); 24–48h — <strong>withdrawal seizures</strong> (generalised tonic-clonic); 48–96h — <strong>delirium tremens</strong> (confusion, hallucinations, hyperthermia, autonomic storm — mortality up to 5% if untreated). Treatment: benzodiazepines (chlordiazepoxide or lorazepam — titrate to symptoms), thiamine, fluid and electrolyte replacement."},
+  {q:"Opioid dependence is characterised by which physical withdrawal feature not seen in other drug withdrawal?",opts:["Seizures and delirium","Pupillary dilation (mydriasis), lacrimation, yawning, and piloerection ('gooseflesh')","Hyperthermia and diaphoresis alone","Psychosis and paranoia"],ans:1,focus:"Opioid withdrawal — physical signs",exp:"<strong>Opioid withdrawal is physically uncomfortable but rarely life-threatening in healthy adults.</strong> Features: mydriasis, lacrimation, rhinorrhoea, yawning, piloerection, sweating, restlessness, diarrhoea, and abdominal cramps. Unlike alcohol/benzodiazepine withdrawal — <strong>no seizures or DTs</strong> (in otherwise healthy adults). Key forensic relevance: opioid withdrawal in custody requires medical management. Methadone or buprenorphine substitution should be continued. Deaths in custody from untreated withdrawal are a serious medicolegal issue."},
+  {q:"In the context of forensic medicine, 'dual diagnosis' refers to:",opts:["Two separate forensic reports submitted to court","The co-occurrence of substance use disorder with a psychiatric disorder in the same individual","Two different physical diseases found at post-mortem","Dual medical and legal liability"],ans:1,focus:"Dual diagnosis — substance + psychiatric disorder",exp:"<strong>Dual diagnosis: co-existing substance use disorder + psychiatric illness</strong> (e.g. schizophrenia + alcohol dependence; PTSD + opioid use disorder). This combination is highly prevalent in forensic psychiatric populations and complicates assessment of criminal responsibility, fitness to plead, and risk management. Each disorder can mask, mimic, or exacerbate the other. Forensic assessment must address both — sequential treatment is less effective than integrated care."}
+];
+
+NOTES_MCQ.neglectabuse=[
+  {q:"Under the Care Act 2014, a safeguarding adults referral is triggered when:",opts:["The patient explicitly requests investigation","A professional suspects an adult with care and support needs is experiencing or at risk of abuse or neglect","The local authority formally approves the case","Criminal charges have already been filed"],ans:1,focus:"Care Act 2014 — safeguarding trigger",exp:"<strong>The Care Act 2014 (England) imposes a safeguarding duty when:</strong> (1) the adult has care and support needs, (2) they are experiencing or at risk of abuse or neglect, AND (3) they are unable to protect themselves because of those needs. The patient's consent to referral is <strong>not required</strong> to make an initial referral — the professional's duty to refer overrides consent in safeguarding contexts. Document your clinical reasoning and the referral."},
+  {q:"The Istanbul Protocol (2004) is the UN standard for:",opts:["Documenting death in custody cases","The systematic medical and psychological documentation of torture allegations","Reporting food safety incidents in conflict zones","International standards for forensic DNA analysis"],ans:1,focus:"Istanbul Protocol — torture documentation standard",exp:"<strong>The Istanbul Protocol (Manual on the Effective Investigation and Documentation of Torture)</strong> was adopted by the UN in 2004. It sets the international standard for documenting torture: thorough physical examination (documenting injury patterns), psychological evaluation (PTSD, depression), and expert opinion on consistency between findings and the alleged torture method. <strong>Medical participation in torture is an absolute ethical violation</strong> — no military, political, or state instruction justifies it."},
+  {q:"A patient presents with Grade 3 pressure ulcers across the sacrum and both heels. They are elderly and live with a family carer. The most appropriate interpretation is:",opts:["Pressure ulcers are an inevitable complication of immobility — document and treat","This is strong evidence of neglect — Grade 3–4 pressure ulcers require months of inadequate repositioning and are rarely accidental","Refer only if the patient requests investigation","Document and discharge without further action as this is a nursing issue"],ans:1,focus:"Pressure ulcers — marker of neglect",exp:"<strong>Grade 3–4 pressure ulcers</strong> (full-thickness tissue loss with visible fat/muscle/bone) require months of inadequate repositioning to develop in a cared-for patient. They are a strong clinical indicator of neglect — whether in a home, care home, or hospital setting. Mandatory: safeguarding referral to local authority (Care Act 2014), detailed wound documentation with photographs, nutritional assessment, and review of care arrangements. Never dismiss as 'inevitable.'"},
+  {q:"A forensic physician is asked to examine an alleged torture survivor. Their primary documentation duty is:",opts:["To determine whether the person is lying","To document physical findings accurately and assess consistency with the alleged mechanism — using the Istanbul Protocol","To report only to the government agency that instructed the examination","To provide a diagnosis of PTSD based on the interview alone"],ans:1,focus:"Torture examination — physician's role",exp:"The forensic physician's role in torture documentation is <strong>not to determine credibility</strong> — that is for courts and investigators. The physician must: document all physical findings precisely (location, size, morphology, colour of injuries), assess psychological state (Istanbul Protocol psychological annexe), and give an expert opinion on whether findings are <strong>consistent, highly consistent, or inconsistent with the alleged mechanism.</strong> The report must be impartial — written as if for any tribunal."},
+  {q:"During a custody examination, a detainee discloses that police officers assaulted them in the custody suite. The forensic physician's obligation is:",opts:["Report to the custody sergeant only","Ignore the allegation as it is outside the scope of the clinical examination","Document the disclosure verbatim, examine for injuries, photograph, and ensure an independent complaint mechanism is available to the detainee","Inform the detainee that allegations against police cannot be investigated"],ans:2,focus:"Disclosure of police assault — documentation duty",exp:"<strong>The forensic physician has an independent duty to document any disclosure of abuse by custody personnel.</strong> Steps: (1) record the disclosure verbatim in the clinical notes, (2) conduct a thorough examination for injuries, (3) photograph with consent, (4) ensure the detainee is aware of their right to make a formal complaint (IOPC — Independent Office for Police Conduct). The physician must not collude with the custody environment. The clinical record is the primary evidence in any subsequent complaint or legal proceedings."}
+];
+
 function openNote(id) {
   currentNote = id;
   if (window.ventTrack) window.ventTrack.noteOpened(id, NOTE_NAMES[id] || id);
@@ -4192,7 +4276,7 @@ function bUnlockBreathe(silent) {
 function toggleBreathe() {
   if (!bScrollUnlocked && !breatheOn) return;
   if (!breatheOn) { vsResetSession(); bStart_(); }
-  else bStop(true);
+  else { bStop(false); setTimeout(() => bShowSummaryForCurrent(), 400); }
 }
 
 function bStart_() {
@@ -4224,6 +4308,8 @@ function bStart_() {
   const hint = document.getElementById('b-kbd-hint');
   if (hint) { hint.classList.add('visible'); setTimeout(() => hint.classList.remove('visible'), 4000); }
 }
+
+let lastBreatheSess = null;
 
 function bStop(showSummary = false) {
   const elapsed = bStart ? Math.round((Date.now() - bStart) / 1000) : 0;
@@ -4265,8 +4351,8 @@ function bStop(showSummary = false) {
     const noteName = NOTE_NAMES[currentNote] || currentNote;
     const sess = { id: Date.now(), noteId: currentNote, topic: noteName, duration: elapsed, sections: bSessionSections, date: new Date().toISOString() };
     bAddSession(sess);
+    lastBreatheSess = sess;
     if (window.ventTrack) window.ventTrack.breatheCompleted(sess.noteId, sess.topic, sess.duration);
-    if (showSummary) setTimeout(() => bShowSummary(sess), 600);
   }
 }
 
@@ -4277,21 +4363,23 @@ function bActivate(idx) {
   bSections[idx].classList.add('b-active');
   const modal = document.getElementById('modal');
   if (modal) {
-    const mbar    = modal.querySelector('.mbar');
-    const mbarH   = mbar ? mbar.offsetHeight : 58;
-    const el      = bSections[idx];
-    const elH     = el.offsetHeight;
-    const availH  = modal.clientHeight - mbarH;
-    const margin  = 32;
-    const elTopInModal = el.getBoundingClientRect().top - modal.getBoundingClientRect().top - mbarH;
-    let scrollTop;
-    if (elH <= availH - margin*2) {
-      scrollTop = modal.scrollTop + elTopInModal - Math.floor((availH - elH) / 2);
-    } else {
-      scrollTop = modal.scrollTop + elTopInModal - margin;
-    }
-    modal.scrollTo({ top: Math.max(0, scrollTop), behavior: 'smooth' });
     modal.classList.toggle('b-at-last', idx === bTotal - 1);
+    requestAnimationFrame(() => {
+      const mbar    = modal.querySelector('.mbar');
+      const mbarH   = mbar ? mbar.offsetHeight : 58;
+      const el      = bSections[idx];
+      const elH     = el.offsetHeight;
+      const availH  = modal.clientHeight - mbarH;
+      const margin  = 32;
+      const elTopInModal = el.getBoundingClientRect().top - modal.getBoundingClientRect().top - mbarH;
+      let scrollTop;
+      if (elH <= availH - margin*2) {
+        scrollTop = modal.scrollTop + elTopInModal - Math.floor((availH - elH) / 2);
+      } else {
+        scrollTop = modal.scrollTop + elTopInModal - margin;
+      }
+      modal.scrollTo({ top: Math.max(0, scrollTop), behavior: 'smooth' });
+    });
   }
   document.querySelectorAll('#b-spine .b-sdot').forEach((d,i) => {
     d.className = 'b-sdot' + (i < idx ? ' b-done' : i === idx ? ' b-active' : '');
@@ -4451,23 +4539,23 @@ function bShowSummary(sess) {
     ? `<span class="vs-meta-note">${noteCount} notes studied</span><span class="vs-meta-dot"></span>${vsCards.length} questions`
     : `<span class="vs-meta-note">${noteName}</span><span class="vs-meta-dot"></span>${dur}<span class="vs-meta-dot"></span>${sess.sections||0} sections`;
 
-  const finEl = document.getElementById('vs-finish');
-  const qEl   = document.getElementById('vs-question-view');
+  const finEl  = document.getElementById('vs-finish');
   const introEl = document.getElementById('vs-intro');
-  const introSubEl = document.getElementById('vs-intro-sub');
   const progEl = document.getElementById('vs-progress');
+  const qEl    = document.getElementById('vs-question-view');
   if (finEl)   finEl.classList.remove('show');
   if (qEl)     qEl.style.display = 'none';
+  if (progEl)  progEl.style.display = 'none';
+  const introSubEl = document.getElementById('vs-intro-sub');
   if (introSubEl) introSubEl.textContent = vsCards.length + ' questions across ' + vsSessionNotes.length + (vsSessionNotes.length===1?' note':' notes') + ' — one at a time, randomised.';
   if (introEl) introEl.classList.add('show');
-  if (progEl)  progEl.style.display = 'none';
   document.getElementById('breathe-summary').classList.add('show');
 }
 
 function vsStartQuestions() {
   document.getElementById('vs-intro').classList.remove('show');
-  document.getElementById('vs-question-view').style.display = '';
-  document.getElementById('vs-progress').style.display = '';
+  document.getElementById('vs-question-view').style.display = 'block';
+  document.getElementById('vs-progress').style.display = 'block';
   vsRenderProgress();
   vsShowQuestion(0);
 }
@@ -4535,15 +4623,26 @@ function vsRenderControls() {
   const revBtn  = document.getElementById('vs-btn-reveal');
   const gotBtn  = document.getElementById('vs-btn-got');
   const missBtn = document.getElementById('vs-btn-miss');
+  const nextBtn = document.getElementById('vs-btn-next');
   if (!revBtn) return;
   if (!vsAnswerShown) {
-    revBtn.style.display  = '';
+    revBtn.style.display  = 'block';
     if (gotBtn)  gotBtn.style.display  = 'none';
     if (missBtn) missBtn.style.display = 'none';
+    if (nextBtn) nextBtn.style.display = 'none';
+  } else if (vsMarks[vsCurIdx] === null || vsMarks[vsCurIdx] === undefined) {
+    revBtn.style.display  = 'none';
+    if (gotBtn)  gotBtn.style.display  = 'inline-block';
+    if (missBtn) missBtn.style.display = 'inline-block';
+    if (nextBtn) nextBtn.style.display = 'none';
   } else {
     revBtn.style.display  = 'none';
-    if (gotBtn)  gotBtn.style.display  = '';
-    if (missBtn) missBtn.style.display = '';
+    if (gotBtn)  gotBtn.style.display  = 'none';
+    if (missBtn) missBtn.style.display = 'none';
+    if (nextBtn) {
+      nextBtn.style.display = 'block';
+      nextBtn.textContent = (vsCurIdx + 1 < vsCards.length) ? 'Next →' : 'See results →';
+    }
   }
 }
 
@@ -4560,7 +4659,7 @@ function vsMark(result) {
     const c = vsCards[vsCurIdx];
     vlAddMissed(c.noteId, c.noteName, [{ q: c.q, a: c.a || (c.opts?c.opts[c.ans]:''), exp: c.exp || '' }]);
   }
-  vsNext();
+  vsRenderControls();
 }
 
 function vsNext() {
@@ -4669,6 +4768,7 @@ function toggleFullscreen() {
 const mcqState = {};
 
 function showVentPopup() {
+  if (breatheOn) bStop(false);
   document.getElementById('vent-popup').classList.add('show');
   document.getElementById('vent-backdrop').classList.add('show');
 }
@@ -4677,6 +4777,19 @@ function dismissVentPopup() {
   const pb = document.getElementById('vent-backdrop');
   if (pp) pp.classList.remove('show');
   if (pb) pb.classList.remove('show');
+}
+
+function bShowSummaryForCurrent() {
+  vsResetSession();
+  const noteId   = currentNote;
+  const noteName = NOTE_NAMES[noteId] || noteId;
+  const sess = lastBreatheSess || { id: Date.now(), noteId, topic: noteName, duration: 0, sections: 0, date: new Date().toISOString() };
+  bShowSummary(sess);
+}
+
+function startVentilation() {
+  dismissVentPopup();
+  startMCQ();
 }
 
 function startMCQ() {
