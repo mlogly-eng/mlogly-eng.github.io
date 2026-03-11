@@ -1506,8 +1506,8 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
   <h1 class="shero-h1">Pathology,<br><em>decoded.</em></h1>
   <p class="shero-desc">Every mechanism. Every exam trap. General pathology to systemic disease — built to make pathology click, not just stick.</p>
   <div class="shero-stats">
-    <div class="shero-stat"><div class="sv">21</div><div class="sl">Notes</div></div>
-    <div class="shero-stat"><div class="sv">100+</div><div class="sl">MCQs</div></div>
+    <div class="shero-stat"><div class="sv">31</div><div class="sl">Notes</div></div>
+    <div class="shero-stat"><div class="sv">150+</div><div class="sl">MCQs</div></div>
     <div class="shero-stat"><div class="sv">0</div><div class="sl">Fillers</div></div>
   </div>
 </section>
@@ -1520,7 +1520,7 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
       <h2 class="ns-h2">All <em>notes</em></h2>
     </div>
     <div class="disc-toggle">
-      <button class="dtab on" data-filter="all">All <span class="dtab-count">21</span></button>
+      <button class="dtab on" data-filter="all">All <span class="dtab-count">31</span></button>
       <button class="dtab" data-filter="general">General <span class="dtab-count">13</span></button>
       <div class="disc-toggle-wrap">
         <button class="dtab" id="systemic-tab" data-filter="systemic">Systemic <span class="dtab-chevron">▾</span></button>
@@ -1533,12 +1533,12 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
             </div>
             <span class="sp-count">8 notes</span>
           </div>
-          <div class="sp-item sp-soon">
+          <div class="sp-item" data-system="wbc">
             <div class="sp-item-left">
-              <div class="sp-dot soon"></div>
+              <div class="sp-dot"></div>
               <span class="sp-name">WBC & Lymphoid</span>
             </div>
-            <span class="sp-badge">Soon</span>
+            <span class="sp-count">10 notes</span>
           </div>
           <div class="sp-item sp-soon">
             <div class="sp-item-left">
@@ -1773,6 +1773,87 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
       <div class="nc-foot"><span class="nc-meta">JAK2 · EPO · Venesection · Hyperviscosity</span><span class="nc-arr">↗</span></div>
     </div>
 
+
+    <div class="nc reveal" data-disc="wbc" data-section="wbc" onclick="openNote('leukaemia_overview')">
+      <div class="nc-type">WBC · Leukaemia</div><span class="nc-num">WBC 01</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Leukaemia — Overview &amp; Classification</div>
+      <p class="nc-preview">Acute vs chronic · myeloid vs lymphoid · FAB and WHO classification. The framework that organises every leukaemia exam question before you know the subtype.</p>
+      <div class="nc-foot"><span class="nc-meta">Blasts >20% · FAB · WHO · Lineage</span><span class="nc-arr">↗</span></div>
+    </div>
+
+    <div class="nc reveal" data-disc="wbc" data-section="wbc" onclick="openNote('aml')">
+      <div class="nc-type">WBC · Acute Leukaemia</div><span class="nc-num">WBC 02</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Acute Myeloid Leukaemia</div>
+      <p class="nc-preview">M3 APL, t(15;17), ATRA and the risk of DIC. Auer rods. Why elderly patients tolerate intensive chemotherapy poorly — and what the options are.</p>
+      <div class="nc-foot"><span class="nc-meta">Auer Rods · t(15;17) · ATRA · DIC</span><span class="nc-arr">↗</span></div>
+    </div>
+
+    <div class="nc reveal" data-disc="wbc" data-section="wbc" onclick="openNote('all')">
+      <div class="nc-type">WBC · Acute Leukaemia</div><span class="nc-num">WBC 03</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Acute Lymphoblastic Leukaemia</div>
+      <p class="nc-preview">The most common childhood cancer. TdT-positive lymphoblasts, Philadelphia chromosome in adults, and why CNS prophylaxis is non-negotiable.</p>
+      <div class="nc-foot"><span class="nc-meta">TdT+ · Philadelphia · CNS Prophylaxis · Children</span><span class="nc-arr">↗</span></div>
+    </div>
+
+    <div class="nc reveal" data-disc="wbc" data-section="wbc" onclick="openNote('cml')">
+      <div class="nc-type">WBC · Chronic Leukaemia</div><span class="nc-num">WBC 04</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Chronic Myeloid Leukaemia</div>
+      <p class="nc-preview">BCR-ABL and the Philadelphia chromosome — the first cancer treated with a targeted tyrosine kinase inhibitor. Basophilia, blast crisis, and imatinib revolution.</p>
+      <div class="nc-foot"><span class="nc-meta">BCR-ABL · Imatinib · Blast Crisis · Basophilia</span><span class="nc-arr">↗</span></div>
+    </div>
+
+    <div class="nc reveal" data-disc="wbc" data-section="wbc" onclick="openNote('cll')">
+      <div class="nc-type">WBC · Chronic Leukaemia</div><span class="nc-num">WBC 05</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Chronic Lymphocytic Leukaemia</div>
+      <p class="nc-preview">CD5+/CD23+ B-cells and smudge cells on the blood film. The most common adult leukaemia — why many patients never need treatment, and when to act.</p>
+      <div class="nc-foot"><span class="nc-meta">CD5+/CD23+ · Smudge Cells · Richter · Watch-Wait</span><span class="nc-arr">↗</span></div>
+    </div>
+
+    <div class="nc reveal" data-disc="wbc" data-section="wbc" onclick="openNote('hodgkin')">
+      <div class="nc-type">WBC · Lymphoma</div><span class="nc-num">WBC 06</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Hodgkin Lymphoma</div>
+      <p class="nc-preview">Reed-Sternberg cells, CD15/CD30, EBV association. Bimodal age distribution. ABVD chemotherapy. One of the most curable cancers — if you stage and treat correctly.</p>
+      <div class="nc-foot"><span class="nc-meta">Reed-Sternberg · CD15/CD30 · EBV · ABVD</span><span class="nc-arr">↗</span></div>
+    </div>
+
+    <div class="nc reveal" data-disc="wbc" data-section="wbc" onclick="openNote('nhl')">
+      <div class="nc-type">WBC · Lymphoma</div><span class="nc-num">WBC 07</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Non-Hodgkin Lymphoma</div>
+      <p class="nc-preview">Follicular, DLBCL, Burkitt, Mantle cell. BCL-2, MYC translocations. The spectrum from indolent to "double hit" — and why the grade determines urgency.</p>
+      <div class="nc-foot"><span class="nc-meta">BCL-2 · t(14;18) · Burkitt · DLBCL · R-CHOP</span><span class="nc-arr">↗</span></div>
+    </div>
+
+    <div class="nc reveal" data-disc="wbc" data-section="wbc" onclick="openNote('myeloma')">
+      <div class="nc-type">WBC · Plasma Cell</div><span class="nc-num">WBC 08</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Multiple Myeloma</div>
+      <p class="nc-preview">CRAB criteria, M-protein, lytic bone lesions, Bence-Jones proteinuria. Why hypercalcaemia and renal failure are late but dangerous complications.</p>
+      <div class="nc-foot"><span class="nc-meta">CRAB · M-Protein · Bence-Jones · MGUS</span><span class="nc-arr">↗</span></div>
+    </div>
+
+    <div class="nc reveal" data-disc="wbc" data-section="wbc" onclick="openNote('mds')">
+      <div class="nc-type">WBC · Myeloid</div><span class="nc-num">WBC 09</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Myelodysplastic Syndrome</div>
+      <p class="nc-preview">Dysplastic marrow producing dysfunctional cells. Cytopenias with a hypercellular marrow. Ring sideroblasts. The AML transformation risk that makes MDS dangerous.</p>
+      <div class="nc-foot"><span class="nc-meta">Dysplasia · Ring Sideroblasts · AML Risk · IPSS</span><span class="nc-arr">↗</span></div>
+    </div>
+
+    <div class="nc reveal" data-disc="wbc" data-section="wbc" onclick="openNote('lymphadenopathy')">
+      <div class="nc-type">WBC · Clinical</div><span class="nc-num">WBC 10</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Approach to Lymphadenopathy</div>
+      <p class="nc-preview">Reactive vs malignant, localised vs generalised. The features that mandate urgent biopsy. How to build a differential from site, size, consistency, and context.</p>
+      <div class="nc-foot"><span class="nc-meta">Reactive · Malignant · Biopsy · Staging</span><span class="nc-arr">↗</span></div>
+    </div>
+
   </div><!-- /notes-grid -->
 
 </section>
@@ -1786,11 +1867,11 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
     <div class="mbar">
       <div class="mbar-l">
         <div class="mpulse"></div>
-        <span class="mbc">VENT · OB/GYN</span>
+        <span class="mbc">VENT · Pathology</span>
       </div>
       <div class="mbar-center" id="mbar-note-nav">
         <button class="mnav-btn" onclick="prevNote()">←</button>
-        <span class="mnav-label" id="mnav-label">1 / 19</span>
+        <span class="mnav-label" id="mnav-label">1 / 31</span>
         <button class="mnav-btn" onclick="nextNote()">→</button>
       </div>
       <div class="mbar-r" id="mbar-note-tools">
@@ -2070,8 +2151,8 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
 <!-- ══ NOTE DATA ══════════════════════════════════════════ -->
 <script>
 // ── Note order & names (used by JS for navigation) ──
-const NOTE_ORDER = ['cellinjury','inflammation','neoplasia','haemodynamics','repair','immunopathology','genetic','infection','metabolic','haemostasis','coagulation','bleeding','thrombophilia','approach','irondeficiency','megaloblastic','haemolytic','sickle','thalassaemia','aplastic','polycythaemia'];
-const NOTE_NAMES = {cellinjury:'Cell Injury & Death',inflammation:'Inflammation',neoplasia:'Neoplasia',haemodynamics:'Haemodynamics',repair:'Repair & Wound Healing',immunopathology:'Immunopathology',genetic:'Genetic Disorders',infection:'Infectious Disease Pathology',metabolic:'Metabolic & Storage Disorders',haemostasis:'Primary Haemostasis',coagulation:'Coagulation Cascade',bleeding:'Bleeding Disorders',thrombophilia:'Thrombophilia',approach:'Approach to Anaemia',irondeficiency:'Iron Deficiency & ACD',megaloblastic:'Megaloblastic Anaemia',haemolytic:'Haemolytic Anaemia',sickle:'Sickle Cell Disease',thalassaemia:'Thalassaemia',aplastic:'Aplastic Anaemia',polycythaemia:'Polycythaemia'};
+const NOTE_ORDER = ['cellinjury','inflammation','neoplasia','haemodynamics','repair','immunopathology','genetic','infection','metabolic','haemostasis','coagulation','bleeding','thrombophilia','approach','irondeficiency','megaloblastic','haemolytic','sickle','thalassaemia','aplastic','polycythaemia','leukaemia_overview','aml','all','cml','cll','hodgkin','nhl','myeloma','mds','lymphadenopathy'];
+const NOTE_NAMES = {cellinjury:'Cell Injury & Death',inflammation:'Inflammation',neoplasia:'Neoplasia',haemodynamics:'Haemodynamics',repair:'Repair & Wound Healing',immunopathology:'Immunopathology',genetic:'Genetic Disorders',infection:'Infectious Disease Pathology',metabolic:'Metabolic & Storage Disorders',haemostasis:'Primary Haemostasis',coagulation:'Coagulation Cascade',bleeding:'Bleeding Disorders',thrombophilia:'Thrombophilia',approach:'Approach to Anaemia',irondeficiency:'Iron Deficiency & ACD',megaloblastic:'Megaloblastic Anaemia',haemolytic:'Haemolytic Anaemia',sickle:'Sickle Cell Disease',thalassaemia:'Thalassaemia',aplastic:'Aplastic Anaemia',polycythaemia:'Polycythaemia',leukaemia_overview:'Leukaemia — Overview & Classification',aml:'Acute Myeloid Leukaemia',all:'Acute Lymphoblastic Leukaemia',cml:'Chronic Myeloid Leukaemia',cll:'Chronic Lymphocytic Leukaemia',hodgkin:'Hodgkin Lymphoma',nhl:'Non-Hodgkin Lymphoma',myeloma:'Multiple Myeloma',mds:'Myelodysplastic Syndrome',lymphadenopathy:'Approach to Lymphadenopathy'};
 
 // ── Note content store ──
 const NOTES={};
@@ -4414,6 +4495,773 @@ NOTES_MCQ.polycythaemia=[
   {q:"Which symptom is pathognomonic of polycythaemia vera?",opts:["Headache and plethora","Aquagenic pruritus — itching after contact with water","Splenomegaly","Erythromelalgia"],ans:1,focus:"Aquagenic pruritus — PV pathognomonic",exp:"<strong>Aquagenic pruritus (intense itch after water contact, especially hot) is pathognomonic of PV.</strong> Caused by histamine release from mast cells and basophils (elevated in PV) when skin temperature changes. Not seen in secondary polycythaemia. Pruritus + raised Hb + splenomegaly → check JAK2 immediately."},
   {q:"The main cause of morbidity and mortality in untreated PV is:",opts:["Bone marrow failure","Thrombosis — stroke, MI, DVT/PE, Budd-Chiari","Autoimmune haemolytic anaemia","Transformation to ALL"],ans:1,focus:"PV complications — thrombosis",exp:"<strong>Thrombosis is the leading cause of death in PV.</strong> Hyperviscosity + platelet dysfunction → arterial and venous thrombosis. Characteristic: Budd-Chiari, portal vein, cerebral vein thrombosis. Treatment reduces thrombotic risk: venesection (target Hct &lt;45%), aspirin, hydroxyurea for high-risk patients."},
   {q:"Target haematocrit and first-line treatment in PV:",opts:["<50%; hydroxyurea","<45%; venesection + aspirin 75mg","<55%; observation","<40%; exchange transfusion"],ans:1,focus:"PV treatment targets",exp:"<strong>Target Hct &lt;45% (CYTO-PV trial — 4× reduction in cardiovascular events vs &lt;50% target).</strong> First-line: venesection + low-dose aspirin. High-risk patients (age &gt;60 or prior thrombosis): add hydroxyurea (first-line cytoreduction) or ruxolitinib (JAK1/2 inhibitor for resistant/intolerant). Monitor for myelofibrotic transformation (&lt;20% at 20 years)."}
+];
+
+
+NOTES.leukaemia_overview=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">Pathology · WBC &amp; Lymphoid</div>
+  <div class="n-hero-title">Leukaemia —<br><em>Overview &amp; Classification</em></div>
+  <div class="n-hero-sub">WBC 01 &nbsp;·&nbsp; The framework first — then the subtypes make sense &nbsp;·&nbsp; High-Yield</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">A <strong>classification framework</strong> for malignant proliferation of white cell precursors — divided by lineage (myeloid vs lymphoid) and maturity (acute = blasts ≥20%, chronic = mature cells accumulate). Four main entities: AML, ALL, CML, CLL.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Leukaemia presents with pancytopenia — anaemia, infection, and bleeding. The classification predicts urgency, treatment, and prognosis. AML requires same-day marrow. CLL may never need treatment. Getting the framework right determines everything that follows.</div></div><div class="n-snap-cell"><div class="n-snap-label">Key focus</div><div class="n-snap-text">Acute vs chronic distinction, myeloid vs lymphoid markers (TdT, MPO, CD markers), key translocations (t(9;22), t(15;17), t(8;21)), and the clinical context for each subtype. All high yield.</div></div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">V1</span><span class="n-section-title">Classification Grid</span><span class="n-section-tag">4 boxes</span></div>
+<div class="n-viz-block"><div class="n-viz-label-row"><span class="n-viz-title">Leukaemia — Acute vs Chronic · Myeloid vs Lymphoid</span><span class="n-viz-sub">blasts ≥20% = acute</span></div>
+<svg viewBox="0 0 760 175" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:hidden">
+<rect width="760" height="175" fill="#1a1208"/>
+<text x="200" y="20" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(200,69,42,.7)" text-anchor="middle" font-weight="700">MYELOID</text>
+<text x="560" y="20" font-family="JetBrains Mono,monospace" font-size="9" fill="rgba(200,69,42,.7)" text-anchor="middle" font-weight="700">LYMPHOID</text>
+<rect x="28" y="28" width="356" height="68" rx="2" fill="#c8452a"/>
+<text x="206" y="50" font-family="Syne,sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="800">AML</text>
+<text x="206" y="68" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,0,.95)" text-anchor="middle">Blasts ≥20% · Auer rods · M3=APL · t(15;17)</text>
+<text x="206" y="84" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.65)" text-anchor="middle">Elderly · De novo or secondary · "7+3" chemo</text>
+<rect x="392" y="28" width="356" height="68" rx="2" fill="#8a2818"/>
+<text x="570" y="50" font-family="Syne,sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="800">ALL</text>
+<text x="570" y="68" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,0,.95)" text-anchor="middle">TdT+ · t(9;22) Philadelphia in adults · CNS prophylaxis</text>
+<text x="570" y="84" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.65)" text-anchor="middle">Children peak 2–5 yrs · 80% cure in children</text>
+<rect x="28" y="104" width="356" height="62" rx="2" fill="#5a1810"/>
+<text x="206" y="126" font-family="Syne,sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="800">CML</text>
+<text x="206" y="144" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">BCR-ABL · t(9;22) · imatinib · blast crisis · basophilia</text>
+<text x="206" y="160" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">Chronic → accelerated → blast crisis</text>
+<rect x="392" y="104" width="356" height="62" rx="2" fill="#3a1008"/>
+<text x="570" y="126" font-family="Syne,sans-serif" font-size="15" fill="white" text-anchor="middle" font-weight="800">CLL</text>
+<text x="570" y="144" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">CD5+/CD23+ · smudge cells · Richter transformation</text>
+<text x="570" y="160" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">Most common adult leukaemia · often asymptomatic</text>
+</svg></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">M1</span><span class="n-section-title">How Leukaemia Arises</span><span class="n-section-tag">mechanism</span></div>
+<div class="n-mech-chain">
+<div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Driver mutation in a stem cell</div><div class="n-mech-text">A haematopoietic stem cell acquires a driver mutation — translocation, point mutation, or chromosomal gain/loss. <strong>This single cell now has a proliferative or survival advantage over normal cells.</strong></div></div></div>
+<div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Clonal expansion</div><div class="n-mech-text">The abnormal cell divides — all progeny carry the mutation. In acute leukaemia, <strong>cells are arrested at blast stage and cannot mature.</strong> In chronic, cells mature partially but accumulate excessively.</div></div></div>
+<div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Marrow failure</div><div class="n-mech-text">Leukaemic cells crowd out normal haematopoiesis → <strong>pancytopenia: anaemia (fatigue), neutropenia (infection), thrombocytopenia (bleeding).</strong> In acute leukaemia this is rapid.</div></div></div>
+<div class="n-mech-step"><div class="n-mech-dot d4">04</div><div class="n-mech-body"><div class="n-mech-cause">Tissue infiltration</div><div class="n-mech-text">Leukaemic cells spill into blood, lymph nodes, spleen, liver, CNS. <strong>Organomegaly + lymphadenopathy + CNS signs</strong> = infiltration beyond the marrow.</div></div></div>
+</div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+<div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">FBC showing ↑↑ WBC + anaemia + thrombocytopenia + blast cells on film → leukaemia until proven otherwise → urgent haematology referral → bone marrow aspirate + immunophenotyping same day in acute presentations.</div></div>
+<div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>High WBC = infection.</strong> Infection causes reactive leukocytosis — neutrophilia, left shift, toxic granulation. Leukaemia: blasts, abnormal morphology, cytopenias in other lines. A high WBC with <em>anaemia and low platelets</em> is leukaemia until the marrow says otherwise.</div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+<div class="n-flag-list">
+<div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Hyperleukocytosis (WBC &gt;100 × 10⁹/L) → leucostasis</strong> — sludging in cerebral and pulmonary capillaries → confusion, respiratory failure, priapism. Emergency: leukapheresis or urgent cytoreduction with hydroxyurea before standard chemotherapy.</div></div>
+<div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Tumour lysis syndrome</strong> — after chemotherapy in bulky disease: K↑, PO₄↑, Ca↓, uric acid↑, creatinine↑ → AKI, arrhythmia. Pre-treat with IV fluids + allopurinol/rasburicase before starting induction.</div></div>
+<div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Neutropenic sepsis</strong> — fever ≥38°C + neutrophils &lt;0.5 → IV broad-spectrum antibiotics within 1 hour. Tazocin first-line. Do not wait for culture results — mortality rises steeply with each hour of delay.</div></div>
+</div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">the list</span></div>
+<div class="n-pearl-list">
+<div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Blasts ≥20% = acute leukaemia (WHO).</strong> The single most important threshold. 30% was the old FAB threshold — exams test both.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Philadelphia chromosome t(9;22) appears in BOTH CML (defining) and ALL (poor prognosis).</strong> In CML: always present. In adult ALL: 25% — dramatically worsens prognosis, but add TKI improves outcomes.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>TdT is positive in ALL, negative in AML and CLL.</strong> Terminal deoxynucleotidyl transferase marks immature lymphoid cells. Key immunophenotyping marker for lineage assignment.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>Auer rods are pathognomonic of AML.</strong> Crystallised primary granules in myeloblasts. If you see them = AML. No other diagnosis produces Auer rods.</div></div>
+</div>
+</div>
+<div class="n-note-end-cta" onclick="showVentPopup()"><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+NOTES.aml=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">Pathology · WBC &amp; Lymphoid</div>
+  <div class="n-hero-title">Acute Myeloid<br><em>Leukaemia</em></div>
+  <div class="n-hero-sub">WBC 02 &nbsp;·&nbsp; M3 APL = emergency · DIC kills before chemotherapy does &nbsp;·&nbsp; High-Yield</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">A <strong>malignant clonal proliferation of myeloid blasts</strong> (≥20% in marrow) arrested before maturation. Most common acute leukaemia in adults. The most important subtype — M3 APL — is both the most lethal acutely (DIC) and the most curable (&gt;90%).</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">AML is a haematological emergency. M3 APL: DIC kills before chemotherapy can be started — ATRA must be given immediately. Auer rods on the blood film are pathognomonic. Cytogenetics dictate prognosis and whether transplant is needed.</div></div><div class="n-snap-cell"><div class="n-snap-label">Key focus</div><div class="n-snap-text">M3 APL t(15;17) and ATRA, "7+3" induction, Auer rods, risk stratification by cytogenetics (FLT3-ITD = poor, t(8;21) = good), DIC management, gum hypertrophy in monocytic AML. All extremely high yield.</div></div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">V1</span><span class="n-section-title">The Viz</span><span class="n-section-tag">AML subtypes</span></div>
+<div class="n-viz-block"><div class="n-viz-label-row"><span class="n-viz-title">AML — Risk Stratification by Genetics</span><span class="n-viz-sub">M3 APL is the most important subtype</span></div>
+<svg viewBox="0 0 760 155" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:hidden">
+<rect width="760" height="155" fill="#1a1208"/>
+<rect x="8" y="10" width="180" height="135" rx="2" fill="#c8452a"/>
+<text x="98" y="32" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">M3 — APL</text>
+<text x="98" y="52" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,0,.95)" text-anchor="middle">t(15;17) · PML-RARA</text>
+<text x="98" y="68" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Auer rod bundles</text>
+<text x="98" y="84" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">DIC — treat BEFORE chemo</text>
+<text x="98" y="100" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">ATRA + arsenic trioxide</text>
+<text x="98" y="118" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(180,255,180,.85)" text-anchor="middle">&gt;90% cure rate</text>
+<text x="98" y="135" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Most curable AML</text>
+<rect x="198" y="10" width="180" height="135" rx="2" fill="#8a2818"/>
+<text x="288" y="32" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">GOOD PROGNOSIS</text>
+<text x="288" y="52" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(180,255,180,.9)" text-anchor="middle">t(8;21) · inv(16)</text>
+<text x="288" y="68" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">NPM1 (no FLT3)</text>
+<text x="288" y="84" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">CEBPA double mutant</text>
+<text x="288" y="100" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">Chemo alone may suffice</text>
+<text x="288" y="135" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">No allo-SCT in CR1</text>
+<rect x="388" y="10" width="180" height="135" rx="2" fill="#5a1810"/>
+<text x="478" y="32" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">INTERMEDIATE</text>
+<text x="478" y="52" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Normal cytogenetics</text>
+<text x="478" y="68" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">NPM1+ / FLT3+</text>
+<text x="478" y="84" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Risk-stratify further</text>
+<text x="478" y="100" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">Midostaurin if FLT3+</text>
+<text x="478" y="135" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Most common group</text>
+<rect x="578" y="10" width="174" height="135" rx="2" fill="#1a1510" stroke="#c8452a" stroke-width="1.5"/>
+<text x="665" y="32" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">POOR PROGNOSIS</text>
+<text x="665" y="52" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(200,69,42,.9)" text-anchor="middle">Complex karyotype ≥3</text>
+<text x="665" y="68" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Monosomy 5 or 7</text>
+<text x="665" y="84" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">FLT3-ITD (no NPM1)</text>
+<text x="665" y="100" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Secondary AML (MDS)</text>
+<text x="665" y="118" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">Allo-SCT in CR1</text>
+<text x="665" y="135" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">High relapse rate</text>
+</svg></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">M1</span><span class="n-section-title">M3 APL — Why It's an Emergency</span><span class="n-section-tag">mechanism</span></div>
+<div class="n-mech-chain">
+<div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">t(15;17) → PML-RARA fusion</div><div class="n-mech-text">Fusion protein blocks differentiation of promyelocytes. <strong>Abnormal promyelocytes accumulate, packed with granules containing tissue factor and proteases.</strong></div></div></div>
+<div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Granule release → DIC</div><div class="n-mech-text">Spontaneous or chemo-induced lysis releases granule contents → <strong>triggers DIC.</strong> Patient bleeds from every venepuncture. Intracranial haemorrhage is the leading early cause of death.</div></div></div>
+<div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">ATRA → differentiation therapy</div><div class="n-mech-text">All-trans retinoic acid overwhelms the PML-RARA block → <strong>promyelocytes differentiate rather than being killed.</strong> Avoids the granule dump. ATRA + arsenic trioxide = >90% cure.</div></div></div>
+<div class="n-mech-step"><div class="n-mech-dot d4">04</div><div class="n-mech-body"><div class="n-mech-cause">Correct DIC simultaneously</div><div class="n-mech-text">FFP, cryoprecipitate (fibrinogen), and platelets <strong>before and during ATRA.</strong> Target fibrinogen &gt;1.5 g/L, platelets &gt;30–50. Starting ATRA on uncorrected DIC risks fatal haemorrhage.</div></div></div>
+</div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+<div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Bleeding from multiple sites + blasts with Auer rods + low fibrinogen + prolonged PT/APTT → APL with DIC → start ATRA immediately, correct DIC with FFP/cryoprecipitate, do NOT give standard chemo first.</div></div>
+<div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Start chemotherapy immediately in any AML.</strong> Wrong for M3 APL — standard chemo before ATRA worsens DIC by lysing granule-laden blasts. ATRA first (or simultaneously), correct DIC. All other AML: "7+3" is correct.</div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+<div class="n-flag-list">
+<div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>APL intracranial haemorrhage</strong> — headache, confusion, or focal neurology in a patient with APL = ICH from DIC. Urgent CT head. Correct coagulopathy immediately. This is the most common cause of early death in APL — don't miss it.</div></div>
+<div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>ATRA differentiation syndrome</strong> — fever, fluid retention, pulmonary infiltrates, renal failure during ATRA. Caused by maturing neutrophils releasing cytokines. Treat: dexamethasone 10mg IV BD. Consider holding ATRA. Can be fatal.</div></div>
+<div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>FLT3-ITD mutation</strong> — ~30% of AML, high relapse rate. Must be tested at diagnosis. FLT3+ requires midostaurin added to induction + likely allo-SCT in first remission. Changes treatment plan fundamentally.</div></div>
+</div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">the list</span></div>
+<div class="n-pearl-list">
+<div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Auer rods are pathognomonic of AML.</strong> Pink needle-like inclusions (crystallised primary granules) in myeloblasts. Abundant in M3 ("faggot cells" = bundles of Auer rods). No other diagnosis causes them.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>"7+3" induction: cytarabine 7 days + daunorubicin 3 days.</strong> Standard non-APL AML induction. CR in 60–80% of younger patients. Elderly often cannot tolerate it — use azacitidine or venetoclax-based regimens instead.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Gum hypertrophy = M4/M5 monocytic AML.</strong> Leukaemic monocytes infiltrate gingival tissue. Also skin infiltration ("leukaemia cutis"). Monocytic AML has the highest CNS involvement risk among AML subtypes.</div></div>
+</div>
+</div>
+<div class="n-note-end-cta" onclick="showVentPopup()"><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+
+NOTES.all=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">Pathology · WBC &amp; Lymphoid</div>
+  <div class="n-hero-title">Acute Lymphoblastic<br><em>Leukaemia</em></div>
+  <div class="n-hero-sub">WBC 03 &nbsp;·&nbsp; Childhood cancer #1 · TdT+ · CNS sanctuary site &nbsp;·&nbsp; High-Yield</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">A <strong>malignant proliferation of lymphoid precursor cells</strong> (B or T lineage), arrested as blasts. The most common cancer in children (peak 2–5 years), cured in 80–90%. In adults, the Philadelphia chromosome appears in 25% and demands a fundamentally different approach.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">ALL is the most curable acute leukaemia in children — but CNS sanctuary site relapse was killing patients until intrathecal methotrexate replaced cranial radiotherapy. In adults, Philadelphia-positive ALL is treated differently: TKI is added, survival remains inferior.</div></div><div class="n-snap-cell"><div class="n-snap-label">Key focus</div><div class="n-snap-text">TdT positivity, B-ALL vs T-ALL features, t(9;22) Philadelphia in adults and its prognostic significance, why CNS prophylaxis is mandatory, mediastinal mass in T-ALL, and the 4-phase treatment structure.</div></div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">V1</span><span class="n-section-title">B-ALL vs T-ALL</span><span class="n-section-tag">the viz</span></div>
+<div class="n-viz-block"><div class="n-viz-label-row"><span class="n-viz-title">ALL — B-cell vs T-cell Subtype Features</span><span class="n-viz-sub">B-ALL more common; T-ALL = mediastinal mass</span></div>
+<svg viewBox="0 0 760 155" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:hidden">
+<rect width="760" height="155" fill="#1a1208"/>
+<rect x="8" y="10" width="370" height="135" rx="2" fill="#c8452a"/>
+<text x="193" y="34" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">B-ALL</text>
+<text x="193" y="54" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,0,.95)" text-anchor="middle">TdT+ · CD19+ · CD10+ (CALLA) · CD34+</text>
+<text x="193" y="70" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Most common subtype — children and adults</text>
+<text x="193" y="86" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">t(9;22) Philadelphia → add TKI (imatinib/dasatinib)</text>
+<text x="193" y="102" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">t(12;21) ETV6-RUNX1 → best childhood prognosis</text>
+<text x="193" y="118" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">Hyperdiploidy (&gt;50 chromosomes) → good prognosis</text>
+<text x="193" y="135" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Down syndrome → 20× ALL risk</text>
+<rect x="386" y="10" width="366" height="135" rx="2" fill="#5a1810"/>
+<text x="569" y="34" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">T-ALL</text>
+<text x="569" y="54" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">TdT+ · CD3+ · CD7+ · CD2+</text>
+<text x="569" y="70" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Adolescent males · mediastinal mass</text>
+<text x="569" y="86" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,200,100,.9)" text-anchor="middle">SVC obstruction — airway emergency</text>
+<text x="569" y="102" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">NOTCH1 mutations common</text>
+<text x="569" y="118" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">Intermediate prognosis</text>
+<text x="569" y="135" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Avoid GA — airway may collapse</text>
+</svg></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">M1</span><span class="n-section-title">Why CNS Prophylaxis is Mandatory</span><span class="n-section-tag">mechanism</span></div>
+<div class="n-mech-chain">
+<div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">CNS as sanctuary site</div><div class="n-mech-text">The blood-brain barrier excludes most chemotherapy. <strong>Leukaemic blasts survive in the meninges even during systemic remission</strong> — a reservoir for relapse.</div></div></div>
+<div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Meningeal seeding</div><div class="n-mech-text">Blasts seed the leptomeninges → headache, vomiting, cranial nerve palsies. <strong>CSF: blasts on cytospin.</strong> Without prophylaxis up to 50% of children would develop CNS relapse.</div></div></div>
+<div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">IT methotrexate bypasses the BBB</div><div class="n-mech-text">Intrathecal MTX delivered directly to CSF at multiple treatment timepoints. <strong>Replaces cranial radiotherapy</strong> (which caused neurotoxicity and second malignancies in children).</div></div></div>
+</div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+<div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Child with bone pain, pallor, lymphadenopathy + FBC showing anaemia, thrombocytopenia, lymphoblasts → ALL. Check LDH and uric acid immediately (TLS risk). Start allopurinol + IV fluids before marrow confirmed.</div></div>
+<div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Bone pain in a child = osteomyelitis or reactive arthritis.</strong> ALL classically presents with periosteal infiltration causing bone pain — often misdiagnosed as juvenile arthritis. Clue: anaemia + thrombocytopenia. Septic arthritis does not cause pancytopenia.</div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+<div class="n-flag-list">
+<div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Ph+ ALL in adults</strong> — t(9;22) detected in 25% of adult ALL. Must add TKI (imatinib or dasatinib) to chemotherapy — transforms historically fatal prognosis. Test BCR-ABL at diagnosis in every adult ALL.</div></div>
+<div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>T-ALL mediastinal mass → SVC obstruction + airway compromise.</strong> Facial swelling, arm oedema, distended neck veins. Avoid GA — airway can collapse under anaesthesia. Urgent treatment initiation critical before any invasive procedure.</div></div>
+</div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">the list</span></div>
+<div class="n-pearl-list">
+<div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>TdT+ = immature lymphoid cells = ALL.</strong> Positive in B-ALL and T-ALL. Negative in AML, CLL, and mature lymphomas. The single most important immunophenotyping marker to separate ALL from everything else.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Maintenance therapy lasts 2–3 years in ALL.</strong> Oral 6-mercaptopurine daily + weekly oral MTX + monthly vincristine/steroid pulses. Much longer than AML. Non-compliance doubles relapse risk — a major clinical challenge in adolescents.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Children do far better than adults (80% vs 40% cure).</strong> Adolescents and young adults treated on paediatric protocols do better than on adult protocols — push the age limit up to 25–40 at specialist centres.</div></div>
+</div>
+</div>
+<div class="n-note-end-cta" onclick="showVentPopup()"><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+NOTES.cml=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">Pathology · WBC &amp; Lymphoid</div>
+  <div class="n-hero-title">Chronic Myeloid<br><em>Leukaemia</em></div>
+  <div class="n-hero-sub">WBC 04 &nbsp;·&nbsp; BCR-ABL · imatinib revolution · blast crisis = transformation &nbsp;·&nbsp; High-Yield</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">A <strong>myeloproliferative neoplasm</strong> driven by the BCR-ABL fusion tyrosine kinase from the Philadelphia chromosome t(9;22). Unregulated myeloid proliferation through three phases: chronic → accelerated → blast crisis. Imatinib transformed a disease with median survival of 3–5 years into one manageable for decades.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">CML was the first cancer treated with a molecularly targeted agent. BCR-ABL drove the whole disease; blocking it with imatinib works. Blast crisis is transformation to acute leukaemia — the clock is always running. TKI resistance and T315I mutation are tested frequently.</div></div><div class="n-snap-cell"><div class="n-snap-label">Key focus</div><div class="n-snap-text">Philadelphia chromosome t(9;22), BCR-ABL mechanism, basophilia and massive splenomegaly as clinical hallmarks, the three phases and how to recognise blast crisis, imatinib mechanism and resistance mutations (T315I → ponatinib), and LAP score (low in CML, high in reactive).</div></div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">V1</span><span class="n-section-title">BCR-ABL to Treatment</span><span class="n-section-tag">the viz</span></div>
+<div class="n-viz-block"><div class="n-viz-label-row"><span class="n-viz-title">CML — Pathway from Translocation to Imatinib</span><span class="n-viz-sub">imatinib blocks the kinase that drives everything</span></div>
+<svg viewBox="0 0 760 148" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:hidden">
+<rect width="760" height="148" fill="#1a1208"/>
+<rect x="8" y="10" width="140" height="128" rx="2" fill="#c8452a"/>
+<text x="78" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">t(9;22)</text>
+<text x="78" y="48" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.9)" text-anchor="middle">Chr 9: ABL1</text>
+<text x="78" y="64" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.9)" text-anchor="middle">Chr 22: BCR</text>
+<text x="78" y="82" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,0,.95)" text-anchor="middle">BCR-ABL fusion</text>
+<text x="78" y="98" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.9)" text-anchor="middle">Constitutive TK</text>
+<text x="78" y="114" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.9)" text-anchor="middle">activity always on</text>
+<text x="78" y="130" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.3)" text-anchor="middle">Philadelphia chr.</text>
+<rect x="158" y="10" width="140" height="128" rx="2" fill="#8a2818"/>
+<text x="228" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">CLINICAL</text>
+<text x="228" y="48" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.9)" text-anchor="middle">WBC 50–500×10⁹</text>
+<text x="228" y="64" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.9)" text-anchor="middle">All myeloid stages</text>
+<text x="228" y="80" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.9)" text-anchor="middle">Basophilia</text>
+<text x="228" y="96" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.9)" text-anchor="middle">Massive spleen</text>
+<text x="228" y="112" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">Often asymptomatic</text>
+<text x="228" y="130" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.3)" text-anchor="middle">Incidental FBC</text>
+<rect x="308" y="10" width="140" height="128" rx="2" fill="#5a1810"/>
+<text x="378" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">IMATINIB</text>
+<text x="378" y="48" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(180,255,180,.9)" text-anchor="middle">TKI — blocks ATP</text>
+<text x="378" y="64" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.9)" text-anchor="middle">binding to BCR-ABL</text>
+<text x="378" y="80" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.9)" text-anchor="middle">Monitor BCR-ABL PCR</text>
+<text x="378" y="96" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.9)" text-anchor="middle">Deep mol. response</text>
+<text x="378" y="112" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">= treatment free</text>
+<text x="378" y="130" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.3)" text-anchor="middle">remission possible</text>
+<rect x="458" y="10" width="140" height="128" rx="2" fill="#3a1008"/>
+<text x="528" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">T315I RESISTANCE</text>
+<text x="528" y="48" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,200,100,.9)" text-anchor="middle">Gatekeeper mutation</text>
+<text x="528" y="64" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.9)" text-anchor="middle">All TKIs blocked</text>
+<text x="528" y="80" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.9)" text-anchor="middle">except ponatinib</text>
+<text x="528" y="96" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.9)" text-anchor="middle">Asciminib newer</text>
+<text x="528" y="112" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">allo-SCT if T315I</text>
+<text x="528" y="130" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.3)" text-anchor="middle">Consider clinical trial</text>
+<rect x="608" y="10" width="144" height="128" rx="2" fill="#1a1510" stroke="#c8452a" stroke-width="1.5"/>
+<text x="680" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">BLAST CRISIS</text>
+<text x="680" y="48" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(200,69,42,.9)" text-anchor="middle">Blasts ≥20%</text>
+<text x="680" y="64" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.9)" text-anchor="middle">Myeloid (70%)</text>
+<text x="680" y="80" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.9)" text-anchor="middle">Lymphoid (30%)</text>
+<text x="680" y="96" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(200,69,42,.9)" text-anchor="middle">Poor prognosis</text>
+<text x="680" y="112" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">AML/ALL + TKI</text>
+<text x="680" y="130" font-family="JetBrains Mono,monospace" font-size="7" fill="rgba(255,255,255,.3)" text-anchor="middle">allo-SCT aim</text>
+</svg></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+<div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Middle-aged patient with massive splenomegaly + WBC 200×10⁹ with all myeloid stages + basophilia + thrombocytosis → CML → confirm BCR-ABL by PCR and FISH → start imatinib.</div></div>
+<div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Left shift with high WBC = infection (leukaemoid reaction).</strong> Key differentiator: significant basophilia is virtually never seen in reactive leukocytosis. CML also has low LAP score. Toxic granulation + clinical sepsis → infection. Basophilia + spleen → CML.</div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+<div class="n-flag-list">
+<div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Blast crisis</strong> — accelerated phase (blasts 10–19%) progressing to blast crisis (≥20%). Worsening cytopenias, additional cytogenetic changes. Emergency: treat as AML or ALL + TKI + bridge to allo-SCT urgently.</div></div>
+<div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Splenic rupture</strong> — massive splenomegaly can rupture spontaneously. Left upper quadrant pain radiating to left shoulder (Kehr's sign) = surgical emergency. Avoid forceful abdominal palpation in patients with massive spleen.</div></div>
+</div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">the list</span></div>
+<div class="n-pearl-list">
+<div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Imatinib — the first targeted cancer therapy (2001).</strong> CML was previously fatal within 5 years. Imatinib changed this to near-normal life expectancy for most patients. A proof-of-concept landmark that revolutionised oncology.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Basophilia is the diagnostic clue.</strong> Reactive basophilia is extremely rare. Significant basophilia (&gt;1×10⁹/L) → think CML. Basophils release histamine → CML patients may have pruritus, urticaria, and peptic ulcers.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Treatment-free remission is possible.</strong> Patients who achieve deep molecular response (BCR-ABL undetectable) for ≥2 years can attempt stopping imatinib. ~50% remain in remission at 2 years. Requires monthly PCR monitoring after stopping.</div></div>
+</div>
+</div>
+<div class="n-note-end-cta" onclick="showVentPopup()"><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+NOTES.cll=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">Pathology · WBC &amp; Lymphoid</div>
+  <div class="n-hero-title">Chronic Lymphocytic<br><em>Leukaemia</em></div>
+  <div class="n-hero-sub">WBC 05 &nbsp;·&nbsp; Most common adult leukaemia · CD5+/CD23+ · smudge cells &nbsp;·&nbsp; High-Yield</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">A <strong>clonal proliferation of mature CD5+/CD23+ B-cells</strong> — the most common leukaemia in Western adults. Typically indolent: often found incidentally on FBC. Smudge cells on the blood film are the classic finding. Many patients never need treatment.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">CLL is common and appears on every exam. The watch-and-wait approach in stage A is non-negotiable — treatment does not improve survival in early stage. Richter transformation (CLL → DLBCL) is a haematological emergency and often fatal. del(17p)/TP53 mutation renders standard chemotherapy ineffective.</div></div><div class="n-snap-cell"><div class="n-snap-label">Key focus</div><div class="n-snap-text">CD5+/CD23+ immunophenotype, smudge cells, Binet staging and when to treat, prognostic cytogenetics (del(13q) best, del(17p) worst), Richter transformation, autoimmune complications (AIHA, ITP), and targeted agents (ibrutinib, venetoclax) for high-risk disease.</div></div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">V1</span><span class="n-section-title">CLL Features</span><span class="n-section-tag">the viz</span></div>
+<div class="n-viz-block"><div class="n-viz-label-row"><span class="n-viz-title">CLL — Diagnosis, Prognosis, Complications, Richter</span><span class="n-viz-sub">smudge cells + CD5+/CD23+ = CLL</span></div>
+<svg viewBox="0 0 760 148" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:hidden">
+<rect width="760" height="148" fill="#1a1208"/>
+<rect x="8" y="10" width="180" height="128" rx="2" fill="#c8452a"/>
+<text x="98" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">DIAGNOSIS</text>
+<text x="98" y="50" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,0,.95)" text-anchor="middle">B lymphos &gt;5×10⁹/L</text>
+<text x="98" y="66" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">CD5+/CD23+/CD19+</text>
+<text x="98" y="82" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Smudge cells on film</text>
+<text x="98" y="98" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">Often incidental FBC</text>
+<text x="98" y="128" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Median age 70 yrs</text>
+<rect x="198" y="10" width="180" height="128" rx="2" fill="#8a2818"/>
+<text x="288" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">PROGNOSIS</text>
+<text x="288" y="50" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(180,255,180,.9)" text-anchor="middle">del(13q) → best</text>
+<text x="288" y="66" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">del(11q) intermediate</text>
+<text x="288" y="82" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(200,69,42,.9)" text-anchor="middle">del(17p) → worst</text>
+<text x="288" y="98" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">IGHV mutated → good</text>
+<text x="288" y="114" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">TP53 mutant = resistant</text>
+<text x="288" y="128" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Venetoclax for del17p</text>
+<rect x="388" y="10" width="180" height="128" rx="2" fill="#3a1008"/>
+<text x="478" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">COMPLICATIONS</text>
+<text x="478" y="50" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Hypogammaglobulin.</text>
+<text x="478" y="66" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">→ recurrent infections</text>
+<text x="478" y="82" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">AIHA (warm antibody)</text>
+<text x="478" y="98" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">ITP → Evans syndrome</text>
+<text x="478" y="114" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,200,100,.75)" text-anchor="middle">No fludarabine in AIHA</text>
+<text x="478" y="128" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">IVIg replacement</text>
+<rect x="578" y="10" width="174" height="128" rx="2" fill="#1a1510" stroke="#c8452a" stroke-width="1.5"/>
+<text x="665" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">RICHTER'S</text>
+<text x="665" y="50" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(200,69,42,.9)" text-anchor="middle">CLL → DLBCL</text>
+<text x="665" y="66" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Sudden deterioration</text>
+<text x="665" y="82" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(200,69,42,.9)" text-anchor="middle">B symptoms · LDH ↑↑</text>
+<text x="665" y="98" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Rapid node enlargement</text>
+<text x="665" y="114" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.6)" text-anchor="middle">PET-guided biopsy</text>
+<text x="665" y="128" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Median survival ~1yr</text>
+</svg></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+<div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Elderly patient with incidental FBC: lymphocytes 15×10⁹/L + smudge cells on film + no symptoms → CLL, Binet stage A → watch and wait · annual monitoring · no treatment indicated.</div></div>
+<div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>All CLL needs treatment.</strong> Binet stage A is managed with active surveillance only. Early treatment trials showed no survival benefit — only increased toxicity. Treatment starts when symptomatic disease or stage C develops.</div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+<div class="n-flag-list">
+<div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Richter transformation</strong> — rapidly enlarging nodes + fever + night sweats + LDH ↑↑ in known CLL → DLBCL. Urgent excision biopsy (not FNA — need architecture). PET-CT to identify most active node. Very poor prognosis.</div></div>
+<div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>CLL + AIHA → do NOT give fludarabine.</strong> Purine analogues in CLL with AIHA can precipitate severe haemolytic crisis. Always check DAT before starting chemotherapy. Use chlorambucil or steroids first in AIHA setting.</div></div>
+</div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">the list</span></div>
+<div class="n-pearl-list">
+<div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>CD5 on B-cells = CLL (or Mantle cell).</strong> CD5 is normally a T-cell marker — its aberrant expression on B-cells defines CLL immunophenotype. Mantle cell also CD5+ but CD23- (CLL is CD23+). This single distinction separates them.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>del(17p) = TP53 deletion → resistant to standard chemo.</strong> Fludarabine-based regimens don't work. Use venetoclax (BCL-2 inhibitor) + obinutuzumab, or ibrutinib (BTK inhibitor). Must test TP53 before choosing treatment in every CLL patient.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Hypogammaglobulinaemia → recurrent encapsulated bacterial infections.</strong> CLL B-cells produce non-functional immunoglobulin. IVIg replacement for patients with recurrent serious infections. Also increased risk of PCP and VZV reactivation on treatment.</div></div>
+</div>
+</div>
+<div class="n-note-end-cta" onclick="showVentPopup()"><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+
+NOTES.hodgkin=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">Pathology · WBC &amp; Lymphoid</div>
+  <div class="n-hero-title">Hodgkin<br><em>Lymphoma</em></div>
+  <div class="n-hero-sub">WBC 06 &nbsp;·&nbsp; Reed-Sternberg cells · CD15/CD30 · bimodal age · ABVD &nbsp;·&nbsp; High-Yield</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">A <strong>B-cell lymphoma</strong> characterised by Reed-Sternberg cells (large binucleate cells with owl-eye nucleoli) set in an inflammatory background. Classical subtypes are CD15+/CD30+/CD45−. Bimodal age distribution: young adults (20–35) and older adults (&gt;55). One of the most curable cancers when staged and treated correctly.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">HL is curable in &gt;90% of early-stage cases with ABVD. Missing the diagnosis or staging incorrectly changes the treatment and the outcome. B symptoms (fever, night sweats, weight loss &gt;10%) upstage the disease. EBV association in ~50% of classical HL explains the adolescent peak.</div></div><div class="n-snap-cell"><div class="n-snap-label">Key focus</div><div class="n-snap-text">Reed-Sternberg cell morphology and immunophenotype (CD15+/CD30+/CD45−), nodular sclerosis as the most common subtype, B symptoms and Ann Arbor staging, ABVD regimen, mediastinal mass in young adults, PET-CT for response assessment, and NLPHL as the CD20+ exception.</div></div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">V1</span><span class="n-section-title">HL Subtypes</span><span class="n-section-tag">the viz</span></div>
+<div class="n-viz-block"><div class="n-viz-label-row"><span class="n-viz-title">Hodgkin Lymphoma — Classical Subtypes</span><span class="n-viz-sub">Nodular sclerosis most common; lymphocyte depleted worst</span></div>
+<svg viewBox="0 0 760 155" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:hidden">
+<rect width="760" height="155" fill="#1a1208"/>
+<rect x="8" y="10" width="180" height="135" rx="2" fill="#c8452a"/>
+<text x="98" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">NODULAR SCLEROSIS</text>
+<text x="98" y="50" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,0,.95)" text-anchor="middle">70% of HL</text>
+<text x="98" y="66" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Young women</text>
+<text x="98" y="82" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Mediastinal mass</text>
+<text x="98" y="98" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Lacunar RS cells</text>
+<text x="98" y="114" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">Collagen bands</text>
+<text x="98" y="135" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Good prognosis</text>
+<rect x="198" y="10" width="180" height="135" rx="2" fill="#8a2818"/>
+<text x="288" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">MIXED CELLULARITY</text>
+<text x="288" y="50" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">25% · EBV+</text>
+<text x="288" y="66" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Older males / HIV</text>
+<text x="288" y="82" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Classic RS cells</text>
+<text x="288" y="98" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Eosinophils prominent</text>
+<text x="288" y="114" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">Good prognosis</text>
+<text x="288" y="135" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Often advanced stage</text>
+<rect x="388" y="10" width="180" height="135" rx="2" fill="#3a1008"/>
+<text x="478" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">LYMPHOCYTE-RICH</text>
+<text x="478" y="50" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(180,255,180,.9)" text-anchor="middle">Best prognosis</text>
+<text x="478" y="66" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">5% of HL</text>
+<text x="478" y="82" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Older males</text>
+<text x="478" y="98" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Few RS cells</text>
+<text x="478" y="114" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">Early stage usually</text>
+<text x="478" y="135" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Rarely transforms</text>
+<rect x="578" y="10" width="174" height="135" rx="2" fill="#1a1510" stroke="#c8452a" stroke-width="1.5"/>
+<text x="665" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">LYMPHOCYTE-DEPLETED</text>
+<text x="665" y="50" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(200,69,42,.9)" text-anchor="middle">&lt;1% · worst prognosis</text>
+<text x="665" y="66" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Elderly / HIV+</text>
+<text x="665" y="82" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Abundant RS cells</text>
+<text x="665" y="98" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(200,69,42,.9)" text-anchor="middle">Advanced at diagnosis</text>
+<text x="665" y="114" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">Few lymphocytes</text>
+<text x="665" y="135" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Intensive treatment</text>
+</svg></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+<div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Young woman with painless cervical lymphadenopathy + mediastinal mass + night sweats + eosinophilia → Hodgkin lymphoma → CT staging → excision biopsy (NOT FNA) → ABVD chemotherapy.</div></div>
+<div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Alcohol-induced node pain rules out Hodgkin's.</strong> Actually the opposite — pain in affected nodes after alcohol is a classic (though rare) sign of HL. RS cells release prostaglandins causing pain with alcohol. Positive test = strongly suggests HL.</div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+<div class="n-flag-list">
+<div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Bleomycin pulmonary toxicity (ABVD)</strong> — interstitial pneumonitis/fibrosis. Hypoxia or new respiratory symptoms during ABVD = bleomycin toxicity until proven otherwise. Stop bleomycin + high-dose steroids. Monitor DLCO throughout treatment.</div></div>
+<div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Late second malignancy after mediastinal radiotherapy</strong> — young women: 30× increased breast cancer risk at 15–20 years post-RT. Annual breast MRI + mammogram from age 8 years post-radiation (or age 25, whichever later).</div></div>
+</div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">the list</span></div>
+<div class="n-pearl-list">
+<div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>RS cells are &lt;1% of the tumour mass.</strong> The malignant RS cell is surrounded by reactive inflammatory cells — lymphocytes, eosinophils, plasma cells, histiocytes. Paradox: more background lymphocytes = better prognosis.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>ABVD: Adriamycin (doxorubicin), Bleomycin, Vinblastine, Dacarbazine.</strong> Adriamycin → cumulative cardiotoxicity (echo monitoring). Bleomycin → pulmonary fibrosis (DLCO monitoring). These toxicities are long-term consequences of treatment.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>B symptoms = fever (&gt;38°C) + drenching night sweats + weight loss &gt;10% in 6 months.</strong> Adding "B" to stage (e.g. stage IIB) indicates systemic disease — requires more intensive treatment. "A" = asymptomatic.</div></div>
+</div>
+</div>
+<div class="n-note-end-cta" onclick="showVentPopup()"><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+NOTES.nhl=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">Pathology · WBC &amp; Lymphoid</div>
+  <div class="n-hero-title">Non-Hodgkin<br><em>Lymphoma</em></div>
+  <div class="n-hero-sub">WBC 07 &nbsp;·&nbsp; The grade determines urgency — indolent waits, aggressive kills &nbsp;·&nbsp; High-Yield</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">A <strong>heterogeneous group of B- and T-cell lymphomas</strong> that are not Hodgkin lymphoma. Ranges from indolent (follicular — lives for years, rarely cures) to highly aggressive (Burkitt — doubles every 24 hours). Most are B-cell; most respond to anti-CD20 therapy (rituximab).</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">NHL is the most common haematological malignancy. DLBCL is curable with R-CHOP but delays are dangerous. Burkitt is a haematological emergency — tumour lysis syndrome on treatment is life-threatening. Double-hit lymphoma (MYC + BCL-2) requires intensified therapy beyond R-CHOP.</div></div><div class="n-snap-cell"><div class="n-snap-label">Key focus</div><div class="n-snap-text">Follicular t(14;18)/BCL-2, DLBCL and R-CHOP, Burkitt t(8;14)/MYC and starry-sky pattern, mantle cell t(11;14)/cyclin D1, double-hit lymphoma, rituximab mechanism (anti-CD20), and indolent vs aggressive grade distinction.</div></div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">V1</span><span class="n-section-title">NHL Spectrum</span><span class="n-section-tag">the viz</span></div>
+<div class="n-viz-block"><div class="n-viz-label-row"><span class="n-viz-title">NHL — Key Subtypes by Grade and Genetics</span><span class="n-viz-sub">low grade lives long but rarely cures; high grade = urgent but curable</span></div>
+<svg viewBox="0 0 760 155" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:hidden">
+<rect width="760" height="155" fill="#1a1208"/>
+<rect x="8" y="10" width="180" height="135" rx="2" fill="#8a2818"/>
+<text x="98" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">FOLLICULAR</text>
+<text x="98" y="48" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(180,255,180,.9)" text-anchor="middle">INDOLENT</text>
+<text x="98" y="64" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">t(14;18) BCL-2</text>
+<text x="98" y="80" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">CD10+/CD20+</text>
+<text x="98" y="96" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Waxing/waning nodes</text>
+<text x="98" y="112" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,200,100,.85)" text-anchor="middle">Transforms to DLBCL</text>
+<text x="98" y="135" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Rarely curable; long survival</text>
+<rect x="198" y="10" width="180" height="135" rx="2" fill="#c8452a"/>
+<text x="288" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">DLBCL</text>
+<text x="288" y="48" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,0,.95)" text-anchor="middle">AGGRESSIVE</text>
+<text x="288" y="64" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">BCL-6 · MYC rearrangement</text>
+<text x="288" y="80" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">CD20+</text>
+<text x="288" y="96" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">R-CHOP × 6</text>
+<text x="288" y="112" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,200,100,.85)" text-anchor="middle">Double-hit → R-EPOCH</text>
+<text x="288" y="135" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">~60% 5yr survival</text>
+<rect x="388" y="10" width="180" height="135" rx="2" fill="#5a1810"/>
+<text x="478" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">BURKITT</text>
+<text x="478" y="48" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(200,69,42,.9)" text-anchor="middle">VERY AGGRESSIVE</text>
+<text x="478" y="64" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">t(8;14) MYC</text>
+<text x="478" y="80" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Starry sky pattern</text>
+<text x="478" y="96" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Ki-67 ~100%</text>
+<text x="478" y="112" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,200,100,.85)" text-anchor="middle">TLS emergency risk</text>
+<text x="478" y="135" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Curable if treated fast</text>
+<rect x="578" y="10" width="174" height="135" rx="2" fill="#3a1008"/>
+<text x="665" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">MANTLE CELL</text>
+<text x="665" y="48" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,200,100,.9)" text-anchor="middle">AGGRESSIVE, INCURABLE</text>
+<text x="665" y="64" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">t(11;14) Cyclin D1</text>
+<text x="665" y="80" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">CD5+/CD20+ · CD23-</text>
+<text x="665" y="96" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">GI polyps (colonoscopy)</text>
+<text x="665" y="112" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">Ibrutinib for relapse</text>
+<text x="665" y="135" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Median survival 5yrs</text>
+</svg></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+<div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Bulky mediastinal mass + rapidly enlarging nodes + LDH ↑↑ + B symptoms → aggressive NHL (likely DLBCL) → urgent excision biopsy → CT-PET staging → R-CHOP × 6 cycles.</div></div>
+<div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Indolent lymphoma has better prognosis → treat early.</strong> The NHL paradox: aggressive lymphomas (DLBCL) are potentially curable with intensive treatment. Indolent lymphomas (follicular) have long survival but are rarely cured — early treatment doesn't improve survival in stage I/II.</div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+<div class="n-flag-list">
+<div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Double-hit lymphoma (MYC + BCL-2 rearrangements)</strong> — R-CHOP is insufficient. Requires DA-R-EPOCH or similar intensive protocol. Must test for MYC rearrangement in ALL DLBCL at diagnosis — changes treatment immediately.</div></div>
+<div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>CNS involvement in high-risk DLBCL</strong> — use CNS-IPI score. High-risk patients: add IT methotrexate or high-dose IV MTX to R-CHOP. CNS relapse carries very poor prognosis. Identify and treat prophylactically.</div></div>
+</div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">the list</span></div>
+<div class="n-pearl-list">
+<div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>t(14;18) BCL-2 in follicular lymphoma.</strong> IgH enhancer (chr 14) drives BCL-2 overexpression (chr 18). Cells cannot undergo apoptosis → accumulate. BCL-2 overexpression is the same target hit by venetoclax in CLL/AML.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Burkitt — highest proliferation rate of any human tumour (Ki-67 ~100%).</strong> t(8;14) — IgH enhancer drives MYC. "Starry sky" = macrophages engulfing apoptotic tumour cells. Doubles every 24 hours. TLS mandatory prophylaxis before treatment.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Rituximab (anti-CD20) transformed B-cell lymphoma outcomes.</strong> Adding rituximab to CHOP → R-CHOP improved 5-year survival in DLBCL from 45% to 58%. Also depletes normal B-cells → hypogammaglobulinaemia post-treatment (IVIg if recurrent infections).</div></div>
+</div>
+</div>
+<div class="n-note-end-cta" onclick="showVentPopup()"><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+
+NOTES.myeloma=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">Pathology · WBC &amp; Lymphoid</div>
+  <div class="n-hero-title">Multiple<br><em>Myeloma</em></div>
+  <div class="n-hero-sub">WBC 08 &nbsp;·&nbsp; CRAB + M-protein · lytic bones · ALP is normal &nbsp;·&nbsp; High-Yield</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">A <strong>malignant proliferation of plasma cells in the bone marrow</strong> secreting a monoclonal immunoglobulin (M-protein). End-organ damage follows: lytic bone lesions, renal failure, anaemia, hypercalcaemia (CRAB). ALP is characteristically normal despite extensive bone destruction.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Myeloma causes hypercalcaemia, acute kidney injury, and pathological fractures. All are preventable if the diagnosis is made early. Bence-Jones protein is NOT detected on urine dipstick — a classic exam trap. Bisphosphonates and renal protection are started at diagnosis, not at complication.</div></div><div class="n-snap-cell"><div class="n-snap-label">Key focus</div><div class="n-snap-text">CRAB criteria, M-protein on serum electrophoresis, Bence-Jones free light chains (missed by dipstick), ALP normal in lytic disease, MGUS → smouldering → myeloma progression spectrum, VRd + ASCT treatment, and bisphosphonates for skeletal protection.</div></div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">V1</span><span class="n-section-title">CRAB and Pathology</span><span class="n-section-tag">the viz</span></div>
+<div class="n-viz-block"><div class="n-viz-label-row"><span class="n-viz-title">Myeloma — CRAB Criteria and Mechanism</span><span class="n-viz-sub">plasma cells → M-protein → end-organ damage</span></div>
+<svg viewBox="0 0 760 148" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:hidden">
+<rect width="760" height="148" fill="#1a1208"/>
+<rect x="8" y="10" width="140" height="128" rx="2" fill="#c8452a"/>
+<text x="78" y="30" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">C — Ca²⁺ ↑</text>
+<text x="78" y="48" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,0,.95)" text-anchor="middle">RANKL↑ → osteoclasts</text>
+<text x="78" y="64" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Bone lysis → Ca²⁺ ↑</text>
+<text x="78" y="80" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Confusion · thirst</text>
+<text x="78" y="96" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Constipation · polyuria</text>
+<text x="78" y="112" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">IV saline + bisphosp.</text>
+<text x="78" y="128" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">ALP NORMAL</text>
+<rect x="158" y="10" width="140" height="128" rx="2" fill="#8a2818"/>
+<text x="228" y="30" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">R — Renal</text>
+<text x="228" y="48" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Cast nephropathy</text>
+<text x="228" y="64" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Free light chains +</text>
+<text x="228" y="80" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Tamm-Horsfall protein</text>
+<text x="228" y="96" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,200,100,.85)" text-anchor="middle">→ tubular obstruction</text>
+<text x="228" y="112" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">Avoid NSAIDs + contrast</text>
+<text x="228" y="128" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Dipstick misses BJ</text>
+<rect x="308" y="10" width="140" height="128" rx="2" fill="#5a1810"/>
+<text x="378" y="30" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">A — Anaemia</text>
+<text x="378" y="48" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Marrow infiltration</text>
+<text x="378" y="64" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Normocytic</text>
+<text x="378" y="80" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Rouleaux on film</text>
+<text x="378" y="96" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">ESR ↑↑↑</text>
+<text x="378" y="112" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">Normal reticulocytes</text>
+<text x="378" y="128" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">EPO reduced</text>
+<rect x="458" y="10" width="140" height="128" rx="2" fill="#3a1008"/>
+<text x="528" y="30" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">B — Bone</text>
+<text x="528" y="48" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Lytic lesions</text>
+<text x="528" y="64" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">No osteoblast activity</text>
+<text x="528" y="80" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,200,100,.85)" text-anchor="middle">ALP NORMAL</text>
+<text x="528" y="96" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Pathological Fx risk</text>
+<text x="528" y="112" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">Whole-body MRI best</text>
+<text x="528" y="128" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Bisphosphonates</text>
+<rect x="608" y="10" width="144" height="128" rx="2" fill="#1a1510" stroke="#c8452a" stroke-width="1.5"/>
+<text x="680" y="30" font-family="Syne,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="800">M-PROTEIN</text>
+<text x="680" y="50" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(200,69,42,.9)" text-anchor="middle">Monoclonal Ig spike</text>
+<text x="680" y="66" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">IgG 60% / IgA 20%</text>
+<text x="680" y="82" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">LC only 20%</text>
+<text x="680" y="98" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Hyperviscosity: IgA/M</text>
+<text x="680" y="114" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">Suppress normal Ig</text>
+<text x="680" y="128" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">→ infections</text>
+</svg></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+<div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Elderly patient with back pain + normocytic anaemia + renal impairment + Ca²⁺ ↑ + ESR ↑↑↑ → myeloma → serum protein electrophoresis + serum free light chains + urine Bence-Jones protein + whole-body MRI.</div></div>
+<div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Normal ALP = no bone disease in myeloma.</strong> Wrong — lytic lesions in myeloma stimulate ONLY osteoclasts (no osteoblasts), so ALP is characteristically NORMAL even with extensive bone destruction. Raised ALP = metastatic carcinoma, not myeloma.</div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+<div class="n-flag-list">
+<div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Spinal cord compression</strong> — back pain + leg weakness + bladder/bowel dysfunction in myeloma = vertebral collapse or plasmacytoma compressing cord. Urgent MRI spine + IV dexamethasone immediately. Irreversible paralysis within hours if untreated.</div></div>
+<div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Hyperviscosity syndrome (IgA/IgM myeloma)</strong> — headache, blurred vision, confusion, mucosal bleeding. Fundoscopy: "sausage-link" retinal veins. Urgent plasmapheresis to reduce viscosity. Life-threatening if missed.</div></div>
+</div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">the list</span></div>
+<div class="n-pearl-list">
+<div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>MGUS → Smouldering → Myeloma.</strong> MGUS: M-protein &lt;30g/L, &lt;10% plasma cells, no CRAB → 1% per year transform. Smouldering: ≥10% plasma cells but no CRAB → monitor without treatment. CRAB present = treatment required.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Bence-Jones protein is NOT detected by urine dipstick.</strong> Dipstick detects albumin only, not light chains. Must send specific urine electrophoresis. A negative dipstick does not exclude myeloma light chain disease — a common clinical trap.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Rouleaux formation on blood film + high ESR = clue.</strong> Excess M-protein coats RBCs → they stack like coins. Rouleaux + normocytic anaemia + high ESR in an older patient → myeloma screen before anything else.</div></div>
+</div>
+</div>
+<div class="n-note-end-cta" onclick="showVentPopup()"><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+NOTES.mds=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">Pathology · WBC &amp; Lymphoid</div>
+  <div class="n-hero-title">Myelodysplastic<br><em>Syndrome</em></div>
+  <div class="n-hero-sub">WBC 09 &nbsp;·&nbsp; Dysplastic marrow · cytopenias · ring sideroblasts · AML risk &nbsp;·&nbsp; High-Yield</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">A <strong>clonal haematopoietic stem cell disorder</strong> characterised by dysplastic marrow production and peripheral cytopenias — despite a marrow that is often hypercellular. A pre-leukaemic condition: ~30% transform to AML. Ring sideroblasts are the morphological hallmark of the RS subtype.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">MDS is common in elderly patients and is frequently mistaken for B12/folate deficiency or aplastic anaemia. The marrow is hypercellular — the opposite of aplasia. AML transformation risk determines treatment intensity. del(5q) is the most important cytogenetic finding — it predicts response to lenalidomide.</div></div><div class="n-snap-cell"><div class="n-snap-label">Key focus</div><div class="n-snap-text">Dysplasia in ≥1 cell lineage, ring sideroblasts (mitochondrial iron), IPSS-R risk scoring, del(5q) and lenalidomide response, blast percentage thresholds (5–9% = EB-1, 10–19% = EB-2), AML transformation risk, and azacitidine as hypomethylating therapy for high-risk disease.</div></div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">V1</span><span class="n-section-title">MDS Subtypes and Risk</span><span class="n-section-tag">the viz</span></div>
+<div class="n-viz-block"><div class="n-viz-label-row"><span class="n-viz-title">MDS — WHO Subtypes and Key Features</span><span class="n-viz-sub">blasts 10–19% = MDS-EB-2, highest AML risk</span></div>
+<svg viewBox="0 0 760 148" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:hidden">
+<rect width="760" height="148" fill="#1a1208"/>
+<rect x="8" y="10" width="178" height="128" rx="2" fill="#c8452a"/>
+<text x="97" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">MDS-SLD/MLD</text>
+<text x="97" y="48" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(180,255,180,.9)" text-anchor="middle">Low risk</text>
+<text x="97" y="64" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Single/multi-lineage</text>
+<text x="97" y="80" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">dysplasia</text>
+<text x="97" y="96" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Blasts &lt;5%</text>
+<text x="97" y="112" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">Watch/EPO/Transfuse</text>
+<text x="97" y="128" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">del(5q): lenalidomide</text>
+<rect x="196" y="10" width="178" height="128" rx="2" fill="#8a2818"/>
+<text x="285" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">MDS-RS</text>
+<text x="285" y="48" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Ring sideroblasts</text>
+<text x="285" y="64" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">≥15% of erythroids</text>
+<text x="285" y="80" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,0,.95)" text-anchor="middle">SF3B1 mutation</text>
+<text x="285" y="96" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Low AML risk</text>
+<text x="285" y="112" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">Luspatercept option</text>
+<text x="285" y="128" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Prussian blue stain</text>
+<rect x="384" y="10" width="178" height="128" rx="2" fill="#5a1810"/>
+<text x="473" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">MDS-EB-1</text>
+<text x="473" y="48" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,200,100,.9)" text-anchor="middle">Intermediate risk</text>
+<text x="473" y="64" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Blasts 5–9%</text>
+<text x="473" y="80" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Hypomethylating agents</text>
+<text x="473" y="96" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Azacitidine/decitabine</text>
+<text x="473" y="112" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">allo-SCT if fit</text>
+<text x="473" y="128" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Cytopenias worsen</text>
+<rect x="572" y="10" width="180" height="128" rx="2" fill="#1a1510" stroke="#c8452a" stroke-width="1.5"/>
+<text x="662" y="30" font-family="Syne,sans-serif" font-size="10" fill="white" text-anchor="middle" font-weight="800">MDS-EB-2</text>
+<text x="662" y="48" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(200,69,42,.9)" text-anchor="middle">HIGH AML RISK</text>
+<text x="662" y="64" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Blasts 10–19%</text>
+<text x="662" y="80" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Auer rods may appear</text>
+<text x="662" y="96" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(200,69,42,.9)" text-anchor="middle">→ AML imminent</text>
+<text x="662" y="112" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">allo-SCT urgently</text>
+<text x="662" y="128" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">AML if blasts ≥20%</text>
+</svg></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">M1</span><span class="n-section-title">Why Cytopenia Despite Normal/High Marrow Cellularity</span><span class="n-section-tag">mechanism</span></div>
+<div class="n-mech-chain">
+<div class="n-mech-step"><div class="n-mech-dot d1">01</div><div class="n-mech-body"><div class="n-mech-cause">Clonal HSC with driver mutations</div><div class="n-mech-text">MDS arises from a mutated haematopoietic stem cell. <strong>Common mutations: SF3B1, TET2, ASXL1, RUNX1, TP53.</strong> These impair differentiation and maturation rather than causing uncontrolled proliferation.</div></div></div>
+<div class="n-mech-step"><div class="n-mech-dot d2">02</div><div class="n-mech-body"><div class="n-mech-cause">Ineffective haematopoiesis</div><div class="n-mech-text">Cells are produced but are dysplastic and functionally defective. <strong>They undergo apoptosis within the marrow before reaching the bloodstream</strong> — marrow looks cellular but blood counts are low.</div></div></div>
+<div class="n-mech-step"><div class="n-mech-dot d3">03</div><div class="n-mech-body"><div class="n-mech-cause">Progressive clonal dominance</div><div class="n-mech-text">Over time, the dysplastic clone acquires additional mutations. <strong>Accumulation of mutations → increasing blast percentage → eventual AML transformation.</strong> High-risk MDS can transform in months.</div></div></div>
+</div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+<div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Elderly patient with macrocytic anaemia unresponsive to B12/folate replacement + dysplastic neutrophils (hypersegmented, hyposegmented/Pelger-Huët) on film + low reticulocytes → MDS → bone marrow aspirate + trephine + cytogenetics.</div></div>
+<div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Macrocytic anaemia = B12 or folate deficiency.</strong> MDS is the other major cause of macrocytosis — and it doesn't respond to B12/folate supplementation. Clue: dysplastic neutrophils, thrombocytopenia, and failure to correct with supplements.</div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+<div class="n-flag-list">
+<div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>AML transformation</strong> — rapid worsening of cytopenias + increasing blast percentage in known MDS = transformation. Urgent marrow to confirm blasts ≥20%. High-risk MDS-EB-2: bridge urgently to allo-SCT before frank AML develops.</div></div>
+<div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>TP53 mutation in MDS</strong> — associated with complex karyotype, highest AML transformation risk, and resistance to most therapies. Venetoclax + azacitidine may have activity. Only allo-SCT is potentially curative. Must test TP53 at diagnosis.</div></div>
+</div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">the list</span></div>
+<div class="n-pearl-list">
+<div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Ring sideroblasts = iron-laden mitochondria encircling the nucleus.</strong> Seen on Prussian blue iron stain. Caused by SF3B1 splice factor mutation in most cases. ≥15% ring sideroblasts = MDS-RS subtype. Associated with lower AML risk than other MDS.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>del(5q) MDS — isolated deletion of 5q = best MDS prognosis.</strong> Responds dramatically to lenalidomide (achieves transfusion independence in 70%). Rarely transforms to AML. The one MDS subtype with a highly effective targeted treatment.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Pelger-Huët anomaly = hyposegmented neutrophils (pince-nez nuclei).</strong> A key dysplastic feature of MDS on blood film. Bilobed or unilobed neutrophil nuclei instead of normal 3–5 segments. Also reduced neutrophil granulation. Confirms dysplasia.</div></div>
+</div>
+</div>
+<div class="n-note-end-cta" onclick="showVentPopup()"><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+NOTES.lymphadenopathy=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">Pathology · WBC &amp; Lymphoid</div>
+  <div class="n-hero-title">Approach to<br><em>Lymphadenopathy</em></div>
+  <div class="n-hero-sub">WBC 10 &nbsp;·&nbsp; Reactive vs malignant · when to biopsy · staging matters &nbsp;·&nbsp; High-Yield</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">What is it</div><div class="n-snap-text">A <strong>systematic clinical approach to enlarged lymph nodes</strong> — distinguishing reactive (benign, self-limiting) from malignant (lymphoma, leukaemia, metastatic cancer). Site, size, consistency, associated B symptoms, and duration together form the diagnostic framework.</div></div><div class="n-snap-cell"><div class="n-snap-label">Why it matters</div><div class="n-snap-text">Missed lymphoma is a serious diagnostic failure. Hard, fixed, non-tender nodes &gt;2cm with B symptoms and raised LDH demand urgent excision biopsy — not watchful waiting. FNA gives cytology but not architecture. Staging with PET-CT changes treatment in lymphoma — and must not be delayed.</div></div><div class="n-snap-cell"><div class="n-snap-label">Key focus</div><div class="n-snap-text">Reactive vs malignant features, urgent biopsy criteria (size, consistency, B symptoms, LDH, duration), FNA vs excision biopsy distinction, Ann Arbor staging (I–IV), PET-CT as gold standard for lymphoma staging, and common causes of localised vs generalised lymphadenopathy.</div></div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">V1</span><span class="n-section-title">Reactive vs Malignant Features</span><span class="n-section-tag">the viz</span></div>
+<div class="n-viz-block"><div class="n-viz-label-row"><span class="n-viz-title">Lymphadenopathy — Reactive vs Malignant Features</span><span class="n-viz-sub">hard + fixed + B symptoms = biopsy urgently</span></div>
+<svg viewBox="0 0 760 148" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:hidden">
+<rect width="760" height="148" fill="#1a1208"/>
+<rect x="8" y="10" width="368" height="128" rx="2" fill="#5a1810"/>
+<text x="192" y="34" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">REACTIVE (likely benign)</text>
+<text x="192" y="54" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(180,255,180,.9)" text-anchor="middle">Soft · tender · mobile · &lt;1cm</text>
+<text x="192" y="70" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Short history · localised to infection site</text>
+<text x="192" y="86" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Resolves within 4–6 weeks</text>
+<text x="192" y="102" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Normal FBC · no B symptoms · LDH normal</text>
+<text x="192" y="118" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">Causes: URTI · EBV · dental · skin infection</text>
+<text x="192" y="134" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Observe 4–6 weeks then reassess</text>
+<rect x="384" y="10" width="368" height="128" rx="2" fill="#1a1510" stroke="#c8452a" stroke-width="1.5"/>
+<text x="568" y="34" font-family="Syne,sans-serif" font-size="13" fill="white" text-anchor="middle" font-weight="800">MALIGNANT (biopsy urgently)</text>
+<text x="568" y="54" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(200,69,42,.9)" text-anchor="middle">Hard · fixed · rubbery · &gt;2cm</text>
+<text x="568" y="70" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">Painless · progressive · weeks history</text>
+<text x="568" y="86" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,200,100,.9)" text-anchor="middle">B symptoms · night sweats · weight loss</text>
+<text x="568" y="102" font-family="JetBrains Mono,monospace" font-size="8.5" fill="rgba(255,255,255,.9)" text-anchor="middle">LDH ↑ · ESR ↑ · cytopenias on FBC</text>
+<text x="568" y="118" font-family="JetBrains Mono,monospace" font-size="8" fill="rgba(255,255,255,.55)" text-anchor="middle">Mediastinal mass · splenomegaly</text>
+<text x="568" y="134" font-family="JetBrains Mono,monospace" font-size="7.5" fill="rgba(255,255,255,.3)" text-anchor="middle">Excision biopsy — NOT FNA</text>
+</svg></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Causes by Distribution</span><span class="n-section-tag">localised vs generalised</span></div>
+<div class="n-diag-row"><div class="n-diag-label">Cervical (anterior)</div><div class="n-diag-content">URTI, EBV/CMV, dental infection, oral/pharyngeal cancer, HL (often starts here), NHL.</div></div>
+<div class="n-diag-row"><div class="n-diag-label">Axillary</div><div class="n-diag-content">Arm infection, cat-scratch disease (Bartonella), breast cancer metastasis, lymphoma.</div></div>
+<div class="n-diag-row"><div class="n-diag-label">Inguinal</div><div class="n-diag-content">STIs (syphilis, LGV, HSV), leg infection, pelvic malignancy, NHL.</div></div>
+<div class="n-diag-row"><div class="n-diag-label gold">Generalised</div><div class="n-diag-content"><strong>EBV (infectious mononucleosis), HIV seroconversion, CMV, toxoplasmosis, SLE, RA, CLL, NHL, ALL, sarcoidosis.</strong> Always test EBV/HIV monospot in young patients with generalised lymphadenopathy before biopsy.</div></div>
+</div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+<div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Progressive painless cervical lymphadenopathy &gt;6 weeks + night sweats + 5kg weight loss + no evidence of infection → urgent excision biopsy to exclude lymphoma. Do NOT biopsy the smallest node — take the most enlarged, most accessible one.</div></div>
+<div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>FNA is sufficient to diagnose lymphoma.</strong> FNA provides cytology only — individual cells without architecture. Lymphoma diagnosis requires lymph node architecture (follicular pattern? diffuse? Reed-Sternberg cells?). Always excise an intact node or at minimum core biopsy. FNA alone is insufficient.</div></div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+<div class="n-flag-list">
+<div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Supraclavicular lymphadenopathy is malignant until proven otherwise.</strong> Virchow's node (left supraclavicular) = Troisier's sign — metastatic GI/pelvic malignancy via thoracic duct. Right supraclavicular: lung, oesophagus. Biopsy urgently regardless of size.</div></div>
+<div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Mediastinal mass in lymphadenopathy workup</strong> — urgent CT chest. Anterior mediastinal mass: HL, NHL, thymoma, teratoma (4 Ts). If &gt;30% tracheal compression — avoid GA before diagnosis. Use steroids or radiotherapy urgently to reduce mass if airway compromised.</div></div>
+</div>
+</div>
+<div class="n-section">
+<div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">the list</span></div>
+<div class="n-pearl-list">
+<div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Supraclavicular lymphadenopathy = malignant until proven otherwise — always biopsy.</strong> Even small, non-tender supraclavicular nodes have high malignancy rates. Never observe supraclavicular nodes without a biopsy plan.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>PET-CT is gold standard for lymphoma staging and treatment response.</strong> FDG-avid lymphoma (most) is staged by PET-CT (Deauville scale for response). PET negativity after 2 cycles (interim PET) predicts excellent outcome and may allow de-escalation.</div></div>
+<div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Ann Arbor staging: I–IV + A/B.</strong> Stage I: 1 node region. Stage II: 2+ regions same side of diaphragm. Stage III: both sides of diaphragm. Stage IV: extranodal involvement. Suffix E = extranodal contiguous extension. B = B symptoms present.</div></div>
+</div>
+</div>
+<div class="n-note-end-cta" onclick="showVentPopup()"><div class="n-note-end-cta-tag">// End of note</div><div class="n-note-end-cta-title">Are you ventilating?</div><div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div><div class="n-note-end-cta-arrow">&#8599;</div></div></div>`;
+
+
+NOTES_MCQ.leukaemia_overview=[
+  {q:"According to the WHO classification, what blast percentage defines acute leukaemia?",opts:["≥10%","≥20%","≥30%","≥50%"],ans:1,focus:"WHO blast threshold",exp:"<strong>WHO 2016: blasts ≥20% in marrow or blood = acute leukaemia.</strong> The old FAB threshold was 30%. This matters in practice — a patient with 22% blasts is AML by WHO but not by FAB. Exams test both thresholds."},
+  {q:"Which marker is positive in ALL and negative in AML and CLL?",opts:["MPO","CD5","TdT","CD23"],ans:2,focus:"TdT lineage marker",exp:"<strong>TdT (terminal deoxynucleotidyl transferase) marks immature lymphoid cells — positive in ALL (B and T), negative in AML and CLL.</strong> MPO marks myeloid cells (AML). CD5 marks T-cells and CLL/MCL B-cells. CD23 is expressed in CLL."},
+  {q:"Philadelphia chromosome t(9;22) is defining in which leukaemia and also confers poor prognosis in which other?",opts:["AML (defining) and CLL (poor prognosis)","CML (defining) and ALL (poor prognosis)","CLL (defining) and AML (poor prognosis)","ALL (defining) and CML (poor prognosis)"],ans:1,focus:"Philadelphia chromosome — CML and ALL",exp:"<strong>t(9;22) BCR-ABL: present in 100% of CML (defining) and 25% of adult ALL (poor prognosis).</strong> In CML: treated with imatinib. In ALL: add TKI to chemotherapy — dramatically improves outcomes. In childhood ALL: Philadelphia-positive is rare and very high risk."},
+  {q:"Auer rods on a blood film are pathognomonic of:",opts:["ALL","CML","AML","CLL"],ans:2,focus:"Auer rods = AML",exp:"<strong>Auer rods are pathognomonic of AML.</strong> They are crystallised primary granules seen as pink needle-like inclusions in myeloblasts. Especially prominent in M3 APL ('faggot cells' = bundles). No other diagnosis produces Auer rods. Their presence on film = AML until proven otherwise."},
+  {q:"Hyperleukocytosis in acute leukaemia causes leucostasis. What is the immediate treatment to reduce WBC?",opts:["Start standard chemotherapy immediately","IV broad-spectrum antibiotics","Leukapheresis or hydroxyurea to reduce WBC before chemotherapy","IV immunoglobulin"],ans:2,focus:"Leucostasis — emergency management",exp:"<strong>Hyperleukocytosis (WBC &gt;100×10⁹/L) → leucostasis: sludging in cerebral and pulmonary capillaries.</strong> Emergency: leukapheresis (preferred) or hydroxyurea to reduce WBC before starting standard chemotherapy. Starting chemotherapy directly risks tumour lysis syndrome and worsening leucostasis simultaneously."}
+];
+
+NOTES_MCQ.aml=[
+  {q:"In acute promyelocytic leukaemia (M3 APL), what is the most dangerous early complication that must be treated before chemotherapy?",opts:["Tumour lysis syndrome","DIC — disseminated intravascular coagulation","Leucostasis","Hypercalcaemia"],ans:1,focus:"APL — DIC emergency",exp:"<strong>DIC is the most dangerous early complication of APL.</strong> Abnormal promyelocyte granules contain tissue factor — spontaneous or chemotherapy-induced lysis releases these and triggers DIC. Intracranial haemorrhage is the leading early cause of death. Treat DIC with FFP/cryoprecipitate/platelets before and during ATRA initiation."},
+  {q:"ATRA (all-trans retinoic acid) works in APL by:",opts:["Directly killing promyelocytes by inducing apoptosis","Overcoming the PML-RARA block — promyelocytes differentiate into mature neutrophils instead of dying","Inhibiting the FLT3 tyrosine kinase","Blocking BCR-ABL fusion protein"],ans:1,focus:"ATRA mechanism in APL",exp:"<strong>ATRA overcomes the PML-RARA differentiation block — promyelocytes mature into neutrophils rather than being lysed by chemotherapy.</strong> This avoids the massive granule release that causes DIC. ATRA + arsenic trioxide achieves &gt;90% cure in APL — the most curable AML subtype."},
+  {q:"Which AML cytogenetic finding confers the BEST prognosis?",opts:["Complex karyotype (≥3 abnormalities)","FLT3-ITD mutation without NPM1","t(8;21) or inv(16)","Monosomy 5 or 7"],ans:2,focus:"AML good prognosis cytogenetics",exp:"<strong>t(8;21) and inv(16) are favourable-risk AML — these patients may achieve cure with chemotherapy alone without allo-SCT in first remission.</strong> NPM1 mutation without FLT3-ITD and CEBPA double mutation are also favourable. Complex karyotype and monosomy 5/7 are poor-risk features."},
+  {q:"Standard induction chemotherapy for non-APL AML in a fit patient is:",opts:["R-CHOP × 6 cycles","ABVD × 4 cycles","'7+3' — cytarabine 7 days + daunorubicin 3 days","Imatinib monotherapy"],ans:2,focus:"AML induction — 7+3",exp:"<strong>'7+3' (cytarabine for 7 days + an anthracycline for 3 days) is standard non-APL AML induction.</strong> Achieves complete remission in 60–80% of younger fit patients. Elderly patients often cannot tolerate intensive therapy — azacitidine or venetoclax + azacitidine is used instead."},
+  {q:"Gum hypertrophy in AML is most characteristic of which FAB subtype?",opts:["M1 — undifferentiated AML","M2 — AML with maturation","M4/M5 — monocytic/myelomonocytic AML","M7 — megakaryoblastic AML"],ans:2,focus:"Gum hypertrophy — monocytic AML",exp:"<strong>Gum hypertrophy (gingival infiltration) is characteristic of M4/M5 monocytic AML.</strong> Leukaemic monocytes infiltrate gingival tissue, causing painful gum swelling. Skin infiltration ('leukaemia cutis') also occurs. Monocytic AML also has the highest CNS involvement risk among AML subtypes."}
+];
+
+NOTES_MCQ.all=[
+  {q:"What is the peak age for ALL and what is the cure rate in children vs adults?",opts:["Peak age 20–30 years; children 50% cure; adults 80% cure","Peak age 2–5 years; children 80–90% cure; adults 40–50% cure","Peak age 10–15 years; children 60% cure; adults 60% cure","ALL only occurs in adults over 60"],ans:1,focus:"ALL epidemiology — children vs adults",exp:"<strong>ALL peaks at 2–5 years of age. Children achieve 80–90% cure rates. Adults achieve only 40–50% cure.</strong> Adolescents and young adults do better on paediatric protocols than adult protocols. The biology is different: children more often have favourable cytogenetics (hyperdiploidy, ETV6-RUNX1)."},
+  {q:"Why is CNS prophylaxis mandatory in ALL treatment?",opts:["The CNS is the primary site of ALL origin","The blood-brain barrier excludes most chemotherapy — the CNS acts as a sanctuary site for residual blasts","ALL causes direct CNS infiltration in all patients at diagnosis","CNS prophylaxis prevents treatment-related neurotoxicity"],ans:1,focus:"CNS sanctuary site in ALL",exp:"<strong>The BBB excludes most systemic chemotherapy — leukaemic blasts can survive in the meninges even during systemic remission, causing CNS relapse.</strong> Without prophylaxis, up to 50% of children relapsed in the CNS historically. IT methotrexate is given at multiple points during treatment, replacing cranial radiotherapy (which caused neurotoxicity)."},
+  {q:"Philadelphia chromosome-positive ALL in adults requires which modification to standard treatment?",opts:["Higher dose of standard chemotherapy only","Addition of a tyrosine kinase inhibitor (imatinib or dasatinib)","Removal of CNS prophylaxis","Immediate bone marrow transplant without induction chemotherapy"],ans:1,focus:"Ph+ ALL — TKI addition",exp:"<strong>t(9;22) BCR-ABL (Philadelphia chromosome) is found in 25% of adult ALL and confers poor prognosis.</strong> Adding a TKI (imatinib or dasatinib) to standard chemotherapy dramatically improves outcomes. Must check BCR-ABL by PCR in every adult ALL at diagnosis. Ph+ ALL now has outcomes approaching Ph-negative ALL with TKI."},
+  {q:"T-ALL is associated with which clinical finding that constitutes a potential emergency?",opts:["Massive splenomegaly and splenic rupture","Anterior mediastinal mass causing SVC obstruction and potential airway compromise","Intracranial haemorrhage from DIC","Bone pain and pathological fractures"],ans:1,focus:"T-ALL mediastinal mass",exp:"<strong>T-ALL occurs in adolescent males and often presents with an anterior mediastinal mass.</strong> This can cause SVC obstruction (facial swelling, arm oedema, distended neck veins) and — critically — airway compromise. Avoid GA or sedation before treatment — the airway can collapse under anaesthesia. Urgent treatment initiation is critical."},
+  {q:"TdT is positive in ALL. Which of the following describes TdT correctly?",opts:["Myeloperoxidase — marks myeloid cell differentiation","Terminal deoxynucleotidyl transferase — marks immature lymphoid progenitors; positive in ALL, negative in AML and mature lymphoid malignancies","A surface immunoglobulin expressed by mature B-cells","An enzyme expressed only in T-cell leukaemias"],ans:1,focus:"TdT — definition and significance",exp:"<strong>TdT is terminal deoxynucleotidyl transferase — a nuclear enzyme that adds random nucleotides to V(D)J junctions during lymphoid differentiation. It marks IMMATURE lymphoid cells.</strong> Positive in ALL (B and T), negative in AML, CLL, and mature lymphomas. Key immunophenotyping marker for lineage and maturity assessment."}
+];
+
+NOTES_MCQ.cml=[
+  {q:"The translocation t(9;22) in CML creates which fusion protein?",opts:["PML-RARA","BCR-ABL — a constitutively active tyrosine kinase","ETV6-RUNX1","MYC-IgH"],ans:1,focus:"BCR-ABL — CML defining lesion",exp:"<strong>t(9;22) fuses the BCR gene (chromosome 22) with ABL1 (chromosome 9) → BCR-ABL fusion protein with constitutively active tyrosine kinase activity.</strong> This drives uncontrolled myeloid proliferation. The resulting chromosome 22 is the Philadelphia chromosome. Imatinib blocks the ATP-binding site of BCR-ABL."},
+  {q:"On the blood film in CML, what finding is virtually pathognomonic?",opts:["Smudge cells","Auer rods","Left shift with all myeloid stages + significant basophilia","Hypersegmented neutrophils"],ans:2,focus:"CML blood film — basophilia",exp:"<strong>Significant basophilia with all myeloid maturation stages on the blood film is virtually pathognomonic of CML.</strong> Reactive leukocytosis (infection) almost never causes basophilia. WBC can be 50–500×10⁹/L. Confirm with BCR-ABL PCR. Basophils release histamine — patients may have pruritus and peptic ulcers."},
+  {q:"What is blast crisis in CML and why is it important?",opts:["A transient increase in WBC during imatinib initiation","Blasts ≥20% — transformation to acute leukaemia (AML or ALL), requiring immediate change of treatment","The phase of CML with 10–19% blasts — stable and treatable with dose escalation only","A side effect of tyrosine kinase inhibitors"],ans:1,focus:"Blast crisis — definition and management",exp:"<strong>Blast crisis = blasts ≥20% in CML — transformation to acute leukaemia (myeloid 70%, lymphoid 30%).</strong> Median survival without allo-SCT is months. Treatment: treat as AML/ALL + TKI, then bridge to allo-SCT. Accelerated phase (blasts 10–19%) precedes blast crisis and is the warning sign."},
+  {q:"Which T315I mutation in CML is clinically significant?",opts:["It improves response to imatinib by increasing BCR-ABL sensitivity","It is the 'gatekeeper' mutation — confers resistance to ALL TKIs except ponatinib (3rd gen)","It causes transformation to blast crisis immediately","It is only found in lymphoid blast crisis"],ans:1,focus:"T315I — TKI resistance",exp:"<strong>T315I is the 'gatekeeper' mutation — it blocks ATP binding site access for ALL first and second generation TKIs (imatinib, dasatinib, nilotinib, bosutinib).</strong> Only ponatinib (3rd gen) and asciminib retain activity. Detected by Sanger sequencing or next-generation sequencing. allo-SCT should be considered."},
+  {q:"What was the historical significance of imatinib in oncology?",opts:["It was the first monoclonal antibody approved for cancer treatment","It was the first targeted small molecule tyrosine kinase inhibitor to demonstrate that molecularly targeted therapy could transform cancer outcomes","It was the first chemotherapy agent to achieve cure in a solid tumour","It introduced the concept of combination chemotherapy"],ans:1,focus:"Imatinib — oncology milestone",exp:"<strong>Imatinib (2001) was the first approved targeted tyrosine kinase inhibitor — proof of concept that a single molecular target could be exploited to transform cancer outcomes.</strong> CML 5-year survival went from ~30% (pre-imatinib) to &gt;90%. It launched the era of precision oncology and rational drug design based on molecular targets."}
+];
+
+NOTES_MCQ.cll=[
+  {q:"What are the characteristic immunophenotypic markers of CLL?",opts:["TdT+ · CD19+ · CD10+","CD5+ · CD23+ · CD19+ · weak surface immunoglobulin","CD15+ · CD30+ · CD45-","MPO+ · CD13+ · CD33+"],ans:1,focus:"CLL immunophenotype",exp:"<strong>CLL is CD5+/CD23+/CD19+ with weak (dim) surface immunoglobulin expression.</strong> CD5 is normally a T-cell marker — its aberrant expression on B-cells defines CLL. CD23 distinguishes CLL from mantle cell lymphoma (also CD5+ but CD23-). Weak sIg differentiates from most B-cell lymphomas."},
+  {q:"What are smudge (Gumprecht) cells and which condition are they associated with?",opts:["Fragmented red blood cells — seen in microangiopathic haemolytic anaemia","Lysed lymphocytes on a blood film — pathognomonic of CLL","Hypersegmented neutrophils — megaloblastic anaemia","Abnormal plasma cells — multiple myeloma"],ans:1,focus:"Smudge cells — CLL",exp:"<strong>Smudge cells (Gumprecht cells) are CLL lymphocytes that are so fragile they rupture during blood film preparation.</strong> The lysed nuclear material smears across the slide. They are pathognomonic of CLL when seen alongside lymphocytosis. Their presence alone on a film warrants immunophenotyping."},
+  {q:"What is Richter transformation and what are its clinical features?",opts:["Transformation of CLL to AML — associated with Auer rods","Transformation of CLL to DLBCL — sudden deterioration, rapidly enlarging nodes, B symptoms, LDH ↑↑","Transformation of CLL to Hodgkin lymphoma — Reed-Sternberg cells appear","Transformation of CLL to plasma cell myeloma — M-protein develops"],ans:1,focus:"Richter transformation",exp:"<strong>Richter transformation: CLL transforms to diffuse large B-cell lymphoma (DLBCL) in 5–10% of patients.</strong> Clinical: sudden deterioration in previously stable CLL, rapidly enlarging nodes, fever, night sweats, LDH ↑↑. Diagnosis: PET-CT to find most metabolically active node → excision biopsy (not FNA). Median survival ~1 year."},
+  {q:"In Binet stage A CLL (no cytopenias, &lt;3 lymph node areas), what is the evidence-based treatment approach?",opts:["Start chlorambucil chemotherapy immediately to prevent progression","Start FCR (fludarabine, cyclophosphamide, rituximab) immediately","Active surveillance (watch and wait) — early treatment does not improve survival","Start ibrutinib immediately in all newly diagnosed CLL"],ans:2,focus:"CLL Binet stage A — watch and wait",exp:"<strong>Multiple randomised trials showed early treatment in Binet stage A CLL does not improve overall survival and increases toxicity.</strong> Active surveillance with regular FBC monitoring is standard. Treatment is initiated only when symptoms develop, cytopenias worsen, rapid lymphocyte doubling time (&lt;6 months), or stage C develops."},
+  {q:"Which genomic deletion in CLL confers the worst prognosis and resistance to standard chemotherapy?",opts:["del(13q) — best prognosis","del(11q) — intermediate prognosis","del(17p) / TP53 mutation — worst prognosis, resistant to FCR","Trisomy 12 — intermediate prognosis"],ans:2,focus:"del(17p) — worst CLL prognosis",exp:"<strong>del(17p) / TP53 mutation = worst CLL prognosis and resistance to fludarabine-based chemotherapy.</strong> TP53 is required for chemotherapy-induced apoptosis — without it, chemotherapy is ineffective. Treatment: venetoclax (BCL-2 inhibitor) + obinutuzumab, or ibrutinib (BTK inhibitor). Must test TP53 before every treatment decision."}
+];
+
+NOTES_MCQ.hodgkin=[
+  {q:"What are Reed-Sternberg cells and what is their immunophenotype in classical Hodgkin lymphoma?",opts:["Myeloid blast cells — MPO+ · CD13+ · CD33+","Binucleate cells with owl-eye nucleoli — CD15+ · CD30+ · CD45- · CD20-","Lymphocytes with smudged nuclei — CD5+ · CD23+","Plasma cells producing monoclonal immunoglobulin"],ans:1,focus:"Reed-Sternberg cells — classical HL",exp:"<strong>RS cells are binucleate (or multinucleate) with prominent 'owl-eye' nucleoli — the hallmark of classical Hodgkin lymphoma.</strong> Immunophenotype: CD15+, CD30+, CD45- (unusual — most lymphoid cells are CD45+), CD20- (usually). RS cells make up &lt;1% of the tumour mass — the rest is reactive inflammatory stroma."},
+  {q:"Which Hodgkin lymphoma subtype is most common and what patient demographic does it predominantly affect?",opts:["Lymphocyte-depleted — elderly males","Mixed cellularity — middle-aged males with EBV","Nodular sclerosis — young women with mediastinal mass","Lymphocyte-rich — children under 10"],ans:2,focus:"Nodular sclerosis HL — most common subtype",exp:"<strong>Nodular sclerosis is the most common Hodgkin lymphoma subtype (~70%).</strong> It predominantly affects young women (age 20–35), classically presents with mediastinal mass, and has lacunar RS cells surrounded by collagen bands that divide the node into nodules. EBV is less commonly associated than in mixed cellularity."},
+  {q:"What is the ABVD chemotherapy regimen and which toxicities are associated with each drug?",opts:["Adriamycin (cardiac) · Bleomycin (lung fibrosis) · Vinblastine (neuropathy) · Dacarbazine (nausea)","Asparaginase · BCG · Vincristine · Doxorubicin","Azacitidine · Bortezomib · Venetoclax · Dasatinib","Alemtuzumab · Bendamustine · Vinorelbine · Dexamethasone"],ans:0,focus:"ABVD chemotherapy and toxicities",exp:"<strong>ABVD: Adriamycin (doxorubicin — cumulative cardiotoxicity, monitor echo) · Bleomycin (pulmonary fibrosis — monitor DLCO) · Vinblastine (peripheral neuropathy, myelosuppression) · Dacarbazine (nausea).</strong> Bleomycin pulmonary toxicity is the most serious — any respiratory symptoms during ABVD require stopping bleomycin and starting steroids."},
+  {q:"What are B symptoms in Hodgkin lymphoma staging?",opts:["Bruising · Bleeding · Bone pain","Fever &gt;38°C · drenching night sweats · weight loss &gt;10% body weight in 6 months","Breathlessness · Bone marrow infiltration · Back pain","Bradycardia · Blood pressure changes · Bowel symptoms"],ans:1,focus:"B symptoms — definition",exp:"<strong>B symptoms: fever (&gt;38°C) + drenching night sweats + weight loss &gt;10% of body weight in 6 months.</strong> ALL THREE must be documented ('B' stage). They indicate systemic disease and require more intensive treatment. Pruritus is associated with HL but is NOT a B symptom. A-stage = none of these symptoms present."},
+  {q:"A young woman treated with mediastinal radiotherapy for HL at age 25. What is the most important long-term surveillance she requires?",opts:["Annual colonoscopy from age 40","Annual breast MRI + mammography from 8 years post-RT (or age 25, whichever later) due to 30× increased breast cancer risk","Annual PSA testing","Annual thyroid function only"],ans:1,focus:"Late effects — breast cancer after HL radiotherapy",exp:"<strong>Mediastinal radiotherapy in young women → 30× increased breast cancer risk at 15–20 years post-treatment.</strong> Annual breast MRI + mammography from 8 years post-radiation or age 25, whichever comes later — per NICE/ESMO guidelines. Also monitor for hypothyroidism (thyroid in radiation field), cardiac disease (coronary artery disease), and secondary lung cancer."}
+];
+
+NOTES_MCQ.nhl=[
+  {q:"What translocation is found in follicular lymphoma and what is its mechanism?",opts:["t(8;14) — MYC rearrangement causing rapid proliferation","t(14;18) — IgH enhancer drives BCL-2 overexpression, preventing apoptosis","t(9;22) — BCR-ABL constitutively active tyrosine kinase","t(11;14) — Cyclin D1 overexpression driving cell cycle entry"],ans:1,focus:"Follicular lymphoma — t(14;18) BCL-2",exp:"<strong>t(14;18) in follicular lymphoma juxtaposes the IgH heavy chain enhancer (chromosome 14) with BCL-2 (chromosome 18) → constitutive BCL-2 overexpression → cells cannot undergo apoptosis → accumulate.</strong> BCL-2 is targeted by venetoclax. Follicular lymphoma is indolent but rarely cured — median survival 10–15 years, transformation to DLBCL in ~3% per year."},
+  {q:"What is the 'paradox of NHL' regarding treatment urgency vs prognosis?",opts:["Indolent lymphoma requires the most urgent treatment as it is most rapidly fatal","Aggressive lymphomas (DLBCL) are potentially curable but require urgent treatment; indolent lymphomas have long survival but are rarely cured — early treatment doesn't improve survival in early stage disease","All NHL has the same treatment urgency regardless of grade","Follicular lymphoma has a worse prognosis than DLBCL in all cases"],ans:1,focus:"NHL — indolent vs aggressive paradox",exp:"<strong>The NHL paradox: aggressive lymphomas (DLBCL) are life-threatening if untreated but are potentially CURABLE with R-CHOP. Indolent lymphomas (follicular) grow slowly but are rarely cured — and early treatment trials showed no survival benefit in early stage, only increased toxicity.</strong> Grade determines urgency, not prognosis alone."},
+  {q:"Burkitt lymphoma has the highest proliferation rate of any human tumour. What translocation drives this?",opts:["t(14;18) BCL-2 overexpression","t(8;14) placing MYC under IgH enhancer control","t(11;14) Cyclin D1 overexpression","t(9;22) BCR-ABL constitutive kinase"],ans:1,focus:"Burkitt — t(8;14) MYC",exp:"<strong>Burkitt lymphoma: t(8;14) places MYC oncogene (chromosome 8) under IgH enhancer control (chromosome 14) → constitutive MYC overexpression → near-100% Ki-67 proliferation index.</strong> 'Starry sky' pattern on histology = macrophages engulfing apoptotic tumour cells. Doubles every 24h. Aggressive TLS prophylaxis mandatory before treatment."},
+  {q:"What does 'double-hit lymphoma' mean and why does it change DLBCL treatment?",opts:["DLBCL occurring in two different nodal sites simultaneously","MYC + BCL-2 (and/or BCL-6) rearrangements — R-CHOP is insufficient, requires DA-R-EPOCH","DLBCL that has transformed from follicular lymphoma","DLBCL with both nodal and extranodal involvement"],ans:1,focus:"Double-hit lymphoma",exp:"<strong>Double-hit lymphoma: concurrent MYC + BCL-2 (±BCL-6) rearrangements — the most aggressive DLBCL subtype.</strong> R-CHOP achieves only ~25% long-term remission. Requires DA-R-EPOCH (dose-adjusted) or similar intensive protocol + CNS prophylaxis. Must test MYC rearrangement by FISH in ALL DLBCL at diagnosis — it changes treatment immediately."},
+  {q:"Mantle cell lymphoma is CD5+/CD23-. What translocation and protein overexpression defines it?",opts:["t(14;18) — BCL-2 overexpression","t(11;14) — Cyclin D1 overexpression driving uncontrolled cell cycle entry","t(8;14) — MYC overexpression","t(9;22) — BCR-ABL fusion kinase"],ans:1,focus:"Mantle cell lymphoma — t(11;14) Cyclin D1",exp:"<strong>Mantle cell lymphoma: t(11;14) — IgH enhancer drives Cyclin D1 overexpression → cells constitutively enter S-phase of cell cycle.</strong> CD5+/CD20+/CD23- (CD23 negativity distinguishes from CLL). GI involvement common (lymphomatous polyposis on colonoscopy). Considered aggressive and generally incurable — ibrutinib used at relapse. Median survival ~5 years."}
+];
+
+NOTES_MCQ.myeloma=[
+  {q:"What does CRAB stand for in myeloma diagnostic criteria?",opts:["Coagulopathy · Renal · Anaemia · Bleeding","Calcium (elevated) · Renal failure · Anaemia · Bone (lytic lesions)","Cryoglobulin · Rouleaux · Amyloid · Bence-Jones","Creatinine · Reticulocytes · Albumin · Blast cells"],ans:1,focus:"CRAB criteria",exp:"<strong>CRAB = Calcium elevated + Renal failure + Anaemia + Bone lytic lesions.</strong> Any one CRAB criterion in the presence of ≥10% clonal plasma cells in marrow establishes symptomatic myeloma requiring treatment. MGUS and smouldering myeloma: no CRAB features → observe without treatment."},
+  {q:"Why is alkaline phosphatase (ALP) typically NORMAL in myeloma despite extensive bone disease?",opts:["Myeloma cells suppress ALP production directly","Lytic lesions in myeloma stimulate ONLY osteoclasts, not osteoblasts — no new bone formation → ALP not raised","Myeloma produces a protein that interferes with ALP measurement","ALP is produced by plasma cells and is elevated in myeloma"],ans:1,focus:"Normal ALP in myeloma — osteoblast absence",exp:"<strong>Myeloma cells promote osteoclast activity via RANKL but suppress osteoblasts — so bone is destroyed but not rebuilt.</strong> Since ALP is produced by osteoblasts, it is characteristically NORMAL even with extensive lytic disease. A raised ALP in suspected myeloma suggests metastatic carcinoma (which stimulates both) rather than myeloma."},
+  {q:"Bence-Jones protein in myeloma — why is it missed on urine dipstick?",opts:["Bence-Jones protein is too large to appear in urine","Urine dipstick detects albumin, not immunoglobulin light chains — specific urine electrophoresis is required","Bence-Jones protein is degraded in urine","Bence-Jones protein is only found in serum, not urine"],ans:1,focus:"Bence-Jones protein — dipstick false negative",exp:"<strong>Urine dipstick detects albumin via a pH-based colorimetric reaction — it does NOT detect immunoglobulin light chains (Bence-Jones protein).</strong> A negative urine dipstick does NOT exclude myeloma light chain disease. Must order specific urine protein electrophoresis (UPEP) or urine immunofixation. A common and dangerous clinical trap."},
+  {q:"A myeloma patient with known spinal disease develops acute back pain and bilateral leg weakness. What is the immediate action?",opts:["Increase analgesia and arrange urgent outpatient MRI within 2 weeks","Urgent MRI spine + IV dexamethasone immediately — spinal cord compression is a haematological emergency","Arrange physiotherapy and reassess in 48h","Proceed with lumbar puncture to assess for meningeal myeloma"],ans:1,focus:"Spinal cord compression in myeloma",exp:"<strong>Back pain + leg weakness/sensory change + bladder/bowel symptoms in myeloma = cord compression emergency.</strong> Vertebral collapse or plasmacytoma compressing the spinal cord. Immediate: IV dexamethasone 8mg BD to reduce oedema + urgent MRI spine. Irreversible paralysis can develop within hours. Neurosurgical or radiotherapy input same day."},
+  {q:"A 70-year-old man has M-protein 15g/L, 8% plasma cells in marrow, and no CRAB features. What is the diagnosis and management?",opts:["Smouldering myeloma — start VRd immediately","MGUS (M-protein &lt;30g/L, plasma cells &lt;10%, no CRAB) — 6–12 monthly monitoring, no treatment","Symptomatic myeloma — start treatment now","Waldenstrom macroglobulinaemia — check IgM level"],ans:1,focus:"MGUS — management",exp:"<strong>This is MGUS: M-protein &lt;30g/L + plasma cells &lt;10% + no CRAB features.</strong> Risk of progression to myeloma: ~1% per year. Management: 6–12 monthly monitoring with serum protein electrophoresis + FBC + creatinine + calcium. No treatment. Smouldering myeloma = M-protein ≥30g/L OR plasma cells ≥10%, still no CRAB — also observe without treatment."}
+];
+
+NOTES_MCQ.mds=[
+  {q:"What is the cardinal paradox of MDS on blood tests?",opts:["Hypocellular marrow with elevated peripheral blood counts","Hypercellular or normocellular marrow with peripheral cytopenias — ineffective haematopoiesis","Normal marrow cellularity with normal blood counts but abnormal morphology only","Hypercellular marrow with elevated blasts but no cytopenias"],ans:1,focus:"MDS paradox — ineffective haematopoiesis",exp:"<strong>MDS: the marrow is often hypercellular or normocellular (producing cells) but peripheral blood shows cytopenias.</strong> This is because dysplastic cells are produced but die within the marrow before reaching the bloodstream — 'ineffective haematopoiesis.' Distinguishes MDS from aplastic anaemia (hypocellular marrow) and leukaemia (increased blasts)."},
+  {q:"Ring sideroblasts in MDS are diagnosed on which special stain and what mutation causes them?",opts:["Periodic acid-Schiff stain — JAK2 V617F mutation","Prussian blue iron stain — SF3B1 splice factor mutation in most cases","Sudan black B stain — FLT3-ITD mutation","Reticulin stain — TP53 mutation"],ans:1,focus:"Ring sideroblasts — stain and mutation",exp:"<strong>Ring sideroblasts = iron-laden mitochondria forming a partial or complete ring around the erythroblast nucleus, seen on Prussian blue iron stain.</strong> SF3B1 (splice factor) mutation in ~90% of MDS-RS. ≥15% ring sideroblasts defines MDS-RS subtype. Associated with lower AML transformation risk than other MDS subtypes. Luspatercept may improve anaemia."},
+  {q:"Which cytogenetic abnormality in MDS has the best prognosis and responds to lenalidomide?",opts:["Complex karyotype (≥3 abnormalities)","del(17p) / TP53 mutation","del(5q) — isolated deletion of the long arm of chromosome 5","Monosomy 7"],ans:2,focus:"del(5q) — best MDS prognosis + lenalidomide",exp:"<strong>Isolated del(5q) MDS has the best prognosis and responds dramatically to lenalidomide.</strong> Lenalidomide achieves transfusion independence in ~70% of del(5q) patients and often cytogenetic remission. Low AML transformation risk. Contrast with monosomy 7 or complex karyotype — high-risk features with poor prognosis."},
+  {q:"What is Pelger-Huët anomaly and what does it indicate in MDS?",opts:["Hypersegmented neutrophils with &gt;5 lobes — vitamin B12/folate deficiency","Hyposegmented neutrophils (bilobed or unilobed, 'pince-nez' shape) — a dysplastic feature of MDS","Giant platelets — MDS with thrombocytopenia","Nucleated red blood cells — severe haemolytic anaemia"],ans:1,focus:"Pelger-Huët anomaly — MDS dysplasia",exp:"<strong>Pelger-Huët anomaly in MDS: neutrophils with hyposegmented (bilobed or unilobed) nuclei instead of the normal 3–5 segments.</strong> The bilobed form resembles 'pince-nez' glasses. Combined with reduced neutrophil granulation, this is a key dysplastic feature on the blood film that supports MDS diagnosis. Distinct from the hypersegmented neutrophils of megaloblastic anaemia."},
+  {q:"MDS-EB-2 (blasts 10–19%) carries the highest AML transformation risk. What is the appropriate treatment?",opts:["Watchful waiting with regular FBC — treat only when blasts reach 30%","Start imatinib (TKI) immediately","Hypomethylating agents (azacitidine/decitabine) + urgent referral for allogeneic SCT if fit","Red cell transfusions only until AML develops"],ans:2,focus:"MDS-EB-2 — high risk treatment",exp:"<strong>MDS-EB-2 (blasts 10–19%) is high-risk and transforms to AML imminently.</strong> Treatment: azacitidine (hypomethylating agent) to reduce blasts and transfusion dependence + urgent allo-SCT evaluation if the patient is fit. The only potentially curative treatment for high-risk MDS is allo-SCT. Do not wait for frank AML to develop before transplant referral."}
+];
+
+NOTES_MCQ.lymphadenopathy=[
+  {q:"Which lymph node site is considered malignant until proven otherwise and requires urgent biopsy regardless of size?",opts:["Anterior cervical (reactive to dental infection)","Inguinal (common in STIs)","Supraclavicular — very high malignancy rate, associated with thoracic/abdominal malignancies","Axillary (common in upper limb infections)"],ans:2,focus:"Supraclavicular lymphadenopathy",exp:"<strong>Supraclavicular lymphadenopathy has a high malignancy rate and must be biopsied urgently.</strong> Left supraclavicular (Virchow's node = Troisier's sign): metastatic GI or pelvic malignancy via the thoracic duct. Right supraclavicular: lung, oesophagus, mediastinal malignancy. Even small, non-tender supraclavicular nodes warrant urgent investigation."},
+  {q:"Why is FNA insufficient for lymphoma diagnosis?",opts:["FNA requires general anaesthesia and carries unacceptable risk","FNA provides cytology (individual cells) only — lymphoma diagnosis requires architectural assessment of the lymph node (follicular pattern, diffuse replacement, RS cells) which requires excision biopsy or core biopsy","FNA is too expensive compared to excision biopsy","FNA cannot be performed in lymph nodes larger than 2cm"],ans:1,focus:"FNA vs excision biopsy in lymphoma",exp:"<strong>FNA provides individual cell cytology only — it cannot assess lymph node architecture.</strong> Lymphoma diagnosis requires: follicular vs diffuse pattern? Reed-Sternberg cells in reactive stroma? Mantle zone? These require intact tissue from excision biopsy (preferred) or core needle biopsy. FNA is adequate for metastatic carcinoma (cytology sufficient) but NOT for lymphoma."},
+  {q:"What is Ann Arbor stage IV in lymphoma?",opts:["4 or more nodal regions affected on the same side of the diaphragm","Bilateral nodal involvement on both sides of the diaphragm with splenomegaly","Extranodal organ involvement (liver, bone marrow, lung) by lymphoma — regardless of nodal stage","Lymphoma with any B symptoms present"],ans:2,focus:"Ann Arbor staging — stage IV",exp:"<strong>Ann Arbor stage IV = extranodal involvement of liver, bone marrow, lungs, or other organs.</strong> Stage I: 1 nodal region. Stage II: 2+ regions same side of diaphragm. Stage III: both sides of diaphragm. Stage IV: extranodal organs. Suffix B = B symptoms. Suffix E = contiguous extranodal extension from a nodal site. Stage IV requires systemic treatment regardless of lymphoma type."},
+  {q:"In a young adult with generalised lymphadenopathy and splenomegaly, what is the most important initial investigation before proceeding to biopsy?",opts:["CT chest/abdomen/pelvis immediately","PET-CT scan immediately","EBV monospot test (heterophile antibodies) and HIV test — to exclude infectious causes before biopsy","Bone marrow biopsy first"],ans:2,focus:"Generalised lymphadenopathy — initial investigation",exp:"<strong>EBV (infectious mononucleosis) and HIV seroconversion are common causes of generalised lymphadenopathy in young adults.</strong> EBV: monospot test + EBV IgM serology. HIV: 4th-generation HIV Ag/Ab test. CMV and toxoplasmosis also considered. These must be excluded before biopsy — unnecessary biopsies in EBV mononucleosis risk complications and give reactive histology that may be misinterpreted."},
+  {q:"Which feature of lymphadenopathy is MOST associated with malignancy?",opts:["Tender nodes that appeared after a sore throat 1 week ago","Soft, mobile nodes in the anterior cervical chain in a child with URTI","Hard, fixed, rubbery node &gt;2cm with progressive growth over 6 weeks + B symptoms","Bilateral axillary lymphadenopathy in a patient with RA on methotrexate"],ans:2,focus:"Malignant lymphadenopathy features",exp:"<strong>Hard, fixed (adherent to surrounding tissue), rubbery or firm texture, &gt;2cm, progressive over weeks, with B symptoms = malignant until proven otherwise.</strong> Reactive nodes: soft, tender, mobile, &lt;1–2cm, localised to site of infection, appear and resolve over days-weeks. The single most concerning feature is fixation to surrounding structures — suggests extracapsular spread."}
 ];
 
 let currentNote = null;
