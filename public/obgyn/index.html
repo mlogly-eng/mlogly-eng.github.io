@@ -1447,6 +1447,13 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
   <div class="notes-grid" id="notes-grid">
 
     <!-- OB NOTES -->
+    <div class="nc reveal" data-disc="ob" onclick="openNote('obgynanatomy')">
+      <div class="nc-type">Foundation · Anatomy</div><span class="nc-num">OB 00</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">OB/GYN Anatomy &amp; Embryology</div>
+      <p class="nc-preview">Uterine supports, blood supply, ureter relationships, measurements, and embryology.</p>
+      <div class="nc-foot"><span class="nc-meta">Cardinal ligament · Ureter · Müllerian ducts</span><span class="nc-arr">↗</span></div>
+    </div>
     <div class="nc reveal" data-disc="ob" onclick="openNote('pph')">
       <div class="nc-type">Emergency · OB</div><span class="nc-num">OB 01</span>
       <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
@@ -1594,6 +1601,13 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
       <div class="nc-title">Ovarian Cancer</div>
       <p class="nc-preview">The silent killer that isn't silent — the symptoms are there, they're just vague. Why stage at diagnosis determines everything.</p>
       <div class="nc-foot"><span class="nc-meta">CA-125 · FIGO · BRCA · Debulking</span><span class="nc-arr">↗</span></div>
+    </div>
+    <div class="nc reveal" data-disc="gyn" onclick="openNote('ovariantumors')">
+      <div class="nc-type">Oncology · GYN</div><span class="nc-num">GYN 16</span>
+      <div class="diff"><div class="dd on"></div><div class="dd on"></div><div class="dd on"></div></div>
+      <div class="nc-title">Ovarian Tumors</div>
+      <p class="nc-preview">Epithelial, germ cell, sex cord-stromal, and metastatic tumors — classification, markers, and clinical features.</p>
+      <div class="nc-foot"><span class="nc-meta">Dermoid · Krukenberg · Granulosa cell · AFP · hCG</span><span class="nc-arr">↗</span></div>
     </div>
     <div class="nc reveal" data-disc="gyn" onclick="openNote('subfertility')">
       <div class="nc-type">Reproductive · GYN</div><span class="nc-num">GYN 10</span>
@@ -1934,8 +1948,8 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
 <!-- ══ NOTE DATA ══════════════════════════════════════════ -->
 <script>
 // ── Note order & names (used by JS for navigation) ──
-const NOTE_ORDER = ['pph','preeclampsia','ectopic','placenta','gdm','shoulder','pretermlabour','miscarriage','cordprolapse','abruption','iol','obstetriccholestasis','ovarycyst','cervicalcancer','endometriosis','pcos','fibroids','pid','menopause','vulvalconditions','ovariancancer','subfertility','endometrialcancer','urinaryincontinence','contraception','sexuallytransmitted','acutegynae'];
-const NOTE_NAMES = {pph:'Postpartum Haemorrhage',preeclampsia:'Preeclampsia',ectopic:'Ectopic Pregnancy',placenta:'Placenta Praevia',gdm:'Gestational Diabetes',shoulder:'Shoulder Dystocia',pretermlabour:'Preterm Labour',miscarriage:'Miscarriage',cordprolapse:'Cord Prolapse',abruption:'Placental Abruption',iol:'Induction of Labour',obstetriccholestasis:'Obstetric Cholestasis',ovarycyst:'Ovarian Cysts',cervicalcancer:'Cervical Cancer',endometriosis:'Endometriosis',pcos:'PCOS',fibroids:'Fibroids',pid:'PID',menopause:'Menopause',vulvalconditions:'Vulval Conditions',ovariancancer:'Ovarian Cancer',subfertility:'Subfertility',endometrialcancer:'Endometrial Cancer',urinaryincontinence:'Urinary Incontinence',contraception:'Contraception',sexuallytransmitted:'STIs',acutegynae:'Acute Gynaecology'};
+const NOTE_ORDER = ['obgynanatomy','pph','preeclampsia','ectopic','placenta','gdm','shoulder','pretermlabour','miscarriage','cordprolapse','abruption','iol','obstetriccholestasis','ovarycyst','cervicalcancer','endometriosis','pcos','fibroids','pid','menopause','vulvalconditions','ovariancancer','ovariantumors','subfertility','endometrialcancer','urinaryincontinence','contraception','sexuallytransmitted','acutegynae'];
+const NOTE_NAMES = {obgynanatomy:'OB/GYN Anatomy & Embryology',ovariantumors:'Ovarian Tumors',pph:'Postpartum Haemorrhage',preeclampsia:'Preeclampsia',ectopic:'Ectopic Pregnancy',placenta:'Placenta Praevia',gdm:'Gestational Diabetes',shoulder:'Shoulder Dystocia',pretermlabour:'Preterm Labour',miscarriage:'Miscarriage',cordprolapse:'Cord Prolapse',abruption:'Placental Abruption',iol:'Induction of Labour',obstetriccholestasis:'Obstetric Cholestasis',ovarycyst:'Ovarian Cysts',cervicalcancer:'Cervical Cancer',endometriosis:'Endometriosis',pcos:'PCOS',fibroids:'Fibroids',pid:'PID',menopause:'Menopause',vulvalconditions:'Vulval Conditions',ovariancancer:'Ovarian Cancer',subfertility:'Subfertility',endometrialcancer:'Endometrial Cancer',urinaryincontinence:'Urinary Incontinence',contraception:'Contraception',sexuallytransmitted:'STIs',acutegynae:'Acute Gynaecology'};
 
 // ── Note content store ──
 const NOTES={};
@@ -3031,7 +3045,7 @@ NOTES.pcos=()=>`<div class="n-page"><div class="n-hero-new">
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
   <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">Irregular cycles + hirsutism + elevated LH:FSH ratio → think <em>PCOS</em> → confirm 2 of 3 Rotterdam criteria + exclude thyroid and prolactin.</div></div>
-  <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>LH:FSH ratio &gt;2.5 is characteristic but not a diagnostic criterion.</strong> Rotterdam criteria are the diagnostic standard. Do not diagnose on LH:FSH alone or USS alone.</div></div>
+  <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>LH:FSH ratio &gt;2.5 is characteristic but not a diagnostic criterion.</strong> Rotterdam criteria are the diagnostic standard. Do not diagnose on LH:FSH alone or USS alone. LH is <strong>elevated</strong> in PCOS — not decreased. <strong>Streak ovaries are NOT a feature of PCOS</strong> (streak ovaries = Turner syndrome 45,X). PCOS does NOT cause dyspareunia.</div></div>
 </div><div class="n-section">
   <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Management by presenting complaint</span><span class="n-section-tag">targeted</span></div>
   <div class="n-algo">
@@ -3074,7 +3088,38 @@ NOTES.pcos=()=>`<div class="n-page"><div class="n-hero-new">
   
     <div class="n-pearl"><div class="n-pearl-num">04</div><div class="n-pearl-body"><strong>PCOS increases risk of endometrial hyperplasia and cancer.</strong> Mechanism: chronic anovulation → unopposed oestrogen → endometrial proliferation. Women with oligomenorrhoea and PCOS should have progestogen to induce withdrawal bleeds every 3–4 months minimum. Any intermenstrual bleeding or persistent amenorrhoea &gt;3 months requires endometrial USS.<span class="n-pearl-exam">The exam will ask about long-term endometrial risk in PCOS.</span></div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Endometrial Histology by Phase</span></div>
+  <div class="n-diff-grid">
+    <div class="n-diff-card this"><div class="n-diff-card-tag">Proliferative (Follicular)</div><div class="n-diff-card-key">Glands straight, mitoses abundant, stroma compact. Under oestrogen influence (days 5–14).</div></div>
+    <div class="n-diff-card that"><div class="n-diff-card-tag">Secretory (Luteal)</div><div class="n-diff-card-key">Glands tortuous with secretions, subnuclear vacuoles (early), oedematous stroma (mid), pseudodecidual stroma (late). Under progesterone influence (days 15–28).</div></div>
+    <div class="n-diff-card this"><div class="n-diff-card-tag">Menstrual Phase</div><div class="n-diff-card-key">Glandular breakdown, stromal collapse, necrosis, bleeding. Prostaglandins cause vasoconstriction and myometrial contraction.</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Oogenesis &amp; Meiosis</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Primary oocyte:</strong> Arrested in prophase I from fetal life until puberty — can remain arrested for decades</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>At ovulation:</strong> Secondary oocyte + first polar body released (meiosis I completed just before ovulation, triggered by LH surge)</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>At fertilisation:</strong> Meiosis II completed → mature ovum + second polar body</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Corpus luteum:</strong> Produces progesterone, oestrogen, inhibin A, relaxin. Lasts 14 days unless rescued by hCG.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Corpus albicans:</strong> Hyalinised remnant after corpus luteum regression</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">08</span><span class="n-section-title">Cervical Mucus &amp; Hormones</span></div>
+  <div class="n-flag-list">
+
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Ferning:</strong> Palm-leaf crystallisation at ovulation due to high oestrogen — NaCl/KCl crystals on dried slide</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Spinnbarkeit:</strong> Elasticity/stretchability of mucus — &gt;8cm at ovulation (peak fertility)</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>At ovulation:</strong> Thin, clear, acellular, high spinnbarkeit, positive ferning — sperm penetration favoured</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Post-ovulation (progesterone):</strong> Thick, viscous, cellular, negative ferning — sperm penetration blocked</div></div>
+    </div>
+  <div class="n-exam-box"><div class="n-exam-if">Source after menopause</div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">09</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Normal periods exclude PCOS.</div></div>
@@ -3088,7 +3133,24 @@ NOTES.pcos=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Metformin is the first-line treatment for ovulation induction in PCOS.</div></div>
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Metformin alone is insufficient for ovulation induction.</strong> It improves insulin sensitivity and cycle regularity but does not reliably induce ovulation. First-line is letrozole; metformin is an adjunct, not a replacement.</div></div>
 </div>
+    <div class="n-trap">
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">PCOS causes streak ovaries.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Streak ovaries = Turner syndrome (45,X)</strong>, not PCOS. PCOS ovaries are enlarged with multiple small follicles (≥20 follicles or volume &gt;10mL). PCOS also does NOT cause dyspareunia.</div></div>
+</div>
+    <div class="n-trap">
+  <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">LH is decreased in PCOS.</div></div>
+  <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>LH is elevated in PCOS</strong> (raised LH:FSH ratio, typically &gt;2.5). This drives androgen production from theca cells. FSH is normal or low-normal.</div></div>
+</div>
   </div>
+  <div class="n-flag-list" style="margin-top:10px">
+  <div class="n-flag-item critical"><div class="n-flag-text"><strong>Post-ovulation: progesterone RISES</strong> (corpus luteum secretion). Exam trap: "all occur post-ovulation EXCEPT progesterone falls" — the EXCEPT is that it falls, because it actually rises.</div></div>
+  <div class="n-flag-item"><div class="n-flag-text"><strong>TRH (thyrotropin-releasing hormone):</strong> Produced by <strong>hypothalamus</strong>, NOT anterior pituitary. Stimulates TSH and prolactin release from anterior pituitary.</div></div>
+  <div class="n-flag-item"><div class="n-flag-text"><strong>Pulsatile GnRH is required</strong> for normal gonadotropin secretion. Continuous GnRH → downregulates receptors → suppresses FSH/LH (basis of GnRH agonist therapy for endometriosis).</div></div>
+  <div class="n-flag-item"><div class="n-flag-text"><strong>Inhibin:</strong> Produced by granulosa cells. Specifically <strong>inhibits FSH</strong> secretion (negative feedback). Inhibin A (luteal phase), Inhibin B (follicular phase).</div></div>
+  <div class="n-flag-item"><div class="n-flag-text"><strong>Prolactin rises with:</strong> stress, sleep, suckling, TRH, metoclopramide, antipsychotics, oestrogen. Inhibited by dopamine (bromocriptine lowers prolactin).</div></div>
+  <div class="n-flag-item"><div class="n-flag-text"><strong>Somatic cells:</strong> 46 chromosomes (diploid, 2n). Gametes: 23 chromosomes (haploid, n). Meiosis halves the chromosome number.</div></div>
+  </div>
+</div>
 <div class="n-anchor"><div class="n-anchor-text">PCOS is not just about the ovaries.<br>It's a <em>metabolic condition</em> that happens to affect reproduction.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
@@ -3609,7 +3671,40 @@ NOTES.cervicalcancer=()=>`<div class="n-page"><div class="n-hero-new">
     <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>Fertility-sparing surgery</strong> (radical trachelectomy) is an option for carefully selected stage 1A–1B1 women who wish to preserve their uterus. Cervix removed, uterus retained with a cerclage.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Site of Origin — Transformation Zone</span></div>
+  <div class="n-exam-box"><div class="n-exam-if">Key Point</div><div class="n-exam-statement">Cervical cancer arises at the <strong>squamo-columnar junction (transformation zone)</strong> — where columnar endocervical cells meet squamous ectocervix. This area undergoes squamous metaplasia and is most susceptible to HPV transformation.</div></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Ectropion (ectopy):</strong> Columnar epithelium visible on ectocervix — normal, especially in young women and OCP users</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">Colposcopy targets the transformation zone — aceto-white, punctation, mosaicism, atypical vessels = CIN features</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">08</span><span class="n-section-title">FIGO Staging (Simplified)</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item"><div class="n-flag-text"><strong>IA1:</strong> Stromal invasion &lt;3mm depth, ≤7mm width — cone biopsy may be sufficient</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>IA2:</strong> 3–5mm invasion, ≤7mm width</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>IB1:</strong> Clinically visible lesion ≤4cm confined to cervix</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>IB2:</strong> Visible lesion &gt;4cm confined to cervix</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>IIA:</strong> Involves upper ⅔ vagina (no parametrial involvement)</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>IIB:</strong> Parametrial involvement (not pelvic wall)</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>IIIA/B:</strong> Lower ⅓ vagina / pelvic wall / hydronephrosis</div></div>
+    <div class="n-flag-item critical"><div class="n-flag-text"><strong>IVA/B:</strong> Bladder or rectal mucosa invasion / distant metastases</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">09</span><span class="n-section-title">Histological Types</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Squamous cell carcinoma (80–90%):</strong> Arises from ectocervix. Associated with HPV 16 (most common). Keratinisation, intercellular bridges.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Adenocarcinoma (10–20%):</strong> Arises from endocervical glands. HPV 18 predominant. Worse prognosis stage-for-stage than squamous. Barrel-shaped cervix.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Exophytic pattern:</strong> Bulky, friable papillary mass growing outward — contact bleeding</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Endophytic pattern:</strong> Infiltrating, hard cervix — may not be visible on inspection</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">10</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Post-coital bleeding in a young woman is almost certainly cervical ectropion.</div></div>
@@ -3624,6 +3719,7 @@ NOTES.cervicalcancer=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Stage IA1–IB1 can be managed with radical trachelectomy in women who wish to preserve fertility.</strong> Radical hysterectomy is the standard, but fertility-sparing surgery is an established option in selected cases at specialist centres.</div></div>
 </div>
   </div>
+
 <div class="n-anchor"><div class="n-anchor-text">A vaccine. A smear programme.<br>This cancer is almost <em>entirely preventable.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
@@ -3909,7 +4005,7 @@ NOTES.menopause=()=>`<div class="n-page"><div class="n-hero-new">
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">HRT — indications and choices</span><span class="n-section-tag">most important treatment</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">HRT — indications and choices</span><span class="n-section-tag">most important treatment</span></div>
   <div class="n-algo">
     <div class="n-algo-row">
   <div class="n-algo-step s-first">Combined HRT (uterus intact)</div>
@@ -3929,7 +4025,7 @@ NOTES.menopause=()=>`<div class="n-page"><div class="n-hero-new">
 </div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
   <div class="n-flag-list">
     <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Postmenopausal bleeding = endometrial cancer until proven otherwise.</strong> Urgent 2WW referral. Even if on HRT — investigate all unexpected bleeding.</div></div>
     <div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>POI before age 40</strong> requires urgent investigation: FSH × 2 (6 weeks apart), karyotype (Turner syndrome), autoimmune screen. Do not dismiss irregular periods in young women.</div></div>
@@ -3937,14 +4033,45 @@ NOTES.menopause=()=>`<div class="n-page"><div class="n-hero-new">
     <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>HRT breast cancer risk:</strong> combined HRT carries a small increased risk (~4 extra cases per 1000 women over 5 years). Oestrogen-only has less risk. Absolute risk is small.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">08</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Transdermal (patch/gel) HRT has lower thrombotic risk than oral HRT.</strong> Oral oestrogen undergoes first-pass hepatic metabolism → clotting factor effects. Transdermal bypasses this. Prefer transdermal in women with VTE risk factors.<span class="n-pearl-exam">Exam loves this: candidates prescribe oral to everyone.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Micronised progesterone (Utrogestan)</strong> is the safest progestogen — lower breast cancer risk, no cardiovascular effect. Preferred over synthetic progestogens (norethisterone, medroxyprogesterone acetate).</div></div>
     <div class="n-pearl"><div class="n-pearl-num">03</div><div class="n-pearl-body"><strong>HRT can be prescribed by GPs</strong> — no specialist referral required for straightforward cases. Refer if: POI, HRT failure, uncertainty about risk, or complex co-morbidities.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">08</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">09</span><span class="n-section-title">Menopause Diagnosis</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Clinical diagnosis:</strong> 12 months amenorrhoea + typical symptoms in woman over 45 — no blood tests needed</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Biochemical (if under 45 or atypical):</strong> FSH &gt;30 IU/L confirms menopause. FSH &gt;15 IU/L = perimenopause. Check twice 4–6 weeks apart.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Premature ovarian insufficiency (POI):</strong> Menopause under age 40 — FSH &gt;25 IU/L on two occasions 4 weeks apart</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">10</span><span class="n-section-title">Postmenopausal Changes</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item"><div class="n-flag-text">Gonadotropins (FSH, LH) ↑↑ — loss of negative oestrogen feedback</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">Vaginal acidity ↓ → atrophic vaginitis, dyspareunia, recurrent UTIs</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">Bone density ↓ — accelerated bone loss for 5 years post-menopause → osteoporosis</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">Fibroids shrink — oestrogen-dependent; regrowth if HRT started</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">Endometriosis — symptoms improve (oestrogen-dependent)</div></div>
+    <div class="n-flag-item critical"><div class="n-flag-text"><strong>Postmenopausal bleeding:</strong> Always investigate — 10% have endometrial cancer. First-line: transvaginal USS (endometrial thickness &lt;4mm = low risk)</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">11</span><span class="n-section-title">Climacteric Symptoms</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Vasomotor (most common):</strong> Hot flushes (75%), night sweats — due to hypothalamic thermoregulatory dysfunction</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Psychological:</strong> Insomnia, irritability, mood swings, fatigue, poor concentration, memory issues</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Urogenital:</strong> Vaginal dryness, dyspareunia, urinary frequency, urgency, stress incontinence</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>HRT contraindications:</strong> oestrogen-dependent cancer (breast, endometrial), unexplained vaginal bleeding, active VTE, liver disease</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">12</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">HRT cannot be prescribed to women with a family history of breast cancer.</div></div>
@@ -3959,6 +4086,7 @@ NOTES.menopause=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>There is no arbitrary age limit for HRT.</strong> The decision to continue is based on individual benefit-risk assessment. For women with severe symptoms or osteoporosis, the benefits often continue to outweigh risks well beyond 60. Annual review — not automatic cessation — is appropriate.</div></div>
 </div>
   </div>
+
 <div class="n-anchor"><div class="n-anchor-text">Menopause is not a disease.<br>But undertreated oestrogen deficiency <em>causes one.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
@@ -4199,7 +4327,7 @@ NOTES.subfertility=()=>`<div class="n-page"><div class="n-hero-new">
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Initial Investigation</span><span class="n-section-tag">at first consultation — both partners</span></div>
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Initial Investigation</span><span class="n-section-tag">at first consultation — both partners</span></div>
   <div class="n-viz-block">
   <div class="n-viz-label-row"><span class="n-viz-title">Subfertility — Causes by Proportion and Investigation Priority</span><span class="n-viz-sub">investigate both partners simultaneously from the first appointment</span></div>
   <svg viewBox="0 0 760 155" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -4238,11 +4366,11 @@ NOTES.subfertility=()=>`<div class="n-page"><div class="n-hero-new">
     <div class="n-diag-row"><div class="n-diag-label err">Common mistake</div><div class="n-diag-content">Investigating only the woman at first appointment. Male factor accounts for 30% — semen analysis should be requested simultaneously.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Classic Exam Pattern</span><span class="n-section-tag">think fast</span></div>
   <div class="n-exam-box"><div class="n-exam-if">If you see</div><div class="n-exam-statement">12 months of trying + oligomenorrhoea + elevated LH:FSH → think <em>PCOS</em> → letrozole for ovulation induction after confirming both partners investigated.</div></div>
   <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Hydrosalpinx halves IVF success rates.</strong> A hydrosalpinx found before IVF must be treated with salpingectomy (not drainage — it refills). Do not proceed to IVF cycles with a known hydrosalpinx.</div></div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Management by cause</span><span class="n-section-tag">matched to diagnosis</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Management by cause</span><span class="n-section-tag">matched to diagnosis</span></div>
   <div class="n-algo">
     <div class="n-algo-row">
   <div class="n-algo-step s-first">Ovulatory dysfunction (PCOS)</div>
@@ -4262,7 +4390,7 @@ NOTES.subfertility=()=>`<div class="n-page"><div class="n-hero-new">
 </div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Letrozole has replaced clomifene as first-line ovulation induction in PCOS.</strong> Higher live birth rates, lower multiple pregnancy risk, no anti-oestrogenic endometrial effect.<span class="n-pearl-exam">Exam loves this: candidates say clomifene.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>AMH (anti-Müllerian hormone) predicts ovarian reserve</strong> — guides IVF stimulation protocol. Low AMH = fewer eggs = higher dose FSH. It does not predict fertility in natural conception.</div></div>
@@ -4278,7 +4406,58 @@ NOTES.subfertility=()=>`<div class="n-page"><div class="n-hero-new">
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Infertility Diagnostic Tests</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Day 21 progesterone:</strong> &gt;30 nmol/L confirms ovulation in a 28-day cycle. Adjust timing if cycles irregular.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>LH urine kits:</strong> Detect LH surge 24–36h before ovulation — best method for timing intercourse</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>BBT charting:</strong> Biphasic temperature rise after ovulation (progesterone effect) — retrospective only</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Post-coital test (Sims-Huhner):</strong> 8–12h after intercourse, mid-cycle. Examines sperm survival in cervical mucus. &gt;5 progressively motile sperm/hpf = adequate.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>HSG (hysterosalpingogram):</strong> Day 7–10. Assesses uterine cavity and tubal patency. Diagnoses Asherman's syndrome, polyps, fibroids, hydrosalpinx.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Laparoscopy:</strong> Gold standard for tubal patency (if HSG abnormal). Also diagnoses endometriosis and peritubal adhesions.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Hysteroscopy:</strong> Direct visualisation of uterine cavity. Treatment of intrauterine adhesions, polyps, submucous fibroids.</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">08</span><span class="n-section-title">Semen Analysis (WHO 2021)</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item"><div class="n-flag-text">Volume: ≥1.5 mL</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">pH: 7.2–7.8</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">Sperm concentration: ≥16 million/mL</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">Total motility: ≥42%</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">Progressive motility: ≥30%</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">Normal morphology: ≥4% (strict Kruger criteria)</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">Liquefaction: complete within 30–60 minutes</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">White blood cells: &lt;1 million/mL</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">09</span><span class="n-section-title">Ovulation Induction Protocols</span></div>
+  <div class="n-diff-grid">
+    <div class="n-diff-card this"><div class="n-diff-card-tag">Hypogonadotropic hypogonadism</div><div class="n-diff-card-key">HMG (FSH+LH) + hCG — works even in Sheehan's syndrome. Pulsatile GnRH if hypothalamus intact.</div></div>
+    <div class="n-diff-card that"><div class="n-diff-card-tag">PCOS (anovulatory)</div><div class="n-diff-card-key">Letrozole first-line (aromatase inhibitor, now preferred over clomiphene). Clomiphene citrate 50–150mg day 3–7 as alternative.</div></div>
+    <div class="n-diff-card this"><div class="n-diff-card-tag">Gonadotropins (HMG)</div><div class="n-diff-card-key">From postmenopausal urine or recombinant. Risk of OHSS and multiple pregnancy. Monitor with USS + oestradiol.</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">10</span><span class="n-section-title">Hydrosalpinx &amp; IVF</span></div>
+  <div class="n-exam-box"><div class="n-exam-if">Important Exam Point</div><div class="n-exam-statement">Hydrosalpinx reduces IVF success rates by ~50% due to embryotoxic fluid reflux into the uterine cavity. Management before IVF: <strong>bilateral salpingectomy</strong> (not drainage — recurs).</div></div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">11</span><span class="n-section-title">Ovarian Hyperstimulation Syndrome (OHSS)</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item critical"><div class="n-flag-text">Risk factors: PCOS, young age, high oestradiol, &gt;20 follicles, previous OHSS</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Mild:</strong> bloating, mild abdominal pain, ovarian enlargement — manage outpatient</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Severe:</strong> tense ascites, pleural effusion, oliguria, haemoconcentration (Hct &gt;45%), thromboembolism — admit, IV fluids, anticoagulation, paracentesis</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">Mechanism: VEGF-mediated capillary leak triggered by hCG</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">12</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">The woman's investigations are normal, so male factor is unlikely.</div></div>
@@ -4293,6 +4472,7 @@ NOTES.subfertility=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>IVF is the end of the pathway, not the first response to unexplained subfertility.</strong> After completing investigation, expectant management for up to 2 years (in women under 35 with no identified cause) is appropriate. Ovulation induction and IUI precede IVF in most pathways.</div></div>
 </div>
   </div>
+
 <div class="n-anchor"><div class="n-anchor-text">Never investigate one partner<br><em>without investigating both.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
@@ -4725,7 +4905,7 @@ NOTES.urinaryincontinence=()=>`<div class="n-page"><div class="n-hero-new">
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Assessment</span><span class="n-section-tag">history drives the diagnosis</span></div>
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Assessment</span><span class="n-section-tag">history drives the diagnosis</span></div>
   <div class="n-diag-steps">
     <div class="n-diag-row"><div class="n-diag-label gold">Bladder diary</div><div class="n-diag-content"><strong>3-day bladder diary</strong> before any treatment. Documents frequency, volumes, leakage episodes, urgency. Identifies: frequency (>8 voids/day = OAB), nocturia (>1/night), large functional bladder capacity (>400 mL = unlikely OAB).</div></div>
     <div class="n-diag-row"><div class="n-diag-label">Urinalysis + MSU</div><div class="n-diag-content">Exclude UTI and haematuria. <strong>Haematuria + urgency requires cystoscopy</strong> to exclude bladder cancer before treating as OAB.</div></div>
@@ -4733,7 +4913,7 @@ NOTES.urinaryincontinence=()=>`<div class="n-page"><div class="n-hero-new">
     <div class="n-diag-row"><div class="n-diag-label">Urodynamics</div><div class="n-diag-content">Required before surgery. Demonstrates: urodynamic stress incontinence (raised IAP + leak, no detrusor contraction), detrusor overactivity (involuntary contraction during filling), voiding dysfunction.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Management by Type</span><span class="n-section-tag">conservative before surgical — always</span></div>
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Management by Type</span><span class="n-section-tag">conservative before surgical — always</span></div>
   <div class="n-algo">
     <div class="n-algo-row">
   <div class="n-algo-step s-first">Stress UI — conservative</div>
@@ -4753,7 +4933,7 @@ NOTES.urinaryincontinence=()=>`<div class="n-page"><div class="n-hero-new">
 </div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">08</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Oxybutynin is the most effective anticholinergic but has the worst side-effect profile.</strong> Dry mouth, constipation, blurred vision, and — critically — cognitive impairment in elderly women. Prefer tolterodine or solifenacin, or switch to mirabegron (β3-agonist) which does not cross the blood-brain barrier.<span class="n-pearl-exam">Exam loves this: candidates prescribe oxybutynin to elderly women.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Mesh complications — be aware of the regulatory context.</strong> Transvaginal mesh for prolapse is banned in UK. Mid-urethral slings (TVT) for stress UI are still in use but restricted to specialist centres with patient counselling about risks (mesh exposure, chronic pain, dyspareunia).</div></div>
@@ -4768,7 +4948,17 @@ NOTES.urinaryincontinence=()=>`<div class="n-page"><div class="n-hero-new">
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">08</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">10</span><span class="n-section-title">Vesicovaginal Fistula (VVF)</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item critical"><div class="n-flag-text"><strong>Aetiology:</strong> Obstetric trauma (prolonged obstructed labour) = <strong>90% of cases in developing world</strong>. Iatrogenic (hysterectomy) = most common cause in developed world.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Presentation:</strong> Continuous painless leakage of urine per vaginum, no urge to void. Diagnosis: dye test (methylene blue in bladder), cystoscopy.</div></div>
+    <div class="n-flag-item critical"><div class="n-flag-text"><strong>Small fistula in bladder dome:</strong> May heal spontaneously with <strong>continuous bladder drainage (catheter) for 4–6 weeks</strong>.</div></div>
+    <div class="n-flag-item critical"><div class="n-flag-text"><strong>Surgical approach:</strong> Vaginal repair for simple/low fistulas. <strong>Abdominal (transabdominal) approach for complex, high, or recurrent fistulas</strong> — especially those involving trigone or ureter.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">Timing of repair: wait 3 months for inflammation to settle (except iatrogenic — repair immediately if recognised)</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">11</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">Urodynamics should be performed before starting conservative treatment.</div></div>
@@ -4779,6 +4969,7 @@ NOTES.urinaryincontinence=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Conservative treatment (supervised PFMT) achieves ~70% improvement and should always precede surgery.</strong> Surgery before a proper trial of PFMT is not appropriate. Pelvic floor physiotherapy outcomes are significantly better with supervised training versus unsupervised exercises — which is what most women are given.</div></div>
 </div>
   </div>
+
 <div class="n-anchor"><div class="n-anchor-text">The mechanism determines the treatment.<br><em>Stress and urgency are different diseases.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
@@ -4859,7 +5050,7 @@ NOTES.contraception=()=>`<div class="n-page"><div class="n-hero-new">
 </div>
     <div class="n-algo-row">
   <div class="n-algo-step s-fail">POP (mini-pill)</div>
-  <div class="n-algo-body">Progestogen-only. <strong>Safe in most COCP contraindications</strong> including migraine with aura, hypertension, breastfeeding, &gt;35 smoker. Desogestrel POP: 12-hour window (not 3-hour like older POPs). Primarily inhibits ovulation (unlike older POPs which mainly thicken mucus).<span class="n-involve">GP</span></div>
+  <div class="n-algo-body">Progestogen-only. <strong>Older POPs (norethisterone, levonorgestrel) do NOT reliably inhibit ovulation</strong> — work mainly via cervical mucus thickening + endometrial changes. <strong>Desogestrel POP (Cerazette): reliably inhibits ovulation</strong> + 12-hour missed-pill window (vs 3h for older POPs). Safe in most COCP contraindications including migraine with aura, hypertension, breastfeeding, &gt;35 smoker.dow (not 3-hour like older POPs). Primarily inhibits ovulation (unlike older POPs which mainly thicken mucus).<span class="n-involve">GP</span></div>
 </div>
     <div class="n-algo-row">
   <div class="n-algo-step s-severe">IUD (copper coil)</div>
@@ -4922,7 +5113,7 @@ NOTES.sexuallytransmitted=()=>`<div class="n-page"><div class="n-hero-new">
   </div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">High-Yield STI Summaries</span><span class="n-section-tag">one disease, one key fact</span></div>
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">High-Yield STI Summaries</span><span class="n-section-tag">one disease, one key fact</span></div>
   <div class="n-viz-block">
   <div class="n-viz-label-row"><span class="n-viz-title">STI — Organism, Presentation, Test, Treatment</span><span class="n-viz-sub">partner notification is part of the prescription for every STI</span></div>
   <svg viewBox="0 0 760 175" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -4978,20 +5169,20 @@ NOTES.sexuallytransmitted=()=>`<div class="n-page"><div class="n-hero-new">
     <div class="n-diag-row"><div class="n-diag-label">BV (not sexually transmitted but associated)</div><div class="n-diag-content"><em>Gardnerella vaginalis</em> overgrowth. Thin grey-white discharge, <strong>fishy odour</strong> (especially post-coital), pH &gt;4.5. Clue cells on microscopy. <strong>Treatment: metronidazole 400mg BD × 5 days</strong> or 2g stat. High recurrence rate — do not treat partners routinely.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Diagnosis Principles</span><span class="n-section-tag">what to take and why</span></div>
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Diagnosis Principles</span><span class="n-section-tag">what to take and why</span></div>
   <div class="n-diff-grid">
     <div class="n-diff-card this"><div class="n-diff-card-tag">NAAT — gold standard</div><div class="n-diff-card-name">Nucleic Acid Amplification Test</div><div class="n-diff-card-key">Detects chlamydia and gonorrhoea DNA with high sensitivity. Vulvovaginal self-swab or first-catch urine. <strong>Do not culture instead of NAAT</strong> — NAAT is more sensitive. Culture is needed for gonorrhoea sensitivity testing.</div></div>
     <div class="n-diff-card that"><div class="n-diff-card-tag">Full STI screen</div><div class="n-diff-card-name">When one STI found</div><div class="n-diff-card-key">Chlamydia/gonorrhoea NAAT + syphilis serology + HIV + hepatitis B/C. <strong>Co-infection is common.</strong> Finding one STI should always prompt a full screen — do not treat in isolation.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Red Flags</span><span class="n-section-tag">must not miss</span></div>
   <div class="n-flag-list">
     <div class="n-flag-item critical"><span class="n-flag-icon crit"><svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1L5 6M5 8.5L5 9" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Syphilis in pregnancy = congenital syphilis risk.</strong> Untreated maternal syphilis causes stillbirth, neonatal death, or severely affected infant. Treat immediately with benzathine penicillin — all trimesters. Ensure partner treated. Notifiable.</div></div>
     <div class="n-flag-item time"><span class="n-flag-icon time-ic"><svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.5" stroke="#8a6020" stroke-width="1.2" fill="none"/><path d="M5 3V5.5L6.5 6.5" stroke="#8a6020" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Gonorrhoea resistance is rising.</strong> Do not use oral antibiotics (ciprofloxacin) empirically — resistance is widespread. First-line is ceftriaxone IM. If cephalosporin allergy: specialist advice. Always send culture for sensitivity testing alongside NAAT.</div></div>
     <div class="n-flag-item legal"><span class="n-flag-icon legal-ic"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx="1" stroke="#786e64" stroke-width="1.2" fill="none"/><path d="M4 5h2M5 4v2" stroke="#786e64" stroke-width="1.2" stroke-linecap="round"/></svg></span><div class="n-flag-text"><strong>Herpes in third trimester = neonatal risk.</strong> Active genital HSV lesions at delivery = strong indication for caesarean section to prevent neonatal herpes encephalitis. Aciclovir prophylaxis from 36 weeks if primary herpes in third trimester.</div></div>
   </div>
 </div><div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">High-Yield Pearls</span><span class="n-section-tag">exam loves these</span></div>
   <div class="n-pearl-list">
     <div class="n-pearl"><div class="n-pearl-num">01</div><div class="n-pearl-body"><strong>Partner notification is not optional — it is part of treatment.</strong> Untreated partners reinfect the index patient and continue transmission. For chlamydia: notify all partners within 6 months. For gonorrhoea and syphilis: notify all partners within 3 months (or further depending on stage). Health advisors at GUM clinics manage this.<span class="n-pearl-exam">Exam loves this: candidates discharge the patient without mentioning partner notification.</span></div></div>
     <div class="n-pearl"><div class="n-pearl-num">02</div><div class="n-pearl-body"><strong>Azithromycin is no longer recommended as first-line for chlamydia.</strong> BASHH 2022 guidelines recommend doxycycline 100mg BD × 7 days as first-line. Azithromycin 1g stat (with 500mg daily × 2 days) is second-line — concerns about macrolide resistance and treatment failure with single-dose regimen.</div></div>
@@ -5003,7 +5194,15 @@ NOTES.sexuallytransmitted=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-distractor-box"><div class="n-distractor-label">The distractor</div><div class="n-distractor-text"><strong>Treating STI without partner notification.</strong> Treating only the index patient = re-infection within weeks. <strong>Partner notification is not optional — it is part of the treatment.</strong> Document that it was discussed and offered. Sexual health clinic referral facilitates contact tracing.</div></div>
 </div>
 <div class="n-section">
-  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
+  <div class="n-section-header"><span class="n-section-num">07</span><span class="n-section-title">Special Infections</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item critical"><div class="n-flag-text"><strong>Actinomyces israelii:</strong> Associated with <strong>long-term IUD use</strong>. Found on cervical smear as "sulphur granules." May cause pelvic actinomycosis. Management: remove IUD + penicillin.</div></div>
+    <div class="n-flag-item critical"><div class="n-flag-text"><strong>Genital tuberculosis:</strong> Haematogenous spread from primary lung focus. Most commonly affects <strong>fallopian tubes (90–100%)</strong>, then endometrium, ovaries, cervix. Presents as infertility, menstrual irregularity, chronic PID. Diagnosis: endometrial biopsy, culture. Treatment: anti-TB therapy (6–9 months).</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Genital tract defense mechanisms:</strong> Acid vaginal pH (3.8–4.5) from lactobacilli, cervical mucus plug (strongest at mid-cycle), ciliary action in tubes, menstruation flushes endometrium. <strong>Mid-cycle: mucus is thin/watery</strong> → least protective against ascending infection at this point.</div></div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">08</span><span class="n-section-title">Trap Zone</span><span class="n-section-tag">don't fall for it</span></div>
   <div class="n-trap-list">
     <div class="n-trap">
   <div class="n-trap-wrong"><span class="n-trap-badge wrong">Trap</span><div class="n-trap-text">A negative swab for gonorrhoea culture means the patient does not have gonorrhoea.</div></div>
@@ -5014,6 +5213,7 @@ NOTES.sexuallytransmitted=()=>`<div class="n-page"><div class="n-hero-new">
   <div class="n-trap-truth"><span class="n-trap-badge right">Truth</span><div class="n-trap-text"><strong>Herpes is transmitted during asymptomatic viral shedding.</strong> The majority of HSV transmission occurs when the source partner has no symptoms and no visible lesions. Suppressive antiviral therapy reduces (but does not eliminate) transmission risk. Condom use further reduces — but does not eliminate — transmission.</div></div>
 </div>
   </div>
+
 <div class="n-anchor"><div class="n-anchor-text">Partner notification<br><em>is part of the prescription.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
   <div class="n-note-end-cta-tag">// End of note</div>
   <div class="n-note-end-cta-title">Are you ventilating?</div>
@@ -5194,10 +5394,160 @@ document.querySelectorAll('.dtab').forEach(btn => {
   });
 });
 
+NOTES.obgynanatomy=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">OB/GYN · Foundation</div>
+  <div class="n-hero-title">OB/GYN<br><em>Anatomy</em></div>
+  <div class="n-hero-sub">Uterine supports · Blood supply · Ureter relationship · Embryology</div>
+  <div class="n-snapshot"><div class="n-snap-cell"><div class="n-snap-label">Main support</div><div class="n-snap-text"><strong>Cardinal ligaments</strong> — transverse cervical ligaments. Primary defence against uterine prolapse.</div></div><div class="n-snap-cell"><div class="n-snap-label">Surgical trap</div><div class="n-snap-text">Ureter passes <strong>under uterine artery</strong> 2 cm lateral to cervix — "water under the bridge". Ligate carefully.</div></div><div class="n-snap-cell"><div class="n-snap-label">Embryology</div><div class="n-snap-text"><strong>Müllerian ducts</strong> → uterus, cervix, upper ⅔ vagina. Urogenital sinus → lower ⅓ vagina.</div></div></div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Uterine Supports</span></div>
+  <div class="n-diff-grid">
+    <div class="n-diff-card this"><div class="n-diff-card-tag">Main Support</div><div class="n-diff-card-key"><strong>Cardinal ligaments (Mackenrodt's)</strong> — transverse cervical ligaments, extend from cervix and lateral fornices to pelvic wall. Prevent uterine prolapse.</div></div>
+    <div class="n-diff-card that"><div class="n-diff-card-tag">Secondary Supports</div><div class="n-diff-card-key"><strong>Uterosacral ligaments</strong> — pull cervix posteriorly. <strong>Round ligaments</strong> — to labia majora. <strong>Broad ligament</strong> — peritoneal fold only, minimal structural support.</div></div>
+  </div>
+  <div class="n-flag-list">
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Pelvic floor main muscle:</strong> Levator ani (pubococcygeus + iliococcygeus + puborectalis)</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Most important support:</strong> Cardinal ligaments — damage causes vault prolapse</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Blood Supply &amp; Lymphatics</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">Ovarian artery</div><div class="n-diag-content">Branch of <strong>AORTA</strong> at L2. Supplies ovary, anastomoses with uterine artery at cornua.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Uterine artery</div><div class="n-diag-content">Branch of internal iliac (anterior division). Crosses URETER at 2cm lateral to cervix — <strong>"water under the bridge"</strong>.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Pudendal artery</div><div class="n-diag-content">Main blood supply to vulva. Branch of internal iliac.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Cervical lymphatics</div><div class="n-diag-content">Drain to: parametrial → obturator → internal iliac → presacral → common iliac → para-aortic. <strong>Femoral nodes NOT involved</strong> (exam point).</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Ureter — The Critical Relationship</span></div>
+  <div class="n-exam-box"><div class="n-exam-if">Surgical Landmark</div><div class="n-exam-statement">Ureter passes <strong>UNDER the uterine artery</strong> ("water under the bridge") — ligate uterine artery carefully during hysterectomy. Ureter runs 2cm lateral to cervix.</div></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item critical"><div class="n-flag-text"><strong>Course:</strong> Crosses pelvic brim at sacroiliac joint → runs medially in broad ligament → passes 2cm lateral to cervix UNDER uterine artery → enters bladder trigone.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>At risk in:</strong> hysterectomy, uterine artery ligation, lateral sutures during CS, ovarian cyst removal</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Normal Measurements</span></div>
+  <div class="n-diag-steps">
+    <div class="n-diag-row"><div class="n-diag-label gold">Uterus</div><div class="n-diag-content"><strong>7.5 cm</strong> length &middot; <strong>5 cm</strong> width at fundus &middot; <strong>2.5 cm</strong> AP diameter. Infant uterus: cervix &gt; fundus (2:1 ratio) &mdash; reverses at puberty.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Fallopian tube</div><div class="n-diag-content">Total length <strong>10&ndash;12 cm</strong>. Interstitial portion = <strong>1 cm</strong>. Parts: interstitial &rarr; isthmus &rarr; ampulla (fertilisation) &rarr; infundibulum.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Vagina</div><div class="n-diag-content">Posterior wall <strong>9 cm</strong>, anterior wall <strong>7 cm</strong>. Posterior fornix deepest &mdash; adjacent to pouch of Douglas. Culdocentesis enters here.</div></div>
+    <div class="n-diag-row"><div class="n-diag-label gold">Adnexa</div><div class="n-diag-content">Ovaries + fallopian tubes + broad ligament + round ligament. <strong>Does NOT include the uterus.</strong> Mesosalpinx = mesentery of the uterine tube.</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Embryology</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Genetic sex:</strong> Determined <strong>at conception</strong> (fertilisation) — XX female, XY male</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Müllerian ducts (paramesonephric):</strong> Form uterus, cervix, and upper ⅔ vagina</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Urogenital sinus:</strong> Forms lower ⅓ vagina</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Genital tubercle:</strong> Becomes clitoris (female) or phallus (male). In males, <strong>rapid elongation under androgens</strong> → penis. Homologous structures.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Wolffian (mesonephric) ducts:</strong> Regress in female (persist in male as vas deferens, epididymis)</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Müllerian agenesis (MRKH):</strong> Absent uterus and upper vagina, normal ovaries and secondary sexual characteristics</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Vagina — Detailed Anatomy</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item"><div class="n-flag-text">Upper end surrounds cervix — forms <strong>fornices</strong> (anterior, posterior, lateral)</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Posterior fornix</strong> is deepest and adjacent to pouch of Douglas — culdocentesis access point</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">Posterior wall contacts anterior wall of rectum (recto-vaginal septum)</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">Layers: mucosa (stratified squamous non-keratinised), muscularis, adventitia</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">No glands — lubrication from transudation and Bartholin's glands</div></div>
+  </div>
+</div>
+<div class="n-anchor"><div class="n-anchor-text">Know the anatomy.<br>Everything in pelvic surgery depends on it.</div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+  <div class="n-note-end-cta-label">TEST YOURSELF</div>
+  <div class="n-note-end-cta-title">OB/GYN Anatomy &amp; Embryology</div>
+  <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="n-note-end-cta-arrow">&#8599;</div>
+</div></div>`;
+
+NOTES.ovariantumors=()=>`<div class="n-page"><div class="n-hero-new">
+  <div class="n-hero-eyebrow">Gynaecology · Oncology</div>
+  <div class="n-hero-title">Ovarian<br><em>Tumors</em></div>
+  <div class="n-hero-sub">Epithelial · Germ Cell · Sex Cord-Stromal · Metastatic</div>
+  <div class="n-snapshot"><span>Dermoid cyst</span><span>Krukenberg</span><span>Granulosa cell</span><span>Meigs syndrome</span></div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">01</span><span class="n-section-title">Classification by Origin</span></div>
+  <div class="n-diff-grid">
+    <div class="n-diff-card this"><div class="n-diff-card-tag">Epithelial (70%)</div><div class="n-diff-card-key">Serous, mucinous, endometrioid, clear cell, Brenner. Most common in adults. Peak 40–60 years.</div></div>
+    <div class="n-diff-card that"><div class="n-diff-card-tag">Germ Cell (15–20%)</div><div class="n-diff-card-key">Teratoma (dermoid), dysgerminoma, endodermal sinus tumor, choriocarcinoma. Most common in children and young women.</div></div>
+    <div class="n-diff-card this"><div class="n-diff-card-tag">Sex Cord-Stromal (5–8%)</div><div class="n-diff-card-key">Granulosa cell (estrogen+), thecoma, fibroma, Sertoli-Leydig (androgen+). Often hormonally active.</div></div>
+    <div class="n-diff-card that"><div class="n-diff-card-tag">Metastatic (5–10%)</div><div class="n-diff-card-key">Krukenberg (signet ring cells from stomach/colon/breast). Bilateral, solid.</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">02</span><span class="n-section-title">Epithelial Tumors — Key Features</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Serous cystadenoma:</strong> Most common ovarian tumor overall. Often bilateral (20%). Unilocular, papillary projections. Malignant counterpart = serous cystadenocarcinoma with psammoma bodies.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Mucinous cystadenoma:</strong> Very large, multilocular, filled with gelatinous fluid. Rupture → pseudomyxoma peritonei (mucinous ascites).</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Brenner tumor:</strong> Solid, benign. Nests of transitional epithelium resembling bladder. NOT hormonally active. Coffee-bean nuclei on microscopy.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Clear cell carcinoma:</strong> Associated with endometriosis. Worst prognosis of epithelial tumors. Hobnail cells.</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">03</span><span class="n-section-title">Germ Cell Tumors</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Mature teratoma (dermoid cyst):</strong> Most common ovarian tumor in pregnancy. Contains hair, teeth, sebum (all three germ layers). Bilateral in 10–15%. Complications: torsion (most common in pregnancy), rupture → chemical peritonitis.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Dysgerminoma:</strong> Most common malignant germ cell tumor. Radiosensitive. Marker: <strong>LDH</strong>. Young women. Good prognosis.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Endodermal sinus tumor (yolk sac):</strong> Marker: <strong>AFP</strong>. Aggressive. Schiller-Duval bodies on histology.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Choriocarcinoma (ovarian):</strong> Marker: <strong>hCG</strong>. Haemoptysis and vaginal bleeding from metastases.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Struma ovarii:</strong> Teratoma composed predominantly of thyroid tissue — may cause hyperthyroidism. Usually benign.</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">04</span><span class="n-section-title">Sex Cord-Stromal Tumors</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Granulosa cell tumor:</strong> Estrogen-producing → precocious puberty (children), postmenopausal bleeding (adults). Associated with endometrial hyperplasia/carcinoma. Marker: <strong>Inhibin</strong>. Call-Exner bodies (follicle-like spaces).</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Fibroma:</strong> Solid, benign. <strong>Meigs syndrome</strong> = ovarian fibroma + ascites + right-sided hydrothorax — resolves completely after tumor removal.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text"><strong>Sertoli-Leydig cell tumor (arrhenoblastoma):</strong> Androgen-producing → virilisation, hirsutism, clitoromegaly, amenorrhoea, deepening voice.</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">05</span><span class="n-section-title">Metastatic Tumors</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item critical"><div class="n-flag-text"><strong>Krukenberg tumor:</strong> Metastatic adenocarcinoma with signet ring cells. Primary usually stomach (most common), then colon, breast, appendix. Bilateral, solid, poor prognosis.</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">Other metastatic primaries: breast, colon, endometrium, carcinoid, lymphoma</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">Bilateral solid ovarian tumors in a postmenopausal woman → always think Krukenberg first</div></div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="n-section-header"><span class="n-section-num">06</span><span class="n-section-title">Ovarian Tumors in Pregnancy</span></div>
+  <div class="n-flag-list">
+    <div class="n-flag-item critical"><div class="n-flag-text"><strong>Most common ovarian tumor in pregnancy:</strong> Dermoid cyst (up to 50% of cases)</div></div>
+    <div class="n-flag-item critical"><div class="n-flag-text"><strong>Most common complication:</strong> Torsion — enlarged uterus displaces ovary out of pelvis, increasing torsion risk</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">Other complications: rupture, haemorrhage, obstructed labour (rare)</div></div>
+    <div class="n-flag-item"><div class="n-flag-text">Management: elective surgery at 14–16 weeks if persists or suspicious features</div></div>
+  </div>
+</div>
+<div class="n-anchor"><div class="n-anchor-text">Markers, morphology, hormones.<br>Every ovarian tumor has a <em>signature.</em></div></div><div class="n-note-end-cta" onclick="showVentPopup()">
+  <div class="n-note-end-cta-label">TEST YOURSELF</div>
+  <div class="n-note-end-cta-title">Ovarian Tumors</div>
+  <div class="n-note-end-cta-sub">5 questions. No feedback until the end.</div>
+  <div class="n-note-end-cta-arrow">&#8599;</div>
+</div></div>`;
+
 let currentNote = null;
 
 function openNote(id) {
   currentNote = id;
+
   if (window.ventTrack) window.ventTrack.noteOpened(id, NOTE_NAMES[id] || id);
   const html = NOTES[id] ? NOTES[id]() : `<div class="n-page" style="padding-top:80px;text-align:center"><p style="font-family:'Instrument Serif',serif;font-size:28px;font-style:italic;color:var(--n-ink4);">Coming soon.</p></div>`;
   document.getElementById('mcontent').innerHTML = html;
