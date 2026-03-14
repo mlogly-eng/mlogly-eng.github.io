@@ -8,236 +8,263 @@
 :root{--bg:#f5f2eb;--bg2:#ede9e0;--bg3:#e4dfd4;--ink:#1a1510;--ink2:#3d3628;--ink3:#7a6f5e;--ink4:#b5a898;--accent:#c8452a;--accent2:#e85d3f;--border:#d8d2c6;--white:#faf8f4;}
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
 body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;opacity:.5;}
-@media(hover:hover) and (pointer:fine){
-  body{cursor:none;}
-  #cdot{position:fixed;width:8px;height:8px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform .15s;}
-  #cring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(200,69,42,.35);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s;}
-}
-nav{display:flex;justify-content:space-between;align-items:center;padding:28px 64px;position:sticky;top:0;z-index:500;background:rgba(245,242,235,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);gap:24px;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;}
+@media(hover:hover) and (pointer:fine){body{cursor:none;}#cdot{position:fixed;width:8px;height:8px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform .15s;}#cring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(200,69,42,.35);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s;}}
+
+/* NAV — transparent on hero, solid when scrolled */
+nav{display:flex;justify-content:space-between;align-items:center;padding:0 64px;height:68px;position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(245,242,235,0);transition:background .4s,backdrop-filter .4s,border-color .4s,box-shadow .4s;border-bottom:1px solid transparent;gap:24px;}
+nav.solid{background:rgba(245,242,235,.96);backdrop-filter:blur(24px) saturate(1.5);border-bottom-color:var(--border);box-shadow:0 4px 32px rgba(0,0,0,.06);}
 .logo{display:flex;align-items:center;gap:14px;text-decoration:none;flex-shrink:0;}
-.logo-name{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:4px;color:var(--ink);}
+.logo-name{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:4px;color:rgba(245,242,235,.92);transition:color .4s;}
+nav.solid .logo-name{color:var(--ink);}
 .nav-links{display:flex;gap:40px;flex:1;justify-content:center;}
-.nav-links a{font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);text-decoration:none;transition:color .2s;}
-.nav-links a:hover{color:var(--ink);}}
+.nav-links a{font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,242,235,.5);text-decoration:none;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--accent);transition:width .28s cubic-bezier(.16,1,.3,1);}
+.nav-links a:hover{color:rgba(245,242,235,.9);}
+.nav-links a:hover::after{width:100%;}
+nav.solid .nav-links a{color:var(--ink3);}
+nav.solid .nav-links a:hover{color:var(--ink);}
+nav.solid .nav-links a::after{background:var(--accent);}
 .nav-auth{display:flex;align-items:center;gap:16px;flex-shrink:0;}
-.nav-signin{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--ink3);text-decoration:none;transition:color .2s;white-space:nowrap;}
-.nav-signin:hover{color:var(--ink);}
-.nav-pill{background:var(--ink);color:var(--bg);padding:11px 26px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border-radius:100px;transition:all .2s;white-space:nowrap;flex-shrink:0;}
-.nav-pill:hover{background:var(--accent);}
+.nav-signin{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;color:rgba(245,242,235,.45);text-decoration:none;transition:color .2s;white-space:nowrap;}
+.nav-signin:hover{color:rgba(245,242,235,.9);}
+nav.solid .nav-signin{color:var(--ink3);}
+nav.solid .nav-signin:hover{color:var(--ink);}
+.nav-pill{background:rgba(245,242,235,.1);color:rgba(245,242,235,.88);padding:10px 24px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border-radius:100px;border:1px solid rgba(245,242,235,.18);transition:all .22s;white-space:nowrap;flex-shrink:0;}
+.nav-pill:hover{background:var(--accent);border-color:var(--accent);color:white;}
+nav.solid .nav-pill{background:var(--ink);color:var(--bg);border-color:var(--ink);}
+nav.solid .nav-pill:hover{background:var(--accent);border-color:var(--accent);}
 .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
-.nav-hamburger span{display:block;width:24px;height:2px;background:var(--ink);border-radius:2px;transition:all .3s;}
+.nav-hamburger span{display:block;width:24px;height:2px;background:rgba(245,242,235,.8);border-radius:2px;transition:all .3s;}
+nav.solid .nav-hamburger span{background:var(--ink);}
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.nav-drawer{display:none;position:fixed;inset:0;top:73px;background:rgba(245,242,235,.98);backdrop-filter:blur(24px);z-index:499;flex-direction:column;justify-content:center;align-items:center;gap:44px;opacity:0;transition:opacity .3s;}
+.nav-drawer{display:none;position:fixed;inset:0;background:rgba(245,242,235,.98);backdrop-filter:blur(24px);z-index:899;flex-direction:column;justify-content:center;align-items:center;gap:44px;opacity:0;transition:opacity .3s;}
 .nav-drawer.open{opacity:1;}
 .nav-drawer a{font-family:'Instrument Serif',serif;font-size:clamp(30px,8vw,52px);font-weight:400;font-style:italic;color:var(--ink);text-decoration:none;transition:color .2s;}
 .nav-drawer a:hover{color:var(--accent);}
 .nav-drawer .drawer-pill{font-family:'Syne',sans-serif;font-style:normal;font-size:15px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:var(--accent);color:white;padding:15px 36px;border-radius:100px;margin-top:8px;}
-/* HERO */
-.hero{min-height:96vh;display:grid;grid-template-columns:1fr 1fr;}
-.hero-l{padding:80px 64px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border);}
-.hero-kick{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:var(--ink4);text-transform:uppercase;margin-bottom:48px;display:flex;align-items:center;gap:12px;opacity:0;animation:fu .7s ease forwards .1s;}
-.hero-kick::before{content:'—';color:var(--accent);}
-.hero-hl{font-family:'Instrument Serif',serif;font-size:clamp(64px,7.5vw,108px);line-height:.93;color:var(--ink);margin-bottom:44px;font-weight:400;opacity:0;animation:fu .7s ease forwards .25s;}
-.hero-hl em{font-style:italic;color:var(--accent);}
-.hero-body{font-size:17px;color:var(--ink3);line-height:1.75;max-width:420px;margin-bottom:44px;opacity:0;animation:fu .7s ease forwards .4s;}
-.hero-body strong{color:var(--ink);}
-.hero-ctas{display:flex;align-items:center;gap:24px;flex-wrap:wrap;opacity:0;animation:fu .7s ease forwards .55s;}
-.btn-p{background:var(--accent);color:white;padding:16px 36px;border-radius:100px;text-decoration:none;font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;transition:all .25s;display:inline-block;}
-.btn-p:hover{background:var(--ink);transform:translateY(-2px);box-shadow:0 12px 32px rgba(26,21,16,.18);}
-.btn-g{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink3);text-decoration:none;letter-spacing:1px;display:flex;align-items:center;gap:8px;transition:color .2s;}
-.btn-g:hover{color:var(--ink);}
-/* HERO RIGHT — BRAND PANEL */
-.hero-r{background:var(--ink);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-.hero-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(200,69,42,.15),transparent 60%);}
-.particle{position:absolute;width:3px;height:3px;background:var(--accent);border-radius:50%;opacity:0;animation:fp linear infinite;}
-@keyframes fp{0%{transform:translateY(100vh);opacity:0;}10%{opacity:.5;}90%{opacity:.2;}100%{transform:translateY(-80px);opacity:0;}}
-.hero-brand-panel{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:28px;opacity:0;animation:fu 1s ease forwards .3s;}
-.hbp-logo{filter:drop-shadow(0 0 48px rgba(200,69,42,.28));}
-.hbp-name{font-family:'Syne',sans-serif;font-size:72px;font-weight:800;letter-spacing:20px;color:rgba(245,242,235,.9);}
-.hbp-sub{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;color:rgba(245,242,235,.22);text-transform:uppercase;}
-.hbp-manifesto{display:flex;flex-direction:column;gap:10px;margin-top:28px;padding-top:28px;border-top:1px solid rgba(245,242,235,.07);}
-.hbp-m-line{font-family:'Syne',sans-serif;font-size:13px;font-weight:500;color:rgba(245,242,235,.32);letter-spacing:.3px;}
-.hbp-m-accent{color:rgba(200,69,42,.75);}
+
+/* HERO — full dark cinematic */
+.hero{min-height:100vh;background:var(--ink);position:relative;overflow:hidden;display:flex;align-items:stretch;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 75% 40%,rgba(200,69,42,.12),transparent 55%),radial-gradient(ellipse 40% 50% at 15% 80%,rgba(200,69,42,.07),transparent 50%);pointer-events:none;z-index:0;}
+.hero::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0px,transparent 3px,rgba(255,255,255,.007) 3px,rgba(255,255,255,.007) 4px);pointer-events:none;z-index:0;}
+.h-particles{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.h-particle{position:absolute;border-radius:50%;opacity:0;animation:pFloat linear infinite;}
+@keyframes pFloat{0%{transform:translateY(100vh) scale(0);opacity:0;}8%{opacity:1;}92%{opacity:.4;}100%{transform:translateY(-10vh) scale(1.5);opacity:0;}}
+.hero-l{flex:0 0 55%;padding:140px 72px 80px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;border-right:1px solid rgba(245,242,235,.06);}
+.hero-l::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 70%,rgba(200,69,42,.04),transparent 60%);pointer-events:none;}
+.h-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--accent);text-transform:uppercase;margin-bottom:32px;display:flex;align-items:center;gap:14px;opacity:0;animation:fadeUp .7s .15s cubic-bezier(.16,1,.3,1) forwards;}
+.h-eyebrow::before{content:'';width:32px;height:1px;background:var(--accent);flex-shrink:0;}
+.h-title{font-family:'Instrument Serif',serif;font-size:clamp(72px,9vw,130px);line-height:.86;font-weight:400;color:var(--white);letter-spacing:-3px;margin-bottom:8px;opacity:0;animation:fadeUp .9s .3s cubic-bezier(.16,1,.3,1) forwards;}
+.h-title-em{font-family:'Instrument Serif',serif;font-size:clamp(72px,9vw,130px);font-style:italic;font-weight:400;color:var(--accent2);letter-spacing:-3px;display:block;line-height:.86;opacity:0;animation:fadeUp .9s .45s cubic-bezier(.16,1,.3,1) forwards;}
+.h-title-em::after{content:'';display:block;width:0;height:2px;background:linear-gradient(90deg,var(--accent2),transparent);margin-top:10px;animation:lineGrow 1.1s 1.2s cubic-bezier(.16,1,.3,1) forwards;}
+@keyframes lineGrow{to{width:160px;}}
+.h-body{font-size:17px;color:rgba(245,242,235,.42);line-height:1.9;max-width:440px;margin:36px 0 48px;opacity:0;animation:fadeUp .7s .6s cubic-bezier(.16,1,.3,1) forwards;}
+.h-body strong{color:rgba(245,242,235,.75);}
+.h-ctas{display:flex;align-items:center;gap:20px;flex-wrap:wrap;opacity:0;animation:fadeUp .7s .75s cubic-bezier(.16,1,.3,1) forwards;}
+.h-btn-primary{background:var(--accent);color:white;padding:16px 36px;border-radius:100px;text-decoration:none;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:all .28s;display:inline-flex;align-items:center;gap:10px;}
+.h-btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 16px 40px rgba(200,69,42,.35);}
+.h-btn-secondary{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(245,242,235,.35);text-decoration:none;letter-spacing:1px;display:flex;align-items:center;gap:8px;transition:color .2s;}
+.h-btn-secondary:hover{color:rgba(245,242,235,.75);}
+.h-stats{display:flex;gap:0;margin-top:64px;padding-top:40px;border-top:1px solid rgba(245,242,235,.07);opacity:0;animation:fadeUp .7s .9s cubic-bezier(.16,1,.3,1) forwards;}
+.h-stat{padding-right:48px;border-right:1px solid rgba(245,242,235,.07);margin-right:48px;}
+.h-stat:last-child{border:none;margin:0;padding:0;}
+.h-stat-n{font-family:'Instrument Serif',serif;font-size:48px;font-style:italic;color:var(--accent);line-height:1;}
+.h-stat-l{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2.5px;color:rgba(245,242,235,.18);text-transform:uppercase;margin-top:6px;}
+.h-scroll{position:absolute;bottom:40px;left:72px;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:fadeUp .6s 1.4s ease forwards;}
+.h-scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,rgba(200,69,42,.7),transparent);animation:scrollPulse 2s ease infinite;}
+@keyframes scrollPulse{0%,100%{transform:scaleY(1);opacity:.6;}50%{transform:scaleY(1.15);opacity:1;}}
+.h-scroll-txt{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:3px;color:rgba(245,242,235,.2);text-transform:uppercase;writing-mode:vertical-lr;transform:rotate(180deg);}
+.hero-r{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;z-index:2;padding:140px 48px 80px;}
+.orb-wrap{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;border:1px solid rgba(200,69,42,.1);}
+.orb-1{width:500px;height:500px;right:-100px;bottom:-150px;animation:orbR 44s linear infinite;}
+.orb-2{width:360px;height:360px;right:-30px;bottom:-80px;border-color:rgba(200,69,42,.08);animation:orbR 32s linear infinite reverse;}
+.orb-3{width:220px;height:220px;right:40px;bottom:-10px;border-color:rgba(200,69,42,.07);background:radial-gradient(circle,rgba(200,69,42,.05),transparent 70%);}
+.orb-4{width:90px;height:90px;right:105px;bottom:65px;border-color:rgba(200,69,42,.12);animation:orbP 3s ease infinite;}
+@keyframes orbR{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes orbP{0%,100%{transform:scale(1);opacity:.5;}50%{transform:scale(1.3);opacity:1;}}
+.h-ghost{position:absolute;right:-30px;top:50%;transform:translateY(-50%);font-family:'Instrument Serif',serif;font-size:clamp(220px,30vw,380px);font-style:italic;color:transparent;-webkit-text-stroke:1px rgba(200,69,42,.06);line-height:1;pointer-events:none;user-select:none;letter-spacing:-15px;}
+.brand-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:20px;opacity:0;animation:fadeUp 1s .35s cubic-bezier(.16,1,.3,1) forwards;}
+.brand-logo{filter:drop-shadow(0 0 80px rgba(200,69,42,.5));}
+.brand-name{font-family:'Syne',sans-serif;font-size:clamp(52px,6vw,76px);font-weight:800;letter-spacing:22px;color:rgba(245,242,235,.92);margin-left:22px;}
+.brand-tagline{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;color:rgba(245,242,235,.18);text-transform:uppercase;}
+.brand-manifesto{display:flex;flex-direction:column;gap:0;margin-top:28px;padding-top:28px;border-top:1px solid rgba(245,242,235,.07);width:100%;max-width:320px;}
+.bm-line{font-family:'Syne',sans-serif;font-size:14px;font-weight:500;color:rgba(245,242,235,.28);letter-spacing:.3px;padding:10px 0;border-bottom:1px solid rgba(245,242,235,.04);display:flex;align-items:center;gap:12px;}
+.bm-line:last-child{border:none;}
+.bm-line::before{content:'';width:6px;height:6px;background:rgba(200,69,42,.4);border-radius:50%;flex-shrink:0;}
+.bm-line.accent{color:rgba(200,69,42,.65);}
+.bm-line.accent::before{background:var(--accent);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+
 /* SPECIALTIES */
-.specs{padding:120px 64px;max-width:1360px;margin:0 auto;}
-.sec-kick{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;color:var(--ink4);text-transform:uppercase;margin-bottom:16px;}
-.sec-hl{font-family:'Instrument Serif',serif;font-size:clamp(40px,5vw,64px);font-weight:400;color:var(--ink);line-height:1.05;margin-bottom:16px;}
-.sec-hl em{font-style:italic;color:var(--accent);}
-.sec-desc{font-size:16px;color:var(--ink3);max-width:500px;line-height:1.65;margin-bottom:64px;}
-.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);}
-.sc{background:var(--white);padding:40px;transition:all .3s cubic-bezier(.16,1,.3,1);text-decoration:none;display:flex;flex-direction:column;gap:18px;position:relative;overflow:hidden;}
-.sc::after{content:'';position:absolute;inset:0;background:var(--ink);transform:translateY(101%);transition:transform .42s cubic-bezier(.16,1,.3,1);z-index:0;}
+.specs{padding:128px 64px;max-width:1380px;margin:0 auto;position:relative;}.specs::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 20% 60%,rgba(200,69,42,.04),transparent 60%),radial-gradient(ellipse 50% 40% at 80% 20%,rgba(200,69,42,.025),transparent 55%);pointer-events:none;z-index:0;}.specs>*{position:relative;z-index:1;}
+.specs-hdr{display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px;margin-bottom:64px;padding-bottom:40px;border-bottom:2px solid var(--border);}
+.s-kick{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--accent);text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.s-kick::before{content:'';width:28px;height:1px;background:var(--accent);}
+.s-hl{font-family:'Instrument Serif',serif;font-size:clamp(44px,6vw,72px);font-weight:400;color:var(--ink);line-height:.9;letter-spacing:-2px;}
+.s-hl em{font-style:italic;color:var(--accent);}
+.s-desc{font-size:15px;color:var(--ink3);max-width:360px;line-height:1.75;text-align:right;}
+.building-banner{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding:11px 16px;background:rgba(200,69,42,.04);border:1px solid rgba(200,69,42,.12);}
+.building-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0;animation:bdot 2s ease infinite;}
+@keyframes bdot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.7);}}
+.building-text{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--ink4);}
+.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(200,69,42,.15);}
+.sc{background:var(--white);padding:40px 36px;text-decoration:none;display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden;opacity:0;transform:translateY(20px);transition:box-shadow .45s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1);}
+.sc.visible{animation:cardIn .65s cubic-bezier(.16,1,.3,1) forwards;}
+@keyframes cardIn{to{opacity:1;transform:translateY(0);}}
+.sc::before{content:'';position:absolute;top:0;left:-100%;right:100%;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);transition:left .5s cubic-bezier(.16,1,.3,1),right .5s cubic-bezier(.16,1,.3,1);z-index:3;}
+.sc:not(.soon):hover::before{left:0;right:0;}
+.sc::after{content:'';position:absolute;inset:0;background:var(--ink);transform:translateY(102%);transition:transform .5s cubic-bezier(.16,1,.3,1);z-index:0;}
+.sc:not(.soon):hover{transform:translateY(-5px);box-shadow:0 24px 60px rgba(0,0,0,.17),0 0 80px rgba(200,69,42,.06);}
 .sc:not(.soon):hover::after{transform:translateY(0);}
 .sc>*{position:relative;z-index:1;}
 .sc:not(.soon):hover .sc-title,.sc:not(.soon):hover .sc-num{color:rgba(245,242,235,.9);}
-.sc:not(.soon):hover .sc-desc{color:rgba(245,242,235,.45);}
-.sc:not(.soon):hover .sc-meta{color:rgba(245,242,235,.3);}
-.sc:not(.soon):hover .sc-arr{background:var(--accent);color:white;transform:rotate(45deg);}
-.sc-icon{font-size:30px;}
-.sc-svg-icon{width:48px;height:48px;margin-bottom:8px;}
-.sc-svg-icon svg{width:100%;height:100%;}
-/* Building banner */
-.building-banner{display:flex;align-items:center;gap:12px;margin-bottom:32px;padding:12px 16px;background:rgba(200,69,42,.04);border:1px solid rgba(200,69,42,.12);border-radius:2px;}
-.building-dot{width:6px;height:6px;background:#c8452a;border-radius:50%;flex-shrink:0;animation:breathe 2s ease infinite;}
-.building-text{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--ink4);}
+.sc:not(.soon):hover .sc-desc{color:rgba(245,242,235,.42);}
+.sc:not(.soon):hover .sc-meta{color:rgba(245,242,235,.28);}
+.sc:not(.soon):hover .sc-arr{background:var(--accent);color:white;transform:translate(4px,-4px);box-shadow:0 8px 24px rgba(200,69,42,.45);}
+.sc:not(.soon):hover .breathing-badge{color:rgba(245,242,235,.5);}
+.sc:not(.soon):hover .breathing-dot{background:rgba(245,242,235,.5);}
 .sc-num{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--ink4);transition:color .3s;}
-.sc-title{font-family:'Instrument Serif',serif;font-size:27px;font-weight:400;color:var(--ink);line-height:1.1;transition:color .3s;}
-.sc-desc{font-size:13px;color:var(--ink3);line-height:1.65;flex:1;transition:color .3s;}
+.sc-svg-icon{width:44px;height:44px;}
+.sc-svg-icon svg{width:100%;height:100%;}
+.sc-title{font-family:'Instrument Serif',serif;font-size:28px;font-weight:400;color:var(--ink);line-height:1.05;transition:color .3s;letter-spacing:-.4px;}
+.sc-desc{font-size:13px;color:var(--ink3);line-height:1.72;flex:1;transition:color .3s;}
 .sc-foot{display:flex;justify-content:space-between;align-items:center;}
 .sc-meta{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink4);transition:color .3s;}
-.sc-arr{width:34px;height:34px;background:var(--bg2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--ink3);transition:all .3s;}
+.sc-arr{width:34px;height:34px;background:var(--bg2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--ink3);transition:all .4s cubic-bezier(.16,1,.3,1);box-shadow:0 1px 4px rgba(0,0,0,.07);}
 .sc.soon{cursor:default;}
 .soon-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--ink4);background:var(--bg3);border:1px solid var(--border);padding:3px 10px;border-radius:100px;text-transform:uppercase;width:fit-content;}
 .sc-notify{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--accent);text-transform:uppercase;background:none;border:none;cursor:pointer;padding:0;transition:opacity .2s;}
 .sc-notify:hover{opacity:.6;}
 .sc-notify:disabled{opacity:.4;cursor:default;}
+.breathing-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;color:var(--accent);display:flex;align-items:center;gap:6px;margin-top:2px;transition:color .3s;}
+.breathing-dot{width:5px;height:5px;background:var(--accent);border-radius:50%;display:inline-block;animation:bdot 2s ease infinite;flex-shrink:0;transition:background .3s;}
+
+/* Q-BANK ENTRY */
+.qbank-entry{background:var(--ink);padding:100px 64px;position:relative;overflow:hidden;}
+.qbank-entry::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 85% 50%,rgba(200,69,42,.1),transparent 55%),repeating-linear-gradient(0deg,transparent 0px,transparent 3px,rgba(255,255,255,.006) 3px,rgba(255,255,255,.006) 4px);pointer-events:none;}
+.qbank-entry-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1;}
+.qbe-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.qbe-tag::before{content:'';width:20px;height:1px;background:var(--accent);}
+.qbe-hl{font-family:'Instrument Serif',serif;font-size:clamp(42px,6vw,68px);font-weight:400;color:var(--white);line-height:.9;margin-bottom:24px;letter-spacing:-2px;}
+.qbe-hl em{font-style:italic;color:#e85d3f;}
+.qbe-body{font-size:15px;color:rgba(245,242,235,.4);line-height:1.9;margin-bottom:36px;max-width:440px;}
+.qbe-btn{display:inline-flex;align-items:center;gap:12px;background:var(--accent);color:white;text-decoration:none;padding:16px 32px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;letter-spacing:.5px;transition:all .25s;}
+.qbe-btn span{font-size:18px;transition:transform .2s;}
+.qbe-btn:hover{background:#e85d3f;}.qbe-btn:hover span{transform:translate(2px,-2px);}
+.qbe-right{display:flex;flex-direction:column;gap:0;border:1px solid rgba(245,242,235,.08);padding:40px;}
+.qbe-stat{padding:24px 0;}
+.qbe-stat-n{font-family:'Instrument Serif',serif;font-size:52px;font-style:italic;color:var(--white);line-height:1;}
+.qbe-stat-l{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(245,242,235,.22);text-transform:uppercase;margin-top:6px;}
+.qbe-divider{height:1px;background:rgba(245,242,235,.07);}
+.qbe-modes{padding:24px 0 0;display:flex;flex-direction:column;gap:10px;}
+.qbe-mode{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(245,242,235,.3);display:flex;align-items:center;gap:10px;}
+.qbe-mode-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0;}
+.qbe-mode-dot.exam{background:#4db87a;}
+
 /* STORY */
-.story{background:var(--ink);padding:120px 64px;}
-.story-in{max-width:1200px;margin:0 auto;}
-.s-eye{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;color:var(--accent);text-transform:uppercase;margin-bottom:80px;display:flex;align-items:center;gap:16px;}
-.s-eye::after{content:'';flex:1;height:1px;background:rgba(245,242,235,.1);}
+.story{background:var(--ink);padding:120px 64px;position:relative;overflow:hidden;}
+.story::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 90% 40%,rgba(200,69,42,.08),transparent 55%),repeating-linear-gradient(0deg,transparent 0px,transparent 3px,rgba(255,255,255,.006) 3px,rgba(255,255,255,.006) 4px);pointer-events:none;}
+.story-in{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
+.s-eye{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--accent);text-transform:uppercase;margin-bottom:80px;display:flex;align-items:center;gap:16px;}.s-eye::before{content:'';width:28px;height:1px;background:var(--accent);flex-shrink:0;}
+.s-eye::after{content:'';flex:1;height:1px;background:rgba(245,242,235,.08);}
 .s-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;}
 .s-left{position:sticky;top:120px;}
-.s-hl{font-family:'Instrument Serif',serif;font-size:clamp(40px,5vw,64px);line-height:1.1;color:var(--bg);font-weight:400;margin-bottom:32px;}
+.s-hl{font-family:'Instrument Serif',serif;font-size:clamp(44px,6vw,72px);line-height:.9;color:var(--bg);font-weight:400;margin-bottom:36px;letter-spacing:-2px;}
 .s-hl em{font-style:italic;color:var(--accent2);}
-.mb{margin-top:48px;border:1px solid rgba(245,242,235,.1);padding:32px;}
-.mb-t{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(245,242,235,.25);text-transform:uppercase;margin-bottom:24px;}
-.mb-r{display:flex;align-items:start;gap:16px;padding:16px 0;border-bottom:1px solid rgba(245,242,235,.07);}
+.mb{margin-top:48px;border:1px solid rgba(245,242,235,.08);padding:32px;}
+.mb-t{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(245,242,235,.2);text-transform:uppercase;margin-bottom:24px;}
+.mb-r{display:flex;align-items:start;gap:16px;padding:16px 0;border-bottom:1px solid rgba(245,242,235,.06);}
 .mb-r:last-child{border-bottom:none;}
 .mb-ico{width:32px;height:32px;background:rgba(200,69,42,.15);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;}
 .mb-w{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--accent2);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
-.mb-d{font-size:13px;color:rgba(245,242,235,.62);line-height:1.6;}
+.mb-d{font-size:13px;color:rgba(245,242,235,.52);line-height:1.65;}
 .s-right{padding-top:8px;}
 .ch{margin-bottom:60px;}
 .ch-n{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:18px;}
-.ch-t{font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;color:var(--bg);margin-bottom:14px;line-height:1.3;}
-.ch-b{font-size:15px;color:rgba(245,242,235,.62);line-height:1.8;}
+.ch-t{font-family:'Instrument Serif',serif;font-size:28px;font-weight:400;color:var(--bg);margin-bottom:16px;line-height:1.25;letter-spacing:-.4px;}
+.ch-b{font-size:15px;color:rgba(245,242,235,.48);line-height:1.9;}
 .ch-b strong{color:rgba(245,242,235,.88);}
+
 /* WHAT */
-.what{padding:120px 64px;max-width:1200px;margin:0 auto;}
-.w-hdr{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid var(--border);padding-bottom:32px;margin-bottom:80px;}
-.w-hl{font-family:'Instrument Serif',serif;font-size:clamp(40px,5vw,64px);font-weight:400;color:var(--ink);line-height:1.1;}
+.what{padding:120px 64px;max-width:1200px;margin:0 auto;position:relative;}.what::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 80% 40%,rgba(200,69,42,.03),transparent 60%);pointer-events:none;}
+.w-hdr{display:flex;justify-content:space-between;align-items:end;border-bottom:2px solid var(--border);padding-bottom:40px;margin-bottom:80px;position:relative;}.w-hdr::before{content:'';position:absolute;bottom:-2px;left:0;width:80px;height:2px;background:var(--accent);}
+.w-hl{font-family:'Instrument Serif',serif;font-size:clamp(44px,6vw,72px);font-weight:400;color:var(--ink);line-height:.9;letter-spacing:-2px;}
 .w-hl em{font-style:italic;color:var(--accent);}
-.w-note{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink4);max-width:220px;text-align:right;line-height:1.6;}
+.w-note{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink4);max-width:220px;text-align:right;line-height:1.65;}
 .w-rows{display:flex;flex-direction:column;gap:2px;}
-.wr{display:grid;grid-template-columns:72px 1fr 1fr;background:var(--border);gap:1px;transition:all .25s;}
-.wr:hover .wrn{background:var(--accent);color:white;}
+.wr{display:grid;grid-template-columns:72px 1fr 1fr;background:var(--border);gap:1px;transition:all .3s;}
+.wr:hover .wrn{background:var(--accent);color:white;font-size:34px;}
 .wr:hover .wrm{background:var(--bg3);}
-.wrn{background:var(--bg2);display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:28px;font-style:italic;color:var(--ink4);transition:all .25s;}
-.wrm{background:var(--bg);padding:32px;transition:background .25s;}
-.wrm h3{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px;}
-.wrm p{font-size:14px;color:var(--ink3);line-height:1.7;}
+.wrn{background:var(--bg2);display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:32px;font-style:italic;color:var(--ink4);transition:all .32s cubic-bezier(.16,1,.3,1);}
+.wrm{background:var(--bg);padding:36px 32px;transition:background .28s;}
+.wrm h3{font-size:19px;font-weight:700;color:var(--ink);margin-bottom:10px;letter-spacing:-.2px;}
+.wrm p{font-size:14px;color:var(--ink3);line-height:1.8;}
 .wrx{background:var(--bg);padding:32px;}
 .wrxl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--ink4);text-transform:uppercase;margin-bottom:8px;}
-.wrxv{font-size:14px;color:var(--ink2);font-weight:500;line-height:1.6;}
+.wrxv{font-size:14px;color:var(--ink2);font-weight:500;line-height:1.65;}
+
 /* BREATHE */
-.breathe{background:var(--accent);padding:120px 64px;text-align:center;position:relative;overflow:hidden;}
-.bring{position:absolute;border:1px solid rgba(255,255,255,.15);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);animation:br linear infinite;}
+.breathe{background:var(--accent);padding:140px 64px;text-align:center;position:relative;overflow:hidden;}
+.bring{position:absolute;border:1px solid rgba(255,255,255,.12);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);animation:br linear infinite;}
 .bring:nth-child(1){animation-duration:4s;animation-delay:0s;}.bring:nth-child(2){animation-duration:4s;animation-delay:1s;}.bring:nth-child(3){animation-duration:4s;animation-delay:2s;}.bring:nth-child(4){animation-duration:4s;animation-delay:3s;}
-@keyframes br{0%{width:80px;height:80px;opacity:.8;}100%{width:1000px;height:1000px;opacity:0;}}
+@keyframes br{0%{width:80px;height:80px;opacity:.8;}100%{width:1400px;height:1400px;opacity:0;}}
 .bc{position:relative;z-index:1;}
-.bc h2{font-family:'Instrument Serif',serif;font-size:clamp(48px,9vw,120px);font-weight:400;color:white;line-height:1;margin-bottom:28px;}
-.bc h2 em{font-style:italic;opacity:.65;}
-.bc p{font-size:19px;color:rgba(255,255,255,.82);max-width:440px;margin:0 auto 36px;line-height:1.65;}
-.bc-cta{display:inline-block;background:white;color:var(--accent);padding:16px 40px;border-radius:100px;font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;text-decoration:none;transition:all .25s;}
-.bc-cta:hover{background:var(--ink);color:white;transform:translateY(-2px);}
+.bc h2{font-family:'Instrument Serif',serif;font-size:clamp(60px,11vw,140px);font-weight:400;color:white;line-height:.84;margin-bottom:32px;letter-spacing:-4px;}
+.bc h2 em{font-style:italic;opacity:.6;}
+.bc p{font-size:20px;color:rgba(255,255,255,.78);max-width:440px;margin:0 auto 44px;line-height:1.8;font-weight:300;}
+.bc-cta{display:inline-block;background:white;color:var(--accent);padding:17px 44px;border-radius:100px;font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;text-decoration:none;transition:all .28s;}
+.bc-cta:hover{background:var(--ink);color:white;transform:translateY(-2px);box-shadow:0 16px 40px rgba(26,21,16,.3);}
+
 /* CTA */
 .cta{background:var(--ink);padding:140px 64px;position:relative;overflow:hidden;}
-.ctabg{position:absolute;bottom:-60px;right:-20px;font-family:'Instrument Serif',serif;font-size:300px;color:rgba(245,242,235,.025);pointer-events:none;font-style:italic;line-height:1;}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 85% 50%,rgba(200,69,42,.09),transparent 55%),repeating-linear-gradient(0deg,transparent 0px,transparent 3px,rgba(255,255,255,.005) 3px,rgba(255,255,255,.005) 4px);pointer-events:none;}
+.ctabg{position:absolute;bottom:-60px;right:-20px;font-family:'Instrument Serif',serif;font-size:360px;color:rgba(245,242,235,.02);pointer-events:none;font-style:italic;line-height:1;letter-spacing:-10px;}
 .cta-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;position:relative;z-index:1;}
-.c-hl{font-family:'Instrument Serif',serif;font-size:clamp(52px,6vw,88px);font-weight:400;color:var(--bg);line-height:1.05;margin-bottom:28px;}
+.c-hl{font-family:'Instrument Serif',serif;font-size:clamp(56px,7vw,100px);font-weight:400;color:var(--bg);line-height:.86;margin-bottom:32px;letter-spacing:-3px;}
 .c-hl em{font-style:italic;color:var(--accent2);}
-.c-body{font-size:16px;color:rgba(245,242,235,.72);line-height:1.75;}
+.c-body{font-size:16px;color:rgba(245,242,235,.58);line-height:1.85;}
 .c-form{display:flex;flex-direction:column;gap:14px;}
-.c-field{background:rgba(245,242,235,.06);border:1px solid rgba(245,242,235,.12);color:var(--bg);padding:18px 24px;font-size:15px;font-family:'Syne',sans-serif;border-radius:2px;outline:none;transition:border-color .2s;}
+.c-field{background:rgba(245,242,235,.06);border:1px solid rgba(245,242,235,.1);color:var(--bg);padding:18px 24px;font-size:15px;font-family:'Syne',sans-serif;border-radius:2px;outline:none;transition:border-color .2s;}
 .c-field:focus{border-color:var(--accent2);}
-.c-field::placeholder{color:rgba(245,242,235,.3);}
+.c-field::placeholder{color:rgba(245,242,235,.25);}
 select.c-field option{background:var(--ink);}
-.c-btn{background:var(--accent);color:white;border:none;padding:20px;font-size:14px;font-weight:700;font-family:'Syne',sans-serif;letter-spacing:1.5px;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:all .2s;}
+.c-btn{background:var(--accent);color:white;border:none;padding:20px;font-size:14px;font-weight:700;font-family:'Syne',sans-serif;letter-spacing:1.5px;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:all .22s;}
 .c-btn:hover{background:var(--accent2);transform:translateY(-2px);}
 .c-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
-.c-note{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(245,242,235,.32);text-align:center;}
+.c-note{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(245,242,235,.25);text-align:center;}
 .c-err{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent2);display:none;padding:2px 0;}
 .c-err.show{display:block;}
-.cta-signup-box{border:1px solid rgba(245,242,235,.1);padding:40px;}
-.cta-signup-kicker{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(245,242,235,.25);text-transform:uppercase;margin-bottom:24px;}
-.cta-signin-link{display:block;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(245,242,235,.3);text-decoration:none;transition:color .2s;}
+.cta-signup-box{border:1px solid rgba(245,242,235,.08);padding:44px;}
+.cta-signup-kicker{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:rgba(245,242,235,.22);text-transform:uppercase;margin-bottom:24px;}
+.cta-signin-link{display:block;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(245,242,235,.25);text-decoration:none;transition:color .2s;}
 .cta-signin-link:hover{color:rgba(245,242,235,.6);}
+
 /* FOOTER */
-footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:56px 64px;}
+footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.06);padding:56px 64px;}
 .f-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;gap:40px;align-items:center;}
 .f-logo{display:flex;align-items:center;gap:14px;margin-bottom:10px;}
 .f-name{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;letter-spacing:4px;color:var(--bg);}
-.f-tag{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(245,242,235,.32);line-height:1.7;}
+.f-tag{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(245,242,235,.25);line-height:1.75;}
 .f-links{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;}
-.f-links a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(245,242,235,.38);text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.f-links a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(245,242,235,.3);text-decoration:none;text-transform:uppercase;transition:color .2s;}
 .f-links a:hover{color:var(--bg);}
 .f-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
 .f-social{display:flex;gap:20px;}
-.f-social a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(245,242,235,.38);text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.f-social a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(245,242,235,.3);text-decoration:none;text-transform:uppercase;transition:color .2s;}
 .f-social a:hover{color:var(--accent);}
-.f-copy{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(245,242,235,.18);letter-spacing:1px;}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.f-copy{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(245,242,235,.15);letter-spacing:1px;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
 .reveal.visible{opacity:1;transform:translateY(0);}
-@keyframes fu{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--ink);color:var(--bg);padding:13px 28px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.5px;z-index:9999;opacity:0;transition:all .4s cubic-bezier(.16,1,.3,1);pointer-events:none;border:1px solid rgba(245,242,235,.12);white-space:nowrap;}
+.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--ink);color:var(--bg);padding:13px 28px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.5px;z-index:9999;opacity:0;transition:all .4s cubic-bezier(.16,1,.3,1);pointer-events:none;border:1px solid rgba(245,242,235,.1);white-space:nowrap;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-@media(max-width:1024px){
-  nav{padding:20px 24px;}.nav-links{display:none;}.nav-pill{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:flex;}
-  .hero{grid-template-columns:1fr;}.hero-r{display:none;}.hero-l{padding:60px 24px;border-right:none;min-height:auto;}
-  .specs{padding:80px 24px;}.spec-grid{grid-template-columns:1fr 1fr;}
-  .story{padding:80px 24px;}.s-grid{grid-template-columns:1fr;gap:60px;}.s-left{position:static;}
-  .what{padding:80px 24px;}.w-hdr{flex-direction:column;align-items:start;gap:16px;}.w-note{text-align:left;max-width:100%;}
-  .wr{grid-template-columns:1fr;}.wrn{height:52px;}
-  .breathe{padding:80px 24px;}.cta{padding:80px 24px;}.cta-in{grid-template-columns:1fr;gap:60px;}
-  footer{padding:40px 24px;}.f-in{grid-template-columns:1fr;text-align:center;}.f-logo{justify-content:center;}.f-links{justify-content:center;}.f-right{align-items:center;}
-}
-@media(max-width:640px){.spec-grid{grid-template-columns:1fr;}.hero-ctas{flex-direction:column;align-items:flex-start;gap:16px;}}
-@media(max-width:480px){
-  nav{padding:16px 18px;}
-  .hero-l{padding:48px 20px;}
-  .hero-hl{font-size:52px;margin-bottom:28px;}
-  .hero-body{font-size:15px;}
-  .hero-kick{margin-bottom:28px;}
-  .specs{padding:60px 20px;}
-  .sec-hl{font-size:36px;}
-  .sec-desc{font-size:14px;margin-bottom:40px;}
-  .sc{padding:28px 20px;}
-  .story{padding:60px 20px;}
-  .s-hl{font-size:36px;}
-  .what{padding:60px 20px;}
-  .w-hl{font-size:36px;}
-  .wr{display:flex;flex-direction:column;}
-  .wrn{height:44px;width:100%;}
-  .wrm,.wrx{padding:20px;}
-  .breathe{padding:60px 20px;}
-  .bc h2{font-size:44px;}
-  .bc p{font-size:16px;}
-  .cta{padding:60px 20px;}
-  .c-hl{font-size:44px;}
-  .c-body{font-size:14px;}
-  .c-field{padding:14px 18px;font-size:14px;}
-  .qbank-entry{padding:60px 20px;}
-  .qbe-hl{font-size:32px;}
-  .qbe-stat-n{font-size:40px;}
-  footer{padding:40px 20px;}
-  .mb{padding:24px 20px;}
-  .mb-r{gap:12px;}
-}
 
-@keyframes breathe{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.35;transform:scale(.75);}}
-.breathing-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;color:var(--accent);display:flex;align-items:center;gap:6px;margin-top:4px;transition:color .3s;}
-.breathing-dot{width:5px;height:5px;background:var(--accent);border-radius:50%;display:inline-block;animation:breathe 2s ease infinite;flex-shrink:0;transition:background .3s;}
-.sc:not(.soon):hover .breathing-badge{color:rgba(245,242,235,.55);}
-.sc:not(.soon):hover .breathing-dot{background:rgba(245,242,235,.55);}
-
-/* ══════════════════════════════════════
-   HERO Q-BANK STRIP
-══════════════════════════════════════ */
-
+/* Q-BANK overlay/room — all preserved */
 .hero-qbank-strip:hover{background:rgba(200,69,42,.1);border-color:rgba(200,69,42,.45);}
 .hqs-inner{display:flex;align-items:center;gap:16px;padding:16px 20px;}
 .hqs-icon{width:36px;height:36px;background:rgba(200,69,42,.12);border:1px solid rgba(200,69,42,.25);display:flex;align-items:center;justify-content:center;color:#c8452a;flex-shrink:0;}
@@ -245,11 +272,6 @@ footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:
 .hqs-title{font-size:13px;font-weight:600;color:var(--ink);line-height:1.3;}
 .hqs-arr{margin-left:auto;width:30px;height:30px;background:#c8452a;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:13px;flex-shrink:0;transition:transform .3s;}
 .hero-qbank-strip:hover .hqs-arr{transform:scale(1.1) rotate(5deg);}
-
-/* ══════════════════════════════════════
-   Q-BANK LAUNCHER OVERLAY
-══════════════════════════════════════ */
-
 .qb-overlay.open{opacity:1;pointer-events:all;}
 .qb-panel{background:var(--ink);max-width:680px;width:100%;max-height:90vh;overflow-y:auto;padding:52px;position:relative;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.08) transparent;transform:translateY(36px) scale(.97);transition:transform .45s cubic-bezier(.16,1,.3,1);}
 .qb-overlay.open .qb-panel{transform:translateY(0) scale(1);}
@@ -288,10 +310,6 @@ footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:
 .qb-launch-btn{width:100%;background:#c8452a;color:white;border:none;padding:20px 32px;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:.5px;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:10px;}
 .qb-launch-btn:hover{background:#e85d3f;transform:translateY(-2px);}
 .qb-launch-arr{font-size:18px;}
-
-/* ══════════════════════════════════════
-   Q-BANK ROOM
-══════════════════════════════════════ */
 .qb-room{position:fixed;inset:0;background:#0f0d0b;z-index:8000;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .3s;overflow:hidden;}
 .qb-room.open{opacity:1;pointer-events:all;}
 .qb-room-nav{background:#0a0806;border-bottom:1px solid rgba(255,255,255,.07);padding:15px 48px;display:flex;align-items:center;gap:14px;flex-shrink:0;}
@@ -369,8 +387,7 @@ footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:
 .qb-focus-item:last-child{border-bottom:none;}
 .qb-res-qlist{display:flex;flex-direction:column;gap:10px;margin-bottom:36px;}
 .qb-res-qb{border:1px solid rgba(255,255,255,.08);overflow:hidden;}
-.qb-res-qb.right{border-left:3px solid #4db87a;}
-.qb-res-qb.wrong{border-left:3px solid #e05a5a;}
+.qb-res-qb.right{border-left:3px solid #4db87a;}.qb-res-qb.wrong{border-left:3px solid #e05a5a;}
 .qb-res-qb-hdr{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.05);}
 .qb-res-badge{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1px;}
 .qb-res-badge.right{color:#4db87a;}.qb-res-badge.wrong{color:#e05a5a;}
@@ -392,46 +409,66 @@ footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:
 .qb-res-retry:hover{border-color:#c8452a;color:#c8452a;}
 .qb-res-new{flex:1;background:#c8452a;border:none;padding:15px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:white;cursor:pointer;transition:all .2s;}
 .qb-res-new:hover{background:#e85d3f;}
-@media(max-width:768px){
-  .qb-panel{padding:28px 20px;}
-  .qb-sys-grid{grid-template-columns:1fr 1fr;}
-  .qb-mode-row{grid-template-columns:1fr;}
-  .qb-q-shell,.qb-res-shell{padding:32px 20px 60px;}
-  .qb-room-nav{padding:14px 20px;}
-  
-}
 
-/* Q-BANK ENTRY SECTION */
-.qbank-entry{background:var(--ink);padding:80px 64px;}
-.qbank-entry-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.qbe-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
-.qbe-tag::before{content:'';width:20px;height:1px;background:var(--accent);}
-.qbe-hl{font-family:'Instrument Serif',serif;font-size:clamp(38px,5vw,60px);font-weight:400;color:var(--white);line-height:1;margin-bottom:20px;}
-.qbe-hl em{font-style:italic;color:#e85d3f;}
-.qbe-body{font-size:15px;color:rgba(245,242,235,.42);line-height:1.85;margin-bottom:36px;max-width:440px;}
-.qbe-btn{display:inline-flex;align-items:center;gap:12px;background:var(--accent);color:white;text-decoration:none;padding:16px 32px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;letter-spacing:.5px;transition:all .25s;border-radius:2px;}
-.qbe-btn span{font-size:18px;transition:transform .2s;}
-.qbe-btn:hover{background:#e85d3f;}.qbe-btn:hover span{transform:translate(2px,-2px);}
-.qbe-right{display:flex;flex-direction:column;gap:0;border:1px solid rgba(245,242,235,.08);padding:40px;}
-.qbe-stat{padding:24px 0;}
-.qbe-stat-n{font-family:'Instrument Serif',serif;font-size:52px;font-style:italic;color:var(--white);line-height:1;}
-.qbe-stat-l{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:rgba(245,242,235,.25);text-transform:uppercase;margin-top:6px;}
-.qbe-divider{height:1px;background:rgba(245,242,235,.07);}
-.qbe-modes{padding:24px 0 0;display:flex;flex-direction:column;gap:10px;}
-.qbe-mode{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(245,242,235,.32);display:flex;align-items:center;gap:10px;}
-.qbe-mode-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0;}
-.qbe-mode-dot.exam{background:#4db87a;}
-.qbe-mode-dot.breathe{background:#6b9fd4;}
-@media(max-width:1024px){.qbank-entry{padding:60px 24px;}.qbank-entry-in{grid-template-columns:1fr;gap:40px;}.qbe-right{padding:28px;}}
+
+/* ── ENHANCED REVEAL VARIANTS ── */
+.reveal-up{opacity:0;transform:translateY(48px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1);}
+.reveal-up.visible{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+.reveal-left.visible{opacity:1;transform:translateX(0);}
+.reveal-right{opacity:0;transform:translateX(32px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+.reveal-right.visible{opacity:1;transform:translateX(0);}
+/* section line accent */
+.sec-line{display:block;width:0;height:2px;background:var(--accent);margin-bottom:20px;transition:width .9s cubic-bezier(.16,1,.3,1);}
+.sec-line.visible{width:48px;}
+/* wr hover — left border accent */
+.wr{position:relative;}
+.wr::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:var(--accent);transition:width .3s cubic-bezier(.16,1,.3,1);z-index:1;}
+.wr:hover::before{width:3px;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  nav{padding:0 24px;height:60px;}
+  .nav-links{display:none;}.nav-pill{display:none;}.nav-hamburger{display:flex;}
+  .nav-drawer{display:flex;top:0;}
+  .hero{flex-direction:column;}
+  .hero-l{flex:none;padding:100px 24px 60px;border-right:none;min-height:90vh;}
+  .hero-r{display:none;}
+  .specs{padding:80px 24px;}.spec-grid{grid-template-columns:1fr 1fr;}
+  .story{padding:80px 24px;}.s-grid{grid-template-columns:1fr;gap:60px;}.s-left{position:static;}
+  .what{padding:80px 24px;}.w-hdr{flex-direction:column;align-items:start;gap:16px;}.w-note{text-align:left;max-width:100%;}
+  .wr{grid-template-columns:1fr;}.wrn{height:52px;}
+  .breathe{padding:80px 24px;}.cta{padding:80px 24px;}.cta-in{grid-template-columns:1fr;gap:60px;}
+  .qbank-entry{padding:60px 24px;}.qbank-entry-in{grid-template-columns:1fr;gap:40px;}.qbe-right{padding:28px;}
+  footer{padding:40px 24px;}.f-in{grid-template-columns:1fr;text-align:center;}.f-logo{justify-content:center;}.f-links{justify-content:center;}.f-right{align-items:center;}
+}
+@media(max-width:640px){.spec-grid{grid-template-columns:1fr;}.h-ctas{flex-direction:column;align-items:flex-start;gap:16px;}}
+@media(max-width:480px){
+  nav{padding:0 18px;}
+  .hero-l{padding:80px 20px 48px;}
+  .h-title{font-size:64px;}.h-title-em{font-size:64px;}.h-body{font-size:15px;}
+  .specs{padding:60px 20px;}.sc{padding:28px 20px;}
+  .story{padding:60px 20px;}.s-hl{font-size:36px;}
+  .what{padding:60px 20px;}.w-hl{font-size:36px;}
+  .wr{display:flex;flex-direction:column;}.wrn{height:44px;width:100%;}.wrm,.wrx{padding:20px;}
+  .breathe{padding:60px 20px;}.bc h2{font-size:52px;}.bc p{font-size:16px;}
+  .cta{padding:60px 20px;}.c-hl{font-size:44px;}.c-field{padding:14px 18px;font-size:14px;}
+  .qbe-hl{font-size:32px;}.qbe-stat-n{font-size:40px;}
+  footer{padding:40px 20px;}.mb{padding:24px 20px;}.mb-r{gap:12px;}
+  .qb-panel{padding:28px 20px;}.qb-sys-grid{grid-template-columns:1fr 1fr;}.qb-mode-row{grid-template-columns:1fr;}
+  .qb-q-shell,.qb-res-shell{padding:32px 20px 60px;}.qb-room-nav{padding:14px 20px;}
+  .h-scroll{left:20px;}
+}
 </style>
 </head>
 <body>
 <div id="cdot"></div><div id="cring"></div>
 <div class="toast" id="toast"></div>
 
-<nav>
+<!-- NAV -->
+<nav id="main-nav">
   <a href="/" class="logo">
-    <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" stroke="#1a1510" stroke-width="1.5"/><path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M10 30 Q22 36 34 30" stroke="#1a1510" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="22" cy="10" r="2.5" fill="#c8452a"/><path d="M14 22 Q10 26 10 30" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity="0.4"/><path d="M30 22 Q34 26 34 30" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity="0.4"/></svg>
+    <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" stroke="rgba(245,242,235,0.15)" stroke-width="1.5"/><path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M10 30 Q22 36 34 30" stroke="rgba(245,242,235,0.2)" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="22" cy="10" r="2.5" fill="#c8452a"/><path d="M14 22 Q10 26 10 30" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity="0.4"/><path d="M30 22 Q34 26 34 30" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity="0.4"/></svg>
     <span class="logo-name">Vent</span>
   </a>
   <div class="nav-links"><a href="#specialties">Specialties</a><a href="#story">Our story</a><a href="/qbank">Q-Bank</a></div>
@@ -448,24 +485,30 @@ footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:
   <a href="/signin" class="drawer-link drawer-pill">Get started</a>
 </div>
 
+<!-- HERO -->
 <section class="hero">
+  <div class="h-particles" id="h-particles"></div>
   <div class="hero-l">
-    <div class="hero-kick">2026 — Early access</div>
-    <h1 class="hero-hl">Finally,<br><em>breathe.</em></h1>
-    <p class="hero-body">Medical school gives you <strong>10,000 pages</strong> when you need ten minutes. Vent gives you the framework — so you can finally understand, not just memorise.</p>
-    <div class="hero-ctas">
-      <a href="/signin" class="btn-p">Start for free</a>
-      <a href="#specialties" class="btn-g">Browse specialties →</a>
+    <div class="h-eyebrow">2026 — Early access</div>
+    <h1 class="h-title">Finally,</h1>
+    <span class="h-title-em">breathe.</span>
+    <p class="h-body">Medical school gives you <strong>10,000 pages</strong> when you need ten minutes. Vent gives you the framework — so you can finally understand, not just memorise.</p>
+    <div class="h-ctas">
+      <a href="/signin" class="h-btn-primary">Start for free <span style="font-size:16px">↗</span></a>
+      <a href="#specialties" class="h-btn-secondary">Browse specialties →</a>
     </div>
+    <div class="h-stats">
+      <div class="h-stat"><div class="h-stat-n" data-target="81" data-suffix="+">0</div><div class="h-stat-l">Notes live</div></div>
+      <div class="h-stat"><div class="h-stat-n" data-target="400" data-suffix="+">0</div><div class="h-stat-l">Questions</div></div>
+      <div class="h-stat"><div class="h-stat-n" data-target="4" data-suffix="">0</div><div class="h-stat-l">Specialties</div></div>
+    </div>
+    <div class="h-scroll"><div class="h-scroll-line"></div><div class="h-scroll-txt">Scroll</div></div>
   </div>
   <div class="hero-r">
-    <div class="particle" style="left:20%;animation-duration:6s;animation-delay:0s;"></div>
-    <div class="particle" style="left:45%;animation-duration:8s;animation-delay:1.5s;width:5px;height:5px;"></div>
-    <div class="particle" style="left:68%;animation-duration:5s;animation-delay:.8s;"></div>
-    <div class="particle" style="left:82%;animation-duration:9s;animation-delay:3s;"></div>
-    <div class="hero-glow"></div>
-    <div class="hero-brand-panel">
-      <div class="hbp-logo">
+    <div class="orb-wrap"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div><div class="orb orb-4"></div></div>
+    <div class="h-ghost">V</div>
+    <div class="brand-content">
+      <div class="brand-logo">
         <svg width="120" height="120" viewBox="0 0 44 44" fill="none">
           <circle cx="22" cy="22" r="21" stroke="rgba(245,242,235,0.07)" stroke-width="1.5"/>
           <path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/>
@@ -480,310 +523,48 @@ footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:
           <path d="M30 22 Q34 26 34 30" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
         </svg>
       </div>
-      <div class="hbp-name">VENT</div>
-      <div class="hbp-sub">ventilate · vent · breathe</div>
-      <div class="hbp-manifesto">
-        <div class="hbp-m-line">Clinical notes that teach.</div>
-        <div class="hbp-m-line">Questions that test what matters.</div>
-        <div class="hbp-m-line hbp-m-accent">Built to make you understand.</div>
+      <div class="brand-name">VENT</div>
+      <div class="brand-tagline">ventilate · vent · breathe</div>
+      <div class="brand-manifesto">
+        <div class="bm-line">Clinical notes that teach.</div>
+        <div class="bm-line">Questions that test what matters.</div>
+        <div class="bm-line accent">Built to make you understand.</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- SPECIALTIES -->
 <section class="specs" id="specialties">
-  <div class="reveal">
-    <div class="sec-kick">// Clinical notes</div>
-    <h2 class="sec-hl">Choose your<br><em>specialty</em></h2>
-    <p class="sec-desc">Every note built to the same standard — integrated visuals, clinical reasoning frameworks, and the insight no textbook gives you.</p>
+  <div class="specs-hdr reveal">
+    <div><span class="sec-line reveal"></span><div class="s-kick">// Clinical notes</div><h2 class="s-hl">Choose your<br><em>specialty</em></h2></div>
+    <p class="s-desc">Every note built to the same standard — integrated visuals, clinical reasoning, and the insight no textbook gives you.</p>
   </div>
-
-  <!-- Still building banner -->
   <div class="building-banner reveal">
     <div class="building-dot"></div>
-    <span class="building-text">// We're still building — new specialties drop regularly. Two live now.</span>
+    <span class="building-text">// We're still building — new specialties drop regularly. Four live now.</span>
   </div>
-
   <div class="spec-grid">
-
-    <!-- Ophthalmology -->
-    <a href="/ophtho" class="sc reveal">
-      <div class="sc-num">01 — Ophthalmology</div>
-      <div class="sc-svg-icon">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Eyelids upper + lower -->
-          <path d="M5 24C5 24 10 13 24 13C38 13 43 24 43 24" stroke="#c8452a" stroke-width="1.6" stroke-linecap="round"/>
-          <path d="M5 24C5 24 10 35 24 35C38 35 43 24 43 24" stroke="#c8452a" stroke-width="1.6" stroke-linecap="round"/>
-          <!-- Sclera shading hints -->
-          <path d="M5 24C8 20 13 16 18 14.5" stroke="#c8452a" stroke-width=".7" stroke-linecap="round" opacity=".25"/>
-          <path d="M43 24C40 20 35 16 30 14.5" stroke="#c8452a" stroke-width=".7" stroke-linecap="round" opacity=".25"/>
-          <!-- Iris ring -->
-          <circle cx="24" cy="24" r="7.5" stroke="#c8452a" stroke-width="1.4"/>
-          <!-- Iris detail lines -->
-          <path d="M24 16.5V18M24 30V31.5M16.5 24H18M30 24H31.5" stroke="#c8452a" stroke-width=".8" stroke-linecap="round" opacity=".4"/>
-          <path d="M18.8 18.8L19.9 19.9M29.2 18.8L28.1 19.9M18.8 29.2L19.9 28.1M29.2 29.2L28.1 28.1" stroke="#c8452a" stroke-width=".7" stroke-linecap="round" opacity=".3"/>
-          <!-- Pupil -->
-          <circle cx="24" cy="24" r="3.2" fill="#c8452a"/>
-          <!-- Corneal light reflex -->
-          <circle cx="26.2" cy="21.8" r="1.1" fill="white" opacity=".7"/>
-          <!-- Lacrimal punctum hint -->
-          <circle cx="7" cy="24" r="1" fill="#c8452a" opacity=".35"/>
-        </svg>
-      </div>
-      <div class="sc-title">Eye &amp; Vision</div>
-      <p class="sc-desc">Anterior segment, posterior pathology, neuro-ophthalmology. The anatomy, the emergencies, and the exam patterns that catch people out.</p>
-      <div class="sc-foot" style="flex-direction:column;align-items:flex-start;gap:8px;">
-        <div class="breathing-badge"><span class="breathing-dot"></span>5 MCQs per note</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;"><div class="sc-meta">19 notes · Live</div><div class="sc-arr">↗</div></div>
-      </div>
-    </a>
-
-    <!-- OB/GYN -->
-    <a href="/obgyn/index.html" class="sc reveal">
-      <div class="sc-num">02 — OB/GYN</div>
-      <div class="sc-svg-icon">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Uterus body -->
-          <path d="M16 28C16 23 19.6 19 24 19C28.4 19 32 23 32 28V33C32 37.4 28.4 41 24 41C19.6 41 16 37.4 16 33V28Z" stroke="#c8452a" stroke-width="1.5"/>
-          <!-- Cervix -->
-          <path d="M21 41V44M27 41V44" stroke="#c8452a" stroke-width="1.3" stroke-linecap="round" opacity=".5"/>
-          <path d="M21 44H27" stroke="#c8452a" stroke-width="1.3" stroke-linecap="round" opacity=".5"/>
-          <!-- Fundal contour -->
-          <path d="M16 28C16 24 19 21 24 19" stroke="#c8452a" stroke-width=".7" stroke-linecap="round" opacity=".3"/>
-          <!-- Left fallopian tube -->
-          <path d="M16 25C13 23 9 23 7 26" stroke="#c8452a" stroke-width="1.4" stroke-linecap="round"/>
-          <!-- Left fimbriae -->
-          <path d="M7 26C6 24 5 23 4 24M7 26C6 27 5 28 4 27M7 26C7 24.5 7 23 8 22.5" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity=".7"/>
-          <!-- Left ovary -->
-          <ellipse cx="9" cy="21" rx="3" ry="2" stroke="#c8452a" stroke-width="1.3" transform="rotate(-20 9 21)"/>
-          <!-- Right fallopian tube -->
-          <path d="M32 25C35 23 39 23 41 26" stroke="#c8452a" stroke-width="1.4" stroke-linecap="round"/>
-          <!-- Right fimbriae -->
-          <path d="M41 26C42 24 43 23 44 24M41 26C42 27 43 28 44 27M41 26C41 24.5 41 23 40 22.5" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity=".7"/>
-          <!-- Right ovary -->
-          <ellipse cx="39" cy="21" rx="3" ry="2" stroke="#c8452a" stroke-width="1.3" transform="rotate(20 39 21)"/>
-          <!-- Endometrial line -->
-          <path d="M24 41V27" stroke="#c8452a" stroke-width=".8" stroke-linecap="round" opacity=".25"/>
-          <!-- Uterus top arch -->
-          <path d="M16 28C16 24 20 19 24 19C28 19 32 24 32 28" stroke="#c8452a" stroke-width=".7" opacity=".2"/>
-        </svg>
-      </div>
-      <div class="sc-title">Obstetrics &amp; Gynaecology</div>
-      <p class="sc-desc">PPH, preeclampsia, ectopic pregnancy, placenta praevia, GDM, shoulder dystocia — and 21 more. Every high-stakes condition, cold.</p>
-      <div class="sc-foot" style="flex-direction:column;align-items:flex-start;gap:8px;">
-        <div class="breathing-badge"><span class="breathing-dot"></span>5 MCQs per note</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;"><div class="sc-meta">27 notes · Live</div><div class="sc-arr">↗</div></div>
-      </div>
-    </a>
-
-    <!-- Forensic Medicine -->
-    <a href="/forensic/index.html" class="sc reveal">
-      <div class="sc-num">03 — Forensic Medicine</div>
-      <div class="sc-svg-icon">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Scales of justice -->
-          <path d="M24 8V40" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M14 12H34" stroke="#c8452a" stroke-width="1.4" stroke-linecap="round"/>
-          <!-- Left scale -->
-          <path d="M14 12L10 22" stroke="#c8452a" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M14 12L18 22" stroke="#c8452a" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M9 22C9 22 10 26 14 26C18 26 19 22 19 22" stroke="#c8452a" stroke-width="1.3" stroke-linecap="round"/>
-          <!-- Right scale (slightly lower - unbalanced) -->
-          <path d="M34 12L30 23" stroke="#c8452a" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M34 12L38 23" stroke="#c8452a" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M29 23C29 23 30 27 34 27C38 27 39 23 39 23" stroke="#c8452a" stroke-width="1.3" stroke-linecap="round"/>
-          <!-- Base -->
-          <path d="M18 40H30" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- Detail marks -->
-          <circle cx="14" cy="12" r="1.2" fill="#c8452a" opacity=".5"/>
-          <circle cx="34" cy="12" r="1.2" fill="#c8452a" opacity=".5"/>
-          <circle cx="24" cy="8" r="1.5" fill="#c8452a"/>
-        </svg>
-      </div>
-      <div class="sc-title">Forensic Medicine</div>
-      <p class="sc-desc">Medical ethics, malpractice, asphyxia, wound analysis, death certification, child abuse, and the medico-legal framework every doctor must know.</p>
-      <div class="sc-foot" style="flex-direction:column;align-items:flex-start;gap:8px;">
-        <div class="breathing-badge"><span class="breathing-dot"></span>5 MCQs per note</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;"><div class="sc-meta">14 notes · Live</div><div class="sc-arr">↗</div></div>
-      </div>
-    </a>
-
-    <!-- Pathology -->
-    <a href="/pathology/index.html" class="sc reveal">
-      <div class="sc-num">04 — Pathology</div>
-      <div class="sc-svg-icon">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Microscope eyepiece -->
-          <rect x="19" y="6" width="10" height="7" rx="2" stroke="#c8452a" stroke-width="1.4"/>
-          <!-- Microscope body tube -->
-          <path d="M24 13V22" stroke="#c8452a" stroke-width="1.4" stroke-linecap="round"/>
-          <!-- Stage arm -->
-          <path d="M24 22L20 28" stroke="#c8452a" stroke-width="1.4" stroke-linecap="round"/>
-          <!-- Objective lens -->
-          <circle cx="18" cy="30" r="3" stroke="#c8452a" stroke-width="1.3"/>
-          <!-- Stage platform -->
-          <path d="M10 33H30" stroke="#c8452a" stroke-width="1.4" stroke-linecap="round"/>
-          <!-- Stage clip left -->
-          <path d="M13 33V36" stroke="#c8452a" stroke-width="1.1" stroke-linecap="round" opacity=".5"/>
-          <!-- Stage clip right -->
-          <path d="M27 33V36" stroke="#c8452a" stroke-width="1.1" stroke-linecap="round" opacity=".5"/>
-          <!-- Base -->
-          <path d="M8 42H32" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M8 42V39" stroke="#c8452a" stroke-width="1.3" stroke-linecap="round"/>
-          <path d="M32 42V39" stroke="#c8452a" stroke-width="1.3" stroke-linecap="round"/>
-          <!-- Coarse focus knob -->
-          <ellipse cx="33" cy="26" rx="2.5" ry="4" stroke="#c8452a" stroke-width="1.2" opacity=".6"/>
-          <!-- Cell on slide — circle with nucleus -->
-          <circle cx="20" cy="36.5" r="2.5" stroke="#c8452a" stroke-width=".9" opacity=".5"/>
-          <circle cx="20" cy="36.5" r="1" fill="#c8452a" opacity=".4"/>
-        </svg>
-      </div>
-      <div class="sc-title">Pathology</div>
-      <p class="sc-desc">General and systemic pathology — cell injury, inflammation, neoplasia, haemodynamics, and a growing library of organ-system disease, built from mechanism up.</p>
-      <div class="sc-foot" style="flex-direction:column;align-items:flex-start;gap:8px;">
-        <div class="breathing-badge"><span class="breathing-dot"></span>5 MCQs per note</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;width:100%;"><div class="sc-meta">21 notes · Live</div><div class="sc-arr">↗</div></div>
-      </div>
-    </a>
-
-    <!-- Internal Medicine -->
-    <div class="sc soon reveal">
-      <div class="soon-tag">Coming soon</div>
-      <div class="sc-num">05 — Internal Medicine</div>
-      <div class="sc-svg-icon" style="opacity:.4;">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Heart anatomical shape -->
-          <path d="M24 39L8.5 25C4.5 21.5 4.5 15.5 10.5 13C14.5 11.5 18.5 13 21.5 16.5L24 19.5L26.5 16.5C29.5 13 33.5 11.5 37.5 13C43.5 15.5 43.5 21.5 39.5 25L24 39Z" stroke="#c8452a" stroke-width="1.5" stroke-linejoin="round"/>
-          <!-- Aortic arch hint -->
-          <path d="M24 19.5C24 19.5 22 14 22 11C22 9 23 8 24 8" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity=".4"/>
-          <path d="M24 8C25 8 28 8 29 10" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity=".3"/>
-          <!-- Ventricle line -->
-          <path d="M20 22C20 22 22 26 24 28C26 26 28 22 28 22" stroke="#c8452a" stroke-width=".9" stroke-linecap="round" opacity=".35"/>
-          <!-- ECG trace underneath -->
-          <path d="M4 34H12L15 29L18 39L21 32L23 35H25L27 30L30 37L33 34H44" stroke="#c8452a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <div class="sc-title">Internal Medicine</div>
-      <p class="sc-desc">Heart failure, ACS, pneumonia, COPD, sepsis, AKI, liver disease. The bread and butter of every medicine rotation.</p>
-      <div class="sc-foot"><div class="sc-meta">In progress</div><button class="sc-notify" onclick="notifyMe(this,'Internal Medicine')">Notify me →</button></div>
-    </div>
-
-    <!-- Surgery -->
-    <div class="sc soon reveal">
-      <div class="soon-tag">Coming soon</div>
-      <div class="sc-num">06 — Surgery</div>
-      <div class="sc-svg-icon" style="opacity:.4;">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Scalpel handle -->
-          <path d="M7 41L28 20" stroke="#c8452a" stroke-width="2" stroke-linecap="round"/>
-          <!-- Blade back -->
-          <path d="M28 20L37 11L42 12L41 17L32 22L28 20Z" stroke="#c8452a" stroke-width="1.4" stroke-linejoin="round"/>
-          <!-- Blade edge (sharp lower curve) -->
-          <path d="M28 20C29 21 33 19 37 17" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity=".5"/>
-          <!-- Handle grip lines -->
-          <path d="M10 38L12 36M14 34L16 32M18 30L20 28" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity=".35"/>
-          <!-- Suture below -->
-          <path d="M8 44C11 42 11 46 14 44C17 42 17 46 20 44C23 42 23 46 26 44C29 42 29 46 32 44" stroke="#c8452a" stroke-width="1.2" stroke-linecap="round"/>
-          <!-- Suture needle -->
-          <path d="M32 44C35 43 37 41 36 39" stroke="#c8452a" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M36 39C35 37 32 37 31 38" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity=".6"/>
-        </svg>
-      </div>
-      <div class="sc-title">Surgery</div>
-      <p class="sc-desc">Appendicitis, bowel obstruction, hernias, acute abdomen, perioperative care. What you need before you scrub in.</p>
-      <div class="sc-foot"><div class="sc-meta">In progress</div><button class="sc-notify" onclick="notifyMe(this,'Surgery')">Notify me →</button></div>
-    </div>
-
-    <!-- Neurology -->
-    <div class="sc soon reveal">
-      <div class="soon-tag">Coming soon</div>
-      <div class="sc-num">07 — Neurology</div>
-      <div class="sc-svg-icon" style="opacity:.4;">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Cerebral hemisphere outer outline -->
-          <path d="M10 34C7 31 6 27 7 23C8 17 13 12 19 10C22 9 26 9 29 10C35 12 40 17 41 23C42 28 40 33 36 36C33 38 30 39 27 39H16C13 39 11 37 10 34Z" stroke="#c8452a" stroke-width="1.5"/>
-          <!-- Brainstem -->
-          <path d="M20 39V44C20 44 22 45 24 44C26 43 28 44 28 44V39" stroke="#c8452a" stroke-width="1.3" stroke-linecap="round"/>
-          <!-- Central sulcus -->
-          <path d="M22 10C21 14 23 17 21 21C19 24 20 27 22 30" stroke="#c8452a" stroke-width="1.1" stroke-linecap="round" opacity=".55"/>
-          <!-- Lateral sulcus (Sylvian fissure) -->
-          <path d="M10 24C14 22 18 23 22 21C26 19 30 20 34 22" stroke="#c8452a" stroke-width="1.1" stroke-linecap="round" opacity=".55"/>
-          <!-- Frontal gyri -->
-          <path d="M12 18C14 16 17 16 19 18" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity=".4"/>
-          <path d="M10 22C12 20 14 20 16 22" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity=".35"/>
-          <!-- Parietal gyri -->
-          <path d="M26 13C28 12 31 13 32 15" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity=".4"/>
-          <path d="M30 18C32 17 35 18 36 20" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity=".35"/>
-          <!-- Occipital hint -->
-          <path d="M34 28C36 27 38 28 39 30" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity=".35"/>
-          <!-- Temporal gyrus -->
-          <path d="M13 28C16 26 20 27 22 29" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity=".35"/>
-          <path d="M14 32C17 30 21 31 23 33" stroke="#c8452a" stroke-width="1" stroke-linecap="round" opacity=".3"/>
-        </svg>
-      </div>
-      <div class="sc-title">Neurology</div>
-      <p class="sc-desc">Stroke, seizures, meningitis, Parkinson's, MS. Where pattern recognition saves lives and milliseconds matter.</p>
-      <div class="sc-foot"><div class="sc-meta">In progress</div><button class="sc-notify" onclick="notifyMe(this,'Neurology')">Notify me →</button></div>
-    </div>
-
-    <!-- Paediatrics -->
-    <div class="sc soon reveal">
-      <div class="soon-tag">Coming soon</div>
-      <div class="sc-num">08 — Paediatrics</div>
-      <div class="sc-svg-icon" style="opacity:.4;">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Child head -->
-          <circle cx="24" cy="9.5" r="5" stroke="#c8452a" stroke-width="1.5"/>
-          <!-- Neck + torso -->
-          <path d="M24 14.5V18" stroke="#c8452a" stroke-width="1.4" stroke-linecap="round"/>
-          <path d="M15 24C15 20 19 18 24 18C29 18 33 20 33 24V32" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- Arms -->
-          <path d="M15 24L9 30" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M33 24L39 30" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- Legs -->
-          <path d="M19 32L17 44" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M29 32L31 44" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- Stethoscope earpiece left -->
-          <path d="M6 8V14C6 17 9 19 12 19" stroke="#c8452a" stroke-width="1.2" stroke-linecap="round"/>
-          <!-- Stethoscope earpiece right -->
-          <path d="M12 8V14C12 17 9 19 12 19" stroke="#c8452a" stroke-width="1.2" stroke-linecap="round"/>
-          <!-- Stethoscope tube down to chest piece -->
-          <path d="M12 19C12 23 10 26 10 29C10 32 12 34 15 34" stroke="#c8452a" stroke-width="1.2" stroke-linecap="round"/>
-          <!-- Chest piece circle -->
-          <circle cx="15" cy="36" r="2.5" stroke="#c8452a" stroke-width="1.2"/>
-          <!-- Earpiece tips -->
-          <circle cx="6" cy="7" r="1.2" stroke="#c8452a" stroke-width="1"/>
-          <circle cx="12" cy="7" r="1.2" stroke="#c8452a" stroke-width="1"/>
-        </svg>
-      </div>
-      <div class="sc-title">Paediatrics</div>
-      <p class="sc-desc">Paediatric sepsis, bronchiolitis, febrile convulsions, developmental milestones. Emergencies that look different from adults.</p>
-      <div class="sc-foot"><div class="sc-meta">In progress</div><button class="sc-notify" onclick="notifyMe(this,'Paediatrics')">Notify me →</button></div>
-    </div>
-
+    <a href="/ophtho" class="sc reveal"><div class="sc-num">01 — Ophthalmology</div><div class="sc-svg-icon"><svg viewBox="0 0 48 48" fill="none"><path d="M5 24C5 24 10 13 24 13C38 13 43 24 43 24" stroke="#c8452a" stroke-width="1.6" stroke-linecap="round"/><path d="M5 24C5 24 10 35 24 35C38 35 43 24 43 24" stroke="#c8452a" stroke-width="1.6" stroke-linecap="round"/><circle cx="24" cy="24" r="7.5" stroke="#c8452a" stroke-width="1.4"/><circle cx="24" cy="24" r="3.2" fill="#c8452a"/><circle cx="26.2" cy="21.8" r="1.1" fill="white" opacity=".7"/></svg></div><div class="sc-title">Eye &amp; Vision</div><p class="sc-desc">Anterior segment, posterior pathology, neuro-ophthalmology. The anatomy, emergencies, and exam patterns that catch people out.</p><div class="sc-foot" style="flex-direction:column;align-items:flex-start;gap:8px;"><div class="breathing-badge"><span class="breathing-dot"></span>5 MCQs per note</div><div style="display:flex;justify-content:space-between;align-items:center;width:100%;"><div class="sc-meta">24 notes · Live</div><div class="sc-arr">↗</div></div></div></a>
+    <a href="/obgyn/index.html" class="sc reveal"><div class="sc-num">02 — OB/GYN</div><div class="sc-svg-icon"><svg viewBox="0 0 48 48" fill="none"><path d="M16 28C16 23 19.6 19 24 19C28.4 19 32 23 32 28V33C32 37.4 28.4 41 24 41C19.6 41 16 37.4 16 33V28Z" stroke="#c8452a" stroke-width="1.5"/><path d="M16 25C13 23 9 23 7 26" stroke="#c8452a" stroke-width="1.4" stroke-linecap="round"/><ellipse cx="9" cy="21" rx="3" ry="2" stroke="#c8452a" stroke-width="1.3" transform="rotate(-20 9 21)"/><path d="M32 25C35 23 39 23 41 26" stroke="#c8452a" stroke-width="1.4" stroke-linecap="round"/><ellipse cx="39" cy="21" rx="3" ry="2" stroke="#c8452a" stroke-width="1.3" transform="rotate(20 39 21)"/></svg></div><div class="sc-title">Obstetrics &amp; Gynaecology</div><p class="sc-desc">PPH, preeclampsia, ectopic pregnancy, placenta praevia, GDM, shoulder dystocia — and 21 more. Every high-stakes condition, cold.</p><div class="sc-foot" style="flex-direction:column;align-items:flex-start;gap:8px;"><div class="breathing-badge"><span class="breathing-dot"></span>5 MCQs per note</div><div style="display:flex;justify-content:space-between;align-items:center;width:100%;"><div class="sc-meta">27 notes · Live</div><div class="sc-arr">↗</div></div></div></a>
+    <a href="/forensic/index.html" class="sc reveal"><div class="sc-num">03 — Forensic Medicine</div><div class="sc-svg-icon"><svg viewBox="0 0 48 48" fill="none"><path d="M24 8V40" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/><path d="M14 12H34" stroke="#c8452a" stroke-width="1.4" stroke-linecap="round"/><path d="M14 12L10 22" stroke="#c8452a" stroke-width="1.2" stroke-linecap="round"/><path d="M14 12L18 22" stroke="#c8452a" stroke-width="1.2" stroke-linecap="round"/><path d="M9 22C9 22 10 26 14 26C18 26 19 22 19 22" stroke="#c8452a" stroke-width="1.3" stroke-linecap="round"/><path d="M34 12L30 23M34 12L38 23" stroke="#c8452a" stroke-width="1.2" stroke-linecap="round"/><path d="M29 23C29 23 30 27 34 27C38 27 39 23 39 23" stroke="#c8452a" stroke-width="1.3" stroke-linecap="round"/><path d="M18 40H30" stroke="#c8452a" stroke-width="1.5" stroke-linecap="round"/><circle cx="24" cy="8" r="1.5" fill="#c8452a"/></svg></div><div class="sc-title">Forensic Medicine</div><p class="sc-desc">Medical ethics, malpractice, asphyxia, wound analysis, death certification, child abuse, and the medico-legal framework every doctor must know.</p><div class="sc-foot" style="flex-direction:column;align-items:flex-start;gap:8px;"><div class="breathing-badge"><span class="breathing-dot"></span>5 MCQs per note</div><div style="display:flex;justify-content:space-between;align-items:center;width:100%;"><div class="sc-meta">14 notes · Live</div><div class="sc-arr">↗</div></div></div></a>
+    <a href="/pathology/index.html" class="sc reveal"><div class="sc-num">04 — Pathology</div><div class="sc-svg-icon"><svg viewBox="0 0 48 48" fill="none"><rect x="19" y="6" width="10" height="7" rx="2" stroke="#c8452a" stroke-width="1.4"/><path d="M24 13V22M24 22L20 28" stroke="#c8452a" stroke-width="1.4" stroke-linecap="round"/><circle cx="18" cy="30" r="3" stroke="#c8452a" stroke-width="1.3"/><path d="M10 33H30M8 42H32" stroke="#c8452a" stroke-width="1.4" stroke-linecap="round"/><ellipse cx="33" cy="26" rx="2.5" ry="4" stroke="#c8452a" stroke-width="1.2" opacity=".6"/><circle cx="20" cy="36.5" r="2.5" stroke="#c8452a" stroke-width=".9" opacity=".5"/><circle cx="20" cy="36.5" r="1" fill="#c8452a" opacity=".4"/></svg></div><div class="sc-title">Pathology</div><p class="sc-desc">General and systemic pathology — cell injury, inflammation, neoplasia, haemodynamics, and organ-system disease, built from mechanism up.</p><div class="sc-foot" style="flex-direction:column;align-items:flex-start;gap:8px;"><div class="breathing-badge"><span class="breathing-dot"></span>5 MCQs per note</div><div style="display:flex;justify-content:space-between;align-items:center;width:100%;"><div class="sc-meta">21 notes · Live</div><div class="sc-arr">↗</div></div></div></a>
+    <div class="sc soon reveal"><div class="soon-tag">Coming soon</div><div class="sc-num">05 — Internal Medicine</div><div class="sc-svg-icon" style="opacity:.4;"><svg viewBox="0 0 48 48" fill="none"><path d="M24 39L8.5 25C4.5 21.5 4.5 15.5 10.5 13C14.5 11.5 18.5 13 21.5 16.5L24 19.5L26.5 16.5C29.5 13 33.5 11.5 37.5 13C43.5 15.5 43.5 21.5 39.5 25L24 39Z" stroke="#c8452a" stroke-width="1.5" stroke-linejoin="round"/><path d="M4 34H12L15 29L18 39L21 32L23 35H25L27 30L30 37L33 34H44" stroke="#c8452a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="sc-title">Internal Medicine</div><p class="sc-desc">Heart failure, ACS, pneumonia, COPD, sepsis, AKI, liver disease. The bread and butter of every medicine rotation.</p><div class="sc-foot"><div class="sc-meta">In progress</div><button class="sc-notify" onclick="notifyMe(this,'Internal Medicine')">Notify me →</button></div></div>
+    <div class="sc soon reveal"><div class="soon-tag">Coming soon</div><div class="sc-num">06 — Surgery</div><div class="sc-svg-icon" style="opacity:.4;"><svg viewBox="0 0 48 48" fill="none"><path d="M7 41L28 20" stroke="#c8452a" stroke-width="2" stroke-linecap="round"/><path d="M28 20L37 11L42 12L41 17L32 22L28 20Z" stroke="#c8452a" stroke-width="1.4" stroke-linejoin="round"/><path d="M8 44C11 42 11 46 14 44C17 42 17 46 20 44C23 42 23 46 26 44C29 42 29 46 32 44" stroke="#c8452a" stroke-width="1.2" stroke-linecap="round"/></svg></div><div class="sc-title">Surgery</div><p class="sc-desc">Appendicitis, bowel obstruction, hernias, acute abdomen, perioperative care. What you need before you scrub in.</p><div class="sc-foot"><div class="sc-meta">In progress</div><button class="sc-notify" onclick="notifyMe(this,'Surgery')">Notify me →</button></div></div>
+    <div class="sc soon reveal"><div class="soon-tag">Coming soon</div><div class="sc-num">07 — Neurology</div><div class="sc-svg-icon" style="opacity:.4;"><svg viewBox="0 0 48 48" fill="none"><path d="M10 34C7 31 6 27 7 23C8 17 13 12 19 10C22 9 26 9 29 10C35 12 40 17 41 23C42 28 40 33 36 36C33 38 30 39 27 39H16C13 39 11 37 10 34Z" stroke="#c8452a" stroke-width="1.5"/><path d="M22 10C21 14 23 17 21 21C19 24 20 27 22 30" stroke="#c8452a" stroke-width="1.1" stroke-linecap="round" opacity=".55"/><path d="M10 24C14 22 18 23 22 21C26 19 30 20 34 22" stroke="#c8452a" stroke-width="1.1" stroke-linecap="round" opacity=".55"/></svg></div><div class="sc-title">Neurology</div><p class="sc-desc">Stroke, seizures, meningitis, Parkinson's, MS. Where pattern recognition saves lives and milliseconds matter.</p><div class="sc-foot"><div class="sc-meta">In progress</div><button class="sc-notify" onclick="notifyMe(this,'Neurology')">Notify me →</button></div></div>
+    <div class="sc soon reveal"><div class="soon-tag">Coming soon</div><div class="sc-num">08 — Paediatrics</div><div class="sc-svg-icon" style="opacity:.4;"><svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="9.5" r="5" stroke="#c8452a" stroke-width="1.5"/><path d="M24 14.5V18M15 24C15 20 19 18 24 18C29 18 33 20 33 24V32M15 24L9 30M33 24L39 30M19 32L17 44M29 32L31 44" stroke="#c8452a" stroke-width="1.4" stroke-linecap="round"/></svg></div><div class="sc-title">Paediatrics</div><p class="sc-desc">Paediatric sepsis, bronchiolitis, febrile convulsions, developmental milestones. Emergencies that look different from adults.</p><div class="sc-foot"><div class="sc-meta">In progress</div><button class="sc-notify" onclick="notifyMe(this,'Paediatrics')">Notify me →</button></div></div>
   </div>
 </section>
 
-
+<!-- Q-BANK ENTRY -->
 <section class="qbank-entry">
   <div class="qbank-entry-in reveal">
-    <div class="qbe-left">
-      <div class="qbe-tag">// Q-Bank</div>
-      <h2 class="qbe-hl">Test yourself.<br><em>No notes allowed.</em></h2>
-      <p class="qbe-body">Pure recall. Choose a specialty, set your mode, pick your count. Clinical questions written from the notes — so they test exactly what matters. Growing towards 1,000+.</p>
-      <a href="/qbank" class="qbe-btn">Enter Q-Bank <span>↗</span></a>
-    </div>
-    <div class="qbe-right">
-      <div class="qbe-stat"><div class="qbe-stat-n">1,000+</div><div class="qbe-stat-l">Questions — the goal</div></div>
-      <div class="qbe-divider"></div>
-      <div class="qbe-modes">
-        <div class="qbe-mode"><span class="qbe-mode-dot"></span>Normal — feedback after each</div>
-        <div class="qbe-mode"><span class="qbe-mode-dot exam"></span>Exam — results at the end</div>
-      </div>
-    </div>
+    <div class="qbe-left"><div class="qbe-tag">// Q-Bank</div><h2 class="qbe-hl">Test yourself.<br><em>No notes allowed.</em></h2><p class="qbe-body">Pure recall. Choose a specialty, set your mode, pick your count. Clinical questions written from the notes — so they test exactly what matters. Growing towards 1,000+.</p><a href="/qbank" class="qbe-btn">Enter Q-Bank <span>↗</span></a></div>
+    <div class="qbe-right"><div class="qbe-stat"><div class="qbe-stat-n">1,000+</div><div class="qbe-stat-l">Questions — the goal</div></div><div class="qbe-divider"></div><div class="qbe-modes"><div class="qbe-mode"><span class="qbe-mode-dot"></span>Normal — feedback after each</div><div class="qbe-mode"><span class="qbe-mode-dot exam"></span>Exam — results at the end</div></div></div>
   </div>
 </section>
 
+<!-- STORY -->
 <section class="story" id="story">
   <div class="story-in">
     <div class="s-eye">The story behind Vent</div>
@@ -798,78 +579,59 @@ footer{background:var(--ink);border-top:1px solid rgba(245,242,235,.07);padding:
         </div>
       </div>
       <div class="s-right">
-        <div class="ch reveal"><div class="ch-n">Chapter 01 — The problem</div><div class="ch-t">I was suffocating in my own curriculum.</div><p class="ch-b">Final year. Every week a new mountain of material. <strong>No one tells you which 20% actually matters.</strong></p></div>
-        <div class="ch reveal"><div class="ch-n">Chapter 02 — The realization</div><div class="ch-t">The best students weren't reading more.</div><p class="ch-b">They had frameworks. They knew <strong>what to look for, not everything there is to see.</strong></p></div>
-        <div class="ch reveal"><div class="ch-n">Chapter 03 — The answer</div><div class="ch-t">So I built what I needed.</div><p class="ch-b">Not a database. Not a question bank. <strong>A breathing room</strong> — where content earns its place or gets cut.</p></div>
+        <div class="ch reveal-left"><div class="ch-n">Chapter 01 — The problem</div><div class="ch-t">I was suffocating in my own curriculum.</div><p class="ch-b">Final year. Every week a new mountain of material. <strong>No one tells you which 20% actually matters.</strong></p></div>
+        <div class="ch reveal-left"><div class="ch-n">Chapter 02 — The realization</div><div class="ch-t">The best students weren't reading more.</div><p class="ch-b">They had frameworks. They knew <strong>what to look for, not everything there is to see.</strong></p></div>
+        <div class="ch reveal-left"><div class="ch-n">Chapter 03 — The answer</div><div class="ch-t">So I built what I needed.</div><p class="ch-b">Not a database. Not a question bank. <strong>A breathing room</strong> — where content earns its place or gets cut.</p></div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- WHAT -->
 <section class="what">
-  <div class="w-hdr reveal">
-    <h2 class="w-hl">What Vent<br><em>actually is</em></h2>
-    <p class="w-note">Notes. MCQs. A full Q-Bank. In one place. Nothing you do not need.</p>
-  </div>
+  <div class="w-hdr reveal"><div><span class="sec-line reveal"></span><h2 class="w-hl">What Vent<br><em>actually is</em></h2></div><p class="w-note">Notes. MCQs. A full Q-Bank. In one place. Nothing you do not need.</p></div></div>
   <div class="w-rows">
     <div class="wr reveal"><div class="wrn">1</div><div class="wrm"><h3>Concept-driven visual notes</h3><p>Every condition with integrated diagrams that teach, not just label. The visual is the explanation.</p></div><div class="wrx"><div class="wrxl">Format</div><div class="wrxv">Premium SVG diagrams built into the text flow. Not appended — integrated.</div></div></div>
     <div class="wr reveal"><div class="wrn">2</div><div class="wrm"><h3>Clinical reasoning frameworks</h3><p>Here's how to think through it when the patient is in front of you at 3am, not just the facts.</p></div><div class="wrx"><div class="wrxl">The differentiator</div><div class="wrxv">Every note ends with "what everyone gets wrong" — the insight no textbook includes.</div></div></div>
-    <div class="wr reveal"><div class="wrn">3</div><div class="wrm"><h3>A full Q-Bank — standalone, not an afterthought</h3><p>Clinical questions across specialties, growing towards 1,000+. Choose your system, set your mode, pick your count. Pure recall — no notes, no hints.</p></div><div class="wrx"><div class="wrxl">Two modes</div><div class="wrxv">Normal: per-question feedback with explanations for every option — right and wrong. Exam: no feedback until the end. Full breakdown at results.</div></div></div>
-    <div class="wr reveal"><div class="wrn">4</div><div class="wrm"><h3>Test yourself — built in, not bolted on</h3><p>5 clinical MCQs at the end of every note. Not a separate app. Not later. Right there, in the same breath.</p></div><div class="wrx"><div class="wrxl">How it works</div><div class="wrxv">Finish reading. One tap. The questions are written from the note — so they test exactly what you just learned. Immediate results. Explanations for every answer.</div></div></div>
+    <div class="wr reveal"><div class="wrn">3</div><div class="wrm"><h3>A full Q-Bank — standalone, not an afterthought</h3><p>Clinical questions across specialties, growing towards 1,000+. Choose your system, set your mode, pick your count.</p></div><div class="wrx"><div class="wrxl">Two modes</div><div class="wrxv">Normal: per-question feedback with explanations. Exam: no feedback until the end.</div></div></div>
+    <div class="wr reveal"><div class="wrn">4</div><div class="wrm"><h3>Test yourself — built in, not bolted on</h3><p>5 clinical MCQs at the end of every note. Not a separate app. Not later. Right there, in the same breath.</p></div><div class="wrx"><div class="wrxl">How it works</div><div class="wrxv">Finish reading. One tap. Questions written from the note — test exactly what you just learned.</div></div></div>
   </div>
 </section>
 
-<section class="breathe">
-  <div class="bring"></div><div class="bring"></div><div class="bring"></div><div class="bring"></div>
-  <div class="bc">
-    <h2>You can<br><em>breathe now.</em></h2>
-    <p>Medicine is already the hardest thing you'll ever do. Your notes shouldn't be.</p>
-    <a href="/signin" class="bc-cta">Start for free →</a>
-  </div>
-</section>
+<!-- BREATHE -->
+<section class="breathe"><div class="bring"></div><div class="bring"></div><div class="bring"></div><div class="bring"></div><div class="bc"><h2>You can<br><em>breathe now.</em></h2><p>Medicine is already the hardest thing you'll ever do. Your notes shouldn't be.</p><a href="/signin" class="bc-cta">Start for free →</a></div></section>
 
+<!-- CTA -->
 <section class="cta" id="waitlist">
   <div class="ctabg">Breathe.</div>
   <div class="cta-in">
-    <div class="reveal">
-      <h2 class="c-hl">Time to<br><em>exhale.</em></h2>
-      <p class="c-body">Vent is in early access — we're still building. Two specialties live now. More dropping regularly. Create a free account and start today.</p>
-    </div>
-    <div class="reveal">
-      <div class="cta-signup-box">
-        <div class="cta-signup-kicker">// Free to start. No card required.</div>
-        <a href="/signin" class="c-btn" style="display:block;text-align:center;text-decoration:none;margin-bottom:14px;">Create free account →</a>
-        <a href="/signin" class="cta-signin-link">Already have an account? Sign in</a>
-        <p class="c-note" style="margin-top:20px;">// 2 specialties live · More coming · Built by a med student</p>
-      </div>
-    </div>
+    <div class="reveal"><h2 class="c-hl">Time to<br><em>exhale.</em></h2><p class="c-body">Vent is in early access — we're still building. Four specialties live now. More dropping regularly. Create a free account and start today.</p></div>
+    <div class="reveal"><div class="cta-signup-box"><div class="cta-signup-kicker">// Free to start. No card required.</div><a href="/signin" class="c-btn" style="display:block;text-align:center;text-decoration:none;margin-bottom:14px;">Create free account →</a><a href="/signin" class="cta-signin-link">Already have an account? Sign in</a><p class="c-note" style="margin-top:20px;">// 4 specialties live · More coming · Built by a med student</p></div></div>
   </div>
 </section>
 
-<footer>
-  <div class="f-in">
-    <div>
-      <div class="f-logo"><svg width="28" height="28" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" stroke="rgba(245,242,235,0.2)" stroke-width="1.5"/><path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M10 30 Q22 36 34 30" stroke="rgba(245,242,235,0.3)" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="22" cy="10" r="2.5" fill="#c8452a"/></svg><span class="f-name">VENT</span></div>
-      <p class="f-tag">Finally. Just what you need.<br>Beta · 2026</p>
-    </div>
-    <div class="f-links"><a href="#story">Story</a><a href="#specialties">Specialties</a><a href="/signin">Sign in</a><a href="#">Privacy</a></div>
-    <div class="f-right"><div class="f-social"><a href="#">Instagram</a><a href="#">X / Twitter</a></div><div class="f-copy">© 2026 Vent. All rights reserved.</div></div>
-  </div>
-</footer>
+<!-- FOOTER -->
+<footer><div class="f-in"><div><div class="f-logo"><svg width="28" height="28" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" stroke="rgba(245,242,235,0.2)" stroke-width="1.5"/><path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M10 30 Q22 36 34 30" stroke="rgba(245,242,235,0.3)" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="22" cy="10" r="2.5" fill="#c8452a"/></svg><span class="f-name">VENT</span></div><p class="f-tag">Finally. Just what you need.<br>Beta · 2026</p></div><div class="f-links"><a href="#story">Story</a><a href="#specialties">Specialties</a><a href="/signin">Sign in</a><a href="#">Privacy</a></div><div class="f-right"><div class="f-social"><a href="#">Instagram</a><a href="#">X / Twitter</a></div><div class="f-copy">© 2026 Vent. All rights reserved.</div></div></div></footer>
 
+<!-- Q-BANK ROOM -->
+<div id="qb-room" class="qb-room"><div class="qb-room-nav"><button class="qb-room-exit" onclick="qbExit()">&#8592; Exit</button><div class="qb-room-nav-mid"><span class="qb-room-label" id="qb-room-label">Q-Bank</span><span class="qb-room-mode-badge" id="qb-room-mode-badge">Normal</span></div><div class="qb-room-nav-right" id="qb-room-nav-right"></div></div><div class="qb-room-progress-bar"><div class="qb-room-progress-fill" id="qb-room-pbar"></div></div><div id="qb-room-body" class="qb-room-body"></div></div>
 
-<div id="qb-room" class="qb-room">
-  <div class="qb-room-nav">
-    <button class="qb-room-exit" onclick="qbExit()">&#8592; Exit</button>
-    <div class="qb-room-nav-mid">
-      <span class="qb-room-label" id="qb-room-label">Q-Bank</span>
-      <span class="qb-room-mode-badge" id="qb-room-mode-badge">Normal</span>
-    </div>
-    <div class="qb-room-nav-right" id="qb-room-nav-right"></div>
-  </div>
-  <div class="qb-room-progress-bar"><div class="qb-room-progress-fill" id="qb-room-pbar"></div></div>
-  <div id="qb-room-body" class="qb-room-body"></div>
-</div>
+<!-- CINEMATIC JS -->
+<script>
+(function(){
+  const nav=document.getElementById('main-nav');
+  function updateNav(){nav&&nav.classList.toggle('solid',window.scrollY>60);}
+  window.addEventListener('scroll',updateNav,{passive:true});
+  updateNav();
+  const pw=document.getElementById('h-particles');
+  if(pw){for(let i=0;i<22;i++){const p=document.createElement('div');p.className='h-particle';const sz=Math.random()*3+1;if(Math.random()>.6){const rs=sz*3;p.style.cssText=`width:${rs}px;height:${rs}px;left:${Math.random()*100}%;background:none;border:1px solid rgba(200,69,42,.2);border-radius:50%;animation-duration:${Math.random()*14+8}s;animation-delay:${Math.random()*12}s;`;}else{p.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;background:rgba(200,69,42,${Math.random()*.4+.1});border-radius:50%;animation-duration:${Math.random()*12+7}s;animation-delay:${Math.random()*10}s;`;}pw.appendChild(p);}}
+  setTimeout(()=>{document.querySelectorAll('.h-stat-n[data-target]').forEach(el=>{const t=parseInt(el.dataset.target),s=el.dataset.suffix||'';if(!t){el.textContent='0'+s;return;}let c=0;const st=Math.ceil(t/28);const tm=setInterval(()=>{c=Math.min(c+st,t);el.textContent=c+s;if(c>=t)clearInterval(tm);},45);});},900);
+  const sc=document.querySelectorAll('.sc.reveal');
+  if('IntersectionObserver' in window){const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const i=Array.from(sc).indexOf(x.target);x.target.style.animationDelay=(i%3*.1)+'s';x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:.1});sc.forEach(c=>io.observe(c));}else{sc.forEach(c=>c.classList.add('visible'));}
+  const allReveals=document.querySelectorAll('.reveal:not(.sc),.reveal-up,.reveal-left,.reveal-right,.sec-line');
+  if('IntersectionObserver' in window){const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const p=x.target.closest('.s-right,.w-rows');if(p){const i=Array.from(p.children).indexOf(x.target);if(i>-1)x.target.style.transitionDelay=i*.12+'s';}x.target.classList.add('visible');}});},{threshold:.08,rootMargin:'0px 0px -24px 0px'});allReveals.forEach(el=>obs.observe(el));}else{allReveals.forEach(el=>el.classList.add('visible'));}
+})();
+</script>
 
 <script>
 if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
