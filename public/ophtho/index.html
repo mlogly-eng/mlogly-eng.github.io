@@ -245,7 +245,7 @@ nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,.08); }
   font-size: 10px; letter-spacing: 4px;
   color: var(--accent); text-transform: uppercase;
   margin-bottom: 24px;
-  display: flex; align-items: center; gap: 14px;
+  display: flex; align-items: center; gap: var(--spotCardGap);
   opacity: 0; transform: translateY(20px);
   animation: heroFadeUp .7s .2s cubic-bezier(.16,1,.3,1) forwards;
 }
@@ -741,7 +741,7 @@ nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,.08); }
   border: 1px solid rgba(255,255,255,.1);
   border-radius: 6px;
   padding: 12px 16px 12px 20px;
-  display: flex; align-items: center; gap: 14px;
+  display: flex; align-items: center; gap: var(--spotCardGap);
   box-shadow: 0 16px 40px rgba(0,0,0,.7);
   transition: transform .4s cubic-bezier(.16,1,.3,1), opacity .3s ease;
   white-space: nowrap;
@@ -894,7 +894,7 @@ nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,.08); }
 .n-hero-eyebrow {
   font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 4px;
   color: var(--n-red); text-transform: uppercase; margin-bottom: 18px;
-  display: flex; align-items: center; gap: 14px;
+  display: flex; align-items: center; gap: var(--spotCardGap);
 }
 .n-hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--n-red); }
 .n-hero-title {
@@ -958,7 +958,7 @@ nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,.08); }
 
 /* Flag cards */
 .n-flag-list { display: flex; flex-direction: column; gap: 9px; }
-.n-flag-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 18px; }
+.n-flag-item { display: flex; align-items: flex-start; gap: var(--spotCardGap); padding: 14px 18px; }
 .n-flag-item.critical { background: var(--n-redfaint); border: 1px solid rgba(200,69,42,.18); border-left: 3px solid var(--n-red); }
 .n-flag-item.time     { background: var(--n-amberfaint); border: 1px solid rgba(138,96,32,.15); border-left: 3px solid var(--n-amber); }
 .n-flag-item.legal    { background: var(--n-bg2); border: 1px solid var(--n-border); border-left: 3px solid var(--n-ink4); }
@@ -1098,7 +1098,7 @@ nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,.08); }
   border-radius: 4px;
   cursor: pointer;
   transition: border-color .2s, background .2s;
-  display: flex; align-items: center; gap: 14px;
+  display: flex; align-items: center; gap: var(--spotCardGap);
 }
 .n-note-end-cta:hover { background: #1a1610; border-color: rgba(200,69,42,.6); }
 .n-note-end-cta::before { display: none; }
@@ -1533,10 +1533,11 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
 .spot-tab.active svg { opacity: 1; }
 
 /* Spot grid */
+:root{ --spotCardMin:220px; --spotCardGap:14px; }
 .spot-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(var(--spotCardMin), 1fr));
+  gap: var(--spotCardGap);
   padding: 20px 24px 32px;
 }
 
@@ -1628,6 +1629,62 @@ mark.vent-hl[data-color="green"]  { background: rgba(42,130,80,.2);   color: inh
   font-family: 'JetBrains Mono', monospace;
   font-size: 9px; color: rgba(255,255,255,.2);
 }
+
+
+/* Zoom button */
+.spot-zoom-btn{
+  position:absolute; top:8px; right:8px;
+  background: rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 10px;
+  width: 28px; height: 28px;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+  color: rgba(255,255,255,.7);
+  transition: transform .15s, background .15s, color .15s;
+}
+.spot-zoom-btn:hover{ transform: translateY(-1px); background: rgba(0,0,0,.6); color: rgba(255,255,255,.9); }
+.spot-zoom-overlay{
+  position:fixed; inset:0; z-index:99999;
+  background: rgba(10,9,8,.86);
+  backdrop-filter: blur(10px);
+  display:none;
+  align-items:center; justify-content:center;
+  padding: 24px;
+}
+.spot-zoom-overlay.open{ display:flex; }
+.spot-zoom-inner{
+  max-width: min(1100px, 96vw);
+  width: 100%;
+}
+.spot-zoom-top{
+  display:flex; justify-content:space-between; align-items:center;
+  margin-bottom: 10px;
+}
+.spot-zoom-title{
+  font-family:'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,.55);
+}
+.spot-zoom-close{
+  background:none; border:1px solid rgba(255,255,255,.18);
+  color: rgba(255,255,255,.7);
+  border-radius: 10px;
+  padding: 7px 10px;
+  cursor:pointer;
+  font-family:'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing:.06em;
+}
+.spot-zoom-img{
+  width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 10px;
+  background: rgba(0,0,0,.22);
+}
+
 /* Attribution footer */
 .spot-attribution {
   padding: 0 24px 20px;
@@ -6987,148 +7044,213 @@ function applySnapshotDividers() {
 
 const SPOT_DATA = {
 
-  // ── Wikimedia Commons URLs (CC-licensed, hotlinking permitted) ────────────
-
   eyelids: [
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Chalazion.jpg/480px-Chalazion.jpg',
-      dx: 'Chalazion', key: 'Painless lid lump · meibomian gland · no tenderness · evert lid to confirm' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Blepharitis_01.jpg/480px-Blepharitis_01.jpg',
-      dx: 'Blepharitis', key: 'Lid margin erythema · crusting at lash bases · staphylococcal / seborrhoeic' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Entropion.jpg/480px-Entropion.jpg',
-      dx: 'Entropion', key: 'Lid margin turns inward · lashes abrade cornea · elderly · lower lid' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Ectropion.jpg/480px-Ectropion.jpg',
-      dx: 'Ectropion', key: 'Lid margin turns outward · exposure keratopathy · epiphora · lower lid' },
+    { img: 'ophtho_spot_ai_assets/spot5/eyelids_01_chalazion.png',
+      dx: 'Chalazion', key: 'Firm, round tarsal swelling with minimal surface erythema.<br>Spot it: Chalazion.<br>Tip: Lid hygiene + warm compress; persistent lesions may need I&C (rule out sebaceous CA if recurrent).' },
+    { img: 'ophtho_spot_ai_assets/spot5/eyelids_02_hordeolum.jpg',
+      dx: 'Hordeolum (stye)', key: 'Focal tender pustule at lid margin with surrounding redness.<br>Spot it: Hordeolum (stye).<br>Tip: Warm compress + topical antibiotic if draining; consider preseptal cellulitis if diffuse lid swelling.' },
+    { img: 'ophtho_spot_ai_assets/spot5/eyelids_03_entropion.jpg',
+      dx: 'Entropion', key: 'In-turned lid margin—lashes directed toward the cornea (trichiasis risk).<br>Spot it: Entropion.<br>Tip: Lubrication and tape can temporize; definitive repair if corneal staining/ulceration.' },
+    { img: 'ophtho_spot_ai_assets/spot5/eyelids_04_ectropion.jpg',
+      dx: 'Ectropion', key: 'Everted lower lid with exposed palpebral conjunctiva and tearing (punctum not apposed).<br>Spot it: Ectropion.<br>Tip: Treat exposure with lubricants; refer for oculoplastic correction if persistent.' },
+    { img: 'ophtho_spot_ai_assets/spot5/eyelids_05_blepharitis.jpg',
+      dx: 'Blepharitis', key: 'Greasy scales/crusts along lashes with inflamed lid margin (MGD look).<br>Spot it: Blepharitis.<br>Tip: Lid scrubs + warm compress; consider topical azithro/doxy for posterior bleph.' },
   ],
+
 
   conjunctiva: [
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Subconjunctival_hemorrhage.jpg/480px-Subconjunctival_hemorrhage.jpg',
-      dx: 'Subconjunctival Haemorrhage', key: 'Bright red · flat · Valsalva / HTN / anticoagulants · resolves 2 wks' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Swollen_eye_with_conjunctivitis.jpg/480px-Swollen_eye_with_conjunctivitis.jpg',
-      dx: 'Acute Conjunctivitis', key: 'Diffuse injection · discharge · no VA loss · bilateral in viral' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Pterygium_on_cornea.jpg/480px-Pterygium_on_cornea.jpg',
-      dx: 'Pterygium', key: 'Fibrovascular growth · nasal · UV exposure · encroaches visual axis' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Trachoma_PHIL_3060_lores.jpg/480px-Trachoma_PHIL_3060_lores.jpg',
-      dx: 'Trachoma', key: 'Chlamydia trachomatis · follicles + pannus · leading infectious blindness cause' },
+    { img: 'ophtho_spot_ai_assets/spot5/conj_01_subconj.png',
+      dx: 'Subconjunctival haemorrhage', key: 'Well-demarcated bright red patch under the conjunctiva with a clear cornea.<br>Spot it: Subconjunctival haemorrhage.<br>Tip: Reassure; check BP/anticoagulants and ask about trauma/contact lens.' },
+    { img: 'ophtho_spot_ai_assets/spot5/conj_02_pterygium.jpg',
+      dx: 'Pterygium', key: 'Triangular fibrovascular growth crossing the limbus onto cornea (nasal wedge).<br>Spot it: Pterygium.<br>Tip: UV protection + lubricants; excise if visual axis/astigmatism or recurrent inflammation.' },
+    { img: 'ophtho_spot_ai_assets/spot5/conj_03_pinguecula.jpg',
+      dx: 'Pinguecula', key: 'Yellow, slightly raised conjunctival lesion adjacent to limbus without corneal invasion.<br>Spot it: Pinguecula.<br>Tip: Usually benign—manage dryness/UV; redness episodes = pingueculitis.' },
+    { img: 'ophtho_spot_ai_assets/spot5/conj_04_episcleritis.jpg',
+      dx: 'Episcleritis', key: 'Sectoral superficial redness—looks localized rather than diffuse, with no corneal haze.<br>Spot it: Episcleritis.<br>Tip: Mild pain/foreign-body sensation; blanching with phenylephrine helps distinguish from scleritis.' },
+    { img: 'ophtho_spot_ai_assets/spot5/conj_05_vernal.jpg',
+      dx: 'Vernal/GPC (cobblestone)', key: 'Large ‘cobblestone’ papillae on upper tarsal conjunctiva (allergic pattern).<br>Spot it: Vernal/GPC (cobblestone).<br>Tip: Treat with antihistamine/mast-cell stabilizer; shield ulcer risk in severe VKC.' },
   ],
+
 
   cornea: [
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Fluorescein_stained_corneal_dendrite.jpg/480px-Fluorescein_stained_corneal_dendrite.jpg',
-      dx: 'HSV Dendrite', key: 'Branching epithelial ulcer · terminal bulbs · fluorescein stains · ↓ sensation' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Corneal_ulcer.jpg/480px-Corneal_ulcer.jpg',
-      dx: 'Bacterial Corneal Ulcer', key: 'Central infiltrate + epithelial defect · hypopyon · contact lens risk' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Pterygium_on_cornea.jpg/480px-Pterygium_on_cornea.jpg',
-      dx: 'Pterygium crossing limbus', key: 'Crosses limbus onto cornea · Stocker iron line at tip · UV-related' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Band_keratopathy.jpg/480px-Band_keratopathy.jpg',
-      dx: 'Band Keratopathy', key: 'Calcium in Bowman layer · interpalpebral · hypercalcaemia / chronic uveitis' },
+    { img: 'ophtho_spot_ai_assets/spot5/cornea_01_hsv.png',
+      dx: 'HSV dendrite', key: 'Branching fluorescein-staining epithelial defect with terminal bulbs (dendrite).<br>Spot it: HSV dendrite.<br>Tip: Use topical/oral antivirals; avoid steroids until epithelium healed.' },
+    { img: 'ophtho_spot_ai_assets/spot5/cornea_02_hsv2.jpg',
+      dx: 'HSV dendrite (example)', key: 'Classic dendritic ulcer—thin branching pattern on corneal surface with epithelial staining.<br>Spot it: HSV dendrite (example).<br>Tip: Reduced corneal sensation supports HSV; debride gently if needed and treat promptly.' },
+    { img: 'ophtho_spot_ai_assets/spot5/cornea_03_ulcer.jpg',
+      dx: 'Bacterial corneal ulcer', key: 'Focal white stromal infiltrate with surrounding injection—cornea is not crystal clear.<br>Spot it: Bacterial corneal ulcer.<br>Tip: Contact lens user? Start intensive topical antibiotics + urgent ophthalmology.' },
+    { img: 'ophtho_spot_ai_assets/spot5/cornea_04_ulcer2.jpg',
+      dx: 'Corneal ulcer (severe)', key: 'Large central opacity/infiltrate with severe conjunctival injection (vision-threatening location).<br>Spot it: Corneal ulcer (severe).<br>Tip: Culture if possible before antibiotics; treat as emergency to prevent perforation.' },
+    { img: 'ophtho_spot_ai_assets/spot5/cornea_05_ulcer3.jpg',
+      dx: 'Corneal ulcer + hypopyon', key: 'Dense corneal infiltrate with an inferior hypopyon (layered WBC in AC).<br>Spot it: Corneal ulcer + hypopyon.<br>Tip: Endophthalmitis risk—same-day specialist care and broad coverage.' },
   ],
+
 
   uveitis: [
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Hypopyonie.jpg/480px-Hypopyonie.jpg',
-      dx: 'Hypopyon', key: 'Pus in anterior chamber · white layer inferiorly · HLA-B27 / endophthalmitis' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Posterior_synechiae.jpg/480px-Posterior_synechiae.jpg',
-      dx: 'Posterior Synechiae', key: 'Iris adherent to anterior lens · uveitis complication · irregular pupil' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Keratic_precipitates.jpg/480px-Keratic_precipitates.jpg',
-      dx: 'Keratic Precipitates', key: 'Inflammatory cells on endothelium · mutton-fat = granulomatous (sarcoid / TB)' },
+    { img: 'ophtho_spot_ai_assets/spot5/uveitis_01_kp.png',
+      dx: 'Keratic precipitates', key: 'Fine keratic precipitates scattered on corneal endothelium (anterior uveitis clue).<br>Spot it: Keratic precipitates.<br>Tip: Look for cells/flare in AC; ask about HLA‑B27 symptoms (back pain, psoriasis, IBD).' },
+    { img: 'ophtho_spot_ai_assets/spot5/uveitis_02_kp2.jpg',
+      dx: 'Keratic precipitates (slit)', key: 'Large ‘mutton-fat’ KPs—greasy white deposits suggest granulomatous uveitis.<br>Spot it: Keratic precipitates (slit).<br>Tip: Consider sarcoid/TB/syphilis; check IOP (can be high in uveitis).' },
+    { img: 'ophtho_spot_ai_assets/spot5/uveitis_03_hypopyon.jpg',
+      dx: 'Hypopyon', key: 'Horizontal white fluid level in anterior chamber (hypopyon) with red eye.<br>Spot it: Hypopyon.<br>Tip: DDx includes severe uveitis vs infectious keratitis/endophthalmitis—urgent evaluation.' },
+    { img: 'ophtho_spot_ai_assets/spot5/uveitis_04_hypopyon2.jpg',
+      dx: 'Hypopyon uveitis', key: 'Prominent hypopyon with intense inflammation—classic ‘pus level’ appearance.<br>Spot it: Hypopyon uveitis.<br>Tip: Behçet can cause recurrent hypopyon; always exclude infection before steroids.' },
+    { img: 'ophtho_spot_ai_assets/spot5/uveitis_05_kp3.png',
+      dx: 'KP / corneal deposits', key: 'Inferior endothelial deposits forming a triangular distribution (Arlt’s triangle pattern).<br>Spot it: KP / corneal deposits.<br>Tip: Treat underlying anterior uveitis; monitor for posterior synechiae.' },
   ],
+
 
   glaucoma: [
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Cupping_of_the_disc.jpg/480px-Cupping_of_the_disc.jpg',
-      dx: 'Glaucomatous Disc Cupping', key: 'CDR > 0.6 · bayoneting vessels · notching ISNT rule · NFL defect' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Optical_coherence_tomography_of_normal_left_eye.jpg/480px-Optical_coherence_tomography_of_normal_left_eye.jpg',
-      dx: 'Normal Optic Disc (OCT)', key: 'Healthy neuroretinal rim · ISNT rule intact · CDR ~0.3 · comparison' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Haemorrhage_at_inferior_pole_of_optic_disc.jpg/480px-Haemorrhage_at_inferior_pole_of_optic_disc.jpg',
-      dx: 'Disc Haemorrhage', key: 'Splinter bleed at disc margin · NTG / POAG · precedes field defect · inferior' },
+    { img: 'ophtho_spot_ai_assets/spot5/glauc_01_cupping.png',
+      dx: 'Glaucomatous cupping', key: 'Large cup-to-disc ratio with thinning of the neuroretinal rim (vertical elongation).<br>Spot it: Glaucomatous cupping.<br>Tip: Correlate with IOP + RNFL/OCT + visual fields—photo alone isn’t diagnosis.' },
+    { img: 'ophtho_spot_ai_assets/spot5/glauc_02_compare.jpg',
+      dx: 'Cupping: normal vs glaucoma', key: 'Side-by-side discs—one with a much larger cup and rim loss compared to normal.<br>Spot it: Cupping: normal vs glaucoma.<br>Tip: Asymmetry >0.2 CDR between eyes is suspicious (if disc sizes similar).' },
+    { img: 'ophtho_spot_ai_assets/spot5/glauc_03_disc.jpg',
+      dx: 'Pathologic disc cupping', key: 'Excavated optic nerve head with rim notching and visible laminar dots/cupping depth.<br>Spot it: Pathologic disc cupping.<br>Tip: Look for disc hemorrhage and RNFL wedge defects on red-free imaging.' },
+    { img: 'ophtho_spot_ai_assets/spot5/glauc_04_eyerounds.jpg',
+      dx: 'Optic cup size', key: 'Disc photo emphasizing cup-to-disc estimation—cup occupies most of the disc area.<br>Spot it: Optic cup size.<br>Tip: Always account for disc size (large discs can have physiologic large cups).' },
+    { img: 'ophtho_spot_ai_assets/spot5/glauc_05_cupping2.jpg',
+      dx: 'Advanced cupping', key: 'Advanced cupping with near-total rim loss (‘bean-pot’ appearance) and pallor at edges.<br>Spot it: Advanced cupping.<br>Tip: Advanced disease can have central vision preserved until late—fields are essential.' },
   ],
+
 
   retina: [
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Fundus_photograph_of_normal_right_eye.jpg/480px-Fundus_photograph_of_normal_right_eye.jpg',
-      dx: 'Normal Fundus', key: 'Pink disc · sharp margins · CDR ~0.3 · foveal reflex present · reference' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Fundus_diabetic_retinopathy_EDA09.JPG/480px-Fundus_diabetic_retinopathy_EDA09.JPG',
-      dx: 'Non-Proliferative DR', key: 'Dot-blot haemorrhages · hard exudates · microaneurysms · no NV yet' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/CRVO_Fundus.jpg/480px-CRVO_Fundus.jpg',
-      dx: 'CRVO — Stormy Sunset', key: 'Flame haems all 4 quadrants · dilated tortuous veins · disc swelling' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Macular_hole.jpg/480px-Macular_hole.jpg',
-      dx: 'Macular Hole', key: 'Full-thickness foveal defect · central scotoma · idiopathic > 60 yrs · vitrectomy' },
+    { img: 'ophtho_spot_ai_assets/spot5/retina_01_normal.jpg',
+      dx: 'Normal fundus', key: 'Healthy fundus: sharp disc margins, normal vessel caliber, flat macula with foveal reflex.<br>Spot it: Normal fundus.<br>Tip: Use this as baseline—then hunt for hemorrhages, exudates, edema, and pallor.' },
+    { img: 'ophtho_spot_ai_assets/spot5/retina_02_crvo.jpg',
+      dx: 'CRVO (blood and thunder)', key: 'Diffuse retinal hemorrhages in all quadrants with dilated tortuous veins (‘blood & thunder’).<br>Spot it: CRVO (blood and thunder).<br>Tip: Check for macular edema/neovascularization; manage systemic vascular risks.' },
+    { img: 'ophtho_spot_ai_assets/spot5/retina_03_npdr.jpg',
+      dx: 'NPDR', key: 'Multiple dot‑blot hemorrhages and microaneurysms without neovascular fronds (non‑proliferative).<br>Spot it: NPDR.<br>Tip: Severity staging matters—refer if severe NPDR or any macular involvement.' },
+    { img: 'ophtho_spot_ai_assets/spot5/retina_04_rd.jpg',
+      dx: 'Retinal detachment', key: 'Grey, corrugated elevated retina with folds—looks ‘billowing’ rather than flat.<br>Spot it: Retinal detachment.<br>Tip: Ask about flashes/floaters/curtain; protect vision with urgent retina assessment.' },
+    { img: 'ophtho_spot_ai_assets/spot5/retina_05_submac.jpg',
+      dx: 'Subretinal haemorrhage', key: 'Dark red subretinal blood at/near the macula obscuring underlying detail.<br>Spot it: Subretinal haemorrhage.<br>Tip: Think wet AMD/trauma—time-sensitive referral (anti‑VEGF ± pneumatic displacement).' },
   ],
+
 
   retdetach: [
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Rhegmatogenous_retinal_detachment.jpg/480px-Rhegmatogenous_retinal_detachment.jpg',
-      dx: 'Rhegmatogenous Retinal Detachment', key: 'Grey billowing retina · horseshoe break · curtain / floaters / flashes' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Retinal_detachment_2.jpg/480px-Retinal_detachment_2.jpg',
-      dx: 'RD — wide-field view', key: 'Peripheral detachment · if macula spared → same-day surgery · urgent' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Lattice_degeneration.jpg/480px-Lattice_degeneration.jpg',
-      dx: 'Lattice Degeneration', key: 'Peripheral retinal thinning · white lines · round holes · myopia · RD precursor' },
+    { img: 'ophtho_spot_ai_assets/spot5/rd_01_pack.png',
+      dx: 'Rhegmatogenous RD', key: 'Bullous, wrinkled detached retina superiorly with a clear horseshoe tear at the edge.<br>Spot it: Rhegmatogenous RD.<br>Tip: Break + subretinal fluid = emergency—same-day retina referral.' },
+    { img: 'ophtho_spot_ai_assets/spot5/rd_02_tear.jpg',
+      dx: 'Retinal tear', key: 'Horseshoe-shaped retinal tear with rolled flap; local elevation suggests early detachment.<br>Spot it: Retinal tear.<br>Tip: Treatable before full RD—laser/cryo urgently if symptomatic.' },
+    { img: 'ophtho_spot_ai_assets/spot5/rd_03_macula_off.jpg',
+      dx: 'RD (macula off)', key: 'Macula region appears elevated/blurred—central detail is lost compared with disc clarity (macula-off).<br>Spot it: RD (macula off).<br>Tip: Visual prognosis depends on macula status—don’t delay surgical evaluation.' },
+    { img: 'ophtho_spot_ai_assets/spot5/rd_04_aao.jpg',
+      dx: 'Rhegmatogenous RD', key: 'Greenish wide-field image showing a large elevated, rippled area of detached retina temporal to disc.<br>Spot it: Rhegmatogenous RD.<br>Tip: Look for the break at the border of detachment; symptoms guide urgency.' },
+    { img: 'ophtho_spot_ai_assets/spot5/rd_05_wide.jpg',
+      dx: 'Rhegmatogenous RD', key: 'Wide-field montage with a large superior ‘bubble’ of detached retina overhanging the posterior pole.<br>Spot it: Rhegmatogenous RD.<br>Tip: Avoid heavy activity; shield the eye and arrange urgent retina review.' },
   ],
+
 
   dr: [
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Fundus_diabetic_retinopathy_EDA09.JPG/480px-Fundus_diabetic_retinopathy_EDA09.JPG',
-      dx: 'NPDR', key: 'Dot-blot haems · hard exudates · MAs · bilateral · monitor HbA1c + BP' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Fundus_photo_showing_scatter_laser_surgery_for_diabetic_retinopathy_EDA09.JPG/480px-Fundus_photo_showing_scatter_laser_surgery_for_diabetic_retinopathy_EDA09.JPG',
-      dx: 'PDR post-PRP laser', key: 'Scattered laser burns · panretinal photocoagulation · regression of NV' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Clinically_significant_macular_edema.jpg/480px-Clinically_significant_macular_edema.jpg',
-      dx: 'Diabetic Macular Oedema', key: 'Hard exudates at macula · thickening within 500 µm of fovea · anti-VEGF' },
+    { img: 'ophtho_spot_ai_assets/spot5/dr_01_pdr.png',
+      dx: 'Proliferative DR', key: 'Fine frond-like new vessels with scattered hemorrhages—proliferative pattern.<br>Spot it: Proliferative DR.<br>Tip: Neovascularization = treat (PRP/anti‑VEGF) to prevent VH/tractional RD.' },
+    { img: 'ophtho_spot_ai_assets/spot5/dr_02_pdr2.jpg',
+      dx: 'PDR (example)', key: 'Neovascular tufts at/near the disc margin (NVD) with fragile vessels.<br>Spot it: PDR (example).<br>Tip: Ask about sudden floaters—vitreous hemorrhage is common in PDR.' },
+    { img: 'ophtho_spot_ai_assets/spot5/dr_03_prp.jpg',
+      dx: 'Post-PRP scars', key: 'Multiple pale laser burns in the mid‑periphery—classic post‑PRP scars.<br>Spot it: Post-PRP scars.<br>Tip: PRP reduces neovascular drive; monitor for macular edema and visual field constriction.' },
+    { img: 'ophtho_spot_ai_assets/spot5/dr_04_prp2.jpg',
+      dx: 'PRP (wide-field)', key: 'Wide-field view showing extensive scatter photocoagulation spots sparing the macula.<br>Spot it: PRP (wide-field).<br>Tip: Adequate PRP coverage matters—under-treated PDR can still progress.' },
+    { img: 'ophtho_spot_ai_assets/spot5/dr_05_before_after.png',
+      dx: 'PDR treated', key: 'Before/after panel—regressed neovascularization and less active hemorrhage after treatment.<br>Spot it: PDR treated.<br>Tip: Control HbA1c/BP/lipids—systemic control directly affects progression.' },
   ],
+
 
   amd: [
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Intermediate_age-related_macular_degeneration.jpg/480px-Intermediate_age-related_macular_degeneration.jpg',
-      dx: 'Intermediate AMD — soft drusen', key: 'Large soft drusen · macular pigment changes · AREDS supplements' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Wet_AMD.jpg/480px-Wet_AMD.jpg',
-      dx: 'Wet AMD — subretinal haemorrhage', key: 'CNV membrane · sudden VA loss · distortion · anti-VEGF (ranibizumab)' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Geographic_atrophy_of_AMD.jpg/480px-Geographic_atrophy_of_AMD.jpg',
-      dx: 'Geographic Atrophy (dry AMD)', key: 'RPE loss · bare choroidal vessels · slowly progressive · no current treatment' },
+    { img: 'ophtho_spot_ai_assets/spot5/amd_01_wet.png',
+      dx: 'Wet AMD', key: 'Macular subretinal hemorrhage/exudation—dark red patches in the macula region.<br>Spot it: Wet AMD.<br>Tip: New distortion/central blur needs urgent OCT + anti‑VEGF.' },
+    { img: 'ophtho_spot_ai_assets/spot5/amd_02_wet2.jpg',
+      dx: 'Wet AMD (example)', key: 'Grey‑green subretinal lesion with surrounding hemorrhage—suggests active CNV.<br>Spot it: Wet AMD (example).<br>Tip: Treat early—delays worsen scar formation and permanent vision loss.' },
+    { img: 'ophtho_spot_ai_assets/spot5/amd_03_labels.jpg',
+      dx: 'AMD with haemorrhage', key: 'Annotated fundus highlighting macular hemorrhage/fluid—classic wet AMD teaching image.<br>Spot it: AMD with haemorrhage.<br>Tip: Differentiate from macroaneurysm—history and OCT/FA help.' },
+    { img: 'ophtho_spot_ai_assets/spot5/amd_04_small.jpg',
+      dx: 'Wet AMD (example)', key: 'Small but dense macular bleed—central lesion stands out against orange fundus background.<br>Spot it: Wet AMD (example).<br>Tip: Even small subfoveal hemorrhage can drop vision fast—same-week retina care.' },
+    { img: 'ophtho_spot_ai_assets/spot5/amd_05_oct.png',
+      dx: 'AMD (fundus + OCT)', key: 'Fundus + OCT: OCT shows subretinal/intraretinal fluid consistent with active CNV.<br>Spot it: AMD (fundus + OCT).<br>Tip: Fluid on OCT is the treatment target—follow response after injections.' },
   ],
+
 
   vascular: [
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/CRAO_Fundus.jpg/480px-CRAO_Fundus.jpg',
-      dx: 'CRAO — Cherry Red Spot', key: 'Pale ischaemic retina · preserved red fovea · sudden painless VA loss' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/CRVO_Fundus.jpg/480px-CRVO_Fundus.jpg',
-      dx: 'CRVO — Stormy Sunset', key: 'Flame haems all 4 quadrants · disc oedema · dilated tortuous veins' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Branch_retinal_artery_occlusion.jpg/480px-Branch_retinal_artery_occlusion.jpg',
-      dx: 'Branch Retinal Artery Occlusion', key: 'Sectoral pallor · corresponding field defect · embolic (Hollenhorst plaque)' },
+    { img: 'ophtho_spot_ai_assets/spot5/vasc_01_crao.jpg',
+      dx: 'CRAO (cherry red)', key: 'Pale ischemic retina with a distinct cherry‑red spot at the fovea.<br>Spot it: CRAO (cherry red).<br>Tip: Treat as an ocular stroke—urgent embolic/vascular workup.' },
+    { img: 'ophtho_spot_ai_assets/spot5/vasc_02_crvo.jpg',
+      dx: 'CRVO', key: 'Widespread hemorrhages with venous engorgement—venous occlusion pattern.<br>Spot it: CRVO.<br>Tip: Screen for HTN/DM/glaucoma; watch for neovascularization and edema.' },
+    { img: 'ophtho_spot_ai_assets/spot5/vasc_03_brao.jpg',
+      dx: 'BRAO', key: 'Sectoral retinal whitening in one arterial territory with a demarcated boundary.<br>Spot it: BRAO.<br>Tip: Like CRAO, needs stroke-style evaluation for embolic source.' },
+    { img: 'ophtho_spot_ai_assets/spot5/vasc_04_cattle.png',
+      dx: 'CRAO (cattle trucking)', key: 'Segmented ‘boxcarring’/cattle‑trucking in retinal arteries—flow is interrupted.<br>Spot it: CRAO (cattle trucking).<br>Tip: Poor perfusion sign; document onset time and start urgent stroke pathway.' },
+    { img: 'ophtho_spot_ai_assets/spot5/vasc_05_htn.jpg',
+      dx: 'HTN retinopathy', key: 'AV nicking, arteriolar narrowing, and cotton‑wool spots—hypertensive changes.<br>Spot it: HTN retinopathy.<br>Tip: Severe findings can signal malignant HTN—measure BP and escalate care.' },
   ],
+
 
   opticnerve: [
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Papilledema.jpg/480px-Papilledema.jpg',
-      dx: 'Papilloedema', key: 'Bilateral swollen discs · blurred margins · raised ICP · enlarged blind spot' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Optic_atrophy.jpg/480px-Optic_atrophy.jpg',
-      dx: 'Optic Atrophy', key: 'Pale disc · axonal loss · RAPD · post-neuritis / ischaemic / compressive' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Optic_neuritis.jpg/480px-Optic_neuritis.jpg',
-      dx: 'Optic Neuritis', key: 'Swollen disc (papillitis) or normal · painful VA loss · RAPD · MS association' },
+    { img: 'ophtho_spot_ai_assets/spot5/on_01_pap.png',
+      dx: 'Papilloedema', key: 'Swollen optic disc with blurred margins and loss of physiologic cup.<br>Spot it: Papilloedema.<br>Tip: Bilateral disc swelling = raised ICP until proven otherwise—urgent neuro workup.' },
+    { img: 'ophtho_spot_ai_assets/spot5/on_02_compare.jpg',
+      dx: 'Disc edema (examples)', key: 'Comparison image set showing disc edema—margin blurring and elevation vs baseline.<br>Spot it: Disc edema (examples).<br>Tip: Differentiate papilledema vs optic neuritis—pain with EOM and unilateral favors neuritis.' },
+    { img: 'ophtho_spot_ai_assets/spot5/on_03_pap2.jpg',
+      dx: 'Papilloedema (example)', key: 'Disc edema with peripapillary hemorrhages/exudates—more severe papilledema look.<br>Spot it: Papilloedema (example).<br>Tip: Check BP too—malignant HTN can mimic with disc swelling.' },
+    { img: 'ophtho_spot_ai_assets/spot5/on_04_grades.jpg',
+      dx: 'Papilloedema grades', key: 'Photo series demonstrating Frisén grading of papilledema severity.<br>Spot it: Papilloedema grades.<br>Tip: Use grading to monitor response to treatment (e.g., IIH).' },
+    { img: 'ophtho_spot_ai_assets/spot5/on_05_pap3.png',
+      dx: 'Papilloedema (example)', key: 'Elevated hyperemic disc with indistinct borders—another papilledema example.<br>Spot it: Papilloedema (example).<br>Tip: Ask about headache, transient visual obscurations, pulsatile tinnitus.' },
   ],
+
 
   redeye: [
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Swollen_eye_with_conjunctivitis.jpg/480px-Swollen_eye_with_conjunctivitis.jpg',
-      dx: 'Viral Conjunctivitis', key: 'Bilateral · watery discharge · follicles · preauricular lymph node' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Subconjunctival_hemorrhage.jpg/480px-Subconjunctival_hemorrhage.jpg',
-      dx: 'Subconjunctival Haemorrhage', key: 'Bright red · flat · asymptomatic · benign if atraumatic' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Hypopyonie.jpg/480px-Hypopyonie.jpg',
-      dx: 'Hypopyon', key: 'Pus in AC · white layering · emergency · slit lamp + urgent referral' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Fluorescein_stained_corneal_dendrite.jpg/480px-Fluorescein_stained_corneal_dendrite.jpg',
-      dx: 'HSV Keratitis', key: 'Unilateral · ciliary flush · dendrite on fluorescein · ↓ corneal sensation' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Corneal_ulcer.jpg/480px-Corneal_ulcer.jpg',
-      dx: 'Bacterial Corneal Ulcer', key: 'Purulent discharge · central infiltrate · contact lens wearer · urgent' },
+    { img: 'ophtho_spot_ai_assets/spot5/redeye_01_viral.jpg',
+      dx: 'Viral conjunctivitis', key: 'Diffuse conjunctival injection with watery discharge/follicular look (not purulent).<br>Spot it: Viral conjunctivitis.<br>Tip: Highly contagious—hand hygiene; check for preauricular node.' },
+    { img: 'ophtho_spot_ai_assets/spot5/redeye_02_subconj.jpg',
+      dx: 'Subconjunctival haemorrhage', key: 'Flat red patch under conjunctiva with otherwise quiet eye—no corneal haze.<br>Spot it: Subconjunctival haemorrhage.<br>Tip: Usually painless; pain/photophobia suggests a different diagnosis.' },
+    { img: 'ophtho_spot_ai_assets/spot5/redeye_03_episcleritis.jpg',
+      dx: 'Episcleritis', key: 'Localized sectoral redness—superficial vessels rather than deep violaceous hue.<br>Spot it: Episcleritis.<br>Tip: Mild tenderness; severe boring pain suggests scleritis.' },
+    { img: 'ophtho_spot_ai_assets/spot5/redeye_04_hypopyon.jpg',
+      dx: 'Hypopyon', key: 'Red eye with visible hypopyon—white meniscus in the anterior chamber.<br>Spot it: Hypopyon.<br>Tip: Think severe keratitis/uveitis—urgent slit-lamp exam and cultures as needed.' },
+    { img: 'ophtho_spot_ai_assets/spot5/redeye_05_ulcer.jpg',
+      dx: 'Corneal ulcer', key: 'Cornea appears cloudy/white at the lesion with intense injection—ulcer appearance.<br>Spot it: Corneal ulcer.<br>Tip: Contact lens + pain = emergency; stop lenses and start intensive therapy.' },
   ],
+
 
   neuroophthal: [
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Papilledema.jpg/480px-Papilledema.jpg',
-      dx: 'Papilloedema', key: 'Bilateral disc swelling · IIH / SOL · enlarged blind spot · Frisen scale' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Optic_atrophy.jpg/480px-Optic_atrophy.jpg',
-      dx: 'Optic Atrophy', key: 'Pale disc · irreversible axonal loss · RAPD if asymmetric · many causes' },
-    { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Cupping_of_the_disc.jpg/480px-Cupping_of_the_disc.jpg',
-      dx: 'Glaucomatous Cupping', key: 'Pathological CDR · rim loss · may mimic optic atrophy · check IOP' },
+    { img: 'ophtho_spot_ai_assets/spot5/neuro_01_atrophy.jpg',
+      dx: 'Optic atrophy', key: 'Chalky pale optic disc with reduced vascularity—atrophic look rather than swollen.<br>Spot it: Optic atrophy.<br>Tip: Correlate with RAPD, color vision loss, and field defects to localize cause.' },
+    { img: 'ophtho_spot_ai_assets/spot5/neuro_02_pale.gif',
+      dx: 'Pale optic nerve', key: 'Pale disc compared with surrounding retina—neuroretinal rim looks washed out.<br>Spot it: Pale optic nerve.<br>Tip: Ask about prior optic neuritis/ischemic episodes; check temporal pallor.' },
+    { img: 'ophtho_spot_ai_assets/spot5/neuro_03_cup.jpg',
+      dx: 'Cupping', key: 'Deep cup with relatively pale rim—can mimic glaucoma vs compressive neuropathy.<br>Spot it: Cupping.<br>Tip: If pallor > cupping or marked RAPD, think non-glaucomatous optic neuropathy.' },
+    { img: 'ophtho_spot_ai_assets/spot5/neuro_04_pap.jpg',
+      dx: 'Papilloedema', key: 'Disc swelling with blurred margins—papilledema-type appearance.<br>Spot it: Papilloedema.<br>Tip: Evaluate urgently if bilateral; unilateral swelling has a different differential.' },
+    { img: 'ophtho_spot_ai_assets/spot5/neuro_05_compare.jpg',
+      dx: 'Normal vs glaucoma', key: 'Comparison image: normal disc vs glaucomatous disc—rim loss vs healthy rim.<br>Spot it: Normal vs glaucoma.<br>Tip: Use disc photos with OCT RNFL and fields for a complete glaucoma assessment.' },
   ],
 
+
   cataract: [
-    { img: 'spot_images/mature-cortical-LRG.jpg',
-      dx: 'Mature Cortical Cataract', key: 'Spoke-like white opacities · cortical spokes from periphery · glare · near vision initially preserved' },
-    { img: 'spot_images/Morgagnian-Cataract-1.jpeg',
-      dx: 'Morgagnian (Hypermature) Cataract', key: 'Liquefied cortex · nucleus sinks inferiorly · risk: phacolytic glaucoma · neglected / very advanced' },
-    { img: 'spot_images/Morgagnian-Cataract-2.jpeg',
-      dx: 'Morgagnian Cataract — anterior view', key: 'Milky white cortex · amber nucleus · white quiet eye · urgent surgery · check IOP' },
-    { img: 'spot_images/NSC-LRG.jpg',
-      dx: 'Nuclear Sclerotic Cataract', key: 'Central brunescent opacity · index myopia (reading improves temporarily) · most common senile type' },
-    { img: 'spot_images/NSC-slit-LRG.jpg',
-      dx: 'Nuclear Sclerosis — slit lamp', key: 'Dense nuclear brunescence · posterior subcapsular component · graded NS1–NS4 on slit lamp' },
+    { img: 'ophtho_spot_ai_assets/spot5/cat_01_nsc.jpg',
+      dx: 'Nuclear sclerosis', key: 'Amber/brown nucleus—nuclear sclerosis gives a ‘brunescent’ central lens.<br>Spot it: Nuclear sclerosis.<br>Tip: Causes myopic shift (‘second sight’) and gradual blur; surgery when function-limiting.' },
+    { img: 'ophtho_spot_ai_assets/spot5/cat_02_white.jpg',
+      dx: 'Mature (white) cataract', key: 'White, opaque lens filling the pupil—mature cataract appearance.<br>Spot it: Mature (white) cataract.<br>Tip: If pain/high IOP with white cataract, consider phacolytic/phacomorphic glaucoma.' },
+    { img: 'ophtho_spot_ai_assets/spot5/cat_03_psc.jpg',
+      dx: 'Posterior subcapsular', key: 'Central posterior plaque just behind the pupil—PSC pattern (glare, near-vision worse).<br>Spot it: Posterior subcapsular.<br>Tip: Common with steroids/DM; symptoms disproportionate to size because it sits on visual axis.' },
+    { img: 'ophtho_spot_ai_assets/spot5/cat_04_mature.jpg',
+      dx: 'Mature cataract', key: 'Dense lens opacity obscuring red reflex—advanced cataract with minimal fundus view.<br>Spot it: Mature cataract.<br>Tip: Assess for phacodonesis/zonular weakness before surgery (trauma, pseudoexfoliation).' },
+    { img: 'ophtho_spot_ai_assets/spot5/cat_05_slit.jpg',
+      dx: 'Nuclear cataract (slit)', key: 'Slit-lamp view showing nuclear opacity within lens substance (central densification).<br>Spot it: Nuclear cataract (slit).<br>Tip: Document grade and impact on acuity; counsel about surgery risks/benefits.' },
+  ],
+
+
+  hr: [
+    { img: 'ophtho_spot_ai_assets/spot5/hr_01_pack.png',
+      dx: 'Hypertensive retinopathy', key: 'Arteriolar narrowing with AV crossing changes plus cotton‑wool spots/hemorrhages.<br>Spot it: Hypertensive retinopathy.<br>Tip: Severe grades suggest end-organ damage—urgent systemic BP management.' },
+    { img: 'ophtho_spot_ai_assets/spot5/hr_02_labeled.jpg',
+      dx: 'Hypertensive retinopathy', key: 'Labeled image highlighting AV nicking, hemorrhages, and exudates (teaching layout).<br>Spot it: Hypertensive retinopathy.<br>Tip: Use labels to learn the pattern; correlate with BP and renal/cardiac status.' },
+    { img: 'ophtho_spot_ai_assets/spot5/hr_03_fundus.jpg',
+      dx: 'Hypertensive changes', key: 'Generalized arteriolar attenuation and copper‑wiring appearance of vessels.<br>Spot it: Hypertensive changes.<br>Tip: Chronic HTN causes vessel wall thickening; manage long-term vascular risk.' },
+    { img: 'ophtho_spot_ai_assets/spot5/hr_04_eyerounds.jpg',
+      dx: 'Hypertensive retinopathy', key: 'Hard exudates + cotton‑wool spots scattered with vessel narrowing—more severe disease.<br>Spot it: Hypertensive retinopathy.<br>Tip: Look for optic disc edema—malignant HTN can present with swelling.' },
+    { img: 'ophtho_spot_ai_assets/spot5/hr_05_eyewiki.jpg',
+      dx: 'HTN retinopathy (grade 3-4)', key: 'Severe retinopathy pattern (grade 3–4): hemorrhages/exudates ± disc edema.<br>Spot it: HTN retinopathy (grade 3-4).<br>Tip: Treat as medical emergency—rapid BP control and systemic evaluation.' },
   ],
 
 };
@@ -7141,6 +7263,7 @@ function openSpot() {
   document.getElementById('page-spot').style.display  = 'block';
   document.getElementById('mbar-note-tools').style.visibility = 'hidden';
   document.getElementById('modal').scrollTop = 0;
+  applySpotSizePref();
   renderSpot(currentNote);
 }
 
@@ -7161,7 +7284,15 @@ function renderSpot(id) {
       <button onclick="closeSpot()" style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,.3);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;">← back to note</button>
     </div>
     <div style="padding:10px 20px 6px;">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.2);letter-spacing:.04em;">Tap each image to reveal the diagnosis.</p>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.2);letter-spacing:.04em;margin:0;">Tap each image to reveal the diagnosis. Use size to make images bigger.</p>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.22);letter-spacing:.04em;">Size</span>
+          <button onclick="setSpotSize('s')" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);color:rgba(255,255,255,.55);padding:6px 10px;border-radius:10px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;">S</button>
+          <button onclick="setSpotSize('m')" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);color:rgba(255,255,255,.55);padding:6px 10px;border-radius:10px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;">M</button>
+          <button onclick="setSpotSize('l')" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);color:rgba(255,255,255,.55);padding:6px 10px;border-radius:10px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;">L</button>
+        </div>
+      </div>
     </div>
     <div class="spot-grid">`;
 
@@ -7173,7 +7304,12 @@ function renderSpot(id) {
             <img src="${c.img}" alt="${c.dx}" class="loading" referrerpolicy="no-referrer"
               onload="this.classList.remove('loading')"
               onerror="this.closest('.spot-card-front').classList.add('img-error');this.style.display='none'">
-            <span class="spot-img-src">EyeRounds.org</span>
+            <button class=\"spot-zoom-btn\" onclick=\"event.stopPropagation(); openSpotZoom('\${c.img}','\${c.dx}')\" title=\"View\">
+              <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\">
+                <path d=\"M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z\" stroke=\"currentColor\" stroke-width=\"2\"/>
+                <path d=\"M16.5 16.5 21 21\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"/>
+              </svg>
+            </button>
             <span class="spot-tap-hint">tap to reveal</span>
           </div>
           <div class="spot-card-back">
@@ -7187,10 +7323,6 @@ function renderSpot(id) {
 
   html += `
     </div>
-    <div class="spot-attribution">
-      Images © <a href="https://eyerounds.org" target="_blank">EyeRounds.org</a>, University of Iowa.
-      Licensed under <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">CC BY-NC-ND 3.0</a>.
-    </div>
   </div>`;
 
   document.getElementById('spot-inner').innerHTML = html;
@@ -7199,6 +7331,37 @@ function renderSpot(id) {
 function flipSpotCard(i) {
   const card = document.getElementById('spot-card-' + i);
   if (card) card.classList.toggle('flipped');
+}
+
+
+// Spot size preference (S/M/L)
+function setSpotSize(size){
+  const map = { s:'200px', m:'260px', l:'340px' };
+  const v = map[size] || map.m;
+  document.documentElement.style.setProperty('--spotCardMin', v);
+  try { localStorage.setItem('vent_spot_size', size); } catch(e) {}
+}
+function applySpotSizePref(){
+  try {
+    const s = localStorage.getItem('vent_spot_size') || 'm';
+    setSpotSize(s);
+  } catch(e) { setSpotSize('m'); }
+}
+
+// Spot zoom
+function openSpotZoom(src, title){
+  const ov = document.getElementById('spot-zoom');
+  const img = document.getElementById('spot-zoom-img');
+  const tt  = document.getElementById('spot-zoom-title');
+  if (!ov || !img || !tt) return;
+  img.src = src;
+  img.alt = title || '';
+  tt.textContent = title || '';
+  ov.classList.add('open');
+}
+function closeSpotZoom(){
+  const ov = document.getElementById('spot-zoom');
+  if (ov) ov.classList.remove('open');
 }
 
 </script>
@@ -7268,6 +7431,17 @@ function flipSpotCard(i) {
   }
 })();
 </script>
+
+<!-- Spot zoom overlay (for image viewing) -->
+<div id="spot-zoom" class="spot-zoom-overlay" onclick="if(event.target.id==='spot-zoom') closeSpotZoom()">
+  <div class="spot-zoom-inner" role="dialog" aria-modal="true" aria-label="Spot image zoom" onclick="event.stopPropagation()">
+    <div class="spot-zoom-top">
+      <div id="spot-zoom-title" class="spot-zoom-title">Image</div>
+      <button class="spot-zoom-close" onclick="closeSpotZoom()" type="button">Close</button>
+    </div>
+    <img id="spot-zoom-img" class="spot-zoom-img" alt="" />
+  </div>
+</div>
 
 </body>
 </html>
