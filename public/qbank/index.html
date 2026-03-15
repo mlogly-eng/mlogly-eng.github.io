@@ -5,28 +5,29 @@
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
-  --bg:        #f3f0e8;
-  --bg2:       #ebe7de;
-  --bg3:       #e2ddd3;
-  --card:      #faf8f4;
-  --ink:       #0d0b08;
-  --ink2:      #1a1814;
-  --ink3:      #38342e;
-  --ink4:      #786e64;
-  --ink5:      #a89e94;
+  --bg:        #f0ebe0;
+  --bg2:       #e8e1d4;
+  --bg3:       #ddd5c5;
+  --card:      #f5f2eb;
+  --ink:       #18140e;
+  --ink2:      #2a2418;
+  --ink3:      #46402e;
+  --ink4:      #8a8070;
+  --ink5:      #b0a898;
   --red:       #c8452a;
-  --red2:      #e0583a;
-  --redfaint:  #f7eeeb;
+  --red2:      #e05a3a;
+  --redfaint:  #f8edea;
   --green:     #2a6642;
-  --greenfaint:#eaf3ed;
-  --border:    #d6d0c6;
-  --border2:   #c8c2b8;
-  --white:     #fdfcfa;
+  --greenfaint:#e8f3ec;
+  --amber:     #8a6020;
+  --amberfaint:#f5f0e4;
+  --border:    #d4cec4;
+  --border2:   #c4beb4;
+  --white:     #faf8f4;
   --dark:      #141210;
   --dark2:     #1e1c18;
-  --dark3:     #2a2822;
+  --dark3:     #282420;
 
-  /* highlight colours */
   --hl-yellow: rgba(255, 214, 0, 0.35);
   --hl-green:  rgba(42, 102, 66, 0.22);
   --hl-red:    rgba(200, 69, 42, 0.22);
@@ -56,11 +57,14 @@ body::before {
 nav {
   display: flex; justify-content: space-between; align-items: center;
   padding: 18px 48px;
-  background: var(--card);
+  background: rgba(245,242,235,.94);
+  backdrop-filter: blur(20px) saturate(1.4);
   border-bottom: 1px solid var(--border);
   position: sticky; top: 0; z-index: 500;
   height: 60px;
+  transition: box-shadow .3s;
 }
+nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.07); }
 .logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
 .logo-name { font-size: 18px; font-weight: 800; letter-spacing: 4px; color: var(--ink); }
 .nav-back {
@@ -84,41 +88,60 @@ nav {
 .launcher { max-width: 900px; margin: 0 auto; padding: 80px 64px 100px; }
 
 .l-eyebrow {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px;
-  letter-spacing: 3px; color: var(--red); text-transform: uppercase;
-  margin-bottom: 20px; display: flex; align-items: center; gap: 14px;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 4px; color: var(--red); text-transform: uppercase;
+  margin-bottom: 24px; display: flex; align-items: center; gap: 14px;
+  opacity: 0; animation: fadeSlideUp .6s .1s cubic-bezier(.16,1,.3,1) forwards;
 }
 .l-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--red); }
 
 .l-h1 {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(52px, 7vw, 88px);
-  font-weight: 400; color: var(--ink); line-height: .92;
-  margin-bottom: 20px;
+  font-size: clamp(60px, 9vw, 110px);
+  font-weight: 400; color: var(--ink); line-height: .88;
+  margin-bottom: 24px; letter-spacing: -2px;
+  opacity: 0; animation: fadeSlideUp .8s .2s cubic-bezier(.16,1,.3,1) forwards;
 }
-.l-h1 em { font-style: italic; color: var(--red); }
-.l-sub { font-size: 16px; color: var(--ink4); line-height: 1.8; max-width: 480px; margin-bottom: 56px; }
+.l-h1 em { font-style: italic; color: var(--red); display: block; }
+.l-h1 em::after {
+  content: ''; display: block; width: 0; height: 2px;
+  background: linear-gradient(90deg, var(--red), transparent);
+  margin-top: 8px;
+  animation: lineGrow 1s .9s cubic-bezier(.16,1,.3,1) forwards;
+}
+@keyframes lineGrow { to { width: 120px; } }
+.l-sub {
+  font-size: 15px; color: var(--ink4); line-height: 1.9; max-width: 440px; margin-bottom: 56px;
+  opacity: 0; animation: fadeSlideUp .7s .35s cubic-bezier(.16,1,.3,1) forwards;
+}
+@keyframes fadeSlideUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
 
 /* Recent performance strip */
 .l-perf-strip {
-  display: flex; gap: 2px; margin-bottom: 72px;
+  display: flex; gap: 0; margin-bottom: 72px;
+  border: 1px solid var(--border);
+  opacity: 0; animation: fadeSlideUp .7s .5s cubic-bezier(.16,1,.3,1) forwards;
 }
 .l-perf-block {
-  flex: 1; padding: 20px 22px;
-  background: var(--card); border: 1px solid var(--border);
+  flex: 1; padding: 24px 28px;
+  background: var(--card);
+  border-right: 1px solid var(--border);
+  transition: background .2s;
 }
+.l-perf-block:last-child { border-right: none; }
+.l-perf-block:hover { background: var(--white); }
 .l-perf-label {
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
-  letter-spacing: 2px; color: var(--ink5); text-transform: uppercase; margin-bottom: 8px;
+  font-family: 'JetBrains Mono', monospace; font-size: 8px;
+  letter-spacing: 3px; color: var(--ink5); text-transform: uppercase; margin-bottom: 10px;
 }
 .l-perf-val {
-  font-family: 'Instrument Serif', serif; font-size: 32px;
+  font-family: 'Instrument Serif', serif; font-size: 38px;
   font-style: italic; color: var(--ink); line-height: 1;
 }
 .l-perf-val.ok { color: var(--green); }
-.l-perf-val.warn { color: #8a6020; }
+.l-perf-val.warn { color: var(--amber); }
 .l-perf-val.bad { color: var(--red); }
-.l-perf-sub { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink5); margin-top: 4px; }
+.l-perf-sub { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--ink5); margin-top: 6px; }
 
 /* config rows */
 .cfg { margin-bottom: 52px; }
@@ -132,29 +155,39 @@ nav {
 /* system grid */
 .sys-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
 .sys-btn {
-  padding: 22px 20px; border: 1.5px solid var(--border); background: var(--card);
-  cursor: pointer; text-align: left; transition: all .2s;
+  padding: 20px 18px; border: 1px solid var(--border); background: var(--card);
+  cursor: pointer; text-align: left;
+  transition: border-color .2s, background .2s, transform .2s, box-shadow .2s;
+  position: relative; overflow: hidden;
 }
-.sys-btn:hover { border-color: var(--ink3); }
-.sys-btn.on { border-color: var(--ink); background: var(--ink); }
-.sys-btn.on .sn { color: var(--bg); }
-.sys-btn.on .ss { color: rgba(243,240,232,.35); }
-.sys-btn.soon { opacity: .28; cursor: not-allowed; background: var(--bg2); }
-.sn { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 4px; transition: color .2s; }
-.ss { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink5); transition: color .2s; }
+.sys-btn::after {
+  content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+  background: var(--red); transition: width .3s cubic-bezier(.16,1,.3,1);
+}
+.sys-btn:hover { border-color: var(--ink3); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+.sys-btn:hover::after { width: 100%; }
+.sys-btn.on { border-color: var(--ink); background: var(--ink); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+.sys-btn.on::after { width: 100%; background: var(--red); }
+.sys-btn.on .sn { color: var(--white); }
+.sys-btn.on .ss { color: rgba(243,240,232,.3); }
+.sys-btn.soon { opacity: .22; cursor: not-allowed; background: var(--bg2); }
+.sys-btn.soon:hover { transform: none; box-shadow: none; }
+.sn { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 5px; transition: color .2s; }
+.ss { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--ink5); transition: color .2s; }
 
 /* mode */
 .mode-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .mode-btn {
-  padding: 24px 22px; border: 1.5px solid var(--border); background: var(--card);
-  cursor: pointer; text-align: left; transition: all .2s;
+  padding: 26px 24px; border: 1px solid var(--border); background: var(--card);
+  cursor: pointer; text-align: left;
+  transition: border-color .2s, background .2s, transform .2s, box-shadow .2s;
 }
-.mode-btn:hover { border-color: var(--ink3); }
-.mode-btn.on { border-color: var(--ink); background: var(--ink); }
-.mode-btn.on .mn { color: var(--bg); }
-.mode-btn.on .md { color: rgba(243,240,232,.35); }
-.mn { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 7px; transition: color .2s; }
-.md { font-size: 13px; color: var(--ink4); line-height: 1.55; transition: color .2s; }
+.mode-btn:hover { border-color: var(--ink3); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+.mode-btn.on { border-color: var(--ink); background: var(--ink); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+.mode-btn.on .mn { color: var(--white); }
+.mode-btn.on .md { color: rgba(243,240,232,.32); }
+.mn { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 8px; transition: color .2s; }
+.md { font-size: 13px; color: var(--ink4); line-height: 1.6; transition: color .2s; }
 
 /* count */
 .count-row { display: flex; align-items: center; gap: 24px; }
@@ -190,15 +223,23 @@ nav {
 .launch-summary { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink5); letter-spacing: .3px; }
 .launch-summary strong { color: var(--ink3); }
 .launch-btn {
-  background: var(--ink); color: var(--bg); border: none;
-  padding: 20px 56px;
+  background: var(--ink); color: var(--white); border: none;
+  padding: 22px 60px;
   font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700;
-  cursor: pointer; transition: all .25s;
-  display: flex; align-items: center; gap: 14px; letter-spacing: .3px;
+  cursor: pointer; transition: all .3s cubic-bezier(.16,1,.3,1);
+  display: flex; align-items: center; gap: 14px; letter-spacing: .5px;
+  position: relative; overflow: hidden;
 }
-.launch-btn:hover { background: var(--red); }
+.launch-btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--red); transform: translateX(-101%);
+  transition: transform .35s cubic-bezier(.16,1,.3,1);
+}
+.launch-btn:hover::before { transform: translateX(0); }
+.launch-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(200,69,42,.35); }
+.launch-btn span, .launch-arr { position: relative; z-index: 1; }
 .launch-arr { font-size: 20px; transition: transform .2s; }
-.launch-btn:hover .launch-arr { transform: translateX(5px); }
+.launch-btn:hover .launch-arr { transform: translateX(6px); }
 
 /* Focus banner */
 .focus-banner {
@@ -226,14 +267,14 @@ nav {
 
 /* ── SIDEBAR ── */
 .sidebar {
-  background: var(--dark);
+  background: #0e0c0a;
   display: flex; flex-direction: column;
   position: sticky; top: 60px; height: calc(100vh - 60px);
   overflow-y: auto; overflow-x: hidden;
-  border-right: 1px solid rgba(255,255,255,.06);
+  border-right: 1px solid rgba(255,255,255,.04);
   flex-shrink: 0;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,.08) transparent;
+  scrollbar-color: rgba(255,255,255,.06) transparent;
 }
 .sidebar::-webkit-scrollbar { width: 3px; }
 .sidebar::-webkit-scrollbar-track { background: transparent; }
@@ -396,17 +437,21 @@ nav {
 .vignette {
   background: var(--card);
   border-left: 3px solid var(--red);
-  padding: 24px 28px;
-  margin-bottom: 6px;
+  padding: 28px 32px;
+  margin-bottom: 8px;
   position: relative;
+  box-shadow: 0 1px 4px rgba(0,0,0,.04), inset 0 0 0 1px rgba(0,0,0,.04);
 }
-.vig-label {
-  font-family: 'JetBrains Mono', monospace; font-size: 8px;
-  letter-spacing: 3px; text-transform: uppercase;
-  color: var(--red); margin-bottom: 10px; opacity: .7;
+.vignette::before {
+  content: 'CLINICAL VIGNETTE';
+  position: absolute; top: -1px; left: 32px;
+  font-family: 'JetBrains Mono', monospace; font-size: 7px; letter-spacing: 3px;
+  color: rgba(200,69,42,.5); text-transform: uppercase;
+  background: var(--card); padding: 0 6px; transform: translateY(-50%);
 }
+.vig-label { display: none; }
 .vig-text {
-  font-size: 15px; line-height: 1.85;
+  font-size: 15px; line-height: 1.95;
   color: var(--ink3);
   font-family: 'Syne', sans-serif;
 }
@@ -470,32 +515,34 @@ mark.hl-purple:hover { filter: brightness(.88); }
 
 .opt {
   display: flex; align-items: flex-start; gap: 0;
-  border: 1.5px solid var(--border);
-  background: var(--card);
+  border: 1px solid var(--border);
+  background: var(--white);
   cursor: pointer; text-align: left;
-  transition: border-color .15s, background .15s, transform .12s;
-  overflow: hidden;
-  width: 100%;
+  transition: border-color .2s, background .2s, transform .2s, box-shadow .2s;
+  overflow: hidden; width: 100%;
+  box-shadow: 0 1px 3px rgba(0,0,0,.03);
 }
 .opt:hover:not(.locked) {
   border-color: var(--ink3);
-  transform: translateX(3px);
+  transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+  background: var(--card);
 }
 .opt-ltr {
-  font-family: 'JetBrains Mono', monospace; font-size: 12px;
-  font-weight: 700; letter-spacing: .5px;
-  color: var(--ink4);
-  background: var(--bg2); border-right: 1.5px solid var(--border);
-  padding: 16px 14px;
-  min-width: 46px; text-align: center;
-  transition: background .15s, color .15s, border-color .15s;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  font-weight: 700; letter-spacing: 1px;
+  color: var(--ink5);
+  background: var(--bg2); border-right: 1px solid var(--border);
+  padding: 18px 14px;
+  min-width: 48px; text-align: center;
+  transition: background .2s, color .2s, border-color .2s;
   flex-shrink: 0;
   align-self: stretch; display: flex; align-items: center; justify-content: center;
 }
 .opt-txt {
-  font-size: 14px; color: var(--ink3); line-height: 1.55;
-  padding: 16px 18px;
-  transition: color .15s;
+  font-size: 14px; color: var(--ink3); line-height: 1.65;
+  padding: 18px 20px;
+  transition: color .2s;
 }
 
 /* selected */
@@ -590,70 +637,127 @@ mark.hl-purple:hover { filter: brightness(.88); }
   padding: 0;
   margin: 24px 0;
   opacity: 0; max-height: 0; overflow: hidden;
-  transition: opacity .3s, max-height .4s cubic-bezier(.16,1,.3,1);
+  transition: opacity .4s, max-height .5s cubic-bezier(.16,1,.3,1);
+  border-left: 3px solid transparent;
 }
 .exp-block.show {
-  opacity: 1; max-height: 2400px;
-  padding: 28px 28px;
+  opacity: 1; max-height: 3000px;
+  padding: 0;
 }
+.exp-block.show.is-correct { border-left-color: var(--green); }
+.exp-block.show.is-wrong   { border-left-color: var(--red); }
 
+/* verdict header */
 .exp-verdict {
-  display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 16px;
+  padding: 20px 28px 18px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
 }
 .exp-badge {
-  font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  padding: 5px 14px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 2px;
 }
-.exp-badge.ok  { background: rgba(42,102,66,.2);  color: #5aaa7a; border: 1px solid rgba(42,102,66,.3); }
-.exp-badge.bad { background: rgba(200,69,42,.2);  color: #e87357; border: 1px solid rgba(200,69,42,.3); }
+.exp-badge.ok  { background: rgba(42,102,66,.25);  color: #6abf8a; border: 1px solid rgba(42,102,66,.4); }
+.exp-badge.bad { background: rgba(200,69,42,.25);  color: #f08070; border: 1px solid rgba(200,69,42,.4); }
 .exp-correct-label {
   font-family: 'JetBrains Mono', monospace; font-size: 11px;
-  color: rgba(243,240,232,.35); letter-spacing: .5px;
+  color: rgba(243,240,232,.3); letter-spacing: .5px;
 }
 
-.exp-divider { height: 1px; background: rgba(255,255,255,.06); margin-bottom: 20px; }
+.exp-divider { height: 1px; background: rgba(255,255,255,.05); }
 
-.exp-opts { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+/* option explanations — the core teaching */
+.exp-opts { display: flex; flex-direction: column; gap: 0; padding: 20px 28px 20px; }
 .exp-opt-row {
-  display: flex; gap: 14px; align-items: flex-start;
-  padding: 12px 14px;
-  border-left: 2px solid rgba(255,255,255,.06);
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 14px 16px; margin-bottom: 6px;
+  border-left: 2px solid rgba(255,255,255,.05);
+  border-radius: 0 3px 3px 0;
+  transition: background .2s;
 }
-.exp-opt-row.is-correct { border-left-color: rgba(42,102,66,.5); background: rgba(42,102,66,.07); }
+.exp-opt-row.is-correct {
+  border-left-color: rgba(42,102,66,.7);
+  background: rgba(42,102,66,.09);
+}
+.exp-opt-row.is-wrong-pick {
+  border-left-color: rgba(200,69,42,.7);
+  background: rgba(200,69,42,.08);
+}
 .exp-opt-ltr {
   font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
-  min-width: 20px; flex-shrink: 0; margin-top: 1px;
+  min-width: 22px; flex-shrink: 0; margin-top: 2px;
+  width: 24px; height: 24px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
 }
-.exp-opt-ltr.ok  { color: #5aaa7a; }
-.exp-opt-ltr.dim { color: rgba(243,240,232,.2); }
-.exp-opt-body { font-size: 13px; color: rgba(243,240,232,.6); line-height: 1.7; }
-.exp-opt-body strong { color: rgba(243,240,232,.9); }
+.exp-opt-ltr.ok     { background: rgba(42,102,66,.3);  color: #6abf8a; }
+.exp-opt-ltr.wrong  { background: rgba(200,69,42,.3);  color: #f08070; }
+.exp-opt-ltr.dim    { background: rgba(255,255,255,.05); color: rgba(243,240,232,.2); }
+.exp-opt-body { font-size: 13.5px; color: rgba(243,240,232,.55); line-height: 1.75; }
+.exp-opt-body strong { color: rgba(243,240,232,.92); font-weight: 700; }
+/* "Why wrong" / "Why right" pill */
+.exp-opt-verdict {
+  font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 2px;
+  text-transform: uppercase; padding: 2px 8px; border-radius: 100px;
+  display: inline-block; margin-bottom: 5px;
+}
+.exp-opt-verdict.right { background: rgba(42,102,66,.2); color: #6abf8a; }
+.exp-opt-verdict.wrong { background: rgba(200,69,42,.2); color: #f08070; }
+.exp-opt-verdict.dim   { background: rgba(255,255,255,.05); color: rgba(243,240,232,.25); }
 
+/* teaching point — the unlock */
+.exp-teaching {
+  margin: 0 28px 20px;
+  padding: 20px 22px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 3px;
+  position: relative;
+}
+.exp-teaching::before {
+  content: 'TEACHING POINT';
+  font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 3px;
+  color: rgba(200,69,42,.5); position: absolute; top: -1px; left: 18px;
+  background: var(--dark); padding: 0 6px; transform: translateY(-50%);
+}
+.exp-teaching-text {
+  font-family: 'Instrument Serif', serif; font-size: 17px;
+  color: rgba(243,240,232,.8); font-style: italic; line-height: 1.65;
+}
+.exp-teaching-text em { color: var(--red); font-style: normal; }
+
+/* learning objective */
 .exp-lo {
-  padding-top: 20px; border-top: 1px solid rgba(255,255,255,.06);
+  padding: 18px 28px 24px;
+  border-top: 1px solid rgba(255,255,255,.05);
 }
 .exp-lo-label {
-  font-family: 'JetBrains Mono', monospace; font-size: 9px;
-  letter-spacing: 3px; color: var(--red); text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace; font-size: 8px;
+  letter-spacing: 3px; color: rgba(200,69,42,.5); text-transform: uppercase;
   margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
 }
-.exp-lo-label::before { content: '//'; color: rgba(200,69,42,.35); }
+.exp-lo-label::before { content: '//'; opacity: .5; }
 .exp-lo-text {
-  font-family: 'Instrument Serif', serif; font-size: 17px;
-  color: rgba(243,240,232,.7); font-style: italic; line-height: 1.55;
+  font-family: 'Syne', sans-serif; font-size: 13px;
+  color: rgba(243,240,232,.45); line-height: 1.75;
 }
 
 /* ── NEXT BUTTON ── */
 .next-wrap { margin-top: 8px; }
 .next-btn {
-  background: var(--ink); color: var(--bg); border: none;
-  padding: 18px 44px; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
-  cursor: pointer; transition: all .25s; letter-spacing: .3px;
-  opacity: 0; pointer-events: none;
+  background: var(--ink); color: var(--white); border: none;
+  padding: 18px 48px; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
+  cursor: pointer; transition: all .3s cubic-bezier(.16,1,.3,1); letter-spacing: .5px;
+  opacity: 0; pointer-events: none; position: relative; overflow: hidden;
 }
+.next-btn::before {
+  content: ''; position: absolute; inset: 0; background: var(--red);
+  transform: translateX(-101%); transition: transform .3s cubic-bezier(.16,1,.3,1);
+}
+.next-btn span { position: relative; z-index: 1; }
 .next-btn.show { opacity: 1; pointer-events: all; }
-.next-btn:hover { background: var(--red); }
+.next-btn:hover::before { transform: translateX(0); }
+.next-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(200,69,42,.3); }
 
 .exp-panel { display: none !important; }
 
@@ -700,9 +804,9 @@ mark.hl-purple:hover { filter: brightness(.88); }
 .score-inner { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .score-n { font-family: 'Instrument Serif', serif; font-size: 32px; font-style: italic; color: var(--ink); line-height: 1; }
 .score-pct { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink5); margin-top: 3px; }
-.res-grade { font-family: 'Instrument Serif', serif; font-size: 46px; color: var(--ink); line-height: 1; margin-bottom: 10px; }
+.res-grade { font-family: 'Instrument Serif', serif; font-size: 52px; color: var(--ink); line-height: .95; margin-bottom: 12px; letter-spacing: -1px; }
 .res-grade em { font-style: italic; color: var(--red); }
-.res-sub { font-size: 15px; color: var(--ink4); line-height: 1.7; margin-bottom: 18px; }
+.res-sub { font-size: 15px; color: var(--ink4); line-height: 1.8; margin-bottom: 18px; }
 .res-tally { display: flex; gap: 20px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink5); }
 .td { width: 6px; height: 6px; border-radius: 50%; display: inline-block; margin-right: 5px; vertical-align: middle; }
 .td.ok  { background: var(--green); }
@@ -915,7 +1019,7 @@ mark.hl-purple:hover { filter: brightness(.88); }
   <div class="l-eyebrow">Q-Bank</div><h1 class="l-h1">Cases.<br><em>No notes.</em></h1><p class="l-sub">Clinical vignettes. Hard questions. Real reasoning required.</p>
   <div class="l-perf-strip" id="l-perf-strip"><div class="l-perf-block"><div class="l-perf-label">Sessions</div><div class="l-perf-val">—</div><div class="l-perf-sub">No sessions yet</div></div><div class="l-perf-block"><div class="l-perf-label">Avg score</div><div class="l-perf-val">—</div><div class="l-perf-sub">Complete a session</div></div><div class="l-perf-block"><div class="l-perf-label">Questions done</div><div class="l-perf-val">—</div><div class="l-perf-sub">across all sessions</div></div></div>
   <div class="focus-banner" id="focus-banner" style="display:none;"><div class="focus-banner-text"><strong>Last session: weak areas detected</strong><br><span id="focus-topics-list"></span></div><button class="focus-banner-btn" onclick="launchFocusSession()">Practice weak areas →</button><button class="focus-banner-close" onclick="dismissFocusBanner()">✕</button></div>
-  <div class="cfg"><div class="cfg-label">System</div><div class="sys-grid"><button class="sys-btn on" onclick="pickSys(this,'all')"><div class="sn">Everything</div><div class="ss" id="sc-all">— questions</div></button><button class="sys-btn" onclick="pickSys(this,'obgyn')"><div class="sn">OB / GYN</div><div class="ss" id="sc-obgyn">— questions</div></button><button class="sys-btn" onclick="pickSys(this,'ophtho')"><div class="sn">Ophthalmology</div><div class="ss" id="sc-ophtho">— questions</div></button><div class="sys-btn soon"><div class="sn">Internal Med</div><div class="ss">Coming soon</div></div><div class="sys-btn soon"><div class="sn">Surgery</div><div class="ss">Coming soon</div></div><div class="sys-btn soon"><div class="sn">Neurology</div><div class="ss">Coming soon</div></div><div class="sys-btn soon"><div class="sn">Paediatrics</div><div class="ss">Coming soon</div></div></div></div>
+  <div class="cfg"><div class="cfg-label">System</div><div class="sys-grid"><button class="sys-btn on" onclick="pickSys(this,'all')"><div class="sn">Everything</div><div class="ss" id="sc-all">— questions</div></button><button class="sys-btn" onclick="pickSys(this,'obgyn')"><div class="sn">OB / GYN</div><div class="ss" id="sc-obgyn">— questions</div></button><button class="sys-btn" onclick="pickSys(this,'ophtho')"><div class="sn">Ophthalmology</div><div class="ss" id="sc-ophtho">— questions</div></button><button class="sys-btn" onclick="pickSys(this,'forensic')"><div class="sn">Forensic Med</div><div class="ss" id="sc-forensic">— questions</div></button><div class="sys-btn soon"><div class="sn">Internal Med</div><div class="ss">Coming soon</div></div><div class="sys-btn soon"><div class="sn">Surgery</div><div class="ss">Coming soon</div></div><div class="sys-btn soon"><div class="sn">Neurology</div><div class="ss">Coming soon</div></div><div class="sys-btn soon"><div class="sn">Paediatrics</div><div class="ss">Coming soon</div></div></div></div>
   <div class="cfg"><div class="cfg-label">Questions</div><div class="count-row"><input type="number" id="count-input" class="count-input" value="10" min="5" max="40" onchange="clampCount()" oninput="updateSummary()"><div class="count-note">questions per session<br>minimum 5</div></div></div>
   <div class="cfg"><div class="cfg-label">Mode</div><div class="mode-row"><button class="mode-btn on" onclick="pickMode(this,'normal')"><div class="mn">Normal</div><div class="md">Answer, get immediate feedback, move on.</div></button><button class="mode-btn" onclick="pickMode(this,'exam')"><div class="mn">Exam</div><div class="md">No feedback until the session ends.</div></button></div></div>
   <div class="launch-row"><div class="launch-summary" id="launch-summary"></div><button class="launch-btn" onclick="launch()">Begin <span class="launch-arr">→</span></button></div>
@@ -2168,6 +2272,375 @@ const QB = [
       "<strong>Correct.</strong> Compressive optic neuropathy is the sight-threatening emergency. Colour vision loss (red desaturation) or a new RAPD are the early signs — preceding VA loss. Any suspicion warrants urgent IV methylprednisolone or surgical orbital decompression.",
       "Cosmetic rehabilitation (proptosis correction, strabismus surgery, eyelid surgery) is addressed in the inactive phase after the active inflammatory phase — not the urgent priority.",
       "Conjunctival prolapse (chemosis) is uncomfortable and managed with lubricants — it is not the surgical emergency in TED."]
+},
+
+
+// ════════════════════════════════════════
+//  OPHTHALMOLOGY — EXPANDED (25 new Qs)
+// ════════════════════════════════════════
+
+{ sys:'ophtho', topic:'Red Eye', diff:'foundation',
+  vig:`A 22-year-old student presents with a red, gritty left eye for 3 days. There is watery discharge. The right eye became red yesterday. His flatmate had similar symptoms last week. VA is 6/6 bilaterally. There is no photophobia. A tender preauricular lymph node is palpable on the left.`,
+  stem:`What is the diagnosis and the most important management principle?`,
+  opts:["Bacterial conjunctivitis — start topical chloramphenicol","Viral conjunctivitis — highly contagious, advise strict hand hygiene and avoid sharing towels","Allergic conjunctivitis — start topical antihistamine drops","Chlamydial conjunctivitis — oral azithromycin required"],
+  ans:1,
+  lo:`Preauricular lymphadenopathy + watery discharge + bilateral spread + contact history = adenoviral conjunctivitis. It is self-limiting but extraordinarily contagious. No topical antibiotic changes the course.`,
+  oe:["Bacterial conjunctivitis produces mucopurulent discharge, not watery. There is no indication for antibiotics in viral conjunctivitis — they do not alter the course and promote resistance.","<strong>Correct.</strong> Adenoviral epidemic keratoconjunctivitis: watery discharge, preauricular node, bilateral spread, contact history. Self-limiting in 2–3 weeks. Advise: hand washing, no contact lens wear, avoid swimming pools, do not return to school/work until discharge resolves.","Allergic conjunctivitis is typically bilateral from the onset, associated with itching (not grittiness), and there is no preauricular lymph node.","Chlamydial conjunctivitis is chronic (weeks to months), unilateral or bilateral, with follicular response. It is uncommon and requires specific STI context and testing."]
+},
+
+{ sys:'ophtho', topic:'Red Eye', diff:'core',
+  vig:`A 35-year-old contact lens wearer presents with a painful, photophobic left eye. Vision is reduced to 6/18. There is ciliary flush. Slit lamp examination reveals a 2mm white infiltrate in the central cornea with overlying fluorescein staining. There is a small anterior chamber reaction.`,
+  stem:`What is this, what is the most dangerous organism to consider, and what is the treatment?`,
+  opts:["Viral keratitis — start aciclovir","Bacterial corneal ulcer — urgent topical intensive fluoroquinolone antibiotics; contact lens wear makes Pseudomonas the primary concern","Fungal keratitis — voriconazole drops","Acanthamoeba keratitis — PHMB drops"],
+  ans:1,
+  lo:`Contact lens wear + central corneal infiltrate + severe pain = bacterial ulcer until proven otherwise. Pseudomonas aeruginosa is the key organism — it is capable of corneal perforation within 24–48 hours. Same-day ophthalmology review is mandatory.`,
+  oe:["Viral keratitis (HSV) typically produces a branching dendritic ulcer on fluorescein, not a solid infiltrate. Reduced corneal sensation is a feature.","<strong>Correct.</strong> Bacterial corneal ulcer in a contact lens wearer: Pseudomonas aeruginosa is the feared organism — it produces proteases that can perforate the cornea within 48 hours. Treatment: intensive topical fluoroquinolone (ciprofloxacin or ofloxacin) every 30–60 minutes initially. Admit and refer same day.","Fungal keratitis typically follows vegetable matter trauma, has feathery edges and satellite lesions. Less common in contact lens wearers.","Acanthamoeba keratitis presents with disproportionate pain and a 'ring infiltrate' in advanced cases. It is rare and associated with swimming in contact lenses or tap water exposure."]
+},
+
+{ sys:'ophtho', topic:'Red Eye', diff:'advanced',
+  vig:`A 50-year-old man with known ankylosing spondylitis presents to A&E with sudden onset severe right eye pain, photophobia, and blurred vision. The eye is red with marked ciliary flush. Slit lamp shows 3+ cells and flare in the anterior chamber, with fine keratic precipitates on the corneal endothelium. No hypopyon. VA 6/24.`,
+  stem:`What is the diagnosis and why must treatment begin the same day?`,
+  opts:["Acute closed-angle glaucoma — give acetazolamide and pilocarpine","Anterior uveitis (iritis) — start hourly topical prednisolone and cyclopentolate; delay risks posterior synechiae, secondary glaucoma, and permanent visual loss","Scleritis — start systemic NSAIDs","Episcleritis — reassure, self-limiting"],
+  ans:1,
+  lo:`Anterior uveitis with HLA-B27-associated disease (AS) can cause posterior synechiae within hours. Synechiae distort the pupil, block aqueous drainage causing secondary glaucoma, and permanently damage the lens. Hourly steroids prevent this — delay does not.`,
+  oe:["Acute angle closure presents with a fixed mid-dilated pupil, corneal haze, and high IOP. Anterior uveitis has a small, poorly reactive pupil due to spasm and posterior synechiae — IOP may be normal or low.","<strong>Correct.</strong> Anterior uveitis in AS — same-day treatment with topical prednisolone 1% hourly and cyclopentolate 1% TDS. Cycloplegia relieves ciliary spasm, breaks forming synechiae, and prevents pupil block. Refer to ophthalmology same day. Recurrence risk is high — patient must recognise early symptoms.","Scleritis produces a deep, boring pain worsened by eye movement and a violaceous hue to the sclera. Cells and flare in the AC are not a feature of scleritis alone.","Episcleritis is a benign, superficial condition — no AC reaction, no reduction in VA, no photophobia, sectoral or diffuse superficial injection only."]
+},
+
+{ sys:'ophtho', topic:'Glaucoma', diff:'foundation',
+  vig:`A 65-year-old West African man with no known conditions attends his GP for a routine check. He has no eye symptoms. His father was blind from 'eye pressure'. On examination with a direct ophthalmoscope, the optic disc appears to have an unusually large cup.`,
+  stem:`What should happen next and why is this population at particular risk?`,
+  opts:["Reassure — large cups are a normal variant","Refer to ophthalmology for IOP measurement, visual field testing, and OCT — Black African ancestry confers 10x higher risk of POAG","Check blood pressure — hypertensive retinopathy","Review in 12 months if no symptoms"],
+  ans:1,
+  lo:`POAG is insidious, painless, and causes irreversible field loss before symptoms develop. Risk factors include: Black African ancestry (10x relative risk), family history, age >60, high IOP, thin CCT. Screening in high-risk individuals is the only way to catch it before significant damage.`,
+  oe:["A large cup-to-disc ratio (>0.5) warrants investigation, not reassurance. In a high-risk individual with a family history, this finding demands formal assessment.","<strong>Correct.</strong> Black African ancestry is the single strongest racial risk factor for POAG — 10x higher prevalence than white European populations. Combined with a family history and suspicious disc, urgent ophthalmology referral for IOP, visual field testing, and OCT nerve fibre layer analysis is mandatory.","Hypertensive retinopathy produces AV nicking, flame haemorrhages, and cotton wool spots — not disc cupping.","Asymptomatic POAG with irreversible field loss can develop while 'reviewing in 12 months'. High-risk individuals cannot wait."]
+},
+
+{ sys:'ophtho', topic:'Retinal Detachment', diff:'foundation',
+  vig:`A 42-year-old myopic woman (−8 dioptres) calls her GP at 6pm describing a sudden onset of 'hundreds of floaters like a swarm of flies' and flashing lights in her right eye when she moves it. She has no visual field loss currently.`,
+  stem:`How should this call be triaged and what is the concern?`,
+  opts:["Advise reassurance — floaters and flashes are common and benign","Same-day emergency ophthalmology review — PVD with possible retinal tear, which can progress to detachment within hours","Review in 1 week — only concerning if visual loss develops","A&E attendance — she needs immediate CT head to exclude haemorrhage"],
+  ans:1,
+  lo:`New-onset floaters + flashes in a myope = posterior vitreous detachment (PVD) until proven otherwise. 10–15% of symptomatic PVDs have a retinal tear. An untreated tear progresses to rhegmatogenous detachment. The window for prophylactic laser is before detachment — this is a same-day emergency.`,
+  oe:["'Common and benign' is dangerous in this context. While PVD itself is benign, the risk of a concurrent retinal tear — particularly in a highly myopic eye — demands same-day assessment.","<strong>Correct.</strong> Sudden floaters + photopsia + high myopia = same-day emergency ophthalmology for dilated fundoscopy. If a tear is found, laser photocoagulation is performed immediately. The absence of field loss does not make it safe to wait.","If a tear develops into a detachment overnight, vision may be permanently lost. 'Review in 1 week' is not appropriate management for this presentation.","CT head is not indicated — this is an ophthalmic emergency, not a neurological one."]
+},
+
+{ sys:'ophtho', topic:'AMD', diff:'core',
+  vig:`A 74-year-old woman presents with a 3-day history of sudden central visual distortion in her right eye. She notices straight lines look wavy (metamorphopsia) when she covers her left eye. VA is 6/18 right, 6/6 left. Fundoscopy reveals a grey-green sub-retinal membrane with surrounding haemorrhage at the macula.`,
+  stem:`What is the diagnosis and how urgently must treatment begin?`,
+  opts:["Dry AMD — AREDS supplements","Wet AMD (choroidal neovascularisation) — urgent anti-VEGF injection within 1–2 weeks","Central serous chorioretinopathy — observe for spontaneous resolution","Macular hole — surgical referral"],
+  ans:1,
+  lo:`Metamorphopsia + subretinal membrane + haemorrhage at the macula = wet AMD with active CNV. Anti-VEGF (ranibizumab, bevacizumab, or aflibercept) must begin within 2 weeks — every day of delay allows further photoreceptor destruction by the leaking neovascular membrane.`,
+  oe:["Dry AMD causes gradual central vision loss from drusen and geographic atrophy — no sudden metamorphopsia, no subretinal haemorrhage. AREDS supplements slow progression but cannot treat an acute CNV.","<strong>Correct.</strong> Wet AMD with active CNV — this is a vascular emergency. Intravitreal anti-VEGF injection (ranibizumab or aflibercept) within 1–2 weeks is the standard of care. Early treatment achieves the best visual outcome. Monthly injections typically required for at least 12 months.","CSC typically affects younger men (30–50), causes a shallow subretinal fluid pool at the fovea without haemorrhage, and is associated with stress and steroid use.","Macular holes produce a sharply defined round deficit at the fovea on OCT — not a grey-green membrane with haemorrhage."]
+},
+
+{ sys:'ophtho', topic:'Optic Nerve', diff:'advanced',
+  vig:`A 28-year-old woman presents with a 3-day history of pain behind the right eye that worsens with eye movement, followed by blurred vision. VA is 6/36 right, 6/6 left. There is a right RAPD. Colour vision is severely impaired (1/17 Ishihara plates right vs 17/17 left). The optic disc appears normal.`,
+  stem:`What is the diagnosis and what is the most important systemic investigation?`,
+  opts:["Ischaemic optic neuropathy — start high-dose steroids immediately","Retrobulbar optic neuritis — MRI brain and orbits with gadolinium; first presentation may be MS","Central retinal artery occlusion — this is a neuro-ophthalmological emergency","Functional visual loss — refer to neuro-ophthalmology"],
+  ans:1,
+  lo:`Optic neuritis: painful visual loss + colour vision loss + RAPD + normal disc (retrobulbar) in a young woman = optic neuritis until proven otherwise. MRI is mandatory — 50% of patients with optic neuritis and MRI lesions develop MS within 15 years.`,
+  oe:["AION typically affects older patients with vascular risk factors, is painless, and shows a pale swollen disc. Steroids have no proven benefit in non-arteritic AION.","<strong>Correct.</strong> Retrobulbar optic neuritis in a young woman — the classic MS presentation. MRI brain with gadolinium assesses for demyelinating plaques (FLAIR lesions). The ONTT study: >2 white matter lesions on MRI predicts high (72%) 10-year MS risk. IV methylprednisolone speeds recovery but does not improve final visual outcome.","CRAO causes sudden painless visual loss, pallid swollen retina with cherry red spot — no pain on eye movement, no colour vision loss pattern.","There is a clear afferent pupillary defect (RAPD) — this confirms a real optic nerve lesion. Functional visual loss does not cause an RAPD."]
+},
+
+{ sys:'ophtho', topic:'Cornea', diff:'core',
+  vig:`A 70-year-old woman is referred with gradual painful deterioration in vision. She has had recurrent corneal erosions for years. Slit lamp examination reveals bilateral corneal oedema with blister-like epithelial bullae. VA is 6/36 bilaterally. She reports the pain is worst in the morning and improves through the day.`,
+  stem:`What is the diagnosis and why is morning the worst time?`,
+  opts:["Bacterial keratitis — intensive topical antibiotics","Bullous keratopathy (Fuchs endothelial dystrophy) — the cornea desiccates during sleep, oedema worsens overnight and improves as blinking and evaporation assist fluid removal through the day","Anterior uveitis — topical steroids","Dry eye disease — artificial tear drops"],
+  ans:1,
+  lo:`Fuchs endothelial dystrophy causes progressive loss of corneal endothelial cells → pump failure → stromal and epithelial oedema → bullous keratopathy. The morning-worse pattern is diagnostic: evaporation during sleep concentrates fluid in the cornea; blinking during the day creates some evaporative clearance.`,
+  oe:["Bacterial keratitis produces focal infiltrate and ulceration with mucopurulent discharge — not bilateral oedema and bullae.","<strong>Correct.</strong> Fuchs dystrophy: progressive endothelial cell loss → corneal decompensation → bullous keratopathy. Morning pain = overnight oedema from tears pooling under closed lids. Definitive treatment is Descemet membrane endothelial keratoplasty (DMEK). Hypertonic saline drops provide symptomatic relief by drawing fluid out of the cornea.","Anterior uveitis: ciliary flush, cells and flare in AC, reduced VA — but no bullae or morning-specific pattern.","Dry eye: symptoms worse during the day (with screen use, reduced blinking) and better in the morning — the opposite pattern."]
+},
+
+{ sys:'ophtho', topic:'Diabetic Retinopathy', diff:'advanced',
+  vig:`A 45-year-old with T1DM (30-year history, HbA1c 82 mmol/mol) presents with a sudden painless loss of vision in the right eye to hand movement only. He had a 'routine diabetic eye check' 18 months ago. Fundoscopy through a dilated pupil is obscured by a dense vitreous haemorrhage.`,
+  stem:`What has happened, what is the underlying pathology, and what is the urgent management?`,
+  opts:["Central retinal vein occlusion — anticoagulation","Vitreous haemorrhage from proliferative diabetic retinopathy neovascularisation — urgent vitreoretinal referral for vitrectomy if no resolution in 1–3 months; USS to exclude RD","Posterior vitreous detachment — reassure, will resolve","Wet AMD — anti-VEGF injection"],
+  ans:1,
+  lo:`Proliferative DR: retinal ischaemia → VEGF release → neovascularisation → fragile new vessels rupture → vitreous haemorrhage. Management: USS to exclude concurrent RD (which cannot be seen through the haemorrhage). Vitrectomy if no clearance. Anti-VEGF can be given intravitreally to promote regression of NV.`,
+  oe:["CRVO causes flame haemorrhages across all four quadrants with disc and venous engorgement — not vitreous haemorrhage obscuring the view. T1DM with poor control points to PDR.","<strong>Correct.</strong> Vitreous haemorrhage from PDR — fragile new vessels on the disc or retinal surface (NVD/NVE) rupture. Management: urgent B-scan USS to exclude tractional or rhegmatogenous RD underneath the haemorrhage. If RD — emergency vitrectomy. If no RD — intravitreal anti-VEGF, PRP laser once media clear, vitrectomy if no spontaneous resolution within 1–3 months.","PVD can cause vitreous haemorrhage but not to hand movement level with 30-year T1DM history. PDR is the overwhelming diagnosis.","AMD does not cause dense vitreous haemorrhage — it causes subretinal haemorrhage at the macula."]
+},
+
+{ sys:'ophtho', topic:'Neuro-ophthalmology', diff:'core',
+  vig:`A 58-year-old hypertensive man presents with binocular horizontal diplopia that is worse in the distance and when looking to the right. On examination, the right eye fails to abduct fully. There is no proptosis, no lid involvement, and the pupil is normal.`,
+  stem:`What nerve palsy is this, and what must be excluded urgently?`,
+  opts:["Third nerve palsy — urgent CT head","Sixth nerve palsy — MRI/CT to exclude raised ICP, cavernous sinus lesion, or pontine lesion; this is a 'false localising sign' under raised ICP","Fourth nerve palsy — benign, refer routinely","Internuclear ophthalmoplegia — refer to neurology for MS workup"],
+  ans:1,
+  lo:`CN VI (abducens) has the longest intracranial course — it is the most vulnerable to raised ICP, acting as a 'false localising sign'. CN VI palsy in an adult requires MRI/CT to exclude pontine lesion, cavernous sinus thrombosis, raised ICP from any cause, and skull base malignancy.`,
+  oe:["Third nerve palsy produces ptosis, down-and-out eye, and — critically — a dilated pupil if the cause is posterior communicating artery aneurysm (surgical emergency). This patient has normal pupils and only fails to abduct.","<strong>Correct.</strong> CN VI palsy — failure to abduct. The long intracranial course makes it the most sensitive indicator of raised ICP ('false localising sign'). In an adult with new CN VI palsy: MRI brain + MR angiography to exclude aneurysm, mass, or vascular lesion. Check BP and glucose (microvascular CN VI palsies occur in diabetes and hypertension but require exclusion of sinister causes first).","Fourth nerve palsy produces vertical diplopia — worse when reading (looking down), head tilt to opposite side (Bielschowsky). This patient has horizontal diplopia.","INO produces failure of adduction with contralateral nystagmus of the abducting eye — from MLF lesion. This patient has abduction failure."]
+},
+
+{ sys:'ophtho', topic:'Cataract', diff:'core',
+  vig:`A 72-year-old woman has had progressive painless bilateral visual loss over 2 years. She finds glare from oncoming headlights particularly disabling at night. Her GP notes a reduced red reflex on ophthalmoscopy. VA is 6/18 bilaterally with no improvement on pinhole.`,
+  stem:`What is the diagnosis and what does the lack of pinhole improvement indicate?`,
+  opts:["Refractive error — refer to optician for glasses","Nuclear sclerotic cataract — the pinhole doesn't improve vision because lens opacity cannot be bypassed by pinhole; cataract surgery when symptoms impact quality of life","Age-related macular degeneration — urgent ophthalmology referral","Glaucoma — measure IOP"],
+  ans:1,
+  lo:`Pinhole corrects refractive error by eliminating peripheral aberrant rays. If vision improves with pinhole, the problem is refractive. If it doesn't improve, the problem is the media (cataract, corneal scar) or retina/optic nerve — the corrective mechanism of pinhole cannot bypass a cloudy lens.`,
+  oe:["A refractive problem would show improvement with pinhole — the absence of this improvement excludes simple refractive error as the primary cause.","<strong>Correct.</strong> Nuclear sclerosis causes myopic shift initially (some patients 'read without glasses' transiently) then progressive visual loss. Pinhole cannot improve vision through an opaque lens. Glare is classic — nuclear cataracts scatter light. Surgery is indicated when QoL is affected, not at a specific Snellen threshold.","AMD causes central distortion and loss — typically bilateral but rarely symmetric. Metamorphopsia would be expected. The lack of pinhole improvement in bilateral visual loss with reduced red reflex points to lens, not macula.","Glaucoma causes peripheral field loss first, not central VA reduction. Reduced red reflex is not a feature of glaucoma."]
+},
+
+{ sys:'ophtho', topic:'Retinal Vascular', diff:'core',
+  vig:`A 62-year-old man with AF not on anticoagulation presents to A&E with painless sudden loss of vision in the right eye. VA is counting fingers only. Fundoscopy shows a pale, oedematous retina with a bright red spot at the fovea. The optic disc appears normal.`,
+  stem:`What is the diagnosis and what emergency treatment must be attempted within 90 minutes?`,
+  opts:["Central retinal vein occlusion — observation and anti-VEGF","Central retinal artery occlusion — immediate attempts to restore flow: ocular massage, anterior chamber paracentesis, reduce IOP, and urgent vascular assessment for embolic source","Retinal detachment — emergency vitreoretinal referral","Vitreous haemorrhage — USS and vitreoretinal referral"],
+  ans:1,
+  lo:`CRAO: pale ischaemic retina + cherry red spot (normal choroid showing through thin fovea) + sudden painless vision loss = CRAO until proven otherwise. It is the 'stroke of the eye'. The retina has 90–100 minutes before irreversible infarction — the same window as brain stroke.`,
+  oe:["CRVO produces 'stormy sunset' fundus — flame haemorrhages in all 4 quadrants, dilated tortuous veins, disc oedema. Not a pale retina with cherry red spot.","<strong>Correct.</strong> CRAO: pale retina + cherry red fovea = embolic occlusion. AF is the source. Emergency: IOP lowering (topical timolol, acetazolamide IV), ocular massage (to dislodge embolus), anterior chamber paracentesis. Same-day stroke unit referral — 20% have carotid stenosis, 25% have AF. Long-term anticoagulation if AF confirmed.","RD produces a corrugated, elevated retinal surface — not diffuse pallor with cherry red spot.","Vitreous haemorrhage obscures the fundal view — CRAO shows the retina clearly, pallid with cherry red spot."]
+},
+
+{ sys:'ophtho', topic:'Squint & Neuro-ophthalmology', diff:'advanced',
+  vig:`A 4-year-old boy is brought by his mother because she has noticed his left eye 'turns in' when he is tired. She first noticed it 6 months ago. He has never worn glasses. Vision has not been formally tested. There is no family history of squint.`,
+  stem:`What are the two most urgent priorities in management?`,
+  opts:["Patch the squinting eye immediately to strengthen it","Cycloplegic refraction first to exclude a refractive cause, then patch the dominant eye to treat amblyopia before age 7-8 when the visual cortex becomes fixed","Refer for strabismus surgery immediately","Reassure — accommodative esotropia resolves by school age"],
+  ans:1,
+  lo:`Amblyopia must be treated before the visual cortex 'fixes' at age 7–8. The sequence is always: 1) Refraction (glasses first — many squints resolve with correction alone), 2) Occlusion of the good eye to force the amblyopic eye to work, 3) Surgery last if required. The good eye is patched, not the squinting eye.`,
+  oe:["Patching the squinting eye suppresses the better-seeing eye — this is the wrong eye to patch. The dominant (good) eye is patched to force the amblyopic eye to develop.","<strong>Correct.</strong> Priority 1: cycloplegic refraction under atropine or cyclopentolate — many accommodative esotropias fully correct with glasses alone. Priority 2: if amblyopia present, patch the dominant eye for hours per day. The window closes at ~7–8 years. Surgery is always last.","Surgery without first addressing refractive error and amblyopia leaves the underlying amblyopia untreated. A cosmetically straight eye with poor vision is not a success.","Accommodative esotropia does not resolve without treatment — untreated amblyopia causes permanent visual impairment."]
+},
+
+{ sys:'ophtho', topic:'Eyelid & Orbit', diff:'core',
+  vig:`A 7-year-old girl presents with a 4-day history of right eyelid swelling and erythema. She has had a cold for the past week. Temperature is 38.4°C. On examination, there is proptosis, resistance to retropulsion of the globe, pain on eye movement, and VA is 6/9. The upper and lower lids are swollen but she can open the eye.`,
+  stem:`What is the diagnosis and what are the dangerous complications if untreated?`,
+  opts:["Preseptal cellulitis — oral antibiotics and review in 48 hours","Orbital cellulitis — IV antibiotics, urgent CT orbit, and ophthalmology/ENT review; risks: compressive optic neuropathy, cavernous sinus thrombosis, intracranial abscess","Orbital tumour — arrange MRI","Hordeolum — warm compresses"],
+  ans:1,
+  lo:`Orbital cellulitis is posterior to the orbital septum. Proptosis + restricted painful eye movement + reduced VA = orbital involvement. The source is nearly always paranasal sinusitis (ethmoids). Untreated: the orbital abscess can extend to cause cavernous sinus thrombosis (life-threatening) or compress the optic nerve (permanent visual loss).`,
+  oe:["Preseptal cellulitis is anterior to the septum: lid swelling without proptosis, without restricted eye movement, without VA reduction. This patient has all three posterior findings — she has orbital cellulitis.","<strong>Correct.</strong> Orbital cellulitis: proptosis + painful ophthalmoplegia + VA reduction. CT orbit (with contrast) confirms the diagnosis and identifies subperiosteal/orbital abscess requiring drainage. IV broad-spectrum antibiotics (co-amoxiclav + metronidazole). ENT for sinus drainage if sinusitis source. Ophthalmology for vision monitoring.","Orbital tumours develop over weeks to months — not 4 days with fever in a child with a recent URTI.","A hordeolum is a localised stye on the lid margin — no proptosis, no fever, no restricted eye movement."]
+},
+
+{ sys:'ophtho', topic:'Optic Nerve', diff:'core',
+  vig:`A 55-year-old man with longstanding poorly controlled hypertension is found on routine fundoscopy to have bilateral disc swelling with flame haemorrhages. His BP today is 210/130. He reports a mild headache but no visual symptoms. VA is 6/9 bilaterally.`,
+  stem:`What is the diagnosis and what is the priority in management?`,
+  opts:["Papilloedema from raised ICP — urgent CT head then lumbar puncture","Hypertensive retinopathy Grade IV (malignant hypertension) — urgent controlled BP reduction to prevent stroke, renal failure, and optic nerve damage; fundoscopy findings reflect end-organ damage","Bilateral optic neuritis — IV methylprednisolone","Normal finding — hypertension does not affect the optic disc"],
+  ans:1,
+  lo:`Grade IV hypertensive retinopathy (malignant hypertension) = disc swelling + retinal haemorrhages + exudates at BP typically >180/120. The retinal findings mirror what is happening in the brain and kidneys. Urgent (not emergency — too-rapid reduction causes watershed infarction) BP reduction over 24–48 hours.`,
+  oe:["Bilateral disc swelling with this hypertensive history is more likely malignant hypertension than raised ICP. However, the two can coexist — CT head should be performed if there is clinical doubt, but the priority is BP management.","<strong>Correct.</strong> Malignant hypertension with bilateral disc swelling = hypertensive emergency with end-organ damage. Target: reduce MAP by ~25% in the first hour using IV labetalol or oral amlodipine/nifedipine. Too-rapid reduction risks optic nerve, cerebral, and renal infarction from loss of autoregulation. Ophthalmology review to monitor optic nerve function.","Bilateral optic neuritis is very rare and seen in young women with MS — not in a 55-year-old hypertensive man on a routine check.","Disc swelling is never normal — in the context of BP 210/130 this is malignant hypertension until proven otherwise."]
+},
+
+// ════════════════════════════════════════
+//  FORENSIC MEDICINE — 30 QUESTIONS
+// ════════════════════════════════════════
+
+{ sys:'forensic', topic:'Medical Ethics', diff:'foundation',
+  vig:`A 45-year-old man in police custody following arrest for assault asks to speak with a doctor. The custody sergeant tells the forensic physician that the prisoner has 'waived his right to medical examination' and the doctor should not bother attending.`,
+  stem:`How should the forensic physician respond?`,
+  opts:["Accept the sergeant's account — if the detainee refused, there is no need to attend","Attend in person and assess capacity and consent directly — the sergeant cannot make this determination on the detainee's behalf","Call the detainee's solicitor to confirm the refusal","Document the refusal and proceed with the custody paperwork"],
+  ans:1,
+  lo:`The forensic physician has an independent duty of care to the detainee. A custody sergeant cannot assess capacity or waive medical rights on a detainee's behalf. The physician must attend, introduce themselves, and make a direct, independent assessment of capacity and consent.`,
+  oe:["A third party — including a police officer — cannot waive a patient's right to medical assessment. The physician must verify this directly with the detainee.","<strong>Correct.</strong> The forensic physician attends regardless. They assess capacity independently, document it precisely, and only then respect a competent and informed refusal. The sergeant's account of a 'waiver' is not a clinical determination — it may reflect a misunderstanding, pressure, or language barrier.","The solicitor has no authority to consent to or refuse medical examination on behalf of an adult client.","Documenting an unverified refusal without seeing the patient fails the duty of care and could conceal a serious clinical need."]
+},
+
+{ sys:'forensic', topic:'Medical Ethics', diff:'core',
+  vig:`A forensic physician is asked by the investigating detective to provide a copy of a detainee's medical notes from the custody examination. The detainee has not been informed and has not consented to disclosure.`,
+  stem:`What is the correct response?`,
+  opts:["Provide the notes — the police are entitled to medical information in a criminal investigation","Refuse — clinical information belongs to the patient and cannot be disclosed without consent, patient waiver, or a court order","Provide a summary but not the full notes","Call the GMC for guidance before responding"],
+  ans:1,
+  lo:`Confidentiality is the default in clinical practice. Medical information obtained during a forensic examination cannot be disclosed to police without the patient's consent, a court order, or a clear overriding public interest justification. The forensic role does not alter this.`,
+  oe:["Police do not have automatic access to medical records. A criminal investigation does not override medical confidentiality without legal process.","<strong>Correct.</strong> Refuse and explain: disclosure requires patient consent, a court order (s.9 PACE 1984 in England and Wales), or a specific statutory duty. Document the request and refusal. The forensic physician remains the patient's doctor and owes them the same confidentiality as any clinician.","Providing a partial summary without authority is still a breach of confidentiality — the principle applies to any disclosure.","The GMC can provide advice but the answer here is clear: confidentiality applies and no disclosure without appropriate authority."]
+},
+
+{ sys:'forensic', topic:'Asphyxia', diff:'foundation',
+  vig:`A 28-year-old man is found hanging from a door handle in a kneeling position. The ligature mark is oblique, running from the front of the neck upward toward the point of suspension at the back. There are petechial haemorrhages in the conjunctivae bilaterally. The post-mortem shows no hyoid fracture.`,
+  stem:`What type of hanging is this and what do the petechiae indicate?`,
+  opts:["Complete judicial hanging — hyoid fracture confirms it","Incomplete suspension hanging — the oblique mark and kneeling position confirm this; petechiae indicate venous obstruction occurred before consciousness was lost","Manual strangulation — petechiae indicate third-party involvement","Ligature strangulation — horizontal mark rules out hanging"],
+  ans:1,
+  lo:`Incomplete hanging (body not fully suspended) accounts for the majority of suicidal hangings. The oblique ligature mark with gap at the knot is characteristic. Petechiae occur when venous outflow is obstructed before arterial supply stops — this can occur in both hanging and strangulation, but the mark characteristics confirm hanging.`,
+  oe:["Judicial hanging requires a calibrated drop that produces C1–C2 dislocation (hangman's fracture) — this is an execution method, not relevant here. Hyoid fractures occur more often in throttling than judicial hanging.","<strong>Correct.</strong> Incomplete suspension hanging: body supported partly by knees — full body weight not applied. Still fatal. Oblique, discontinuous mark (gap at knot) = hanging. Petechiae = venous congestion before arterial compression in the agonal phase. Normal finding in incomplete hangings.","Manual strangulation (throttling) leaves fingertip bruises and nail abrasions on the neck — not a ligature mark. Horizontal fingertip bruising is absent here.","Ligature strangulation marks are horizontal and encircle the neck completely — this mark is oblique and runs upward to the point of suspension."]
+},
+
+{ sys:'forensic', topic:'Asphyxia', diff:'core',
+  vig:`A post-mortem is performed on a 35-year-old woman found dead in a locked car in a closed garage. The body shows cherry-red lividity. Blood carboxyhaemoglobin is 68%. The scene investigation reveals the car engine was running.`,
+  stem:`What is the mechanism of death and what makes this case a forensic priority?`,
+  opts:["Natural cardiac death — the lividity is within normal limits","Carbon monoxide poisoning — cherry-red lividity and COHb 68% are diagnostic; manner of death (suicide vs accident vs homicide) must be determined","Cyanide poisoning — almond odour is the key diagnostic feature","Drug overdose — toxicology required before any conclusion"],
+  ans:1,
+  lo:`CO poisoning: COHb >50% is typically fatal. Cherry-red lividity is pathognomonic — the only condition that produces this appearance. The forensic investigation must determine manner: was the car engine running intentionally, accidentally, or was the victim placed there? A locked car with a running engine requires scene reconstruction.`,
+  oe:["Cherry-red lividity is not a normal variation — it is pathognomonic of carboxyhaemoglobin. COHb 68% with a running engine in a closed space is not natural.","<strong>Correct.</strong> CO poisoning: binds haemoglobin with 250x affinity of O₂ → cellular hypoxia without cyanosis. Characteristic PM: cherry-red livor mortis, cherry-red blood and organs, COHb 68% (fatal threshold ~50%). Scene investigation: was scene disturbed? Any note? Any other persons? Toxicology for other substances.","Cyanide produces almond odour, rapid death, and does not elevate COHb. Cyanide is usually found in fires (combustion of synthetic materials) alongside CO.","Toxicology is necessary but the COHb level of 68% and cherry-red lividity already confirm CO as the proximate cause — additional substances do not change the cause of death."]
+},
+
+{ sys:'forensic', topic:'Wounds', diff:'foundation',
+  vig:`A 22-year-old woman is brought to A&E following an alleged assault. She has multiple parallel fine incised wounds on her left forearm, all running in the same direction, of varying depths. There is also one deeper wound. She has a history of depression.`,
+  stem:`What is the most likely interpretation of the wound pattern?`,
+  opts:["Defence wounds from an attacker","Hesitation marks with one deeper self-inflicted wound — the pattern is highly characteristic of self-infliction","Accidental glass injury","Ligature marks from restraint"],
+  ans:1,
+  lo:`Multiple parallel superficial incised wounds ('hesitation marks') with one deeper wound = highly characteristic self-infliction pattern. They occur as the person builds up the 'courage' to make the deeper cut. Location (forearm, wrist, neck) and the parallel orientation distinguish them from assault.`,
+  oe:["Defence wounds occur on the dorsum of the hands, forearms (ulnar border), and palms — they are irregular, not parallel, and reflect deflecting an attacker's blade. The parallel, same-direction pattern excludes this.","<strong>Correct.</strong> Hesitation marks: multiple fine parallel incised wounds preceding the definitive deeper wound. Characteristic of self-infliction. Document precisely, sensitively approach the history, and initiate safeguarding/psychiatric assessment. Do not document 'self-harm' without supporting the patient through the clinical pathway.","Accidental glass injury produces irregular lacerations, not fine parallel incised wounds of similar morphology.","Ligature marks are circumferential around a limb or neck — not parallel incised wounds on the forearm surface."]
+},
+
+{ sys:'forensic', topic:'Wounds', diff:'core',
+  vig:`A 40-year-old man is found dead with a single gunshot wound to the right temple. The entry wound has a stellate (star-shaped) laceration with soot blackening extending into the wound cavity. There is a muzzle imprint mark on the skin. The exit wound is larger and irregular with no abrasion collar.`,
+  stem:`What range of fire does this indicate and why is this significant for manner of death?`,
+  opts:["Distant range — characteristic of homicide","Contact range — consistent with self-infliction; the stellate tear, soot in wound cavity, and muzzle imprint indicate the weapon was in contact with the skin","Intermediate range — stippling pattern required to confirm","Near range — soot on the skin surface confirms this"],
+  ans:1,
+  lo:`Contact gunshot wound: muzzle against skin → expanding gas forced under skin → stellate laceration. Soot is deposited inside the wound cavity (not on the surface, which would suggest near range). Muzzle imprint is pathognomonic of hard contact. This is consistent with but does not prove suicide — scene investigation and trajectory analysis are required.`,
+  oe:["Distant range wounds have an entry wound with only an abrasion collar — no soot, no stellate tear, no muzzle imprint. Distant range wounds are more consistent with homicide in the correct context, but this is a contact wound.","<strong>Correct.</strong> Hard contact entry: stellate laceration (from gas expanding under skin) + soot inside cavity + muzzle imprint = contact range. Contact wounds are typically suicidal but execution-style homicides also produce contact wounds. Manner of death is determined by scene investigation, trajectory analysis, blood spatter, and absence of signs of struggle — not wound type alone.","Intermediate range (30cm–1m) produces stippling — unburned powder particles embedded in skin that cannot be wiped off. No stippling is described here.","Near range (up to 30cm) produces soot on the skin surface that can be wiped away. Here the soot is inside the wound cavity — this is hard contact, not near range."]
+},
+
+{ sys:'forensic', topic:'Death Certification', diff:'foundation',
+  vig:`A 78-year-old woman dies in hospital after a 6-day admission for aspiration pneumonia, having been admitted from a care home where she had end-stage Alzheimer's dementia. The junior doctor writes 'cardiac arrest' in Part Ia of the MCCD.`,
+  stem:`Why is this MCCD incorrect and what should be written instead?`,
+  opts:["'Cardiac arrest' is acceptable in Ia — everyone dies of cardiac arrest eventually","Part Ia should contain the direct cause (aspiration pneumonia) and the underlying cause should progress to Alzheimer's dementia — cardiac arrest is the mechanism of death, not the cause","The Coroner should certify this death as it occurred in hospital","Part Ia should list all diagnoses in order of severity"],
+  ans:1,
+  lo:`'Cardiac arrest' in Part Ia is almost always wrong — it is the mechanism by which everyone dies, not the cause. The MCCD requires a real pathological entity. Correct: Ia = Aspiration pneumonia, Ib = Alzheimer's dementia. Part II = any contributing conditions.`,
+  oe:["'Cardiac arrest' tells the death registrar and ONS nothing about why this patient died. Every death involves cardiac arrest — this is meaningless as a cause of death on a legal document.","<strong>Correct.</strong> Ia: Aspiration pneumonia. Ib: Alzheimer's dementia (underlying condition). The causal sequence reads bottom-up: Alzheimer's → inability to protect airway → aspiration pneumonia → death. 'Cardiac arrest' can only appear if there is a documented underlying cause that led to it.","Hospital death alone does not trigger coroner referral — the cause must be unknown, unnatural, or linked to industrial disease, surgery, or custody.","Part Ia should contain only the direct cause of death — not a list of diagnoses. Comorbidities that contributed but were not in the causal chain go in Part II."]
+},
+
+{ sys:'forensic', topic:'Death Certification', diff:'core',
+  vig:`A 60-year-old man who worked as a ship insulator for 30 years dies from mesothelioma. His GP has known him well and attended him throughout his illness. She is able to write the MCCD with confidence.`,
+  stem:`Does she need to refer this death to the Coroner?`,
+  opts:["No — she can certify a natural death as she knows the cause and was the attending physician","Yes — mesothelioma is an industrial disease and all industrial disease deaths are mandatory Coroner referrals regardless of clinical certainty","Only if the family requests it","Only if the death occurred within 24 hours of a procedure"],
+  ans:1,
+  lo:`Industrial disease deaths — including mesothelioma, asbestosis, and pneumoconiosis — are mandatory coroner referrals. This is because they may have legal and compensation implications for the deceased's family and employers. Clinical certainty about the cause does not remove this obligation.`,
+  oe:["Clinical certainty does not override the mandatory category for industrial diseases. The GP must refer regardless of how well she knows the cause.","<strong>Correct.</strong> Mesothelioma is an occupational disease with significant legal consequences — referral to the Coroner allows investigation of workplace exposure and enables industrial injury compensation claims for the family. The MCCD cannot be issued before the Coroner's decision. This applies to all pneumoconioses, asbestos-related diseases, and other industrial diseases.","The family has no right to trigger or block a Coroner referral — it is a statutory duty of the certifying doctor.","The 24-hour rule applies to peri-operative deaths, not industrial disease — these are separate referral categories."]
+},
+
+{ sys:'forensic', topic:'Child Abuse', diff:'core',
+  vig:`A 14-month-old boy is brought to A&E by his mother who says he 'fell off the changing table'. He has bilateral retinal haemorrhages identified by the paediatric ophthalmologist, a thin subdural haematoma, and generalised cerebral oedema. There are no external head injuries.`,
+  stem:`What is the most likely diagnosis and what determines whether to refer?`,
+  opts:["An accidental fall from a changing table — common and consistent with this injury","Abusive head trauma (shaken baby syndrome) — the triad without external head injury is highly specific for non-accidental injury; immediate child protection referral","Benign intracranial hypertension — observation","Metabolic bone disease — check calcium and alkaline phosphatase before deciding"],
+  ans:1,
+  lo:`The shaken baby triad: subdural haematoma + retinal haemorrhages + encephalopathy — without external head injury — is highly specific for abusive head trauma. A fall from a changing table cannot generate the rotational forces required to produce this combination. The threshold for referral is reasonable suspicion, not proof.`,
+  oe:["A fall from a standard changing table height produces low-energy injury — it cannot generate the rotational acceleration-deceleration forces required to produce bilateral retinal haemorrhages, subdural haematoma, and encephalopathy. This history is inconsistent with this injury pattern.","<strong>Correct.</strong> Abusive head trauma: the triad in an infant without adequate explanation is a child protection emergency. Refer to paediatrics for full assessment (skeletal survey, ophthalmology, neurosurgery) and immediately contact child protection services for a Section 47 enquiry. Document: what you see, what was said, and when — do not investigate culpability.","BIH produces bilateral disc swelling — not bilateral retinal haemorrhages and subdural haematoma.","Metabolic bone disease (rickets, osteogenesis imperfecta) can cause fractures that mimic abuse — but the retinal haemorrhages + subdural triad is not a metabolic finding."]
+},
+
+{ sys:'forensic', topic:'Toxicology', diff:'foundation',
+  vig:`A 19-year-old woman is brought to A&E unconscious after a house party. She is unrousable. Her pupils are constricted (2mm bilaterally), RR is 8, O₂ sats 88%. Her friends say she 'had a few drinks and took something'. Empty cans of alcohol and 'poppy seed tea' bottles are found nearby.`,
+  stem:`What toxidrome is this and what is the treatment?`,
+  opts:["Alcohol intoxication — supportive care and monitoring","Opioid toxidrome — naloxone 0.4mg IV titrated to respiratory rate; repeat as required given the likely delayed absorption from poppy seed tea","Sedative-hypnotic toxidrome — flumazenil","Stimulant overdose — benzodiazepines for agitation"],
+  ans:1,
+  lo:`Opioid toxidrome: miosis (pinpoint pupils) + CNS depression + respiratory depression. Poppy seed tea contains morphine in variable concentrations — a cause of opioid toxicity. Naloxone reverses all three features. Its short half-life means repeat dosing or infusion is needed for sustained opioid toxicity.`,
+  oe:["Alcohol alone causes mydriasis or mid-sized pupils in deeper coma — not miosis. The pinpoint pupils with respiratory depression point to opioid toxicity, not alcohol alone.","<strong>Correct.</strong> Opioid toxidrome: pinpoint pupils + respiratory depression + depressed consciousness. Naloxone 0.4mg IV, titrated to RR >12 and consciousness — not full reversal (causes acute opioid withdrawal and pain). Poppy seed tea contains variable morphine concentrations. May need naloxone infusion as poppy-derived opioids have longer duration than fentanyl.","Flumazenil reverses benzodiazepines but may precipitate seizures in mixed overdose — it is not first-line empirical treatment here. Benzodiazepines do not cause miosis.","Stimulant toxidrome: tachycardia, hypertension, hyperthermia, mydriasis — the opposite of what is described."]
+},
+
+{ sys:'forensic', topic:'Toxicology', diff:'core',
+  vig:`A post-mortem toxicology report shows a femoral blood morphine level of 0.48 mg/L and a free morphine level of 0.41 mg/L in a 30-year-old man with no known history of opioid use. A small burnt spoon and a syringe are found at the scene.`,
+  stem:`How is post-mortem drug concentration interpreted differently from antemortem levels?`,
+  opts:["PM blood concentrations are identical to antemortem levels and directly indicate the clinical dose","PM redistribution artificially elevates drug concentrations in central blood — peripheral (femoral) blood is preferred; concentrations must be interpreted alongside scene evidence, history, and presence of tolerance","The morphine level alone confirms heroin overdose as cause of death","Femoral levels are always lower than cardiac blood, so this level underestimates the true concentration"],
+  ans:1,
+  lo:`PMR (post-mortem redistribution): drugs diffuse from solid organs (liver, lung) into central blood after death, inflating cardiac blood concentrations. Femoral blood is less affected. Drug levels alone cannot determine cause of death — they require context: witness accounts, scene evidence (drug paraphernalia), history of tolerance, and all PM findings.`,
+  oe:["PM drug concentrations are unreliable compared to antemortem levels due to redistribution, putrefaction, and sampling site variation. They cannot be directly compared to therapeutic ranges.","<strong>Correct.</strong> PMR: cardiac blood typically has 2–5× higher concentrations than peripheral blood for lipophilic drugs. Femoral blood is preferred for quantitative interpretation. A morphine level of 0.48 mg/L in a non-tolerant user is within the potentially fatal range — combined with the scene findings, this supports heroin overdose as cause of death. No single value is diagnostic.","A blood morphine level confirms morphine exposure — not the route (heroin is metabolised to morphine). Cause of death requires the full picture.","Femoral levels are lower than cardiac blood due to PMR — the femoral level may actually underestimate what was present centrally. The report appropriately used femoral blood."]
+},
+
+{ sys:'forensic', topic:'Toxicology', diff:'advanced',
+  vig:`A 52-year-old gardener is brought to A&E unconscious. He has excessive salivation, lacrimation, urination, defaecation, and vomiting. His pupils are 1mm bilaterally. Muscle fasciculations are noted across his body. RR is 6 and he is in bronchospasm.`,
+  stem:`What is the antidote mechanism and why must two drugs be used?`,
+  opts:["Adrenaline — reverses anaphylactic shock","Atropine to block muscarinic effects + pralidoxime to reactivate acetylcholinesterase before ageing — organophosphate poisoning requires both agents for different mechanisms","Naloxone — reverses opioid toxidrome","Flumazenil — reverses benzodiazepine effects"],
+  ans:1,
+  lo:`Organophosphate poisoning: irreversible AChE inhibition → ACh accumulates at muscarinic (SLUDGE) and nicotinic (fasciculations, weakness) receptors. Atropine blocks only muscarinic receptors — it is the antidote for the life-threatening bronchospasm and secretions. Pralidoxime reactivates AChE before the phosphate-enzyme bond ages (within 24–48h) — it addresses nicotinic and CNS effects that atropine cannot.`,
+  oe:["Adrenaline treats anaphylaxis (urticaria, bronchospasm, hypotension with tachycardia) — not the cholinergic toxidrome of miosis, bradycardia, and excessive secretions.","<strong>Correct.</strong> SLUDGE + fasciculations + miosis + bradycardia = organophosphate (or carbamate) poisoning. Atropine: large doses (2–4mg IV, repeat until secretions dry — not pupil dilation) — this is the life-saving drug. Pralidoxime: reactivates AChE if given within 24–48h before 'ageing' of the bond makes it irreversible. Decontamination of the patient essential to protect staff.","Naloxone reverses opioid toxidrome: miosis + respiratory depression + CNS depression — no muscarinic features, no fasciculations.","Flumazenil reverses benzodiazepines — no muscarinic features, no fasciculations."]
+},
+
+{ sys:'forensic', topic:'Human Identification', diff:'core',
+  vig:`A severely decomposed body is recovered from a river 6 weeks after a young man was reported missing. Fingerprints are unreadable due to maceration. Dental records from his childhood dentist are available. Family members want to identify him visually but cannot be certain due to the state of decomposition.`,
+  stem:`What identification method should be used and why is visual identification alone insufficient?`,
+  opts:["Visual identification by two family members is sufficient and legally accepted","Dental comparison against existing records — a primary identification method; combined with DNA from biological relatives if records are incomplete","Clothing identification is sufficient","Blood group matching confirms identity"],
+  ans:1,
+  lo:`Primary identification methods (DNA, fingerprints, dental): any one can establish positive identity. Visual identification is unreliable due to decomposition, trauma, and psychological distress of relatives — it is corroborating, not definitive. Dental comparison requires ante-mortem dental records and a forensic odontologist.`,
+  oe:["Visual identification is not legally accepted as sole identification in suspicious or major incident cases. Grief-distorted perception and decomposition make it unreliable — even close relatives may misidentify.","<strong>Correct.</strong> Dental comparison is a primary method: ante-mortem radiographs, charts, and distinctive restorations are compared with PM dental findings by a forensic odontologist. If records are incomplete or inconclusive, DNA from biological relatives (mitochondrial DNA from maternal line) provides definitive identification.","Clothing can change hands — it is circumstantial evidence only, not identification.","Blood grouping narrows the pool but does not provide individual identification — millions share any given blood group."]
+},
+
+{ sys:'forensic', topic:'Mental Health Law', diff:'foundation',
+  vig:`A 32-year-old man is detained under Section 136 Mental Health Act by police after being found in a busy road at night, appearing confused and speaking about voices telling him to hurt himself. He is taken to a place of safety.`,
+  stem:`What does Section 136 authorise and what must happen within the statutory period?`,
+  opts:["Section 136 authorises 72 hours of treatment for mental disorder","Section 136 is a police power authorising removal to a place of safety for up to 24 hours; within this period a doctor and AMHP must assess whether further detention under the MHA is required","Section 136 allows the police to detain the person indefinitely pending mental health assessment","Section 136 only applies to voluntary patients"],
+  ans:1,
+  lo:`S136 MHA 1983: police can remove a person from a public place to a place of safety (now preferably a health-based suite, not a police cell) for up to 24 hours (reduced from 72 hours by MHA 2007 amendment). Within this period: medical examination (Section 12 approved doctor) + AMHP assessment. Outcome: discharge, informal admission, or formal detention under S2/S3.`,
+  oe:["Section 136 does not authorise treatment — it authorises removal to a place of safety for assessment only. Treatment cannot be given without a separate detention order or consent.","<strong>Correct.</strong> S136: police power, public place, up to 24 hours, place of safety. The statutory assessment must occur within this period. If the person needs further detention: S2 (28 days, assessment) or S3 (6 months, treatment) requires 2 medical recommendations + AMHP application.","S136 is a fixed 24-hour authority — it cannot be extended and cannot authorise treatment.","S136 specifically applies to people found in public places behaving in a manner likely to cause harm — it does not apply to hospital inpatients (S5 powers apply there)."]
+},
+
+{ sys:'forensic', topic:'Mental Health Law', diff:'core',
+  vig:`A 45-year-old woman is an inpatient on a medical ward following a paracetamol overdose. She is medically stable. She has a long history of emotionally unstable personality disorder. She informs nursing staff she wishes to leave the hospital immediately.`,
+  stem:`What is the correct mechanism to prevent discharge if the medical team believes she requires further assessment?`,
+  opts:["Call security to prevent her leaving — she is a danger to herself","A doctor can use Section 5(2) MHA to detain her for 72 hours if he believes she has a mental disorder and needs further assessment — this is an inpatient power only","Discharge her against medical advice — she has capacity to refuse","Apply Section 2 directly — 28-day detention"],
+  ans:1,
+  lo:`S5(2) MHA: a Registered Medical Officer (or nominated deputy) can detain an already-admitted inpatient for up to 72 hours for assessment. The patient must already be admitted to hospital (any reason). It cannot be used in A&E for someone not yet admitted. It gives time to arrange a full S2/S3 assessment.`,
+  oe:["Physical restraint without legal authority is assault. S5(2) provides the lawful mechanism — security intervention without this power is unlawful.","<strong>Correct.</strong> S5(2) is the doctor's holding power: 72 hours, inpatients only. The attending doctor must have concerns about mental disorder requiring assessment. It is not renewable — it is a bridge to a full Section 2 or 3 assessment within that 72 hours. Document the mental state, risk, and reasons clearly.","If she has capacity, she can refuse treatment — but S5(2) creates a lawful basis for temporary detention for assessment. If after assessment she is found to have capacity and no detainable mental disorder, she can be discharged.","S2 cannot be applied directly by the ward doctor alone — it requires two medical recommendations and an AMHP application, which takes time. S5(2) provides the immediate bridge."]
+},
+
+{ sys:'forensic', topic:'Sudden Death', diff:'core',
+  vig:`A 17-year-old competitive swimmer collapses and dies during training. Resuscitation is unsuccessful. The post-mortem shows a structurally normal heart, normal coronary arteries, no evidence of hypertrophic cardiomyopathy, and toxicology is negative for all substances.`,
+  stem:`What is the most likely diagnosis and what is the critical next step for the family?`,
+  opts:["Unexplained drowning — the pool environment caused the death","Sudden arrhythmic death syndrome (SADS) from a channelopathy — molecular autopsy of retained cardiac tissue and immediate cardiology referral for first-degree relatives","Exercise-induced asthma — prescribe inhalers to siblings","Natural causes — no further investigation needed"],
+  ans:1,
+  lo:`SADS: sudden death + structurally normal heart + negative toxicology + young person = channelopathy until excluded. Common causes: LQTS, Brugada syndrome, CPVT. Molecular autopsy (genetic testing of cardiac tissue) identifies the specific channelopathy. First-degree relatives must be screened — they carry a 50% risk of carrying the same mutation.`,
+  oe:["Drowning as cause of death requires positive evidence — diatoms in organs, hyperinflated lungs, frothy fluid. A structurally normal heart with negative toxicology in a collapsing athlete during training points to arrhythmia, not drowning per se.","<strong>Correct.</strong> SADS accounts for ~20% of sudden deaths in young people under 35 with normal hearts. Molecular autopsy: NGS panel of channelopathy genes (KCNQ1, KCNH2, SCN5A for LQTS; SCN5A for Brugada; RYR2 for CPVT). Positive result → systematic cardiac screening of first-degree relatives with ECG, Holter, exercise testing, and genetic counselling.","There is no clinical evidence of asthma — no bronchospasm, no wheeze. Asthma is a diagnosis of exclusion after structural and arrhythmic causes are excluded.","A young athlete dying during training with a normal heart deserves a full investigation — 'natural causes' is not an acceptable conclusion without molecular autopsy."]
+},
+
+{ sys:'forensic', topic:'Transportation Injuries', diff:'core',
+  vig:`A 35-year-old man is found dead in a crashed car on a motorway. The police need to establish who was driving. The car had two occupants and the passenger survived. There are no witnesses. Post-mortem findings: chest injuries consistent with steering wheel impact, right knee contusion with a rectangular bruise on the sole of the right foot, and a diagonal bruise across the left shoulder.`,
+  stem:`Which finding most specifically identifies the deceased as the driver?`,
+  opts:["The chest injuries — these occur equally in driver and passenger","The left shoulder diagonal bruise — consistent with seatbelt use","The right knee contusion — could occur in either seat","The rectangular pedal imprint on the right foot sole — specific to the driver in a UK right-hand drive vehicle"],
+  ans:3,
+  lo:`Pedal imprint on the right foot sole is the most specific driver identification finding. In UK right-hand drive vehicles, only the driver's right foot contacts the accelerator and brake pedals. Combined with steering wheel chest injuries and left-sided seatbelt bruising, the evidence is conclusive.`,
+  oe:["Steering wheel chest injuries are driver-specific but not as definitively singular as the pedal imprint — they require the person to be the one behind the wheel, but the pedal imprint provides independent corroboration.","The diagonal seatbelt bruise runs from left shoulder to right hip in the driver's seat — this supports driver position but seatbelts are now worn by passengers too, making it less specific alone.","Knee contusion from the dashboard occurs in both seats but in different patterns — left knee (passenger hitting the centre console) vs right knee (driver). Combined with other findings it supports the picture.","<strong>Correct.</strong> Pedal imprint on the right foot sole is pathognomonic for the driver in a UK right-hand drive vehicle. Only the driver's right foot operates the pedals. Document and photograph immediately — the imprint may fade. Combined with steering wheel injuries and seatbelt bruise, the forensic reconstruction is complete."]
+},
+
+{ sys:'forensic', topic:'Forensic Pathology', diff:'core',
+  vig:`A body is found in a heated apartment. The forensic pathologist assesses the scene. The body is in full rigor mortis with greenish discolouration of the right iliac fossa. Blowfly larvae (maggots) are present in the facial orifices. The landlord last saw the deceased 6 days ago.`,
+  stem:`What stages of post-mortem change are present and what does the PMI estimate?`,
+  opts:["Only rigor mortis present — death within last 2 hours","Early decomposition (greenish discolouration from bacterial gas) + blowfly colonisation suggests death 3–7 days ago, consistent with the witness account; rigor mortis in a heated room may persist longer","The maggots indicate death more than 3 weeks ago","Rigor mortis persisting = death within 24 hours"],
+  ans:1,
+  lo:`PMI estimation uses multiple markers: rigor (onset 2–6h, full 6–12h, passes 36–48h at room temperature — but prolonged in cold or heat), livor, decomposition staging (green discolouration of right iliac fossa = early putrefaction from intestinal bacteria), and forensic entomology (blowfly lifecycle). Heat accelerates all stages. PMI is reported as a range.`,
+  oe:["Full rigor in a heated apartment does not indicate recent death — heat paradoxically maintains rigor longer. Green discolouration and maggot colonisation are incompatible with death within 2 hours.","<strong>Correct.</strong> Multiple PM changes: full rigor (heat-modified), early putrefaction (right iliac fossa greenness from colonic bacterial gas), blowfly larval colonisation (requires time for adult to locate body, lay eggs, and larvae to develop). Together this suggests PMI consistent with 4–7 days. The witness account of 6 days aligns. Heat accelerates decomposition — the scene temperature must be factored.","Blowfly larvae do not indicate 3 weeks — third-instar larvae present at 3–7 days in warm conditions. Three weeks would show advanced skeletonisation.","Rigor alone lasts 36–48 hours under standard conditions — its persistence in heat does not indicate fresh death. The other changes confirm advanced PMI."]
+},
+
+{ sys:'forensic', topic:'Wounds', diff:'advanced',
+  vig:`A 55-year-old man is brought to A&E following a road traffic collision. He has a diagonal bruise across his chest running from the left shoulder toward the right hip. A second horizontal bruise crosses his lower abdomen. Chest X-ray shows fractured ribs 3–7 on the left. CT abdomen reveals a grade 3 splenic laceration.`,
+  stem:`What do these injury patterns indicate and what is the clinical priority?`,
+  opts:["These are unrelated injuries from multiple impact points","The diagonal bruise is a seatbelt injury (shoulder strap), the horizontal bruise is the lap belt, the splenic laceration is a visceral injury at the lap belt line — the seat belt sign demands CT and admission regardless of external appearance","Both bruises indicate the steering wheel","The seatbelt injury proves the driver was negligent"],
+  ans:1,
+  lo:`The seat belt sign: diagonal = shoulder strap (left shoulder to right hip in driver); horizontal = lap belt at level of iliac crests. External bruising underestimates internal injury — hollow viscus rupture and solid organ lacerations occur at the lap belt line. Any seat belt sign demands CT abdomen to exclude bowel, mesenteric, and solid organ injury.`,
+  oe:["These injuries have a clear anatomical correlation to the seat belt components — they are not random impact injuries.","<strong>Correct.</strong> Seatbelt sign = admit and CT regardless of haemodynamic stability. The splenic laceration is confirmed here — other injuries include bowel or mesenteric injury (may be delayed). The diagonal pattern also assists forensic reconstruction of seating position.","Steering wheel injuries are anterior chest injuries — sternal fracture, bilateral rib fractures, aortic dissection at the isthmus. The diagonal pattern is specific to the shoulder strap.","Seatbelt injury proves the belt was worn — it reconstructs seating position but does not apportion fault."]
+},
+
+{ sys:'forensic', topic:'Forensic Pathology', diff:'foundation',
+  vig:`A coroner asks a forensic pathologist to estimate the post-mortem interval of a body found outdoors in winter. The body temperature (using a rectal thermometer) is 18°C. Ambient temperature is 4°C. Rigor mortis is present in the jaw and neck but not fully established in the limbs. Livor is present on the posterior surfaces and is partially fixed.`,
+  stem:`Using these findings, what is the approximate PMI and what formula is being used?`,
+  opts:["PMI cannot be estimated without a scene thermometer reading taken at the time of discovery","The Henssge nomogram uses body and ambient temperature with body weight to estimate PMI; partial rigor and partially fixed livor are consistent with approximately 8–16 hours — the nomogram provides a confidence interval, not a precise time","Livor fixation within 6 hours confirms death within 6 hours","Rigor in the jaw and neck confirms death within 2 hours"],
+  ans:1,
+  lo:`PMI estimation uses temperature (Henssge nomogram), rigor (onset 2–6h, full 6–12h, passes 36–48h), livor (onset 1–2h, fixed 8–12h), and entomology. The nomogram requires body weight and ambient temperature. Results are ranges, not precise times — no method is accurate enough to establish time of death to the hour.`,
+  oe:["The nomogram requires the temperatures at the time of examination — not historical ambient temperature. Documentation at the scene is essential.","<strong>Correct.</strong> Henssge nomogram: body temp 18°C, ambient 4°C → estimated heat loss rate → PMI range (influenced by body weight, clothing, and conditions). Partial rigor (jaw/neck established, limbs not) = approximately 6–16 hours. Partial livor fixation = 8–12+ hours. Together: PMI approximately 10–18 hours. Reported as a range with caveats.","Livor fixation at 8–12 hours means partially fixed livor suggests at least 8 hours — not a maximum of 6.","Rigor begins at the jaw/neck (small muscles) due to lower glycogen stores — its presence in these sites indicates more than 2 hours, but does not confirm a precise time."]
+},
+
+{ sys:'forensic', topic:'Toxicology', diff:'core',
+  vig:`A 22-year-old university student is found unresponsive at a house party by paramedics. Witnesses say she was 'drinking shots' and was given 'something in her drink' by an unknown person. She is semi-conscious with retrograde amnesia. GHB is suspected.`,
+  stem:`What makes GHB difficult to detect and what is the forensic significance?`,
+  opts:["GHB has a long half-life and is detectable in blood for 7 days","GHB is endogenously produced and has a very short half-life (2–4 hours) making it rapidly undetectable in blood; urine sampling within 8–12 hours and hair analysis are required","GHB is always detected on standard toxicology screens","GHB causes mydriasis — the normal pupils exclude this diagnosis"],
+  ans:1,
+  lo:`GHB in drug-facilitated sexual assault (DFSA): the biggest forensic challenge is its rapid clearance. Blood GHB becomes undetectable within 4–8 hours. Urine within 12 hours. Endogenous GHB (<50mg/L in PM blood) must be distinguished from exogenous. Hair analysis can extend the detection window to weeks.`,
+  oe:["GHB has a very short half-life — 2–4 hours in vivo. By the time most victims reach hospital and samples are taken, blood levels may already be undetectable.","<strong>Correct.</strong> GHB (DFSA): rapid clearance + endogenous production + CNS depression + amnesia. Clinical action: take blood immediately (within 2 hours if possible), urine within 12 hours, preserve hair for later analysis. Document all clinical findings. Alert sexual assault referral centre (SARC). The absence of GHB on toxicology does not exclude its use.","Standard toxicology screens do not routinely include GHB — it must be specifically requested, and rapid sample collection is essential.","GHB causes CNS depression and miosis in overdose — similar to opioid picture but without the same degree of respiratory depression at lower doses. Normal pupils do not exclude GHB."]
+},
+
+{ sys:'forensic', topic:'Forensic Pathology', diff:'advanced',
+  vig:`A 30-year-old man is found dead in a house fire. The body is severely burned with a 'pugilistic posture' — arms and legs flexed, hands clenched. The skull shows an epidural haemorrhage at post-mortem. The forensic pathologist must determine if the victim was alive or dead when the fire started.`,
+  stem:`Which post-mortem finding most reliably indicates the victim was alive during the fire?`,
+  opts:["The pugilistic posture — only occurs in living victims","The skull epidural haemorrhage — this indicates ante-mortem head injury","Soot in the airways below the vocal cords and elevated COHb levels in blood — these require the victim to be breathing and alive","The extent of burning — severe burns indicate the victim was alive longer"],
+  ans:2,
+  lo:`Ante-mortem fire survival: soot below the vocal cords (inhaled soot requires breathing), elevated COHb (requires circulating blood to bind CO), and vital reaction at burn edges on histology. Pugilistic posture is a post-mortem heat artefact from muscle contraction — it occurs regardless of whether the victim was alive. Epidural haemorrhage can occur post-mortem from heat expansion of meningeal vessels.`,
+  oe:["Pugilistic posture is caused by heat-induced muscle contraction and collagen shrinkage — it occurs regardless of whether the victim was alive. It is not evidence of ante-mortem survival.","Post-mortem 'heat epidural haemorrhage' occurs when heat expands meningeal blood and creates a haemorrhage — it is a recognised artefact. It does not indicate ante-mortem injury.","<strong>Correct.</strong> Soot below the cords = inhaled during breathing = alive during fire. Elevated COHb (>10%) = CO absorbed via functioning circulation = alive and breathing. These are the two most reliable vital reaction markers in fire deaths. Histology of skin burn margins for inflammatory infiltrate (neutrophils) can also confirm ante-mortem injury.","The extent of burning reflects proximity, temperature, and duration of exposure to heat — not whether the victim was alive."]
+},
+
+{ sys:'forensic', topic:'Medico-legal', diff:'core',
+  vig:`A GP is asked to provide a medical report for a personal injury claim. His patient was involved in a road traffic accident 18 months ago and is claiming for psychological sequelae. The GP is asked by the claimant's solicitor to 'support the claim as strongly as possible' and to emphasise the worst symptoms.`,
+  stem:`What is the GP's correct medico-legal obligation?`,
+  opts:["Support the patient — the duty is to the patient as their doctor","Provide an objective, impartial report based on clinical findings; the duty in a medico-legal report is to the court, not to the instructing party","Refuse to write any medico-legal report","Only report what the solicitor asks for"],
+  ans:1,
+  lo:`A medico-legal expert's primary duty is to the court — not to the instructing solicitor. The report must be objective, accurate, and cover all relevant findings including those that may not support the claim. Providing a biased report is professional misconduct (GMC) and potentially perjury if used in court proceedings.`,
+  oe:["The treating duty is different from the medico-legal expert duty. As a medico-legal expert, the GP owes a primary duty to the court. The clinical treatment relationship does not obligate advocacy in legal proceedings.","<strong>Correct.</strong> Expert witness duty (CPR 35 in England and Wales): the overriding duty is to the court. Report must be accurate, objective, and within the expert's competence. Must state clearly what is fact versus opinion, and identify any uncertainty. Shaping a report to 'support the claim as strongly as possible' is a breach of this duty and professional misconduct.","A GP can appropriately write factual medical reports based on their clinical records — this is within their role. Refusing all medico-legal involvement is not necessary.","Writing only what the solicitor asks for is precisely the breach that must be avoided."]
+},
+
+{ sys:'forensic', topic:'Pregnancy & Abortion', diff:'core',
+  vig:`A forensic physician is asked to examine a 20-year-old woman who claims to have been sexually assaulted 48 hours ago. She has not yet reported to police and has not washed. She asks about emergency contraception.`,
+  stem:`What are the forensic physician's two concurrent obligations?`,
+  opts:["Forensic examination first, EC later — EC may destroy evidence","Forensic evidence collection AND immediate EC provision are both the doctor's obligation — a copper IUD within 5 days or levonorgestrel within 72 hours; the two are not in conflict","EC cannot be given until the police report is filed","Wait for police to arrive before any examination or treatment"],
+  ans:1,
+  lo:`Sexual assault referral centres (SARCs) were established to integrate forensic examination with medical care. The doctor has dual roles: forensic (evidence collection) and clinical (EC, STI prophylaxis, psychological support). EC does not compromise forensic evidence — it is a clinical urgency that runs in parallel.`,
+  oe:["EC does not destroy forensic evidence. Biological evidence (sperm, DNA) is collected before any treatment is given — but the clinical needs of the patient run in parallel and are not secondary to forensic needs.","<strong>Correct.</strong> SARC model: forensic examination (early evidence kit — swabs, clothing, photography) AND simultaneous clinical care (EC: LNG-IUS 72h or Cu-IUD 5 days; STI prophylaxis; hepatitis B post-exposure if applicable; psychological first aid). The clinical urgency of EC is not delayed by the forensic examination.","EC is a clinical urgency — waiting for police involvement before prescribing it could result in an unwanted pregnancy. Clinical care is not contingent on police reporting.","The forensic examination and clinical care can begin without police present — the patient retains the right to forensic examination whether or not they report to police."]
+},
+
+{ sys:'forensic', topic:'General Forensics', diff:'core',
+  vig:`A forensic physician is called to examine an unconscious 16-year-old in police custody. The custody sergeant says the young person 'just needs to sleep it off — probably drunk'. The doctor notes bruising around both orbits ('panda eyes'), blood from the right ear, and a Glasgow Coma Scale of 11.`,
+  stem:`What is the diagnosis and what must happen in the next 10 minutes?`,
+  opts:["Drunk — allow to sleep in the recovery position","Basal skull fracture — bilateral peri-orbital haemorrhage (raccoon eyes) and haemotympanum are clinical signs; this is a neurosurgical emergency requiring immediate 999 call and transfer to hospital","Diabetic ketoacidosis — check blood glucose","Sepsis — start IV antibiotics"],
+  ans:1,
+  lo:`Basal skull fracture signs: bilateral peri-orbital haemorrhage (Battle's sign if mastoid), haemotympanum, CSF rhinorrhoea/otorrhoea. Combined with GCS 11, this is an emergency. The custody sergeant's assumption of intoxication is clinically dangerous — a forensic physician who accepts this without examination has failed their duty of care.`,
+  oe:["GCS 11 + bilateral peri-orbital haemorrhage + haemotympanum is not intoxication — these are clinical signs of basal skull fracture. Alcohol intoxication does not cause raccoon eyes or blood in the ear.","<strong>Correct.</strong> Basal skull fracture: raccoon eyes (bilateral peri-orbital ecchymosis from anterior cranial fossa fracture) + haemotympanum (blood behind tympanic membrane from petrous bone fracture) + GCS 11. Immediate 999 → hospital. CT head. This young person could have an expanding epidural haematoma. The forensic physician must act as a clinician first — the custody suite diagnosis of 'drunk' was wrong.","DKA causes hyperglycaemia, Kussmaul breathing, and acetone breath — not bilateral peri-orbital haemorrhage.","Sepsis causes fever, tachycardia, raised WCC — not raccoon eyes and haemotympanum."]
 }
 
 ]; // end QB
@@ -3082,35 +3555,48 @@ function buildExplanation(q, isOk, sel, correct, full) {
   const block = document.getElementById('exp-block');
   if(!block) return;
 
+  block.classList.toggle('is-correct', isOk);
+  block.classList.toggle('is-wrong', !isOk);
+
   if(full) {
     const optRows = q.opts.map((o, i) => {
       const isC = i === correct;
+      const isWrongPick = i === sel && !isOk;
       const txt = q.oe?.[i] || (isC ? q.lo || '' : '');
-      return `<div class="exp-opt-row ${isC?'is-correct':''}">
-        <span class="exp-opt-ltr ${isC?'ok':'dim'}">${LTR[i]}</span>
-        <div class="exp-opt-body">${txt}</div>
+      let ltrCls = 'dim', rowCls = '', verdictCls = 'dim', verdictTxt = 'Distractor';
+      if(isC)         { ltrCls='ok';    rowCls='is-correct';   verdictCls='right'; verdictTxt='Why this is correct'; }
+      if(isWrongPick) { ltrCls='wrong'; rowCls='is-wrong-pick'; verdictCls='wrong'; verdictTxt='Why this is wrong'; }
+      return `<div class="exp-opt-row ${rowCls}">
+        <span class="exp-opt-ltr ${ltrCls}">${LTR[i]}</span>
+        <div class="exp-opt-body">
+          <div class="exp-opt-verdict ${verdictCls}">${verdictTxt}</div>
+          ${txt}
+        </div>
       </div>`;
     }).join('');
 
     block.innerHTML = `
       <div class="exp-verdict">
         <span class="exp-badge ${isOk?'ok':'bad'}">${isOk?'✓ Correct':'✗ Incorrect'}</span>
-        <span class="exp-correct-label">Correct: ${LTR[correct]}</span>
+        <span class="exp-correct-label">Correct answer: ${LTR[correct]}</span>
       </div>
       <div class="exp-divider"></div>
       <div class="exp-opts">${optRows}</div>
+      <div class="exp-teaching">
+        <div class="exp-teaching-text">${q.lo}</div>
+      </div>
       <div class="exp-lo">
-        <div class="exp-lo-label">Learning objective</div>
+        <div class="exp-lo-label">The principle</div>
         <div class="exp-lo-text">${q.lo}</div>
       </div>`;
   } else {
     block.innerHTML = `
       <div class="exp-verdict">
         <span class="exp-badge ${isOk?'ok':'bad'}">${isOk?'✓ Correct':'✗ Incorrect'}</span>
-        <span class="exp-correct-label">Correct: ${LTR[correct]}</span>
+        <span class="exp-correct-label">Correct answer: ${LTR[correct]}</span>
       </div>
       <div class="exp-divider"></div>
-      <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink5);line-height:1.7;">Full breakdown shown at end of session.</p>`;
+      <div style="padding:18px 28px;font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(243,240,232,.3);line-height:1.7;letter-spacing:.3px;">Full breakdown unlocks at session end.</div>`;
   }
 
   block.classList.add('show');
@@ -3672,4 +4158,13 @@ function resumeSession() {
 // ─── INIT ─────────────────────────────────────────────────────
 updateSummary();
 
-</script></body></html>
+/* ── Nav scroll shadow ── */
+(function(){
+  var nav = document.querySelector('nav');
+  if(nav) window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, {passive:true});
+})();
+
+</script>
+</body></html>
