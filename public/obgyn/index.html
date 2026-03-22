@@ -32,6 +32,95 @@
   --white:   #f2ece0;
 }
 
+/* ══ NIGHT MODE — deep navy ══ */
+body.night {
+  --bg:      #0c1220;
+  --bg2:     #091018;
+  --bg3:     #060c14;
+  --ink:     #c8d8e8;
+  --ink2:    #a8bcd0;
+  --ink3:    #7090a8;
+  --ink4:    #4a6880;
+  --accent:  #d45a3a;
+  --accent2: #e06845;
+  --accent3: #f07a55;
+  --teal:    #2a9080;
+  --teal2:   #3aa898;
+  --border:  #162030;
+  --white:   #0e1828;
+  --n-bg:        #0c1220;
+  --n-bg2:       #091018;
+  --n-card:      #101a2c;
+  --n-white:     #0e1828;
+  --n-ink:       #c8d8e8;
+  --n-ink2:      #a8bcd0;
+  --n-ink3:      #7090a8;
+  --n-ink4:      #4a6880;
+  --n-ink5:      #304858;
+  --n-red:       #d45a3a;
+  --n-red2:      #a83820;
+  --n-redfaint:  rgba(200,69,42,0.10);
+  --n-green:     #2a7a50;
+  --n-greenfaint:rgba(42,122,80,0.10);
+  --n-amber:     #9a7030;
+  --n-amberfaint:rgba(138,96,32,0.10);
+  --n-blue:      #2a5a9a;
+  --n-bluefaint: rgba(30,74,122,0.10);
+  --n-border:    #162030;
+  --n-border2:   #1e2e42;
+  --n-dark:      #060c14;
+  --n-dark2:     #080e18;
+}
+
+/* Global smooth transition */
+body, nav, .note-modal, .n-page, .n-section, .n-snap-cell,
+.n-snap-item, .n-hero-new, .nc, .nc-arr, .shero-stat {
+  transition: background .3s ease, color .3s ease, border-color .3s ease;
+}
+
+/* Nav night */
+body.night nav {
+  background: rgba(8,14,24,0.97) !important;
+  border-bottom-color: #162030 !important;
+}
+body.night nav.scrolled { box-shadow: 0 2px 32px rgba(0,0,0,0.55) !important; }
+
+/* Note modal */
+body.night .note-modal { background: var(--n-bg); color: var(--n-ink); }
+
+/* Cards */
+body.night .nc     { background: var(--white); }
+body.night .nc-arr { background: var(--bg2); color: var(--ink3); }
+
+/* Snapshot / section */
+body.night .n-snap-cell,
+body.night .n-snap-item { background: var(--n-card); }
+body.night .n-snapshot  { background: var(--n-border); border-color: var(--n-border); }
+body.night .n-section-header { border-bottom-color: var(--n-border); }
+body.night .n-hero-new        { border-bottom-color: var(--n-border); }
+body.night .n-viz-block { background: #040810; }
+body.night .shero { background: #060c14; }
+body.night .focus-banner { background: var(--n-dark2); }
+
+/* Night toggle button */
+.night-btn {
+  background: none;
+  border: 1px solid var(--border);
+  padding: 5px 13px; border-radius: 3px; cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--ink4);
+  display: flex; align-items: center; gap: 7px;
+  transition: all .2s; white-space: nowrap;
+}
+.night-btn:hover { border-color: var(--ink3); color: var(--ink2); }
+.night-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+.night-btn .icon-sun  { display: none; }
+.night-btn .icon-moon { display: block; }
+body.night .night-btn .icon-moon { display: none; }
+body.night .night-btn .icon-sun  { display: block; }
+body.night .night-btn { color: var(--teal); border-color: rgba(42,144,128,0.4); }
+
 /* ── RESET ── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -341,26 +430,28 @@ nav {
 }
 .nc.visible { animation: cardReveal .6s cubic-bezier(.16,1,.3,1) forwards; }
 @keyframes cardReveal { to { opacity: 1; transform: translateY(0); } }
+/* ── LIGHT MODE hover: ink slide-up ── */
 .nc:not(.soon):hover {
   transform: translateY(-7px);
   box-shadow:
-    0 0 0 1px rgba(0,0,0,.07),
-    0 4px 8px rgba(0,0,0,.05),
-    0 24px 56px rgba(0,0,0,.16),
-    0 0 80px rgba(200,69,42,.07);
+    0 0 0 1px rgba(0,0,0,.13),
+    0 8px 32px rgba(0,0,0,.18),
+    0 24px 56px rgba(0,0,0,.13);
 }
+/* accent sweep line */
 .nc::before {
-  content: ''; position: absolute; top: 0; left: -100%; right: 100%; height: 1px;
+  content: ''; position: absolute; top: 0; left: -100%; right: 100%; height: 2px;
   background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  transition: left .55s cubic-bezier(.16,1,.3,1), right .55s cubic-bezier(.16,1,.3,1);
-  z-index: 3;
+  transition: left .55s cubic-bezier(.16,1,.3,1), right .55s cubic-bezier(.16,1,.3,1), opacity .4s ease;
+  z-index: 3; opacity: 0;
 }
-.nc:not(.soon):hover::before { left: 0; right: 0; }
+.nc:not(.soon):hover::before { left: 0; right: 0; opacity: 1; }
+/* ink fill slides up */
 .nc::after {
   content: ''; position: absolute; inset: 0;
   background: var(--ink);
   transform: translateY(102%);
-  transition: transform .5s cubic-bezier(.16,1,.3,1);
+  transition: transform .5s cubic-bezier(.16,1,.3,1), opacity .45s ease;
   z-index: 0; border-radius: 5px;
 }
 .nc:not(.soon):hover::after { transform: translateY(0); }
@@ -371,39 +462,39 @@ nav {
   font-size: 9px; letter-spacing: 2px; color: var(--ink4);
   text-transform: uppercase; margin-bottom: 20px; transition: color .3s;
 }
-.nc:hover .nc-type { color: rgba(250,247,240,.3); }
+.nc:not(.soon):hover .nc-type { color: rgba(250,247,240,.3); }
 .nc-num {
   position: absolute; top: 30px; right: 30px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px; letter-spacing: 1px; color: rgba(0,0,0,.1); transition: color .3s;
 }
-.nc:hover .nc-num { color: rgba(255,255,255,.1); }
+.nc:not(.soon):hover .nc-num { color: rgba(255,255,255,.1); }
 .diff { display: flex; gap: 4px; margin-bottom: 14px; }
 .dd { width: 5px; height: 5px; border-radius: 50%; background: var(--border); transition: background .3s; }
 .dd.on { background: var(--accent); }
-.nc:hover .dd.on { background: var(--accent2); }
-.nc:hover .dd:not(.on) { background: rgba(255,255,255,.1); }
+.nc:not(.soon):hover .dd.on      { background: var(--accent2); }
+.nc:not(.soon):hover .dd:not(.on){ background: rgba(255,255,255,.1); }
 .nc-title {
   font-family: 'Instrument Serif', serif;
   font-size: 22px; font-weight: 400; color: var(--ink);
   line-height: 1.15; margin-bottom: 12px; transition: color .3s;
 }
-.nc:hover .nc-title { color: var(--white); }
+.nc:not(.soon):hover .nc-title { color: var(--white); }
 .nc-preview {
   font-size: 13px; color: var(--ink3); line-height: 1.75; flex: 1; transition: color .3s;
 }
-.nc:hover .nc-preview { color: rgba(250,247,240,.45); }
+.nc:not(.soon):hover .nc-preview { color: rgba(250,247,240,.45); }
 .nc-foot {
   display: flex; justify-content: space-between; align-items: center;
   margin-top: 22px; padding-top: 18px;
   border-top: 1px solid rgba(0,0,0,.07); transition: border-color .3s;
 }
-.nc:hover .nc-foot { border-color: rgba(255,255,255,.08); }
+.nc:not(.soon):hover .nc-foot { border-color: rgba(255,255,255,.08); }
 .nc-meta {
   font-family: 'JetBrains Mono', monospace;
   font-size: 9px; letter-spacing: 1px; color: var(--ink4); transition: color .3s;
 }
-.nc:hover .nc-meta { color: rgba(250,247,240,.25); }
+.nc:not(.soon):hover .nc-meta { color: rgba(250,247,240,.25); }
 .nc-arr {
   width: 32px; height: 32px; border-radius: 50%;
   background: var(--bg2);
@@ -412,9 +503,61 @@ nav {
   transition: all .3s; flex-shrink: 0;
   box-shadow: 0 1px 4px rgba(0,0,0,.08);
 }
-.nc:hover .nc-arr { background: var(--accent); color: white; transform: translate(4px,-4px); box-shadow: 0 4px 12px rgba(200,69,42,.35); }
+.nc:not(.soon):hover .nc-arr { background: var(--accent); color: white; transform: translate(4px,-4px); box-shadow: 0 4px 12px rgba(200,69,42,.35); }
 .nc.soon { cursor: default; opacity: .5; }
 .nc.soon::after { display: none; }
+
+/* ══ NIGHT MODE: lit window in a dark building ══
+   Deep navy card. On hover: amber light floods through
+   a pane from above — ledge stripe, wide wash, tight bloom. */
+body.night .nc:not(.soon):hover {
+  transform: translateY(-7px);
+  background: #0e1a2c;
+  box-shadow:
+    0 0 0 1px rgba(245,190,70,.28),
+    0 12px 40px rgba(0,0,0,.60),
+    0 0 0 3px rgba(245,185,60,.04),
+    0 0 120px rgba(245,185,60,.12);
+}
+/* amber ledge — bright centre peak fading to edges */
+body.night .nc::before {
+  left: 0; right: 0; opacity: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent           0%,
+    rgba(245,185,60,.15) 10%,
+    rgba(245,185,60,.82) 35%,
+    rgba(255,215,100,.98) 50%,
+    rgba(245,185,60,.82) 65%,
+    rgba(245,185,60,.15) 90%,
+    transparent           100%);
+  transition: opacity .45s ease;
+}
+body.night .nc:not(.soon):hover::before { opacity: 1; }
+/* light flooding down through the window — wide wash + tight bloom */
+body.night .nc::after {
+  transform: none;
+  background:
+    radial-gradient(ellipse 85% 60% at 50% -10%, rgba(245,185,60,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 45% 30% at 50% -4%,  rgba(255,215,100,.12) 0%, transparent 42%);
+  transition: opacity .45s ease;
+  opacity: 0;
+}
+body.night .nc:not(.soon):hover::after  { opacity: 1; }
+body.night .nc:not(.soon):hover .nc-title   { color: #f0e8d4; }
+body.night .nc:not(.soon):hover .nc-preview { color: rgba(210,200,175,.55); }
+body.night .nc:not(.soon):hover .nc-type    { color: rgba(245,190,70,.5); }
+body.night .nc:not(.soon):hover .nc-num     { color: rgba(245,190,70,.1); }
+body.night .nc:not(.soon):hover .nc-meta    { color: rgba(245,190,70,.38); }
+body.night .nc:not(.soon):hover .nc-foot    { border-color: rgba(245,190,70,.12); }
+body.night .nc:not(.soon):hover .dd.on      { background: rgba(245,185,60,.85); }
+body.night .nc:not(.soon):hover .dd:not(.on){ background: rgba(255,255,255,.07); }
+body.night .nc:not(.soon):hover .nc-arr {
+  background: rgba(245,185,60,.16);
+  color: rgba(245,185,60,.95);
+  transform: translate(4px,-4px);
+  box-shadow: 0 6px 20px rgba(245,185,60,.22);
+}
 
 /* ── PAGE SECTION BACKGROUND ── */
 .notes-sec {
@@ -464,14 +607,52 @@ nav {
 
 
 /* ── MODAL BAR ── */
+/* ── MODAL BAR ── */
 .mbar {
   position: sticky; top: 0;
-  background: var(--ink);
+  background: #18140e;
   padding: 0 20px; height: 48px;
   display: flex; align-items: center; justify-content: space-between;
-  z-index: 10; border-bottom: 1px solid rgba(255,255,255,.05);
+  z-index: 10; border-bottom: 1px solid rgba(255,255,255,.06);
   gap: 12px;
+  overflow: hidden;
 }
+/* elegant ambient warmth — light mode: barely-there blush */
+.mbar::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(ellipse 70% 200% at 88% 50%, rgba(245,185,60,.055) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 140% at 100% 50%, rgba(245,185,60,.03) 0%, transparent 55%);
+}
+/* night mode: deep, atmospheric warmth spreading from the right */
+body.night .mbar {
+  background: #05080e;
+  border-bottom-color: #111c2e;
+}
+body.night .mbar::after {
+  background:
+    radial-gradient(ellipse 80% 250% at 90% 50%, rgba(235,178,55,.20) 0%, transparent 62%),
+    radial-gradient(ellipse 50% 180% at 100% 50%, rgba(245,185,60,.13) 0%, transparent 55%),
+    radial-gradient(ellipse 28% 110% at 100% 50%, rgba(255,210,90,.08) 0%, transparent 45%);
+}
+/* top border — barely visible in light, a fine golden thread in night */
+.mbar::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  pointer-events: none; z-index: 1;
+  background: linear-gradient(90deg,
+    transparent 50%,
+    rgba(245,185,60,.08) 72%,
+    rgba(245,185,60,.28) 90%,
+    rgba(245,185,60,.38) 100%);
+}
+body.night .mbar::before {
+  background: linear-gradient(90deg,
+    transparent 30%,
+    rgba(245,185,60,.12) 60%,
+    rgba(245,185,60,.55) 85%,
+    rgba(255,210,90,.75) 100%);
+}
+.mbar > * { position: relative; z-index: 2; }
 .mbar-l { display: flex; align-items: center; gap: 10px; flex-shrink: 0; min-width: 0; }
 .mpulse {
   width: 6px; height: 6px; border-radius: 50%;
@@ -1011,13 +1192,16 @@ nav {
 
 /* Anchor */
 /* ── NOTE CLOSING PANEL ── */
-.n-anchor { margin-top: 64px; padding: 48px 0 0; border-top: 2px solid var(--n-ink); text-align: center; }
+.n-anchor { margin-top: 64px; padding: 48px 0 0; border-top: 2px solid rgba(200,69,42,.18); text-align: center; }
 .n-anchor-card { padding: 44px 52px; position: relative; background: none; border: none; border-radius: 0; }
 .n-anchor-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(200,69,42,.3) 30%, rgba(200,69,42,.3) 70%, transparent); border-radius: 0; }
 .n-anchor-label { font-family: 'Syne', sans-serif; font-size: 8.5px; font-weight: 700; letter-spacing: 4px; color: rgba(200,69,42,.45); text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 22px; }
 .n-anchor-label::before, .n-anchor-label::after { content: ''; width: 32px; height: 1px; background: rgba(200,69,42,.25); flex-shrink: 0; }
-.n-anchor-text { font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(20px, 2.8vw, 30px); line-height: 1.7; color: rgba(20,15,10,.78); letter-spacing: -.2px; font-weight: 400; display: block; max-width: 600px; margin: 0 auto; }
-.n-anchor-text em { font-style: italic; color: rgba(20,15,10,.92); }
+.n-anchor-text { font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(20px, 2.8vw, 30px); line-height: 1.7; color: var(--n-ink); letter-spacing: -.2px; font-weight: 400; display: block; max-width: 600px; margin: 0 auto; opacity: .82; }
+.n-anchor-text em { font-style: italic; opacity: 1; }
+body.night .n-anchor { border-top-color: rgba(200,69,42,.22); }
+body.night .n-anchor-text { opacity: .88; }
+body.night .n-anchor-text em { color: #e8d4b8; }
 
 /* Note end CTA */
 .n-note-end-cta {
@@ -1764,7 +1948,15 @@ nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,.08); }
       All specialties
     </a>
   </div>
-  <a href="#" class="nav-pill" onclick="bOpenHistory(); return false;">My log</a>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button class="night-btn" onclick="toggleNight()" title="Toggle night mode">
+      <svg class="icon-moon" viewBox="0 0 12 12" fill="none"><path d="M10 7.5A4.5 4.5 0 014.5 2a4.5 4.5 0 100 9A4.5 4.5 0 0010 7.5z" fill="currentColor" opacity=".8"/></svg>
+      <svg class="icon-sun"  viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="2.5" fill="currentColor"/><path d="M6 1v1M6 10v1M1 6h1M10 6h1M2.5 2.5l.7.7M8.8 8.8l.7.7M2.5 9.5l.7-.7M8.8 3.2l.7-.7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      <span class="icon-moon">Night</span>
+      <span class="icon-sun">Day</span>
+    </button>
+    <a href="#" class="nav-pill" onclick="bOpenHistory(); return false;">My log</a>
+  </div>
 </nav>
 
 <!-- ══ HERO ══════════════════════════════════════════════ -->
@@ -10316,6 +10508,15 @@ setTimeout(function(){
 (function(){
   var nav=document.querySelector('nav');
   if(nav) window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>40);},{passive:true});
+})();
+
+/* ── NIGHT MODE ── */
+function toggleNight() {
+  var on = document.body.classList.toggle('night');
+  localStorage.setItem('vent-night', on ? '1' : '0');
+}
+(function(){
+  if (localStorage.getItem('vent-night') === '1') document.body.classList.add('night');
 })();
 </script>
 
