@@ -35,6 +35,70 @@
   --hl-purple: rgba(120, 42, 180, 0.22);
 }
 
+/* ══ NIGHT MODE — deep navy ══ */
+body.night {
+  --bg:        #0c1220;
+  --bg2:       #091018;
+  --bg3:       #060c14;
+  --card:      #101a2c;
+  --ink:       #c8d8e8;
+  --ink2:      #a8bcd0;
+  --ink3:      #7090a8;
+  --ink4:      #4a6880;
+  --ink5:      #304858;
+  --red:       #d45a3a;
+  --red2:      #e06845;
+  --redfaint:  rgba(200,69,42,0.10);
+  --green:     #2a7a50;
+  --greenfaint:rgba(42,122,80,0.10);
+  --amber:     #9a7030;
+  --amberfaint:rgba(138,96,32,0.10);
+  --border:    #162030;
+  --border2:   #1e2e42;
+  --white:     #0e1828;
+  --dark:      #060c14;
+  --dark2:     #080e18;
+  --dark3:     #0a1020;
+  --hl-yellow: rgba(255,214,0,0.18);
+  --hl-green:  rgba(42,122,80,0.22);
+  --hl-red:    rgba(200,69,42,0.22);
+  --hl-blue:   rgba(42,90,180,0.22);
+  --hl-purple: rgba(120,42,180,0.22);
+}
+
+/* Global smooth transition */
+body, nav, .sidebar, .card, .q-card, .launcher,
+.session-wrap, .results-wrap, .verdict-box {
+  transition: background .3s ease, color .3s ease, border-color .3s ease;
+}
+
+/* Nav night */
+body.night nav {
+  background: rgba(8,14,24,0.97) !important;
+  border-bottom-color: #162030 !important;
+}
+body.night nav.scrolled { box-shadow: 0 2px 32px rgba(0,0,0,0.55) !important; }
+body.night .logo-name { color: var(--ink); }
+
+/* Night toggle button */
+.night-btn {
+  background: none;
+  border: 1px solid var(--border);
+  padding: 5px 13px; border-radius: 3px; cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--ink4);
+  display: flex; align-items: center; gap: 7px;
+  transition: all .2s; white-space: nowrap; flex-shrink: 0;
+}
+.night-btn:hover { border-color: var(--ink3); color: var(--ink2); }
+.night-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+.night-btn .icon-sun  { display: none; }
+.night-btn .icon-moon { display: block; }
+body.night .night-btn .icon-moon { display: none; }
+body.night .night-btn .icon-sun  { display: block; }
+body.night .night-btn { color: #2a9080; border-color: rgba(42,144,128,0.4); }
+
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
@@ -166,6 +230,11 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.07); }
 }
 .sys-btn:hover { border-color: var(--ink3); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
 .sys-btn:hover::after { width: 100%; }
+body.night .sys-btn:hover {
+  border-color: rgba(245,190,70,.28);
+  box-shadow: 0 0 0 1px rgba(245,190,70,.14), 0 8px 28px rgba(0,0,0,.4), 0 0 60px rgba(245,185,60,.08);
+  background: #0e1a2c;
+}
 .sys-btn.on { border-color: var(--ink); background: var(--ink); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
 .sys-btn.on::after { width: 100%; background: var(--red); }
 .sys-btn.on .sn { color: var(--white); }
@@ -188,6 +257,15 @@ nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.07); }
 .mode-btn.on .md { color: rgba(243,240,232,.32); }
 .mn { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 8px; transition: color .2s; }
 .md { font-size: 13px; color: var(--ink4); line-height: 1.6; transition: color .2s; }
+
+/* ── Night mode: selected cards stay dark, never flip blue ── */
+body.night .sys-btn.on  { background: #1a2a40; border-color: rgba(245,190,70,.35); box-shadow: 0 0 0 1px rgba(245,190,70,.2), 0 8px 28px rgba(0,0,0,.45), 0 0 60px rgba(245,185,60,.08); }
+body.night .sys-btn.on .sn { color: #f0e8d4; }
+body.night .sys-btn.on .ss { color: rgba(245,190,70,.45); }
+body.night .sys-btn.on::after { background: rgba(245,185,60,.7); }
+body.night .mode-btn.on { background: #1a2a40; border-color: rgba(245,190,70,.35); box-shadow: 0 0 0 1px rgba(245,190,70,.2), 0 8px 28px rgba(0,0,0,.45), 0 0 60px rgba(245,185,60,.08); }
+body.night .mode-btn.on .mn { color: #f0e8d4; }
+body.night .mode-btn.on .md { color: rgba(245,190,70,.45); }
 
 /* count */
 .count-row { display: flex; align-items: center; gap: 24px; }
@@ -1014,7 +1092,7 @@ mark.hl-purple:hover { filter: brightness(.88); }
   .res-tabs { overflow-x: auto; }
 }
 </style></head><body>
-<nav><a href="/" class="logo"><svg width="34" height="34" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" stroke="#0d0b08" stroke-width="1.5"/><path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M10 30 Q22 36 34 30" stroke="#0d0b08" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="22" cy="10" r="2.5" fill="#c8452a"/></svg><span class="logo-name">Vent</span></a><a href="#" onclick="history.back();return false;" class="nav-back">← Home</a><div class="nav-label">Q-Bank</div></nav>
+<nav><a href="/" class="logo"><svg width="34" height="34" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="21" stroke="#0d0b08" stroke-width="1.5"/><path d="M22 10 L10 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M22 10 L34 30" stroke="#c8452a" stroke-width="2.5" stroke-linecap="round"/><path d="M10 30 Q22 36 34 30" stroke="#0d0b08" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="22" cy="10" r="2.5" fill="#c8452a"/></svg><span class="logo-name">Vent</span></a><a href="#" onclick="history.back();return false;" class="nav-back">← Home</a><div class="nav-label">Q-Bank</div><button class="night-btn" onclick="toggleNight()" title="Toggle night mode"><svg class="icon-moon" viewBox="0 0 12 12" fill="none"><path d="M10 7.5A4.5 4.5 0 014.5 2a4.5 4.5 0 100 9A4.5 4.5 0 0010 7.5z" fill="currentColor" opacity=".8"/></svg><svg class="icon-sun" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="2.5" fill="currentColor"/><path d="M6 1v1M6 10v1M1 6h1M10 6h1M2.5 2.5l.7.7M8.8 8.8l.7.7M2.5 9.5l.7-.7M8.8 3.2l.7-.7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span class="icon-moon">Night</span><span class="icon-sun">Day</span></button></nav>
 <div id="screen-launcher"><div class="launcher">
   <div class="l-eyebrow">Q-Bank</div><h1 class="l-h1">Cases.<br><em>No notes.</em></h1><p class="l-sub">Clinical vignettes. Hard questions. Real reasoning required.</p>
   <div class="l-perf-strip" id="l-perf-strip"><div class="l-perf-block"><div class="l-perf-label">Sessions</div><div class="l-perf-val">—</div><div class="l-perf-sub">No sessions yet</div></div><div class="l-perf-block"><div class="l-perf-label">Avg score</div><div class="l-perf-val">—</div><div class="l-perf-sub">Complete a session</div></div><div class="l-perf-block"><div class="l-perf-label">Questions done</div><div class="l-perf-val">—</div><div class="l-perf-sub">across all sessions</div></div></div>
@@ -4164,6 +4242,15 @@ updateSummary();
   if(nav) window.addEventListener('scroll', function(){
     nav.classList.toggle('scrolled', window.scrollY > 20);
   }, {passive:true});
+})();
+
+/* ── NIGHT MODE ── */
+function toggleNight() {
+  var on = document.body.classList.toggle('night');
+  localStorage.setItem('vent-night', on ? '1' : '0');
+}
+(function(){
+  if (localStorage.getItem('vent-night') === '1') document.body.classList.add('night');
 })();
 
 </script>
